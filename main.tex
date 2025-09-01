@@ -57,14 +57,14 @@
 \begingroup
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture,overlay]
-\coordinate [below=12cm] (midpoint) at (current page.north);
-\node at (current page.north west)
-{\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
-\draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering The Search for a Title\\[15pt] % Book title
-{\Large A Profound Subtitle}\\[20pt] % Subtitle
-{\huge Dr. John Smith}}}; % Author name
-\end{tikzpicture}};
+    \coordinate [below=12cm] (midpoint) at (current page.north);
+    \node at (current page.north west)
+    {\begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
+            \draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering The Search for a Title\\[15pt] % Book title
+            {\Large A Profound Subtitle}\\[20pt] % Subtitle
+            {\huge Dr. John Smith}}}; % Author name
+        \end{tikzpicture}};
 \end{tikzpicture}
 \vfill
 \endgroup
@@ -115,11 +115,192 @@
 
 \chapterimage{chapter_head_2.pdf} % Chapter heading image
 
-\chapter{Text Chapter}
+\chapter{Abstract Vector Spaces}
 
-\section{Paragraphs of Text}\index{Paragraphs of Text}
+\section{Binary Operation}\index{Binary Operation}
 
-\lipsum[1-7] % Dummy text
+\begin{definition}[Binary Operation]
+    A \emph{binary operation} on a set $S$ is a mapping of the elements of the Cartesian product $S \times S$ to $S$.
+    \[ \begin{split}
+            f : S \times S & \to S \\ (x,y) &\mapsto f(x,y)
+        \end{split}\]
+\end{definition}
+
+\begin{example}
+    A common example of a binary operation is addition on the set of natural numbers $\mathbb{N}$.
+    \begin{equation}
+        \begin{split}
+            + : \mathbb{N} \times \mathbb{N} & \to \mathbb{N} \\ (x,y) &\mapsto x+y
+        \end{split}
+    \end{equation}
+\end{example}
+
+\begin{definition}[Associative Operation]
+    A binary operation $f: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, the following holds:
+    \[ f(x,f(y,z)) = f(f(x,y),z) \]
+\end{definition}
+
+\begin{example}
+    A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$. For all $x,y,z \in \mathbb{N}$, we have:
+    \begin{equation}
+        x + (y + z) = (x + y) + z
+    \end{equation}
+\end{example}
+
+\newpage
+
+\begin{definition}[Identifiable Operation]
+    A binary operation $f: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, called the \emph{identity element} or \emph{unit element}, such that, for all $x \in S$, the following holds:
+    \[ f(x,e) = x = f(e,x) \]
+\end{definition}
+
+\begin{example}
+    A common example of an identifiable (binary) operation is multiplication on the set of natural numbers $\mathbb{N}$. The identity element is $1$, and for all $x \in \mathbb{N}$, we have:
+    \begin{equation}
+        x \cdot 1 = x = 1 \cdot x
+    \end{equation}
+\end{example}
+
+\begin{proposition}
+    The identity element of an identifiable operation is unique.
+\end{proposition}
+
+\begin{proof}
+    Let $e_1$ and $e_2$ be two identity elements for the operation $f$. Then, for any element $x \in S$, we have:
+    \[ f(x,e_1) = x = f(e_1,x) \]
+    \[ f(x,e_2) = x = f(e_2,x) \]
+    Now, consider the element $e_1$:
+    \[ f(e_1,e_2) = e_1 \]
+    But since $e_2$ is an identity element, we also have:
+    \[ f(e_1,e_2) = e_2 \]
+    Therefore, we conclude that $e_1 = e_2$, proving the uniqueness of the identity element.
+\end{proof}
+
+\begin{remark}
+    Two-sided identity must be unique, but one-sided identities need not be.
+\end{remark}
+
+\begin{example}
+    *** To be asked
+\end{example}
+
+\begin{definition}[Inverse Operation]
+    A binary operation $f: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that:
+    \[ f(x,y) = e = f(y,x) \]
+    where $e$ is the identity element of the operation.
+\end{definition}
+
+\begin{remark}
+    Invertible operation exists if inverse operation exists, i.e. there exists an identity element.
+\end{remark}
+
+\begin{example}
+    A common example of an invertible (binary) operation is addition on the set of integers $\mathbb{Z}$. For every integer $x \in \mathbb{Z}$, there exists an integer $y = -x$ such that:
+    \begin{equation}
+        x + (-x) = 0 = (-x) + x
+    \end{equation}
+    where $0$ is the identity element for addition.
+\end{example}
+
+\begin{proposition}
+    The inverse element of an invertible operation is unique.
+\end{proposition}
+
+\begin{proof}
+    Let $y_1$ and $y_2$ be two inverses of an element $x \in S$. Then, by definition of inverse, we have:
+    \[ f(x,y_1) = e = f(y_1,x) \]
+    \[ f(x,y_2) = e = f(y_2,x) \]
+    Now, consider the element $y_1$:
+    \[ f(y_1,x) = e \]
+    But since $y_2$ is also an inverse of $x$, we can substitute $e$ with $f(x,y_2)$:
+    \[ f(y_1,x) = f(x,y_2) = e \]
+    By the associativity of the operation, we can rearrange this to:
+    \[ y_1 = f(y_1, e) = f(y_1,f(x,y_2)) = f(f(y_1,x),y_2) = f(e,y_2) = y_2 \]
+    Thus, the inverse element is unique.
+\end{proof}
+
+\begin{definition}[Commutative Operation]
+    A binary operation $f: S \times S \to S$ is said to be \emph{commutative} if, for all $x,y \in S$, the following holds:
+    \[ f(x,y) = f(y,x) \]
+\end{definition}
+
+\begin{example}
+    A common example of a commutative operation is addition on the set of integers $\mathbb{Z}$. For all $x,y \in \mathbb{Z}$, we have:
+    \[ x + y = y + x \]
+\end{example}
+
+\begin{definition}[Distributive Operation]
+    A binary operation $g: S \times S \to S$ is said to be \emph{distributive} with respect to another binary operation $f: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
+    \[ \begin{split}
+        g(x,f(y,z)) &= f(g(x,y),g(x,z)) \\
+        g(f(y,z),x) &= f(g(y,x),g(z,x))
+    \end{split} \]
+\end{definition}
+
+\begin{example}
+    A common example of a distributive operation is multiplication over addition on the set of integers $\mathbb{Z}$. For all $x,y,z \in \mathbb{Z}$, we have:
+    \[ \begin{split}
+        x \cdot (y + z) &= x \cdot y + x \cdot z \\
+        (y + z) \cdot x &= y \cdot x + z \cdot x
+    \end{split} \]
+\end{example}
+
+\newpage
+
+\section{Groups, Rings, Fields}\index{Groups, Rings, Fields}
+
+\begin{definition}[Semigroup]
+    A \emph{semigroup} is a set $S$ equipped with an associative binary operation $f: S \times S \to S$.
+\end{definition}
+
+\begin{definition}[Monoid]
+    A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ such that the following properties hold:
+    \begin{enumerate}
+        \item \emph{Closure Property:} For all $x,y \in M$, $f(x,y) \in M$.
+        \item \emph{Associative Property}
+        \item \emph{Identifiable Property}
+    \end{enumerate}
+    We say $(M, f)$ is a monoid, and $f$ is the \emph{monoid operation} on the set $M$. A set $M$ with a monoid operation $f$ is the \emph{monoid structure}.
+\end{definition}
+
+\begin{definition}[Group]
+    A \emph{group} is a set $G$ equipped with a monoid operation $f: G \times G \to G$ with the additional property that every element has an inverse, \emph{Invertible Property}.
+\end{definition}
+
+\begin{definition}[Abelian Monoid / Group]
+    A monoid / group $(G, f)$ is said to be an \emph{abelian monoid / group} if the monoid / group operation $f$ is commutative, \emph{Commutative Property}.
+\end{definition}
+
+\begin{definition}[Ring]
+    A ring is a set $R$ equipped with two binary operations $f: R \times R \to R$ (addition) and $g: R \times R \to R$ (multiplication) such that the following properties hold:
+    \begin{enumerate}
+        \item \emph{Additive Group:} $(R, f)$ is an abelian group.
+        \item \emph{Multiplicative Semigroup:} $(R, g)$ is a semigroup.
+        \item \emph{Distributive Property:} $g$ with respect to $f$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Unital Ring]
+    A \emph{unital ring} is a ring $R$ equipped with a multiplicative identity element $1 \in R$ such that for all $x \in R$, $g(1,x) = g(x,1) = x$.
+\end{definition}
+
+\begin{definition}[Commutative Ring]
+    A \emph{commutative ring} is a ring $R$ such that the multiplication operation $g: R \times R \to R$ is commutative.
+\end{definition}
+
+\begin{example}
+    $(\mathbb{Z}, +, \times)$ is a unital commutative ring. $(2\mathbb{Z}, +, \times)$ is a commutative ring, but not unital. ($2\mathbb{Z} := {2n \mid n \in \mathbb{Z}}$)
+\end{example}
+
+\begin{definition}[Field]
+    A \emph{field} is a unital commutative ring $F$ such that every non-zero element has a multiplicative inverse.
+\end{definition}
+
+\begin{example}
+    $(\mathbb{Q}, +, \times)$, $(\mathbb{R}, +, \times)$ and $(\mathbb{C}, +, \times)$ are fields.
+\end{example}
+
+\newpage
 
 %------------------------------------------------
 
@@ -136,25 +317,25 @@ Lists are useful to present information in a concise and/or ordered way\footnote
 \subsection{Numbered List}\index{Lists!Numbered List}
 
 \begin{enumerate}
-\item The first item
-\item The second item
-\item The third item
+    \item The first item
+    \item The second item
+    \item The third item
 \end{enumerate}
 
 \subsection{Bullet Points}\index{Lists!Bullet Points}
 
 \begin{itemize}
-\item The first item
-\item The second item
-\item The third item
+    \item The first item
+    \item The second item
+    \item The third item
 \end{itemize}
 
 \subsection{Descriptions and Definitions}\index{Lists!Descriptions and Definitions}
 
 \begin{description}
-\item[Name] Description
-\item[Word] Definition
-\item[Comment] Elaboration
+    \item[Name] Description
+    \item[Word] Definition
+    \item[Comment] Elaboration
 \end{description}
 
 %----------------------------------------------------------------------------------------
@@ -171,18 +352,18 @@ This is an example of theorems.
 This is a theorem consisting of several equations.
 
 \begin{theorem}[Name of the theorem]
-In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
-\begin{align}
-& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
-&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-\end{align}
+    In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
+    \begin{align}
+         & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
+         & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
+    \end{align}
 \end{theorem}
 
 \subsection{Single Line}\index{Theorems!Single Line}
 This is a theorem consisting of just one line.
 
 \begin{theorem}
-A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$. 
+    A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
 \end{theorem}
 
 %------------------------------------------------
@@ -192,12 +373,12 @@ A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
 This is an example of a definition. A definition could be mathematical or it could define a concept.
 
 \begin{definition}[Definition name]
-Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
-\begin{align}
-& ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}\\
-& ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||\\
-& ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
-\end{align}
+    Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
+    \begin{align}
+         & ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}        \\
+         & ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||        \\
+         & ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
+    \end{align}
 \end{definition}
 
 %------------------------------------------------
@@ -205,12 +386,12 @@ Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, 
 \section{Notations}\index{Notations}
 
 \begin{notation}
-Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
-\begin{enumerate}
-\item Bounded support $G$;
-\item Infinitely differentiable;
-\end{enumerate}
-a vector space is denoted by $\mathcal{D}(G)$. 
+    Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
+    \begin{enumerate}
+        \item Bounded support $G$;
+        \item Infinitely differentiable;
+    \end{enumerate}
+    a vector space is denoted by $\mathcal{D}(G)$.
 \end{notation}
 
 %------------------------------------------------
@@ -220,7 +401,7 @@ a vector space is denoted by $\mathcal{D}(G)$.
 This is an example of a remark.
 
 \begin{remark}
-The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+    The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
 \end{remark}
 
 %------------------------------------------------
@@ -230,7 +411,7 @@ The concepts presented here are now in conventional employment in mathematics. V
 This is an example of a corollary.
 
 \begin{corollary}[Corollary name]
-The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+    The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
 \end{corollary}
 
 %------------------------------------------------
@@ -242,17 +423,17 @@ This is an example of propositions.
 \subsection{Several equations}\index{Propositions!Several Equations}
 
 \begin{proposition}[Proposition name]
-It has the properties:
-\begin{align}
-& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
-&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-\end{align}
+    It has the properties:
+    \begin{align}
+         & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
+         & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
+    \end{align}
 \end{proposition}
 
 \subsection{Single Line}\index{Propositions!Single Line}
 
-\begin{proposition} 
-Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$. 
+\begin{proposition}
+    Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$.
 \end{proposition}
 
 %------------------------------------------------
@@ -264,18 +445,18 @@ This is an example of examples.
 \subsection{Equation and Text}\index{Examples!Equation and Text}
 
 \begin{example}
-Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
-\begin{equation}
-f(x)=\left\{\begin{aligned} & \mathrm{e}^{|x|} & & \text{si $|x-x^0|\leq 1/2$}\\
-& 0 & & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
-\end{equation}
-The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
+    Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
+    \begin{equation}
+        f(x)=\left\{\begin{aligned}      & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
+                     & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
+    \end{equation}
+    The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
 \end{example}
 
 \subsection{Paragraph of Text}\index{Examples!Paragraph of Text}
 
 \begin{example}[Example name]
-\lipsum[2]
+    \lipsum[2]
 \end{example}
 
 %------------------------------------------------
@@ -285,7 +466,7 @@ The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\
 This is an example of an exercise.
 
 \begin{exercise}
-This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+    This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
 \end{exercise}
 
 %------------------------------------------------
@@ -303,7 +484,7 @@ What is the average airspeed velocity of an unladen swallow?
 Define a word to improve a students' vocabulary.
 
 \begin{vocabulary}[Word]
-Definition of word.
+    Definition of word.
 \end{vocabulary}
 
 %----------------------------------------------------------------------------------------
@@ -323,17 +504,17 @@ Definition of word.
 \section{Table}\index{Table}
 
 \begin{table}[h]
-\centering
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
+    \centering
+    \begin{tabular}{l l l}
+        \toprule
+        \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
+        \midrule
+        Treatment 1         & 0.0003262           & 0.562               \\
+        Treatment 2         & 0.0015681           & 0.910               \\
+        Treatment 3         & 0.0009271           & 0.296               \\
+        \bottomrule
+    \end{tabular}
+    \caption{Table caption}
 \end{table}
 
 %------------------------------------------------
@@ -341,8 +522,8 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \section{Figure}\index{Figure}
 
 \begin{figure}[h]
-\centering\includegraphics[scale=0.5]{placeholder}
-\caption{Figure caption}
+    \centering\includegraphics[scale=0.5]{placeholder}
+    \caption{Figure caption}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
