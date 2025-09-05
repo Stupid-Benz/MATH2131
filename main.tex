@@ -48,6 +48,11 @@
 
 \input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
 
+\usepackage{tabularx} % For tabbing to a certain point
+
+\newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
+
+
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -255,6 +260,10 @@
     A \emph{group} is a set $G$ equipped with a monoid operation $f: G \times G \to G$ with the additional property that every element has an inverse, \emph{Invertible Property}.
 \end{definition}
 
+\begin{example}
+    $(\mathbb{R}\setminus\{0\}, \times)$ is a group, but $(\mathbb{R}, \times)$ is not a group since $0$ does not have a multiplicative inverse.
+\end{example}
+
 \begin{definition}[Abelian Monoid / Group]
     A monoid / group $(G, f)$ is said to be an \emph{abelian monoid / group} if the monoid / group operation $f$ is commutative, \emph{Commutative Property}.
 \end{definition}
@@ -375,31 +384,126 @@
 \end{definition}
 
 \begin{definition}[Endomorphism Ring]
-    The set of all endomorphisms of an abelian group $(G, +)$, denoted by $E((G, +))$, forms a (non-commutative) ring under pointwise addition and composition of functions. The addition operation is defined as:
+    The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End{A}$, forms a (non-commutative) ring under pointwise addition and composition of functions. The addition and multiplication operations are defined as follows:
     \[
-        (f + g)(x) = f(x) + g(x) \quad \forall x \in G
+        \begin{split}
+            + : \End{A} \times \End{A} &\to \End{A} \\
+            (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad &f + g : A \to A \\ \\
+            \circ : \End{A} \times \End{A} &\to \End{A} \\
+            (f,g) &\mapsto (f \circ g: x \mapsto f(g(x))) \qquad &f \circ g : A \to A
+        \end{split}
     \]
-    The multiplication operation is defined as:
+    The identity element for addition is the zero endomorphism, which maps every element to the identity element of the group. 
+    \[ \begin{split}
+        0: A &\to A \\
+        x &\mapsto 0
+    \end{split}
+    \]
+    The identity element for multiplication is the identity endomorphism, which maps every element to itself. 
     \[
-        (f \circ g)(x) = f(g(x)) \quad \forall x \in G
+    \begin{split}
+        1: A &\to A \\
+        x &\mapsto x
+    \end{split}
     \]
-    The identity element for addition is the zero endomorphism, which maps every element to the identity element of the group. ($0: A \to A \quad x \mapsto 0$) The identity element for multiplication is the identity endomorphism, which maps every element to itself. ($1: A \to A \quad x \mapsto x$)
-    
 \end{definition}
 
 \newpage
 
 \section{Vector Spaces}\index{Vector Spaces}
 
-\begin{definition}[Linear Structure over a Field]
-    A \emph{linear structure} over a field $F$ is a pair $((V, +), \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $F \to E((V, +))$, where $E((V, +))$ is the endomorphism ring of the abelian group $(V, +)$.
+\begin{definition}[Linear Structure]
+    A \emph{linear structure} over a field $F$ on a set $V$ is a pair $(+, \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $F \to \End{V}$, where $\End{V}$ is the endomorphism ring of the abelian group $(V, +)$.
     \[ \begin{split}
-            \cdot : F &\to E((V, +)) \\
-            \alpha &\mapsto \alpha\cdot : (x \mapsto \alpha \cdot x)
+            \cdot : F &\to \End{V} \\
+            \alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
         \end{split}
     \]
-    The ring homomorphism is an action of the field $F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}.
+    The ring homomorphism is a (ring) action of the field $F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}. The ring action can be written as a binary operation:
+    \[
+        \begin{split}
+            \cdot : F \times V &\to V \\
+            (\alpha, \vec{x}) &\mapsto \alpha \vec{x}
+        \end{split}
+    \]
 \end{definition}
+
+\begin{definition}[Linear Spaces / Vector Spaces]
+    A linear space / vector space is a set with a linear structure over a field on the set.
+\end{definition}
+
+\begin{corollary}[Vector Spaces]
+    A vector space over a field $F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : F \times V \to V$, satisfying the following axioms for all $\vec{u}, \vec{v}, \vec{w} \in V$ and $\alpha, \beta \in F$:
+    \begin{center}
+        \begin{tabularx}{\textwidth}{XX}
+            \toprule
+            \textbf{Axiom} & \textbf{Statement} \\
+            \midrule
+            1. Associativity of addition & $(\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w})$ \\
+            2. Existence of additive identity & $\exists \vec{0} \in V$ such that $\forall \vec{u} \in V$, $\vec{u} + \vec{0} = \vec{u}$ \\
+            3. Existence of additive inverses & $\forall \vec{u} \in V$, $\exists -\vec{u} \in V$ such that $\vec{u} + (-\vec{u}) = \vec{0}$ \\
+            4. Commutativity of addition & $\vec{u} + \vec{v} = \vec{v} + \vec{u}$ \\
+            5. Distributivity of scalar multiplication with respect to vector addition & $\alpha (\vec{u} + \vec{v}) = \alpha \vec{u} + \alpha \vec{v}$ \\
+            6. Distributivity of scalar multiplication with respect to field addition & $(\alpha + \beta) \cdot = \alpha \cdot + \beta \cdot$ \\
+            7. Compatibility of scalar multiplication with field multiplication & $(\alpha \beta) \cdot = (\alpha \cdot) \circ (\beta \cdot)$ \\
+            8. Identity element of scalar multiplication & $F \ni 1 = (1\cdot : x \mapsto x) \in \End{V}$ \\
+            \bottomrule
+        \end{tabularx}
+    \end{center}
+
+    Note that the first four axioms ensure that $(V, +)$ is an abelian group, while the fifth axiom describes the endomorphism structure and the last three axioms describe the ring homomorphism.
+\end{corollary}
+
+\begin{example}
+    $F$ is a linear space over itself with the usual addition and multiplication operations.
+    \[
+        \begin{split}
+            \cdot : F \times F &\to F \\
+            (\alpha,\beta) &\mapsto \alpha \beta
+        \end{split}
+    \]
+    The first $F$ is the field acting on the second $F$, which is the abelian group.
+\end{example}
+
+\newpage
+
+\begin{example}
+    Let $X$ be a set and $F$ be a field.
+    \[
+    \begin{split}
+        F[[X]] = \text{Map}(X, F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $F$-valued functions on } X \\
+        &=\joinrel= \left\{ f : X \to F \mid f \text{ is a set map} \right\}
+    \end{split}
+    \]
+    $F[[X]]$ is a vector space over $F$ with the following operations defined pointwisely:
+    \[
+        \begin{split}
+            + : F[[X]] \times F[[X]] &\to F[[X]] \\
+            (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to F \\ \\
+            \cdot : F \times F[[X]] &\to F[[X]] \\
+            (\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to F
+        \end{split}
+    \]
+\end{example}
+
+\begin{example}
+    Let $X$ be a set and $F$ be a field.
+    \[
+        \begin{split}
+            F[X] = \text{Map}_{\text{fin}}(X, F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all finitely supported $F$-valued functions on } X \\
+            &=\joinrel= \left\{ f : X \to F \mid f \text{ is a set map and } f(x) \neq 0 \text{ for only finitely many } x \in X \right\}
+        \end{split}
+    \]
+    $F[X]$ is a vector space over $F$ as $F[X] \subseteq F[[X]]$ and the operations are defined pointwisely as in the previous example.
+
+    $f: X \to F$ is finitely supported if the set $\{ x \in X \mid f(x) \neq 0 \}$ is finite.
+\end{example}
+
+\begin{example}
+    Let $t$ be a formal variable and $F$ be a field.
+    \[ X = \{ 1, t, t^2, \cdots \} \]
+    Then $F[t] = F[X_t]$ is the set of all polynomials in the variable $t$ with coefficients in $F$ and $F[[t]] = F[[X_t]]$ is the set of all formal power series in the variable $t$ with coefficients in $F$. Both of them are vector spaces over $F$.
+\end{example}
 
 
 \newpage
