@@ -221,7 +221,7 @@
     \[ x + y = y + x \]
 \end{example}
 
-\begin{definition}[Distributive Operation]
+\begin{definition}[Distributive Operation (Harmonic Property)]
     A binary operation $g: S \times S \to S$ is said to be \emph{distributive} with respect to another binary operation $f: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
     \[ \begin{split}
         g(x,f(y,z)) &= f(g(x,y),g(x,z)) \\
@@ -283,6 +283,124 @@
 \begin{example}
     $(\mathbb{Q}, +, \times)$, $(\mathbb{R}, +, \times)$ and $(\mathbb{C}, +, \times)$ are fields.
 \end{example}
+
+\begin{example}
+    $(\mathbb{Z}/2\mathbb{Z}, +, \times)$ is a field, where $\mathbb{Z}/2\mathbb{Z} = \{\bar{0}, \bar{1}\}$, $\bar{0}$ is the set of even integers and $\bar{1}$ is the set of odd integers.
+    It follows the additions and multiplications below:
+    \begin{equation}
+        \begin{array}{c|cc}
+              + & \bar{0} & \bar{1} \\ \hline
+            \bar{0} & \bar{0} & \bar{1} \\
+            \bar{1} & \bar{1} & \bar{0}
+        \end{array}
+        \quad
+        \begin{array}{c|cc}
+              \times & \bar{0} & \bar{1} \\ \hline
+            \bar{0} & \bar{0} & \bar{0} \\
+            \bar{1} & \bar{0} & \bar{1}
+        \end{array}
+    \end{equation}
+\end{example}
+
+\newpage
+
+\section{Morphisms}\index{Morphisms}
+
+\begin{definition}[Morphisms]
+    A \emph{morphism} is a structure-preserving map between two algebraic structures (e.g., groups, rings, fields). Formally, let $(A, \cdot_A)$ and $(B, \cdot_B)$ be two algebraic structures. A morphism $f: A \to B$ is a function such that:
+    \[
+        f(x \cdot_A y) = f(x) \cdot_B f(y) \quad \forall x, y \in A
+    \]
+\end{definition}
+
+\begin{definition}[Monoid Homomorphism]
+    A \emph{monoid homomorphism} is a morphism between two monoids that preserves the monoid structure. Formally, let $(M_1, \cdot_1)$ and $(M_2, \cdot_2)$ be two monoids with identity elements $e_1$ and $e_2$, respectively. A function $f: M_1 \to M_2$ is a monoid homomorphism if:
+    \begin{enumerate}
+        \item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in M_1$
+        \item $f(e_1) = e_2$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Group Homomorphism]
+    A \emph{group homomorphism} is a morphism between two groups that preserves the group structure. Formally, let $(G_1, \cdot_1)$ and $(G_2, \cdot_2)$ be two groups with identity elements $e_1$ and $e_2$, respectively. A function $f: G_1 \to G_2$ is a group homomorphism if:
+    \begin{enumerate}
+        \item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in G_1$
+        \item $f(e_1) = e_2$
+        \item $f(x^{-1}) = (f(x))^{-1} \quad \forall x \in G_1$
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    The second and third properties of a group homomorphism are consequences of the first property.
+\end{proposition}
+
+\begin{proof}
+    Let $f: G_1 \to G_2$ be a group homomorphism satisfying the first property. We will show that the second and third properties follow from it.
+
+    \textbf{Second Property:} To show that $f(e_1) = e_2$, we use the fact that $e_1$ is the identity element in $G_1$. For any element $x \in G_1$, we have:
+    \[
+        f(x) = f(x \cdot_1 e_1) = f(x) \cdot_2 f(e_1)
+    \]
+    Since $f(x)$ is an arbitrary element in $G_2$, this implies that $f(e_1)$ must be the identity element in $G_2$, i.e., $f(e_1) = e_2$.
+
+    \textbf{Third Property:} To show that $f(x^{-1}) = (f(x))^{-1}$ for all $x \in G_1$, we use the fact that $x^{-1}$ is the inverse of $x$ in $G_1$. We have:
+    \[
+        e_2 = f(e_1) = f(x \cdot_1 x^{-1}) = f(x) \cdot_2 f(x^{-1})
+    \]
+    This shows that $f(x^{-1})$ is the inverse of $f(x)$ in $G_2$, i.e., $f(x^{-1}) = (f(x))^{-1}$.
+
+    Therefore, both the second and third properties of a group homomorphism are indeed consequences of the first property.
+\end{proof}
+
+\begin{remark}
+    For monoid homomorphisms, the second property cannot be derived from the first property. Consider the identity element $e_1$ in $M_1$. If we apply the first property, we get $f(e_1 \cdot_1 e_1) = f(e_1) \cdot_2 f(e_1)$. This simplifies to $f(e_1) = f(e_1) \cdot_2 f(e_1)$, which does not necessarily imply that $f(e_1)$ is the identity element in $M_2$, i.e., $f(e_1) \neq e_2$, but $f(e_1)$ is the idempotent element in $M_2$. Therefore, the second property must be explicitly stated for monoid homomorphisms.
+
+    However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element. Thus, for group homomorphisms, the second property can be derived from the first property.
+\end{remark}
+
+\begin{definition}[Ring Homomorphism]
+    A \emph{ring homomorphism} is a morphism between two rings that preserves both the additive and multiplicative structures. Formally, let $(R_1, +_1, \cdot_1)$ and $(R_2, +_2, \cdot_2)$ be two rings with identity elements $0_1$, $1_1$ and $0_2$, $1_2$, respectively. A function $f: R_1 \to R_2$ is a ring homomorphism if:
+    \begin{enumerate}
+        \item $f(x +_1 y) = f(x) +_2 f(y) \quad \forall x, y \in R_1$
+        \item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in R_1$
+        \item $f(1_1) = 1_2$
+    \end{enumerate}    
+\end{definition}
+
+\begin{definition}[Endomorphism]
+    An \emph{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a function such that:
+    \[
+        f(x \cdot y) = f(x) \cdot f(y) \quad \forall x, y \in A
+    \]
+\end{definition}
+
+\begin{definition}[Endomorphism Ring]
+    The set of all endomorphisms of an abelian group $(G, +)$, denoted by $E((G, +))$, forms a (non-commutative) ring under pointwise addition and composition of functions. The addition operation is defined as:
+    \[
+        (f + g)(x) = f(x) + g(x) \quad \forall x \in G
+    \]
+    The multiplication operation is defined as:
+    \[
+        (f \circ g)(x) = f(g(x)) \quad \forall x \in G
+    \]
+    The identity element for addition is the zero endomorphism, which maps every element to the identity element of the group. ($0: A \to A \quad x \mapsto 0$) The identity element for multiplication is the identity endomorphism, which maps every element to itself. ($1: A \to A \quad x \mapsto x$)
+    
+\end{definition}
+
+\newpage
+
+\section{Vector Spaces}\index{Vector Spaces}
+
+\begin{definition}[Linear Structure over a Field]
+    A \emph{linear structure} over a field $F$ is a pair $((V, +), \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $F \to E((V, +))$, where $E((V, +))$ is the endomorphism ring of the abelian group $(V, +)$.
+    \[ \begin{split}
+            \cdot : F &\to E((V, +)) \\
+            \alpha &\mapsto \alpha\cdot : (x \mapsto \alpha \cdot x)
+        \end{split}
+    \]
+    The ring homomorphism is an action of the field $F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}.
+\end{definition}
+
 
 \newpage
 
