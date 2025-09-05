@@ -61,9 +61,9 @@
     \node at (current page.north west)
     {\begin{tikzpicture}[remember picture,overlay]
             \node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
-            \draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering The Search for a Title\\[15pt] % Book title
-            {\Large A Profound Subtitle}\\[20pt] % Subtitle
-            {\huge Dr. John Smith}}}; % Author name
+            \draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering MATH 2131\\[15pt] % Book title
+            {\Large Honors in Linear and Abstract Algebra I}\\[20pt] % Subtitle
+            {\huge Prof. Meng}}}; % Author name
         \end{tikzpicture}};
 \end{tikzpicture}
 \vfill
@@ -136,29 +136,21 @@
 \end{example}
 
 \begin{definition}[Associative Operation]
-    A binary operation $f: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, the following holds:
+    A binary operation $f: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, 
     \[ f(x,f(y,z)) = f(f(x,y),z) \]
 \end{definition}
 
 \begin{example}
-    A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$. For all $x,y,z \in \mathbb{N}$, we have:
-    \begin{equation}
-        x + (y + z) = (x + y) + z
-    \end{equation}
+    A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$. For all $x,y,z \in \mathbb{N}$, we have $x + (y + z) = (x + y) + z$.
 \end{example}
 
-\newpage
-
 \begin{definition}[Identifiable Operation]
-    A binary operation $f: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, called the \emph{identity element} or \emph{unit element}, such that, for all $x \in S$, the following holds:
+    A binary operation $f: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
     \[ f(x,e) = x = f(e,x) \]
 \end{definition}
 
 \begin{example}
-    A common example of an identifiable (binary) operation is multiplication on the set of natural numbers $\mathbb{N}$. The identity element is $1$, and for all $x \in \mathbb{N}$, we have:
-    \begin{equation}
-        x \cdot 1 = x = 1 \cdot x
-    \end{equation}
+    A common example of an identifiable (binary) operation is multiplication on the set of natural numbers $\mathbb{N}$. The identity element is $1$, and for all $x \in \mathbb{N}$, we have $x \cdot 1 = x = 1 \cdot x$.
 \end{example}
 
 \begin{proposition}
@@ -181,11 +173,11 @@
 \end{remark}
 
 \begin{example}
-    *** To be asked
+    
 \end{example}
 
 \begin{definition}[Inverse Operation]
-    A binary operation $f: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that:
+    A binary operation $f: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that
     \[ f(x,y) = e = f(y,x) \]
     where $e$ is the identity element of the operation.
 \end{definition}
@@ -249,10 +241,6 @@
 
 \section{Groups, Rings, Fields}\index{Groups, Rings, Fields}
 
-\begin{definition}[Semigroup]
-    A \emph{semigroup} is a set $S$ equipped with an associative binary operation $f: S \times S \to S$.
-\end{definition}
-
 \begin{definition}[Monoid]
     A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ such that the following properties hold:
     \begin{enumerate}
@@ -271,25 +259,21 @@
     A monoid / group $(G, f)$ is said to be an \emph{abelian monoid / group} if the monoid / group operation $f$ is commutative, \emph{Commutative Property}.
 \end{definition}
 
-\begin{definition}[Ring]
-    A ring is a set $R$ equipped with two binary operations $f: R \times R \to R$ (addition) and $g: R \times R \to R$ (multiplication) such that the following properties hold:
+\begin{definition}[Unital Ring]
+    A (unital) ring is a set $R$ equipped with two binary operations $f: R \times R \to R$ (addition) and $g: R \times R \to R$ (multiplication) such that the following properties hold:
     \begin{enumerate}
         \item \emph{Additive Group:} $(R, f)$ is an abelian group.
-        \item \emph{Multiplicative Semigroup:} $(R, g)$ is a semigroup.
+        \item \emph{Multiplicative Monoid:} $(R, g)$ is a monoid.
         \item \emph{Distributive Property:} $g$ with respect to $f$.
     \end{enumerate}
 \end{definition}
 
-\begin{definition}[Unital Ring]
-    A \emph{unital ring} is a ring $R$ equipped with a multiplicative identity element $1 \in R$ such that for all $x \in R$, $g(1,x) = g(x,1) = x$.
-\end{definition}
-
 \begin{definition}[Commutative Ring]
-    A \emph{commutative ring} is a ring $R$ such that the multiplication operation $g: R \times R \to R$ is commutative.
+    A \emph{commutative ring} is a unital ring $R$ such that the multiplication operation $g: R \times R \to R$ is commutative.
 \end{definition}
 
 \begin{example}
-    $(\mathbb{Z}, +, \times)$ is a unital commutative ring. $(2\mathbb{Z}, +, \times)$ is a commutative ring, but not unital. ($2\mathbb{Z} := {2n \mid n \in \mathbb{Z}}$)
+    $(\mathbb{Z}, +, \times)$ is a unital commutative ring.
 \end{example}
 
 \begin{definition}[Field]
