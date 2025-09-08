@@ -49,8 +49,10 @@
 \input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
 
 \usepackage{tabularx} % For tabbing to a certain point
+\usepackage{stmaryrd} % For \mapsfrom symbol
 
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
+\newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
 
 
 \begin{document}
@@ -120,7 +122,7 @@
 
 \chapterimage{chapter_head_2.pdf} % Chapter heading image
 
-\chapter{Abstract Vector Spaces}
+\chapter{Abstract Linear Spaces}
 
 \section{Binary Operation}\index{Binary Operation}
 
@@ -151,7 +153,7 @@
 
 \begin{definition}[Identifiable Operation]
     A binary operation $f: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
-    \[ f(x,e) = x = f(e,x) \]
+    \[ f(e,x) = x = f(x,e) \]
 \end{definition}
 
 \begin{example}
@@ -316,7 +318,7 @@
 \section{Morphisms}\index{Morphisms}
 
 \begin{definition}[Morphisms]
-    A \emph{morphism} is a structure-preserving map between two algebraic structures (e.g., groups, rings, fields). Formally, let $(A, \cdot_A)$ and $(B, \cdot_B)$ be two algebraic structures. A morphism $f: A \to B$ is a function such that:
+    A \emph{morphism} is a structure-preserving map between two algebraic structures (e.g., groups, rings, fields). Formally, let $(A, \cdot_A)$ and $(B, \cdot_B)$ be two algebraic structures. A morphism $f: A \to B$ is a set map / function such that:
     \[
         f(x \cdot_A y) = f(x) \cdot_B f(y) \quad \forall x, y \in A
     \]
@@ -377,14 +379,18 @@
 \end{definition}
 
 \begin{definition}[Endomorphism]
-    An \emph{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a function such that:
+    An \emph{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a set map such that:
     \[
         f(x \cdot y) = f(x) \cdot f(y) \quad \forall x, y \in A
     \]
 \end{definition}
 
+\begin{definition}[Hom-set]
+    The set of all morphisms from an algebraic structure $A$ to another algebraic structure $B$ is called the \emph{hom-set}, denoted by $\Hom{A}{B}$. 
+\end{definition}
+
 \begin{definition}[Endomorphism Ring]
-    The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End{A}$, forms a (non-commutative) ring under pointwise addition and composition of functions. The addition and multiplication operations are defined as follows:
+    The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End{A}$, forms a (non-commutative) ring under pointwise addition and composition of set maps. The addition and multiplication operations are defined as follows:
     \[
         \begin{split}
             + : \End{A} \times \End{A} &\to \End{A} \\
@@ -406,6 +412,7 @@
         x &\mapsto x
     \end{split}
     \]
+    Note that all endomorphisms in $\End{A}$ are group homomorphisms and $\End{A} = \Hom{A}{A}$.
 \end{definition}
 
 \newpage
@@ -432,8 +439,8 @@
     A linear space / vector space is a set with a linear structure over a field on the set.
 \end{definition}
 
-\begin{corollary}[Vector Spaces]
-    A vector space over a field $F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : F \times V \to V$, satisfying the following axioms for all $\vec{u}, \vec{v}, \vec{w} \in V$ and $\alpha, \beta \in F$:
+\begin{corollary}[Linear Spaces]
+    A linear space over a field $F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : F \times V \to V$, satisfying the following axioms for all $\vec{u}, \vec{v}, \vec{w} \in V$ and $\alpha, \beta \in F$:
     \begin{center}
         \begin{tabularx}{\textwidth}{XX}
             \toprule
@@ -468,14 +475,14 @@
 \newpage
 
 \begin{example}
-    Let $X$ be a set and $F$ be a field.
+    Let $X$ be a set and $F$ be a field. ($f$ is a set map)
     \[
     \begin{split}
         F[[X]] = \text{Map}(X, F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $F$-valued functions on } X \\
-        &=\joinrel= \left\{ f : X \to F \mid f \text{ is a set map} \right\}
+        &=\joinrel= \left\{ f : X \to F \right\}
     \end{split}
     \]
-    $F[[X]]$ is a vector space over $F$ with the following operations defined pointwisely:
+    $F[[X]]$ is a linear space over $F$ with the following operations defined pointwisely:
     \[
         \begin{split}
             + : F[[X]] \times F[[X]] &\to F[[X]] \\
@@ -491,269 +498,109 @@
     \[
         \begin{split}
             F[X] = \text{Map}_{\text{fin}}(X, F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all finitely supported $F$-valued functions on } X \\
-            &=\joinrel= \left\{ f : X \to F \mid f \text{ is a set map and } f(x) \neq 0 \text{ for only finitely many } x \in X \right\}
+            &=\joinrel= \left\{ f : X \to F \mid f \text{ is finitely supported} \right\}
         \end{split}
     \]
-    $F[X]$ is a vector space over $F$ as $F[X] \subseteq F[[X]]$ and the operations are defined pointwisely as in the previous example.
+    $F[X]$ is a linear space over $F$ as $F[X] \subseteq F[[X]]$ and the operations are defined pointwisely as in the previous example.
 
-    $f: X \to F$ is finitely supported if the set $\{ x \in X \mid f(x) \neq 0 \}$ is finite.
+    $f: X \to F$ is finitely supported if the set $\{ x \in X \mid f(x) \neq 0 \}$ is finite or $f(x) \neq 0$ for only finitely many $x \in X$.
 \end{example}
 
 \begin{example}
-    Let $t$ be a formal variable and $F$ be a field.
-    \[ X = \{ 1, t, t^2, \cdots \} \]
-    Then $F[t] = F[X_t]$ is the set of all polynomials in the variable $t$ with coefficients in $F$ and $F[[t]] = F[[X_t]]$ is the set of all formal power series in the variable $t$ with coefficients in $F$. Both of them are vector spaces over $F$.
+    Let $t$ be a formal variable. Then $F[[t]] \overset{\mathrm{def}}{=\joinrel=} F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^{\infty} a_n t^n$ is the set of all formal power series in $t$ with coefficients in $F$ and $F[t] \overset{\mathrm{def}}{=\joinrel=} F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^{N} a_n t^n$ is the set of all polynomials in $t$ with coefficients in $F$. Both $F[[t]]$ and $F[t]$ are linear spaces over $F$.
 \end{example}
 
-
-\newpage
-
-%------------------------------------------------
-
-\section{Citation}\index{Citation}
-
-This statement requires citation \cite{book_key}; this one is more specific \cite[122]{article_key}.
-
-%------------------------------------------------
-
-\section{Lists}\index{Lists}
-
-Lists are useful to present information in a concise and/or ordered way\footnote{Footnote example...}.
-
-\subsection{Numbered List}\index{Lists!Numbered List}
-
-\begin{enumerate}
-    \item The first item
-    \item The second item
-    \item The third item
-\end{enumerate}
-
-\subsection{Bullet Points}\index{Lists!Bullet Points}
-
-\begin{itemize}
-    \item The first item
-    \item The second item
-    \item The third item
-\end{itemize}
-
-\subsection{Descriptions and Definitions}\index{Lists!Descriptions and Definitions}
-
-\begin{description}
-    \item[Name] Description
-    \item[Word] Definition
-    \item[Comment] Elaboration
-\end{description}
+\begin{example}
+    Let $n$ be a positive integer and $F$ be a field. Then 
+    \[
+        F^n \overset{\mathrm{def}}{=\joinrel=} \left\{ 
+        \begin{bmatrix}
+        c_1 \\
+        \vdots \\
+        c_n
+        \end{bmatrix}
+        \;\middle|\; c_i \in F
+        \right\}
+    \]
+    is the set of all \emph{column matrices} with $n$ entries in $F$. Elements in $F^n$ are written as $\vec{x}$ and are called \emph{column vectors}. $F^n$ is a linear space over $F$ with the following operations defined entrywisely:
+    \[
+        \begin{split}
+            + : F^n \times F^n &\to F^n \\
+            (\vec{a}, \vec{b}) &\mapsto \vec{a} + \vec{b} = \begin{bmatrix}
+            a_1 + b_1 \\
+            \vdots \\
+            a_n + b_n
+            \end{bmatrix} \\ \\
+            \cdot : F \times F^n &\to F^n \\
+            (\alpha, \vec{a}) &\mapsto \alpha \vec{a} = \begin{bmatrix}
+            \alpha a_1 \\
+            \vdots \\
+            \alpha a_n
+            \end{bmatrix}
+        \end{split}
+    \]
+    $F^n$ is a linear space over $F$ automatically as $F$ is a linear space over itself.
+\end{example}
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER 2
 %----------------------------------------------------------------------------------------
 
-\chapter{In-text Elements}
+\chapter{Linear Maps and Matrices}
 
-\section{Theorems}\index{Theorems}
+\section{Linear Maps}\index{Linear Maps}
 
-This is an example of theorems.
-
-\subsection{Several equations}\index{Theorems!Several Equations}
-This is a theorem consisting of several equations.
-
-\begin{theorem}[Name of the theorem]
-    In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
-    \begin{align}
-         & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
-         & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-    \end{align}
-\end{theorem}
-
-\subsection{Single Line}\index{Theorems!Single Line}
-This is a theorem consisting of just one line.
-
-\begin{theorem}
-    A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
-\end{theorem}
-
-%------------------------------------------------
-
-\section{Definitions}\index{Definitions}
-
-This is an example of a definition. A definition could be mathematical or it could define a concept.
-
-\begin{definition}[Definition name]
-    Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
-    \begin{align}
-         & ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}        \\
-         & ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||        \\
-         & ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
-    \end{align}
+\begin{definition}[Linear Maps]
+    Let $V$ and $W$ be two linear spaces over a field $F$. A linear map is a set map $f: V \to W$ such that for all $\vec{u}, \vec{v} \in V$ and $\alpha \in F$, the following holds:
+    \[
+        \begin{split}
+            f(\vec{u} + \vec{v}) &= f(\vec{u}) + f(\vec{v}) \\
+            f(\alpha \vec{u}) &= \alpha f(\vec{u})
+        \end{split}
+    \]
+    The set of all linear maps from $V$ to $W$ is denoted by $\mathcal{L}(V, W) = \Hom{V}{W}$.
 \end{definition}
 
-%------------------------------------------------
+\begin{definition}[Linear Combination]
+    Let $V$ be a linear space over a field $F$. A \emph{linear combination} of vectors $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n} \in V$ is a vector of the form:
+    \[
+        \alpha_1 \vec{v_1} + \alpha_2 \vec{v_2} + \cdots + \alpha_n \vec{v_n}
+    \]
+    where $\alpha_1, \alpha_2, \cdots, \alpha_n \in F$ are scalars.
+\end{definition}
 
-\section{Notations}\index{Notations}
-
-\begin{notation}
-    Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
-    \begin{enumerate}
-        \item Bounded support $G$;
-        \item Infinitely differentiable;
-    \end{enumerate}
-    a vector space is denoted by $\mathcal{D}(G)$.
-\end{notation}
-
-%------------------------------------------------
-
-\section{Remarks}\index{Remarks}
-
-This is an example of a remark.
-
-\begin{remark}
-    The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-\end{remark}
-
-%------------------------------------------------
-
-\section{Corollaries}\index{Corollaries}
-
-This is an example of a corollary.
-
-\begin{corollary}[Corollary name]
-    The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\begin{corollary}[Linear Maps and Linear Combinations]
+    A set map $f: V \to W$ between two linear spaces over a field $F$ is a linear map if and only if $f$ respects linear combinations, i.e., for all $\vec{v_1}, \vec{v_2} \in V$ and all scalars $\alpha_1, \alpha_2 \in F$, the following holds:
+    \[
+        f(\alpha_1 \vec{v_1} + \alpha_2 \vec{v_2}) = \alpha_1 f(\vec{v_1}) + \alpha_2 f(\vec{v_2})
+    \]
 \end{corollary}
 
-%------------------------------------------------
-
-\section{Propositions}\index{Propositions}
-
-This is an example of propositions.
-
-\subsection{Several equations}\index{Propositions!Several Equations}
-
-\begin{proposition}[Proposition name]
-    It has the properties:
-    \begin{align}
-         & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
-         & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-    \end{align}
-\end{proposition}
-
-\subsection{Single Line}\index{Propositions!Single Line}
+\begin{example}
+    Let $A$ be an $m \times n$ matrix with entries in a field $F$. The map $T: F^n \to F^m$ defined by
+    \[
+        T\vec{x} = T(\vec{x}) = A \vec{x}
+    \]
+    where the multiplication on the right-hand side is the usual matrix multiplication, is a linear map over $F$.
+\end{example}
 
 \begin{proposition}
-    Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$.
+    A linear map $T: F^n \to F^m$ is a matrix multiplication by a unique $m \times n$ matrix $A$ with entries in $F$. The matrix $A$ is called the \emph{standard matrix} of the linear map $T$.
+    \[
+        \begin{split}
+            \{ \text{Linear maps over } F \} &\equiv \{ m \times n \text{ matrices over } F \} \\
+            A\cdot : \vec{x} \mapsto A\vec{x} &\mapsfrom A \\
+            T &\mapsto \begin{bmatrix}
+                T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n}
+            \end{bmatrix}
+        \end{split}
+    \]
+    where the $\equiv$ sign means they are natural identifications and $\vec{e_i} \in F^n$ is the $i$-th standard basis vector, i.e. the column matrix with $1$ in the $i$-th row and $0$ elsewhere.
 \end{proposition}
 
-%------------------------------------------------
-
-\section{Examples}\index{Examples}
-
-This is an example of examples.
-
-\subsection{Equation and Text}\index{Examples!Equation and Text}
-
-\begin{example}
-    Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
-    \begin{equation}
-        f(x)=\left\{\begin{aligned}      & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
-                     & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
-    \end{equation}
-    The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
-\end{example}
-
-\subsection{Paragraph of Text}\index{Examples!Paragraph of Text}
-
-\begin{example}[Example name]
-    \lipsum[2]
-\end{example}
-
-%------------------------------------------------
-
-\section{Exercises}\index{Exercises}
-
-This is an example of an exercise.
-
-\begin{exercise}
-    This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
-\end{exercise}
-
-%------------------------------------------------
-
-\section{Problems}\index{Problems}
-
-\begin{problem}
-What is the average airspeed velocity of an unladen swallow?
-\end{problem}
-
-%------------------------------------------------
-
-\section{Vocabulary}\index{Vocabulary}
-
-Define a word to improve a students' vocabulary.
-
-\begin{vocabulary}[Word]
-    Definition of word.
-\end{vocabulary}
-
-%----------------------------------------------------------------------------------------
-%	PART
-%----------------------------------------------------------------------------------------
-
-\part{Part Two}
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER 3
-%----------------------------------------------------------------------------------------
-
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
-
-\chapter{Presenting Information}
-
-\section{Table}\index{Table}
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{l l l}
-        \toprule
-        \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
-        \midrule
-        Treatment 1         & 0.0003262           & 0.562               \\
-        Treatment 2         & 0.0015681           & 0.910               \\
-        Treatment 3         & 0.0009271           & 0.296               \\
-        \bottomrule
-    \end{tabular}
-    \caption{Table caption}
-\end{table}
-
-%------------------------------------------------
-
-\section{Figure}\index{Figure}
-
-\begin{figure}[h]
-    \centering\includegraphics[scale=0.5]{placeholder}
-    \caption{Figure caption}
-\end{figure}
-
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-
-\chapter*{Bibliography}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
-\section*{Books}
-\addcontentsline{toc}{section}{Books}
-\printbibliography[heading=bibempty,type=book]
-\section*{Articles}
-\addcontentsline{toc}{section}{Articles}
-\printbibliography[heading=bibempty,type=article]
-
-%----------------------------------------------------------------------------------------
-%	INDEX
-%----------------------------------------------------------------------------------------
-
-\cleardoublepage
-\phantomsection
-\setlength{\columnsep}{0.75cm}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
-\printindex
+\begin{proof}
+    
+\end{proof}
 
 %----------------------------------------------------------------------------------------
 
