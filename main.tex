@@ -824,6 +824,18 @@
     Note that $\End{V} = \Hom{V}{V}$ is a linear space over $F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
 
+\begin{definition}[Characteristic of a Field]
+    The \emph{characteristic} of a field $F$ is the smallest positive integer $n$ such that:
+    \[
+        \underbrace{1 + 1 + \cdots + 1}_{n \text{ times}} = 0
+    \]
+    If no such positive integer exists, the characteristic of $F$ is defined to be $0$.    
+\end{definition}
+
+\begin{example}
+    The differentiation operator $D: F[t] \to F[t]$ is not an injective linear map as $D(1) = 0 = D(2)$ but is a surjective linear map if $F$ is a field of characteristic $0$.
+\end{example}
+
 \newpage
 
 \section{Dimension of Vector Spaces}\index{Dimension of Vector Spaces}
