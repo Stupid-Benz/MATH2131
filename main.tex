@@ -190,7 +190,7 @@
 \end{definition}
 
 \begin{remark}
-    Invertible operation exists if inverse operation exists, i.e. there exists an identity element.
+    Invertible operation exists if inverse operation exists, i.e., there exists an identity element.
 \end{remark}
 
 \begin{example}
@@ -561,7 +561,7 @@
     The set of all linear maps from $V$ to $W$ is denoted by $\mathcal{L}(V, W) = \Hom{V}{W}$.
 \end{definition}
 
-\begin{definition}[Linear Combination]
+\begin{definition}[Linear Combinations]
     Let $V$ be a linear space over a field $F$. A \emph{linear combination} of vectors $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n} \in V$ is a vector of the form:
     \[
         \alpha_1 \vec{v_1} + \alpha_2 \vec{v_2} + \cdots + \alpha_n \vec{v_n}
@@ -590,17 +590,251 @@
         \begin{split}
             \{ \text{Linear maps over } F \} &\equiv \{ m \times n \text{ matrices over } F \} \\
             A\cdot : \vec{x} \mapsto A\vec{x} &\mapsfrom A \\
-            T &\mapsto \begin{bmatrix}
+            T &\mapsto A = \begin{bmatrix}
                 T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n}
             \end{bmatrix}
         \end{split}
     \]
-    where the $\equiv$ sign means they are natural identifications and $\vec{e_i} \in F^n$ is the $i$-th standard basis vector, i.e. the column matrix with $1$ in the $i$-th row and $0$ elsewhere.
+    where the $\equiv$ sign means they are natural identifications and $\vec{e_i} \in F^n$ is the $i$-th standard basis vector, i.e., the column matrix with $1$ in the $i$-th row and $0$ elsewhere.
 \end{proposition}
 
 \begin{proof}
-    
+    Consider a column matrix $\vec{x} \in F^n$ with entries $x_1, x_2, \cdots, x_n \in F$. Then $\vec{x}$ can be expressed as a linear combination of the standard basis vectors $\vec{e_1}, \vec{e_2}, \cdots, \vec{e_n}$:
+    \[
+        \vec{x} = x_1 \vec{e_1} + x_2 \vec{e_2} + \cdots + x_n \vec{e_n} = \sum_{i=1}^{n} x_i \vec{e_i}
+    \]
+    Since $T$ is a linear map, it respects linear combinations. Therefore, we have:
+    \[
+        T\vec{x} = T\left( \sum_{i=1}^{n} x_i \vec{e_i} \right) = \sum_{i=1}^{n} x_i T(\vec{e_i}) = \sum_{i=1}^{n} x_i \vec{a_i} = A\vec{x}
+    \]
+    where $\vec{a_i} = T(\vec{e_i})$ is the $i$-th column of the matrix $A = \begin{bmatrix}
+        T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n}
+    \end{bmatrix}$. Thus, we have $T\vec{x} = A\vec{x}$ for all $\vec{x} \in F^n$. This shows that $T$ can be represented as a matrix multiplication by the matrix $A$.
 \end{proof}
+
+\begin{remark}
+    There is a simpler way to write $\sum_{i=1}^{n} x_i \vec{e_i}$: The Eienstein summation convention. When an index variable appears twice in a single term and is not otherwise defined, it implies summation of that term over all the values of the index. Therefore, we can write:
+    \[
+        \vec{x} = x_i \vec{e_i}
+    \]
+    where $i$ is summed from $1$ to $n$.
+\end{remark}
+
+\begin{definition}[Homogeneous Linear Functions]
+    A linear map $f: F^n \to F$ is called a \emph{homogeneous linear function} or a \emph{linear functional} if it satisfies the property:
+    \[
+        f(\alpha \vec{x}) = \alpha f(\vec{x}) \quad \text{for all } \alpha \in F \text{ and } \vec{x} \in F^n.
+    \]
+\end{definition}
+
+\begin{corollary}
+    The standard matrix of a linear map $T: F^n \to F^m$ can be written as:
+    \[
+        A = \begin{bmatrix}
+            f_1(\vec{e_1}) & f_1(\vec{e_2}) & \cdots & f_1(\vec{e_n}) \\
+            f_2(\vec{e_1}) & f_2(\vec{e_2}) & \cdots & f_2(\vec{e_n}) \\
+            \vdots & \vdots & \ddots & \vdots \\
+            f_m(\vec{e_1}) & f_m(\vec{e_2}) & \cdots & f_m(\vec{e_n})
+        \end{bmatrix}
+    \]
+    where $f_i: F^n \to F$ is the $i$-th component function of $T$, i.e., $T\vec{x} = \begin{bmatrix}
+        f_1(\vec{x}) \\
+        f_2(\vec{x}) \\
+        \vdots \\
+        f_m(\vec{x})
+    \end{bmatrix}$ for all $\vec{x} \in F^n$.
+\end{corollary}
+
+\begin{remark}
+    Each component function $f_i$ is a homogeneous linear function, and the standard matrix $A$ is constructed by evaluating these functions at the standard basis vectors $\vec{e_1}, \vec{e_2}, \cdots, \vec{e_n}$ of $F^n$.
+\end{remark}
+
+\begin{example}
+    Let $D: F[t] \to F[t]$ be the differentiation operator defined by:
+    \[
+        D\left( \sum_{n=0}^{N} a_n t^n \right) = \sum_{n=1}^{N} n a_n t^{n-1}
+    \]
+    for all polynomials $\sum_{n=0}^{N} a_n t^n \in F[t]$. The differentiation operator $D$ is a linear map over $F$. The standard matrix of $D$ with respect to the standard basis $\{1, t, t^2, \cdots, t^N\}$ of $F[t]$ is given by:
+    \[
+        A = \begin{bmatrix}
+            0 & 1 & 0 & 0 & \cdots & 0 \\
+            0 & 0 & 2 & 0 & \cdots & 0 \\
+            0 & 0 & 0 & 3 & \cdots & 0 \\
+            \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & 0 & \cdots & N \\
+            0 & 0 & 0 & 0 & \cdots & 0
+        \end{bmatrix}
+    \]
+\end{example}
+
+\newpage
+
+\section{Injective and Surjective Linear Maps and Linear Equivalences}\index{Injective and Surjective Linear Maps and Linear Equivalences}
+
+\begin{definition}[Injective Linear Maps]
+    A linear map $f: V \to W$ between two linear spaces over a field $F$ is said to be \emph{injective} (or one-to-one) if for all $\vec{u}, \vec{v} \in V$, the following holds:
+    \[
+        f(\vec{u}) = f(\vec{v}) \implies \vec{u} = \vec{v}
+    \]
+    Equivalently, $f$ is injective if the only vector in $V$ that maps to the zero vector in $W$ is the zero vector itself:
+    \[
+        f(\vec{u}) = 0 \implies \vec{u} = 0
+    \]
+\end{definition}
+
+\begin{definition}[Surjective Linear Maps]
+    A linear map $f: V \to W$ is said to be \emph{surjective} (or onto) if for every $\vec{w} \in W$, there exists at least one $\vec{v} \in V$ such that:
+    \[
+        f(\vec{v}) = \vec{w}
+    \]
+\end{definition}
+
+\begin{definition}[Linear Equivalences / Isomorphisms]
+    A linear map $T: V \to W$ is called a \emph{linear equivalence}, \emph{isomorphism} or \emph{invertible linear map} if $T$ has a unique two-sided inverse $S$, denoted by $T^{-1}$, i.e., there exists a linear map $S: W \to V$ such that:
+    \[
+        TS = e_W \quad \text{and} \quad ST = e_V
+    \]
+    where $e_V: V \to V$ and $e_W: W \to W$ are the identity maps on $V$ and $W$, respectively.
+    In this case, we say that the linear spaces $V$ and $W$ are \emph{isomorphic}, denoted by $V \cong W$.
+\end{definition}
+
+\begin{corollary}[Linear Equivalences]
+    A linear map $T: V \to W$ is a linear equivalence if and only if $T$ is both injective and surjective, i.e., bijective / one-to-one correspondence.
+\end{corollary}
+
+\begin{proof}
+    (\(\Rightarrow\)) Assume \(T: V \to W\) is a linear equivalence. By definition, there exists a linear map \(S: W \to V\) such that \(TS = e_W\) and \(ST = e_V\).
+
+    To show that \(T\) is injective, suppose \(T(\vec{u}) = T(\vec{v})\) for some \(\vec{u}, \vec{v} \in V\). Applying \(S\) to both sides, we have:
+    \[
+        S(T(\vec{u})) = S(T(\vec{v})) \implies (ST)(\vec{u}) = (ST)(\vec{v}) \implies e_V(\vec{u}) = e_V(\vec{v}) \implies \vec{u} = \vec{v}
+    \]
+    Thus, \(T\) is injective.
+
+    To show that \(T\) is surjective, let \(\vec{w} \in W\). Since \(TS = e_W\), we have:
+    \[
+        T(S(\vec{w})) = e_W(\vec{w}) = \vec{w}
+    \]
+    This shows that for every \(\vec{w} \in W\), there exists a \(\vec{v} = S(\vec{w}) \in V\) such that \(T(\vec{v}) = \vec{w}\). Thus, \(T\) is surjective.
+
+    (\(\Leftarrow\)) Now assume that \(T: V \to W\) is both injective and surjective. We need to show that there exists a linear map \(S: W \to V\) such that \(TS = e_W\) and \(ST = e_V\).
+
+    Since \(T\) is surjective, for each \(\vec{w} \in W\), there exists at least one \(\vec{v} \in V\) such that \(T(\vec{v}) = \vec{w}\). Define the map \(S: W \to V\) by choosing one such preimage for each \(\vec{w}\):
+    \[
+        S(\vec{w}) = \text{a chosen } \vec{v} \text{ such that } T(\vec{v}) = \vec{w}
+    \]
+    To show that \(S\) is well-defined, we need to ensure that if \(T(\vec{v_1}) = T(\vec{v_2})\), then \(\vec{v_1} = \vec{v_2}\). This follows from the injectivity of \(T\).
+    Now we verify that \(TS = e_W\):
+    \[
+        (TS)(\vec{w}) = T(S(\vec{w})) = \vec{w}
+    \]
+    for all \(\vec{w} \in W\). Thus, \(TS = e_W\).
+    Next, we verify that \(ST = e_V\):
+    \[
+        (ST)(\vec{v}) = S(T(\vec{v})) = \vec{v}
+    \]
+    for all \(\vec{v} \in V\). Thus, \(ST = e_V\).
+    Therefore, \(T\) has a two-sided inverse \(S\), and hence \(T\) is a linear equivalence.
+\end{proof}
+
+\begin{proposition}
+    Let $T: V \to W$ be a linear map between two linear spaces over a field $F$ and $T^{-1}: W \to V$ be the set-theoretical inverse of $T$. Then $T^{-1}$ is also a linear map.
+\end{proposition}
+
+\begin{proof}
+    Since \(T\) is a linear equivalence, it is bijective, and thus has a well-defined set-theoretical inverse \(T^{-1}: W \to V\). We need to show that \(T^{-1}\) is a linear map, i.e., it respects vector addition and scalar multiplication.
+
+    Let \(\vec{w_1}, \vec{w_2} \in W\) and \(\alpha \in F\). We will show that:
+    \[
+        T^{-1}(\vec{w_1} + \vec{w_2}) = T^{-1}(\vec{w_1}) + T^{-1}(\vec{w_2})
+    \]
+    and
+    \[
+        T^{-1}(\alpha \vec{w_1}) = \alpha T^{-1}(\vec{w_1})
+    \]
+
+    Since \(T\) is surjective, there exist \(\vec{v_1}, \vec{v_2} \in V\) such that \(T(\vec{v_1}) = \vec{w_1}\) and \(T(\vec{v_2}) = \vec{w_2}\). Then we have:
+    \[
+        T^{-1}(\vec{w_1} + \vec{w_2}) = T^{-1}(T(\vec{v_1}) + T(\vec{v_2})) = T^{-1}(T(\vec{v_1} + \vec{v_2})) = \vec{v_1} + \vec{v_2}
+    \]
+    On the other hand, we also have:
+    \[
+        T^{-1}(\vec{w_1}) + T^{-1}(\vec{w_2}) = \vec{v_1} + \vec{v_2}
+    \]
+    Thus, we conclude that:
+    \[
+        T^{-1}(\vec{w_1} + \vec{w_2}) = T^{-1}(\vec{w_1}) + T^{-1}(\vec{w_2})
+    \]
+
+    Next, we show that \(T^{-1}\) respects scalar multiplication. For any scalar \(\alpha \in F\), we have:
+    \[
+        T^{-1}(\alpha \vec{w_1}) = T^{-1}(\alpha T(\vec{v_1})) = T^{-1}(T(\alpha \vec{v_1})) = \alpha \vec{v_1}
+    \]
+    On the other hand, we also have:
+    \[
+        \alpha T^{-1}(\vec{w_1}) = \alpha \vec{v_1}
+    \]
+    Thus, we conclude that:
+    \[
+        T^{-1}(\alpha \vec{w_1}) = \alpha T^{-1}(\vec{w_1})
+    \]
+    Therefore, \(T^{-1}\) respects both vector addition and scalar multiplication, and hence \(T^{-1}\) is a linear map.
+\end{proof}
+
+\begin{proposition}
+    Let $X$ be a set and $W$ be a linear space over a field $F$. Then the set of all set maps from $X$ to $W$, denoted by $\text{Map}(X, W)$, is a linear space over $F$ with the following operations defined pointwisely:
+    \[
+        \begin{split}
+            + : \text{Map}(X, W) \times \text{Map}(X, W) &\to \text{Map}(X, W) \\
+            (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to W \\ \\
+            \cdot : F \times \text{Map}(X, W) &\to \text{Map}(X, W) \\
+            (\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to W
+        \end{split}
+    \]
+\end{proposition}
+
+\begin{proposition}
+    Let $V$ and $W$ be two linear spaces over a field $F$. Then $\Hom{V}{W}$ is a linear space over $F$ with the following operations defined pointwisely:
+    \[
+        \begin{split}
+            + : \Hom{V}{W} \times \Hom{V}{W} &\to \Hom{V}{W} \\
+            (f,g) &\mapsto (f+g: \vec{v} \mapsto f(\vec{v}) + g(\vec{v})) \qquad f + g : V \to W \\ \\
+            \cdot : F \times \Hom{V}{W} &\to \Hom{V}{W} \\
+            (\alpha,f) &\mapsto (\alpha f: \vec{v} \mapsto \alpha f(\vec{v})) \qquad \alpha f : V \to W
+        \end{split}
+    \]
+\end{proposition}
+
+\begin{proof}
+    Note that $\Hom{V}{W} \subseteq \text{Map}(V, W)$. We need to show that the operations defined above are closed in $\Hom{V}{W}$, i.e., for all $f, g \in \Hom{V}{W}$ and $\alpha \in F$, $f + g \in \Hom{V}{W}$ and $\alpha f \in \Hom{V}{W}$ or equivalently, $f$ respects linear combinations.
+
+    Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in F$. Since $f, g \in \Hom{V}{W}$, we have:
+    \[
+        \begin{split}
+            (f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
+            &\overset{\mathrm{lin}}{=\joinrel=} \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
+            &=\joinrel= \alpha (f(\vec{u}) + g(\vec{u})) + \beta (f(\vec{v}) + g(\vec{v})) \\
+            &\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
+        \end{split}
+    \]
+    where "lin" denotes the linearity of $f$ and $g$. Thus, $f + g \in \Hom{V}{W}$ and $\alpha f \in \Hom{V}{W}$.
+\end{proof}
+
+\begin{remark}
+    Note that $\End{V} = \Hom{V}{V}$ is a linear space over $F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
+\end{remark}
+
+\newpage
+
+\section{Dimension of Vector Spaces}\index{Dimension of Vector Spaces}
+
+\begin{definition}[Finite Dimensional Vector Spaces]
+    A linear space $V$ over a field $F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to F^n$ for some positive integer $n$. In this case, we say that the dimension of $V$ is $n$, denoted $\dim V = n$.
+\end{definition}
+
+\begin{definition}[Infinite Dimensional Vector Spaces]
+    A linear space $V$ over a field $F$ is said to be \emph{infinite dimensional} if $V$ is not finite dimensional.
+\end{definition}
 
 %----------------------------------------------------------------------------------------
 
