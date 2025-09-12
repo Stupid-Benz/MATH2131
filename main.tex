@@ -50,10 +50,19 @@
 
 \usepackage{tabularx} % For tabbing to a certain point
 \usepackage{stmaryrd} % For \mapsfrom symbol
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning, arrows.meta} % <-- Add this line to enable matrix of math nodes
 
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
 \newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
 
+
+\tikzset{%
+    myarrow/.style = {-Stealth, shorten >=5pt}
+}
+\newcommand{\mypoint}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
+
+\usepackage{mathtools} % for \xhookrightarrow
 
 \begin{document}
 
@@ -352,7 +361,7 @@
     \[
         f(x) = f(x \cdot_1 e_1) = f(x) \cdot_2 f(e_1)
     \]
-    Since $f(x)$ is an arbitrary element in $G_2$, this implies that $f(e_1)$ must be the identity element in $G_2$, i.e., $f(e_1) = e_2$.
+    The equation above holds for all $x \in G_1$. So for any $f(x) \in G_2$, this implies that $f(e_1)$ must be the identity element in $G_2$, i.e., $f(e_1) = e_2$.
 
     \textbf{Third Property:} To show that $f(x^{-1}) = (f(x))^{-1}$ for all $x \in G_1$, we use the fact that $x^{-1}$ is the inverse of $x$ in $G_1$. We have:
     \[
@@ -826,6 +835,11 @@
     Note that $\End{V} = \Hom{V}{V}$ is a linear space over $F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
 
+Then we can say that 
+\[
+    \text{Map}(F^n, F^m) \supseteq \Hom{F^n}{F^m} \cong M_{m \times n} (F) := \{ \text{the set of all } m \times n \text{ matrices over } F \}
+\]
+
 \begin{definition}[Characteristic of a Field]
     The \emph{characteristic} of a field $F$ is the smallest positive integer $n$ such that:
     \[
@@ -838,16 +852,390 @@
     The differentiation operator $D: F[t] \to F[t]$ is not an injective linear map as $D(1) = 0 = D(2)$ but is a surjective linear map if $F$ is a field of characteristic $0$.
 \end{example}
 
+
 \newpage
 
-\section{Dimension of Vector Spaces}\index{Dimension of Vector Spaces}
+\section{Matrix Multiplications and Compositions of Linear Maps}\index{Matrix Multiplications and Compositions of Linear Maps}
+
+We consider two linear maps $T: F^n \to F^m$ and $S: F^m \to F^k$ with standard matrices $A$ and $B$, respectively. We want to find the standard matrix of the composition $ST: F^n \to F^k$.
+
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+        {F^n & F^m & F^k \\};
+        \path[-stealth]
+        (m-1-1) edge node [above] {$T$} node [below] {$A$} (m-1-2)
+                edge [bend left] node [above] {$ST$} (m-1-3)
+                edge [bend right] node [below] {$BA$} (m-1-3)
+        (m-1-2) edge node [above] {$S$} node [below] {$B$} (m-1-3);
+    \end{tikzpicture}
+\end{center}
+
+\begin{proposition}
+    The standard matrix of the composition $ST: F^n \to F^k$ is the matrix multiplication $BA$, i.e., for all $\vec{x} \in F^n$,
+    \[
+        (ST)\vec{x} = B(A\vec{x}) = (BA)\vec{x}
+    \]
+\end{proposition}
+
+\begin{proof}
+    Let $\vec{x} \in F^n$ be a column matrix with entries $x_1, x_2, \cdots, x_n \in F$. Then $\vec{x}$ can be expressed as a linear combination of the standard basis vectors $\vec{e_1}, \vec{e_2}, \cdots, \vec{e_n}$:
+    \[
+        \vec{x} = x_1 \vec{e_1} + x_2 \vec{e_2} + \cdots + x_n \vec{e_n} = \sum_{i=1}^{n} x_i \vec{e_i}
+    \]
+    Consider the $j$-th column of $BA$, it is given by:
+    \[
+        (ST)\vec{e_j} = S(T(\vec{e_j})) = S(\vec{a_j}) = B\vec{a_j} = (BA)\vec{e_j}
+    \]
+    for all $j = 1, 2, \ldots, n$. This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
+\end{proof}
+
+\begin{remark}
+    Note that $B$ is a $k \times m$ matrix and $A$ is an $m \times n$ matrix, so the matrix multiplication $BA$ is defined and results in a $k \times n$ matrix.
+\end{remark}
+
+\begin{remark}
+    The matrix multiplication $BA$ can be computed as follows:
+    \[
+        BA = B[\vec{a_1} \; \vec{a_2} \; \cdots \; \vec{a_n}] = [B\vec{a_1} \; B\vec{a_2} \; \cdots \; B\vec{a_n}]
+    \]
+    where $\vec{a_i} = T(\vec{e_i})$ is the $i$-th column of the matrix $A$. Also, 
+    \[
+        B\vec{x} = x_1 \vec{b_1} + x_2 \vec{b_2} + \cdots + x_n \vec{b_n} = \sum_{i=1}^{n} x_i \vec{b_i}
+    \]
+    where $\vec{b_i} = B\vec{a_i}$ is the $i$-th column of the matrix $B$. Note that $B$ is a $k \times m$ matrix, and $\vec{x} \in F^m$. Thus, the matrix multiplication $B\vec{x}$ is defined and results in a column matrix in $F^k$.
+\end{remark}
+
+\newpage
+
+\section{Elementary Row Operations}\index{Elementary Row Operations}
+
+\begin{definition}[Elementary Row Operations]
+    Let $A$ be an $m \times n$ matrix over a field $F$. An \emph{elementary row operation} on $A$ is one of the following operations:
+    \begin{enumerate}
+        \item Interchange two rows of $A$: $R_i \leftrightarrow R_j$.
+        \item Multiply a row of $A$ by a nonzero scalar in $F$: $R_i \to \alpha R_i$ where $\alpha \in F \setminus \{0\}$.
+        \item Add a scalar multiple of one row of $A$ to another row of $A$: $R_i \to R_i + \alpha R_j$ where $\alpha \in F$ and $i \neq j$.
+    \end{enumerate}
+    Each elementary row operation can be represented by \emph{left multiplication} of $A$ by an appropriate $m \times m$ matrix over $F$. Note that all of them are invertible linear maps from $F^{m \times n}$ to $F^{m \times n}$.
+\end{definition}
+
+For easier notations, we introduce the idea of matrix units, which is similar to the standard basis vectors $\vec{e_i}$.
+
+\begin{definition}[Matrix Units]
+    Let $m$ and $n$ be two positive integers and $F$ be a field. The \emph{matrix unit} $E_{ij}$ is the $m \times n$ matrix over $F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
+    \[
+        (E_{ij})_{kl} = \begin{cases}
+            1 & \text{if } (k,l) = (i,j) \\
+            0 & \text{otherwise}
+        \end{cases}
+    \]
+    for all $1 \leq k \leq m$ and $1 \leq l \leq n$.
+
+    It can also be defined as $E_{ij} = \vec{e_i} \hat{e_j} \in M_{m \times n} (F)$ where $\vec{e_i} \in F^m$ and $\vec{e_j}^T = \hat{e_j} \in F^n$ are the $i$-th and $j$-th standard basis vectors, respectively. The $\hat{e_j}$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
+\end{definition}
+
+\begin{remark}
+    Note that for any $m \times n$ matrix $A$ over a field $F$, we have:
+    \[
+        \begin{split}
+            A\vec{e_j} &= \text{the } j\text{-th column of } A \in F^n \\
+            \hat{e_i}A &= \text{the } i\text{-th row of } A \in (F^m)^* \\
+        \end{split}
+    \]
+    where $(F^m)^*$ is the set of all row matrices with $n$ entries in $F$. $\hat{e_i}$ is an element in $(F^m)^*$ for any $1 \leq i \leq m$. Then we have:
+    \[
+        a_{ij} = \hat{e_i} A \vec{e_j} = \text{the } (i,j)\text{-th entry of } A
+    \]
+\end{remark}
+
+We can write the $E_{i,j}$ as:
+\vspace{7ex}
+\[
+    E_{i,j} = \begin{bmatrix}
+        0 & \cdots & 0 & \mypoint{herei}{0} & 0 & \cdots & 0 \\
+        \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+        0 & \cdots & 0 & 1 & 0 & \cdots & \mypoint{herej}{0} \\
+        0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+        \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+    \end{bmatrix}
+\]
+\begin{tikzpicture}[remember picture, overlay]
+    \node[above=20pt of herei](textofhere1){the $i$-column};
+    \draw[myarrow] (textofhere1) -- (herei);
+    \node[right=20pt of herej](textofhere2){the $j$-row};
+    \draw[myarrow] (textofhere2) -- (herej);
+\end{tikzpicture}
+
+Then we consider the row operations by using the matrix units.
+
+\begin{proposition}
+    The row operation $R_i \leftrightarrow R_j$ is a linear map where the standard matrix is $A_{R_i \leftrightarrow R_j} = I - E_{i,i} - E_{j,j} + E_{i,j} + E_{j,i}$.
+\end{proposition}
+
+\begin{proof}
+    The linear map $T: F^n \to F^n$ is defined pointwisely. We can say the map is:
+    \[
+        \vec{e_k} \mapsto \begin{cases}
+            \vec{e_j} & \text{if } k = i \\
+            \vec{e_i} & \text{if } k = j \\
+            \vec{e_k} & \text{if } k \neq i, j
+        \end{cases}
+    \]
+    Then the standard matrix of $T$ is:
+    \[
+        A_{R_i \leftrightarrow R_j} = [\vec{e_1} \; \cdots \; \vec{e_j} \; \cdots \; \vec{e_i} \; \cdots \; \vec{e_n}] = I - E_{i,i} - E_{j,j} + E_{i,j} + E_{j,i}
+    \]
+    where $I$ is the $n \times n$ identity matrix.
+\end{proof}
+
+\begin{proposition}
+    The row operation $R_i \to \alpha R_i$ where $\alpha \in F^x := F \setminus \{0\}$ is a linear map where the standard matrix is $A_{R_i \to \alpha R_i} = I + (\alpha - 1) E_{i,i}$.
+\end{proposition}
+
+\begin{proof}
+    The linear map $T: F^n \to F^n$ is defined pointwisely. We can say the map is:
+    \[
+        \vec{e_k} \mapsto \begin{cases}
+            \alpha \vec{e_i} & \text{if } k = i \\
+            \vec{e_k} & \text{if } k \neq i
+        \end{cases}
+    \]
+    Then the standard matrix of $T$ is:
+    \[
+        A_{R_i \to \alpha R_i} = [\vec{e_1} \; \cdots \; \alpha\vec{e_i} \; \cdots \; \vec{e_n}] = I + (\alpha - 1) E_{i,i}
+    \]
+    where $I$ is the $n \times n$ identity matrix.
+\end{proof}
+
+\begin{proposition}
+    The row operation $R_i \to R_i + \alpha R_j$ where $\alpha \in F$ and $i \neq j$ is a linear map where the standard matrix is $A_{R_i \to R_i + \alpha R_j} = I + \alpha E_{i,j}$.
+\end{proposition}
+
+\begin{proof}
+    The linear map $T: F^n \to F^n$ is defined pointwisely. We can say the map is:
+    \[
+        \vec{e_k} \mapsto \begin{cases}
+            \vec{e_i} + \alpha \vec{e_j} & \text{if } k = i \\
+            \vec{e_k} & \text{if } k \neq i
+        \end{cases}
+    \]
+    Then the standard matrix of $T$ is:
+    \[
+        A_{R_i \to R_i + \alpha R_j} = [\vec{e_1} \; \cdots \; (\vec{e_i} + \alpha\vec{e_j}) \; \cdots \; \vec{e_n}] = I + \alpha E_{i,j}
+    \]
+    where $I$ is the $n \times n$ identity matrix.
+\end{proof}
+
+\newpage
+
+\section{Dimensions of Vector Spaces}\index{Dimension of Vector Spaces}
 
 \begin{definition}[Finite Dimensional Vector Spaces]
-    A linear space $V$ over a field $F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to F^n$ for some positive integer $n$. In this case, we say that the dimension of $V$ is $n$, denoted $\dim V = n$.
+    A linear space $V$ over a field $F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to F^n$ for some positive integer $n$. In this case, we say that the dimension of $V$ is $n$, denoted $\dim_{F} V = n$ or simply $\dim V = n$.
 \end{definition}
 
 \begin{definition}[Infinite Dimensional Vector Spaces]
     A linear space $V$ over a field $F$ is said to be \emph{infinite dimensional} if $V$ is not finite dimensional.
+\end{definition}
+
+We have to proof if the dimension of a finite dimensional vector space is well-defined.
+
+\begin{proposition}
+    If there exists two linear equivalences $T: V \to F^m$ and $S: V \to F^n$, then $n = m$.
+\end{proposition}
+
+\begin{proof}
+    Since $S$ is linear equivalence, it has a unique two-sided inverses $S^{-1}: F^n \to V$. Consider the composition of this map:
+    \[
+        TS^{-1}: F^n \to F^m
+    \]
+    Since $TS^{-1}$ is compositions of linear equivalences, it is also a linear equivalence. Mutantis mutandis, for the opposite direction.
+
+    Now, we know that a linear equivalence between two finite-dimensional vector spaces. Then we have $\dim F^n = \dim F^m$ or $n = m$. Thus, the dimension of a finite dimensional vector space is well-defined.
+\end{proof}
+
+Graphically, we have the following commutative diagram:
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+        { & V & \\ F^n & & F^m \\};
+        \path[-stealth]
+        (m-1-2) edge node [above left] {$S$} node [below right] {$\cong$} (m-2-1)
+                edge node [above right] {$T$} node [below left] {$\cong$} (m-2-3)
+        (m-2-1) edge node [above] {$T S^{-1}$} node [below] {$\cong$} (m-2-3);
+    \end{tikzpicture}
+\end{center}
+
+\begin{remark}
+    In drawing commutative diagram, we can use $\xhookrightarrow{}$ to denote an injective linear map, $\twoheadrightarrow$ to denote a surjective linear map, and $\cong$ to denote a linear equivalence.
+\end{remark}
+
+\newpage
+
+\section{Elementary Column Operations, Canonical Form and Rank}\index{Elementary Column Operations, Canonical Form and Rank}
+
+\begin{definition}[Elementary Column Operations]
+    Let $A$ be an $m \times n$ matrix over a field $F$. An \emph{elementary column operation} on $A$ is one of the following operations:
+    \begin{enumerate}
+        \item Interchange two columns of $A$: $C_i \leftrightarrow C_j$.
+        \item Multiply a column of $A$ by a nonzero scalar in $F$: $C_i \to \alpha C_i$ where $\alpha \in F \setminus \{0\}$.
+        \item Add a scalar multiple of one column of $A$ to another column of $A$: $C_i \to C_i + \alpha C_j$ where $\alpha \in F$ and $i \neq j$.
+    \end{enumerate}
+    Each elementary column operation can be represented by \emph{right multiplication} of $A$ by an appropriate $n \times n$ matrix over $F$. Note that all of them are invertible linear maps from $F^{m \times n}$ to $F^{m \times n}$.
+\end{definition}
+
+\begin{proposition}
+    Any $m \times n$ matrix $A$ can be transformed into a matrix of the form $\begin{bmatrix}
+        I_r & 0 \\
+        0 & 0
+    \end{bmatrix}$ by a finite sequence of elementary row and column operations on $A$, where $r$ is the rank of $A$.
+\end{proposition}
+
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+        { F^n & F^m \\ F^n & F^m \\};
+        \path[-stealth]
+        (m-1-1) edge node [above] {$A$} (m-1-2)
+                edge node [left] {$Q$} node [right] {$\cong$} (m-2-1)
+        (m-1-2) edge node [right] {$P$} node [left] {$\cong$} (m-2-2)
+        (m-2-1) edge node [below] {$\begin{bmatrix}
+            I_r & 0 \\
+            0 & 0
+        \end{bmatrix}$} (m-2-2);
+    \end{tikzpicture}
+\end{center}
+
+Note that $P$ is the product of a finite sequence of elementary row operation matrices and $Q$ is the product of a finite sequence of elementary column operation matrices. Both $P$ and $Q$ are invertible matrices. Thus, we have:
+\[
+    \begin{bmatrix}
+        I_r & 0 \\
+        0 & 0
+    \end{bmatrix} = P A Q^{-1}
+\]
+
+\begin{definition}[Canonical Form of a Matrix]
+    The matrix $\begin{bmatrix}
+        I_r & 0 \\
+        0 & 0
+    \end{bmatrix}$ obtained from an $m \times n$ matrix $A$ by a finite sequence of elementary row and column operations on $A$ is called the \emph{canonical form} of $A$.    
+\end{definition}
+
+\begin{remark}
+    The canonical form of a matrix defined above is also called the \emph{Smith Normal Form} or \emph{Normal Form} of a matrix.
+\end{remark}
+
+\begin{definition}[Rank of a Matrix]
+    The \emph{rank} of an $m \times n$ matrix $A$ over a field $F$, denoted by $\text{rank}(A)$, is the number of leading 1's in the matrix $\begin{bmatrix}
+        I_r & 0 \\
+        0 & 0
+    \end{bmatrix}$ obtained from $A$ by a finite sequence of elementary row and column operations on $A$.
+\end{definition}
+
+\begin{remark}
+    The value $r$ is uniquely determined by $A$.
+\end{remark}
+
+% The graph of the canonical form of a matrix
+\def\matriximg{%
+    \begin{matrix}
+        I_r & 0 \\
+        0 & 0 
+    \end{matrix}
+}
+
+\begin{proposition}
+    Let $A$ be an $n \times n$ matrix over a field $F$. Then the following statements are equivalent:
+    \[
+        A \text{ is invertible } \iff m \left\{\left[\vphantom{\matriximg}\right.\right.\kern-2\nulldelimiterspace
+        \underbrace{\matriximg}_{\text{\normalsize $n$}}\kern-\nulldelimiterspace\left.\vphantom{\matriximg}\right] \text{ is invertible } \iff \text{rank}(A) = m = n \iff \begin{bmatrix}
+            I_r & 0 \\
+            0 & 0
+        \end{bmatrix} = I_n
+    \]
+\end{proposition}
+
+\begin{proposition}
+    Let $A$ be an $m \times n$ matrix over a field $F$. Then the following statements are equivalent:
+    \[
+        \text{rank}(A) = n \iff A \text{ has a right inverse } \iff A \text{ is injective } \iff \begin{bmatrix}
+            I_r & 0 \\
+            0 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            I_n \\
+            0
+        \end{bmatrix}
+    \]
+\end{proposition}
+
+\begin{proposition}
+    Let $A$ be an $m \times n$ matrix over a field $F$. Then the following statements are equivalent:
+    \[
+        \text{rank}(A) = m \iff A \text{ has a left inverse } \iff A \text{ is surjective } \iff \begin{bmatrix}
+            I_r & 0 \\
+            0 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            I_m & 0
+        \end{bmatrix}
+    \]
+\end{proposition}
+
+\begin{proposition}
+    For every $\vec{b}$, $\begin{bmatrix}
+        I_r & 0 \\
+        0 & 0
+    \end{bmatrix} \vec{x} = \vec{b}$ has a unique solution.
+\end{proposition}
+
+Linear Algebra is the study of linear map between two finite dimensional vector spaces.
+
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+        { V & W \\ F^n & F^m \\ F^n & F^m \\};
+        \path[-stealth]
+        (m-1-1) edge node [above] {$T$} (m-1-2)
+                edge node [right] {$\cong$} (m-2-1)
+                edge [bend right] node [left] {$\cong$} (m-3-1)
+        (m-1-2) edge node [left] {$\cong$} (m-2-2)
+                edge [bend left] node [right] {$\cong$} (m-3-2)
+        (m-2-1) edge node [above] {$A$} (m-2-2)
+                edge node [right] {$\cong$} (m-3-1)
+        (m-2-2) edge node [left] {$\cong$} (m-3-2)
+        (m-3-1) edge node [below] {$\begin{bmatrix}
+            I_r & 0 \\
+            0 & 0
+        \end{bmatrix}$} (m-3-2);
+        \path (m-1-1) node [above=10pt of m-1-1] {$\dim V = n$};
+        \path (m-1-2) node [above=10pt of m-1-2] {$\dim W = m$};
+    \end{tikzpicture}
+\end{center}
+
+The bended arrows denote the trivialisation of the vector spaces and the bottom arrow denotes the canonical matrix representation of the linear map $T$.
+
+\newpage
+
+\section{Linearly Independent Sets, Spanning Sets and Bases}\index{Linearly Independent Sets, Spanning Sets and Bases}
+
+Given a linear space $V$ over a field $F$. We define the order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$. The order set $S$ forms a linear map $\phi_S: F^n \to V$ defined by:
+\[
+    \phi_S(\vec{x}) = \phi_S\left(\begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        \vdots \\
+        x_n
+    \end{bmatrix}\right) = x_1 \vec{v_1} + x_2 \vec{v_2} + \cdots + x_n \vec{v_n} = \sum_{i=1}^{n} x_i \vec{v_i}
+\]
+
+\begin{definition}[Linearly Independent Sets]
+    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be \emph{linearly independent} if the linear map $\phi_S: F^n \to V$ defined above is injective.
+\end{definition}
+
+\begin{definition}[Spanning Sets]
+    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be a \emph{spanning set} of $V$ if the linear map $\phi_S: F^n \to V$ defined above is surjective.
 \end{definition}
 
 %----------------------------------------------------------------------------------------

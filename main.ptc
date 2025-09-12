@@ -9,5 +9,9 @@
 \contentsline {chapter}{\numberline {2}Linear Maps and Matrices}{15}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Linear Maps}{15}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Injective and Surjective Linear Maps and Linear Equivalences}{18}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Dimension of Vector Spaces}{21}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Matrix Multiplications and Compositions of Linear Maps}{21}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Elementary Row Operations}{22}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Dimensions of Vector Spaces}{24}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Elementary Column Operations, Canonical Form and Rank}{25}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Linearly Independent Sets, Spanning Sets and Bases}{27}{section.2.7}%
 \contentsfinish 
