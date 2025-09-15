@@ -55,7 +55,10 @@
 
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
 \newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
-\renewcommand{\Im}{\text{Im\! }}
+\renewcommand{\ker}[1]{\text{ker}(#1)} % Kernel of a linear map
+\renewcommand{\Im}[1]{\text{Im}(#1)} % Image of a linear map
+\renewcommand{\span}[1]{\text{span}(#1)} % Span of a set of vectors
+\renewcommand{\bar}[1]{\overline{#1}} % Bar notation
 
 
 \tikzset{%
@@ -161,6 +164,8 @@
     A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$. For all $x,y,z \in \mathbb{N}$, we have $x + (y + z) = (x + y) + z$.
 \end{example}
 
+\newpage
+
 \begin{definition}[Identifiable Operation]
     A binary operation $f: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
     \[ f(e,x) = x = f(x,e) \]
@@ -213,6 +218,8 @@
     \end{equation}
     where $0$ is the identity element for addition.
 \end{example}
+
+\newpage
 
 \begin{proposition}
     The inverse element of an invertible operation is unique.
@@ -487,8 +494,6 @@
     The first $F$ is the field acting on the second $F$, which is the abelian group.
 \end{example}
 
-\newpage
-
 \begin{example}
     Let $X$ be a set and $F$ be a field. ($f$ is a set map)
     \[
@@ -593,6 +598,8 @@
     \]
 \end{corollary}
 
+\newpage
+
 \begin{example}
     Let $A$ be an $m \times n$ matrix with entries in a field $F$. The map $T: F^n \to F^m$ defined by
     \[
@@ -647,8 +654,6 @@
         f(\alpha \vec{x}) = \alpha f(\vec{x}) \quad \text{for all } \alpha \in F \text{ and } \vec{x} \in F^n.
     \]
 \end{definition}
-
-\newpage
 
 \begin{corollary}[Standard Matrix of a Linear Map]
     The standard matrix of a linear map $T: F^n \to F^m$ can be written as:
@@ -1238,12 +1243,12 @@ The bended arrows denote the trivialisation of the vector spaces and the bottom 
 
 \chapter{Linear Spaces}
 
-\epigraph{Babies have to survive, so they have the strong desire to learn stuffs. You think you are not good at math because you don't have the strong desire to learn math.}{source}
+\epigraph{Babies have to survive, so they have the strong desire to learn stuffs. You think you are not good at math because you don't have the strong desire to learn math.}{Guowu Meng}
 
-\section{Linear Subspaces, Kernels and Images}
+\section{Linear Subspaces, Kernels and Images}\index{Linear Subspaces, Kernels and Images}
 
 \begin{definition}[Linear Subspaces]
-    Let $W$ be a linear space over $F$ and $V$ is a subset of $W$, denoted as $V \subset W$. $V$ is a (linear) subspace of $W$ if $V$, with $+$ and $\cdot$ inherited from those of $W$, is a linear space.
+    Let $W$ be a linear space over $F$ and $V$ is a subset of $W$, denoted as $V \subset W$. $V$ is a \emph{(linear) subspace} of $W$ if $V$, with $+$ and $\cdot$ inherited from those of $W$, is a linear space.
 \end{definition}
 
 \begin{proposition}
@@ -1251,7 +1256,7 @@ The bended arrows denote the trivialisation of the vector spaces and the bottom 
 \end{proposition}
 
 \begin{definition}[Kernels]
-    Let $f : V \to W$ be a linear map. The kernel of $f$, denoted as $\ker f$, is defined as 
+    Let $f : V \to W$ be a linear map. The \emph{kernel} of $f$, denoted as $\ker f$, is defined as 
     \[
         \ker f \overset{\text{def}}{=\joinrel=} f^{-1}(0_W) = \{ v \in V \mid f(v) = 0_W \}
     \]
@@ -1270,7 +1275,7 @@ The bended arrows denote the trivialisation of the vector spaces and the bottom 
 \end{example}
 
 \begin{definition}[Images]
-    Let $f : V \to W$ be a linear map. The image of $f$, denoted by $\Im f$, is defined as 
+    Let $f : V \to W$ be a linear map. The \emph{image} of $f$, denoted by $\Im f$, is defined as 
     \[
         \Im f \overset{\text{def}}{=\joinrel=} \{ f(v) \mid v \in V \} \subset W
     \]
@@ -1279,12 +1284,71 @@ The bended arrows denote the trivialisation of the vector spaces and the bottom 
 \begin{example}
     Let $f : V \to W$ be a linear map. $\Im f$ is a subspace of codomain of $f$, i.e., $W$.
 
-    First, we have $ \ni 0_W = f(0_V)$.
+    First, we have $f(0_V) = 0_W \in \Im f$, so $\Im f$ is not empty.
+
+    Then we consider $\alpha_1, \alpha_2 \in F$ and $f(v_1), f(v_2) \in \Im f$. We have 
+    \[
+        \alpha_1 f(v_1) + \alpha_2 f(v_2) = f(\alpha_1 v_1 + \alpha_2 v_2) \in \Im f
+    \]
+    The equality is due to the linearity of $f$.
 \end{example}
 
+\begin{example}
+    Let $W$ be a linear space over a field $F$ and $\{V_\alpha\}_{\alpha \in I}$ be the family of subspaces of $W$ indexed by the element in the index set $I$. Then $\bigcap_{\alpha \in I} V_\alpha$ is also a subspace of $W$.
 
+    First, we have $0_W \in V_\alpha$ for all $\alpha \in I$, so $0_W \in \bigcap_{\alpha \in I} V_\alpha$. Thus, $\bigcap_{\alpha \in I} V_\alpha$ is not empty.
 
-\section{Linearly Independent Sets, Spanning Sets and Bases}\index{Linearly Independent Sets, Spanning Sets and Bases}
+    Then we consider $\alpha_1, \alpha_2 \in F$ and $v_1, v_2 \in \bigcap_{\alpha \in I} V_\alpha$. We have $v_1, v_2 \in V_\alpha$ for all $\alpha \in I$. Thus, $\alpha_1 v_1 + \alpha_2 v_2 \in V_\alpha$ for all $\alpha \in I$. This shows that $\alpha_1 v_1 + \alpha_2 v_2 \in \bigcap_{\alpha \in I} V_\alpha$.
+\end{example}
+
+Then we consider the duality of the intersection and union of subspaces. Whether the union of two subspaces is still a subspace? Unfortunately, the answer is no in general case. However, we have the following proposition.
+
+\begin{proposition}
+    Let $W$ be a linear space over a field $F$ and consider the family of subspaces $\{V_\alpha\}_{\alpha \in I}$. Then $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is a subspace of $W$ where $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is the completion of $\bigcup_{\alpha \in I} V_\alpha$ under linear combinations. We call $\bar{\bigcup_{\alpha \in I} V_\alpha}$ the \emph{sum} of the subspaces $\{V_\alpha\}_{\alpha \in I}$, denoted by $\sum_{\alpha \in I} V_\alpha$.
+\end{proposition}
+
+\newpage
+
+\section{Linear Span and Linear Independence}\index{Linear Span and Linear Independence}
+
+\begin{definition}[Linear Span]
+    Let $W$ be a linear space over a field $F$ and $S \subset W$. The \emph{(linear) span} of $V$, denoted by $\text{span}_F (S)$ or simply $\span S$ or $\bar{S}$, is defined as the completion of $S$ inside $W$ under linear combinations.
+\end{definition}
+
+\begin{corollary}
+    $\span S$ can also be defined as the intersection of all subspaces of $W$ containing $S$, which is the smallest subspace of $W$ containing $S$. It can be written as:
+    \[
+        \span S = \bigcap_{V \in I} V \subset V \quad \text{where } I = \{ V \subset W \mid V \text{ is a subspace of } W \text{ and } S \subset V \}
+    \]
+\end{corollary}
+
+\begin{remark}
+    Note that $I$ is not empty as $W \in I$. Thus, $\span S$ is well-defined. $W$ is the largest subspace of itself and $\{0_W\}$ is the smallest subspace of $W$.
+\end{remark}
+
+\begin{proposition}
+    Let $W$ be a linear space over a field $F$ and $S \subset W$. Then 
+    \[
+        \span S = \left\{ \sum_{i=1}^{n} \alpha_i s_i \mid n \in \mathbb{N}, \alpha_i \in F, s_i \in S \right\}
+    \]
+    Note that the summation is a finite summation.
+\end{proposition}
+
+\begin{definition}[Linear Independences]
+    Let $W$ be a linear space over a field $F$ and $V_1, \cdots, V_k$ be subspaces of $W$. The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^{k} v_i = 0_W$, then $v_i = 0_W$ for all $i$.
+\end{definition}
+
+\begin{proposition}
+    $v_1, v_2, \cdots, v_k \in W$ are independent if the subspaces $\span{v_1}$, $\span{v_2}$, $\cdots$, $\span{v_k}$ are linearly independent.
+\end{proposition}
+
+\begin{proposition}
+    $v_1, v_2, \cdots, v_k \in W$ are linearly independent if and only if there is one and only one way to write $0_W \in W$ as the combination of $v_1, \cdots, v_k$ with coefficients in $F$, i.e., the equation 
+    \[
+        \alpha_1 v_1 + \cdots + \alpha_k v_k = 0_W
+    \]
+    has only  the trivial solution, i.e., $\alpha_i = 0$ for all $i$.
+\end{proposition}
 
 Given a linear space $V$ over a field $F$. We define the order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$. The order set $S$ forms a linear map $\phi_S: F^n \to V$ defined by:
 \[
@@ -1296,13 +1360,131 @@ Given a linear space $V$ over a field $F$. We define the order set $S := \{\vec{
     \end{bmatrix}\right) = x_1 \vec{v_1} + x_2 \vec{v_2} + \cdots + x_n \vec{v_n} = \sum_{i=1}^{n} x_i \vec{v_i}
 \]
 
-\begin{definition}[Linearly Independent Sets]
-    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be \emph{linearly independent} if the linear map $\phi_S: F^n \to V$ defined above is injective.
+\begin{proposition}
+    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be \emph{linearly independent} if and only if the linear map $\phi_S: F^n \to V$ defined above is injective.
+\end{proposition}
+
+\begin{proposition}
+    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be a \emph{spanning set} of $V$ if and only if the linear map $\phi_S: F^n \to V$ defined above is surjective.
+\end{proposition}
+
+\newpage
+
+\section{Group Actions}\index{Group Actions}
+
+\begin{definition}[Group Actions]
+    Let $G$ be a group and $X$ be a set. A \emph{(left) group action} of $G$ on $X$ is a map $\cdot : G \times X \to X$, $(g, x) \mapsto g \cdot x$, such that for all $g_1, g_2 \in G$ and $x \in X$, the following properties hold:
+    \begin{enumerate}
+        \item Compatibility: $(g_1 g_2) \cdot x = g_1 \cdot (g_2 \cdot x)$.
+        \item Identity: $e \cdot x = x$ where $e$ is the identity element of $G$.
+    \end{enumerate}
 \end{definition}
 
-\begin{definition}[Spanning Sets]
-    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be a \emph{spanning set} of $V$ if the linear map $\phi_S: F^n \to V$ defined above is surjective.
+Consider rotation in a plane. It is a group action of the group $SO(2)$ on the set $\mathbb{R}^2$.
+\[
+    g = \begin{pmatrix}
+        \cos{\theta} & -\sin{\theta} \\
+        \sin{\theta} & \cos{\theta}
+    \end{pmatrix}
+\]
+
+Then we have the following group action:
+\begin{center}
+    \begin{tikzpicture}
+        \draw[draw=none,fill=gray!20] (-2.5,-2.5) rectangle (2.5,2.5);
+        \draw[blue] (0,0) circle (1.5cm);
+        \draw[blue] (0,0) circle (1cm);
+        \draw[blue] (0,0) circle (0.5cm);
+        \draw[blue] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{Orbits};
+
+        \filldraw[ocre] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec{v}$};
+        \draw[->] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
+        \draw[->] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
+        \filldraw[ocre] (2,0) circle (1pt) node[below right]{$\vec{v}$};
+        \draw[->,color=ocre] (2,0) arc[start angle=0,end angle=45,radius=2];
+        \draw[->,color=blue] (0,2) arc[start angle=90,end angle=135,radius=2];
+        \draw[->,color=blue] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
+    \end{tikzpicture}
+\end{center}
+
+\begin{definition}[Orbits]
+    Let $G$ be a group acting on a set $X$. The \emph{orbit} of the action through a point $x \in X$, denoted as $G \cdot x$, is defined as the set of points in $X$ that can be reached from $x$ by the action of elements of $G$, i.e., 
+    \[
+        G \cdot x = \{g \cdot x \mid g \in G\}
+    \]
 \end{definition}
+
+\begin{definition}[Partition]
+    A \emph{partition} of a set $X$ is a collection of non-empty, disjoint subsets of $X$ whose union is $X$. The partition of the set $X$ is the same as an equivalence relation on $X$.
+\end{definition}
+
+\begin{proposition}
+    Orbits give a partition of the set $X$, i.e., $X$ can be expressed as the disjoint union of its orbits. The orbits of the action are the equivalence classes of the equivalence relation.
+\end{proposition}
+
+\begin{proposition}
+    Let $f : X \to Y$ be a map between two sets $X$ and $Y$. Then $f$ defines a partition of $X$ by the equivalence relation. The equivalence classes are the preimages of points in $Y$, i.e., $f^{-1}(y)$ for each $y \in Y$.
+\end{proposition}
+
+\newpage
+
+\begin{example}
+    Let $V$ be a subspace of a linear space $W$ over a field $F$. We know $(V, +)$ is an abelian group. Then we have the group action of $V$ on $W$ defined by: $(v, w) \mapsto v + w \in W$ \quad for all $v \in V, w \in W$
+    We know that $(v_1 + v_2) + w = v_1 + (v_2 + w)$ and $0_V + w = w$ for all $v_1, v_2 \in V$ and $w \in W$. Thus, it is a group action. 
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
+            { & W \times W & \\ V \times W & & W \\};
+            \path[-stealth]
+            (m-1-2) edge (m-2-3)
+            (m-2-1) edge (m-2-3)
+                    edge (m-1-2);
+        \end{tikzpicture}
+    \end{center}
+\end{example}
+
+This group action defines this equivalence relation on $W$:
+\[
+    w_1 \sim w_2 \iff \exists w_2 - w_1 \in V
+\]
+
+\newpage
+
+\section{Quotient Spaces}\index{Quotient Spaces}
+
+We consider the duality of the subspace, i.e., the quotient space.
+
+\begin{definition}[Quotient Spaces]
+    % Let $W$ be a linear space over a field $F$ and $V$ be a subspace of $W$. The \emph{quotient space} of $W$ by $V$, denoted by $W / V$, is defined as the set of equivalence classes of $W$ under the equivalence relation defined by the group action of $V$ on $W$, i.e., the set of $V$-equivalence classes. The equivalence class of an element $w \in W$ is denoted by $w + V$ and is called a \emph{coset} of $V$ in $W$. Thus, we have
+    % \[
+    %     W / V = \{ w + V \mid w \in W \}
+    % \]
+    % where 
+    % \[
+    %     w + V = \{ w + v \mid v \in V \}
+    % \]
+    % for each $w \in W$.
+\end{definition}
+
+Consider a linear space $W$ over a field $F$.
+\begin{center}
+    \begin{tikzpicture}
+        \filldraw (0,0) circle (1pt) node [below left] {$O$};
+        \draw[->] (0,0) -- (2,0) node [midway, below] {$\vec{v}$};
+        \draw[->] (0,0) -- (1,2) node [midway, left] {$\vec{u}$};
+        \draw[dashed] (1,2) -- (3,2);
+        \draw[dashed] (2,0) -- (3,2);
+        \draw[->] (0,0) -- (3,2) node [above right] {$\vec{u} + \vec{v}$};
+    \end{tikzpicture}
+\end{center}
+Then consider a subspace $V \in W / V$.
+\begin{center}
+    \begin{tikzpicture}
+        \filldraw (0,0) circle (1pt) node [below left] {$O$};
+        \draw[dashed,fill=gray!20] ;
+    \end{tikzpicture}
+\end{center}
 
 %----------------------------------------------------------------------------------------
 
