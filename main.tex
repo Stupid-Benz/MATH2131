@@ -55,6 +55,7 @@
 
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
 \newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
+\renewcommand{\Im}{\text{Im\! }}
 
 
 \tikzset{%
@@ -63,6 +64,9 @@
 \newcommand{\mypoint}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
 
 \usepackage{mathtools} % for \xhookrightarrow
+
+% For quotes
+\usepackage{epigraph}
 
 \begin{document}
 
@@ -79,7 +83,8 @@
             \node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
             \draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering MATH 2131\\[15pt] % Book title
             {\Large Honors in Linear and Abstract Algebra I}\\[20pt] % Subtitle
-            {\huge Prof. Meng}}}; % Author name
+            % {\huge} % Author name
+            }};
         \end{tikzpicture}};
 \end{tikzpicture}
 \vfill
@@ -93,7 +98,7 @@
 ~\vfill
 \thispagestyle{empty}
 
-\noindent Copyright \copyright\ 2013 John Smith\\ % Copyright notice
+\noindent Copyright \copyright\ 2025 \\ % Copyright notice
 
 \noindent \textsc{Published by Publisher}\\ % Publisher
 
@@ -101,7 +106,7 @@
 
 \noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
 
-\noindent \textit{First printing, March 2013} % Printing/edition date
+\noindent \textit{First printing, September 2025} % Printing/edition date
 
 %----------------------------------------------------------------------------------------
 %	TABLE OF CONTENTS
@@ -120,18 +125,14 @@
 \pagestyle{fancy} % Print headers again
 
 %----------------------------------------------------------------------------------------
-%	PART
-%----------------------------------------------------------------------------------------
-
-\part{Part One}
-
-%----------------------------------------------------------------------------------------
 %	CHAPTER 1
 %----------------------------------------------------------------------------------------
 
 \chapterimage{chapter_head_2.pdf} % Chapter heading image
 
 \chapter{Abstract Linear Spaces}
+
+\epigraph{\itshape I assume you have learnt linear algebra.}{Guowu Meng}
 
 \section{Binary Operation}\index{Binary Operation}
 
@@ -189,7 +190,10 @@
 \end{remark}
 
 \begin{example}
-    
+    Consider a set $X = \left\{ \begin{bmatrix}
+        1 & a \\
+        0 & 0 
+    \end{bmatrix} \; \middle| \; a \in \mathbb{R} \right\}$ with the binary operation defined as matrix multiplication. This set has many left identity elements, but no two-sided identity element.
 \end{example}
 
 \begin{definition}[Inverse Operation]
@@ -559,6 +563,8 @@
 
 \chapter{Linear Maps and Matrices}
 
+\epigraph{Linear algebra is the easiest in the Mathematics}{Guowu Meng}
+
 \section{Linear Maps}\index{Linear Maps}
 
 \begin{definition}[Linear Maps]
@@ -602,7 +608,9 @@
             \{ \text{Linear maps over } F \} &\equiv \{ m \times n \text{ matrices over } F \} \\
             A\cdot : \vec{x} \mapsto A\vec{x} &\mapsfrom A \\
             T &\mapsto A = \begin{bmatrix}
-                T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n}
+                | & | & & | \\
+                T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n} \\
+                | & | & & |
             \end{bmatrix}
         \end{split}
     \]
@@ -619,7 +627,9 @@
         T\vec{x} = T\left( \sum_{i=1}^{n} x_i \vec{e_i} \right) = \sum_{i=1}^{n} x_i T(\vec{e_i}) = \sum_{i=1}^{n} x_i \vec{a_i} = A\vec{x}
     \]
     where $\vec{a_i} = T(\vec{e_i})$ is the $i$-th column of the matrix $A = \begin{bmatrix}
-        T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n}
+        | & | & & | \\
+        T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n} \\
+        | & | & & |
     \end{bmatrix}$. Thus, we have $T\vec{x} = A\vec{x}$ for all $\vec{x} \in F^n$. This shows that $T$ can be represented as a matrix multiplication by the matrix $A$.
 \end{proof}
 
@@ -637,6 +647,8 @@
         f(\alpha \vec{x}) = \alpha f(\vec{x}) \quad \text{for all } \alpha \in F \text{ and } \vec{x} \in F^n.
     \]
 \end{definition}
+
+\newpage
 
 \begin{corollary}[Standard Matrix of a Linear Map]
     The standard matrix of a linear map $T: F^n \to F^m$ can be written as:
@@ -897,7 +909,15 @@ We consider two linear maps $T: F^n \to F^m$ and $S: F^m \to F^k$ with standard 
 \begin{remark}
     The matrix multiplication $BA$ can be computed as follows:
     \[
-        BA = B[\vec{a_1} \; \vec{a_2} \; \cdots \; \vec{a_n}] = [B\vec{a_1} \; B\vec{a_2} \; \cdots \; B\vec{a_n}]
+        BA = B\begin{bmatrix}
+            | & | & & | \\
+            \vec{a_1} & \vec{a_2} & \cdots & \vec{a_n} \\
+            | & | & & |
+        \end{bmatrix} = \begin{bmatrix}
+            | & | & & | \\
+            B\vec{a_1} & B\vec{a_2} & \cdots & B\vec{a_n} \\
+            | & | & & |
+        \end{bmatrix}
     \]
     where $\vec{a_i} = T(\vec{e_i})$ is the $i$-th column of the matrix $A$. Also, 
     \[
@@ -1216,7 +1236,53 @@ Linear Algebra is the study of linear map between two finite dimensional vector 
 
 The bended arrows denote the trivialisation of the vector spaces and the bottom arrow denotes the canonical matrix representation of the linear map $T$.
 
-\newpage
+\chapter{Linear Spaces}
+
+\epigraph{Babies have to survive, so they have the strong desire to learn stuffs. You think you are not good at math because you don't have the strong desire to learn math.}{source}
+
+\section{Linear Subspaces, Kernels and Images}
+
+\begin{definition}[Linear Subspaces]
+    Let $W$ be a linear space over $F$ and $V$ is a subset of $W$, denoted as $V \subset W$. $V$ is a (linear) subspace of $W$ if $V$, with $+$ and $\cdot$ inherited from those of $W$, is a linear space.
+\end{definition}
+
+\begin{proposition}
+    Let $V \subset W$. $V$ is a subspace of $W$ if and only if $V$ is not empty and $V$ is closed under $+$ and $\cdot$.
+\end{proposition}
+
+\begin{definition}[Kernels]
+    Let $f : V \to W$ be a linear map. The kernel of $f$, denoted as $\ker f$, is defined as 
+    \[
+        \ker f \overset{\text{def}}{=\joinrel=} f^{-1}(0_W) = \{ v \in V \mid f(v) = 0_W \}
+    \]
+\end{definition}
+
+\begin{example}
+    Let $f : V \to W$ be a linear map. $\ker f$ is a subspace of domain of $f$, i.e., $V$.
+    
+    First, we have $0_V \in \ker f$, as $f(0_V) = 0_W$, so $\ker f$ is not empty.
+
+    Then we consider $\alpha_1, \alpha_2 \in F$ and $v_1, v_2 \in \ker f$, we have
+    \[
+        f(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 f(v_1) + \alpha_2 f(v_2) = \alpha_1 (0_W) + \alpha_2 (0_W) = 0_W
+    \]
+    The first equality due to the linearity of $f$ and the second is due to $v_i \in \ker f$.
+\end{example}
+
+\begin{definition}[Images]
+    Let $f : V \to W$ be a linear map. The image of $f$, denoted by $\Im f$, is defined as 
+    \[
+        \Im f \overset{\text{def}}{=\joinrel=} \{ f(v) \mid v \in V \} \subset W
+    \]
+\end{definition}
+
+\begin{example}
+    Let $f : V \to W$ be a linear map. $\Im f$ is a subspace of codomain of $f$, i.e., $W$.
+
+    First, we have $ \ni 0_W = f(0_V)$.
+\end{example}
+
+
 
 \section{Linearly Independent Sets, Spanning Sets and Bases}\index{Linearly Independent Sets, Spanning Sets and Bases}
 
