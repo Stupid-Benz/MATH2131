@@ -1,17 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The Legrand Orange Book
 % LaTeX Template
-% Version 3.1 (February 18, 2022)
+% Version 2.1.1 (14/2/16)
 %
-% This template originates from:
-% https://www.LaTeXTemplates.com
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
 %
-% Authors:
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
 % Vel (vel@latextemplates.com)
-% Mathias Legrand (legrand.mathias@gmail.com)
 %
 % License:
-% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
 % Compiling this template:
 % This template uses biber for its bibliography and makeindex for its index.
@@ -19,7 +19,7 @@
 % commands below to make sure your LaTeX distribution is configured correctly:
 %
 % 1) pdflatex main
-% 2) makeindex main.idx -s indexstyle.ist
+% 2) makeindex main.idx -s StyleInd.ist
 % 3) biber main
 % 4) pdflatex main x 2
 %
@@ -27,35 +27,22 @@
 % command above and make sure to compile with pdflatex several times 
 % afterwards to propagate your changes to the document.
 %
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[
-	11pt, % Default font size, select one of 10pt, 11pt or 12pt
-	fleqn, % Left align equations
-	a4paper, % Paper size, use either 'a4paper' for A4 size or 'letterpaper' for US letter size
-	%oneside, % Uncomment for oneside mode, this doesn't start new chapters and parts on odd pages (adding an empty page if required), this mode is more suitable if the book is to be read on a screen instead of printed
-]{LegrandOrangeBook}
-
-% Book information for PDF metadata, remove/comment this block if not required 
-\hypersetup{
-	pdftitle={Title}, % Title field
-	pdfauthor={Author}, % Author field
-	pdfsubject={Subject}, % Subject field
-	pdfkeywords={Keyword1, Keyword2, ...}, % Keywords
-	pdfcreator={LaTeX}, % Content creator field
-}
-
-\addbibresource{sample.bib} % Bibliography file
-
-\definecolor{ocre}{RGB}{0,83,166} % Define the color used for highlighting throughout the book
-
-\chapterimage{orange1.jpg} % Chapter heading image
-\chapterspaceabove{8cm} % Default whitespace from the top of the page to the chapter title on chapter pages
-\chapterspacebelow{8cm} % Default amount of vertical whitespace from the top margin to the start of the text on chapter pages
+\documentclass[11pt,fleqn,a4paper]{LegrandOrangeBook} % Default font size and left-justified equations
 
 %----------------------------------------------------------------------------------------
 
@@ -82,35 +69,35 @@
 % For quotes
 \usepackage{epigraph}
 
-%----------------------------------------------------------------------------------------
-
 \begin{document}
 
-\chapterimage{UST.jpg} % Chapter heading image
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\titlepage % Output the title page
-	% {\includegraphics[width=\paperwidth]{background.pdf}} % Code to output the background image, which should be the same dimensions as the paper to fill the page entirely; leave empty for no background image
-	{ % Title(s) and author(s)
-		\centering\sffamily % Font styling
-		\vspace{3cm}
-		{\huge\color{ocre} Honors in Linear and Abstract Algebra\par} % Book title
-		\vspace{2cm} % Vertical whitespace
-		{Lecture Notes for MATH 2131\par} % Subtitle
-		\vfill
-		% \vspace{24pt} % Vertical whitespace
-		% {\huge\bfseries \par} % Author name
-	}
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+    \coordinate [below=12cm] (midpoint) at (current page.north);
+    \node at (current page.north west)
+    {\begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
+            \draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering MATH 2131\\[15pt] % Book title
+            {\Large Honors in Linear and Abstract Algebra I}\\[20pt] % Subtitle
+            % {\huge} % Author name
+            }};
+        \end{tikzpicture}};
+\end{tikzpicture}
+\vfill
+\endgroup
 
 %----------------------------------------------------------------------------------------
 %	COPYRIGHT PAGE
 %----------------------------------------------------------------------------------------
 
-\thispagestyle{empty} % Suppress headers and footers on this page
-
-~\vfill % Push the text down to the bottom of the page
+\newpage
+~\vfill
+\thispagestyle{empty}
 
 \noindent Copyright \copyright\ 2025 \\ % Copyright notice
 
@@ -126,27 +113,27 @@
 %	TABLE OF CONTENTS
 %----------------------------------------------------------------------------------------
 
-\pagestyle{empty} % Disable headers and footers for the following pages
+%\usechapterimagefalse % If you don't want to include a chapter image, use this to toggle images off - it can be enabled later with \usechapterimagetrue
 
-\tableofcontents % Output the table of contents
+\chapterimage{chapter_head_1.pdf} % Table of contents heading image
 
-\pagestyle{fancy} % Enable default headers and footers again
+\pagestyle{empty} % No headers
 
-\cleardoublepage % Start the following content on a new page
+\tableofcontents % Print the table of contents itself
 
-%----------------------------------------------------------------------------------------
-%	SECTIONING EXAMPLES CHAPTER
-%----------------------------------------------------------------------------------------
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
 
-\chapterspaceabove{8cm} % Whitespace from the top of the page to the chapter title on chapter pages
-\chapterspacebelow{8cm} % Amount of vertical whitespace from the top margin to the start of the text on chapter pages
+\pagestyle{fancy} % Print headers again
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER 1
 %----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
 \chapter{Abstract Linear Spaces}
 
-\epigraph{``I assume you have learnt linear algebra.''}{Guowu Meng}
+\epigraph{\itshape I assume you have learnt linear algebra.}{Guowu Meng}
 
 \section{Binary Operation}\index{Binary Operation}
 
@@ -1403,18 +1390,18 @@ Then we have the following group action:
 \begin{center}
     \begin{tikzpicture}
         \draw[draw=none,fill=gray!20] (-2.5,-2.5) rectangle (2.5,2.5);
-        \draw[red] (0,0) circle (1.5cm);
-        \draw[red] (0,0) circle (1cm);
-        \draw[red] (0,0) circle (0.5cm);
-        \draw[red] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{Orbits};
+        \draw[blue] (0,0) circle (1.5cm);
+        \draw[blue] (0,0) circle (1cm);
+        \draw[blue] (0,0) circle (0.5cm);
+        \draw[blue] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{Orbits};
 
         \filldraw[ocre] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec{v}$};
         \draw[->] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
         \draw[->] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
         \filldraw[ocre] (2,0) circle (1pt) node[below right]{$\vec{v}$};
-        \draw[->,ocre] (2,0) arc[start angle=0,end angle=45,radius=2];
-        \draw[->,red] (0,2) arc[start angle=90,end angle=135,radius=2];
-        \draw[->,red] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
+        \draw[->,color=ocre] (2,0) arc[start angle=0,end angle=45,radius=2];
+        \draw[->,color=blue] (0,2) arc[start angle=90,end angle=135,radius=2];
+        \draw[->,color=blue] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
     \end{tikzpicture}
 \end{center}
 
@@ -1496,7 +1483,6 @@ Then consider a subspace $V \in W / V$.
         \draw[dashed,fill=gray!20] ;
     \end{tikzpicture}
 \end{center}
-
 
 %----------------------------------------------------------------------------------------
 
