@@ -62,6 +62,7 @@
 \usepackage{tabularx} % For tabbing to a certain point
 \usepackage{stmaryrd} % For \mapsfrom symbol
 \usepackage{tikz}
+\usepackage{tikz-cd} % For commutative diagrams
 \usetikzlibrary{matrix, positioning, arrows.meta} % <-- Add this line to enable matrix of math nodes
 \usepackage{xifthen} % for \isempty
 
@@ -70,7 +71,8 @@
 \renewcommand{\ker}[1]{\text{ker}(#1)} % Kernel of a linear map
 \renewcommand{\Im}[1]{\text{Im}(#1)} % Image of a linear map
 \renewcommand{\span}[1]{\text{span}(#1)} % Span of a set of vectors
-\renewcommand{\bar}[1]{\overline{#1}} % Bar notation
+\renewcommand{\bar}[1]{\overline{#1}} % Bar notations
+\newcommand{\quotient}[2]{#1\! / #2} % Quotient notation
 
 \DeclareMathOperator{\Span}{span}
 
@@ -594,7 +596,7 @@
 
 \chapter{Linear Maps and Matrices}
 
-\epigraph{Linear algebra is the easiest in the Mathematics}{Guowu Meng}
+\epigraph{``Linear algebra is the easiest in Mathematics''}{Guowu Meng}
 
 \section{Linear Maps}\index{Linear Maps}
 
@@ -906,7 +908,7 @@ We consider two linear maps $T: F^n \to F^m$ and $S: F^m \to F^k$ with standard 
     \begin{tikzpicture}
         \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
         {F^n & F^m & F^k \\};
-        \path[-stealth]
+        \path[->]
         (m-1-1) edge node [above] {$T$} node [below] {$A$} (m-1-2)
                 edge [bend left] node [above] {$ST$} (m-1-3)
                 edge [bend right] node [below] {$BA$} (m-1-3)
@@ -1110,18 +1112,14 @@ We have to proof if the dimension of a finite dimensional vector space is well-d
 
 Graphically, we have the following commutative diagram:
 \begin{center}
-    \begin{tikzpicture}
-        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
-        { & V & \\ F^n & & F^m \\};
-        \path[-stealth]
-        (m-1-2) edge node [above left] {$S$} node [below right] {$\cong$} (m-2-1)
-                edge node [above right] {$T$} node [below left] {$\cong$} (m-2-3)
-        (m-2-1) edge node [above] {$T S^{-1}$} node [below] {$\cong$} (m-2-3);
-    \end{tikzpicture}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        & V \arrow[swap, dl, "S", hook, two heads] \arrow[dr, "T", hook, two heads] & \\
+        F^n \arrow[rr, "TS^{-1}", hook, two heads] & & F^m
+    \end{tikzcd}
 \end{center}
 
 \begin{remark}
-    In drawing commutative diagram, we can use $\xhookrightarrow{}$ to denote an injective linear map, $\twoheadrightarrow$ to denote a surjective linear map, and $\cong$ to denote a linear equivalence.
+    In drawing commutative diagram, we can use $\xhookrightarrow{}$ to denote an injective linear map, $\twoheadrightarrow$ to denote a surjective linear map, and $\cong$ to denote a linear equivalence or combining the two.
 \end{remark}
 
 \newpage
@@ -1145,20 +1143,18 @@ Graphically, we have the following commutative diagram:
     \end{bmatrix}$ by a finite sequence of elementary row and column operations on $A$, where $r$ is the rank of $A$.
 \end{proposition}
 
+The following is the commutative diagram of the proposition above, where $B = \begin{bmatrix}
+    I_r & 0 \\
+    0 & 0
+\end{bmatrix}$:
+
 \begin{center}
-    \begin{tikzpicture}
-        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
-        { F^n & F^m \\ F^n & F^m \\};
-        \path[-stealth]
-        (m-1-1) edge node [above] {$A$} (m-1-2)
-                edge node [left] {$Q$} node [right] {$\cong$} (m-2-1)
-        (m-1-2) edge node [right] {$P$} node [left] {$\cong$} (m-2-2)
-        (m-2-1) edge node [below] {$\begin{bmatrix}
-            I_r & 0 \\
-            0 & 0
-        \end{bmatrix}$} (m-2-2);
-    \end{tikzpicture}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        F^n \arrow[r, "A", hook, two heads] \arrow[d, "Q", hook, two heads] & F^m \arrow[d, "P", hook, two heads] \\
+        F^n \arrow[swap,r, "B", hook, two heads] & F^m
+    \end{tikzcd}
 \end{center}
+
 
 Note that $P$ is the product of a finite sequence of elementary row operation matrices and $Q$ is the product of a finite sequence of elementary column operation matrices. Both $P$ and $Q$ are invertible matrices. Thus, we have:
 \[
@@ -1244,32 +1240,21 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 Linear Algebra is the study of linear map between two finite dimensional vector spaces.
 
 \begin{center}
-    \begin{tikzpicture}
-        \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
-        { V & W \\ F^n & F^m \\ F^n & F^m \\};
-        \path[-stealth]
-        (m-1-1) edge node [above] {$T$} (m-1-2)
-                edge node [right] {$\cong$} (m-2-1)
-                edge [bend right] node [left] {$\cong$} (m-3-1)
-        (m-1-2) edge node [left] {$\cong$} (m-2-2)
-                edge [bend left] node [right] {$\cong$} (m-3-2)
-        (m-2-1) edge node [above] {$A$} (m-2-2)
-                edge node [right] {$\cong$} (m-3-1)
-        (m-2-2) edge node [left] {$\cong$} (m-3-2)
-        (m-3-1) edge node [below] {$\begin{bmatrix}
-            I_r & 0 \\
-            0 & 0
-        \end{bmatrix}$} (m-3-2);
-        \path (m-1-1) node [above=10pt of m-1-1] {$\dim V = n$};
-        \path (m-1-2) node [above=10pt of m-1-2] {$\dim W = m$};
-    \end{tikzpicture}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        V \arrow[d, hook, two heads] \arrow[dd, bend right, hook, two heads] \arrow[r, "T", hook, two heads] & W \arrow[d, hook, two heads] \arrow[dd, bend left, hook, two heads] \\
+        F^n \arrow[d, hook, two heads] \arrow[r, "A", hook, two heads] & F^m \arrow[d, hook, two heads] \\
+        F^n \arrow[r, "B", hook, two heads] & F^m
+    \end{tikzcd}
 \end{center}
-
+where $B = \begin{bmatrix}
+    I_r & 0 \\
+    0 & 0
+\end{bmatrix}$, $\dim V = n$ and $\dim W = m$.
 The bended arrows denote the trivialisation of the vector spaces and the bottom arrow denotes the canonical matrix representation of the linear map $T$.
 
 \chapter{Linear Spaces}
 
-\epigraph{Babies have to survive, so they have the strong desire to learn stuffs. You think you are not good at math because you don't have the strong desire to learn math.}{Guowu Meng}
+\epigraph{``Babies have to survive, so they have the strong desire to learn stuffs. You think you are not good at math because you don't have the strong desire to learn math.''}{Guowu Meng}
 
 \section{Linear Subspaces, Kernels and Images}\index{Linear Subspaces, Kernels and Images}
 
@@ -1483,12 +1468,12 @@ Then we have the following group action:
         \draw[red] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{Orbits};
 
         \filldraw[ocre] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec{v}$};
-        \draw[->] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
-        \draw[->] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
+        \draw[-stealth] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
+        \draw[-stealth] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
         \filldraw[ocre] (2,0) circle (1pt) node[below right]{$\vec{v}$};
-        \draw[->,ocre] (2,0) arc[start angle=0,end angle=45,radius=2];
-        \draw[->,red] (0,2) arc[start angle=90,end angle=135,radius=2];
-        \draw[->,red] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
+        \draw[-stealth,ocre] (2,0) arc[start angle=0,end angle=45,radius=2];
+        \draw[-stealth,red] (0,2) arc[start angle=90,end angle=135,radius=2];
+        \draw[-stealth,red] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
     \end{tikzpicture}
 \end{center}
 
@@ -1519,59 +1504,169 @@ Then we have the following group action:
 
 \section{Quotient Spaces}\index{Quotient Spaces}
 
-Let $V$ be a subspace of a linear space $W$ over a field $F$. We know $(V, +)$ is an abelian group. Then we have the group action of $V$ on $W$ defined by: $(v, w) \mapsto v \cdot w \overset{\text{def}}{=\joinrel=} v + w \in W$ for all $v \in V, w \in W$
+Let $V$ be a subspace of a linear space $W$ over a field $F$. We know $(V, +)$ is an abelian group. Then we have the group action of $V$ on $W$ defined by: $(v, w) \mapsto v \cdot w$ for all $v \in V, w \in W$. $v \cdot w$ is defined as $v + w$ where $+$ is the addition operation in $W$.
 We know that $(v_1 + v_2) + w = v_1 + (v_2 + w)$ and $0_V + w = w$ for all $v_1, v_2 \in V$ and $w \in W$. Thus, it is a group action. 
+
+The following commutative diagram illustrates the group action, where the associative and identity properties are inherited from the addition operation in $W$.
 
 \begin{center}
     \begin{tikzpicture}
         \matrix (m) [matrix of math nodes, row sep=3em, column sep=4em, minimum width=2em]
         { & W \times W & \\ V \times W & & W \\};
-        \path[-stealth]
+        \path[->]
         (m-1-2) edge (m-2-3)
         (m-2-1) edge (m-2-3)
                 edge (m-1-2);
     \end{tikzpicture}
 \end{center}
 
-This group action defines this equivalence relation on $W$:
+This group action defines the following equivalence relation on $W$, where $V$ is the acting group:
 \[
     \begin{split}
         w_1 \sim w_2 & \implies \exists v \in V \text{ such that } w_2 = v + w_1 \\
-        & \iff w_2 - w_1 = v \in V \\
         & \iff w_2 - w_1 \in V
     \end{split}
 \]
 
 \begin{definition}[Quotient Spaces]
-    % Let $W$ be a linear space over a field $F$ and $V$ be a subspace of $W$. The \emph{quotient space} of $W$ by $V$, denoted by $W / V$, is defined as the set of equivalence classes of $W$ under the equivalence relation defined by the group action of $V$ on $W$, i.e., the set of $V$-equivalence classes. The equivalence class of an element $w \in W$ is denoted by $w + V$ and is called a \emph{coset} of $V$ in $W$. Thus, we have
-    % \[
-    %     W / V = \{ w + V \mid w \in W \}
-    % \]
-    % where 
-    % \[
-    %     w + V = \{ w + v \mid v \in V \}
-    % \]
-    % for each $w \in W$.
+    Let $W$ be a linear space over a field $F$ and $V$ be a subspace of $W$. The \emph{quotient space} of $W$ by $V$, denoted by $\quotient{W}{V}$, is defined as the set of orbits of the group action of $V$ on $W$, or the set of $V$-equivalence classes in $W$ with the equivalence relation defined above, i.e.,
+    \[
+        \quotient{W}{V} = \{ V \cdot w \mid w \in W \} = \{ w + V \mid w \in W \}
+    \]
+    where $w + V = \{ w + v \mid v \in V \}$ is called the \emph{coset} of $V$ in $W$ containing $w$.
 \end{definition}
 
-Consider a linear space $W$ over a field $F$.
+\begin{definition}[Quotient Map]
+    The natural surjective map $\pi : W \to \quotient{W}{V}$ defined by $\pi(w) = w + V$ for all $w \in W$ is called the \emph{quotient map} or \emph{projection map}. Note that $w + V$ can be written as $\bar{w}$ or $[w]$.
+\end{definition}
+
+In general, if a group $G$ acts on a set $X$, then the quotient set $\quotient{X}{G}$ is defined as the set of orbits of the action, i.e.,
+\[
+    \quotient{X}{G} = \{ G \cdot x \mid x \in X \}
+\]
+
+There is a natural surjective map $\pi : X \to G$ defined by $\pi(x) = G \cdot x$ for all $x \in X$. The map $\pi$ is called the \emph{quotient map} or \emph{projection map}.
+
+The following is a graphical illustration of the quotient space.
+
 \begin{center}
     \begin{tikzpicture}
-        \filldraw (0,0) circle (1pt) node [below left] {$O$};
-        \draw[->] (0,0) -- (2,0) node [midway, below] {$\vec{v}$};
-        \draw[->] (0,0) -- (1,2) node [midway, left] {$\vec{u}$};
-        \draw[dashed] (1,2) -- (3,2);
-        \draw[dashed] (2,0) -- (3,2);
-        \draw[->] (0,0) -- (3,2) node [above right] {$\vec{u} + \vec{v}$};
+        \draw[step=0.5cm,gray!20] (-2,-2) grid (2,2);
+        \filldraw (0,0) circle (1pt) node [below] {$O$};
+        \draw[thick,ocre] (-2,-2) -- (2,2) node [right] {$V$};
+        \draw[thick,red] (-2,-1) node [left] {$w_1 + V$} -- (1,2);
+        \draw[thick,orange] (-2,0) node [left] {$w_2 + V$} -- (0,2);
+        \draw[thick,magenta] (-2,1) node [left] {$w_3 + V$} -- (-1,2);
+        \draw[thick,olive] (-1,-2) -- (2,1) node [right] {$w_4 + V$};
+        \draw[thick,brown] (0,-2) -- (2,0) node [right] {$w_5 + V$};
+        \draw[thick,purple] (1,-2) -- (2,-1) node [right] {$w_6 + V$};
+
+        \draw[thick,-Stealth,violet] (0,0) -- (0,1) node [pos=0.38, xshift=-1ex] {\scriptsize $w_1$};
+        \draw[thick,-Stealth,violet] (0,0) -- (0.5,0.5) node [midway, below] {\scriptsize $v$};
+        \draw[thick,-Stealth,violet] (0,0) -- (0.5,1.5) node [right] {\scriptsize $w_1 + v$};
+        
+        \draw[thick,-Stealth,teal,dashed] (0,0) -- (-1,0) node [midway, yshift=1ex] {\scriptsize $w'_1$};
+        \draw[thick,-Stealth,teal,dashed] (0,0) -- (-0.75,-0.75) node [pos=0.625, right] {\scriptsize $v'$};
+        \draw[thick,-Stealth,teal,dashed] (0,0) -- (-1.75,-0.75) node [xshift=2.5ex, yshift=-1ex] {\scriptsize $w'_1 + v'$};
+
     \end{tikzpicture}
 \end{center}
-Then consider a subspace $V \in W / V$.
+
+We can see that each line parallel to $V$ represents a coset of $V$ in $W$. The quotient space $\quotient{W}{V}$ is the set of all such lines. We may consider each line as an orbit of the group action of $V$ on $W$. Note that there is not only one unique way to represent the coset $w + V$. Just like the illustration above, $w_1$ and $w'_1$ are two different representatives of the same coset $w_1 + V = w'_1 + V$. Note that their difference is an element in $V$, i.e., $w_1 - w'_1 \in V$.
+
+Note that we now do not know whether $\quotient{W}{V}$ is a linear space or not. We will show that it is indeed a linear space by using the following proposition.
+
+\begin{proposition}
+    There is a unique linear structure on $\quotient{W}{V}$ such that the quotient map $\pi : W \to \quotient{W}{V}$ is a linear map.
+\end{proposition}
+
+\begin{proof}
+    Assume that such a linear structure exists. Then for all $w_1, w_2 \in W$ and $\alpha_1, \alpha_2 \in F$, we have
+    \[
+        \pi(\alpha_1 w_1 + \alpha_2 w_2) = \bar{\alpha_1 w_1 + \alpha_2 w_2} = \alpha_1 \bar{w_1} + \alpha_2 \bar{w_2} = \alpha_1 \pi(w_1) + \alpha_2 \pi(w_2)
+    \]
+    This suggests that $\alpha_1 \bar{w_1} + \alpha_2 \bar{w_2}$ should be defined as $\bar{\alpha_1 w_1 + \alpha_2 w_2}$ if $\pi$ is linear. As there is only one formula, this proves the uniqueness of the linear structure on $\quotient{W}{V}$.
+
+    Then we consider whether the linear combination on $\quotient{W}{V}$ is well-defined. Assume that $\bar{w_1} = \bar{w'_1}$ and $\bar{w_2} = \bar{w'_2}$, i.e., $w_1 - w'_1 \in V$ and $w_2 - w'_2 \in V$. Then we have
+    \[
+        (\alpha_1 w_1 + \alpha_2 w_2) - (\alpha_1 w'_1 + \alpha_2 w'_2) = \alpha_1 (w_1 - w'_1) + \alpha_2 (w_2 - w'_2) \in V
+    \]
+    which means $\bar{\alpha_1 w_1 + \alpha_2 w_2} = \bar{\alpha_1 w'_1 + \alpha_2 w'_2}$. This means that the linear combination is independent of the choice of representatives. Thus, the linear combination is well-defined.
+\end{proof}
+
+In normal procedure, we first define the operations and then check whether the set is closed under the operations and zero exists. Then we check whether the map preserves the structure and show the uniqueness of the structure. However, in this case, we first assume that such a structure exists and then derive the operations from the assumption. Then we check whether the operations are well-defined.
+
+In the first part, we show that there is only one possible way to define the operations if the quotient map is linear. Also, during the definition, it ensures the preservation of the linear structure. In the second part, we show that the operations on the set $\quotient{W}{V}$ are well-defined.
+
+\newpage
+
+\section{Universal Properties}\index{Universal Properties}
+
+\begin{proposition}
+    Let $V$ be a linear space over a field $F$ and $S$ be a minimal spanning set of $V$. Then for any set map $\phi : S \to Z$, where $Z$ is any linear space over $F$, there is a unique linear map $\tilde{\phi} : V \to Z$ such that $\tilde{\phi}|_S = \phi$.
+
+    In other words, the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}[row sep=huge, column sep=huge]
+            s \arrow[d, mapsto, xshift=-1.8ex] \in S \arrow[r, "\phi"] \arrow[swap, d, "\iota", hook, xshift=1.5ex] & Z \\
+            s \in V \arrow[ru, "\tilde{\phi}"', dashed] &
+        \end{tikzcd}
+    \end{center}
+\end{proposition}
+
+\begin{proof}
+    Assume the existence of such a linear map $\tilde{\phi}$. Then for all $s \in S$, we have $\tilde{\phi} \circ \iota (s) = \tilde{\phi}(s) = \phi(s)$.
+
+    Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^{n} \alpha_i s_i$ where $\alpha_i \in F$ and $s_i \in S$ are distinct. Then we have 
+    \[
+        \tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^{n} \alpha_i s_i\right) = \sum_{i=1}^{n} \alpha_i \tilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha_i \phi(s_i) = \phi\left(\sum_{i=1}^{n} \alpha_i s_i\right) = \phi(v)
+    \]
+    This shows that $\tilde{\phi}$ agrees with $\phi$ on all of $V$, and thus $\tilde{\phi}$ is uniquely determined by $\phi$.
+\end{proof}
+
+Note that we first define the map on the spanning set and then extend it to the whole space. The uniqueness is due to the fact that there is only one way to write each element in $V$ as a linear combination of elements in $S$ and the existence is due to the fact that we can always define the map on $V$ by using the linear combination.
+
+This proposition shows thats a linear space with a minimal spanning set has the following universal property: any set map from the minimal spanning set to another linear space can be uniquely extended to a linear map from the whole space to that linear space.
+
 \begin{center}
-    \begin{tikzpicture}
-        \filldraw (0,0) circle (1pt) node [below left] {$O$};
-        \draw[dashed,fill=gray!20] ;
-    \end{tikzpicture}
+    \begin{tikzcd}[row sep=tiny, column sep=tiny]
+        \phi \arrow[r, mapsto] & \tilde{\phi} \\
+        \text{Map}(S, Z) \arrow[r, leftrightarrow, "\cong" description] & \text{Hom}(V, Z) \\
+        \tilde{\phi} \circ \iota \arrow[r, mapsto] & \tilde{\phi} \\
+    \end{tikzcd}
 \end{center}
+
+\begin{proposition}
+    Let $W$ be a linear space over a field $F$ and $V$ be a subspace of $W$. Then we have the following commutative diagram:
+    \begin{center}
+        \begin{tikzcd}[row sep=huge, column sep=huge]
+            V \arrow[hook, r, "\iota"] \arrow[dr, "0"] \arrow[rr, "0", bend left] & W \arrow[d, "\pi"] \arrow[r, "\phi"] & Z \\
+            & \quotient{W}{V} \arrow[ur, "\tilde{\phi}", dashed] &
+        \end{tikzcd}
+    \end{center}
+    where $Z$ is any linear space over $F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$. Then there is a unique linear map $\tilde{\phi} : \quotient{W}{V} \to Z$ such that $\tilde{\phi} \circ \pi = \phi$.
+\end{proposition}
+
+\begin{proof}
+    Assume the existence of such a linear map $\tilde{\phi}$. Then for all $w \in W$, we have $\tilde{\phi}(\bar{w}) = \phi(w)$. However, this may not be well-defined. Then, we check whether it is well-defined. Assume that $\bar{w} = \bar{w'}$, then we have $\tilde{\phi}(\bar{w'}) = \phi(w')$. Note that $w - w' \in V$. Thus, we have $\phi(w' - w) = 0_Z$. This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$. This shows that $\tilde{\phi}(\bar{w'}) = \tilde{\phi}(\bar{w})$. Thus, $\tilde{\phi}$ is well-defined.
+
+    Then we consider the linearity of $\tilde{\phi}$. For all $\bar{w_1}, \bar{w_2} \in \quotient{W}{V}$ and $\alpha_1, \alpha_2 \in F$, we have
+    \[
+        \begin{split}
+            \tilde{\phi}(\alpha_1 \bar{w_1} + \alpha_2 \bar{w_2}) &= \tilde{\phi}(\overline{\alpha_1 w_1 + \alpha_2 w_2}) \\
+            &= \phi(\alpha_1 w_1 + \alpha_2 w_2) \\
+            &= \alpha_1 \phi(w_1) + \alpha_2 \phi(w_2) \\
+            &= \alpha_1 \tilde{\phi}(\bar{w_1}) + \alpha_2 \tilde{\phi}(\bar{w_2})
+        \end{split}
+    \]
+    This shows that $\tilde{\phi}$ is linear.
+\end{proof}
+
+\begin{remark}
+    Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
+\end{remark}
+
+
 
 
 %----------------------------------------------------------------------------------------
