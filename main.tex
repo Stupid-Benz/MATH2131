@@ -66,17 +66,20 @@
 
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
 \newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
-\renewcommand{\ker}[1]{\text{ker}(#1)} % Kernel of a linear map
+\renewcommand{\ker}[1]{\text{Ker}(#1)} % Kernel of a linear map
 \renewcommand{\Im}[1]{\text{Im}(#1)} % Image of a linear map
-\renewcommand{\span}[1]{\text{span}(#1)} % Span of a set of vectors
+\renewcommand{\span}[1]{\text{Span}(#1)} % Span of a set of vectors
 \renewcommand{\bar}[1]{\overline{#1}} % Bar notations
 \newcommand{\quotient}[2]{#1\! / #2} % Quotient notation
 \newcommand{\F}{\mathbb{F}} % Field notation
 \newcommand{\M}[2]{\text{M}_{#1}(#2)} % Matrix set notation
 \newcommand{\Map}[2]{\text{Map}(#1, #2)} % Map notation
-\newcommand{\rank}[1]{\text{rank}(#1)}
+\newcommand{\rank}[1]{\text{Rank}(#1)} % Rank of a matrix
+\newcommand{\coker}[1]{\text{Coker}(#1)} % Cokernel of a linear map
+\newcommand{\coim}[1]{\text{Coim}(#1)} % Coimage of a linear map
+\newcommand{\nullity}[1]{\text{Nullity}(#1)} % Nullity of a linear map
 
-\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Span}{Span}
 
 
 \tikzset{%
@@ -1768,8 +1771,8 @@ This proposition shows thats a linear space with a minimal spanning set has the 
     Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$. Then we have the following commutative diagram:
     \begin{center}
         \begin{tikzcd}[row sep=huge, column sep=huge]
-            V \arrow[hook, r, "\iota"] \arrow[dr, "0"] \arrow[rr, "0", bend left] & W \arrow[d, "\pi"] \arrow[r, "\phi"] & Z \\
-            & \quotient{W}{V} \arrow[ur, "\tilde{\phi}", dashed] &
+            V \arrow[hook, r, "\iota"] \arrow[dr, "0"] \arrow[rr, "0", bend left] & W \arrow[r, "\pi"] \arrow[d, "\phi"] & \quotient{W}{V} \\
+            & Z \arrow[from=ur, "\tilde{\phi}", dashed] &
         \end{tikzcd}
     \end{center}
     where $Z$ is any linear space over $\F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$. Then there is a unique linear map $\tilde{\phi} : \quotient{W}{V} \to Z$ such that $\tilde{\phi} \circ \pi = \phi$.
@@ -1793,6 +1796,45 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 \begin{remark}
     Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
 \end{remark}
+
+\newpage
+
+Generally, we may consider the following commutative diagram:
+
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        \Im{f} \arrow[hook, r, "f"] \arrow[dr, "0"] \arrow[rr, "0", bend left] & W \arrow[r, "\pi"] \arrow[d, "\phi"] & \coker{f} \\
+        & Z \arrow[from=ur, "\tilde{\phi}", dashed] &
+    \end{tikzcd}
+\end{center}
+
+\begin{definition}[Cokernel]
+    Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$. The \emph{cokernel} of $f$, denoted by $\coker{f}$, is defined as the quotient space of $W$ by the image of $f$, i.e., 
+    \[
+        \coker{f} = \quotient{W}{\Im{f}} = W / \Im{f}
+    \]
+    where $\Im{f} = \{ f(v) \mid v \in V \}$ is the image of $f$.
+\end{definition}
+
+Then we can consider it dually.
+
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        \coim{f} \arrow[hook, from=r, "f", swap] \arrow[from=dr, "0", swap] \arrow[from=rr, "0", bend right, swap] & W \arrow[from=r, "\pi", swap] \arrow[from=d, "\phi", swap] & \ker{f} \\
+        & Z \arrow[ur, "\tilde{\phi}", dashed, swap] &
+    \end{tikzcd}
+\end{center}
+
+\begin{definition}[Coimage]
+    Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage} of $f$, denoted by $\coim{f}$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
+    \[
+        \coim{f} = \quotient{W}{\ker{f}} = W / \ker{f}
+    \]
+    where $\ker{f} = \{ w \in W \mid f(w) = 0_V \}$ is the kernel of $f$.
+\end{definition}
+
+%----------------------------------------------------------------------------------------
+\chapter{Category Theory}
 
 
 
