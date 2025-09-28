@@ -1841,7 +1841,7 @@ Then we can consider it dually.
 \end{definition}
 
 %----------------------------------------------------------------------------------------
-\chapter{Category Theory}
+\chapter{Introduction to Category Theory}
 
 \epigraph{``If you are willing to prove it, you can prove it. There is no trick.''}{Guowu Meng}
 
@@ -2052,7 +2052,9 @@ Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$. Simila
 
 \epigraph{``No problem is difficult in linear algebra. All problems are trivial.''}{Guowu Meng}
 
-\section{Students from Fudan University asked two hard problems but were completely cooked by Professor Guowu Meng}
+\section{Fudan University Problems}
+
+Students from Fudan University asked two hard problems but were completely cooked by Professor Guowu Meng
 
 \subsection{The story behind the two problems}
 ``Well, linear algebra basically, no problem is difficult. All problems are trivial. 
@@ -2090,14 +2092,14 @@ In normal linear algebra, we have four fundamental concepts: column space, null 
     \]
 \end{definition}
 
+\newpage
+
 \begin{definition}[Null Space]
     The \emph{null space} of $A$, denoted by $\nul{A}$, is defined as the kernel of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
     \[
         \nul{A} = \ker{f} = \{ x \in \F^n \mid Ax = 0 \} \subseteq \F^n
     \]
 \end{definition}
-
-\newpage
 
 The alternative, or normal, definition of rank is as follows.
 \begin{definition}[Rank]
@@ -2175,27 +2177,169 @@ The alternative, or normal, definition of rank is as follows.
     \]
 \end{problem}
 
+
 \newpage
 
-\subsection{Classical Chinese Translation}
+\section{Canonical Form of Linear Map}
 
-\begin{CJK*}{UTF8}{gbsn}
-    {\CJKfamily{bkai} \begin{center}
-        《復旦徒拜孟子為所盡烹》
-    \end{center}
-    
-    \noindent 孟子曰：「夫，線性代數者，無難題也。凡題皆微不足道。
+First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$. Recall that $\ker{f} = f^{-1} (0)$, $\Im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim{f} = \quotient{V_1}{\ker{f}}$ and $\coker{f} = \quotient{V_2}{\Im{f}}$. We have the following commutative diagram:
 
-    \noindent 「昔日，二名自復旦大學之交換生至此，攜有難題解答手冊。余告之曰：『無題難也。』
+\begin{center}
+    \begin{tikzcd}[row sep=large, column sep=huge]
+        0 \arrow[d] & 0 \\
+        \ker{f} \arrow[d, hook] & \coker{f} \arrow[u] \arrow[d, bend left, "s_2", red] \\
+        V_1 \arrow[d, two heads] \arrow[r, "f"] \arrow[dr, ocre, "f", two heads] & V_2 \arrow[u, two heads] \\
+        \coim{f} \arrow[d] \arrow[r, "\exists ! f'" swap, hook, two heads] \arrow[u, bend left, "s_1", red] & \Im{f} \arrow[u, hook] \\
+        0 & 0 \arrow[u]
+    \end{tikzcd}
+\end{center}
 
-    \noindent 「彼不信，乃取出一難題，余言未曾見之，然於物理工程之學，未嘗涉難題，惟讀教科書耳。然無妨，讓我於板上書之，頃刻間便得其解。
+Here, each column is an exact sequence, and the square in the middle is commutative, as the lower left triangle and upper right triangle are commutative.
 
-    \noindent 「彼或言余幸運耳。翌日，彼復來以另一題。余再言不知其法，然無妨，於板上書之，繪出心中對於線性代數之明顯事實。
+Moreover, the $f'$, the universal property for quotient map, is a linear equivalence. It is injective due to the trivial $\ker{f'}$. 
 
-    \noindent 「余言：於線性代數中，無題難之說，惟假設汝對其瞭若指掌，知其所有事實。常人或言：『我曾見此類題目』，然則步驟一、步驟二、步驟三，然此乃誤途也。此乃人工智能之法，然我人類智勝於機器。
+$s_1$ and $s_2$ are the \emph{right inverses} or called \emph{sections}.
 
-    \noindent 「余所行者，皆有關鍵詞，而每一關鍵詞皆喚起相關之事實，持續如此，則可見由此至彼之路。」}
-\end{CJK*}
+With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 = \Im{s_1} \oplus \ker{f}$ and $V_2 = \Im{f} \oplus \Im{s_2}$, the linear map $f$ is decomposed as follows:
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
+        {\Im{s_1} \oplus \ker{f} & \Im{f} \oplus \Im{s_2} \\};
+        \path[->] (m-1-1) edge node[above] {$f = \begin{bmatrix}
+            \tilde{f} & 0 \\
+            0 & 0
+        \end{bmatrix}$} (m-1-2);
+    \end{tikzpicture}
+\end{center}
+where $\tilde{f} : \Im{s_1} \to \Im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim{f} \to \Im{f}$ and $s_1 : \coim{f} \to \Im{s_1}$. Then the graph below commutes:
+
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        \Im{s_1} \arrow[r, hook, two heads] & \Im{f} \\
+        \coim{f} \arrow[u, hook, two heads, "s_1"] \arrow[ur, hook, two heads, "f'" swap]
+    \end{tikzcd}
+\end{center}
+
+\begin{remark}
+    The choice of $s_1$ and $s_2$ is not unique, so the decomposition of $V_1$ and $V_2$, and hence $f$, is not unique.
+\end{remark}
+
+The matrix $\begin{bmatrix}
+    \tilde{f} & 0 \\
+    0 & 0
+\end{bmatrix}$ is the canonical form of the linear map. Compared to the following matrix representation, where $r = \dim{\Im{f}}$ is the rank of $f$:
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
+        {\F^r \oplus \F^{n - r} & \F^r \oplus \F^{n - r} \\};
+        \path[->] (m-1-1) edge node[above] {$\begin{bmatrix}
+            I_r & 0 \\
+            0 & 0
+        \end{bmatrix}$} (m-1-2);
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+
+\section{Universal Property for Free Space over a Set}
+
+Let $X$ be a set and $\delta_X = \{ \delta_x \mid x \in X \}$. Here $\delta_x : X \to \F$ is the $\delta$-function at $x$. 
+
+\begin{proposition}
+    $\delta_X$ is a linearly independent set of $\F[[X]] =$ the linear space of $\F$-valued functions on $X$.
+\end{proposition}
+
+\begin{proposition}
+    $\span{\delta_X} = \F[X]$
+\end{proposition}
+
+Then $\delta_X$ is a minimal spanning set for $\F[X]$.
+
+\begin{proposition}
+    There is a natural set isomorphism $X \to \delta_X$ which maps $x$ to $\delta_x$.
+\end{proposition}
+
+Then we have an injective set map $\iota : X \equiv \delta_X \to \F[X]$ which maps $x$ to $\delta_x$. This is a set mapping to a linear space.
+
+Among all set maps from $X$ to a linear space over $\F$, the set map $\iota : X \to \F[X]$ is universal in the following sense:
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        X \arrow[r, "\forall \phi"] \arrow[d, "\iota"] & Z \\
+        \F[X] \arrow[ur, "\exists ! \tilde{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+For any set map $\phi : X \to Z$, there exists a unique linear map $\tilde{\phi} : \F[X] \to Z$ such that $\tilde{\phi} \circ \iota = \phi$.
+
+\begin{proof}
+    Assume the existence of such $\tilde{\phi}$, then $\tilde{\phi} \circ \iota (x) = \phi(x)$ for all $x \in X$, i.e., $\tilde{\phi} (\delta_x) = \phi(x)$ for all $x \in X$. As $\{ \delta_x \mid x \in X \}$ is a minimal spanning set for $\F[X]$, $\tilde{\phi}$ must be the linear map such that $\tilde{\phi} (\delta_x) = \phi(x)$, thus unique. Existence of $\tilde{\phi}$ is also proved.
+\end{proof}
+
+Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an element $\sum \alpha_x \delta_x \in F[X]$, where the sum is finite and $\alpha_x \in \F$, is naturally identified with $\sum \alpha_x x$, which is called a \emph{formal linear combination} of elements in $X$. Hereafter, we always use this natural identification, so $\F[X]$ is now defined as \emph{the set of formal linear combinations of elements in the set $X$}. Then $\iota : X \to \F[X]$ is just the inclusion map : $x \mapsto x$.
+
+The universal map is unique in the following sense: suppose that $\iota' : X \to \F[X]'$ is another inclusion map, then there is a unique linear equivalence $\lambda$ in the commutative triangle:
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        & X \arrow[dl, "\iota" swap] \arrow[dr, "\iota'"] \\
+        \F[X] \arrow[rr, "\lambda" swap, hook, two heads] & & \F[X]'
+    \end{tikzcd}
+\end{center}
+
+This can be seen from the following diagram:
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        & & X \arrow[dll, "\iota'" swap] \arrow[dl, "\iota"] \arrow[dr, "\iota'" swap] \arrow[drr, "\iota"] \\
+        \F[X]' \arrow[r, "\mu" swap, dashed] \arrow[rrr, bend right, "1"] & \F[X] \arrow[rr, "\lambda" swap, dashed] \arrow[rrr, bend right, "1"] & & \F[X]' \arrow[r, "\mu" swap, dashed] & \F[X]
+    \end{tikzcd}
+\end{center}
+$\lambda$ exists because $\iota$ is universal, and $\mu$ exists because $\iota'$ is universal. $\lambda \mu = 1$ because $\iota'$ is universal, same for $\mu \lambda = 1$. Then $\lambda$ is isomorphism.
+
+The universal property implies an assignment of a linear map $\F[f] : \F[X] \to \F[Y]$ to any set map $f : X \to Y$. Indeed,
+\begin{center}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+        X \arrow[r, "f"] \arrow[d, "\iota" swap, hook] \arrow[dr, "\iota f"] & Y \arrow[d, "\iota", hook] \\
+        \F[X] \arrow[r, dashed, "{\exists ! \F[f]}" swap] & \F[Y]
+    \end{tikzcd}
+\end{center}
+
+Moreover, $\F[1_X] = 1_{\F[X]}$ or simply $\F[1] = 1$ for all $X$, and $\F[fg] = \F[f] \F[g]$ for all $f : Y \to Z$ and $g : X \to Y$.
+
+\newpage
+
+\section{Categories and Functors}
+
+The collection of set maps is denoted as Set and the collection of linear maps over $\F$ is denoted as Vec$_{\F}$. There is a diagram below:
+\begin{center}
+    \begin{tikzcd}
+        \text{Set} \arrow[d, "{\F[\phantom{f}]}"] \\
+        \text{Vec}_{\F}
+    \end{tikzcd}
+\end{center}
+where $\F[\phantom{f}]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$. 
+
+$\F[\phantom{f}]$ is an example of functors.
+
+Monoid homomorphisms are another example of functors: in particular group homomorphisms
+\begin{center}
+    \begin{tikzcd}
+        M_1 \arrow[d, "\phi"] \\
+        M_2
+    \end{tikzcd}
+\end{center}
+
+An element $a \in M_1$ is viewed as an arrow, or morphism, that sends $*$ to $*$, i.e., $a : * \to *$. Then $ab$ is viewed as the composition of arrows:
+\begin{center}
+    \begin{tikzcd}
+        * \arrow[r, "b"] \arrow[rr, "ab", bend right] & * \arrow[r, "a"] & *
+    \end{tikzcd}
+\end{center}
+
+Recall that a monoid $M$ is a set, which is called a small collection of objects, together with a binary operation, which is also called composition, on $M$ with both the associtivity law and identity law satisfied. 
+
+By relaxing the condition on binary operation, allowing the composition being partially defined, we end up with the notion of \emph{small category}.
+
+An example of small category: The collection of all matrices over $\F$. 
+
+
 
 
 %----------------------------------------------------------------------------------------
