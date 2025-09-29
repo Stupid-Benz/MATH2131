@@ -83,6 +83,7 @@
 \newcommand{\id}{\text{id}} % Identity map notation
 \newcommand{\nul}[1]{\text{Nul}(#1)} % Null space of a linear map
 \newcommand{\col}[1]{\text{Col}(#1)} % Column space of a matrix
+\newcommand{\C}{\mathcal{C}} % Category notation
 
 \DeclareMathOperator{\Span}{Span}
 
@@ -2337,9 +2338,56 @@ Recall that a monoid $M$ is a set, which is called a small collection of objects
 
 By relaxing the condition on binary operation, allowing the composition being partially defined, we end up with the notion of \emph{small category}.
 
-An example of small category: The collection of all matrices over $\F$. 
+Being partially defined means that the composition may not be always defined. For example, take $f : X \to Y$ and $g : W \to Z$, then $gf$ is not defined. But for normal, $f : X \to Y$ and $g : Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
+
+An example of small category: The collection of all matrices over $\F$. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A : n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA : n \to k$. Note that $I_n : n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have 
+\begin{center}
+    \begin{tikzcd}
+        n \arrow[loop above, "1_n"] \arrow[r, "A"] & m \arrow[loop above, "1_m"] \arrow[r, "B"] & k
+    \end{tikzcd}
+\end{center}
+Note that $A 1_n = A = 1_m A$ and $B 1_m = B$. 
+
+\begin{remark}
+    The identity elements are not unique unlike the case of monoid.
+\end{remark}
+
+The following shows the associativity law:
+\begin{center}
+    \begin{tikzcd}
+        n \arrow[r, "C"] \arrow[rr, bend right, "BC"] \arrow[rrr, bend right, "A(BC)" swap] \arrow[rrr, bend left, "(AB)C"] & m \arrow[r, "B"] \arrow[rr, bend left, "AB" swap] & k \arrow[r, "A"] & l
+    \end{tikzcd}
+\end{center}
+
+Hence, the set of all matrices form a small category.
+
+Consider the set of all invertible matrices over $\F$, it is also a small category, in fact, it is a \emph{groupoid}. Groupoid is defined as a small category such that every morphism is invertible.
+
+\begin{center}
+    \begin{tikzcd}[column sep=3.5em, row sep=huge, math mode=false]
+        & Categories \\
+        Monoids \arrow[r] & Small Categories \arrow[u] \\
+        Groups \arrow[r] \arrow[u] & Groupoids \arrow[u]
+    \end{tikzcd}
+\end{center}
+The graph above shows the relation, the arrows show the subsets relation. The arrow head is the larger set and arrow tail is the subset.
 
 
+\chapter{More on Category Theory}
+
+\section{Small Categories}
+
+\begin{definition}[Small Categories]
+    A small category is a set $\C$ together with a subset $\C_0$ of $\C$, two surjective maps $s, t : \C \to \C_0$ and a composition map $\C \times_{(s, t)} \C \to \C$ that sends $(f, g)$ to $fg$ which satisfies the identity law and associativity law.
+\end{definition}
+
+Here $\C \times_{(s, t)} \C$ is defined as the pullback of the diagram below:
+\begin{center}
+    \begin{tikzcd}
+        \C \times_{(s, t)} \C \arrow[r] & \C \\
+        \C & \C_0
+    \end{tikzcd}
+\end{center}
 
 
 %----------------------------------------------------------------------------------------
