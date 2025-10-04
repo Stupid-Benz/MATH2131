@@ -64,8 +64,6 @@
 \usepackage{tikz-cd} % For commutative diagrams
 \usetikzlibrary{matrix, positioning, arrows.meta, decorations.pathreplacing} % <-- Add this line to enable matrix of math nodes
 
-\usepackage{CJKutf8} % For Chinese characters
-
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
 \newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
 \renewcommand{\ker}[1]{\text{Ker}(#1)} % Kernel of a linear map
@@ -84,10 +82,10 @@
 \newcommand{\nul}[1]{\text{Nul}(#1)} % Null space of a linear map
 \newcommand{\col}[1]{\text{Col}(#1)} % Column space of a matrix
 \newcommand{\C}{\mathcal{C}} % Category notation
+\newcommand{\Set}{\textbf{Set}}
+\newcommand{\Vect}{\textbf{Vec}}
 
 \DeclareMathOperator{\Span}{Span}
-
-\setcounter{tocdepth}{1} % Depth of table of contents, 1 for sections, 2 for subsections etc.
 
 
 \tikzset{%
@@ -134,11 +132,11 @@
 
 ~\vfill % Push the text down to the bottom of the page
 
-\noindent Copyright \copyright\ 2025 \\ % Copyright notice
-
-\noindent \textsc{Published by Hong Kong University of Science and Technology}\\ % Publisher
-
-\noindent \textit{First printing, September 2025} % Printing/edition date
+% \noindent Copyright \copyright\ 2025 \\ % Copyright notice
+% 
+% \noindent \textsc{Published by Hong Kong University of Science and Technology}\\ % Publisher
+% 
+% \noindent \textit{First printing, September 2025} % Printing/edition date
 
 %----------------------------------------------------------------------------------------
 %	TABLE OF CONTENTS
@@ -236,7 +234,7 @@ We start with the definition of a binary operation.
 \begin{definition}[Binary Operation]
     A \emph{binary operation} on a set $S$ is a mapping of the elements of the Cartesian product $S \times S$ to $S$.
     \[ \begin{split}
-            f : S \times S & \to S \\ (x,y) &\mapsto f(x,y)
+            \cdot : S \times S & \to S \\ (x,y) &\mapsto x \cdot y
         \end{split}\]
 \end{definition}
 
@@ -252,8 +250,8 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{example}
 
 \begin{definition}[Associative]
-    A binary operation $f: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, 
-    \[ f(x,f(y,z)) = f(f(x,y),z) \]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, 
+    \[ x \cdot (y \cdot z) = (x \cdot y) \cdot z \]
 \end{definition}
 
 \begin{example}
@@ -261,8 +259,8 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{example}
 
 \begin{definition}[Identifiable]
-    A binary operation $f: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
-    \[ f(e,x) = x = f(x,e) \]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
+    \[ e \cdot x = x = x \cdot e \]
 \end{definition}
 
 \begin{example}
@@ -274,11 +272,11 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{proposition}
 
 \begin{proof}
-    Let $e_1$ and $e_2$ be two identity elements for the operation $f$. Then, for any element $x \in S$, we have:
-    \[ f(x,e_1) = x = f(e_1,x) \]
-    \[ f(x,e_2) = x = f(e_2,x) \]
-    Now, consider the element $e_1$: $f(e_1,e_2) = e_1$.
-    But since $e_2$ is an identity element, we also have: $f(e_1,e_2) = e_2$.
+    Let $e_1$ and $e_2$ be two identity elements for the operation $\cdot$. Then, for any element $x \in S$, we have:
+    \[ e_1 \cdot x = x = x \cdot e_1 \]
+    \[ e_2 \cdot x = x = x \cdot e_2 \]
+    Now, consider the element $e_1$: $e_1 \cdot e_2 = e_1$.
+    But since $e_2$ is an identity element, we also have: $e_1 \cdot e_2 = e_2$.
     Therefore, we conclude that $e_1 = e_2$, proving the uniqueness of the identity element.
 \end{proof}
 
@@ -292,13 +290,13 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 \end{example}
 
 \begin{definition}[Invertible]
-    A binary operation $f: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that
-    \[ f(x,y) = e = f(y,x) \]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that
+    \[ x \cdot y = e = y \cdot x \]
     where $e$ is the identity element of the operation.
 \end{definition}
 
 \begin{remark}
-    Invertible operation exists if inverse operation exists, as there exists an identity element.
+    An invertible operation must be identifiable, since the identity element is required in the definition of invertibility.
 \end{remark}
 
 \begin{example}
@@ -315,20 +313,20 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 
 \begin{proof}
     Let $y_1$ and $y_2$ be two inverses of an element $x \in S$. Then, by definition of inverse, we have:
-    \[ f(x,y_1) = e = f(y_1,x) \]
-    \[ f(x,y_2) = e = f(y_2,x) \]
-    Now, consider the element $y_1$: $f(y_1,x) = e$.
-    But since $y_2$ is also an inverse of $x$, we can substitute $e$ with $f(x,y_2)$: $f(y_1,x) = f(x,y_2) = e$.
+    \[ x \cdot y_1 = e = y_1 \cdot x \]
+    \[ x \cdot y_2 = e = y_2 \cdot x \]
+    Now, consider the element $y_1$: $y_1 \cdot x = e$.
+    But since $y_2$ is also an inverse of $x$, we can substitute $e$ with $x \cdot y_2$: $y_1 \cdot x = x \cdot y_2 = e$.
     By the associativity of the operation, we can rearrange this to:
-    \[ y_1 = f(y_1, e) = f(y_1,f(x,y_2)) = f(f(y_1,x),y_2) = f(e,y_2) = y_2 \]
+    \[ y_1 = y_1 \cdot e = y_1 \cdot (x \cdot y_2) = (y_1 \cdot x) \cdot y_2 = e \cdot y_2 = y_2 \]
     Thus, the inverse element is unique.
 \end{proof}
 
 Same for the inverse, one-sided need not be unique. The example is left as an exercise.
 
 \begin{definition}[Commutative]
-    A binary operation $f: S \times S \to S$ is said to be \emph{commutative} if, for all $x,y \in S$, the following holds:
-    \[ f(x,y) = f(y,x) \]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{commutative} if, for all $x,y \in S$, the following holds:
+    \[ x \cdot y = y \cdot x \]
 \end{definition}
 
 \begin{example}
@@ -336,10 +334,10 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 \end{example}
 
 \begin{definition}[Distributive (Harmonic)]
-    A binary operation $g: S \times S \to S$ is said to be \emph{distributive} with respect to another binary operation $f: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{distributive} with respect to another binary operation $+: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
     \[ \begin{split}
-        g(x,f(y,z)) &= f(g(x,y),g(x,z)) \\
-        g(f(y,z),x) &= f(g(y,x),g(z,x))
+        x \cdot (y + z) &= x \cdot y + x \cdot z \\
+        (y + z) \cdot x &= y \cdot x + z \cdot x
     \end{split} \]
 \end{definition}
 
@@ -360,11 +358,10 @@ The professor preferred to use the word ``harmonic'' instead of ``distributive''
 With those five properties, we can construct monoid and groups.
 
 \begin{definition}[Monoid]
-    A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ such that the following properties hold:
+    A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ having the following properties:
     \begin{enumerate}
-        \item \emph{Closure Property:} For all $x,y \in M$, $f(x,y) \in M$.
-        \item \emph{Associative Property}
-        \item \emph{Identifiable Property}
+        \item \emph{Associative}
+        \item \emph{Identifiable}
     \end{enumerate}
     We say $(M, f)$ is a monoid, and $f$ is the \emph{monoid operation} on the set $M$. A set $M$ with a monoid operation $f$ is the \emph{monoid structure}.
 \end{definition}
@@ -378,7 +375,7 @@ With those five properties, we can construct monoid and groups.
 \end{example}
 
 \begin{definition}[Abelian Monoid / Group]
-    A monoid / group $(G, f)$ is said to be an \emph{abelian} if the operation $f$ is commutative.
+    A monoid / group $(S, f)$ is said to be an \emph{abelian} if the operation $f$ is commutative.
 \end{definition}
 
 \begin{definition}[Unital Ring]
@@ -434,16 +431,7 @@ We may draw a diagram for the relationship between the algebraic structures.
 
 \section{Morphisms}\index{Morphisms}
 
-Normally, when we have two sets we can have a set map. Then if the two are algebraic structures? Moreover, if they are in the same structure?
-
-\begin{definition}[Morphisms]
-    A \emph{morphism} is a structure-preserving map between two algebraic structures (e.g., groups, rings, fields). Formally, let $(A, \cdot_A)$ and $(B, \cdot_B)$ be two algebraic structures. A morphism $f: A \to B$ is a set map / function such that:
-    \[
-        f(x \cdot_A y) = f(x) \cdot_B f(y) \quad \forall x, y \in A
-    \]
-\end{definition}
-
-Homomorphisms are morphisms between two same algebraic structures. 
+Normally, when we have two sets we can have a set map. Then if the two are in the same algebraic structures? They are called the homomorphisms.
 
 \begin{definition}[Monoid Homomorphism]
     A \emph{monoid homomorphism} is a morphism between two monoids that preserves the monoid structure. Formally, let $(M_1, \cdot_1)$ and $(M_2, \cdot_2)$ be two monoids with identity elements $e_1$ and $e_2$, respectively. A function $f: M_1 \to M_2$ is a monoid homomorphism if:
@@ -544,7 +532,7 @@ The following two sets are the sets of all structure-preserving maps.
 
 \newpage
 
-\section{Vector Spaces}\index{Vector Spaces}
+\section{Linear Spaces}\index{Linear Spaces}
 
 Then we can define what a linear structure is.
 
@@ -691,7 +679,7 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
             T(\alpha \vec{u}) &= \alpha T(\vec{u})
         \end{split}
     \]
-    The set of all linear maps from $V$ to $W$ is denoted by $\Hom{V}{W}$. Some may write $\mathcal{L}(V, W)$.
+    The set of all linear maps from $V$ to $W$ is denoted by $\Hom{V}{W}$. Some may write {$\mathcal{L}(V, W)$}.
 \end{definition}
 
 \begin{definition}[Linear Combinations]
@@ -1570,7 +1558,7 @@ Consider rotation on a plane. It is a group action of the group $SO(2)$ on the s
 Then we have the following group action:
 \begin{center}
     \begin{tikzpicture}
-        \draw[draw=none,fill=gray!20] (-2.5,-2.5) rectangle (2.5,2.5);
+        \draw[draw=none,fill=gray!15] (-2.5,-2.5) rectangle (2.5,2.5);
         \draw[red] (0,0) circle (1.5cm);
         \draw[red] (0,0) circle (1cm);
         \draw[red] (0,0) circle (0.5cm);
@@ -1779,8 +1767,9 @@ This proposition shows thats a linear space with a minimal spanning set has the 
     Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$. Then we have the following commutative diagram:
     \begin{center}
         \begin{tikzcd}[row sep=huge, column sep=huge]
-            V \arrow[hook, r, "\iota"] \arrow[dr, "0"] \arrow[rr, "0", bend left] & W \arrow[r, "\pi"] \arrow[d, "\phi"] & \quotient{W}{V} \\
-            & Z \arrow[from=ur, "\tilde{\phi}", dashed] &
+            & V \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
+            & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
+            Z & & \quotient{W}{V} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
         \end{tikzcd}
     \end{center}
     where $Z$ is any linear space over $\F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$. Then there is a unique linear map $\tilde{\phi} : \quotient{W}{V} \to Z$ such that $\tilde{\phi} \circ \pi = \phi$.
@@ -1805,14 +1794,18 @@ This proposition shows thats a linear space with a minimal spanning set has the 
     Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
 \end{remark}
 
-\newpage
-
-Generally, we may consider the following commutative diagram:
+Generally, we may consider the following commutative diagrams, where left is the general case and right is the dual case:
 
 \begin{center}
     \begin{tikzcd}[row sep=huge, column sep=huge]
-        \Im{f} \arrow[hook, r, "f"] \arrow[dr, "0"] \arrow[rr, "0", bend left] & W \arrow[r, "\pi"] \arrow[d, "\phi"] & \coker{f} \\
-        & Z \arrow[from=ur, "\tilde{\phi}", dashed] &
+        & \Im{f} \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
+        & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
+        Z & & \coker{f} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=huge, column sep=huge, swap]
+        & \coim{f} \arrow[from=d, "\iota", hook] \arrow[from=ddl, bend left, "0" swap] \arrow[from=ddr, bend right, "0"] \\
+        & W \arrow[from=dl, "\forall \phi" swap] \arrow[from=dr, "\pi"] \\
+        Z & & \ker{f} \arrow[from=ll, "\exists ! \tilde{\phi}" swap, dashed] 
     \end{tikzcd}
 \end{center}
 
@@ -1824,15 +1817,6 @@ Generally, we may consider the following commutative diagram:
     where $\Im{f} = \{ f(v) \mid v \in V \}$ is the image of $f$.
 \end{definition}
 
-Then we can consider it dually.
-
-\begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
-        \coim{f} \arrow[hook, from=r, "f", swap] \arrow[from=dr, "0", swap] \arrow[from=rr, "0", bend right, swap] & W \arrow[from=r, "\pi", swap] \arrow[from=d, "\phi", swap] & \ker{f} \\
-        & Z \arrow[ur, "\tilde{\phi}", dashed, swap] &
-    \end{tikzcd}
-\end{center}
-
 \begin{definition}[Coimage]
     Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage} of $f$, denoted by $\coim{f}$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
     \[
@@ -1841,10 +1825,7 @@ Then we can consider it dually.
     where $\ker{f} = \{ w \in W \mid f(w) = 0_V \}$ is the kernel of $f$.
 \end{definition}
 
-%----------------------------------------------------------------------------------------
-\chapter{Introduction to Category Theory}
-
-\epigraph{``If you are willing to prove it, you can prove it. There is no trick.''}{Guowu Meng}
+\newpage
 
 \section{Sum and Direct Sum}\index{Sum and Direct Sum}
 
@@ -2186,7 +2167,7 @@ The alternative, or normal, definition of rank is as follows.
 First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$. Recall that $\ker{f} = f^{-1} (0)$, $\Im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim{f} = \quotient{V_1}{\ker{f}}$ and $\coker{f} = \quotient{V_2}{\Im{f}}$. We have the following commutative diagram:
 
 \begin{center}
-    \begin{tikzcd}[row sep=large, column sep=huge]
+    \begin{tikzcd}
         0 \arrow[d] & 0 \\
         \ker{f} \arrow[d, hook] & \coker{f} \arrow[u] \arrow[d, bend left, "s_2", red] \\
         V_1 \arrow[d, two heads] \arrow[r, "f"] \arrow[dr, ocre, "f", two heads] & V_2 \arrow[u, two heads] \\
@@ -2215,7 +2196,7 @@ With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 
 where $\tilde{f} : \Im{s_1} \to \Im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim{f} \to \Im{f}$ and $s_1 : \coim{f} \to \Im{s_1}$. Then the graph below commutes:
 
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         \Im{s_1} \arrow[r, hook, two heads] & \Im{f} \\
         \coim{f} \arrow[u, hook, two heads, "s_1"] \arrow[ur, hook, two heads, "f'" swap]
     \end{tikzcd}
@@ -2228,7 +2209,8 @@ where $\tilde{f} : \Im{s_1} \to \Im{f}$ is a linear equivalence, as there are li
 The matrix $\begin{bmatrix}
     \tilde{f} & 0 \\
     0 & 0
-\end{bmatrix}$ is the canonical form of the linear map. Compared to the following matrix representation, where $r = \dim{\Im{f}}$ is the rank of $f$:
+\end{bmatrix}$ is the canonical form of the linear map. Just as the canonical form of a matrix, it reveals the essential structure of the linear map. However, the rank of $\tilde{f}$ is unique, which is equal to $\rank{f} = \dim{\Im{f}}$.
+
 \begin{center}
     \begin{tikzpicture}
         \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
@@ -2242,7 +2224,7 @@ The matrix $\begin{bmatrix}
 
 \newpage
 
-\section{Universal Property for Free Space over a Set}
+\section{Free Vector Space}
 
 Let $X$ be a set and $\delta_X = \{ \delta_x \mid x \in X \}$. Here $\delta_x : X \to \F$ is the $\delta$-function at $x$. 
 
@@ -2304,15 +2286,18 @@ The universal property implies an assignment of a linear map $\F[f] : \F[X] \to 
 
 Moreover, $\F[1_X] = 1_{\F[X]}$ or simply $\F[1] = 1$ for all $X$, and $\F[fg] = \F[f] \F[g]$ for all $f : Y \to Z$ and $g : X \to Y$.
 
-\newpage
+%----------------------------------------------------------------------------------------
+\chapter{Introduction to Category Theory}
+
+\epigraph{``If you are willing to prove it, you can prove it. There is no trick.''}{Guowu Meng}
 
 \section{Categories and Functors}
 
-The collection of set maps is denoted as Set and the collection of linear maps over $\F$ is denoted as Vec$_{\F}$. There is a diagram below:
+The collection of set maps is denoted as $\Set$ and the collection of linear maps over $\F$ is denoted as $\Vect_{\F}$. There is a diagram below:
 \begin{center}
     \begin{tikzcd}
-        \text{Set} \arrow[d, "{\F[\phantom{f}]}"] \\
-        \text{Vec}_{\F}
+        \Set \arrow[d, "{\F[\phantom{f}]}"] \\
+        \Vect_{\F}
     \end{tikzcd}
 \end{center}
 where $\F[\phantom{f}]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$. 
@@ -2371,9 +2356,6 @@ Consider the set of all invertible matrices over $\F$, it is also a small catego
     \end{tikzcd}
 \end{center}
 The graph above shows the relation, the arrows show the subsets relation. The arrow head is the larger set and arrow tail is the subset.
-
-
-\chapter{More on Category Theory}
 
 \section{Small Categories}
 

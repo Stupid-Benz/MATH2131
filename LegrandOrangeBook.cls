@@ -292,7 +292,7 @@
 
 \usepackage{titletoc} % Required for manipulating the table of contents
 
-\setcounter{tocdepth}{2} % Display down to subsections in the table of contents
+\setcounter{tocdepth}{1} % Display down to subsections in the table of contents
 
 \contentsmargin{0cm} % Removes the default right margin
 
@@ -729,17 +729,32 @@
 %	REMARK ENVIRONMENT
 %----------------------------------------------------------------------------------------
 
+% Remarks box
+\newmdenv[
+	skipabove=7pt, % Whitespace above box
+	skipbelow=7pt, % Whitespace below box
+	rightline=false, % Right line visible
+	leftline=true, % Left line visible
+	topline=false, % Top line visible
+	bottomline=false, % Bottom line visible
+	linecolor=ocre!50, % Line color
+	linewidth=4pt, % Line width
+	backgroundcolor=ocre!10, % Background color
+	innerleftmargin=5pt, % Inside left margin width
+	innerrightmargin=5pt, % Inside right margin width
+	innertopmargin=5pt, % Inside top margin height
+	innerbottommargin=5pt, % Inside bottom margin height
+	leftmargin=0cm, % Outside left margin width
+	rightmargin=0cm % Outside right margin width
+]{rBox}
+
 \newenvironment{remark}{%
-	\par\small % Reduce font size for remarks
-	\vspace{4pt} % Vertical whitespace
-	\begin{adjustwidth}{35pt}{25pt} % Left and right padding
-		\hspace{-2.5pt}%
-		\begin{tikzpicture}[overlay]
-			\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=3pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}}; % Orange R in a circle
-		\end{tikzpicture}
+	\noindent \small % Reduce font size for remarks
+	\begin{rBox}
+	{\itshape Remark.\hspace{6pt}}% Italic "Remark" text with spacing after
 	\advance\baselineskip -1pt% Reduce line spacing
 }{%
-	\end{adjustwidth}
+	\end{rBox}
 }
 
 %----------------------------------------------------------------------------------------
