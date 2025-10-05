@@ -82,8 +82,10 @@
 \newcommand{\nul}[1]{\text{Nul}(#1)} % Null space of a linear map
 \newcommand{\col}[1]{\text{Col}(#1)} % Column space of a matrix
 \newcommand{\C}{\mathcal{C}} % Category notation
-\newcommand{\Set}{\textbf{Set}}
-\newcommand{\Vect}{\textbf{Vec}}
+\newcommand{\Set}{\textbf{Set}} % Set category notation
+\newcommand{\Vect}{\textbf{Vec}} % Vector space category notation
+\newcommand{\Mor}{\text{Mor}} % Morphism set notation
+\newcommand{\Ob}[1]{\text{Ob}(#1)} % Object set notation
 
 \DeclareMathOperator{\Span}{Span}
 
@@ -95,8 +97,25 @@
 
 \usepackage{mathtools} % for \xhookrightarrow
 
+% For fake coproduct symbol
+\DeclareRobustCommand{\coprod}{\mathop{\text{\fakecoprod}}}
+\newcommand{\fakecoprod}{%
+    \sbox0{$\prod$}%
+    \smash{\raisebox{\dimexpr.9625\depth-\dp0}{\scalebox{1}[-1]{$\prod$}}}%
+    \vphantom{$\prod$}%
+}
+
 % For quotes
 \usepackage{epigraph}
+
+% For tikzcd
+\tikzcdset{
+    /tikz/commutative diagrams/every diagram/.append style={
+        row sep=huge,
+        column sep=huge
+    },
+    row sep/subtext/.initial = 1pt,
+}
 
 %----------------------------------------------------------------------------------------
 
@@ -1138,7 +1157,7 @@ We have to proof if the dimension of a finite dimensional vector space is well-d
 
 Graphically, we have the following commutative diagram:
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         V \arrow[swap, d, "S", hook, two heads] \arrow[r, "T", hook, two heads] & \F^m \\
         \F^n \arrow[ur, "TS^{-1}", hook, two heads, swap]
     \end{tikzcd}
@@ -1175,7 +1194,7 @@ The following is the commutative diagram of the proposition above, where $B = \b
 \end{bmatrix}$:
 
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         \F^n \arrow[r, "A", hook, two heads] \arrow[d, "Q", hook, two heads] & \F^m \arrow[d, "P", hook, two heads] \\
         \F^n \arrow[r, "B", hook, two heads] & \F^m
     \end{tikzcd}
@@ -1319,7 +1338,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 Linear Algebra is the study of linear map between two finite dimensional vector spaces.
 
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         V \arrow[d, hook, two heads] \arrow[dd, bend right, hook, two heads] \arrow[r, "T", hook, two heads] & W \arrow[d, hook, two heads] \arrow[dd, bend left, hook, two heads] \\
         \F^n \arrow[d, hook, two heads] \arrow[r, "A", hook, two heads] & \F^m \arrow[d, hook, two heads] \\
         \F^n \arrow[r, "B", hook, two heads] & \F^m
@@ -1734,7 +1753,7 @@ If we consider the graphical representation of the quotient space $\quotient{W}{
 
     In other words, the following diagram commutes:
     \begin{center}
-        \begin{tikzcd}[row sep=huge, column sep=huge]
+        \begin{tikzcd}
             s \arrow[d, mapsto, xshift=-1.8ex] \in S \arrow[r, "\phi"] \arrow[swap, d, "\iota", hook, xshift=1.5ex] & Z \\
             s \in V \arrow[ru, "\tilde{\phi}"', dashed] &
         \end{tikzcd}
@@ -1766,7 +1785,7 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 \begin{proposition}
     Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$. Then we have the following commutative diagram:
     \begin{center}
-        \begin{tikzcd}[row sep=huge, column sep=huge]
+        \begin{tikzcd}
             & V \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
             & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
             Z & & \quotient{W}{V} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
@@ -1797,12 +1816,12 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 Generally, we may consider the following commutative diagrams, where left is the general case and right is the dual case:
 
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         & \Im{f} \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
         & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
         Z & & \coker{f} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
     \end{tikzcd}
-    \begin{tikzcd}[row sep=huge, column sep=huge, swap]
+    \begin{tikzcd}[swap]
         & \coim{f} \arrow[from=d, "\iota", hook] \arrow[from=ddl, bend left, "0" swap] \arrow[from=ddr, bend right, "0"] \\
         & W \arrow[from=dl, "\forall \phi" swap] \arrow[from=dr, "\pi"] \\
         Z & & \ker{f} \arrow[from=ll, "\exists ! \tilde{\phi}" swap, dashed] 
@@ -1873,7 +1892,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 \begin{proof}
     For subspace $U \subseteq W$ and $W$ is finite dimensional, we have:
     \begin{center}
-        \begin{tikzcd}[row sep=huge, column sep=huge]
+        \begin{tikzcd}
             W \arrow[r, two heads] & U \\
             \F^n \arrow[u, hook, two heads] \arrow[ur, two heads, dashed, "\phi"]
         \end{tikzcd}
@@ -1882,7 +1901,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 
     For quotient space $\quotient{W}{V}$ and $W$ is finite dimensional, we have:
     \begin{center}
-        \begin{tikzcd}[row sep=huge, column sep=huge]
+        \begin{tikzcd}
             V \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \quotient{W}{V}
         \end{tikzcd}
     \end{center}
@@ -2061,7 +2080,7 @@ Later, we will get into the two problems that were asked by the students from Fu
 
 Let $A$ be a $m \times n$ matrix. Then we consider the following diagram:
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         \ker{f} \subseteq \F^n \arrow[r, "f", "A" swap] & \F^m \supseteq \Im{f}
     \end{tikzcd}
 \end{center}
@@ -2246,7 +2265,7 @@ Then we have an injective set map $\iota : X \equiv \delta_X \to \F[X]$ which ma
 
 Among all set maps from $X$ to a linear space over $\F$, the set map $\iota : X \to \F[X]$ is universal in the following sense:
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         X \arrow[r, "\forall \phi"] \arrow[d, "\iota"] & Z \\
         \F[X] \arrow[ur, "\exists ! \tilde{\phi}" swap]
     \end{tikzcd}
@@ -2261,7 +2280,7 @@ Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an 
 
 The universal map is unique in the following sense: suppose that $\iota' : X \to \F[X]'$ is another inclusion map, then there is a unique linear equivalence $\lambda$ in the commutative triangle:
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         & X \arrow[dl, "\iota" swap] \arrow[dr, "\iota'"] \\
         \F[X] \arrow[rr, "\lambda" swap, hook, two heads] & & \F[X]'
     \end{tikzcd}
@@ -2269,7 +2288,7 @@ The universal map is unique in the following sense: suppose that $\iota' : X \to
 
 This can be seen from the following diagram:
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         & & X \arrow[dll, "\iota'" swap] \arrow[dl, "\iota"] \arrow[dr, "\iota'" swap] \arrow[drr, "\iota"] \\
         \F[X]' \arrow[r, "\mu" swap, dashed] \arrow[rrr, bend right, "1"] & \F[X] \arrow[rr, "\lambda" swap, dashed] \arrow[rrr, bend right, "1"] & & \F[X]' \arrow[r, "\mu" swap, dashed] & \F[X]
     \end{tikzcd}
@@ -2278,7 +2297,7 @@ $\lambda$ exists because $\iota$ is universal, and $\mu$ exists because $\iota'$
 
 The universal property implies an assignment of a linear map $\F[f] : \F[X] \to \F[Y]$ to any set map $f : X \to Y$. Indeed,
 \begin{center}
-    \begin{tikzcd}[row sep=huge, column sep=huge]
+    \begin{tikzcd}
         X \arrow[r, "f"] \arrow[d, "\iota" swap, hook] \arrow[dr, "\iota f"] & Y \arrow[d, "\iota", hook] \\
         \F[X] \arrow[r, dashed, "{\exists ! \F[f]}" swap] & \F[Y]
     \end{tikzcd}
@@ -2328,7 +2347,8 @@ Being partially defined means that the composition may not be always defined. Fo
 An example of small category: The collection of all matrices over $\F$. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A : n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA : n \to k$. Note that $I_n : n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have 
 \begin{center}
     \begin{tikzcd}
-        n \arrow[loop above, "1_n"] \arrow[r, "A"] & m \arrow[loop above, "1_m"] \arrow[r, "B"] & k
+        n \arrow[loop left, "1_n"] \arrow[r, "A"] & m \arrow[loop right, "1_m"] \arrow[d, "B"] \\
+        & k
     \end{tikzcd}
 \end{center}
 Note that $A 1_n = A = 1_m A$ and $B 1_m = B$. 
@@ -2363,14 +2383,308 @@ The graph above shows the relation, the arrows show the subsets relation. The ar
     A small category is a set $\C$ together with a subset $\C_0$ of $\C$, two surjective maps $s, t : \C \to \C_0$ and a composition map $\C \times_{(s, t)} \C \to \C$ that sends $(f, g)$ to $fg$ which satisfies the identity law and associativity law.
 \end{definition}
 
-Here $\C \times_{(s, t)} \C$ is defined as the pullback of the diagram below:
+Here $\C \times_{s, t} \C$ is defined as the pullback of the diagram below:
 \begin{center}
     \begin{tikzcd}
-        \C \times_{(s, t)} \C \arrow[r] & \C \\
-        \C & \C_0
+        \C \times_{s, t} \C \arrow[r, "p_1"] \arrow[d, "p_2"] \arrow[dr, phantom, "\ulcorner", very near start] & \C \arrow[d, "t"] \\
+        \C \arrow[r, "s"] & \C_0
+    \end{tikzcd}
+\end{center}
+where the set $\C \times_{s, t} \C = \{ (x, y) \in \C \times \C \mid s(x) = t(y) \}$. Intuitively, the pullback is to filter out the mappings that can do composition, such as $f, g \in \C \times_{(s, t)} \C$ where \begin{tikzcd}[cramped, column sep=normal] A \arrow[r, "f"] & B \arrow[r, "g"] & C \end{tikzcd}.
+
+The $s$ and $t$ are called the \emph{source map} and \emph{target map} respectively. We can picture the composition graphically as follows:
+\begin{center}
+    \begin{tikzcd}[row sep=subtext, column sep=tiny]
+        * & * \arrow[l, "f" swap] & * & * \arrow[l, "g" swap] \\
+        t(f) & s(f) \arrow[r, equal] & t(g) & s(g)
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep=subtext, column sep=tiny]
+        * & * \arrow[l, "fg" swap] \\
+        t(f) & s(g)
+    \end{tikzcd}
+\end{center}
+The left diagram is the equivalent to the right one.
+
+We may draw the identity law this way:
+\begin{center}
+    \begin{tikzcd}[row sep=subtext, column sep=tiny]
+        * \arrow[loop left, "1_{t(f)}"] & * \arrow[l, "f" swap] \\
+        t(f) & s(f)
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep=subtext, column sep=tiny]
+        * & * \arrow[l, "f" swap] \\
+        t(f) & s(f)
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep=subtext, column sep=tiny]
+        * & * \arrow[l, "f" swap] \arrow[loop right, "1_{s(f)}"] \\
+        t(f) & s(f)
+    \end{tikzcd}
+\end{center}
+The three diagrams are equivalent.
+
+We may draw the associativity law this way:
+\begin{center}
+    \begin{tikzcd}[swap]
+        * & * \arrow[l, "f"] & * \arrow[l, "g"] \arrow[ll, bend left, "fg", blue] & * \arrow[l, "h"] \arrow[lll, bend left, "(fg)h", blue] \arrow[ll, bend right, "gh" swap, red] \arrow[lll, bend right, "f(gh)" swap, red]
     \end{tikzcd}
 \end{center}
 
+\begin{example}
+    In the small category of matrices over $\F$, we have 
+    \[
+        \begin{split}
+            \C &= \{ \M{m \times n}{\F} \mid m, n \in \mathbb{N} \} \\
+            \C_0 &= \{ I_n \mid n \in \mathbb{N} \} \equiv \mathbb{N}
+        \end{split}
+    \]
+    If $A \in \C$ is an $m \times n$ matrix, then $s(A) = I_n \equiv n$ and $t(A) = I_m \equiv m$. We can draw $A$ as follows:
+    \begin{center}
+        \begin{tikzcd}[row sep=subtext, swap]
+            * & * \arrow[l, "A"] \\
+            m & n
+        \end{tikzcd}
+    \end{center}
+    Note that $(A, B) \in \C \times_{s, t} \C$, where the composition of $A$ and $B$ defined as the matrix multiplication $AB$, means for some positive integer $m, n$ and $k$:
+    \begin{center}
+        \begin{tikzcd}[row sep=subtext, swap]
+            * & * \arrow[l, "A"] & * \arrow[l, "B"] \\
+            m & n & k
+        \end{tikzcd}
+    \end{center}
+\end{example}
+
+\begin{remark}
+    Elements in $\C$ are \emph{morphisms} or \emph{arrows}, and elements in $\C_0$ are \emph{identity morphisms}. A morphism $f$ is viewed as an arrow from $s(f) \in C_0$ to $t(f) \in C_0$, i.e., $f : s(f) \to t(f)$. 
+    An identity morphism is drawn in the following way with $X$ being called the \emph{object}:
+    \begin{center}
+        \begin{tikzcd}[row sep=subtext, swap]
+            * & * \arrow[l, "1_X"] \\
+            X & X
+        \end{tikzcd}
+    \end{center}
+    In the last example, $I_n$ is the identity morphism at $n$. So $\C_0$ is also called the set of objects. Then a morphism $f$ is viewed as an arrow from object $X \equiv 1_X = s(f)$ to object $Y \equiv 1_Y = t(f)$, i.e., $f : X \to Y$.
+\end{remark}
+
+So, normally, we denote a small category as $\C$ and its set of objects as $\C_0$.
+
+\begin{remark}
+    The set of morphisms from object $X$ to object $Y$ is denoted by $\Mor(X, Y)$. In the last example, $\Mor(m, n) = \M{m \times n}{\F}$, the set of all $m \times n$ matrices over $\F$. Note that $1_X \in \Mor(X, X)$, so $\Mor(X, X) \neq \emptyset$ for all $X \in \C_0$.
+\end{remark}
+
+Then $\C$ is the disjoint union of all $\Mor(X, Y)$ for all pairs of objects $(X, Y)$:
+\[
+    \C = \bigsqcup_{X, Y \in \C_0} \Mor(X, Y)
+\]
+
+\begin{remark}
+    The composition can be written as follows:
+    \begin{center}
+        \begin{tikzcd}[row sep=subtext]
+            \Mor(Y, Z) \times \Mor(X, Y) \arrow[r] & \Mor(X, Z) \\
+            (Z \xlongleftarrow{f} Y, X \xlongleftarrow{g} Y) \arrow[r, mapsto] & X \xlongleftarrow{fg} Z
+        \end{tikzcd}
+    \end{center}
+\end{remark}
+
+Then the following is the second definition of small category, which is also the normal definition of a small category.
+
+\begin{definition}[Small Categories]
+    A small category $\C$ is a collection of the following data:
+    \begin{enumerate}
+        \item A set of objects $\C_0$;
+        \item A set of morphisms $\Mor(X, Y)$ for each pair of objects $(X, Y)$;
+        \item A composition map $\Mor(Y, Z) \times \Mor(X, Y) \to \Mor(X, Z)$ that sends $(f, g)$ to $fg$ for each triple of objects $(X, Y, Z)$;
+        \item An identity morphism $1_X \in \Mor(X, X)$ for each object $X$;
+    \end{enumerate}
+    Moreover, these data satisfies the following conditions:
+    \begin{enumerate}[label=(\alph*)]
+        \item (Identity Law) For all $f \in \Mor(X, Y)$, we have $f 1_X = f = 1_Y f$;
+        \item (Associativity Law) For all appropriate morphisms $f, g, h$, we have $(fg)h = f(gh)$.
+    \end{enumerate}
+\end{definition}
+
+For a small category $\C$, the set of objects is denoted by $\Ob{\C}$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor{X, Y}$, $\Mor_{\C} (X, Y)$ or simply $\C(X, Y)$. We denote 
+
+If we allow $\Ob{\C}$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}, (a larger collection than set), we end up with the definition of \emph{category}.
+
+We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-sided inverse. A category such that every morphism is isomorphic is called a \emph{groupoid}.
+
+\begin{example}
+    The collection of all sets and set maps, denoted by $\Set$, is a category.
+\end{example}
+
+\begin{example}
+    The collection of all linear spaces over $\F$ and linear maps, denoted by $\Vect_{\F}$, is a category.
+\end{example}
+
+\begin{example}
+    If $\C$ and $\mathcal{D}$ are two categories, then we have the product category $\C \times \mathcal{D}$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob{\C}$, $Y \in \Ob{\mathcal{D}}$, $f \in \Mor_{\C}(X, X')$ and $g \in \Mor_{\mathcal{D}}(Y, Y')$.
+\end{example}
+
+\begin{example}
+    The category of set maps between finite sets, denoted by \textbf{FinSet}, is a subcategory of $\Set$.
+\end{example}
+
+\begin{example}
+    Fix an object $X$ in a category $\C$. Then the collection of all morphisms with source $X$, denoted by $\C(X, -)$, is a new category:
+    \begin{itemize}
+        \item Objects: all morphisms $f : X \to Y$ in $\C$ for all $Y \in \Ob{\C}$;
+        \item Morphisms: commutative triangles in $\C$:
+        \begin{center}
+            \begin{tikzcd}
+                & X \arrow[dl, "f" swap] \arrow[dr, "f'"] \\
+                Y \arrow[rr, "g"] & & Y'
+            \end{tikzcd}
+        \end{center}
+        \item The identity morphism at object $f : X \to Y$ is the commutative triangle in $\C$:
+        \begin{center}
+            \begin{tikzcd}
+                & X \arrow[dl, "f" swap] \arrow[dr, "f"] \\
+                Y \arrow[rr, "1_Y"] & & Y
+            \end{tikzcd}
+        \end{center}
+    \end{itemize} 
+\end{example}
+
+\begin{example}
+    Let $V$ be a subspace of the linear space $W$ over $\F$. Then we have a category:
+    \begin{itemize}
+        \item Objects: all morphisms $f : W \to Z$ in $\Vect_{\F}$ such that $f\mid_V = 0$;
+        \item Morphisms: commutative triangles in $\Vect_{\F}$:
+        \begin{center}
+            \begin{tikzcd}
+                & W \arrow[dl, "f_1" swap] \arrow[dr, "f_2"] \\
+                Z_1 \arrow[rr, "g"] & & Z_2
+            \end{tikzcd}
+        \end{center}
+    \end{itemize}
+\end{example}
+
+\begin{definition}[Terminal Object and Initial Object]
+    Let $\C$ be a category. An object $T \in \Ob{\C}$ is called a \emph{terminal object} if for all object $X$, there exists a unique morphism from $X$ to $T$, i.e., $|\C(X, T)| = 1$. An object $I \in \Ob{\C}$ is called an \emph{initial object} if for all object $X$, there exists a unique morphism from $I$ to $X$, i.e., $|\C(I, X)| = 1$.
+\end{definition}
+
+\begin{corollary}
+    A terminal object or an initial object is unique up to isomorphism.
+\end{corollary}
+
+\begin{example}
+    In the last example of category, the quotient map $\pi : W \to \quotient{W}{V}$ is an initial object and the zero map $0 : W \to 0$ is a terminal object.
+\end{example}
+
+\begin{example}
+    In $\Set$, any singleton set is a terminal object, and the empty set is an initial object.
+\end{example}
+
+\begin{example}
+    In $\Vect_{\F}$, the zero vector space is both a terminal object and an initial object.
+\end{example}
+
+\newpage
+
+\section{Products and Coproducts}
+
+\begin{definition}[Products]
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product} of $X$ and $Y$ is an object $X \times Y$ together with two morphisms $\pi_X : X \times Y \to X$ and $\pi_Y : X \times Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \times Y$ such that the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            & Z \arrow[dl, "f_X" swap] \arrow[d, dashed, "\exists ! f"] \arrow[dr, "f_Y"] \\
+            X & X \times Y \arrow[l, "\pi_X"] \arrow[r, "\pi_Y" swap] & Y
+        \end{tikzcd}
+    \end{center}
+\end{definition}
+
+\begin{remark}
+    The product is unique up to isomorphism if it exists.
+\end{remark}
+
+We can consider the product as a terminal object in a new category. 
+
+\begin{corollary}
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. Consider the following new category:
+    \begin{itemize}
+        \item Objects: all morphisms \begin{tikzcd}[cramped, swap, column sep=normal] X \arrow[from=r, "f_X"] & Z & Y \arrow[from=l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob{\C}$;
+        \item Morphisms: commutative diagrams in $\C$:
+    \end{itemize}
+    \begin{center}
+        \begin{tikzcd}[row sep=normal]
+            & Z \arrow[dd, "f"] \arrow[dl, "f_X" swap] \arrow[dr, "f_Y"] \\
+            X & & Y \\
+            & Z' \arrow[ul, "f_X'" swap] \arrow[ur, "f_Y'"]
+        \end{tikzcd}
+    \end{center}
+    Then the product of $X$ and $Y$ is a terminal object in this new category.
+\end{corollary}
+
+\begin{example}
+    In $\Set$, the product of two sets $X$ and $Y$ is the Cartesian product $X \times Y = \{ (x, y) \mid x \in X, y \in Y \}$ with the projection maps $\pi_X(x, y) = x$ and $\pi_Y(x, y) = y$. Then with $f(z) = (f_X(z), f_Y(z))$ for all $z \in Z$, we have the following commutative diagram:
+    \begin{center}
+        \begin{tikzcd}
+            & Z \arrow[dl, "f_X" swap] \arrow[d, dashed, "\exists ! f"] \arrow[dr, "f_Y"] \\
+            X & X \times Y \arrow[l, "\pi_X"] \arrow[r, "\pi_Y" swap] & Y
+        \end{tikzcd}
+    \end{center}
+    
+\end{example}
+
+\begin{example}
+    In $\Vect_{\F}$, the product of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct product $V_1 \times V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$ with the projection maps $\pi_{V_1}(v_1, v_2) = v_1$ and $\pi_{V_2}(v_1, v_2) = v_2$. Then with $f(z) = (f_{V_1}(z), f_{V_2}(z))$ for all $z \in Z$, we have the following commutative diagram:
+    \begin{center}
+        \begin{tikzcd}
+            & Z \arrow[dl, "f_{V_1}" swap] \arrow[d, dashed, "\exists ! f"] \arrow[dr, "f_{V_2}"] \\
+            V_1 & V_1 \times V_2 \arrow[l, "\pi_{V_1}"] \arrow[r, "\pi_{V_2}" swap] & V_2
+        \end{tikzcd}
+    \end{center}
+\end{example}
+
+\begin{definition}[Coproducts]
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ together with two morphisms $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ and any two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            X \arrow[r, "\iota_X"] \arrow[dr, "f_X" swap] & X \coprod Y \arrow[d, dashed, "\exists ! f"] & Y \arrow[l, "\iota_Y" swap] \arrow[dl, "f_Y"] \\
+            & Z
+        \end{tikzcd}
+    \end{center}
+\end{definition}
+
+\begin{corollary}
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct} of $X$ and $Y$ is the initial object in the new category:
+    \begin{itemize}
+        \item Objects: all morphisms \begin{tikzcd}[cramped, column sep=normal] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob{\C}$;
+        \item Morphisms: commutative diagrams in $\C$:
+    \end{itemize}
+    \begin{center}
+        \begin{tikzcd}[row sep=normal]
+            & Z \arrow[dd, "f"] \\
+            X \arrow[ur, "f_X"] \arrow[dr, "f_X'" swap] & & Y \arrow[ul, "f_Y" swap] \arrow[dl, "f_Y'"] \\
+            & Z'
+        \end{tikzcd}
+    \end{center}
+\end{corollary}
+
+\begin{remark}
+    The coproduct is unique up to isomorphism if it exists.
+\end{remark}
+
+\begin{example}
+    In $\Set$, the coproduct of two sets $X$ and $Y$ is the disjoint union $X \sqcup Y = \{ (x, 1) \mid x \in X \} \cup \{ (y, 2) \mid y \in Y \}$.
+\end{example}
+
+\begin{example}
+    In $\Vect_{\F}$, the coproduct of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct sum $V_1 \oplus V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$.
+\end{example}
+
+In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$. Then we will say the biproduct of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$. The following diagram commutes:
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        & V_1 \times V_2 \arrow[dl, "\pi_{V_1}" swap] \arrow[dr, "\pi_{V_2}"] \\
+        V_1 \arrow[dr, "\iota_{V_1}"] && V_2 \arrow[dl, "\iota_{V_2}" swap] \\
+        & V_1 \oplus V_2 \arrow[uu, equal]
+    \end{tikzcd}
+\end{center}
 
 %----------------------------------------------------------------------------------------
 
