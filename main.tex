@@ -1536,7 +1536,7 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
 \end{remark}
 
 \begin{example}
-    Let $X$ be a set, $\F[[X]]$ be the set of all functions $f: X \to \F$ and $\F[X]$ be the set of all finite support functions $f: X \to \F$. For each $x \in X$, we define the delta function $\delta_x : X \to \F$ at point $x$ by 
+    Let $X$ be a set, $\F[[X]]$ be the set of all functions $f: X \to \F$ and $\F[X]$ be the set of all finite support functions $f: X \to \F$. For each $x \in X$, we define the Kronecker delta function $\delta_x : X \to \F$ at point $x$ by 
     \[
         \delta_x(y) = \begin{cases}
             1 & \text{if } y = x \\
@@ -2315,13 +2315,13 @@ Moreover, $\F[1_X] = 1_{\F[X]}$ or simply $\F[1] = 1$ for all $X$, and $\F[fg] =
 The collection of set maps is denoted as $\Set$ and the collection of linear maps over $\F$ is denoted as $\Vect_{\F}$. There is a diagram below:
 \begin{center}
     \begin{tikzcd}
-        \Set \arrow[d, "{\F[\phantom{f}]}"] \\
+        \Set \arrow[d, "{\F[\;\cdot\;]}"] \\
         \Vect_{\F}
     \end{tikzcd}
 \end{center}
-where $\F[\phantom{f}]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$. 
+where $\F[\;\cdot\;]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$. 
 
-$\F[\phantom{f}]$ is an example of functors.
+$\F[\;\cdot\;]$ is an example of functors.
 
 Monoid homomorphisms are another example of functors: in particular group homomorphisms
 \begin{center}
@@ -2588,11 +2588,11 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \section{Products and Coproducts}
 
 \begin{definition}[Products]
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product} of $X$ and $Y$ is an object $X \times Y$ together with two morphisms $\pi_X : X \times Y \to X$ and $\pi_Y : X \times Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \times Y$ such that the following diagram commutes:
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product} of $X$ and $Y$ is an object $X \prod Y$ together with two morphisms $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ such that the following diagram commutes:
     \begin{center}
         \begin{tikzcd}
             & Z \arrow[dl, "f_X" swap] \arrow[d, dashed, "\exists ! f"] \arrow[dr, "f_Y"] \\
-            X & X \times Y \arrow[l, "\pi_X"] \arrow[r, "\pi_Y" swap] & Y
+            X & X \prod Y \arrow[l, "\pi_X"] \arrow[r, "\pi_Y" swap] & Y
         \end{tikzcd}
     \end{center}
 \end{definition}
@@ -2658,9 +2658,9 @@ We can consider the product as a terminal object in a new category.
     \end{itemize}
     \begin{center}
         \begin{tikzcd}[row sep=normal]
-            & Z \arrow[dd, "f"] \\
+            & Z \\
             X \arrow[ur, "f_X"] \arrow[dr, "f_X'" swap] & & Y \arrow[ul, "f_Y" swap] \arrow[dl, "f_Y'"] \\
-            & Z'
+            & Z' \arrow[uu, "f"]
         \end{tikzcd}
     \end{center}
 \end{corollary}
@@ -2677,7 +2677,7 @@ We can consider the product as a terminal object in a new category.
     In $\Vect_{\F}$, the coproduct of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct sum $V_1 \oplus V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$.
 \end{example}
 
-In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$. Then we will say the biproduct of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$. The following diagram commutes:
+In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$. Then we will say the \emph{biproduct} of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$. The following diagram commutes:
 \begin{center}
     \begin{tikzcd}[row sep=normal]
         & V_1 \times V_2 \arrow[dl, "\pi_{V_1}" swap] \arrow[dr, "\pi_{V_2}"] \\
@@ -2685,6 +2685,97 @@ In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \
         & V_1 \oplus V_2 \arrow[uu, equal]
     \end{tikzcd}
 \end{center}
+
+\begin{remark}
+    Biproduct exists if and only if the initial object and terminal object exist and they are the same.
+\end{remark}
+
+\newpage
+
+\section{Functors}
+
+\begin{definition}[Functors]
+    Let $\C$ and $\mathcal{D}$ be two categories. A \emph{functor} $F : \C \to \mathcal{D}$ consists of the following data:
+    \begin{itemize}
+        \item A map $F : \Ob{\C} \to \Ob{\mathcal{D}}$;
+        \item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\mathcal{D}}(F(X), F(Y))$ for all $X, Y \in \Ob{\C}$;
+    \end{itemize}
+    such that the following conditions are satisfied:
+    \begin{enumerate}[label=(\alph*)]
+        \item For all $X \in \Ob{\C}$, we have $F(1_X) = 1_{F(X)}$;
+        \item For all appropriate morphisms $f, g$ in $\C$, we have $F(fg) = F(f) F(g)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    There are two functors from $\Set$ to $\Vect_{\F}$:
+    \begin{center}
+        \begin{tikzcd}
+            \Set \arrow[r, "{\F[\;\cdot\;]}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "|\;\cdot\;|", yshift=-0.5ex]
+        \end{tikzcd}
+    \end{center}
+    where $\F[\;\cdot\;]$ sends set $X$ to the free vector space $\F[X]$ generated by $X$, and a set map $f : X \to Y$ to the linear map $\F[f] : \F[X] \to \F[Y]$ induced by $f$. The functor $|\;\cdot\;|$ sends a vector space $V$ to its underlying set $|V|$, and a linear map $\phi : V \to W$ to the set map $|\phi| : |V| \to |W|$ induced by $\phi$.
+
+    The $\F[\;\cdot\;]$ is called the \emph{free functor}, specifically it is the \emph{free vector space functor}. The $|\;\cdot\;|$ is called the \emph{underlying functor} or \emph{forgetful functor}.
+\end{example}
+
+For some set $X$ and any vector space $V$, we can consider the following diagram:
+\begin{center}
+    \begin{tikzcd}
+        X \arrow[r, "\forall \phi"] \arrow[d, "\iota", hook] & V \\
+        \F[X] \arrow[ur, dashed, "\exists ! \bar{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+This is called the \emph{universal property of free vector space over a set}. Here $\iota : X \to \F[X]$ is the inclusion map, $\phi : X \to V$ is any set map, and $\bar{\phi} : \F[X] \to V$ is the unique linear map induced by $\phi$.
+
+\begin{remark}
+    The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any vector space $V$, there is a natural identification:
+    \[
+        \Set(X, |V|) \equiv \Vect_{\F}(\F[X], V)
+    \]
+    where $\Set(X, |V|)$ is the set of all set maps from $X$ to the underlying set of $V$, and $\Vect_{\F}(\F[X], V)$ is the set of all linear maps from the free vector space $\F[X]$ to $V$.
+    
+    If we consider $\phi : X \to |V|$ as an element in $\Set(X, |V|)$, then the corresponding element in $\Vect_{\F}(\F[X], V)$ is the unique linear map $\bar{\phi} : \F[X] \to V$ induced by $\phi$.
+
+    Note that $\iota \equiv 1_{\F[X]}$ is the identity element in $\Vect_{\F}(\F[X], \F[X])$, so it corresponds to an element in $\Set(X, |\F[X]|)$, which is exactly the inclusion map $\iota : X \to |\F[X]|$.
+\end{remark}
+
+\begin{definition}[Adjoint Functors]
+    Let $\C$ and $\mathcal{D}$ be two categories. A functor $F : \C \to \mathcal{D}$ is called a \emph{left adjoint} of a functor $G : \mathcal{D} \to \C$, and $G$ is called a \emph{right adjoint} of $F$, if there is a natural identification:
+    \[
+        \mathcal{D}(F(X), Y) \equiv \C(X, G(Y))
+    \]
+    for all $X \in \Ob{\C}$ and $Y \in \Ob{\mathcal{D}}$.
+\end{definition}
+
+\begin{example}
+    The free functor $\F[\;\cdot\;] : \Set \to \Vect_{\F}$ is a left adjoint of the underlying functor $|\;\cdot\;| : \Vect_{\F} \to \Set$. This is exactly the universal property of free vector space over a set.
+\end{example}
+
+% Need some explanation
+
+Let $X$ be a set. 
+\begin{center}
+    \begin{tikzcd}
+        \Set \arrow[r, "- \times X", yshift=0.5ex] & \Set \arrow[l, "{\Set(X, -)}", yshift=-0.5ex]
+    \end{tikzcd}
+\end{center}
+where $- \times X$ is the product endofunctor from $\Set$ to $\Set$:
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        Y \arrow[dd, "f" swap] & Y \times X \arrow[dd, "f \times 1_X"] \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        Z & Z \times X
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=normal]
+        \Set(X, Y) \arrow[dd] & Y \arrow[dd, "f"] \\
+        \phantom{*} & \arrow[l, mapsto, shorten <= 2ex, shorten >= 2ex] \\
+        \Set(X, Z) & Z 
+    \end{tikzcd}
+\end{center}
+
+The $\Set(X, -)$ is the hom endofunctor from $\Set$ to $\Set$:
+
 
 %----------------------------------------------------------------------------------------
 
