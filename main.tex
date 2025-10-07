@@ -65,7 +65,7 @@
 \usetikzlibrary{matrix, positioning, arrows.meta, decorations.pathreplacing} % <-- Add this line to enable matrix of math nodes
 
 \newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
-\newcommand{\Hom}[2]{\text{Hom}(#1, #2)} % Hom-set
+\newcommand{\Hom}{\text{Hom}} % Hom-set
 \renewcommand{\ker}[1]{\text{Ker}(#1)} % Kernel of a linear map
 \renewcommand{\Im}[1]{\text{Im}(#1)} % Image of a linear map
 \renewcommand{\span}[1]{\text{Span}(#1)} % Span of a set of vectors
@@ -73,7 +73,7 @@
 \newcommand{\quotient}[2]{#1 /\, #2} % Quotient notation
 \newcommand{\F}{\mathbb{F}} % Field notation
 \newcommand{\M}[2]{\text{M}_{#1}(#2)} % Matrix set notation
-\newcommand{\Map}[2]{\text{Map}(#1, #2)} % Map notation
+\newcommand{\Map}{\text{Map}} % Map notation
 \newcommand{\rank}[1]{\text{Rank}(#1)} % Rank of a matrix
 \newcommand{\coker}[1]{\text{Coker}(#1)} % Cokernel of a linear map
 \newcommand{\coim}[1]{\text{Coim}(#1)} % Coimage of a linear map
@@ -86,6 +86,7 @@
 \newcommand{\Vect}{\textbf{Vec}} % Vector space category notation
 \newcommand{\Mor}{\text{Mor}} % Morphism set notation
 \newcommand{\Ob}[1]{\text{Ob}(#1)} % Object set notation
+\newcommand{\B}{\mathcal{B}} % Basis notation
 
 \DeclareMathOperator{\Span}{Span}
 
@@ -105,8 +106,15 @@
     \vphantom{$\prod$}%
 }
 
+% For vertical equivalence symbol
+\newcommand{\vequiv}{\rotatebox{90}{$\equiv$}}
+
 % For quotes
 \usepackage{epigraph}
+\renewcommand{\epigraphsize}{\small}
+
+\let\originalepigraph\epigraph 
+\renewcommand\epigraph[2]{\originalepigraph{#1}{\textsc{#2}}}
 
 % For tikzcd
 \tikzcdset{
@@ -116,6 +124,10 @@
     },
     row sep/subtext/.initial = 1pt,
 }
+
+\usepackage{musicography} % For music natural symbol
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} % Reset mathcal font to the default one
 
 %----------------------------------------------------------------------------------------
 
@@ -216,7 +228,7 @@
     $S, T$ & Linear maps \\
     $A, B$ & Matrices \\
     \midrule
-    $\Hom{V}{W}$ & Hom-set of $V$ to $W$ \\
+    $\Hom(V, W)$ & Hom-set of $V$ to $W$ \\
     $\End{A}$ & Endomorphism ring of $A$ \\
     $\M{m \times n}{\F}$ & the set of all $m \times n$ matrices over $\F$ \\
     \midrule
@@ -520,7 +532,7 @@ To introduce the vector space, the following two morphisms are required.
 The following two sets are the sets of all structure-preserving maps.
 
 \begin{definition}[Hom-set]
-    The set of all morphisms from an algebraic structure $A$ to another algebraic structure $B$ is called the \emph{hom-set}, denoted by $\Hom{A}{B}$. 
+    The set of all morphisms from an algebraic structure $A$ to another algebraic structure $B$ is called the \emph{hom-set}, denoted by $\Hom(A, B)$. 
 \end{definition}
 
 \begin{definition}[Endomorphism Ring]
@@ -546,7 +558,7 @@ The following two sets are the sets of all structure-preserving maps.
         x &\mapsto x
     \end{split}
     \]
-    Note that all endomorphisms in $\End{A}$ are group homomorphisms and $\End{A} = \Hom{A}{A}$.
+    Note that all endomorphisms in $\End{A}$ are group homomorphisms and $\End{A} = \Hom(A, A)$.
 \end{definition}
 
 \newpage
@@ -612,7 +624,7 @@ A linear space / vector space is a set with a linear structure over a field on t
     Let $X$ be a set and $\F$ be a field. ($f$ is a set map)
     \[
     \begin{split}
-        \F[[X]] = \Map{X}{\F} &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $\F$-valued functions on } X \\
+        \F[[X]] = \Map(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $\F$-valued functions on } X \\
         &=\joinrel= \left\{ f : X \to \F \right\}
     \end{split}
     \]
@@ -698,7 +710,7 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
             T(\alpha \vec{u}) &= \alpha T(\vec{u})
         \end{split}
     \]
-    The set of all linear maps from $V$ to $W$ is denoted by $\Hom{V}{W}$. Some may write {$\mathcal{L}(V, W)$}.
+    The set of all linear maps from $V$ to $W$ is denoted by $\Hom(V, W)$. Some may write {$\mathcal{L}(V, W)$}.
 \end{definition}
 
 \begin{definition}[Linear Combinations]
@@ -731,7 +743,7 @@ The following is the definition of linear map using linear combination. Note tha
     
     \begin{center}
         \begin{tikzcd}[column sep=huge, row sep=tiny]
-            \Hom{\F^n}{\F^m} \arrow[r, equal, "\text{natural}", "\text{identification}" swap] & \M{m \times n}{\F} \\
+            \Hom(\F^n, \F^m) \arrow[r, equal, "\text{natural}", "\text{identification}" swap] & \M{m \times n}{\F} \\
             T \arrow[r, mapsto] & A \\
             A\cdot & A \arrow[l, mapsto]
         \end{tikzcd}
@@ -817,37 +829,37 @@ where $i$ is summed from $1$ to $n$.
 \end{example}
 
 \begin{proposition}
-    Let $X$ be a set and $W$ be a linear space over a field $\F$. Then the set of all set maps from $X$ to $W$, denoted by $\Map{X}{W}$, is a linear space over $\F$ with the following operations defined pointwisely:
+    Let $X$ be a set and $W$ be a linear space over a field $\F$. Then the set of all set maps from $X$ to $W$, denoted by $\Map(X, W)$, is a linear space over $\F$ with the following operations defined pointwisely:
     \[
         \begin{split}
-            + : \Map{X}{W} \times \Map{X}{W} &\to \Map{X}{W} \\
+            + : \Map(X, W) \times \Map(X, W) &\to \Map(X, W) \\
             (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to W \\ \\
-            \cdot : \F \times \Map{X}{W} &\to \Map{X}{W} \\
+            \cdot : \F \times \Map(X, W) &\to \Map(X, W) \\
             (\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to W
         \end{split}
     \]
 \end{proposition}
 
 \begin{proof}
-    The $\Map{X}{W}$ is defined pointwisely by $\F$, hence it is trivial to be a linear map.
+    The $\Map(X, W)$ is defined pointwisely by $\F$, hence it is trivial to be a linear map.
 \end{proof}
 
 \begin{proposition}
-    Let $V$ and $W$ be two linear spaces over a field $\F$. Then $\Hom{V}{W}$ is a linear space over $\F$ with the following operations defined pointwisely:
+    Let $V$ and $W$ be two linear spaces over a field $\F$. Then $\Hom(V, W)$ is a linear space over $\F$ with the following operations defined pointwisely:
     \[
         \begin{split}
-            + : \Hom{V}{W} \times \Hom{V}{W} &\to \Hom{V}{W} \\
+            + : \Hom(V, W) \times \Hom(V, W) &\to \Hom(V, W) \\
             (f,g) &\mapsto (f+g: \vec{v} \mapsto f(\vec{v}) + g(\vec{v})) \qquad f + g : V \to W \\ \\
-            \cdot : \F \times \Hom{V}{W} &\to \Hom{V}{W} \\
+            \cdot : \F \times \Hom(V, W) &\to \Hom(V, W) \\
             (\alpha,f) &\mapsto (\alpha f: \vec{v} \mapsto \alpha f(\vec{v})) \qquad \alpha f : V \to W
         \end{split}
     \]
 \end{proposition}
 
 \begin{proof}
-    Note that $\Hom{V}{W} \subseteq \Map{V}{W}$. We need to show that the operations defined above are closed in $\Hom{V}{W}$, i.e., for all $f, g \in \Hom{V}{W}$ and $\alpha \in \F$, $f + g \in \Hom{V}{W}$ and $\alpha f \in \Hom{V}{W}$ or equivalently, $f$ respects linear combinations.
+    Note that $\Hom(V, W) \subseteq \Map(V, W)$. We need to show that the operations defined above are closed in $\Hom(V, W)$, i.e., for all $f, g \in \Hom(V, W)$ and $\alpha \in \F$, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$ or equivalently, $f$ respects linear combinations.
 
-    Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in \F$. Since $f, g \in \Hom{V}{W}$, we have:
+    Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in \F$. Since $f, g \in \Hom(V, W)$, we have:
     \[
         \begin{split}
             (f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
@@ -856,16 +868,16 @@ where $i$ is summed from $1$ to $n$.
             &\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
         \end{split}
     \]
-    where "lin" denotes the linearity of $f$ and $g$. Thus, $f + g \in \Hom{V}{W}$ and $\alpha f \in \Hom{V}{W}$.
+    where "lin" denotes the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
 \end{proof}
 
 \begin{remark}
-    Note that $\End{V} = \Hom{V}{V}$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
+    Note that $\End(V) = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
 
 Then we can say that 
 \begin{center}
-    $\Map{\F^n}{\F^m} \supseteq \Hom{\F^n}{\F^m} \cong \M{m \times n}{\F}$
+    $\Map(\F^n, \F^m) \supseteq \Hom(\F^n, \F^m) \cong \M{m \times n}{\F}$
 \end{center}
 
 
@@ -1777,7 +1789,7 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 \begin{center}
     \begin{tikzcd}[row sep=tiny, column sep=tiny]
         \phi \arrow[r, mapsto] & \tilde{\phi} \\
-        \Map{S}{Z} \arrow[r, leftrightarrow, "\cong" description] & \text{Hom}(V, Z) \\
+        \Map(S, Z) \arrow[r, leftrightarrow, "\cong" description] & \text{Hom}(V, Z) \\
         \tilde{\phi} \circ \iota \arrow[r, mapsto] & \tilde{\phi} \\
     \end{tikzcd}
 \end{center}
@@ -2308,20 +2320,20 @@ Moreover, $\F[1_X] = 1_{\F[X]}$ or simply $\F[1] = 1$ for all $X$, and $\F[fg] =
 %----------------------------------------------------------------------------------------
 \chapter{Introduction to Category Theory}
 
-\epigraph{``If you are willing to prove it, you can prove it. There is no trick.''}{Guowu Meng}
+\epigraph{``In linear algebra, all the proofs should be straight-forward. There is no trick. If you think it's very hard, there is something wrong''}{Guowu Meng}
 
 \section{Categories and Functors}
 
 The collection of set maps is denoted as $\Set$ and the collection of linear maps over $\F$ is denoted as $\Vect_{\F}$. There is a diagram below:
 \begin{center}
     \begin{tikzcd}
-        \Set \arrow[d, "{\F[\;\cdot\;]}"] \\
+        \Set \arrow[d, "{\F[-]}"] \\
         \Vect_{\F}
     \end{tikzcd}
 \end{center}
-where $\F[\;\cdot\;]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$. 
+where $\F[-]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$. 
 
-$\F[\;\cdot\;]$ is an example of functors.
+$\F[-]$ is an example of functors.
 
 Monoid homomorphisms are another example of functors: in particular group homomorphisms
 \begin{center}
@@ -2506,7 +2518,7 @@ Then the following is the second definition of small category, which is also the
     \end{enumerate}
 \end{definition}
 
-For a small category $\C$, the set of objects is denoted by $\Ob{\C}$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor{X, Y}$, $\Mor_{\C} (X, Y)$ or simply $\C(X, Y)$. We denote 
+For a small category $\C$, the set of objects is denoted by $\Ob{\C}$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor(X, Y)$, $\Mor_{\C} (X, Y)$, Hom$_{\C}(X, Y)$ or simply $\C(X, Y)$.
 
 If we allow $\Ob{\C}$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}, (a larger collection than set), we end up with the definition of \emph{category}.
 
@@ -2711,12 +2723,12 @@ In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \
     There are two functors from $\Set$ to $\Vect_{\F}$:
     \begin{center}
         \begin{tikzcd}
-            \Set \arrow[r, "{\F[\;\cdot\;]}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "|\;\cdot\;|", yshift=-0.5ex]
+            \Set \arrow[r, "{\F[-]}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "|-|", yshift=-0.5ex]
         \end{tikzcd}
     \end{center}
-    where $\F[\;\cdot\;]$ sends set $X$ to the free vector space $\F[X]$ generated by $X$, and a set map $f : X \to Y$ to the linear map $\F[f] : \F[X] \to \F[Y]$ induced by $f$. The functor $|\;\cdot\;|$ sends a vector space $V$ to its underlying set $|V|$, and a linear map $\phi : V \to W$ to the set map $|\phi| : |V| \to |W|$ induced by $\phi$.
+    where $\F[-]$ sends set $X$ to the free vector space $\F[X]$ generated by $X$, and a set map $f : X \to Y$ to the linear map $\F[f] : \F[X] \to \F[Y]$ induced by $f$. The functor $|-|$ sends a vector space $V$ to its underlying set $|V|$, and a linear map $\phi : V \to W$ to the set map $|\phi| : |V| \to |W|$ induced by $\phi$.
 
-    The $\F[\;\cdot\;]$ is called the \emph{free functor}, specifically it is the \emph{free vector space functor}. The $|\;\cdot\;|$ is called the \emph{underlying functor} or \emph{forgetful functor}.
+    The $\F[-]$ is called the \emph{free functor}, specifically it is the \emph{free vector space functor}. The $|-|$ is called the \emph{underlying functor} or \emph{forgetful functor}.
 \end{example}
 
 For some set $X$ and any vector space $V$, we can consider the following diagram:
@@ -2749,33 +2761,220 @@ This is called the \emph{universal property of free vector space over a set}. He
 \end{definition}
 
 \begin{example}
-    The free functor $\F[\;\cdot\;] : \Set \to \Vect_{\F}$ is a left adjoint of the underlying functor $|\;\cdot\;| : \Vect_{\F} \to \Set$. This is exactly the universal property of free vector space over a set.
+    The free functor $\F[-] : \Set \to \Vect_{\F}$ is a left adjoint of the underlying functor $|-| : \Vect_{\F} \to \Set$. This is exactly the universal property of free vector space over a set.
 \end{example}
 
-% Need some explanation
+\begin{definition}[Endofunctors]
+    An \emph{endofunctor} is a functor $F : \C \to \C$ that maps a category to itself.
+\end{definition}
 
-Let $X$ be a set. 
+\begin{example}
+    Let $X$ be a set. Then we have an adjoint pair of functors:
+    \begin{center}
+        \begin{tikzcd}
+            \Set \arrow[r, "- \times X", yshift=0.5ex] & \Set \arrow[l, "{\Set(X, -)}", yshift=-0.5ex]
+        \end{tikzcd}
+    \end{center}
+
+    On the left is the endofunctor $- \times X$ and on the right is the endofunctor $\Set(X, -)$.
+    \begin{center}
+        \begin{tikzcd}[row sep=normal]
+            \Set \arrow[r, "- \times X"] & \Set \\[-1.8em]
+            Y \arrow[dd, "f" swap] & Y \times X \arrow[dd, "f \times 1_X"] \\
+            \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+            Z & Z \times X
+        \end{tikzcd}
+        \qquad\qquad
+        \begin{tikzcd}[row sep=normal]
+            \Set & \Set \arrow[l, "{\Set(X, -)}" swap] \\[-1.8em]
+            \Set(X, Y) \arrow[dd, "{\Set(X, f)}" swap] & Y \arrow[dd, "f"] \\
+            \phantom{*} & \arrow[l, mapsto, shorten <= 2ex, shorten >= 2ex] \\
+            \Set(X, Z) & Z 
+        \end{tikzcd}
+    \end{center}
+
+    Consider an element $g \in \Set(X, Y)$, which is a set map $g : X \to Y$. Then the corresponding element in $\Set(X, Z)$ is $\Set(X, f)(g) = fg : X \to Z$.
+
+    Then we can write the natural identification as follows:
+    \[
+        \Set(Y \times X, Z) \equiv \Set(Y, \Set(X, Z))
+    \]
+    for all sets $Y$ and $Z$. This means that a set map $F : Y \times X \to Z$ corresponds to a set map $F_{\musNatural} : Y \to \Set(X, Z)$ such that a $y \in Y$ is mapped to a set map $F_{\musNatural}(y) : X \to Z$ defined by $F_{\musNatural}(y)(x) = F(y, x)$ for all $x \in X$.
+\end{example}
+
+Consider the following two diagrams:
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        X_1 & X_1 \times X_2 \arrow[l] \arrow[r] \arrow[d, "{\F[-]}", Rightarrow] & X_2 \\
+        \F[X_1] & \F[X_1 \times X_2] \arrow[l] \arrow[r] & \F[X_2] \\[-3.6em]
+        & \F[X_1] \otimes \F[X_2]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[column sep=normal]
+        X_1 \arrow[r] & X_1 \sqcup X_2 \arrow[d, "{\F[-]}", Rightarrow] & X_2 \arrow[l] \\
+        \F[X_1] \arrow[r] & \F[X_1 \sqcup X_2] & \F[X_2] \arrow[l] \\[-3.6em]
+        & \F[X_1] \oplus \F[X_2]
+    \end{tikzcd}
+\end{center}
+The left diagram shows that the free functor sends the product of two sets to the tensor product of two vector spaces. The right diagram shows that the free functor sends the coproduct of two sets to the direct sum of two vector spaces, i.e., the coproduct of two vector spaces. Note that the tensor product of two vector spaces is \emph{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$. There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 \oplus V_2$.
+
+\begin{remark}
+    The left adjoint functor preserves coproducts, and the right adjoint functor preserves products. This is the consequences of the \emph{adjoint functor theorem}. 
+\end{remark}
+
+Similarly, we have the following natural identifications:
+\[
+    \Vect_{\F}(X \otimes Y, Z) \equiv \Vect_{\F}(Y, \Vect_{\F}(X, Z))
+\]
+Note that $\Vect_{\F}(X, Z)$ is a vector space over $\F$, as $\Vect_{\F} \equiv \Hom_{\F}$. Then, we have the following adjoint pair of endofunctors on $\Vect_{\F}$:
 \begin{center}
     \begin{tikzcd}
-        \Set \arrow[r, "- \times X", yshift=0.5ex] & \Set \arrow[l, "{\Set(X, -)}", yshift=-0.5ex]
+        \Vect_{\F} \arrow[r, "- \otimes X", yshift=0.5ex] & \Vect_{\F} \arrow[l, "{\Hom_{\F}(X, -)}", yshift=-0.5ex]
     \end{tikzcd}
 \end{center}
-where $- \times X$ is the product endofunctor from $\Set$ to $\Set$:
+
+\newpage
+
+\section{Dual Spaces, Dual Bases, Double Dual Bases and Doubles}
+
+Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}. 
+
+\begin{proposition}
+    Let $V$ be a finite dimensional linear space over $\F$. Then $\dim(V^*) = \dim(V)$. So, $V^*$ is isomorphic to $V$ but not naturally isomorphic to $V$.
+\end{proposition}
+\begin{proof}
+    Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$. Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e_1}, \hat{e_2}, \ldots, \hat{e_n}$. So $\dim(V^*) = n = \dim(V)$. We can say $V^* \cong V$.
+\end{proof}
+
+We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e_1}, \hat{e_2}, \ldots, \hat{e_n}\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e_i}$. This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
+
+\begin{definition}[Bases]
+    A \emph{basis} of a linear space $V$ over $\F$ is the minimal spanning set of $V$ with an order. The set of all bases of $V$ is denoted by $\B_V$.
+\end{definition}
+
+\begin{proposition}
+    $\B_V$ and $\B_{V^*}$ are naturally isomorphic in $\Set$, i.e., the following natural identification holds:
+    \[
+        \begin{split}
+            \B_V &\equiv \B_{V^*} \\
+            \vec{v} = (v_1, v_2, \ldots, v_n) &\equiv (\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n}) = \vec{v}^* \\
+        \end{split}
+    \]
+    where $\hat{v_i} \in V^*$ is defined by $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
+\end{proposition}
+
+\begin{proof}
+Consider the following commutative diagram:
 \begin{center}
-    \begin{tikzcd}[row sep=normal]
-        Y \arrow[dd, "f" swap] & Y \times X \arrow[dd, "f \times 1_X"] \\
-        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
-        Z & Z \times X
-    \end{tikzcd}
-    \begin{tikzcd}[row sep=normal]
-        \Set(X, Y) \arrow[dd] & Y \arrow[dd, "f"] \\
-        \phantom{*} & \arrow[l, mapsto, shorten <= 2ex, shorten >= 2ex] \\
-        \Set(X, Z) & Z 
+    \begin{tikzcd}
+        V \arrow[d, "{[-]_V}" swap, hook, two heads] \arrow[dr, dashed, "\hat{v_i}"] \\
+        \F^n \arrow[r, "\pi_i"] & \F
     \end{tikzcd}
 \end{center}
+The projection map $\pi_i$ is a linear functional in $(\F^n)^*$ that sends $\vec{x} = (\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n})$ to $x_i$. It is actually $\hat{e_i}$. Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $\vec{v} = (v_1, v_2, \ldots, v_n) \in \B_V$ such that $[v_j]_V = \hat{e_j}$ for all $1 \leq j \leq n$. It is a unique linear map which identify $v_i$ with $\hat{e_i}$. It can be done by trivialisation of $V$ with respect to the basis $\vec{v}$. Then we define $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
 
-The $\Set(X, -)$ is the hom endofunctor from $\Set$ to $\Set$:
+Then we have to consider whether $(\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$ is a basis of $V^*$. As $\dim{V^*} = n$, we only need to show that $(\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$ is a spanning set of $V^*$ or linearly independent. We have to check whether the equation $\sum_{i=1}^n x_i \hat{v_i} = 0$ for some $x_i \in \F$ has only the trivial solution. Applying it to $v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat{v_i}(v_j) = \sum_{i=1}^n x_i \delta_{ij} = x_j$. So $x_j = 0$ for all $1 \leq j \leq n$. This means that $(\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$ is linearly independent, and hence it is a basis of $V^*$. We call it the \emph{dual basis} of the basis $\vec{v} = (v_1, v_2, \ldots, v_n)$ and denote it by $\vec{v}^* = (\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$. 
 
+Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat{v_i}(v_j) = \delta_{ij}$. Let $V = \F^n$ and $\vec{v} = (\vec{v_1}, \vec{v_2}, \ldots, \vec{v_n})$ be a basis of $V$. Then $A = [\vec{v_1}, \vec{v_2}, \ldots, \vec{v_n}]$ is an invertible matrix. Let $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ be a basis of $V^*$. Then we have the following equations:
+\[
+    [ \delta_{ij} ] = \begin{bmatrix}
+        \alpha_1 \\
+        \vdots \\
+        \alpha_n
+    \end{bmatrix} \begin{bmatrix}
+        \vec{v_1} & \ldots & \vec{v_n}
+    \end{bmatrix} = I_n
+\]
+Then $(\alpha_1, \alpha_2, \ldots, \alpha_n) = A^{-1}$. So the dual basis is unique.
+
+Finally, we have the natural identification:
+\end{proof}
+
+\begin{remark}
+    $V \cong V^*$ but $\B_V \equiv \B_{V^*}$. The isomorphism $V \cong V^*$ depends on the choice of a basis in $\B_V$, while the natural isomorphism $\B_V \equiv \B_{V^*}$ does not depend on any choice.
+\end{remark}
+
+% Dual space functors and identity functors such stuffs. Later ask.
+
+However, $V$ is naturally isomorphic to its double dual space $V^{**} = (V^*)^*$. 
+
+Let $\langle-,-\rangle : V^* \times V \to \F$ be the natural pairing defined by $\langle\alpha, u\rangle = \alpha(u)$ where $\alpha : V \to \F$ that sends $u \to \alpha{u}$. It is the pairing of a covector with a vector and the map is bilinear.
+
+\begin{definition}[Bilinear Maps]
+    A map $B : U \times V \to W$ is called \emph{bilinear} if for all $u \in U$, the map $B(u, -) : V \to W$ is linear, and for all $v \in V$, the map $B(-, v) : U \to W$ is linear.
+\end{definition}
+
+We have the following natural identification:
+\begin{center}
+    \begin{tikzcd}[row sep=normal, column sep=normal]
+        V^* \times V \arrow[rr, "{\langle-,-\rangle}"] & \arrow[d, "\vequiv" description, phantom] & \F \arrow[r, "\equiv" description, phantom] 
+        & V^* \arrow[rr, "1_{V^*}"] & \arrow[d, "\vequiv" description, phantom] & \Hom_{\F}(V, \F) \\
+
+
+        V \times V^* \arrow[d, hook, two heads] \arrow[rr] & \phantom{*} & \F \arrow[r, "\equiv" description, phantom] 
+        & V \arrow[rr, "\iota_V"] & \phantom{*} & \Hom_{\F}(V^*, \F) \\[1.8em]
+
+
+        V^* \times V \arrow[urr, "{\langle-,-\rangle}" swap]
+    \end{tikzcd}
+\end{center}
+where $\iota_V : V \to V^{**}$ is defined by $\iota_V(u) = \check{u}$ such that $\check{u}(\alpha) = \alpha(u)$. Then $V^{**} = \Hom_{\F}(V^*, \F) \equiv V$.
+
+\begin{definition}[Doubles]
+    Let $V$ be a linear space over $\F$. The \emph{double} of $V$, denoted by $D(V)$, is defined as follows:
+    \[
+        D(V) = V \oplus V^*
+    \]
+\end{definition}
+
+As $V$ is naturally isomorphic to $V^{**}$, we have the following natural identification:
+\[
+    D(V) = V \oplus V^* \equiv V^* \oplus V^{**} = D(V^*)
+\]
+
+\begin{remark}
+    The matrix representation of the isomorphism between $D(V)$ and $D(V^*)$ is
+    \[
+        \begin{bmatrix}
+            0 & -\iota_V \\
+            1 & 0
+        \end{bmatrix}
+    \]
+    where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The negative sign is used to make the isomorphism a symplectic isomorphism, which will be discussed in the later chapters.
+\end{remark}
+
+
+
+\begin{example}
+    Consider the following open subset $U$ of $\mathbb{R}^2$:
+    \begin{center}
+		\begin{tikzpicture}
+			\draw[gray,-Stealth,thin] (-1,0) -- (5,0) node[right] {$x$};
+			\draw[gray,-Stealth,thin] (0,-1) -- (0,4) node[above] {$y$};
+
+            \filldraw (3.5,1) circle (1pt) node[below right] {$p$};
+
+			\draw[dashed] plot[smooth cycle] coordinates{(4.5,1.5) (3.75,2.6) (2.5,2.91) (1.25,2.6) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
+			\path (2.5,1.75) node {$U$};
+
+            \draw[-Stealth, ocre] (3.5,1) -- (4,2) node[midway, right] {$\vec{u}$};
+            \draw[-Stealth, ocre] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
+		\end{tikzpicture}
+	\end{center}
+    Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \mathbb{R}$. It is a linear functional d$f_p : \text{T}_p U \to \mathbb{R}$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$. Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\mathbb{R}$. Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system. However, d$f_p$ is independent of any choice of coordinate system. In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
+\end{example}
+
+\chapter{Tensor Algebra}
+
+\section{Tensor Products}
+
+Let $U$ and $V$ be two fixed linear spaces over $\F$ and $Z$ be any linear space over $\F$. Consider the set of all bilinear maps from $U \times V$ to $Z$, denoted by $\Map^{\text{BL}}(U \times V, Z)$. It is a vector space over $\F$ as it is a subset of $\Map(U \times V, Z)$, the set of all maps from $U \times V$ to $Z$.
+
+By the universal property of tensor product, we have a natural identification:
+\[
+    \Map^{\text{BL}}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
+\]
+Note that both are naturally identical to $\Hom(U, \Hom_{\F}(V, Z))$.
 
 %----------------------------------------------------------------------------------------
 
