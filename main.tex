@@ -161,29 +161,9 @@
 %	COPYRIGHT PAGE
 %----------------------------------------------------------------------------------------
 
-\thispagestyle{empty} % Suppress headers and footers on this page
+\thispagestyle{fancy} % Suppress headers and footers on this page
 
-~\vfill % Push the text down to the bottom of the page
-
-% \noindent Copyright \copyright\ 2025 \\ % Copyright notice
-% 
-% \noindent \textsc{Published by Hong Kong University of Science and Technology}\\ % Publisher
-% 
-% \noindent \textit{First printing, September 2025} % Printing/edition date
-
-%----------------------------------------------------------------------------------------
-%	TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
-
-\pagestyle{empty} % Disable headers and footers for the following pages
-
-\tableofcontents % Output the table of contents
-
-\cleardoublepage % Start the following content on a new page
-
-\pagestyle{fancy} % Enable default headers and footers again
-
-\newpage
+% ~\vfill % Push the text down to the bottom of the page
 
 \noindent {\Large \bf \sffamily Prefaces}
 
@@ -196,6 +176,19 @@
 \noindent The notes is with reference to textbooks \textit{`Linear Algebra'} by Friedberg, Insel and Spence, \textit{`Abstract Algebra'} by Artin and \textit{`A First Course in Abstract Algebra'} by Fraleigh. 
 
 \noindent Also, this notes is with reference to the other the notes of two other professors teaching the same course before, Professor Ivan Ip and Professor Min Yan.
+
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\pagestyle{empty} % Disable headers and footers for the following pages
+
+\tableofcontents % Output the table of contents
+
+\cleardoublepage % Start the following content on a new page
+
+\pagestyle{fancy} % Enable default headers and footers again
 
 \newpage
 
@@ -215,6 +208,10 @@
     $\F[X]$ & the polynomial ring \\
     $\F[[X]]$ & the formal power series ring \\
     \midrule
+    $\C, \mathcal{D}$ & categories \\
+    $\Set$ & the category of sets \\
+    $\Vect_{\F}$ & the category of vector spaces over a field $\F$ \\
+    \midrule
     $0_V$ & additive identity of vector space $V$ \\
     $1_V$ & multiplicative identity of vector space $V$ \\
     $e_V$ & an identity of vector space $V$ \\
@@ -230,6 +227,7 @@
     $S, T$ & Linear maps \\
     $A, B$ & Matrices \\
     \midrule
+    $\Mor_{\C}(V, W)$ & the set of all morphisms from $V$ to $W$ in category $\C$ \\
     $\Hom(V, W)$ & Hom-set of $V$ to $W$ \\
     $\End{A}$ & Endomorphism ring of $A$ \\
     $\M{m \times n}{\F}$ & the set of all $m \times n$ matrices over $\F$ \\
@@ -241,9 +239,40 @@
     \midrule
     $\alpha \cdot$ & a map that performs scalar multiplication \\
     $A \cdot$ & a map that performs matrix multiplication \\
+    \midrule
+    $\delta_x$ & the Kronecker delta function \\
+    $\delta_X$ & the set of all Kronecker delta functions \\
+    $\delta_{ij}$ & the Kronecker delta symbol \\
+    \midrule
+    $\ker{T}$ & Kernel of linear map $T$ \\
+    $\Im{T}$ & Image of linear map $T$ \\
+    $\coker{T}$ & Cokernel of linear map $T$ \\
+    $\coim{T}$ & Coimage of linear map $T$ \\
+    $\span{S}$ & Span of a set of vectors $S$ \\
+    \midrule
+    $\prod$ & Product \\
+    $\coprod$ & Coproduct \\
+    $\oplus$ & Direct sum \\
+    $\otimes$ & Tensor product \\
     \bottomrule
 \end{tabularx}
 
+\noindent \begin{tabularx}{\textwidth}{cX}
+    \toprule
+    \textbf{Symbols} & \textbf{Meaning} \\
+    \midrule
+    $\T$ & Tensor algebra \\
+    \midrule
+    $V^*$ & Dual space of $V$ \\
+    $V^{**}$ & Double dual space of $V$ \\
+    $D(V)$ & Double \\
+    \midrule
+    $\id_{\C}$ & Identity functor in category $\C$ \\
+    $\F[-]$ & Free vector space functor \\
+    $|-|$ & Forgetful functor \\
+    $(-)^*$ & Dual space functor \\
+    \bottomrule
+\end{tabularx}
 
 
 %----------------------------------------------------------------------------------------
@@ -2837,7 +2866,7 @@ Note that $\Vect_{\F}(X, Z)$ is a vector space over $\F$, as $\Vect_{\F} \equiv 
 
 \newpage
 
-\section{Dual Spaces, Dual Bases, Double Dual Bases and Doubles}
+\section{Dual Spaces and Dual Bases}
 
 Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}. 
 
@@ -2896,15 +2925,37 @@ Finally, we have the natural identification:
     $V \cong V^*$ but $\B_V \equiv \B_{V^*}$. The isomorphism $V \cong V^*$ depends on the choice of a basis in $\B_V$, while the natural isomorphism $\B_V \equiv \B_{V^*}$ does not depend on any choice.
 \end{remark}
 
+\begin{example}
+    Consider the following open subset $U$ of $\R^2$:
+    \begin{center}
+		\begin{tikzpicture}
+			\draw[gray,-Stealth,thin] (-1,0) -- (5,0) node[right] {$x$};
+			\draw[gray,-Stealth,thin] (0,-1) -- (0,4) node[above] {$y$};
+
+            \filldraw (3.5,1) circle (1pt) node[below right] {$p$};
+
+			\draw[dashed] plot[smooth cycle] coordinates{(4.5,1.5) (3.75,2.6) (2.5,2.91) (1.25,2.6) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
+			\path (2.5,1.75) node {$U$};
+
+            \draw[-Stealth, ocre] (3.5,1) -- (4,2) node[midway, right] {$\vec{u}$};
+            \draw[-Stealth, ocre] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
+		\end{tikzpicture}
+	\end{center}
+    Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \R$. It is a linear functional d$f_p : \text{T}_p U \to \R$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$. Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$. Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system. However, d$f_p$ is independent of any choice of coordinate system. In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
+\end{example}
+
+\newpage
+
+\section{Double Dual Spaces and Doubles}
+
 Consider the endofunctors on $\Vect_{\F}$:
 \begin{center}
     \begin{tikzcd}
         \Vect_{\F} \arrow[r, "\text{id}_{\Vect_{\F}}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "{(-)^{**}}", yshift=-0.5ex]
     \end{tikzcd}
 \end{center}
-There is a natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\text{id}_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, the natural transformation is a natural isomorphism. However, $(-)^*$ is a contravariant functor, so there is no natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^*$ or from $(-)^*$ to $\text{id}_{\Vect_{\F}}$. 
+There is a natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\text{id}_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, there is a natural transformation, but $(-)^*$ is a contravariant functor, so there is no natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^*$. 
 
-On the left is a covariant functor and on the right is a contravariant functor:
 \begin{center}
     \begin{tikzcd}[row sep=normal]
         \Vect_{\F} \arrow[r, "\text{id}_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
@@ -2920,7 +2971,6 @@ On the left is a covariant functor and on the right is a contravariant functor:
         Z & Z^* \arrow[uu, "f^*" swap]
     \end{tikzcd}
 \end{center}
-The contravariant functor will reverse the direction of the morphism.
 
 Let $\langle-,-\rangle : V^* \times V \to \F$ be the natural pairing defined by $\langle\alpha, u\rangle = \alpha(u)$ where $\alpha : V \to \F$ that sends $u \to \alpha{u}$. It is the pairing of a covector with a vector and the map is bilinear.
 
@@ -2956,37 +3006,14 @@ As $V$ is naturally isomorphic to $V^{**}$, we have the following natural identi
     D(V) = V \oplus V^* \equiv V^* \oplus V^{**} = D(V^*)
 \]
 
-\begin{remark}
-    The matrix representation of the isomorphism between $D(V)$ and $D(V^*)$ is
-    \[
-        \begin{bmatrix}
-            0 & -\iota_V \\
-            1 & 0
-        \end{bmatrix}
-    \]
-    where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The negative sign is used to make the isomorphism a symplectic isomorphism, which will be discussed in the later chapters.
-\end{remark}
-
-
-
-\begin{example}
-    Consider the following open subset $U$ of $\R^2$:
-    \begin{center}
-		\begin{tikzpicture}
-			\draw[gray,-Stealth,thin] (-1,0) -- (5,0) node[right] {$x$};
-			\draw[gray,-Stealth,thin] (0,-1) -- (0,4) node[above] {$y$};
-
-            \filldraw (3.5,1) circle (1pt) node[below right] {$p$};
-
-			\draw[dashed] plot[smooth cycle] coordinates{(4.5,1.5) (3.75,2.6) (2.5,2.91) (1.25,2.6) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
-			\path (2.5,1.75) node {$U$};
-
-            \draw[-Stealth, ocre] (3.5,1) -- (4,2) node[midway, right] {$\vec{u}$};
-            \draw[-Stealth, ocre] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
-		\end{tikzpicture}
-	\end{center}
-    Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \R$. It is a linear functional d$f_p : \text{T}_p U \to \R$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$. Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$. Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system. However, d$f_p$ is independent of any choice of coordinate system. In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
-\end{example}
+The matrix representation of the isomorphism between $D(V)$ and $D(V^*)$ is
+\[
+    \begin{bmatrix}
+        0 & -\iota_V \\
+        1 & 0
+    \end{bmatrix}
+\]
+where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The negative sign is used to make the isomorphism a symplectic isomorphism, which will be discussed in the later chapters.
 
 \chapter{Tensor Algebra}
 
