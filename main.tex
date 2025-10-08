@@ -87,6 +87,8 @@
 \newcommand{\Mor}{\text{Mor}} % Morphism set notation
 \newcommand{\Ob}[1]{\text{Ob}(#1)} % Object set notation
 \newcommand{\B}{\mathcal{B}} % Basis notation
+\newcommand{\R}{\mathbb{R}} % Real number notation
+\newcommand{\T}{\mathcal{T}} % Tensor algebra notation
 
 \DeclareMathOperator{\Span}{Span}
 
@@ -317,7 +319,7 @@ Note that the two-sided identity must be unique, but one-sided identities need n
     Consider a set $X = \left\{ \begin{bmatrix}
         1 & a \\
         0 & 0 
-    \end{bmatrix} \; \middle| \; a \in \mathbb{R} \right\}$ with the binary operation defined as matrix multiplication. This set has many left identity elements, but no two-sided identity element.
+    \end{bmatrix} \; \middle| \; a \in \R \right\}$ with the binary operation defined as matrix multiplication. This set has many left identity elements, but no two-sided identity element.
 \end{example}
 
 \begin{definition}[Invertible]
@@ -402,7 +404,7 @@ With those five properties, we can construct monoid and groups.
 \end{definition}
 
 \begin{example}
-    $(\mathbb{R}\setminus\{0\}, \times)$ is a group, but $(\mathbb{R}, \times)$ is not a group since $0$ does not have a multiplicative inverse.
+    $(\R\setminus\{0\}, \times)$ is a group, but $(\R, \times)$ is not a group since $0$ does not have a multiplicative inverse.
 \end{example}
 
 \begin{definition}[Abelian Monoid / Group]
@@ -431,7 +433,7 @@ With those five properties, we can construct monoid and groups.
 \end{definition}
 
 \begin{example}
-    $(\mathbb{Q}, +, \times)$, $(\mathbb{R}, +, \times)$ and $(\mathbb{C}, +, \times)$ are fields.
+    $(\mathbb{Q}, +, \times)$, $(\R, +, \times)$ and $(\mathbb{C}, +, \times)$ are fields.
 \end{example}
 
 \begin{example}[Finite Field]
@@ -991,7 +993,7 @@ We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with stand
     \[
         (ST)\vec{e_j} = S(T(\vec{e_j})) = S(\vec{a_j}) = B\vec{a_j} = (BA)\vec{e_j}
     \]
-    for all $j = 1, 2, \ldots, n$. This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
+    for all $j = 1, 2, \cdots, n$. This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
 \end{proof}
 
 \begin{remark}
@@ -1578,7 +1580,7 @@ Next, we discuss quotient space. However, before introducing quotient space, we 
 
 Same for the right group action of $G$ on $X$, just think it dually.
 
-Consider rotation on a plane. It is a group action of the group $SO(2)$ on the set $\mathbb{R}^2$.
+Consider rotation on a plane. It is a group action of the group $SO(2)$ on the set $\R^2$.
 \[
     g = \begin{pmatrix}
         \cos{\theta} & -\sin{\theta} \\
@@ -1894,7 +1896,7 @@ Then the definition of direct sum is as follows.
 Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a finite dimensional if $W \cong \F^n$ for some positive integer $n$. It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite spanning set.
 
 \begin{proof}
-    If we have a map $\phi : \F^n \to W$, then $W = \Span\{\phi(e_1), \phi(e_2), \ldots, \phi(e_n)\}$. However, the set $\{\phi(e_1), \phi(e_2), \ldots, \phi(e_n)\}$ may not be linearly independent. Thus, we can always find a minimal spanning set of $W$ from it. WLOG, we can say $W = \Span\{\phi(e_1), \phi(e_2), \ldots, \phi(e_k)\}$ for some $k \leq n$. Then using (Proposition \ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \ldots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \ldots, \phi(e_k)\}$.
+    If we have a map $\phi : \F^n \to W$, then $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$. However, the set $\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$ may not be linearly independent. Thus, we can always find a minimal spanning set of $W$ from it. WLOG, we can say $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$ for some $k \leq n$. Then using (Proposition \ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \cdots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$.
 \end{proof}
 
 \begin{proposition} \label{prop:finite_dimensional_subspace_quotient_space}
@@ -1909,7 +1911,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
             \F^n \arrow[u, hook, two heads] \arrow[ur, two heads, dashed, "\phi"]
         \end{tikzcd}
     \end{center}
-    Then the map $\phi : \F^n \to U$ is defined by $x = \alpha_1 \vec{e_1} + \cdots + \alpha_n \vec{e_n} \mapsto \phi(x) = \alpha_1 \phi(\vec{e_1}) + \cdots + \alpha_n \phi(\vec{e_n})$. Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e_1}), \phi(\vec{e_2}), \ldots, \phi(\vec{e_n})\}$. 
+    Then the map $\phi : \F^n \to U$ is defined by $x = \alpha_1 \vec{e_1} + \cdots + \alpha_n \vec{e_n} \mapsto \phi(x) = \alpha_1 \phi(\vec{e_1}) + \cdots + \alpha_n \phi(\vec{e_n})$. Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e_1}), \phi(\vec{e_2}), \cdots, \phi(\vec{e_n})\}$. 
 
     For quotient space $\quotient{W}{V}$ and $W$ is finite dimensional, we have:
     \begin{center}
@@ -1917,7 +1919,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
             V \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \quotient{W}{V}
         \end{tikzcd}
     \end{center}
-    Then we know that $\pi(\vec{e_1}), \pi(\vec{e_2}), \ldots, \pi(\vec{e_n})$ spans $\quotient{W}{V}$. Thus, $\quotient{W}{V}$ is finitely spanned.
+    Then we know that $\pi(\vec{e_1}), \pi(\vec{e_2}), \cdots, \pi(\vec{e_n})$ spans $\quotient{W}{V}$. Thus, $\quotient{W}{V}$ is finitely spanned.
 \end{proof}
 
 \begin{proposition} \label{prop:dimension_of_sum_of_subspaces}
@@ -2843,10 +2845,10 @@ Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of
     Let $V$ be a finite dimensional linear space over $\F$. Then $\dim(V^*) = \dim(V)$. So, $V^*$ is isomorphic to $V$ but not naturally isomorphic to $V$.
 \end{proposition}
 \begin{proof}
-    Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$. Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e_1}, \hat{e_2}, \ldots, \hat{e_n}$. So $\dim(V^*) = n = \dim(V)$. We can say $V^* \cong V$.
+    Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$. Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e_1}, \hat{e_2}, \cdots, \hat{e_n}$. So $\dim(V^*) = n = \dim(V)$. We can say $V^* \cong V$.
 \end{proof}
 
-We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e_1}, \hat{e_2}, \ldots, \hat{e_n}\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e_i}$. This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
+We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e_1}, \hat{e_2}, \cdots, \hat{e_n}\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e_i}$. This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
 
 \begin{definition}[Bases]
     A \emph{basis} of a linear space $V$ over $\F$ is the minimal spanning set of $V$ with an order. The set of all bases of $V$ is denoted by $\B_V$.
@@ -2857,7 +2859,7 @@ We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e_1}, \hat{e_2}, \l
     \[
         \begin{split}
             \B_V &\equiv \B_{V^*} \\
-            \vec{v} = (v_1, v_2, \ldots, v_n) &\equiv (\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n}) = \vec{v}^* \\
+            \vec{v} = (v_1, v_2, \cdots, v_n) &\equiv (\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n}) = \vec{v}^* \\
         \end{split}
     \]
     where $\hat{v_i} \in V^*$ is defined by $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
@@ -2871,21 +2873,21 @@ Consider the following commutative diagram:
         \F^n \arrow[r, "\pi_i"] & \F
     \end{tikzcd}
 \end{center}
-The projection map $\pi_i$ is a linear functional in $(\F^n)^*$ that sends $\vec{x} = (\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n})$ to $x_i$. It is actually $\hat{e_i}$. Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $\vec{v} = (v_1, v_2, \ldots, v_n) \in \B_V$ such that $[v_j]_V = \hat{e_j}$ for all $1 \leq j \leq n$. It is a unique linear map which identify $v_i$ with $\hat{e_i}$. It can be done by trivialisation of $V$ with respect to the basis $\vec{v}$. Then we define $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
+The projection map $\pi_i$ is a linear functional in $(\F^n)^*$ that sends $\vec{x} = (\vec{x_1}, \vec{x_2}, \cdots, \vec{x_n})$ to $x_i$. It is actually $\hat{e_i}$. Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $\vec{v} = (v_1, v_2, \cdots, v_n) \in \B_V$ such that $[v_j]_V = \hat{e_j}$ for all $1 \leq j \leq n$. It is a unique linear map which identify $v_i$ with $\hat{e_i}$. It can be done by trivialisation of $V$ with respect to the basis $\vec{v}$. Then we define $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
 
-Then we have to consider whether $(\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$ is a basis of $V^*$. As $\dim{V^*} = n$, we only need to show that $(\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$ is a spanning set of $V^*$ or linearly independent. We have to check whether the equation $\sum_{i=1}^n x_i \hat{v_i} = 0$ for some $x_i \in \F$ has only the trivial solution. Applying it to $v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat{v_i}(v_j) = \sum_{i=1}^n x_i \delta_{ij} = x_j$. So $x_j = 0$ for all $1 \leq j \leq n$. This means that $(\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$ is linearly independent, and hence it is a basis of $V^*$. We call it the \emph{dual basis} of the basis $\vec{v} = (v_1, v_2, \ldots, v_n)$ and denote it by $\vec{v}^* = (\hat{v_1}, \hat{v_2}, \ldots, \hat{v_n})$. 
+Then we have to consider whether $(\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$ is a basis of $V^*$. As $\dim{V^*} = n$, we only need to show that $(\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$ is a spanning set of $V^*$ or linearly independent. We have to check whether the equation $\sum_{i=1}^n x_i \hat{v_i} = 0$ for some $x_i \in \F$ has only the trivial solution. Applying it to $v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat{v_i}(v_j) = \sum_{i=1}^n x_i \delta_{ij} = x_j$. So $x_j = 0$ for all $1 \leq j \leq n$. This means that $(\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$ is linearly independent, and hence it is a basis of $V^*$. We call it the \emph{dual basis} of the basis $\vec{v} = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec{v}^* = (\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$. 
 
-Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat{v_i}(v_j) = \delta_{ij}$. Let $V = \F^n$ and $\vec{v} = (\vec{v_1}, \vec{v_2}, \ldots, \vec{v_n})$ be a basis of $V$. Then $A = [\vec{v_1}, \vec{v_2}, \ldots, \vec{v_n}]$ is an invertible matrix. Let $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ be a basis of $V^*$. Then we have the following equations:
+Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat{v_i}(v_j) = \delta_{ij}$. Let $V = \F^n$ and $\vec{v} = (\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n})$ be a basis of $V$. Then $A = [\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}]$ is an invertible matrix. Let $(\alpha_1, \alpha_2, \cdots, \alpha_n)$ be a basis of $V^*$. Then we have the following equations:
 \[
     [ \delta_{ij} ] = \begin{bmatrix}
         \alpha_1 \\
         \vdots \\
         \alpha_n
     \end{bmatrix} \begin{bmatrix}
-        \vec{v_1} & \ldots & \vec{v_n}
+        \vec{v_1} & \cdots & \vec{v_n}
     \end{bmatrix} = I_n
 \]
-Then $(\alpha_1, \alpha_2, \ldots, \alpha_n) = A^{-1}$. So the dual basis is unique.
+Then $(\alpha_1, \alpha_2, \cdots, \alpha_n) = A^{-1}$. So the dual basis is unique.
 
 Finally, we have the natural identification:
 \end{proof}
@@ -2894,9 +2896,31 @@ Finally, we have the natural identification:
     $V \cong V^*$ but $\B_V \equiv \B_{V^*}$. The isomorphism $V \cong V^*$ depends on the choice of a basis in $\B_V$, while the natural isomorphism $\B_V \equiv \B_{V^*}$ does not depend on any choice.
 \end{remark}
 
-% Dual space functors and identity functors such stuffs. Later ask.
+Consider the endofunctors on $\Vect_{\F}$:
+\begin{center}
+    \begin{tikzcd}
+        \Vect_{\F} \arrow[r, "\text{id}_{\Vect_{\F}}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "{(-)^{**}}", yshift=-0.5ex]
+    \end{tikzcd}
+\end{center}
+There is a natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\text{id}_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, the natural transformation is a natural isomorphism. However, $(-)^*$ is a contravariant functor, so there is no natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^*$ or from $(-)^*$ to $\text{id}_{\Vect_{\F}}$. 
 
-However, $V$ is naturally isomorphic to its double dual space $V^{**} = (V^*)^*$. 
+On the left is a covariant functor and on the right is a contravariant functor:
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        \Vect_{\F} \arrow[r, "\text{id}_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
+        Y \arrow[dd, "f" swap] & Y \arrow[dd, "f"] \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        Z & Z
+    \end{tikzcd}
+    \qquad\qquad
+    \begin{tikzcd}[row sep=normal]
+        \Vect_{\F} \arrow[r, "(-)^*"] & \Vect_{\F} \\[-1.8em]
+        Y \arrow[dd, "f" swap] & Y^* \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        Z & Z^* \arrow[uu, "f^*" swap]
+    \end{tikzcd}
+\end{center}
+The contravariant functor will reverse the direction of the morphism.
 
 Let $\langle-,-\rangle : V^* \times V \to \F$ be the natural pairing defined by $\langle\alpha, u\rangle = \alpha(u)$ where $\alpha : V \to \F$ that sends $u \to \alpha{u}$. It is the pairing of a covector with a vector and the map is bilinear.
 
@@ -2946,7 +2970,7 @@ As $V$ is naturally isomorphic to $V^{**}$, we have the following natural identi
 
 
 \begin{example}
-    Consider the following open subset $U$ of $\mathbb{R}^2$:
+    Consider the following open subset $U$ of $\R^2$:
     \begin{center}
 		\begin{tikzpicture}
 			\draw[gray,-Stealth,thin] (-1,0) -- (5,0) node[right] {$x$};
@@ -2961,7 +2985,7 @@ As $V$ is naturally isomorphic to $V^{**}$, we have the following natural identi
             \draw[-Stealth, ocre] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
 		\end{tikzpicture}
 	\end{center}
-    Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \mathbb{R}$. It is a linear functional d$f_p : \text{T}_p U \to \mathbb{R}$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$. Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\mathbb{R}$. Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system. However, d$f_p$ is independent of any choice of coordinate system. In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
+    Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \R$. It is a linear functional d$f_p : \text{T}_p U \to \R$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$. Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$. Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system. However, d$f_p$ is independent of any choice of coordinate system. In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
 \end{example}
 
 \chapter{Tensor Algebra}
@@ -2975,6 +2999,119 @@ By the universal property of tensor product, we have a natural identification:
     \Map^{\text{BL}}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
 \]
 Note that both are naturally identical to $\Hom(U, \Hom_{\F}(V, Z))$.
+
+The natural identification is the universal property of tensor product. Consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        U \times V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & Z \\
+        U \otimes V \arrow[ur, dashed, "\exists ! \bar{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+Note that the map $\iota$ and $\phi$ are bilinear maps, and the existence of the unique linear map $\bar{\phi}$ follows from the universal property of the tensor product. We can also consider it as the initial object in a new category:
+\begin{itemize}
+    \item Objects: all bilinear maps $\phi : U \times V \to Z$ for all $Z \in \Ob{\Vect_{\F}}$;
+    \item Morphisms: commutative diagrams in $\Vect_{\F}$:
+\end{itemize}
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        & Z \arrow[dd, "f"] \\
+        U \times V \arrow[ur, "\phi"] \arrow[dr, "\phi'" swap] & \\
+        & Z'
+    \end{tikzcd}
+\end{center}
+
+The existence of tensor product follows from the existence of free vector space over a set and the existence of quotient spaces. 
+
+Consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        & U \times V \arrow[dr, "\forall \phi"] \arrow[d, "\iota'" swap, hook] \\
+        \mathcal{I}_{U, V} \arrow[r, hook] & \F[U \times V] \arrow[r, dashed, "\exists ! \phi'"] \arrow[d, "\pi" swap, two heads] & Z \\
+        & \quotient{\F[U \times V]}{\mathcal{I}_{U, V}} \arrow[ur, dashed, "\exists ! \bar{\phi}" swap] \arrow[from=uu, bend right=60, "\iota" near start, swap, crossing over]
+    \end{tikzcd}
+\end{center}
+where $\mathcal{I}_{U, V}$ is the subspace of $\F[U \times V]$ generated by the following elements for all $u, u_1, u_2 \in U$, $v, v_1, v_2 \in V$ and $\alpha, \beta \in \F$:
+\begin{itemize}
+    \item $(\alpha u_1 + \beta u_2, v) - \alpha (u_1, v) - \beta (u_2, v)$;
+    \item $(u, \alpha v_1 + \beta v_2) - \alpha (u, v_1) - \beta (u, v_2)$;
+\end{itemize}
+Why the construction of $\mathcal{I}_{U, V}$ is like this? This is because we want $\iota$ to be a bilinear map. Then $\iota(\alpha u_1 + \beta u_2, v) = \alpha \iota(u_1, v) + \beta \iota(u_2, v)$ and $\iota(u, \alpha v_1 + \beta v_2) = \alpha \iota(u, v_1) + \beta \iota(u, v_2)$. This means that the elements in $\mathcal{I}_{U, V}$ should be mapped to $0$ by $\iota$. So we have to quotient $\F[U \times V]$ by $\mathcal{I}_{U, V}$ to make $\iota$ a bilinear map.
+
+Then we define $U \otimes V = \quotient{\F[U \times V]}{\mathcal{I}_{U, V}}$ and this shows the existence of tensor product.
+
+\begin{remark}
+    The inclusion map $\iota : U \times V \to U \otimes V$ is `surjective' in the sense that the image of $\iota$ spans $U \otimes V$, i.e. $\span{\Im{\iota}} = U \otimes V$. To know $\bar{\phi}$, it suffices to know $\bar{\phi}(u \otimes v) = \phi(u, v)$ for all $u \in U$ and $v \in V$.
+\end{remark}
+
+We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreover, the tensor product is associative and commutative up to isomorphism, i.e., $V_1 \otimes V_2 \otimes V_3 \cong (V_1 \otimes V_2) \otimes V_3 \cong V_1 \otimes (V_2 \otimes V_3)$ and $V_1 \otimes V_2 \cong V_2 \otimes V_1$. Both of them are natural isomorphisms.
+
+\begin{center}
+    \begin{tikzcd}
+        V_1 \times V_2 \times V_3 \arrow[r] \arrow[d] & V_1 \otimes V_2 \otimes V_3 \\
+        (V_1 \otimes V_2) \times V_3 \arrow[r] & (V_1 \otimes V_2) \otimes V_3 \arrow[u, "\vequiv" description, phantom] \\
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        V_1 \times V_2 \arrow[r] \arrow[d, leftrightarrow] & V_1 \otimes V_2 \\
+        V_2 \times V_1 \arrow[r] & V_2 \otimes V_1 \arrow[u, "\vequiv" description, phantom] \\
+    \end{tikzcd}
+\end{center}
+
+\newpage
+
+\section{Algebras}
+
+\begin{definition}[Algebras]
+    An \emph{algebra} over a field $\F$ is a linear space $A$ over $\F$ equipped with a bilinear product map $A \times A \to A$, or equivalently a linear map $A \otimes A \to A$.
+\end{definition}
+
+\begin{example}
+    The set of all polynomials in $t$ with coefficients in $\F$, denoted $\F[t]$, is an algebra over $\F$. As $\F[t] \times \F[t] \to \F[t]$ defined by $(f, g) \mapsto fg$ is a bilinear map. Moreover, $\F[t]$ has a multiplicative identity $1 \in \F[t]$, $fg = gf$ for all $f, g \in \F[t]$, and $(fg)h = f(gh)$ for all $f, g, h \in \F[t]$. So $\F[t]$ is a unital commutative associative algebra over $\F$.
+\end{example}
+
+\begin{example}
+    The set of all square matrices with order $n$ over $\F$, denoted by $\M{n \times n}{\F}$, is an algebra over $\F$. As $\M{n \times n}{\F} \times \M{n \times n}{\F} \to \M{n \times n}{\F}$ defined by $(A, B) \mapsto AB$ is a bilinear map. Moreover, $\M{n \times n}{\F}$ has a multiplicative identity $I_n \in \M{n \times n}{\F}$, $(AB)C = A(BC)$ for all $A, B, C \in \M{n \times n}{\F}$. However, in general $AB \neq BA$ for some $A, B \in \M{n \times n}{\F}$. So $\M{n \times n}{\F}$ is a unital associative algebra but it is a non-commutative algebra over $\F$.
+\end{example}
+
+\begin{example}
+    The 3-dimensional Euclidean space $\R^3$ with the cross product $\times : \R^3 \times \R^3 \to \R^3$ is an algebra over $\R$. As the cross product is bilinear. However, it does not have a multiplicative identity, not associative and not commutative. So $\R^3$ with the cross product is a non-unital non-associative non-commutative algebra over $\R$.
+\end{example}
+
+\begin{remark}
+    $(\R^3, \times)$ is an example of a simple real lie algebra. It is the lie algebra of the lie group SO(3), the special orthogonal group in dimension 3, i.e., the 3-dimensional rotations. $(\R^3, \times)$ is denoted by $\mathfrak{so}(3)$. Also, it is the lie algebra of the infinitesimal symmetries of a pointed 3-dimensional Euclidean space. 
+\end{remark}
+
+\begin{definition}[Lie Algebras]
+    An algebra is $A$ over a field $\F$ is called a \emph{lie algebra} if it satisfies the following two conditions:
+    \begin{itemize}
+        \item $x^2 = 0$ for all $x \in A$, i.e., $xy = -yx$ for all $x, y \in A$ if $\text{char}(\F) \neq 2$;
+        \item $(xy)z + (yz)x + (zx)y = 0$ for all $x, y, z \in A$.
+    \end{itemize}
+\end{definition}
+
+\newpage
+
+\section{Tensor Algebras}
+
+Let $V$ be a finite dimensional linear space over $\F$. We define a new notation:
+\[
+    V^{\otimes k} = \underbrace{V \otimes V \otimes \cdots \otimes V}_{k \text{ times}}
+\]
+for all $k \geq 0$. Note that $V^{\otimes 0} = \F$.
+
+We define the \emph{tensor algebra} of $V$ over $\F$, denoted by $\T V$, as follows:
+\[
+    \T V = \bigoplus_{k \geq 0} V^{\otimes k} = \F \oplus V \oplus (V \otimes V) \oplus (V \otimes V \otimes V) \oplus \cdots
+\]
+
+The tensor algebra $\T V$ is an algebra over $\F$ with the bilinear product map defined by the tensor product:
+\[
+    \T V \times \T V \to \T V : (u, v) \mapsto u \otimes v
+\]
+
+\begin{remark}
+    The tensor algebra $\T V$ is a unital associative graded algebra over $\F$. It is unital as the multiplicative identity is $1 \in \F = V^{\otimes 0} \subset \T V$. It is associative as the tensor product is associative up to natural isomorphism. It is graded as $\T V$ is a direct sum of subspaces $V^{\otimes k}$ for all $k \geq 0$.
+\end{remark}
 
 %----------------------------------------------------------------------------------------
 
