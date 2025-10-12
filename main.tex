@@ -64,33 +64,43 @@
 \usepackage{tikz-cd} % For commutative diagrams
 \usetikzlibrary{matrix, positioning, arrows.meta, decorations.pathreplacing} % <-- Add this line to enable matrix of math nodes
 
-\newcommand{\End}[1]{\text{End}(#1)} % Endomorphism ring
-\newcommand{\Hom}{\text{Hom}} % Hom-set
-\renewcommand{\ker}[1]{\text{Ker}(#1)} % Kernel of a linear map
-\renewcommand{\Im}[1]{\text{Im}(#1)} % Image of a linear map
-\renewcommand{\span}[1]{\text{Span}(#1)} % Span of a set of vectors
+\newcommand{\smallbullet}{\scalebox{0.5}{$\bullet$}}
+
+\newcommand{\End}[1]{\mathsf{End}(#1)} % Endomorphism ring
+\newcommand{\Hom}{\mathsf{Hom}} % Hom-set
+\renewcommand{\ker}[1]{\mathsf{Ker}(#1)} % Kernel of a linear map
+\renewcommand{\Im}[1]{\mathsf{Im}(#1)} % Image of a linear map
+\renewcommand{\span}[1]{\mathsf{Span}(#1)} % Span of a set of vectors
 \renewcommand{\bar}[1]{\overline{#1}} % Bar notations
-\newcommand{\quotient}[2]{#1 /\, #2} % Quotient notation
+\newcommand{\quotient}[2]{#1/\, #2} % Quotient notation
 \newcommand{\F}{\mathbb{F}} % Field notation
-\newcommand{\M}[2]{\text{M}_{#1}(#2)} % Matrix set notation
-\newcommand{\Map}{\text{Map}} % Map notation
-\newcommand{\rank}[1]{\text{Rank}(#1)} % Rank of a matrix
-\newcommand{\coker}[1]{\text{Coker}(#1)} % Cokernel of a linear map
-\newcommand{\coim}[1]{\text{Coim}(#1)} % Coimage of a linear map
-\newcommand{\nullity}[1]{\text{Nullity}(#1)} % Nullity of a linear map
-\newcommand{\id}{\text{id}} % Identity map notation
-\newcommand{\nul}[1]{\text{Nul}(#1)} % Null space of a linear map
-\newcommand{\col}[1]{\text{Col}(#1)} % Column space of a matrix
+\newcommand{\M}[2]{\mathsf{M}_{#1}(#2)} % Matrix set notation
+\newcommand{\Map}{\mathsf{Map}} % Map notation
+\newcommand{\rank}[1]{\mathsf{Rank}(#1)} % Rank of a matrix
+\newcommand{\coker}[1]{\mathsf{Coker}(#1)} % Cokernel of a linear map
+\newcommand{\coim}[1]{\mathsf{Coim}(#1)} % Coimage of a linear map
+\newcommand{\nullity}[1]{\mathsf{Nullity}(#1)} % Nullity of a linear map
+\newcommand{\id}{\mathsf{id}} % Identity map notation
+\newcommand{\nul}[1]{\mathsf{Nul}(#1)} % Null space of a linear map
+\newcommand{\col}[1]{\mathsf{Col}(#1)} % Column space of a matrix
 \newcommand{\C}{\mathcal{C}} % Category notation
-\newcommand{\Set}{\textbf{Set}} % Set category notation
-\newcommand{\Vect}{\textbf{Vec}} % Vector space category notation
-\newcommand{\Mor}{\text{Mor}} % Morphism set notation
-\newcommand{\Ob}[1]{\text{Ob}(#1)} % Object set notation
+\newcommand{\D}{\mathcal{D}} % Another category notation
+\newcommand{\Set}{\boldsymbol{\mathsf{Set}}} % Set category notation
+\newcommand{\Vect}{\boldsymbol{\mathsf{Vec}}} % Vector space category notation
+\newcommand{\Mor}{\mathsf{Mor}} % Morphism set notation
+\newcommand{\Ob}[1]{\mathsf{Ob}(#1)} % Object set notation
 \newcommand{\B}{\mathcal{B}} % Basis notation
 \newcommand{\R}{\mathbb{R}} % Real number notation
-\newcommand{\T}{\mathcal{T}} % Tensor algebra notation
+\newcommand{\T}{\mathcal{T}^{\smallbullet}} % Tensor algebra notation
+\newcommand{\BL}{\mathsf{BL}} % Bilinear map notation
+\newcommand{\chart}{\mathsf{char}} % Characteristic notation
+\renewcommand{\deg}{\mathsf{deg}} % Degree notation
+\newcommand{\Sym}{\mathcal{S}^{\smallbullet}} % Symmetric algebra notation
+\newcommand{\Ext}{\bigwedge^{\smallbullet}} % Exterior algebra notation
+\newcommand{\Env}{\mathcal{U}} % Universal enveloping algebra notation
+\newcommand{\ideal}{\mathcal{I}} % Ideal notation
 
-\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Span}{\mathsf{Span}}
 
 
 \tikzset{%
@@ -208,7 +218,7 @@
     $\F[X]$ & the polynomial ring \\
     $\F[[X]]$ & the formal power series ring \\
     \midrule
-    $\C, \mathcal{D}$ & categories \\
+    $\C, \D$ & categories \\
     $\Set$ & the category of sets \\
     $\Vect_{\F}$ & the category of vector spaces over a field $\F$ \\
     \midrule
@@ -1472,7 +1482,7 @@ Then we consider the duality of the intersection and union of subspaces. Whether
 \section{Linear Span and Linear Independence}\index{Linear Span and Linear Independence}
 
 \begin{definition}[Linear Span]
-    Let $V$ be a linear space over a field $\F$ and $S \subset V$. The \emph{linear span} of $S$, denoted by $\text{span}_\F (S)$ or simply $\span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
+    Let $V$ be a linear space over a field $\F$ and $S \subset V$. The \emph{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
 \end{definition}
 
 \begin{corollary}
@@ -1820,7 +1830,7 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 \begin{center}
     \begin{tikzcd}[row sep=tiny, column sep=tiny]
         \phi \arrow[r, mapsto] & \tilde{\phi} \\
-        \Map(S, Z) \arrow[r, leftrightarrow, "\cong" description] & \text{Hom}(V, Z) \\
+        \Map(S, Z) \arrow[r, leftrightarrow, "\cong" description] & \Hom(V, Z) \\
         \tilde{\phi} \circ \iota \arrow[r, mapsto] & \tilde{\phi} \\
     \end{tikzcd}
 \end{center}
@@ -2323,7 +2333,7 @@ Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an 
 
 The universal map is unique in the following sense: suppose that $\iota' : X \to \F[X]'$ is another inclusion map, then there is a unique linear equivalence $\lambda$ in the commutative triangle:
 \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[column sep=normal]
         & X \arrow[dl, "\iota" swap] \arrow[dr, "\iota'"] \\
         \F[X] \arrow[rr, "\lambda" swap, hook, two heads] & & \F[X]'
     \end{tikzcd}
@@ -2331,7 +2341,7 @@ The universal map is unique in the following sense: suppose that $\iota' : X \to
 
 This can be seen from the following diagram:
 \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[column sep=normal]
         & & X \arrow[dll, "\iota'" swap] \arrow[dl, "\iota"] \arrow[dr, "\iota'" swap] \arrow[drr, "\iota"] \\
         \F[X]' \arrow[r, "\mu" swap, dashed] \arrow[rrr, bend right, "1"] & \F[X] \arrow[rr, "\lambda" swap, dashed] \arrow[rrr, bend right, "1"] & & \F[X]' \arrow[r, "\mu" swap, dashed] & \F[X]
     \end{tikzcd}
@@ -2564,7 +2574,7 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \end{example}
 
 \begin{example}
-    If $\C$ and $\mathcal{D}$ are two categories, then we have the product category $\C \times \mathcal{D}$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob{\C}$, $Y \in \Ob{\mathcal{D}}$, $f \in \Mor_{\C}(X, X')$ and $g \in \Mor_{\mathcal{D}}(Y, Y')$.
+    If $\C$ and $\D$ are two categories, then we have the product category $\C \times \D$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob{\C}$, $Y \in \Ob{\D}$, $f \in \Mor_{\C}(X, X')$ and $g \in \Mor_{\D}(Y, Y')$.
 \end{example}
 
 \begin{example}
@@ -2630,6 +2640,8 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 
 \section{Products and Coproducts}
 
+\subsection{Products}
+
 \begin{definition}[Products]
     Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product} of $X$ and $Y$ is an object $X \prod Y$ together with two morphisms $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ such that the following diagram commutes:
     \begin{center}
@@ -2643,8 +2655,6 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \begin{remark}
     The product is unique up to isomorphism if it exists.
 \end{remark}
-
-We can consider the product as a terminal object in a new category. 
 
 \begin{corollary}
     Let $\C$ be a category and $X, Y \in \Ob{\C}$. Consider the following new category:
@@ -2683,6 +2693,8 @@ We can consider the product as a terminal object in a new category.
     \end{center}
 \end{example}
 
+\subsection{Coproducts}
+
 \begin{definition}[Coproducts]
     Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ together with two morphisms $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ and any two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
     \begin{center}
@@ -2692,6 +2704,10 @@ We can consider the product as a terminal object in a new category.
         \end{tikzcd}
     \end{center}
 \end{definition}
+
+\begin{remark}
+    The coproduct is unique up to isomorphism if it exists.
+\end{remark}
 
 \begin{corollary}
     Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct} of $X$ and $Y$ is the initial object in the new category:
@@ -2708,10 +2724,6 @@ We can consider the product as a terminal object in a new category.
     \end{center}
 \end{corollary}
 
-\begin{remark}
-    The coproduct is unique up to isomorphism if it exists.
-\end{remark}
-
 \begin{example}
     In $\Set$, the coproduct of two sets $X$ and $Y$ is the disjoint union $X \sqcup Y = \{ (x, 1) \mid x \in X \} \cup \{ (y, 2) \mid y \in Y \}$.
 \end{example}
@@ -2719,6 +2731,8 @@ We can consider the product as a terminal object in a new category.
 \begin{example}
     In $\Vect_{\F}$, the coproduct of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct sum $V_1 \oplus V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$.
 \end{example}
+
+\subsection{Biproducts}
 
 In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$. Then we will say the \emph{biproduct} of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$. The following diagram commutes:
 \begin{center}
@@ -2729,19 +2743,183 @@ In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \
     \end{tikzcd}
 \end{center}
 
+\begin{definition}[Biproducts]
+    The \emph{biproduct} of two objects $X$ and $Y$ in a category $\C$ is an object $X \oplus Y$ that is both the product and coproduct of $X$ and $Y$.
+\end{definition}
+
 \begin{remark}
-    Biproduct exists if and only if the initial object and terminal object exist and they are the same.
+    The biproduct exists if and only if the product and coproduct exist and are isomorphic, or if the initial object and the terminal object exist and are isomorphic.
 \end{remark}
+
+\begin{example}
+    In $\Vect_{\F}$, the zero vector space is both a terminal object and an initial object, so the biproduct exists.
+\end{example}
+
+However, in $\Set$, the empty set is an initial object but the terminal object is any singleton set, so the biproduct does not exist.
+
+\subsection{Products and Coproducts of a Family of Objects}
+
+In general, we may have the product or coproduct of a family of objects.
+
+Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}. The \emph{product} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the terminal object in the new category:
+\begin{itemize}
+    \item Objects: all collections of morphisms $\{ f_{\alpha} : Z \to X_{\alpha} \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob{\C}$;
+    \item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
+\end{itemize}
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        & X_\alpha \\
+        Z \arrow[ur, "f_\alpha"] \arrow[rr, "f" swap, dashed] & & Z' \arrow[ul, "f_\alpha'" swap]
+    \end{tikzcd}
+\end{center}
+
+The \emph{coproduct} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the initial object in the new category:
+\begin{itemize}
+    \item Objects: all collections of morphisms $\{ f_{\alpha} : X_{\alpha} \to Z \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob{\C}$;
+    \item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
+\end{itemize}
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        & Z \arrow[dr, "f_\alpha"] \arrow[dl, "f_\alpha'" swap] \\
+        X_\alpha & & Z' \arrow[ll, "f", dashed]
+    \end{tikzcd}
+\end{center}
+
+Then the product and coproduct have the following universal properties respectively:
+\begin{center}
+    \begin{tikzcd}
+        X_\alpha & Z \arrow[dl, "\exists ! f"] \arrow[l, "\forall f_\alpha" swap, dashed] \\
+        \prod X_\alpha \arrow[u, "\pi_\alpha"]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[swap]
+        X_\alpha \arrow[d, "\iota_\alpha"] \arrow[r, "\forall f_\alpha" swap] & Z \\
+        \coprod X_\alpha \arrow[ur, "\exists ! f", dashed]
+    \end{tikzcd}
+\end{center}
+
+The elements in the product of a family of objects in $\Vect_{\F}$ can be written as ordered tuples: $(v_\alpha)_{\alpha \in I}$. Then the product can be defined as follows:
+\[
+    \prod_{\alpha \in I} V_\alpha = \{ (v_\alpha)_{\alpha \in I} \mid v_\alpha \in V_\alpha \}
+\]
+Then the coproduct can be defined as follows:
+\[
+    \bigoplus_{\alpha \in I} V_\alpha = \{ (v_\alpha) \in \prod_{\alpha \in I} V_\alpha \mid v_\alpha \text{ is finitely supported} \} \subseteq \prod_{\alpha \in I} V_\alpha
+\]
+
+\begin{remark}
+    In general, the product is not equal to the coproduct. They are equal if and only if the indexing set $I$ is a finite set.
+\end{remark}
+
+Consider the following diagram:
+\begin{center}
+    \begin{tikzpicture}
+        \filldraw[gray!10] (-4,-2) rectangle (4,2);
+        \draw[step=0.5cm,gray!20] (-4,-2) grid (4,2);
+
+        \draw[red] plot [smooth] coordinates { (-4, 1.5) (-2.5, 1) (-1, -1) (0.5, -1) (2, -1.5) (4, -2) };
+        \draw[ocre] plot [smooth] coordinates { (-4, -0.5) (-2.5, 0) (-1, 0) (0.5, 1.5) (2, 0) (4, 0) };
+
+        \draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $V_{\alpha_1}$};
+        \draw[thick] (-1,-2)  -- (-1,2) node [above] {\scriptsize $V_{\alpha_2}$};
+        \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $V_{\alpha_3}$};
+        \draw[thick] (2,-2)  -- (2,2) node [above] {\scriptsize $V_{\alpha_4}$};
+
+        \path (3.5, 2) node [above] {\scriptsize $\cdots$};
+        
+        \filldraw (-2.5, 1) circle (1pt) node [above right] {\scriptsize $s_1(\alpha_1)$};
+        \filldraw (-1, -1) circle (1pt) node [above right] {\scriptsize $s_1(\alpha_2)$};
+        \filldraw (0.5, -1) circle (1pt) node [above right] {\scriptsize $s_1(\alpha_3)$};
+        \filldraw (2, -1.5) circle (1pt) node [above right] {\scriptsize $s_1(\alpha_4)$};
+
+        \filldraw (0.5, 1.5) circle (1pt) node [above right] {\scriptsize $s_2(\alpha_3)$};
+
+        \filldraw (-2.5, 0) circle (1pt) node [below right] {\scriptsize $0_{\alpha_1}$};
+        \filldraw (-1, 0) circle (1pt) node [below right] {\scriptsize $0_{\alpha_2}$};
+        \filldraw (0.5, 0) circle (1pt) node [below right] {\scriptsize $0_{\alpha_3}$};
+        \filldraw (2, 0) circle (1pt) node [below right] {\scriptsize $0_{\alpha_4}$};
+
+        \draw[decoration={brace,raise=5pt},decorate]
+            (-4,-2) -- node [left=6pt] {$\displaystyle \bigcup_{\alpha \in I} V_\alpha$} (-4,2);
+        \draw[-Stealth] (-4 cm - 22 pt, -4 cm + 10 pt) -- (-4 cm - 22 pt,-15 pt) node [midway, left] {{\color{red} $s_1$}, {\color{ocre} $s_2$}};
+
+        \draw[thick] (-4,-4) node [left=16pt] {$I$} -- (4,-4);
+
+        \draw[dashed] (-2.5,-2) -- (-2.5,-4);
+        \draw[dashed] (-1,-2) -- (-1,-4);
+        \draw[dashed] (0.5,-2) -- (0.5,-4);
+        \draw[dashed] (2,-2) -- (2,-4);
+
+        \filldraw (-2.5,-4) circle (1.5pt) node [below] {$\alpha_1$};
+        \filldraw (-1,-4) circle (1.5pt) node [below] {$\alpha_2$};
+        \filldraw (0.5,-4) circle (1.5pt) node [below] {$\alpha_3$};
+        \filldraw (2,-4) circle (1.5pt) node [below] {$\alpha_4$};
+    \end{tikzpicture}
+\end{center}
+
+\begin{remark}
+    The right sections $s_1$ and $s_2$ are two elements in the product $\prod V_\alpha$. Note that $s_2$ is likely to be ``finitely supported'' since it is zero in almost all components shown in the diagram. However, if $I$ is an infinite set, then $s_2$ may not be finitely supported since there may be infinitely many non-zero components not shown in the diagram. So $s_2$ may not be an element in the coproduct $\bigoplus V_\alpha$ if $I$ is an infinite set, but most likely to be.
+\end{remark}
+
+So the product $\prod V_\alpha$ contains all possible sections $s : I \to \bigcup V_\alpha$, so it is called the \emph{space of sections}. The coproduct $\bigoplus V_\alpha$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}. The elements in the coproduct $\bigoplus V_\alpha$ written as ordered tuples $(v_\alpha)_{\alpha \in I}$ can also be written as finite sums $\sum_{\alpha \in I} v_\alpha$ since only finitely many $v_\alpha$ are non-zero.
+
+Actually, the product and coproduct are the generalisation of the polynomial ring and the formal power series ring respectively. We can consider the following diagrams:
+\begin{center}
+    \begin{tikzpicture}
+        \filldraw[gray!10] (-4,-2) rectangle (4,2);
+        \draw[step=0.5cm,gray!20] (-4,-2) grid (4,2);
+        
+        \draw[red] plot [smooth] coordinates { (-4, 1.5) (-2.5, 1) (-1, -1) (0.5, 1.5) (2, -1.5) (4, -0.5) };
+
+        \filldraw (-2.5, 1) circle (1pt) node [above right] {\scriptsize $s(\alpha_1)$};
+        \filldraw (-1, -1) circle (1pt) node [right] {\scriptsize $s(\alpha_2)$};
+        \filldraw (0.5, 1.5) circle (1pt) node [right] {\scriptsize $s(\alpha_3)$};
+        \filldraw (2, -1.5) circle (1pt) node [below right] {\scriptsize $s(\alpha_4)$};
+
+        \draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $\F$};
+        \draw[thick] (-1,-2)  -- (-1,2) node [above] {\scriptsize $\F$};
+        \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $\F$};
+        \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $\F$};
+        \draw[thick] (2,-2)  -- (2,2) node [above] {\scriptsize $\F$};
+
+        \path (3.5, 2) node [above] {\scriptsize $\cdots$};
+
+        \draw[decoration={brace,raise=5pt},decorate]
+            (-4,-2) -- node [left=6pt] {$\F[S]$} (-4,2);
+        \draw[-Stealth] (-4 cm - 20 pt, -4 cm + 10 pt) -- (-4 cm - 20 pt,-10 pt) node [midway, left] {$s$};
+
+        \draw[thick] (-4,-4) node [left=13pt] {$S$} -- (4,-4);
+
+        \draw[dashed] (-2.5,-2) -- (-2.5,-4);
+        \draw[dashed] (-1,-2) -- (-1,-4);
+        \draw[dashed] (0.5,-2) -- (0.5,-4);
+        \draw[dashed] (2,-2) -- (2,-4);
+
+        \filldraw (-2.5,-4) circle (1.5pt) node [below] {$\alpha_1$};
+        \filldraw (-1,-4) circle (1.5pt) node [below] {$\alpha_2$};
+        \filldraw (0.5,-4) circle (1.5pt) node [below] {$\alpha_3$};
+        \filldraw (2,-4) circle (1.5pt) node [below] {$\alpha_4$};
+
+        \draw[thick] (6, -2) -- (6, 2) node [above] {\scriptsize $\F$};
+
+        \filldraw (6, 1) circle (1pt) node [right] {\scriptsize $s(\alpha_1)$};
+        \filldraw (6, -1) circle (1pt) node [right] {\scriptsize $s(\alpha_2)$};
+        \filldraw (6, 1.5) circle (1pt) node [right] {\scriptsize $s(\alpha_3)$};
+        \filldraw (6, -1.5) circle (1pt) node [right] {\scriptsize $s(\alpha_4)$};
+    \end{tikzpicture}
+\end{center}
+
+The left shows the diagram in generalised version, but it can be squeezed to the right since all fibres are the same. So we can consider the set map as $s : S \to \F$ as shown on the right.
 
 \newpage
 
 \section{Functors}
 
 \begin{definition}[Functors]
-    Let $\C$ and $\mathcal{D}$ be two categories. A \emph{functor} $F : \C \to \mathcal{D}$ consists of the following data:
+    Let $\C$ and $\D$ be two categories. A \emph{functor} $F : \C \to \D$ consists of the following data:
     \begin{itemize}
-        \item A map $F : \Ob{\C} \to \Ob{\mathcal{D}}$;
-        \item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\mathcal{D}}(F(X), F(Y))$ for all $X, Y \in \Ob{\C}$;
+        \item A map $F : \Ob{\C} \to \Ob{\D}$;
+        \item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\D}(F(X), F(Y))$ for all $X, Y \in \Ob{\C}$;
     \end{itemize}
     such that the following conditions are satisfied:
     \begin{enumerate}[label=(\alph*)]
@@ -2784,11 +2962,11 @@ This is called the \emph{universal property of free vector space over a set}. He
 \end{remark}
 
 \begin{definition}[Adjoint Functors]
-    Let $\C$ and $\mathcal{D}$ be two categories. A functor $F : \C \to \mathcal{D}$ is called a \emph{left adjoint} of a functor $G : \mathcal{D} \to \C$, and $G$ is called a \emph{right adjoint} of $F$, if there is a natural identification:
+    Let $\C$ and $\D$ be two categories. A functor $F : \C \to \D$ is called a \emph{left adjoint} of a functor $G : \D \to \C$, and $G$ is called a \emph{right adjoint} of $F$, if there is a natural identification:
     \[
-        \mathcal{D}(F(X), Y) \equiv \C(X, G(Y))
+        \D(F(X), Y) \equiv \C(X, G(Y))
     \]
-    for all $X \in \Ob{\C}$ and $Y \in \Ob{\mathcal{D}}$.
+    for all $X \in \Ob{\C}$ and $Y \in \Ob{\D}$.
 \end{definition}
 
 \begin{example}
@@ -2838,13 +3016,13 @@ Consider the following two diagrams:
     \begin{tikzcd}[column sep=normal]
         X_1 & X_1 \times X_2 \arrow[l] \arrow[r] \arrow[d, "{\F[-]}", Rightarrow] & X_2 \\
         \F[X_1] & \F[X_1 \times X_2] \arrow[l] \arrow[r] & \F[X_2] \\[-3.6em]
-        & \F[X_1] \otimes \F[X_2]
+        & {\scriptstyle \equiv \F[X_1] \otimes \F[X_2]}
     \end{tikzcd}
     \qquad
     \begin{tikzcd}[column sep=normal]
         X_1 \arrow[r] & X_1 \sqcup X_2 \arrow[d, "{\F[-]}", Rightarrow] & X_2 \arrow[l] \\
         \F[X_1] \arrow[r] & \F[X_1 \sqcup X_2] & \F[X_2] \arrow[l] \\[-3.6em]
-        & \F[X_1] \oplus \F[X_2]
+        & {\scriptstyle \equiv \F[X_1] \oplus \F[X_2]}
     \end{tikzcd}
 \end{center}
 The left diagram shows that the free functor sends the product of two sets to the tensor product of two vector spaces. The right diagram shows that the free functor sends the coproduct of two sets to the direct sum of two vector spaces, i.e., the coproduct of two vector spaces. Note that the tensor product of two vector spaces is \emph{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$. There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 \oplus V_2$.
@@ -2934,7 +3112,7 @@ Finally, we have the natural identification:
 
             \filldraw (3.5,1) circle (1pt) node[below right] {$p$};
 
-			\draw[dashed] plot[smooth cycle] coordinates{(4.5,1.5) (3.75,2.6) (2.5,2.91) (1.25,2.6) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
+			\draw[dashed] plot[smooth cycle, tension=1] coordinates{(4.5,1.5) (2.5,2.91) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
 			\path (2.5,1.75) node {$U$};
 
             \draw[-Stealth, ocre] (3.5,1) -- (4,2) node[midway, right] {$\vec{u}$};
@@ -2951,14 +3129,14 @@ Finally, we have the natural identification:
 Consider the endofunctors on $\Vect_{\F}$:
 \begin{center}
     \begin{tikzcd}
-        \Vect_{\F} \arrow[r, "\text{id}_{\Vect_{\F}}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "{(-)^{**}}", yshift=-0.5ex]
+        \Vect_{\F} \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_{\F}}" swap, yshift=-0.5ex] & \Vect_{\F} 
     \end{tikzcd}
 \end{center}
-There is a natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\text{id}_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, there is a natural transformation, but $(-)^*$ is a contravariant functor, so there is no natural transformation from $\text{id}_{\Vect_{\F}}$ to $(-)^*$. 
+There is a natural transformation from $\id_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\id_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, there is a natural transformation, but $(-)^*$ is a contravariant functor, so there is no natural transformation from $\id_{\Vect_{\F}}$ to $(-)^*$. 
 
 \begin{center}
     \begin{tikzcd}[row sep=normal]
-        \Vect_{\F} \arrow[r, "\text{id}_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
+        \Vect_{\F} \arrow[r, "\id_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
         Y \arrow[dd, "f" swap] & Y \arrow[dd, "f"] \\
         \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
         Z & Z
@@ -3015,15 +3193,55 @@ The matrix representation of the isomorphism between $D(V)$ and $D(V^*)$ is
 \]
 where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The negative sign is used to make the isomorphism a symplectic isomorphism, which will be discussed in the later chapters.
 
+\newpage
+
+\section{Natural Transformation and Natural Equivalences}
+
+\begin{definition}[Natural Transformations]
+    Let $F, G : \C \to \D$ be two functors. A \emph{natural transformation} $\eta : F \to G$ is a collection of morphisms $\eta_X : F(X) \to G(X)$ in $\D$ for all objects $X$ in $\C$, such that for all morphisms $f : X \to Y$ in $\C$, the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            F(X) \arrow[r, "F(f)"] \arrow[d, "\eta_X" swap] & F(Y) \arrow[d, "\eta_Y"] \\
+            G(X) \arrow[r, "G(f)"] & G(Y)
+        \end{tikzcd}
+    \end{center}
+\end{definition}
+
+\begin{definition}[Natural Equivalences]
+    A \emph{natural equivalence} from functor $F$ to functor $G$ is a natural transformation $\eta : F \to G$ which has a two-sided inverse natural transformation $\eta^{-1} : G \to F$ such that $\eta \eta^{-1} = 1_G$ and $\eta^{-1} \eta = 1_F$. In this case, we say that $F$ and $G$ are \emph{naturally equivalent}, denoted by $F \equiv G$.
+\end{definition}
+
+\begin{example}
+    Consider the endofunctors on $\Vect_{\F}$:
+    \begin{center}
+        \begin{tikzcd}
+            \Vect_{\F} \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_{\F}}" swap, yshift=-0.5ex] & \Vect_{\F} 
+        \end{tikzcd}
+    \end{center}
+    We have the following natural transformation:
+    \begin{center}
+        \begin{tikzcd}
+            (-)^{**} \arrow[d, "\vequiv", phantom] & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1^{**} \arrow[r, "f^{**}"] \arrow[d, "\eta_{V_1}" swap, ocre, "\cong"] & V_2^{**} \arrow[d, "\eta_{V_2}", ocre, "\cong" swap] \\
+            \id_{\Vect_{\F}} & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1 \arrow[r, "f"] & V_2
+        \end{tikzcd}
+    \end{center}
+    Then we have the natural equivalence: $(-)^{**} \equiv \id_{\Vect_{\F}}$.
+\end{example}
+
+Moreover, we have the following natural equivalence:
+\[
+    \F \otimes - \equiv \id_{\Vect_{\F}} \equiv - \otimes \F \equiv \Hom_{\F}(\F, -) \equiv (-)^{**}
+\]
+
 \chapter{Tensor Algebra}
 
 \section{Tensor Products}
 
-Let $U$ and $V$ be two fixed linear spaces over $\F$ and $Z$ be any linear space over $\F$. Consider the set of all bilinear maps from $U \times V$ to $Z$, denoted by $\Map^{\text{BL}}(U \times V, Z)$. It is a vector space over $\F$ as it is a subset of $\Map(U \times V, Z)$, the set of all maps from $U \times V$ to $Z$.
+Let $U$ and $V$ be two fixed linear spaces over $\F$ and $Z$ be any linear space over $\F$. Consider the set of all bilinear maps from $U \times V$ to $Z$, denoted by $\Map^{\BL}(U \times V, Z)$. It is a vector space over $\F$ as it is a subset of $\Map(U \times V, Z)$, the set of all maps from $U \times V$ to $Z$.
 
 By the universal property of tensor product, we have a natural identification:
 \[
-    \Map^{\text{BL}}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
+    \Map^{\BL}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
 \]
 Note that both are naturally identical to $\Hom(U, \Hom_{\F}(V, Z))$.
 
@@ -3053,18 +3271,18 @@ Consider the following commutative diagram:
 \begin{center}
     \begin{tikzcd}
         & U \times V \arrow[dr, "\forall \phi"] \arrow[d, "\iota'" swap, hook] \\
-        \mathcal{I}_{U, V} \arrow[r, hook] & \F[U \times V] \arrow[r, dashed, "\exists ! \phi'"] \arrow[d, "\pi" swap, two heads] & Z \\
-        & \quotient{\F[U \times V]}{\mathcal{I}_{U, V}} \arrow[ur, dashed, "\exists ! \bar{\phi}" swap] \arrow[from=uu, bend right=60, "\iota" near start, swap, crossing over]
+        \ideal_{U, V} \arrow[r, hook] & \F[U \times V] \arrow[r, dashed, "\exists ! \phi'"] \arrow[d, "\pi" swap, two heads] & Z \\
+        & \quotient{\F[U \times V]}{\ideal_{U, V}} \arrow[ur, dashed, "\exists ! \bar{\phi}" swap] \arrow[from=uu, bend right=60, "\iota" near start, swap, crossing over]
     \end{tikzcd}
 \end{center}
-where $\mathcal{I}_{U, V}$ is the subspace of $\F[U \times V]$ generated by the following elements for all $u, u_1, u_2 \in U$, $v, v_1, v_2 \in V$ and $\alpha, \beta \in \F$:
+where $\ideal_{U, V}$ is the subspace of $\F[U \times V]$ generated by the following elements for all $u, u_1, u_2 \in U$, $v, v_1, v_2 \in V$ and $\alpha, \beta \in \F$:
 \begin{itemize}
     \item $(\alpha u_1 + \beta u_2, v) - \alpha (u_1, v) - \beta (u_2, v)$;
     \item $(u, \alpha v_1 + \beta v_2) - \alpha (u, v_1) - \beta (u, v_2)$;
 \end{itemize}
-Why the construction of $\mathcal{I}_{U, V}$ is like this? This is because we want $\iota$ to be a bilinear map. Then $\iota(\alpha u_1 + \beta u_2, v) = \alpha \iota(u_1, v) + \beta \iota(u_2, v)$ and $\iota(u, \alpha v_1 + \beta v_2) = \alpha \iota(u, v_1) + \beta \iota(u, v_2)$. This means that the elements in $\mathcal{I}_{U, V}$ should be mapped to $0$ by $\iota$. So we have to quotient $\F[U \times V]$ by $\mathcal{I}_{U, V}$ to make $\iota$ a bilinear map.
+Why the construction of $\ideal_{U, V}$ is like this? This is because we want $\iota$ to be a bilinear map. Then $\iota(\alpha u_1 + \beta u_2, v) = \alpha \iota(u_1, v) + \beta \iota(u_2, v)$ and $\iota(u, \alpha v_1 + \beta v_2) = \alpha \iota(u, v_1) + \beta \iota(u, v_2)$. This means that the elements in $\ideal_{U, V}$ should be mapped to $0$ by $\iota$. So we have to quotient $\F[U \times V]$ by $\ideal_{U, V}$ to make $\iota$ a bilinear map.
 
-Then we define $U \otimes V = \quotient{\F[U \times V]}{\mathcal{I}_{U, V}}$ and this shows the existence of tensor product.
+Then we define $U \otimes V = \quotient{\F[U \times V]}{\ideal_{U, V}}$ and this shows the existence of tensor product.
 
 \begin{remark}
     The inclusion map $\iota : U \times V \to U \otimes V$ is `surjective' in the sense that the image of $\iota$ spans $U \otimes V$, i.e. $\span{\Im{\iota}} = U \otimes V$. To know $\bar{\phi}$, it suffices to know $\bar{\phi}(u \otimes v) = \phi(u, v)$ for all $u \in U$ and $v \in V$.
@@ -3109,11 +3327,23 @@ We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreo
 \end{remark}
 
 \begin{definition}[Lie Algebras]
-    An algebra is $A$ over a field $\F$ is called a \emph{lie algebra} if it satisfies the following two conditions:
+    An algebra is $\mathfrak{g}$ over a field $\F$ is called a \emph{lie algebra} if the \emph{lie bracket} or lie product $[-, -] : \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$ satisfies the following two conditions:
     \begin{itemize}
-        \item $x^2 = 0$ for all $x \in A$, i.e., $xy = -yx$ for all $x, y \in A$ if $\text{char}(\F) \neq 2$;
-        \item $(xy)z + (yz)x + (zx)y = 0$ for all $x, y, z \in A$.
+        \item Skew-symmetry: $[x, x] = 0$ for all $x \in \mathfrak{g}$, i.e., $[x, y] = -[y, x]$ for all $x, y \in \mathfrak{g}$ if $\chart(\F) \neq 2$;
+        \item Jacobi Identity: $[x, [y, z]] + [y, [z, x]] + [z, [x, y]] = 0$ for all $x, y, z \in \mathfrak{g}$.
     \end{itemize}
+\end{definition}
+
+\begin{definition}[Graded Linear Space]
+    A linear space $V_{\smallbullet}$ over $\F$ is called a \emph{$\mathbb{Z}_{\geq 0}$-graded linear space} or \emph{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \mathbb{Z}_{\geq 0}$:
+    \[
+        V_{\smallbullet} = \bigoplus_{n = 0}^{\infty} V_n
+    \]
+    The elements in $V_n$ are called \emph{homogeneous elements} of degree $n$. If $v \in V_n$ is a homogeneous element, we write $\deg(v) = n$.
+\end{definition}
+
+\begin{definition}[Graded Linear Maps]
+    A linear map $\phi : V_{\smallbullet} \to W_{\smallbullet}$ is called a \emph{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \mathbb{Z}_{\geq 0}$.
 \end{definition}
 
 \newpage
@@ -3128,18 +3358,243 @@ for all $k \geq 0$. Note that $V^{\otimes 0} = \F$.
 
 We define the \emph{tensor algebra} of $V$ over $\F$, denoted by $\T V$, as follows:
 \[
-    \T V = \bigoplus_{k \geq 0} V^{\otimes k} = \F \oplus V \oplus (V \otimes V) \oplus (V \otimes V \otimes V) \oplus \cdots
+    \T V = \bigoplus_{k = 0}^{\infty} V^{\otimes k} = \F \oplus V \oplus (V \otimes V) \oplus (V \otimes V \otimes V) \oplus \cdots
 \]
 
 The tensor algebra $\T V$ is an algebra over $\F$ with the bilinear product map defined by the tensor product:
 \[
-    \T V \times \T V \to \T V : (u, v) \mapsto u \otimes v
+    \otimes : \T V \times \T V \to \T V
 \]
+which sends $(\sum_n u_n, \sum_m v_m)$ to $\sum_{n, m} (u_n \otimes v_m)$.
 
 \begin{remark}
-    The tensor algebra $\T V$ is a unital associative graded algebra over $\F$. It is unital as the multiplicative identity is $1 \in \F = V^{\otimes 0} \subset \T V$. It is associative as the tensor product is associative up to natural isomorphism. It is graded as $\T V$ is a direct sum of subspaces $V^{\otimes k}$ for all $k \geq 0$.
+    As the algebra product is bilinear, it suffices to know the product of two homogeneous elements, i.e., $V^{\otimes n} \times V^{\otimes m} \to \T V$ for all $n, m \geq 0$. So $\T V$ is a $\mathbb{Z}_{\geq 0}$-graded algebra over $\F$. As the tensor algebra is bi-additive, we have the following equality:
+    \[
+        \sum_n u_n \otimes \sum_m v_m = \sum_n (u_n \otimes \sum_m v_m) = \sum_n \sum_m (u_n \otimes v_m) = \sum_{n, m} (u_n \otimes v_m)
+    \]
+\end{remark}
+
+Then to define the bilinear product above, we have to define the tensor product of two homogeneous elements:
+\begin{center}
+    \begin{tikzcd}[row sep=normal, column sep=normal]
+        V^{\otimes n} \times V^{\otimes m} \arrow[rr] \arrow[dd] & & \T V \\
+        & V^{\otimes (n + m)} \arrow[ur, hook] & \\
+        V^{\otimes n} \otimes V^{\otimes m} \arrow[ur, dashed]
+    \end{tikzcd}
+\end{center}
+
+We have to prove the existence of the bilinear map $V^{\otimes n} \times V^{\otimes m} \to V^{\otimes (n + m)}$ for all $n, m \geq 0$. We can prove it by the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}[row sep=normal, column sep=normal]
+        V^{\otimes n} \times V^{\otimes m} \arrow[r] & \overbrace{V \otimes \cdots \otimes V}^{n \text{ times}} \otimes \overbrace{V \otimes \cdots \otimes V}^{m \text{ times}} \\
+        \underbrace{(V \times \cdots \times V)}_{n \text{ times}} \times \underbrace{(V \times \cdots \times V)}_{m \text{ times}} \arrow[u] & \\
+        \underbrace{V \times \cdots \times V}_{n + m \text{ times}} \arrow[u] \arrow[uur, "\phi" swap] \arrow[r] & \underbrace{V \otimes \cdots \otimes V}_{n + m \text{ times}} \arrow[uu, "\exists ! \bar{\phi}" swap, dashed]
+    \end{tikzcd}
+\end{center}
+The proof used a lot of universal properties of tensor products. Note that the map $\phi$ is a multilinear map and $\bar{\phi}$ is a linear equivalence.
+
+So we have proved the existence of the bilinear product map $\otimes : \T V \times \T V \to \T V$. Then $\T V$ is an algebra over $\F$.
+
+\begin{remark}
+    The tensor algebra $(\T V, \otimes)$ is a graded unital associative algebra over $\F$. It is graded, as it is degree additive, i.e., $V^{\otimes n} \times V^{\otimes m} \to V^{\otimes (n + m)}$ for all $n, m \geq 0$. It is unital, as $V^{\otimes 0} - \F \times V^{\otimes m} \to V^{\otimes m}$ and the reverse. The multiplicative identity is $1 \in \F$. It is associative, as $(u \otimes v) \otimes w = u \otimes (v \otimes w)$ for all $u, v, w \in V$ and the associativity can be extended to all homogeneous elements by bi-additivity. However, in general it is not commutative, as $u \otimes v \neq v \otimes u$ for some $u, v \in V$.
+\end{remark}
+
+There is actually a universal property of tensor algebras. Consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
+        \T V \arrow[ur, dashed, "\exists ! \bar{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+Note that $V = V^{\otimes 1} = 0 \oplus V \oplus 0 \oplus \cdots \subseteq \T V$ and $\iota$ is the inclusion map. Here $A^{\smallbullet}$ is any graded unital associative algebra over $\F$ and $\phi : V \to A^{\smallbullet}$ is a graded linear map with graded degree $0$. Then there exists a unique graded algebra homomorphism with graded degree $0$ $\bar{\phi} : \T V \to A^{\smallbullet}$ such that $\bar{\phi} \circ \iota = \phi$. This shows the universal property of tensor algebras. More specifically, the map $\phi$ is a map from $V$ to the degree $1$ part of $A^{\smallbullet}$, i.e., $\phi : V \to A_1$, then with an inclusion map.
+
+\newpage
+
+\section{Quotient Algebras}
+
+In this section, we will discuss three quotient algebras associated with a vector space $V$: the symmetric algebra, exterior algebra, and universal enveloping algebra.
+
+Before that we need to introduce the concept of ideals in algebras.
+
+\begin{definition}[Ideals of Algebras]
+    An \emph{ideal} of an algebra $A$ over a field $\F$ is a non-empty subset $I$ of $A$ which is closed under linear combinations and algebra multiplications by elements in $A$. That is, for all $x, y \in I$, $\alpha, \beta \in \F$ and $a \in A$, we have:
+    \begin{itemize}
+        \item $\alpha x + \beta y \in I$;
+        \item $ax \in I$ and $xa \in I$.
+    \end{itemize}
+\end{definition}
+
+Simply speaking, an ideal is a generalisation of a rule to an algebra.
+
+The following is an example of an ideal in a ring, which is an example of ideal in a more general concept.
+\begin{example}
+    Consider the ring of integers, $\mathbb{Z}$. The set of all $n$-multiples, denoted by $n\mathbb{Z}$, is an ideal of $\mathbb{Z}$ for all $n \in \mathbb{Z}$. As it is closed under addition and multiplication by any integer.
+\end{example}
+
+\subsection{Symmetric Algebras}
+
+The \emph{symmetric algebra} of a vector space $V$ over a field $\F$, denoted by $\Sym V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $u \otimes v - v \otimes u$ for all $u, v \in V$:
+\[
+    \Sym V = \quotient{\T V}{\ideal_{\Sym}} = \quotient{\T V}{\langle u \otimes v - v \otimes u \mid u, v \in V \rangle}
+\]
+The $\ideal_{\Sym}$ is called the \emph{symmetrising ideal} of $\T V$. It is actually the \emph{ideal completion} of the relation $u \otimes v = v \otimes u$ for all $u, v \in V$. We use $\langle - \rangle$ to denote the ideal generated by a set.
+
+Then the elements in $\Sym V$ are equivalence classes of elements in $\T V$. We have $uv \in \Sym V$ as the equivalence class of $u \otimes v \in \T V$ denoted by $[u \otimes v]$. Note that $uv = [u \otimes v] = [v \otimes u] = vu$ in $\Sym V$, as $[u \otimes v - v \otimes u] = 0$. So the product in $\Sym V$ is commutative. 
+
+\begin{remark}
+    Symmetric algebra is still a graded algebra. As the ideal $\ideal_{\Sym}$ is a graded ideal, i.e., $\ideal_{\Sym} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Sym} \cap V^{\otimes k})$.
+\end{remark}
+
+\subsection{Exterior Algebras}
+
+The \emph{exterior algebra} of a vector space $V$ over a field $\F$, denoted by $\Ext V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $v \otimes v$ for all $v \in V$:
+\[
+    \Ext V = \quotient{\T V}{\ideal_{\Ext}} = \quotient{\T V}{\langle v \otimes v \mid v \in V \rangle} = \quotient{\T V}{\langle v \otimes w + w \otimes v \mid v, w \in V \rangle}
+\]
+The $\ideal_{\Ext}$ is called the \emph{alternating ideal} of $\T V$. It is actually the \emph{ideal completion} of the relation $v \otimes v = 0$ for all $v \in V$, or equivalently $v \otimes w = - w \otimes v$ for all $v, w \in V$. Sometimes the exterior algebra is also called the \emph{skew-symmetric algebra}. Note that the characteristic of the field $\F$ should not be $2$, i.e., $\chart(\F) \neq 2$, otherwise $v \otimes w = - w \otimes v$ implies that $v \otimes w = w \otimes v$.
+
+Then the product in $\Ext V$ is called the \emph{exterior product} or \emph{wedge product}, denoted by $\wedge$. We have $u \wedge v = - v \wedge u$ in $\Ext V$ for all $u, v \in V$. So the product in $\Ext V$ is skew-commutative.
+
+\begin{remark}
+    Exterior algebra is still a graded algebra. As the ideal $\ideal_{\Ext}$ is a graded ideal, i.e., $\ideal_{\Ext} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Ext} \cap V^{\otimes k})$.
+\end{remark}
+
+\subsection{Universal Enveloping Algebras}
+
+Let $\mathfrak{g}$ be a lie algebra over a field $\F$. The \emph{universal enveloping algebra} of $\mathfrak{g}$ over $\F$, denoted by $\Env \mathfrak{g}$, is defined as the quotient algebra of the tensor algebra $\T \mathfrak{g}$ by the ideal of $\T \mathfrak{g}$ generated by elements of the form $x \otimes y - y \otimes x - [x, y]$ for all $x, y \in \mathfrak{g}$:
+\[
+    \Env \mathfrak{g} = \quotient{\T \mathfrak{g}}{\ideal_{\Env}} = \quotient{\T \mathfrak{g}}{\langle x \otimes y - y \otimes x - [x, y] \mid x, y \in \mathfrak{g} \rangle}
+\]
+The $\ideal_{\Env}$ is called the \emph{lie ideal} of $\T \mathfrak{g}$. It is actually the \emph{ideal completion} of the relation $xy - yx = [x, y]$ for all $x, y \in \mathfrak{g}$.
+
+\begin{remark}
+    However, the universal enveloping algebra is not a graded algebra. As the ideal $\ideal_{\Env}$ is not a graded ideal. The $x \otimes y - y \otimes x$ is in $\mathfrak{g}^{\otimes 2}$ but $[x, y]$ is in $\mathfrak{g}^{\otimes 1}$.
 \end{remark}
 
 %----------------------------------------------------------------------------------------
+
+\begin{appendices}
+
+\renewcommand{\chaptername}{Appendix} % Change the chapter name to Appendix, i.e. "Appendix A: Title", instead of "Chapter A: Title" in the headers
+
+%------------------------------------------------
+
+\chapter{Universal Properties}
+
+We first state the formal definition of universal properties.
+
+\begin{definition}[Universal Properties]
+    Let $F : \C \to \D$ be a functor between two categories $\C$ and $\D$. A universal morphism from an object $X \in \Ob{\mathbb{D}}$ to the functor $F$ is a unique pair $(A, u : X \to F(A))$ in $\D$ such that for any morphism $f : X \to F(A')$ in $\D$, there exists a unique morphism $\bar{f} : A \to A'$ in $\C$ such that the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            X \arrow[r, "u", red] \arrow[dr, "f" swap] & F({\color{ocre} A}) \arrow[d, "F(\bar{f})", dashed] & {\color{ocre} A} \arrow[d, "\bar{f}", dashed] \\
+            & F(A') & A'
+        \end{tikzcd}
+    \end{center}
+    Such a property is called the \emph{universal property} of the object $A$. Note that the dual version of universal morphism from $F$ to $X$ can be defined similarly.
+\end{definition}
+
+\begin{remark}
+    Such an object $A$ is an initial object in a new category:
+    \begin{itemize}
+        \item Objects: all pairs $(B, f : X \to F(B))$ for all $B \in \Ob{\C}$;
+        \item Morphisms: commutative diagrams in $\C$:
+    \end{itemize}
+    \begin{center}
+        \begin{tikzcd}[column sep=normal]
+            & X \arrow[dl, "f" swap] \arrow[dr, "f'"] & \\
+            F(B) \arrow[rr, "F(h)" swap] & & F(B')
+        \end{tikzcd}
+    \end{center}
+    The initial object in this category is exactly the object $A$ with the universal property. This type of construction is called the \emph{comma category} and is denoted by $(X \downarrow F)$.
+
+    Similarly, the dual version of terminal object can be defined for the dual version of universal morphism, and the category is denoted by $(F \downarrow X)$.
+\end{remark}
+
+\section{Universal Properties of Limits}
+
+The following are the universal properties of some common limits in category theory.
+
+\begin{itemize}
+    \item \textbf{Products:}
+    \begin{center}
+        \begin{tikzcd}
+            X_{\alpha} & \prod X_{\alpha} \arrow[l, "\pi_{\alpha}" swap, two heads] \\
+            & Z \arrow[u, "u" description, dashed] \arrow[ul, "f"]
+        \end{tikzcd}
+    \end{center}
+
+    \item \textbf{Kernel:}
+    \begin{center}
+        \begin{tikzcd}
+            & X \arrow[dr, "f"] & \\
+            & \ker{f} \arrow[u, "\iota" swap, hook] \arrow[r, "0"] & Y \\
+            Z \arrow[urr, "0" swap] \arrow[ur, "u" description, dashed] \arrow[uur, "\iota'", hook]
+        \end{tikzcd}
+    \end{center}
+
+    \item \textbf{Subspaces:}
+    \begin{center}
+        \begin{tikzcd}
+            & V \arrow[dr, "\pi", two heads] & \\
+            & U \arrow[u, "\iota" swap, hook] \arrow[r, "0"] & \quotient{V}{U} \\
+            Z \arrow[urr, "0" swap] \arrow[ur, "u" description, dashed] \arrow[uur, "\iota'", hook]
+        \end{tikzcd}
+    \end{center}
+\end{itemize}
+
+\newpage
+
+\section{Universal Properties of Colimits}
+
+The following are the universal properties of some common colimits in category theory.
+\begin{itemize}
+    \item \textbf{Coproducts:}
+    \begin{center}
+        \begin{tikzcd}
+            X_{\alpha} \arrow[r, "\iota_{\alpha}", hook] \arrow[dr, "f"] & \coprod X_{\alpha} \arrow[d, "u" description, dashed] \\
+            & Z
+        \end{tikzcd}
+    \end{center}
+
+    \item \textbf{Cokernel:}
+    \begin{center}
+        \begin{tikzcd}
+            & Y \arrow[d, "\pi" swap, two heads] \arrow[ddr, "\pi'", two heads] \\
+            X \arrow[ur, "f"] \arrow[r, "0"] \arrow[drr, "0" swap] & \coker{f} \arrow[dr, "u" description, dashed] \\
+            & & Z
+        \end{tikzcd}
+    \end{center}
+
+    \item \textbf{Quotient Spaces:}
+    \begin{center}
+        \begin{tikzcd}
+            & V \arrow[d, "\pi" swap, two heads] \arrow[ddr, "\pi'", two heads] \\
+            U \arrow[ur, "f"] \arrow[r, "0"] \arrow[drr, "0" swap] & \quotient{V}{U} \arrow[dr, "u" description, dashed] \\
+            & & Z
+        \end{tikzcd}
+    \end{center}
+
+    \item \textbf{Free Vector Spaces:}
+    \begin{center}
+        \begin{tikzcd}
+            X \arrow[r, "\iota", hook] \arrow[dr, "f"] & \F[X] \arrow[d, "{\F[u]}" description, dashed] & X \arrow[d, "u" description, dashed] \\
+            & Z & {|Z|}
+        \end{tikzcd}
+    \end{center}
+
+    \item \textbf{Tensor Products:}
+    \begin{center}
+        \begin{tikzcd}
+            U \times V \arrow[r, "\iota"] \arrow[dr, "\phi"] & U \otimes V \arrow[d, "u" description, dashed] \\
+            & Z
+        \end{tikzcd}
+    \end{center}
+\end{itemize}
+
+%------------------------------------------------
+
+\end{appendices}
+
 
 \end{document}
