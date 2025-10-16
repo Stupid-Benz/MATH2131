@@ -96,9 +96,17 @@
 \newcommand{\chart}{\mathsf{char}} % Characteristic notation
 \renewcommand{\deg}{\mathsf{deg}} % Degree notation
 \newcommand{\Sym}{\mathcal{S}^{\smallbullet}} % Symmetric algebra notation
-\newcommand{\Ext}{\bigwedge^{\smallbullet}} % Exterior algebra notation
+\newcommand{\Ext}{{\bigwedge}^{\smallbullet}} % Exterior algebra notation
 \newcommand{\Env}{\mathcal{U}} % Universal enveloping algebra notation
 \newcommand{\ideal}{\mathcal{I}} % Ideal notation
+\newcommand{\Z}{\mathbb{Z}} % Integer notation
+\newcommand{\Alg}{\boldsymbol{\mathsf{Alg}}} % Algebra category notation
+\newcommand{\CAlg}{\boldsymbol{\mathsf{CAlg}}} % Commutative algebra category notation
+\newcommand{\SAlg}{\boldsymbol{\mathsf{SAlg}}} % Skew-commutative algebra category notation
+\renewcommand{\dim}{\mathsf{dim\;}} % Dimension notation
+\renewcommand{\det}{\mathsf{det\;}} % Determinant notation
+\newcommand{\GL}{\mathsf{GL}} % General linear group notation
+\newcommand{\Aut}{\mathsf{Aut}} % Automorphism group notation
 
 \DeclareMathOperator{\Span}{\mathsf{Span}}
 
@@ -120,6 +128,7 @@
 
 % For vertical equivalence symbol
 \newcommand{\vequiv}{\rotatebox{90}{$\equiv$}}
+\newcommand{\hdash}{\rotatebox{90}{$|$}}
 
 % For quotes
 \usepackage{epigraph}
@@ -224,7 +233,6 @@
     \midrule
     $0_V$ & additive identity of vector space $V$ \\
     $1_V$ & multiplicative identity of vector space $V$ \\
-    $e_V$ & an identity of vector space $V$ \\
     \midrule
     $\subset$ & proper subset \\
     $\subseteq$ & subset, i.e. can be equal \\
@@ -372,7 +380,7 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 \end{remark}
 
 \begin{example}
-    A common example of an invertible (binary) operation is addition on the set of integers $\mathbb{Z}$. For every integer $x \in \mathbb{Z}$, there exists an integer $y = -x$ such that:
+    A common example of an invertible (binary) operation is addition on the set of integers $\Z$. For every integer $x \in \Z$, there exists an integer $y = -x$ such that:
     \begin{equation}
         x + (-x) = 0 = (-x) + x
     \end{equation}
@@ -402,7 +410,7 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 \end{definition}
 
 \begin{example}
-    A common example of a commutative operation is addition on the set of integers $\mathbb{Z}$. For all $x,y \in \mathbb{Z}$, we have: $x + y = y + x$
+    A common example of a commutative operation is addition on the set of integers $\Z$. For all $x,y \in \Z$, we have: $x + y = y + x$
 \end{example}
 
 \begin{definition}[Distributive (Harmonic)]
@@ -416,7 +424,7 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 The professor preferred to use the word ``harmonic'' instead of ``distributive''. Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''. (The two binary operation in this sentence is not commutative.)
 
 \begin{example}
-    A common example of a distributive operation is multiplication over addition on the set of integers $\mathbb{Z}$. For all $x,y,z \in \mathbb{Z}$, we have:
+    A common example of a distributive operation is multiplication over addition on the set of integers $\Z$. For all $x,y,z \in \Z$, we have:
     \[ \begin{split}
         x \cdot (y + z) &= x \cdot y + x \cdot z \\
         (y + z) \cdot x &= y \cdot x + z \cdot x
@@ -464,7 +472,7 @@ With those five properties, we can construct monoid and groups.
 \end{definition}
 
 \begin{example}
-    $(\mathbb{Z}, +, \times)$ is a commutative ring.
+    $(\Z, +, \times)$ is a commutative ring.
 \end{example}
 
 \begin{definition}[Field]
@@ -476,7 +484,7 @@ With those five properties, we can construct monoid and groups.
 \end{example}
 
 \begin{example}[Finite Field]
-    $(\mathbb{Z}/2\mathbb{Z}, +, \times)$ is a field, where $\mathbb{Z}/2\mathbb{Z} = \{[0], [1]\}$, $[0]$ is the set of even integers and $[1]$ is the set of odd integers. Note that any $\mathbb{Z}/p\mathbb{Z}$ is a finite field, where $p$ is a prime number.
+    $(\Z/2\Z, +, \times)$ is a field, where $\Z/2\Z = \{[0], [1]\}$, $[0]$ is the set of even integers and $[1]$ is the set of odd integers. Note that any $\Z/p\Z$ is a finite field, where $p$ is a prime number.
 \end{example}
 
 We may draw a diagram for the relationship between the algebraic structures.
@@ -744,37 +752,39 @@ There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Po
 Linear map, sometimes linear transformation, is a homomorphism preserving linear structure.
 
 \begin{definition}[Linear Maps]
-    Let $V$ and $W$ be two linear spaces over a field $\F$. A \emph{linear map} is a set map $T: V \to W$ such that for all $\vec{u}, \vec{v} \in V$ and $\alpha \in \F$, the following holds:
+    Let $V$ and $W$ be two linear spaces over a field $\F$. A \emph{linear map} is a set map $T: V \to W$ such that for all $u, v \in V$ and $\alpha \in \F$, the following holds:
     \[
         \begin{split}
-            T(\vec{u} + \vec{v}) &= T(\vec{u}) + T(\vec{v}) \\
-            T(\alpha \vec{u}) &= \alpha T(\vec{u})
+            T(u + v) &= T(u) + T(v) \\
+            T(\alpha u) &= \alpha T(u)
         \end{split}
     \]
     The set of all linear maps from $V$ to $W$ is denoted by $\Hom(V, W)$. Some may write {$\mathcal{L}(V, W)$}.
 \end{definition}
 
 \begin{definition}[Linear Combinations]
-    Let $V$ be a linear space over a field $\F$. A \emph{linear combination} of vectors $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n} \in V$ is a vector of the form:
+    Let $V$ be a linear space over a field $\F$. A \emph{linear combination} of vectors $v_1, v_2, \cdots, v_n \in V$ is a vector of the form:
     \[
-        \alpha_1 \vec{v_1} + \alpha_2 \vec{v_2} + \cdots + \alpha_n \vec{v_n}
+        \alpha^1 v_1 + \alpha^2 v_2 + \cdots + \alpha^n v_n
     \]
-    where $\alpha_1, \alpha_2, \cdots, \alpha_n \in \F$ are scalars.
+    where $\alpha^1, \alpha^2, \cdots, \alpha^n \in \F$ are scalars.
 \end{definition}
 
-The following is the definition of linear map using linear combination. Note that this definition is equivalence to the definition above. The following is also equivalence to linear combination with $n$ vectors.
+The reason of using the superscript for scalars is to avoid confusion with the subscript of vectors. Also, it is due to the concept of dual space, which will be introduced later.
+
+We can combine the two properties of linear maps into one property.
 
 \begin{corollary}[Linear Maps and Linear Combinations]
-    A set map $f: V \to W$ between two linear spaces over a field $\F$ is a linear map if and only if $T$ respects linear combinations, i.e., for all $\vec{v_1}, \vec{v_2} \in V$ and all scalars $\alpha_1, \alpha_2 \in \F$, the following holds:
+    A set map $f: V \to W$ between two linear spaces over a field $\F$ is a linear map if and only if $T$ respects linear combinations, i.e., for all $v_1, v_2 \in V$ and all scalars $\alpha^1, \alpha^2 \in \F$, the following holds:
     \[
-        T(\alpha_1 \vec{v_1} + \alpha_2 \vec{v_2}) = \alpha_1 T(\vec{v_1}) + \alpha_2 T(\vec{v_2})
+        T(\alpha^1 v_1 + \alpha^2 v_2) = \alpha^1 T(v_1) + \alpha^2 T(v_2)
     \]
 \end{corollary}
 
 \begin{example}
     Let $A$ be an $m \times n$ matrix with entries in a field $\F$. The map $T: \F^n \to \F^m$ defined by
     \[
-        T\vec{x} = T(\vec{x}) = A \vec{x}
+        Tx = T(x) = Ax
     \]
     where right-hand side is the usual matrix multiplication, is a linear map over $\F$.
 \end{example}
@@ -793,39 +803,39 @@ The following is the definition of linear map using linear combination. Note tha
     \[
         A = \begin{bmatrix}
             | & | & & | \\
-            T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n} \\
+            T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
             | & | & & |
         \end{bmatrix}
     \]
-    The vector $\vec{e_i}$ is the column vectors where only has the value 1 at the $i$-th place and 0 at other places.
+    The vector $\vec{e}_i$ is the column vectors where only has the value 1 at the $i$-th place and 0 at other places.
 \end{proposition}
 
 \begin{proof}
-    Consider a column matrix $\vec{x} \in \F^n$ with entries $x_1, x_2, \cdots, x_n \in \F$. Then $\vec{x}$ can be expressed as a linear combination of the vectors $\vec{e_1}, \vec{e_2}, \cdots, \vec{e_n}$:
+    Consider a column matrix $x \in \F^n$ with entries $x^1, x^2, \cdots, x^n \in \F$. Then $x$ can be expressed as a linear combination of the vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
     \[
-        \vec{x} = x_1 \vec{e_1} + x_2 \vec{e_2} + \cdots + x_n \vec{e_n} = \sum_{i=1}^{n} x_i \vec{e_i}
+        x = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n = \sum_{i=1}^{n} x^i \vec{e}_i
     \]
     Since $T$ is a linear map, it respects linear combinations. Therefore, we have:
     \[
-        T\vec{x} = T\left( \sum_{i=1}^{n} x_i \vec{e_i} \right) = \sum_{i=1}^{n} x_i T(\vec{e_i}) = \sum_{i=1}^{n} x_i \vec{a_i} = A\vec{x}
+        Tx = T\left( \sum_{i=1}^{n} x^i \vec{e}_i \right) = \sum_{i=1}^{n} x^i T(\vec{e}_i) = \sum_{i=1}^{n} x^i \vec{a}_i = A\vec{x}
     \]
-    where $\vec{a_i} = T(\vec{e_i})$ is the $i$-th column of the matrix $A = \begin{bmatrix}
+    where $\vec{a}_i = T\vec{e}_i$ is the $i$-th column of the matrix $A = \begin{bmatrix}
         | & | & & | \\
-        T\vec{e_1} & T\vec{e_2} & \cdots & T\vec{e_n} \\
+        T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
         | & | & & |
     \end{bmatrix}$. Thus, we have $T\vec{x} = A\vec{x}$ for all $\vec{x} \in \F^n$. This shows that $T$ can be represented as a matrix multiplication by the matrix $A$.
 \end{proof}
 
-There is a simpler way to write $\sum_{i=1}^{n} x_i \vec{e_i}$: The Einstein Summation Convention. When an index variable appears twice in a single term and is not otherwise defined, it implies summation of that term over all the values of the index. Therefore, we can write:
+There is a simpler way to write $\sum_{i=1}^{n} x^i \vec{e}_i$: The Einstein Summation Convention. When an index variable appears twice in a single term and is not otherwise defined, it implies summation of that term over all the values of the index. Therefore, we can write:
 \[
-    \vec{x} = x_i \vec{e_i}
+    x = x^i \vec{e}_i
 \]
 where $i$ is summed from $1$ to $n$. 
 
-\begin{definition}[Homogeneous Linear Functions]
-    A linear map $f: \F^n \to \F$ is called a \emph{homogeneous linear function} or a \emph{linear functional} if it satisfies the property:
+\begin{definition}[Linear Functional / Homogeneous Linear Function]
+    A linear map $f: \F^n \to \F$ is called a \emph{homogeneous linear function} or a \emph{linear functional} if for all $\alpha \in \F$ and $x \in \F^n$, the following holds:
     \[
-        f(\alpha \vec{x}) = \alpha f(\vec{x}) \quad \text{for all } \alpha \in \F \text{ and } \vec{x} \in \F^n.
+        f(\alpha x) = \alpha f(x)
     \]
 \end{definition}
 
@@ -833,23 +843,14 @@ where $i$ is summed from $1$ to $n$.
     The standard matrix of a linear map $T: \F^n \to \F^m$ can be written as:
     \[
         A = \begin{bmatrix}
-            f_1(\vec{e_1}) & f_1(\vec{e_2}) & \cdots & f_1(\vec{e_n}) \\
-            f_2(\vec{e_1}) & f_2(\vec{e_2}) & \cdots & f_2(\vec{e_n}) \\
-            \vdots & \vdots & \ddots & \vdots \\
-            f_m(\vec{e_1}) & f_m(\vec{e_2}) & \cdots & f_m(\vec{e_n})
+            \hdash & f_1 & \hdash \\
+            \hdash & f_2 & \hdash \\
+            & \vdots & \\
+            \hdash & f_m & \hdash
         \end{bmatrix}
     \]
-    where $f_i: \F^n \to \F$ is the $i$-th component function of $T$, i.e., $T\vec{x} = \begin{bmatrix}
-        f_1(\vec{x}) \\
-        f_2(\vec{x}) \\
-        \vdots \\
-        f_m(\vec{x})
-    \end{bmatrix}$ for all $\vec{x} \in \F^n$.
+    where $f_i: \F^n \to \F$ is the $i$-th component function of $T$, which is a linear functional.
 \end{corollary}
-
-\begin{remark}
-    Each component function $f_i$ is a homogeneous linear function, and the standard matrix $A$ is constructed by evaluating these functions at the standard basis vectors $\vec{e_1}, \vec{e_2}, \cdots, \vec{e_n}$ of $\F^n$.
-\end{remark}
 
 \begin{example}
     Let $D: \F[t] \to \F[t]$ be the differentiation operator defined by:
@@ -874,9 +875,9 @@ where $i$ is summed from $1$ to $n$.
     \[
         \begin{split}
             + : \Map(X, W) \times \Map(X, W) &\to \Map(X, W) \\
-            (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to W \\ \\
+            (f,g) &\mapsto (f + g) : x \mapsto f(x) + g(x) \\ \\
             \cdot : \F \times \Map(X, W) &\to \Map(X, W) \\
-            (\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to W
+            (\alpha,f) &\mapsto (\alpha f) : x \mapsto \alpha f(x)
         \end{split}
     \]
 \end{proposition}
@@ -890,9 +891,9 @@ where $i$ is summed from $1$ to $n$.
     \[
         \begin{split}
             + : \Hom(V, W) \times \Hom(V, W) &\to \Hom(V, W) \\
-            (f,g) &\mapsto (f+g: \vec{v} \mapsto f(\vec{v}) + g(\vec{v})) \qquad f + g : V \to W \\ \\
+            (f,g) &\mapsto (f + g): v \mapsto f(v) + g(v) \\ \\
             \cdot : \F \times \Hom(V, W) &\to \Hom(V, W) \\
-            (\alpha,f) &\mapsto (\alpha f: \vec{v} \mapsto \alpha f(\vec{v})) \qquad \alpha f : V \to W
+            (\alpha,f) &\mapsto (\alpha f): v \mapsto \alpha f(v)
         \end{split}
     \]
 \end{proposition}
@@ -904,16 +905,16 @@ where $i$ is summed from $1$ to $n$.
     \[
         \begin{split}
             (f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
-            &\overset{\mathrm{lin}}{=\joinrel=} \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
+            &=\joinrel= \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
             &=\joinrel= \alpha (f(\vec{u}) + g(\vec{u})) + \beta (f(\vec{v}) + g(\vec{v})) \\
             &\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
         \end{split}
     \]
-    where "lin" denotes the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
+    where the second equality is due to the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
 \end{proof}
 
 \begin{remark}
-    Note that $\End(V) = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
+    Note that $\End{V} = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
 
 Then we can say that 
@@ -929,29 +930,29 @@ Then we can say that
 Similar to normal maps, there are injective, surjective and bijective linear maps.
 
 \begin{definition}[Injective Lienar Maps]
-    A linear map $f: V \to W$ between two linear spaces over a field $\F$ is said to be \emph{injective} (or one-to-one) if for all $\vec{u}, \vec{v} \in V$, the following holds:
+    A linear map $f: V \to W$ between two linear spaces over a field $\F$ is said to be \emph{injective} (or one-to-one) if for all $u, v \in V$, the following holds:
     \[
-        f(\vec{u}) = f(\vec{v}) \implies \vec{u} = \vec{v}
+        f(u) = f(v) \implies u = v
     \]
     Equivalently, $f$ is injective if the only vector in $V$ that maps to the zero vector in $W$ is the zero vector itself:
     \[
-        f(\vec{u}) = 0 \implies \vec{u} = 0
+        f(u) = 0 \implies u = 0
     \]
 \end{definition}
 
 \begin{definition}[Surjective Lienar Maps]
-    A linear map $f: V \to W$ is said to be \emph{surjective} (or onto) if for every $\vec{w} \in W$, there exists at least one $\vec{v} \in V$ such that:
+    A linear map $f: V \to W$ is said to be \emph{surjective} (or onto) if for every $w \in W$, there exists at least one $v \in V$ such that:
     \[
-        f(\vec{v}) = \vec{w}
+        w = f(v)
     \]
 \end{definition}
 
 \begin{definition}[Invertible Linear Maps / Linear Equivalences]
     A linear map $T: V \to W$ is said to be \emph{invertible} if $T$ has a unique two-sided inverse $S$, denoted by $T^{-1}$, i.e., there exists a linear map $S: W \to V$ such that:
     \[
-        TS = e_W \quad \text{and} \quad ST = e_V
+        TS = 1_W \quad \text{and} \quad ST = 1_V
     \]
-    where $e_V: V \to V$ and $e_W: W \to W$ are the identity maps on $V$ and $W$, respectively.
+    where $1_V: V \to V$ and $1_W: W \to W$ are the identity maps on $V$ and $W$, respectively.
     In this case, we say that the linear spaces $V$ and $W$ are \emph{isomorphic} or \emph{linear equivalent}, denoted by $V \cong W$.
 \end{definition}
 
@@ -960,27 +961,27 @@ Similar to normal maps, there are injective, surjective and bijective linear map
 \end{corollary}
 
 \begin{proof}
-    ($\Rightarrow$) Assume $T: V \to W$ is invertible. By definition, there exists a linear map $S: W \to V$ such that $TS = e_W$ and $ST = e_V$.
+    ($\Rightarrow$) Assume $T: V \to W$ is invertible. By definition, there exists a linear map $S: W \to V$ such that $TS = 1_W$ and $ST = 1_V$.
 
-    To show that $T$ is injective, suppose $T(\vec{u}) = T(\vec{v})$ for some $\vec{u}, \vec{v} \in V$. We have:
+    To show that $T$ is injective, suppose $T(u) = T(v)$ for some $u, v \in V$. We have:
     \[
-        S(T(\vec{u})) = S(T(\vec{v})) \implies (ST)(\vec{u}) = (ST)(\vec{v}) \implies e_V(\vec{u}) = e_V(\vec{v}) \implies \vec{u} = \vec{v}
+        S(T(u)) = S(T(v)) \implies (ST)(u) = (ST)(v) \implies 1_V(u) = 1_V(v) \implies u = v
     \]
-    Thus, $T$ is injective. Then, to show that $T$ is surjective, let $\vec{w} \in W$. Since $TS = e_W$, we have:
+    Thus, $T$ is injective. Then, to show that $T$ is surjective, let $w \in W$. Since $TS = 1_W$, we have:
     \[
-        T(S(\vec{w})) = e_W(\vec{w}) = \vec{w}
+        T(S(w)) = 1_W(w) = w
     \]
-    Then for every $\vec{w} \in W$, there exists a $\vec{v} = S(\vec{w}) \in V$ such that $T(\vec{v}) = \vec{w}$. Thus, $T$ is surjective.
+    Then for every $w \in W$, there exists a $v = S(w) \in V$ such that $T(v) = w$. Thus, $T$ is surjective.
 
-    ($\Leftarrow$) Now assume that $T: V \to W$ is both injective and surjective. We need to show that there exists a linear map $S: W \to V$ such that $TS = e_W$ and $ST = e_V$.
+    ($\Leftarrow$) Now assume that $T: V \to W$ is both injective and surjective. We need to show that there exists a linear map $S: W \to V$ such that $TS = 1_W$ and $ST = 1_V$.
 
-    Since $T$ is surjective, for each $\vec{w} \in W$, there exists at least one $\vec{v} \in V$ such that $T(\vec{v}) = \vec{w}$. Define the map $S: W \to V$ by choosing one such preimage for each $\vec{w}$:
+    Since $T$ is surjective, for each $w \in W$, there exists at least one $v \in V$ such that $T(v) = w$. Define the map $S: W \to V$ by choosing one such preimage for each $w$:
     \[
-        S(\vec{w}) = \text{a chosen } \vec{v} \text{ such that } T(\vec{v}) = \vec{w}
+        S(w) = \text{a chosen } v \text{ such that } T(v) = w
     \]
-    To show that $S$ is well-defined, we need to ensure that if $T(\vec{v_1}) = T(\vec{v_2})$, then $\vec{v_1} = \vec{v_2}$. This follows from the injectivity of $T$.
+    To show that $S$ is well-defined, we need to ensure that if $T(v_1) = T(v_2)$, then $v_1 = v_2$. This follows from the injectivity of $T$.
 
-    Now we verify that $TS = e_W$: $(TS)(\vec{w}) = T(S(\vec{w})) = \vec{w}$ for all $\vec{w} \in W$. Thus, $TS = e_W$. Next, we verify that $ST = e_V$: $(ST)(\vec{v}) = S(T(\vec{v})) = \vec{v}$ for all $\vec{v} \in V$. Thus, $ST = e_V$.
+    Now we verify that $TS = 1_W$: $(TS)(w) = T(S(w)) = w$ for all $w \in W$. Thus, $TS = 1_W$. Next, we verify that $ST = 1_V$: $(ST)(v) = S(T(v)) = v$ for all $v \in V$. Thus, $ST = 1_V$.
 
     Therefore, $T$ has a two-sided inverse $S$, and hence $T$ is invertible.
 \end{proof}
@@ -1017,20 +1018,20 @@ We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with stand
 \end{center}
 
 \begin{proposition}
-    The standard matrix of the composition $ST: \F^n \to \F^k$ is the matrix multiplication $BA$, i.e., for all $\vec{x} \in \F^n$,
+    The standard matrix of the composition $ST: \F^n \to \F^k$ is the matrix multiplication $BA$, i.e., for all $x \in \F^n$,
     \[
-        (ST)\vec{x} = B(A\vec{x}) = (BA)\vec{x}
+        (ST)x = B(Ax) = (BA)x
     \]
 \end{proposition}
 
 \begin{proof}
-    Let $\vec{x} \in \F^n$ be a column matrix with entries $x_1, x_2, \cdots, x_n \in \F$. Then $\vec{x}$ can be expressed as a linear combination of the standard basis vectors $\vec{e_1}, \vec{e_2}, \cdots, \vec{e_n}$:
+    Let $x \in \F^n$ be a column matrix with entries $x^1, x^2, \cdots, x^n \in \F$. Then $x$ can be expressed as a linear combination of the standard basis vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
     \[
-        \vec{x} = x_1 \vec{e_1} + x_2 \vec{e_2} + \cdots + x_n \vec{e_n} = \sum_{i=1}^{n} x_i \vec{e_i}
+        x = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n = x^i \vec{e}_i
     \]
     Consider the $j$-th column of $BA$, it is given by:
     \[
-        (ST)\vec{e_j} = S(T(\vec{e_j})) = S(\vec{a_j}) = B\vec{a_j} = (BA)\vec{e_j}
+        (ST)\vec{e}_j = S(T(\vec{e}_j)) = S(\vec{a}_j) = B\vec{a}_j = (BA)\vec{e}_j
     \]
     for all $j = 1, 2, \cdots, n$. This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
 \end{proof}
@@ -1043,19 +1044,19 @@ The matrix multiplication $BA$ can be computed as follows:
 \[
     BA = B\begin{bmatrix}
         | & | & & | \\
-        \vec{a_1} & \vec{a_2} & \cdots & \vec{a_n} \\
+        \vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n \\
         | & | & & |
     \end{bmatrix} = \begin{bmatrix}
         | & | & & | \\
-        B\vec{a_1} & B\vec{a_2} & \cdots & B\vec{a_n} \\
+        B\vec{a}_1 & B\vec{a}_2 & \cdots & B\vec{a}_n \\
         | & | & & |
     \end{bmatrix}
 \]
-where $\vec{a_i} = T(\vec{e_i})$ is the $i$-th column of the matrix $A$. Also, 
+where $\vec{a}_i = T(\vec{e}_i)$ is the $i$-th column of the matrix $A$. Also, 
 \[
-    B\vec{x} = x_1 \vec{b_1} + x_2 \vec{b_2} + \cdots + x_n \vec{b_n} = \sum_{i=1}^{n} x_i \vec{b_i}
+    Bx = x^1 \vec{b}_1 + x^2 \vec{b}_2 + \cdots + x^n \vec{b}_n = x^i \vec{b}_i
 \]
-where $\vec{b_i} = B\vec{a_i}$ is the $i$-th column of the matrix $B$. Note that $B$ is a $k \times m$ matrix, and $\vec{x} \in \F^m$. Thus, the matrix multiplication $B\vec{x}$ is defined and results in a column matrix in $\F^k$.
+where $\vec{b}_i = B\vec{a}_i$ is the $i$-th column of the matrix $B$. Note that $B$ is a $k \times m$ matrix, and $x \in \F^m$. Thus, the matrix multiplication $Bx$ is defined and results in a column matrix in $\F^k$.
 
 \newpage
 
@@ -1074,36 +1075,36 @@ where $\vec{b_i} = B\vec{a_i}$ is the $i$-th column of the matrix $B$. Note that
 For easier notations, we introduce the idea of matrix units, which is similar to the standard basis vectors $\vec{e_i}$.
 
 \begin{definition}[Matrix Units]
-    Let $m$ and $n$ be two positive integers and $\F$ be a field. The \emph{matrix unit} $E_{ij}$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
+    Let $m$ and $n$ be two positive integers and $\F$ be a field. The \emph{matrix unit} $E_i^j$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
     \[
-        (E_{ij})_{kl} = \begin{cases}
+        (E_i^j)_k^l = \begin{cases}
             1 & \text{if } (k,l) = (i,j) \\
             0 & \text{otherwise}
         \end{cases}
     \]
-    for all $1 \leq k \leq m$ and $1 \leq l \leq n$.
+    for all $1 \leq k \leq m$ and $1 \leq l \leq n$. The $(i,j)$-th position is the entry in the $i$-th row and $j$-th column.
 
-    It can also be defined as $E_{ij} = \vec{e_i} \hat{e_j} \in M_{m \times n} (\F)$ where $\vec{e_i} \in \F^m$ and $\vec{e_j}^T = \hat{e_j} \in \F^n$ are the $i$-th and $j$-th standard basis vectors, respectively. The $\hat{e_j}$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
+    It can also be defined as $E_i^j = \vec{e}_i \hat{e}^j \in \M{m \times n}{\F}$ where $\vec{e}_i \in \F^m$ and $\vec{e}_j^T = \hat{e}^j \in (\F^n)^*$ are the $i$-th and $j$-th standard basis vectors, respectively. The $\hat{e}^j$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
 \end{definition}
 
 \begin{remark}
     Note that for any $m \times n$ matrix $A$ over a field $\F$, we have:
     \[
         \begin{split}
-            A\vec{e_j} &= \text{the } j\text{-th column of } A \in \F^n \\
-            \hat{e_i}A &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
+            A\vec{e}_j &= \text{the } j\text{-th column of } A \in \F^n \\
+            \hat{e}^iA &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
         \end{split}
     \]
-    where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e_i}$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$. Then we have:
+    where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$. Then we have: (Beaware of the difference between superscript and subscript)
     \[
-        a_{ij} = \hat{e_i} A \vec{e_j} = \text{the } (i,j)\text{-th entry of } A
+        a_j^i = \hat{e}^i A \vec{e}_j = \text{the } (i,j)\text{-th entry of } A
     \]
 \end{remark}
 
-We can write the $E_{i,j}$ as:
+We can write the $E_i^j$ as:
 \vspace{7ex}
 \[
-    E_{i,j} = \begin{bmatrix}
+    E_i^j = \begin{bmatrix}
         0 & \cdots & 0 & \mypoint{herei}{0} & 0 & \cdots & 0 \\
         \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
         0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
@@ -1123,59 +1124,71 @@ We can write the $E_{i,j}$ as:
 Then we consider the row operations by using the matrix units.
 
 \begin{proposition}
-    The row operation $R_i \leftrightarrow R_j$ is a linear map where the standard matrix is $A_{R_i \leftrightarrow R_j} = I - E_{i,i} - E_{j,j} + E_{i,j} + E_{j,i}$.
+    The row operation $R_i \leftrightarrow R_j$ is a linear map where the standard matrix is $A_{R_i \leftrightarrow R_j} = I - E_i^i - E_j^j + E_i^j + E_j^i$.
 \end{proposition}
 
 \begin{proof}
     The linear map $T: \F^n \to \F^n$ is defined pointwisely. We can say the map is:
     \[
-        \vec{e_k} \mapsto \begin{cases}
-            \vec{e_j} & \text{if } k = i \\
-            \vec{e_i} & \text{if } k = j \\
-            \vec{e_k} & \text{if } k \neq i, j
+        \vec{e}_k \mapsto \begin{cases}
+            \vec{e}_j & \text{if } k = i \\
+            \vec{e}_i & \text{if } k = j \\
+            \vec{e}_k & \text{if } k \neq i, j
         \end{cases}
     \]
     Then the standard matrix of $T$ is:
     \[
-        A_{R_i \leftrightarrow R_j} = [\vec{e_1} \; \cdots \; \vec{e_j} \; \cdots \; \vec{e_i} \; \cdots \; \vec{e_n}] = I - E_{i,i} - E_{j,j} + E_{i,j} + E_{j,i}
+        A_{R_i \leftrightarrow R_j} = \begin{bmatrix}
+            | & & | & & | & & | \\
+            \vec{e}_1 & \cdots & \vec{e}_j & \cdots & \vec{e}_i & \cdots & \vec{e}_n \\
+            | & & | & & | & & | 
+        \end{bmatrix} = I - E_i^i - E_j^j + E_i^j + E_j^i
     \]
     where $I$ is the $n \times n$ identity matrix.
 \end{proof}
 
 \begin{proposition}
-    The row operation $R_i \to \alpha R_i$ where $\alpha \in \F^x := \F \setminus \{0\}$ is a linear map where the standard matrix is $A_{R_i \to \alpha R_i} = I + (\alpha - 1) E_{i,i}$.
+    The row operation $R_i \to \alpha R_i$ where $\alpha \in \F^{\times} := \F \setminus \{0\}$ is a linear map where the standard matrix is $A_{R_i \to \alpha R_i} = I + (\alpha - 1) E_i^i$.
 \end{proposition}
 
 \begin{proof}
     The linear map $T: \F^n \to \F^n$ is defined pointwisely. We can say the map is:
     \[
-        \vec{e_k} \mapsto \begin{cases}
-            \alpha \vec{e_i} & \text{if } k = i \\
-            \vec{e_k} & \text{if } k \neq i
+        \vec{e}_k \mapsto \begin{cases}
+            \alpha \vec{e}_i & \text{if } k = i \\
+            \vec{e}_k & \text{if } k \neq i
         \end{cases}
     \]
     Then the standard matrix of $T$ is:
     \[
-        A_{R_i \to \alpha R_i} = [\vec{e_1} \; \cdots \; \alpha\vec{e_i} \; \cdots \; \vec{e_n}] = I + (\alpha - 1) E_{i,i}
+        A_{R_i \to \alpha R_i} = \begin{bmatrix}
+            | & & | & & | \\
+            \vec{e}_1 & \cdots & \alpha\vec{e}_i & \cdots & \vec{e}_n \\
+            | & & | & & |
+        \end{bmatrix} = I + (\alpha - 1) E_i^i
     \]
     where $I$ is the $n \times n$ identity matrix.
 \end{proof}
 
 \begin{proposition}
-    The row operation $R_i \to R_i + \alpha R_j$ where $\alpha \in \F$ and $i \neq j$ is a linear map where the standard matrix is $A_{R_i \to R_i + \alpha R_j} = I + \alpha E_{i,j}$.
+    The row operation $R_i \to R_i + \alpha R_j$ where $\alpha \in \F$ and $i \neq j$ is a linear map where the standard matrix is $A_{R_i \to R_i + \alpha R_j} = I + \alpha E_i^j$.
 \end{proposition}
 
 \begin{proof}
     The linear map $T: \F^n \to \F^n$ is defined pointwisely. We can say the map is:
     \[
-        \vec{e_k} \mapsto \begin{cases}
-            \vec{e_i} + \alpha \vec{e_j} & \text{if } k = i \\
-            \vec{e_k} & \text{if } k \neq i
+        \vec{e}_k \mapsto \begin{cases}
+            \vec{e}_i + \alpha \vec{e_j} & \text{if } k = i \\
+            \vec{e}_k & \text{if } k \neq i
         \end{cases}
     \]
     Then the standard matrix of $T$ is:
     \[
-        A_{R_i \to R_i + \alpha R_j} = [\vec{e_1} \; \cdots \; (\vec{e_i} + \alpha\vec{e_j}) \; \cdots \; \vec{e_n}] = I + \alpha E_{i,j}
+        A_{R_i \to R_i + \alpha R_j} = \begin{bmatrix}
+            | & & | & & | & & | \\
+            \vec{e}_1 & \cdots & \vec{e}_i + \alpha\vec{e}_j & \cdots & \vec{e}_n \\
+            | & & | & & |
+        \end{bmatrix} = I + \alpha E_i^j
     \]
     where $I$ is the $n \times n$ identity matrix.
 \end{proof}
@@ -1227,9 +1240,9 @@ Graphically, we have the following commutative diagram:
 \begin{definition}[Elementary Column Operations]
     Let $A$ be an $m \times n$ matrix over a field $\F$. An \emph{elementary column operation} on $A$ is one of the following operations:
     \begin{enumerate}
-        \item Interchange two columns of $A$: $C_i \leftrightarrow C_j$.
-        \item Multiply a column of $A$ by a nonzero scalar in $\F$: $C_i \to \alpha C_i$ where $\alpha \in \F \setminus \{0\}$.
-        \item Add a scalar multiple of one column of $A$ to another column of $A$: $C_i \to C_i + \alpha C_j$ where $\alpha \in \F$ and $i \neq j$.
+        \item Column Interchange: \qquad $C_i \leftrightarrow C_j$.
+        \item Column Multiplication: \quad $C_i \to \alpha C_i$, where $\alpha \in \F \setminus \{0\}$.
+        \item Column Addition: \qquad\quad\ $C_i \to C_i + \alpha C_j$, where $\alpha \in \F$ and $i \neq j$.
     \end{enumerate}
     Each elementary column operation can be represented by \emph{right multiplication} of $A$ by an appropriate $n \times n$ matrix over $\F$. Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
@@ -1326,7 +1339,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \end{proposition}
 
 \begin{proof}
-    If $A$ has a left inverse, let say $B$, then we have $BA = I_n$. Then for $B(A(\vec{x_1})) = B(A(\vec{x_2}))$, we have $(BA)\vec{x_1} = (BA)\vec{x_2}$, which implies $x_1 = x_2$. Hence it is injective.
+    If $A$ has a left inverse, let say $B$, then we have $BA = I_n$. Then for $B(A(x_1)) = B(A(x_2))$, we have $(BA)x_1 = (BA)x_2$, which implies $x_1 = x_2$. Hence it is injective.
 
     If $A$ is injective, we can consider $A = P^{-1}CQ$, where $C$ is the canonical form of the matrix $A$. Then we consider $P^{-1}CQ\vec{x} = \vec{0}$. Since $P^{-1}$ is invertible, it won't produce non-trivial solutions. We can consider $C(Q\vec{x}) = \vec{0} = C\vec{y}$. Then we have 
     \[
@@ -1334,14 +1347,14 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
             I_r & 0 \\
             0 & 0
         \end{bmatrix} \begin{bmatrix}
-            \vec{y_1} \\
-            \vec{y_2}
+            \vec{y}_1 \\
+            \vec{y}_2
         \end{bmatrix} = \begin{bmatrix}
             0 \\
             0
         \end{bmatrix}
     \]
-    where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively. Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything. As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$. Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y_2} = \vec{0}$. Hence we have $n - r = 0$ due to the size of $\vec{y_2}$ being 0. Hence the rank of $A$ is $n$.
+    where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively. Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything. As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$. Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$. Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0. Hence the rank of $A$ is $n$.
 
     If $\rank{A} = n$, then the canonical form of $A$ is 
     \[
@@ -1363,7 +1376,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
     If the canonical form of $A$ is $\begin{bmatrix}
         I_n \\
         0
-    \end{bmatrix}$, then we consider $PAQ^{-1} = C$. Also, $A = P^{-1}CQ$. We construct a candidate for left inverse $D = [I_n \; 0]$. Then we have $DC = [I_n \; 0] \begin{bmatrix}
+    \end{bmatrix}$, then we consider $PAQ^{-1} = C$. Also, $A = P^{-1}CQ$. We construct a candidate for left inverse $D = [I_n \quad 0]$. Then we have $DC = [I_n \quad 0] \begin{bmatrix}
         I_n \\
         0
     \end{bmatrix} = I_n$. Then the left inverse of $A$ is $L = QDP^{-1}$. Then we check, $LA = QDP^{-1}A = QDP^{-1}PCQ^{-1} = I_n$. Hence, $A$ indeed has a left inverse.
@@ -1392,16 +1405,17 @@ Linear Algebra is the study of linear map between two finite dimensional vector 
 
 \begin{center}
     \begin{tikzcd}
-        V \arrow[d, hook, two heads] \arrow[dd, bend right, hook, two heads] \arrow[r, "T", hook, two heads] & W \arrow[d, hook, two heads] \arrow[dd, bend left, hook, two heads] \\
-        \F^n \arrow[d, hook, two heads] \arrow[r, "A", hook, two heads] & \F^m \arrow[d, hook, two heads] \\
-        \F^n \arrow[r, "B", hook, two heads] & \F^m
+        V \arrow[d, hook, two heads, "{[-]_{\B}}" swap] \arrow[dd, bend right=60, hook, two heads] \arrow[r, "T", hook, two heads] & W \arrow[d, hook, two heads, "{[-]_{\B'}}"] \arrow[dd, bend left=60, hook, two heads] \\
+        \F^n \arrow[d, hook, two heads, "Q" swap] \arrow[r, "A", hook, two heads] & \F^m \arrow[d, hook, two heads, "P"] \\
+        \F^n \arrow[r, "C", hook, two heads] & \F^m
     \end{tikzcd}
 \end{center}
-where $B = \begin{bmatrix}
+where $C = \begin{bmatrix}
     I_r & 0 \\
     0 & 0
 \end{bmatrix}$, $\dim V = n$ and $\dim W = m$.
-The bended arrows denote the trivialisation of the vector spaces and the bottom arrow denotes the canonical matrix representation of the linear map $T$.
+
+The coordinate maps $[-]_{\B}$ and $[-]_{\B'}$ are linear equivalences and they are the trivialisation of $V$ and $W$, repsectively. The matrix $A$ is the standard matrix of the linear map $T: V \to W$ under the bases $\B$ and $\B'$. The matrix $C$ is the canonical form of $A$. The matrices $P$ and $Q$ are products of finite sequences of elementary row and column operation matrices, respectively. Both $P$ and $Q$ are elementary and invertible matrices.
 
 \chapter{Linear Spaces}
 
@@ -1437,9 +1451,9 @@ Here, we discuss linear spaces with more in depth terms.
     
     First, we have $0_V \in \ker f$, as $f(0_V) = 0_W$, so $\ker f$ is not empty.
 
-    Then we consider $\alpha_1, \alpha_2 \in \F$ and $v_1, v_2 \in \ker f$, we have
+    Then we consider $\alpha^1, \alpha^2 \in \F$ and $v_1, v_2 \in \ker f$, we have
     \[
-        f(\alpha_1 v_1 + \alpha_2 v_2) = \alpha_1 f(v_1) + \alpha_2 f(v_2) = \alpha_1 (0_W) + \alpha_2 (0_W) = 0_W
+        f(\alpha^1 v_1 + \alpha^2 v_2) = \alpha^1 f(v_1) + \alpha^2 f(v_2) = \alpha^1 (0_W) + \alpha^2 (0_W) = 0_W
     \]
     The first equality due to the linearity of $f$ and the second is due to $v_i \in \ker f$.
 \end{example}
@@ -1456,9 +1470,9 @@ Here, we discuss linear spaces with more in depth terms.
 
     First, we have $f(0_V) = 0_W \in \Im f$, so $\Im f$ is not empty.
 
-    Then we consider $\alpha_1, \alpha_2 \in \F$ and $f(v_1), f(v_2) \in \Im f$. We have 
+    Then we consider $\alpha^1, \alpha^2 \in \F$ and $f(v_1), f(v_2) \in \Im f$. We have 
     \[
-        \alpha_1 f(v_1) + \alpha_2 f(v_2) = f(\alpha_1 v_1 + \alpha_2 v_2) \in \Im f
+        \alpha^1 f(v_1) + \alpha^2 f(v_2) = f(\alpha^1 v_1 + \alpha^2 v_2) \in \Im f
     \]
     The equality is due to the linearity of $f$.
 \end{example}
@@ -1468,7 +1482,7 @@ Here, we discuss linear spaces with more in depth terms.
 
     First, we have $0_W \in V_\alpha$ for all $\alpha \in I$, so $0_W \in \bigcap_{\alpha \in I} V_\alpha$. Thus, $\bigcap_{\alpha \in I} V_\alpha$ is not empty.
 
-    Then we consider $\alpha_1, \alpha_2 \in \F$ and $v_1, v_2 \in \bigcap_{\alpha \in I} V_\alpha$. We have $v_1, v_2 \in V_\alpha$ for all $\alpha \in I$. Thus, $\alpha_1 v_1 + \alpha_2 v_2 \in V_\alpha$ for all $\alpha \in I$. This shows that $\alpha_1 v_1 + \alpha_2 v_2 \in \bigcap_{\alpha \in I} V_\alpha$.
+    Then we consider $\alpha^1, \alpha^2 \in \F$ and $v_1, v_2 \in \bigcap_{\alpha \in I} V_\alpha$. We have $v_1, v_2 \in V_\alpha$ for all $\alpha \in I$. Thus, $\alpha^1 v_1 + \alpha^2 v_2 \in V_\alpha$ for all $\alpha \in I$. This shows that $\alpha^1 v_1 + \alpha^2 v_2 \in \bigcap_{\alpha \in I} V_\alpha$.
 \end{example}
 
 Then we consider the duality of the intersection and union of subspaces. Whether the union of two subspaces is still a subspace? Unfortunately, the answer is no in general case. However, we have the following proposition.
@@ -1499,7 +1513,7 @@ Then we consider the duality of the intersection and union of subspaces. Whether
 \begin{proposition}
     Let $W$ be a linear space over a field $\F$ and $S \subset W$. Then 
     \[
-        \span S = \left\{ \sum_{i=1}^{n} \alpha_i s_i \mid n \in \mathbb{N}, \alpha_i \in \F, s_i \in S \right\}
+        \span S = \left\{ \sum_{i=1}^{n} \alpha^i s_i \mid n \in \mathbb{N}, \alpha^i \in \F, s_i \in S \right\}
     \]
     Note that the summation is a finite summation.
 \end{proposition}
@@ -1513,9 +1527,9 @@ Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspace
 \begin{proposition}
     $v_1, v_2, \cdots, v_k \in W$ are linearly independent if and only if there is one and only one way to write $0_W \in W$ as the combination of $v_1, \cdots, v_k$ with coefficients in $\F$, i.e., the equation 
     \[
-        \alpha_1 v_1 + \cdots + \alpha_k v_k = 0_W
+        \alpha^1 v_1 + \cdots + \alpha^k v_k = 0_W
     \]
-    has only  the trivial solution, i.e., $\alpha_i = 0$ for all $i$.
+    has only  the trivial solution, i.e., $\alpha^i = 0$ for all $i$.
 \end{proposition}
 
 \newpage
@@ -1533,15 +1547,15 @@ If we consider a set, what does it mean by being linearly independent? Is there 
 \end{definition}
 
 \begin{example}
-    Let $V = \F^3$ and consider the three vectors $\vec{e_1}$, $\vec{e_2}$ and $\vec{e_3}$. 
+    Let $V = \F^3$ and consider the three vectors $\vec{e}_1$, $\vec{e}_2$ and $\vec{e}_3$. 
     
-    Then the set $S = \{\vec{e_1}, \vec{e_2}, \vec{e_1} + \vec{e_2}\}$ is not a spanning set of $V$ as $\span{S} = \Span \{\vec{e_1}, \vec{e_2}\} \neq V$. If we consider the $\Span \{\vec{e_1}, \vec{e_2}\} = W$, then $\{\vec{e_1}, \vec{e_2}\}$ is a minimal spanning set of $W$.
+    Then the set $S = \{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ is not a spanning set of $V$ as $\span{S} = \Span \{\vec{e}_1, \vec{e}_2\} \neq V$. If we consider the $\Span \{\vec{e}_1, \vec{e}_2\} = W$, then $\{\vec{e}_1, \vec{e}_2\}$ is a minimal spanning set of $W$.
 
-    The set $S = \{\vec{e_1}, \vec{e_1} + \vec{e_2}, \vec{e_1} + \vec{e_2} + \vec{e_3}\}$ is a spanning set of $V$.
+    The set $S = \{\vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2 + \vec{e}_3\}$ is a spanning set of $V$.
 \end{example}
 
 \begin{remark}
-    If we consider the matrix of $\{\vec{e_1}, \vec{e_2}, \vec{e_1} + \vec{e_2}\}$ with respect to the standard basis of $\F^3$, we have:
+    If we consider the matrix of $\{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ with respect to the standard basis of $\F^3$, we have:
     \[
         A = \begin{bmatrix}
             1 & 0 & 1 \\
@@ -1562,26 +1576,26 @@ If we consider a set, what does it mean by being linearly independent? Is there 
 
 The following is also the equivalence definition of linearly independent sets, spanning sets and minimal spanning sets.
 
-Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$. The order set $S$ forms a linear map $\phi_S: \F^n \to V$ defined by:
+Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$. The order set $S$ forms a linear map $\phi_S: \F^n \to V$ defined by:
 \[
     \phi_S(\vec{x}) = \phi_S\left(\begin{bmatrix}
-        x_1 \\
-        x_2 \\
+        x^1 \\
+        x^2 \\
         \vdots \\
-        x_n
-    \end{bmatrix}\right) = x_1 \vec{v_1} + x_2 \vec{v_2} + \cdots + x_n \vec{v_n} = \sum_{i=1}^{n} x_i \vec{v_i}
+        x^n
+    \end{bmatrix}\right) = x^1 \vec{v}_1 + x^2 \vec{v}_2 + \cdots + x^n \vec{v}_n = \sum_{i=1}^{n} x^i \vec{v}_i
 \]
 
 \begin{proposition}
-    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be \emph{linearly independent} if and only if the linear map $\phi_S: \F^n \to V$ defined above is injective.
+    The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be linearly independent if and only if the linear map $\phi_S: \F^n \to V$ defined above is injective.
 \end{proposition}
 
 \begin{proposition}
-    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be a \emph{spanning set} of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is surjective.
+    The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be a spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is surjective.
 \end{proposition}
 
 \begin{proposition} \label{prop:minimal_spanning_set}
-    The order set $S := \{\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\} \subseteq V$ is said to be a \emph{minimal spanning set} of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is bijective.
+    The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be a minimal spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is bijective.
 \end{proposition}
 
 \begin{remark}
@@ -1600,7 +1614,7 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
 
     Then we have a set $\delta_X = \{\delta_x \mid x \in X\} \subset \F[X]$. We have $\span{\delta_X} = \F[X]$ as any finite support function $f: X \to \F$ can be written as a linear combination of finitely many delta functions. Thus, $\delta_X$ is a spanning set of $\F[X]$.
 
-    However, $\delta_X$ is a linearly independent set. Assume that there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha_y \delta_{y}$. Then we have $\delta_x(x) = 1 = \sum \alpha_y \delta_y(x) = 0$. This is a contradiction. Thus, $\delta_X$ is a linear independent set.
+    Moreover, $\delta_X$ is a linearly independent set. Assume that there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_{y}$. Then we have $\delta_x(x) = 1 = \sum \alpha^y \delta_y(x) = 0$. This is a contradiction. Thus, $\delta_X$ is a linearly independent set.
 \end{example}
 
 \newpage
@@ -1818,7 +1832,7 @@ If we consider the graphical representation of the quotient space $\quotient{W}{
 
     Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^{n} \alpha_i s_i$ where $\alpha_i \in \F$ and $s_i \in S$ are distinct. Then we have 
     \[
-        \tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^{n} \alpha_i s_i\right) = \sum_{i=1}^{n} \alpha_i \tilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha_i \phi(s_i) = \phi\left(\sum_{i=1}^{n} \alpha_i s_i\right) = \phi(v)
+        \tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \sum_{i=1}^{n} \alpha^i \tilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha^i \phi(s_i) = \phi\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \phi(v)
     \]
     This shows that $\tilde{\phi}$ agrees with $\phi$ on all of $V$, and thus $\tilde{\phi}$ is uniquely determined by $\phi$.
 \end{proof}
@@ -1850,13 +1864,13 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 \begin{proof}
     Assume the existence of such a linear map $\tilde{\phi}$. Then for all $w \in W$, we have $\tilde{\phi}([w]) = \phi(w)$. However, this may not be well-defined. Then, we check whether it is well-defined. Assume that $[w] = [w']$, then we have $\tilde{\phi}([w']) = \phi(w')$. Note that $w - w' \in V$. Thus, we have $\phi(w' - w) = 0_Z$. This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$. This shows that $\tilde{\phi}([w']) = \tilde{\phi}([w])$. Thus, $\tilde{\phi}$ is well-defined.
 
-    Then we consider the linearity of $\tilde{\phi}$. For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha_1, \alpha_2 \in \F$, we have
+    Then we consider the linearity of $\tilde{\phi}$. For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha^1, \alpha^2 \in \F$, we have
     \[
         \begin{split}
-            \tilde{\phi}(\alpha_1 [w_1] + \alpha_2 [w_2]) &= \tilde{\phi}([\alpha_1 w_1 + \alpha_2 w_2]) \\
-            &= \phi(\alpha_1 w_1 + \alpha_2 w_2) \\
-            &= \alpha_1 \phi(w_1) + \alpha_2 \phi(w_2) \\
-            &= \alpha_1 \tilde{\phi}([w_1]) + \alpha_2 \tilde{\phi}([w_2])
+            \tilde{\phi}(\alpha^1 [w_1] + \alpha^2 [w_2]) &= \tilde{\phi}([\alpha^1 w_1 + \alpha^2 w_2]) \\
+            &= \phi(\alpha^1 w_1 + \alpha^2 w_2) \\
+            &= \alpha^1 \phi(w_1) + \alpha^2 \phi(w_2) \\
+            &= \alpha^1 \tilde{\phi}([w_1]) + \alpha^2 \tilde{\phi}([w_2])
         \end{split}
     \]
     This shows that $\tilde{\phi}$ is linear.
@@ -1950,7 +1964,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
             \F^n \arrow[u, hook, two heads] \arrow[ur, two heads, dashed, "\phi"]
         \end{tikzcd}
     \end{center}
-    Then the map $\phi : \F^n \to U$ is defined by $x = \alpha_1 \vec{e_1} + \cdots + \alpha_n \vec{e_n} \mapsto \phi(x) = \alpha_1 \phi(\vec{e_1}) + \cdots + \alpha_n \phi(\vec{e_n})$. Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e_1}), \phi(\vec{e_2}), \cdots, \phi(\vec{e_n})\}$. 
+    Then the map $\phi : \F^n \to U$ is defined by $x = \alpha^1 \vec{e}_1 + \cdots + \alpha^n \vec{e}_n \mapsto \phi(x) = \alpha^1 \phi(\vec{e}_1) + \cdots + \alpha^n \phi(\vec{e}_n)$. Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e}_1), \phi(\vec{e}_2), \cdots, \phi(\vec{e}_n)\}$. 
 
     For quotient space $\quotient{W}{V}$ and $W$ is finite dimensional, we have:
     \begin{center}
@@ -1958,7 +1972,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
             V \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \quotient{W}{V}
         \end{tikzcd}
     \end{center}
-    Then we know that $\pi(\vec{e_1}), \pi(\vec{e_2}), \cdots, \pi(\vec{e_n})$ spans $\quotient{W}{V}$. Thus, $\quotient{W}{V}$ is finitely spanned.
+    Then we know that $\pi(\vec{e}_1), \pi(\vec{e}_2), \cdots, \pi(\vec{e}_n)$ spans $\quotient{W}{V}$. Thus, $\quotient{W}{V}$ is finitely spanned.
 \end{proof}
 
 \begin{proposition} \label{prop:dimension_of_sum_of_subspaces}
@@ -1968,9 +1982,9 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 \begin{proof}
     For $V_1$ and $V_2$, we can find the minimal spanning sets $S_1$ and $S_2$ respectively. Then we claim that $S_1 \cup S_2$ spans $V_1 + V_2$, i.e., $V_1 + V_2 = \Span\{S_1 \cup S_2\}$. 
     
-    This is because for all $v \in V_1 + V_2$, we have $v = v_1 + v_2$ for some $v_i \in V_i$. Then we can write $v_i$ as a linear combination of finitely many elements in $S_i$, i.e., $v_i = \sum_{j=1}^{n_i} \alpha_{ij} s_{ij}$ where $\alpha_{ij} \in \F$ and $s_{ij} \in S_i$ are distinct. Thus, we have 
+    This is because for all $v \in V_1 + V_2$, we have $v = v_1 + v_2$ for some $v_i \in V_i$. Then we can write $v_i$ as a linear combination of finitely many elements in $S_i$, i.e., $v_i = \sum_{j=1}^{n_i} \alpha_i^j s_i^j$ where $\alpha_i^j \in \F$ and $s_i^j \in S_i$ are distinct. Thus, we have 
     \[
-        v = v_1 + v_2 = \sum_{j=1}^{n_1} \alpha_{1j} s_{1j} + \sum_{j=1}^{n_2} \alpha_{2j} s_{2j} \in \Span\{S_1 \cup S_2\}
+        v = v_1 + v_2 = \sum_{j=1}^{n_1} \alpha_1^j s_1^j + \sum_{j=1}^{n_2} \alpha_2^j s_2^j \in \Span\{S_1 \cup S_2\}
     \]
     This shows that $V_1 + V_2 \subseteq \Span\{S_1 \cup S_2\}$. The other direction is obvious. Thus, we have $V_1 + V_2 = \Span\{S_1 \cup S_2\}$.
 
@@ -2091,14 +2105,14 @@ There is actually one more fact about the short exact sequence.
 
 The equalities can be summarized as follows:
 \[
-    j_m \circ i_n = \delta_{mn} \id_{V_n}, \quad \sum_{i=1}^{2} i_i \circ j_i = \id_V
+    j_m \circ i_n = \delta_{mn} \id_{V_n}, \quad \sum_{k=1}^{2} i_k \circ j_k = \id_V
 \]
 
 For the dimension of the spaces, we have:
 \[
     \dim{V} = \dim{\Im{i_1}} + \dim{\Im{i_2}} = \dim{V_1} + \dim{V_2}
 \]
-As $V_1 \cong \Im{i_1}$ and $V_2 \cong \Im{i_2}$. $i_1$ and $i_2$ are injective and $V_i \to \Im{i_i}$ are surjective. 
+As $V_1 \cong \Im{i_1}$ and $V_2 \cong \Im{i_2}$. $i_1$ and $i_2$ are injective and $V_k \to \Im{i_k}$ are surjective. 
 
 Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$. Similarly, we have $\dim{W} \geq \dim{V}$ and $\dim{W} \geq \dim{\quotient{W}{V}}$, where $V$ is a subspace of $W$.
 
@@ -3052,10 +3066,10 @@ Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of
     Let $V$ be a finite dimensional linear space over $\F$. Then $\dim(V^*) = \dim(V)$. So, $V^*$ is isomorphic to $V$ but not naturally isomorphic to $V$.
 \end{proposition}
 \begin{proof}
-    Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$. Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e_1}, \hat{e_2}, \cdots, \hat{e_n}$. So $\dim(V^*) = n = \dim(V)$. We can say $V^* \cong V$.
+    Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$. Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n$. So $\dim(V^*) = n = \dim(V)$. We can say $V^* \cong V$.
 \end{proof}
 
-We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e_1}, \hat{e_2}, \cdots, \hat{e_n}\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e_i}$. This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
+We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e}^i$. This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
 
 \begin{definition}[Bases]
     A \emph{basis} of a linear space $V$ over $\F$ is the minimal spanning set of $V$ with an order. The set of all bases of $V$ is denoted by $\B_V$.
@@ -3066,10 +3080,10 @@ We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e_1}, \hat{e_2}, \c
     \[
         \begin{split}
             \B_V &\equiv \B_{V^*} \\
-            \vec{v} = (v_1, v_2, \cdots, v_n) &\equiv (\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n}) = \vec{v}^* \\
+            v = (\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n) &\equiv (\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n) = v^* \\
         \end{split}
     \]
-    where $\hat{v_i} \in V^*$ is defined by $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
+    where $\hat{v}^i \in V^*$ is defined by $\hat{v}^i(\vec{v}_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
 \end{proposition}
 
 \begin{proof}
@@ -3080,18 +3094,20 @@ Consider the following commutative diagram:
         \F^n \arrow[r, "\pi_i"] & \F
     \end{tikzcd}
 \end{center}
-The projection map $\pi_i$ is a linear functional in $(\F^n)^*$ that sends $\vec{x} = (\vec{x_1}, \vec{x_2}, \cdots, \vec{x_n})$ to $x_i$. It is actually $\hat{e_i}$. Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $\vec{v} = (v_1, v_2, \cdots, v_n) \in \B_V$ such that $[v_j]_V = \hat{e_j}$ for all $1 \leq j \leq n$. It is a unique linear map which identify $v_i$ with $\hat{e_i}$. It can be done by trivialisation of $V$ with respect to the basis $\vec{v}$. Then we define $\hat{v_i}(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$.
+The projection map $\pi_i$ is a linear functional in $\F^n$ that sends $\vec{x} = (x_1, x_2, \cdots, x_n)$ to $x_i$. It is actually $\hat{e}^i$. Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $v = (\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n) \in \B_V$ such that $[\vec{v}_j]_V = \vec{e}_j$ for all $1 \leq j \leq n$. It is a unique linear map which identify $\vec{v}_i$ with $\vec{e}_i$. It can be done by trivialisation of $V$ with respect to the basis $v$. Then we define $\hat{v}^i(\vec{v}_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
 
-Then we have to consider whether $(\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$ is a basis of $V^*$. As $\dim{V^*} = n$, we only need to show that $(\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$ is a spanning set of $V^*$ or linearly independent. We have to check whether the equation $\sum_{i=1}^n x_i \hat{v_i} = 0$ for some $x_i \in \F$ has only the trivial solution. Applying it to $v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat{v_i}(v_j) = \sum_{i=1}^n x_i \delta_{ij} = x_j$. So $x_j = 0$ for all $1 \leq j \leq n$. This means that $(\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$ is linearly independent, and hence it is a basis of $V^*$. We call it the \emph{dual basis} of the basis $\vec{v} = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec{v}^* = (\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n})$. 
+Then we have to consider whether $(\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$ is a basis of $V^*$. As $\dim{V^*} = n$, we only need to show that $(\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$ is a spanning set of $V^*$ or linearly independent. We have to check whether the equation $\sum_{i=1}^n x_i \hat{v}^i = 0$ for some $x_i \in \F$ has only the trivial solution. Applying it to $\vec{v}_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat{v}^i(\vec{v}_j) = \sum_{i=1}^n x_i \delta_j^i = x_j$. So $x_j = 0$ for all $1 \leq j \leq n$. This means that $(\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$ is linearly independent, and hence it is a basis of $V^*$. We call it the \emph{dual basis} of the basis $\vec{v} = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec{v}^* = (\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$. 
 
-Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat{v_i}(v_j) = \delta_{ij}$. Let $V = \F^n$ and $\vec{v} = (\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n})$ be a basis of $V$. Then $A = [\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}]$ is an invertible matrix. Let $(\alpha_1, \alpha_2, \cdots, \alpha_n)$ be a basis of $V^*$. Then we have the following equations:
+Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat{v}^i(\vec{v}_j) = \delta^i_j$. Let $V = \F^n$ and $v = (\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n)$ be a basis of $V$. Then $A = [\vec{v}_1 \quad \vec{v}_2 \quad \cdots \quad \vec{v}_n]$ is an invertible matrix. Let $(\alpha^1, \alpha^2, \cdots, \alpha^n)$ be a basis of $V^*$. Then we have the following equations:
 \[
-    [ \delta_{ij} ] = \begin{bmatrix}
-        \alpha_1 \\
-        \vdots \\
-        \alpha_n
+    [ \delta^i_j ] = \begin{bmatrix}
+        \hdash & \alpha^1 & \hdash \\
+        & \vdots \\
+        \hdash & \alpha^n & \hdash
     \end{bmatrix} \begin{bmatrix}
-        \vec{v_1} & \cdots & \vec{v_n}
+        | & & | \\
+        \vec{v_1} & \cdots & \vec{v_n} \\
+        | & & |
     \end{bmatrix} = I_n
 \]
 Then $(\alpha_1, \alpha_2, \cdots, \alpha_n) = A^{-1}$. So the dual basis is unique.
@@ -3122,17 +3138,7 @@ Finally, we have the natural identification:
     Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \R$. It is a linear functional d$f_p : \text{T}_p U \to \R$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$. Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$. Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system. However, d$f_p$ is independent of any choice of coordinate system. In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
 \end{example}
 
-\newpage
-
-\section{Double Dual Spaces and Doubles}
-
-Consider the endofunctors on $\Vect_{\F}$:
-\begin{center}
-    \begin{tikzcd}
-        \Vect_{\F} \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_{\F}}" swap, yshift=-0.5ex] & \Vect_{\F} 
-    \end{tikzcd}
-\end{center}
-There is a natural transformation from $\id_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\id_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, there is a natural transformation, but $(-)^*$ is a contravariant functor, so there is no natural transformation from $\id_{\Vect_{\F}}$ to $(-)^*$. 
+The dual functor is not naturally isomorphic to the identity functor on $\Vect_{\F}$, as $(-)^*$ is a contravariant functor, while the identity is a contravariant functor, so there is no natural transformation from $\id_{\Vect_{\F}}$ to $(-)^*$. 
 
 \begin{center}
     \begin{tikzcd}[row sep=normal]
@@ -3147,6 +3153,34 @@ There is a natural transformation from $\id_{\Vect_{\F}}$ to $(-)^{**}$ defined 
         Y \arrow[dd, "f" swap] & Y^* \\
         \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
         Z & Z^* \arrow[uu, "f^*" swap]
+    \end{tikzcd}
+\end{center}
+
+\newpage
+
+\section{Double Dual Spaces and Doubles}
+
+Consider the endofunctors on $\Vect_{\F}$:
+\begin{center}
+    \begin{tikzcd}
+        \Vect_{\F} \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_{\F}}" swap, yshift=-0.5ex] & \Vect_{\F} 
+    \end{tikzcd}
+\end{center}
+There is a natural transformation from $\id_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$. As $\id_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, there is a natural transformation between them.
+
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        \Vect_{\F} \arrow[r, "\id_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
+        Y \arrow[dd, "f" swap] & Y \arrow[dd, "f"] \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        Z & Z
+    \end{tikzcd}
+    \qquad\qquad
+    \begin{tikzcd}[row sep=normal]
+        \Vect_{\F} \arrow[r, "(-)^{**}"] & \Vect_{\F} \\[-1.8em]
+        Y \arrow[dd, "f" swap] & Y^{**} \arrow[dd, "f^{**}" swap] \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        Z & Z^{**}
     \end{tikzcd}
 \end{center}
 
@@ -3302,6 +3336,11 @@ We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreo
     \end{tikzcd}
 \end{center}
 
+Also, we have the following equation:
+\[
+    \dim(U \otimes V) = \dim(U) \cdot \dim(V)
+\]
+
 \newpage
 
 \section{Algebras}
@@ -3335,7 +3374,7 @@ We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreo
 \end{definition}
 
 \begin{definition}[Graded Linear Space]
-    A linear space $V_{\smallbullet}$ over $\F$ is called a \emph{$\mathbb{Z}_{\geq 0}$-graded linear space} or \emph{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \mathbb{Z}_{\geq 0}$:
+    A linear space $V_{\smallbullet}$ over $\F$ is called a \emph{$\Z_{\geq 0}$-graded linear space} or \emph{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \Z_{\geq 0}$:
     \[
         V_{\smallbullet} = \bigoplus_{n = 0}^{\infty} V_n
     \]
@@ -3343,7 +3382,7 @@ We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreo
 \end{definition}
 
 \begin{definition}[Graded Linear Maps]
-    A linear map $\phi : V_{\smallbullet} \to W_{\smallbullet}$ is called a \emph{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \mathbb{Z}_{\geq 0}$.
+    A linear map $\phi : V_{\smallbullet} \to W_{\smallbullet}$ is called a \emph{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \Z_{\geq 0}$.
 \end{definition}
 
 \newpage
@@ -3354,7 +3393,7 @@ Let $V$ be a finite dimensional linear space over $\F$. We define a new notation
 \[
     V^{\otimes k} = \underbrace{V \otimes V \otimes \cdots \otimes V}_{k \text{ times}}
 \]
-for all $k \geq 0$. Note that $V^{\otimes 0} = \F$.
+for all $k \geq 0$. Note that $V^{\otimes 0} = \F$. Also, $\dim(V^{\otimes k}) = (\dim{V})^k$ for all $k \geq 0$.
 
 We define the \emph{tensor algebra} of $V$ over $\F$, denoted by $\T V$, as follows:
 \[
@@ -3368,7 +3407,7 @@ The tensor algebra $\T V$ is an algebra over $\F$ with the bilinear product map 
 which sends $(\sum_n u_n, \sum_m v_m)$ to $\sum_{n, m} (u_n \otimes v_m)$.
 
 \begin{remark}
-    As the algebra product is bilinear, it suffices to know the product of two homogeneous elements, i.e., $V^{\otimes n} \times V^{\otimes m} \to \T V$ for all $n, m \geq 0$. So $\T V$ is a $\mathbb{Z}_{\geq 0}$-graded algebra over $\F$. As the tensor algebra is bi-additive, we have the following equality:
+    As the algebra product is bilinear, it suffices to know the product of two homogeneous elements, i.e., $V^{\otimes n} \times V^{\otimes m} \to \T V$ for all $n, m \geq 0$. So $\T V$ is a $\Z_{\geq 0}$-graded algebra over $\F$. As the tensor algebra is bi-additive, we have the following equality:
     \[
         \sum_n u_n \otimes \sum_m v_m = \sum_n (u_n \otimes \sum_m v_m) = \sum_n \sum_m (u_n \otimes v_m) = \sum_{n, m} (u_n \otimes v_m)
     \]
@@ -3399,7 +3438,7 @@ So we have proved the existence of the bilinear product map $\otimes : \T V \tim
     The tensor algebra $(\T V, \otimes)$ is a graded unital associative algebra over $\F$. It is graded, as it is degree additive, i.e., $V^{\otimes n} \times V^{\otimes m} \to V^{\otimes (n + m)}$ for all $n, m \geq 0$. It is unital, as $V^{\otimes 0} - \F \times V^{\otimes m} \to V^{\otimes m}$ and the reverse. The multiplicative identity is $1 \in \F$. It is associative, as $(u \otimes v) \otimes w = u \otimes (v \otimes w)$ for all $u, v, w \in V$ and the associativity can be extended to all homogeneous elements by bi-additivity. However, in general it is not commutative, as $u \otimes v \neq v \otimes u$ for some $u, v \in V$.
 \end{remark}
 
-There is actually a universal property of tensor algebras. Consider the following commutative diagram:
+There is a universal property of tensor algebras. Consider the following commutative diagram:
 \begin{center}
     \begin{tikzcd}
         V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
@@ -3407,6 +3446,19 @@ There is actually a universal property of tensor algebras. Consider the followin
     \end{tikzcd}
 \end{center}
 Note that $V = V^{\otimes 1} = 0 \oplus V \oplus 0 \oplus \cdots \subseteq \T V$ and $\iota$ is the inclusion map. Here $A^{\smallbullet}$ is any graded unital associative algebra over $\F$ and $\phi : V \to A^{\smallbullet}$ is a graded linear map with graded degree $0$. Then there exists a unique graded algebra homomorphism with graded degree $0$ $\bar{\phi} : \T V \to A^{\smallbullet}$ such that $\bar{\phi} \circ \iota = \phi$. This shows the universal property of tensor algebras. More specifically, the map $\phi$ is a map from $V$ to the degree $1$ part of $A^{\smallbullet}$, i.e., $\phi : V \to A_1$, then with an inclusion map.
+
+The tensor algebra construction is actually a functor from $\Vect_{\F}$ to the category of graded unital associative algebras over $\F$, denoted by $\Z_{\geq 0} - \Alg_{\F}$:
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        \Vect_{\F} \arrow[r, "\T"] & \Z_{\geq 0} - \Alg_{\F} \\[-1.8em]
+        V \arrow[dd, "f" swap] & \T V \arrow[dd, "\T f"] \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        W & \T W
+    \end{tikzcd}
+\end{center}
+where $\T f : \T V \to \T W$ is the unique graded algebra homomorphism with graded degree $0$ such that $\T f \circ \iota_V = \iota_W \circ f$. Here $\iota_V : V \to \T V$ and $\iota_W : W \to \T W$ are the inclusion maps. 
+
+The existence of the functor $\T$ follows from the universal property of tensor algebras. It is called the \emph{free graded algebra functor}, normally the ``unital'' and ``associative'' will be omitted.
 
 \newpage
 
@@ -3428,7 +3480,7 @@ Simply speaking, an ideal is a generalisation of a rule to an algebra.
 
 The following is an example of an ideal in a ring, which is an example of ideal in a more general concept.
 \begin{example}
-    Consider the ring of integers, $\mathbb{Z}$. The set of all $n$-multiples, denoted by $n\mathbb{Z}$, is an ideal of $\mathbb{Z}$ for all $n \in \mathbb{Z}$. As it is closed under addition and multiplication by any integer.
+    Consider the ring of integers, $\Z$. The set of all $n$-multiples, denoted by $n\Z$, is an ideal of $\Z$ for all $n \in \Z$. As it is closed under addition and multiplication by any integer.
 \end{example}
 
 \subsection{Symmetric Algebras}
@@ -3445,6 +3497,24 @@ Then the elements in $\Sym V$ are equivalence classes of elements in $\T V$. We 
     Symmetric algebra is still a graded algebra. As the ideal $\ideal_{\Sym}$ is a graded ideal, i.e., $\ideal_{\Sym} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Sym} \cap V^{\otimes k})$.
 \end{remark}
 
+Similar to tensor algebras, we have the following expression:
+\[
+    \Sym V = \bigoplus_{k = 0}^{\infty} \mathcal{S}^k V
+\]
+where $\mathcal{S}^k V$ is the $k$-th symmetric power of $V$.
+
+We also have the following universal property of symmetric algebras. Consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}[row sep = normal]
+        V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
+        \T V \arrow[d, "\pi" swap, two heads] \arrow[ur, dashed] & \\
+        \Sym V \arrow[uur, dashed, "\exists ! \bar{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+Here $A^{\smallbullet}$ is any graded unital commutative associative algebra over $\F$.
+
+Similarly, $\Sym V$ is the \emph{free graded commutative algebra functor} from $\Vect_{\F}$ to the category of graded unital commutative associative algebras over $\F$, denoted by $\Z_{\geq 0} - \CAlg_{\F}$:
+
 \subsection{Exterior Algebras}
 
 The \emph{exterior algebra} of a vector space $V$ over a field $\F$, denoted by $\Ext V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $v \otimes v$ for all $v \in V$:
@@ -3459,6 +3529,24 @@ Then the product in $\Ext V$ is called the \emph{exterior product} or \emph{wedg
     Exterior algebra is still a graded algebra. As the ideal $\ideal_{\Ext}$ is a graded ideal, i.e., $\ideal_{\Ext} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Ext} \cap V^{\otimes k})$.
 \end{remark}
 
+Then we have the following expression:
+\[
+    \Ext V = \bigoplus_{k = 0}^{\infty} {\bigwedge}^k V
+\]
+where ${\bigwedge}^k V$ is the $k$-th exterior power of $V$.
+
+We also have the following universal property of exterior algebras. Consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}[row sep = normal]
+        V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
+        \T V \arrow[d, "\pi" swap, two heads] \arrow[ur, dashed] & \\
+        \Ext V \arrow[uur, dashed, "\exists ! \bar{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+Here $A^{\smallbullet}$ is any graded unital associative skew-commutative algebra over $\F$.
+
+Similarly, $\Ext V$ is the \emph{free graded skew-commutative algebra functor} from $\Vect_{\F}$ to the category of graded unital associative skew-commutative algebras over $\F$, denoted by $\Z_{\geq 0} - \SAlg_{\F}$:
+
 \subsection{Universal Enveloping Algebras}
 
 Let $\mathfrak{g}$ be a lie algebra over a field $\F$. The \emph{universal enveloping algebra} of $\mathfrak{g}$ over $\F$, denoted by $\Env \mathfrak{g}$, is defined as the quotient algebra of the tensor algebra $\T \mathfrak{g}$ by the ideal of $\T \mathfrak{g}$ generated by elements of the form $x \otimes y - y \otimes x - [x, y]$ for all $x, y \in \mathfrak{g}$:
@@ -3470,6 +3558,220 @@ The $\ideal_{\Env}$ is called the \emph{lie ideal} of $\T \mathfrak{g}$. It is a
 \begin{remark}
     However, the universal enveloping algebra is not a graded algebra. As the ideal $\ideal_{\Env}$ is not a graded ideal. The $x \otimes y - y \otimes x$ is in $\mathfrak{g}^{\otimes 2}$ but $[x, y]$ is in $\mathfrak{g}^{\otimes 1}$.
 \end{remark}
+
+\newpage
+
+\section{Hilbert-Poincaré Series}
+Let $V_{\smallbullet} = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded finite dimensional linear space over a field $\F$. The \emph{Hilbert-Poincaré series} of $V_{\smallbullet}$ is defined as the following formal power series:
+\[
+    P_{V_{\smallbullet}}(t) = \sum_{i = 0}^{\infty} \dim(V_i)\ t^i
+\]
+
+\begin{example}
+    The Hilbert-Poincaré series of the tensor algebra $\T V$ is:
+    \[
+        P_{\T V}(t) = \sum_{i = 0}^{\infty} \dim(V^{\otimes i})\ t^i = \sum_{i = 0}^{\infty} (\dim{V})^i\ t^i = \frac{1}{1 - \dim{V}\ t}
+    \]
+\end{example}
+
+\begin{example}
+    The Hilbert-Poincaré series of the symmetric algebra $\Sym V$ is:
+    \[
+        P_{\Sym V}(t) = \sum_{i = 0}^{\infty} \dim(\mathcal{S}^i V)\ t^i = \frac{1}{(1 - t)^{\dim{V}}}
+    \]
+\end{example}
+
+\begin{example}
+    The Hilbert-Poincaré series of the exterior algebra $\Ext V$ is:
+    \[
+        P_{\Ext V}(t) = \sum_{i = 0}^{\infty} \dim({\bigwedge}^i V)\ t^i = (1 + t)^{\dim{V}}
+    \]
+\end{example}
+
+As the Hilbert-Poincaré series of the exterior algebra $\Ext V$ is a polynomial of degree $\dim{V}$, we have ${\bigwedge}^k V = 0$ for all $k > \dim{V}$. Especially, if $\dim{V} = n$, then ${\bigwedge}^n V$ is 1-dimensional and ${\bigwedge}^{n + 1} V = 0$. This is because any $(n + 1)$ vectors in an $n$-dimensional vector space are linearly dependent, so the exterior product of them is $0$. Moreover, $\dim({\bigwedge}^k V) = \dim({\bigwedge}^{n - k} V)$ for all $0 \leq k \leq n$.
+
+Any one-dimensional linear space is called a \emph{line}.
+\chapter{Determinants}
+
+\epigraph{``If you are willing to prove it, you can prove it. There is no trick.''}{Guowu Meng}
+
+\section{Determinant Lines}
+
+We have known that the top exterior power ${\bigwedge}^n V$ of an $n$-dimensional vector space $V$ over a field $\F$ is 1-dimensional. So we can define the following:
+
+\begin{definition}[Determinant Lines]
+    The \emph{determinant line} of an $n$-dimensional vector space $V$ over a field $\F$ is defined as the top exterior power of $V$:
+    \[
+        \det{V} = {\bigwedge}^n V = {\bigwedge}^{\dim{V}} V
+    \]
+\end{definition}
+
+Note that the $\det = {\bigwedge}^k$ is a functor from the category of vector spaces with $n$-dimensions $\Vect_{\F}^n$ to the category of vector spaces with 1-dimensional, i.e., the category of lines, $\Vect_{\F}^1$ for all $k \geq 0$:
+\begin{center}
+    \begin{tikzcd}[row sep=normal]
+        \Vect_{\F}^n \arrow[r, "{\bigwedge}^n = \det"] & \Vect_{\F}^1 \\[-1.8em]
+        V_1 \arrow[dd, "f" swap] & {\bigwedge}^n V_1 = \det{V_1} \arrow[dd, "{\bigwedge}^n f = \det{f}"] \\
+        \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+        V_2 & {\bigwedge}^n V_2 = \det{V_2}
+    \end{tikzcd}
+\end{center}
+
+As $\det$ is a functor, we have the following two properties:
+\[
+    \det \id_V = \id_{\det V}, \qquad \det fg = \det f \cdot \det g
+\]
+
+In particular, if $f \in \End{V}$, then $\det f : \det V \to \det V$ is a multiplication by a scalar in $\F$. So we can identify $\det f$ with a scalar in $\F$. This scalar is called the \emph{determinant} of $f$ and is denoted by $\det f$.
+
+Consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        \F^n \arrow[r, "A'", red] \arrow[dd, bend right=60, "P" swap, ocre] & \F^n \arrow[dd, bend left=60, "P", red] \\
+        V \arrow[r, "f"] \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_{\B}}" swap] & V \arrow[u, "{[-]_{\B}}" swap] \arrow[d, "{[-]_{\B'}}"] \\
+        \F^n \arrow[r, "A", ocre] & \F^n
+    \end{tikzcd}
+\end{center}
+where $V$ is an $n$-dimensional vector space over $\F$, $\B$ and $\B'$ are two bases of $V$, $f \in \End{V}$, $A$ and $A'$ are the matrix representations of $f$ under the bases $\B$ and $\B'$ respectively, and $P$ is the change of basis matrix from $\B$ to $\B'$. Then by focusing the red and blue commutative square, we have:
+\[
+    AP = PA', \qquad A = P A' P^{-1}
+\]
+
+Then we have:
+\[
+    \det A \overset{\text{def}}{=\joinrel=} \det f  \overset{\text{def}}{=\joinrel=} \det A'
+\]
+
+In ordinary linear algebra, $A$ and $A'$ are called \emph{similar matrices}, i.e., $A \sim A'$. This means they represent the same endomorphism, so they have the same determinant.
+
+\newpage
+
+\section{Permutation Groups}
+
+Before we derive the explicit formula of determinants, we need to introduce the concept of permutation groups.
+
+\begin{definition}[Automorphisms]
+    An \emph{automorphism} is an isomorphism from a mathematical object to itself.
+\end{definition}
+
+\begin{definition}[Automorphism Groups]
+    The set of all automorphisms on a mathematical object $X$ forms a group under the composition of functions, denoted by $\Aut(X)$.
+\end{definition}
+
+\begin{example}
+    The general linear group $\GL(V)$ of a vector space $V$ over $\F$ is the group of all invertible linear maps from $V$ to $V$, i.e., $\GL(V) = \Aut(V)$. The group operation is the composition of functions.
+\end{example}
+
+\begin{example}
+    The general linear group $\GL_n(\F)$ of degree $n$ over $\F$ is the group of all invertible $n \times n$ matrices over $\F$, i.e., $\GL_n(\F) = \Aut(\F^n)$. The group operation is the matrix multiplication. Note that $\GL_n(\F) \cong \GL(\F^n)$. Also note that the group is not abelian if $n \geq 2$.
+\end{example}
+
+\begin{definition}[Permutation Groups]
+    A \emph{permutation group} $S_n$ on a set $\underline{n} := \{ 1, 2, \cdots, n \}$ is the group of all bijections from $\underline{n}$ to itself, i.e., $S_n = \Aut(\underline{n})$. It is called the \emph{symmetric group} on $n$ elements. The group operation is the composition of functions.
+\end{definition}
+
+Then the order of $S_n$, denoted by $|S_n|$, is $n!$.
+
+\begin{example}
+    The permutation group $S_2$ has two elements: the identity permutation $1$ and the transposition $\sigma_1$ defined by $\sigma_1(1) = 2$ and $\sigma_1(2) = 1$. 
+\end{example}
+
+Instead of writing $S_2 = \{ 1, \sigma_1 \}$, we can write $S_2 = \langle \sigma_1 \mid \sigma_1^2 = 1 \rangle$, where $\sigma_1$ is called the \emph{generator} of $S_2$ and $\sigma_1^2 = 1$ is called the \emph{relation} of $S_2$. This is called the \emph{presentation} of $S_2$.
+
+In general, the generator $\sigma_i$ of $S_n$ is defined by:
+\[
+    \sigma_i(j) = \begin{cases}
+        j + 1, & j = i \\
+        j - 1, & j = i + 1 \\
+        j, & \text{otherwise}
+    \end{cases} = (i \quad i + 1)
+\]
+
+\begin{example}
+    The generator $\sigma_1$ of $S_3$ can be represented by the following diagram:
+    \begin{center}
+        \begin{tikzcd}
+            1 \arrow[dr] & 2 \arrow[dl, crossing over] & 3 \arrow[d] \\
+            2 & 1 & 3
+        \end{tikzcd}
+    \end{center}
+    It can also be written as $\sigma_1 = (1 \quad 2)$ or $(1 \quad 2)(3)$ or $\begin{pmatrix}
+        1 & 2 & 3 \\
+        2 & 1 & 3
+    \end{pmatrix}$.
+\end{example}
+
+Moreover, we have a cycle with 3 elements denoted as $(1 \quad 2 \quad 3)$ defined by the $\begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 3 & 1
+\end{pmatrix}$.
+
+Then the presentation of $S_3$ is:
+\[
+    S_3 = \langle \sigma_1, \sigma_2 \mid \sigma_1^2 = 1, \sigma_2^2 = 1, \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2 \rangle
+\]
+
+In general, the presentation of $S_n$ is:
+\[
+    S_n = \langle \sigma_1, \sigma_2, \cdots, \sigma_{n - 1} \mid \sigma_i^2 = 1, \sigma_i \sigma_j = \sigma_j \sigma_i\ (|i - j| > 1), \sigma_i \sigma_{i + 1} \sigma_i = \sigma_{i + 1} \sigma_i \sigma_{i + 1} \rangle
+\]
+
+The last two relations are called the \emph{braid relations}:
+\begin{itemize}
+    \item \emph{Far commutativity:} $\sigma_i \sigma_j = \sigma_j \sigma_i$ for all $|i - j| > 1$;
+    \item \emph{Braid relation:} $\sigma_i \sigma_{i + 1} \sigma_i = \sigma_{i + 1} \sigma_i \sigma_{i + 1}$.
+\end{itemize}
+
+The permutation group $S_n$ is generated by quotienting the braid group $B_n$ by the relations $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$. We call $B_n$ the \emph{braid group} on $n$ strands. A simple way to visualise the braid group is to think about braiding $n$ strands of hair. The braid group $B_n$ has the same presentation as $S_n$ except that there is no relation $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$. Consider the following diagrams:
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        1 \arrow[d, dash] & 2 \arrow[d, dash] \\
+        1 & 2
+    \end{tikzcd}
+    \qquad
+    $\xLongrightarrow{\sigma_1}$
+    \qquad
+    \begin{tikzcd}[column sep=normal]
+        1 \arrow[dr, dash, start anchor=south, end anchor=north] & 2 \arrow[dl, crossing over, dash, start anchor=south, end anchor=north] \\
+        2 & 1
+    \end{tikzcd}
+    \qquad
+    $\xLongrightarrow{\sigma_1}$
+    \qquad
+    \begin{tikzcd}[column sep=normal, row sep=normal]
+        1 \arrow[dr, dash, start anchor=south, end anchor=center] & 2 \arrow[dl, crossing over, dash, start anchor=south, end anchor=center] \\
+        \phantom{2} \arrow[dr, dash, start anchor=center, end anchor=north] & \phantom{1} \arrow[dl, crossing over, dash, start anchor=center, end anchor=north, shorten=1cm] \arrow[dl, dash, start anchor=center, end anchor=north] \\
+        1 & 2
+    \end{tikzcd}
+\end{center}
+
+\newpage
+
+\section{Universal Property of Exterior Powers}
+
+We have known that the $k$-th exterior power ${\bigwedge}^k V$ of a vector space $V$ over a field $\F$ is the quotient of the $k$-th tensor power $V^{\otimes k}$ by the alternating ideal. So, consider $\dim{V} = n$, we have the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}[row sep = normal]
+        \overbrace{V \times V \times \cdots \times V}^{n \text{ times}} \arrow[r, "\forall \phi"] \arrow[d, "\iota"', hook] & Z \\
+        V^{\otimes n} \arrow[d, "\pi"', two heads] \arrow[ur, dashed] \\
+        {\bigwedge}^n V \arrow[uur, dashed, "\exists ! \bar{\phi}" swap]
+    \end{tikzcd}
+\end{center}
+Here $Z$ is any vector space over $\F$ and $\phi : V \times V \times \cdots \times V \to Z$ is an alternating (skew-symmetric) multilinear map, i.e., $\phi(v_1, v_2, \cdots, v_n) = 0$ if $v_i = v_j$ for some $i \neq j$. Then there exists a unique linear map $\bar{\phi} : {\bigwedge}^n V \to Z$ such that $\bar{\phi} \circ \pi \circ \iota = \phi$. This shows the universal property of exterior powers.
+
+Note that the permutation group $S_n$ acts on $\overbrace{V \times V \times \cdots \times V}^{n \text{ times}}$ by:
+\[
+    \sigma_i : (v_1, v_2, \cdots, v_n) \mapsto (v_1, v_2, \cdots, v_{i - 1}, v_{i + 1}, v_i, v_{i + 2}, \cdots, v_n)
+\]
+Then we have:
+\begin{center}
+    \begin{tikzcd}
+        \overbrace{V \times V \times \cdots \times V}^{n \text{ times}} \arrow[r, "\sigma_i"] \arrow[d] & \overbrace{V \times V \times \cdots \times V}^{n \text{ times}} \arrow[d] \\
+        {\bigwedge}^n V \arrow[r, "(\sigma_i)_*"] & {\bigwedge}^n V
+    \end{tikzcd}
+\end{center}
+
+
+
 
 %----------------------------------------------------------------------------------------
 
