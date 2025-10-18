@@ -62,7 +62,7 @@
 \usepackage{tabularx} % For tabbing to a certain point
 \usepackage{tikz}
 \usepackage{tikz-cd} % For commutative diagrams
-\usetikzlibrary{matrix, positioning, arrows.meta, decorations.pathreplacing} % <-- Add this line to enable matrix of math nodes
+\usetikzlibrary{matrix, positioning, arrows.meta, decorations.pathreplacing, decorations.markings} % <-- Add this line to enable matrix of math nodes
 
 \newcommand{\smallbullet}{\scalebox{0.5}{$\bullet$}}
 
@@ -108,14 +108,36 @@
 \newcommand{\GL}{\mathsf{GL}} % General linear group notation
 \newcommand{\Aut}{\mathsf{Aut}} % Automorphism group notation
 \newcommand{\sgn}{\mathsf{Sgn}} % Sign function notation
+\newcommand{\adj}{\mathsf{Adj\;}} % Adjoint matrix notation
+\newcommand{\tr}{\mathsf{tr\;}} % Trace notation
 
 \DeclareMathOperator{\Span}{\mathsf{Span}}
 
-
+% For arrows pointing
 \tikzset{%
     myarrow/.style = {-Stealth, shorten >=5pt}
 }
 \newcommand{\mypoint}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
+
+% For arrows inside paths
+\tikzset{
+    set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+    set arrow inside={end/.initial=>, opt/.initial=},
+    /pgf/decoration/Mark/.style={
+        mark/.expanded=at position #1 with
+        {
+            \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+        }
+    },
+    arrow inside/.style 2 args={
+        set arrow inside={#1},
+        postaction={
+            decorate,decoration={
+                markings,Mark/.list={#2}
+            }
+        }
+    },
+}
 
 \usepackage{mathtools} % for \xhookrightarrow
 
@@ -375,7 +397,6 @@ Note that the two-sided identity must be unique, but one-sided identities need n
     \[ x \cdot y = e = y \cdot x \]
     where $e$ is the identity element of the operation.
 \end{definition}
-
 \begin{remark}
     An invertible operation must be identifiable, since the identity element is required in the definition of invertibility.
 \end{remark}
@@ -654,7 +675,6 @@ A linear space / vector space is a set with a linear structure over a field on t
         \end{tabularx}
     \end{center}
 \end{corollary}
-
 \begin{remark}
     The first four axioms ensure that $(V, +)$ is an abelian group, while the fifth axiom describes the distributivity inside $\End{A}$ and the last three axioms describe the ring homomorphism.
 \end{remark}
@@ -913,7 +933,6 @@ where $i$ is summed from $1$ to $n$.
     \]
     where the second equality is due to the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
 \end{proof}
-
 \begin{remark}
     Note that $\End{V} = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
@@ -1036,7 +1055,6 @@ We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with stand
     \]
     for all $j = 1, 2, \cdots, n$. This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
 \end{proof}
-
 \begin{remark}
     Note that $B$ is a $k \times m$ matrix and $A$ is an $m \times n$ matrix, so the matrix multiplication $BA$ is defined and results in a $k \times n$ matrix.
 \end{remark}
@@ -1087,7 +1105,6 @@ For easier notations, we introduce the idea of matrix units, which is similar to
 
     It can also be defined as $E_i^j = \vec{e}_i \hat{e}^j \in \M{m \times n}{\F}$ where $\vec{e}_i \in \F^m$ and $\vec{e}_j^T = \hat{e}^j \in (\F^n)^*$ are the $i$-th and $j$-th standard basis vectors, respectively. The $\hat{e}^j$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
 \end{definition}
-
 \begin{remark}
     Note that for any $m \times n$ matrix $A$ over a field $\F$, we have:
     \[
@@ -1103,9 +1120,19 @@ For easier notations, we introduce the idea of matrix units, which is similar to
 \end{remark}
 
 We can write the $E_i^j$ as:
-\vspace{7ex}
+\vspace{6ex}
 \[
-    E_i^j = \begin{bmatrix}
+    E_i^j = \vec{e}_i \hat{e}^j = \begin{bmatrix}
+        0 \\
+        \vdots \\
+        0 \\
+        1 \\
+        0 \\
+        \vdots \\
+        0
+    \end{bmatrix} \begin{bmatrix}
+        0 & \cdots & 0 & 1 & 0 & \cdots & 0
+    \end{bmatrix} = \begin{bmatrix}
         0 & \cdots & 0 & \mypoint{herei}{0} & 0 & \cdots & 0 \\
         \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
         0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
@@ -1116,9 +1143,9 @@ We can write the $E_i^j$ as:
     \end{bmatrix}
 \]
 \begin{tikzpicture}[remember picture, overlay]
-    \node[above=20pt of herei](textofhere1){the $i$-column};
+    \node[above=20pt of herei](textofhere1){the $j$-th column};
     \draw[myarrow] (textofhere1) -- (herei);
-    \node[right=20pt of herej](textofhere2){the $j$-row};
+    \node[right=20pt of herej](textofhere2){the $i$-th row};
     \draw[myarrow] (textofhere2) -- (herej);
 \end{tikzpicture}
 
@@ -1229,7 +1256,6 @@ Graphically, we have the following commutative diagram:
         \F^n \arrow[ur, "TS^{-1}", hook, two heads, swap]
     \end{tikzcd}
 \end{center}
-
 \begin{remark}
     In drawing commutative diagram, we can use $\xhookrightarrow{}$ to denote an injective linear map, $\twoheadrightarrow$ to denote a surjective linear map, and $\cong$ or combining the two to denote an invertible linear map.
 \end{remark}
@@ -1281,7 +1307,6 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
         0 & 0
     \end{bmatrix}$ obtained from an $m \times n$ matrix $A$ by a finite sequence of elementary row and column operations on $A$ is called the \emph{canonical form} of $A$.    
 \end{definition}
-
 \begin{remark}
     The canonical form of a matrix defined is also called the \emph{Smith Normal Form} or \emph{Normal Form} of a matrix.
 \end{remark}
@@ -1292,7 +1317,6 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
         0 & 0
     \end{bmatrix}$ obtained from $A$ by a finite sequence of elementary row and column operations on $A$.
 \end{definition}
-
 \begin{remark}
     The value $r$ is uniquely determined by $A$.
 \end{remark}
@@ -1506,7 +1530,6 @@ Then we consider the duality of the intersection and union of subspaces. Whether
         \span S = \bigcap_{\alpha \in I} V_{\alpha} \subset V \quad \text{where } I = \{ V_{\alpha} \subset V \mid V_{\alpha} \text{ is a subspace of } V \text{ and } S \subset V_{\alpha} \}
     \]
 \end{corollary}
-
 \begin{remark}
     Note that $I$ is not empty as $V \in I$. Thus, $\span S$ is well-defined. $V$ is the largest subspace of itself and $\{0_V\}$ is the smallest subspace of $V$.
 \end{remark}
@@ -1554,7 +1577,6 @@ If we consider a set, what does it mean by being linearly independent? Is there 
 
     The set $S = \{\vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2 + \vec{e}_3\}$ is a spanning set of $V$.
 \end{example}
-
 \begin{remark}
     If we consider the matrix of $\{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ with respect to the standard basis of $\F^3$, we have:
     \[
@@ -1598,7 +1620,6 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
 \begin{proposition} \label{prop:minimal_spanning_set}
     The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be a minimal spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is bijective.
 \end{proposition}
-
 \begin{remark}
     A order minimal spanning set is regarded as \emph{basis}.
 \end{remark}
@@ -1876,7 +1897,6 @@ This proposition shows thats a linear space with a minimal spanning set has the 
     \]
     This shows that $\tilde{\phi}$ is linear.
 \end{proof}
-
 \begin{remark}
     Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
 \end{remark}
@@ -2288,7 +2308,6 @@ where $\tilde{f} : \Im{s_1} \to \Im{f}$ is a linear equivalence, as there are li
         \coim{f} \arrow[u, hook, two heads, "s_1"] \arrow[ur, hook, two heads, "f'" swap]
     \end{tikzcd}
 \end{center}
-
 \begin{remark}
     The choice of $s_1$ and $s_2$ is not unique, so the decomposition of $V_1$ and $V_2$, and hence $f$, is not unique.
 \end{remark}
@@ -2419,8 +2438,7 @@ An example of small category: The collection of all matrices over $\F$. We may c
         & k
     \end{tikzcd}
 \end{center}
-Note that $A 1_n = A = 1_m A$ and $B 1_m = B$. 
-
+Note that $A 1_n = A = 1_m A$ and $B 1_m = B$.
 \begin{remark}
     The identity elements are not unique unlike the case of monoid.
 \end{remark}
@@ -2523,7 +2541,6 @@ We may draw the associativity law this way:
         \end{tikzcd}
     \end{center}
 \end{example}
-
 \begin{remark}
     Elements in $\C$ are \emph{morphisms} or \emph{arrows}, and elements in $\C_0$ are \emph{identity morphisms}. A morphism $f$ is viewed as an arrow from $s(f) \in C_0$ to $t(f) \in C_0$, i.e., $f : s(f) \to t(f)$. 
     An identity morphism is drawn in the following way with $X$ being called the \emph{object}:
@@ -2537,7 +2554,6 @@ We may draw the associativity law this way:
 \end{remark}
 
 So, normally, we denote a small category as $\C$ and its set of objects as $\C_0$.
-
 \begin{remark}
     The set of morphisms from object $X$ to object $Y$ is denoted by $\Mor(X, Y)$. In the last example, $\Mor(m, n) = \M{m \times n}{\F}$, the set of all $m \times n$ matrices over $\F$. Note that $1_X \in \Mor(X, X)$, so $\Mor(X, X) \neq \emptyset$ for all $X \in \C_0$.
 \end{remark}
@@ -2546,7 +2562,6 @@ Then $\C$ is the disjoint union of all $\Mor(X, Y)$ for all pairs of objects $(X
 \[
     \C = \bigsqcup_{X, Y \in \C_0} \Mor(X, Y)
 \]
-
 \begin{remark}
     The composition can be written as follows:
     \begin{center}
@@ -2666,7 +2681,6 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
         \end{tikzcd}
     \end{center}
 \end{definition}
-
 \begin{remark}
     The product is unique up to isomorphism if it exists.
 \end{remark}
@@ -2719,7 +2733,6 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
         \end{tikzcd}
     \end{center}
 \end{definition}
-
 \begin{remark}
     The coproduct is unique up to isomorphism if it exists.
 \end{remark}
@@ -2761,7 +2774,6 @@ In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \
 \begin{definition}[Biproducts]
     The \emph{biproduct} of two objects $X$ and $Y$ in a category $\C$ is an object $X \oplus Y$ that is both the product and coproduct of $X$ and $Y$.
 \end{definition}
-
 \begin{remark}
     The biproduct exists if and only if the product and coproduct exist and are isomorphic, or if the initial object and the terminal object exist and are isomorphic.
 \end{remark}
@@ -2821,7 +2833,6 @@ Then the coproduct can be defined as follows:
 \[
     \bigoplus_{\alpha \in I} V_\alpha = \{ (v_\alpha) \in \prod_{\alpha \in I} V_\alpha \mid v_\alpha \text{ is finitely supported} \} \subseteq \prod_{\alpha \in I} V_\alpha
 \]
-
 \begin{remark}
     In general, the product is not equal to the coproduct. They are equal if and only if the indexing set $I$ is a finite set.
 \end{remark}
@@ -2871,7 +2882,6 @@ Consider the following diagram:
         \filldraw (2,-4) circle (1.5pt) node [below] {$\alpha_4$};
     \end{tikzpicture}
 \end{center}
-
 \begin{remark}
     The right sections $s_1$ and $s_2$ are two elements in the product $\prod V_\alpha$. Note that $s_2$ is likely to be ``finitely supported'' since it is zero in almost all components shown in the diagram. However, if $I$ is an infinite set, then $s_2$ may not be finitely supported since there may be infinitely many non-zero components not shown in the diagram. So $s_2$ may not be an element in the coproduct $\bigoplus V_\alpha$ if $I$ is an infinite set, but most likely to be.
 \end{remark}
@@ -2963,7 +2973,6 @@ For some set $X$ and any vector space $V$, we can consider the following diagram
     \end{tikzcd}
 \end{center}
 This is called the \emph{universal property of free vector space over a set}. Here $\iota : X \to \F[X]$ is the inclusion map, $\phi : X \to V$ is any set map, and $\bar{\phi} : \F[X] \to V$ is the unique linear map induced by $\phi$.
-
 \begin{remark}
     The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any vector space $V$, there is a natural identification:
     \[
@@ -3041,7 +3050,6 @@ Consider the following two diagrams:
     \end{tikzcd}
 \end{center}
 The left diagram shows that the free functor sends the product of two sets to the tensor product of two vector spaces. The right diagram shows that the free functor sends the coproduct of two sets to the direct sum of two vector spaces, i.e., the coproduct of two vector spaces. Note that the tensor product of two vector spaces is \emph{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$. There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 \oplus V_2$.
-
 \begin{remark}
     The left adjoint functor preserves coproducts, and the right adjoint functor preserves products. This is the consequences of the \emph{adjoint functor theorem}. 
 \end{remark}
@@ -3115,7 +3123,6 @@ Then $(\alpha_1, \alpha_2, \cdots, \alpha_n) = A^{-1}$. So the dual basis is uni
 
 Finally, we have the natural identification:
 \end{proof}
-
 \begin{remark}
     $V \cong V^*$ but $\B_V \equiv \B_{V^*}$. The isomorphism $V \cong V^*$ depends on the choice of a basis in $\B_V$, while the natural isomorphism $\B_V \equiv \B_{V^*}$ does not depend on any choice.
 \end{remark}
@@ -3318,7 +3325,6 @@ where $\ideal_{U, V}$ is the subspace of $\F[U \times V]$ generated by the follo
 Why the construction of $\ideal_{U, V}$ is like this? This is because we want $\iota$ to be a bilinear map. Then $\iota(\alpha u_1 + \beta u_2, v) = \alpha \iota(u_1, v) + \beta \iota(u_2, v)$ and $\iota(u, \alpha v_1 + \beta v_2) = \alpha \iota(u, v_1) + \beta \iota(u, v_2)$. This means that the elements in $\ideal_{U, V}$ should be mapped to $0$ by $\iota$. So we have to quotient $\F[U \times V]$ by $\ideal_{U, V}$ to make $\iota$ a bilinear map.
 
 Then we define $U \otimes V = \quotient{\F[U \times V]}{\ideal_{U, V}}$ and this shows the existence of tensor product.
-
 \begin{remark}
     The inclusion map $\iota : U \times V \to U \otimes V$ is `surjective' in the sense that the image of $\iota$ spans $U \otimes V$, i.e. $\span{\Im{\iota}} = U \otimes V$. To know $\bar{\phi}$, it suffices to know $\bar{\phi}(u \otimes v) = \phi(u, v)$ for all $u \in U$ and $v \in V$.
 \end{remark}
@@ -3361,7 +3367,6 @@ Also, we have the following equation:
 \begin{example}
     The 3-dimensional Euclidean space $\R^3$ with the cross product $\times : \R^3 \times \R^3 \to \R^3$ is an algebra over $\R$. As the cross product is bilinear. However, it does not have a multiplicative identity, not associative and not commutative. So $\R^3$ with the cross product is a non-unital non-associative non-commutative algebra over $\R$.
 \end{example}
-
 \begin{remark}
     $(\R^3, \times)$ is an example of a simple real lie algebra. It is the lie algebra of the lie group SO(3), the special orthogonal group in dimension 3, i.e., the 3-dimensional rotations. $(\R^3, \times)$ is denoted by $\mathfrak{so}(3)$. Also, it is the lie algebra of the infinitesimal symmetries of a pointed 3-dimensional Euclidean space. 
 \end{remark}
@@ -3406,7 +3411,6 @@ The tensor algebra $\T V$ is an algebra over $\F$ with the bilinear product map 
     \otimes : \T V \times \T V \to \T V
 \]
 which sends $(\sum_n u_n, \sum_m v_m)$ to $\sum_{n, m} (u_n \otimes v_m)$.
-
 \begin{remark}
     As the algebra product is bilinear, it suffices to know the product of two homogeneous elements, i.e., $V^{\otimes n} \times V^{\otimes m} \to \T V$ for all $n, m \geq 0$. So $\T V$ is a $\Z_{\geq 0}$-graded algebra over $\F$. As the tensor algebra is bi-additive, we have the following equality:
     \[
@@ -3434,7 +3438,6 @@ We have to prove the existence of the bilinear map $V^{\otimes n} \times V^{\oti
 The proof used a lot of universal properties of tensor products. Note that the map $\phi$ is a multilinear map and $\bar{\phi}$ is a linear equivalence.
 
 So we have proved the existence of the bilinear product map $\otimes : \T V \times \T V \to \T V$. Then $\T V$ is an algebra over $\F$.
-
 \begin{remark}
     The tensor algebra $(\T V, \otimes)$ is a graded unital associative algebra over $\F$. It is graded, as it is degree additive, i.e., $V^{\otimes n} \times V^{\otimes m} \to V^{\otimes (n + m)}$ for all $n, m \geq 0$. It is unital, as $V^{\otimes 0} - \F \times V^{\otimes m} \to V^{\otimes m}$ and the reverse. The multiplicative identity is $1 \in \F$. It is associative, as $(u \otimes v) \otimes w = u \otimes (v \otimes w)$ for all $u, v, w \in V$ and the associativity can be extended to all homogeneous elements by bi-additivity. However, in general it is not commutative, as $u \otimes v \neq v \otimes u$ for some $u, v \in V$.
 \end{remark}
@@ -3493,7 +3496,6 @@ The \emph{symmetric algebra} of a vector space $V$ over a field $\F$, denoted by
 The $\ideal_{\Sym}$ is called the \emph{symmetrising ideal} of $\T V$. It is actually the \emph{ideal completion} of the relation $u \otimes v = v \otimes u$ for all $u, v \in V$. We use $\langle - \rangle$ to denote the ideal generated by a set.
 
 Then the elements in $\Sym V$ are equivalence classes of elements in $\T V$. We have $uv \in \Sym V$ as the equivalence class of $u \otimes v \in \T V$ denoted by $[u \otimes v]$. Note that $uv = [u \otimes v] = [v \otimes u] = vu$ in $\Sym V$, as $[u \otimes v - v \otimes u] = 0$. So the product in $\Sym V$ is commutative. 
-
 \begin{remark}
     Symmetric algebra is still a graded algebra. As the ideal $\ideal_{\Sym}$ is a graded ideal, i.e., $\ideal_{\Sym} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Sym} \cap V^{\otimes k})$.
 \end{remark}
@@ -3525,7 +3527,6 @@ The \emph{exterior algebra} of a vector space $V$ over a field $\F$, denoted by 
 The $\ideal_{\Ext}$ is called the \emph{alternating ideal} of $\T V$. It is actually the \emph{ideal completion} of the relation $v \otimes v = 0$ for all $v \in V$, or equivalently $v \otimes w = - w \otimes v$ for all $v, w \in V$. Sometimes the exterior algebra is also called the \emph{skew-symmetric algebra}. Note that the characteristic of the field $\F$ should not be $2$, i.e., $\chart(\F) \neq 2$, otherwise $v \otimes w = - w \otimes v$ implies that $v \otimes w = w \otimes v$.
 
 Then the product in $\Ext V$ is called the \emph{exterior product} or \emph{wedge product}, denoted by $\wedge$. We have $u \wedge v = - v \wedge u$ in $\Ext V$ for all $u, v \in V$. So the product in $\Ext V$ is skew-commutative.
-
 \begin{remark}
     Exterior algebra is still a graded algebra. As the ideal $\ideal_{\Ext}$ is a graded ideal, i.e., $\ideal_{\Ext} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Ext} \cap V^{\otimes k})$.
 \end{remark}
@@ -3555,7 +3556,6 @@ Let $\mathfrak{g}$ be a lie algebra over a field $\F$. The \emph{universal envel
     \Env \mathfrak{g} = \quotient{\T \mathfrak{g}}{\ideal_{\Env}} = \quotient{\T \mathfrak{g}}{\langle x \otimes y - y \otimes x - [x, y] \mid x, y \in \mathfrak{g} \rangle}
 \]
 The $\ideal_{\Env}$ is called the \emph{lie ideal} of $\T \mathfrak{g}$. It is actually the \emph{ideal completion} of the relation $xy - yx = [x, y]$ for all $x, y \in \mathfrak{g}$.
-
 \begin{remark}
     However, the universal enveloping algebra is not a graded algebra. As the ideal $\ideal_{\Env}$ is not a graded ideal. The $x \otimes y - y \otimes x$ is in $\mathfrak{g}^{\otimes 2}$ but $[x, y]$ is in $\mathfrak{g}^{\otimes 1}$.
 \end{remark}
@@ -3752,7 +3752,6 @@ Consider the following exact sequence:
     \end{tikzcd}
 \end{center}
 where $A_n$ is the \emph{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn : S_n \to \{ \pm 1 \}$, the \emph{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$. Note that $\ker{\sgn} = A_n$ and $\Im{\sgn} = \{ \pm 1 \}$. 
-
 \begin{remark}
     $A_n$ is simple for all $n \geq 5$. This means that $A_n$ has no non-trivial normal subgroups for all $n \geq 5$.
 \end{remark}
@@ -3777,25 +3776,36 @@ We have known that the $k$-th exterior power ${\bigwedge}^k V$ of a vector space
 \end{center}
 Here $Z$ is any vector space over $\F$ and $\phi : V \times V \times \cdots \times V \to Z$ is an alternating (skew-symmetric) multilinear map, i.e., $\phi(v_1, v_2, \cdots, v_n) = 0$ if $v_i = v_j$ for some $i \neq j$. Then there exists a unique linear map $\bar{\phi} : {\bigwedge}^n V \to Z$ such that $\bar{\phi} \circ \pi \circ \iota = \phi$. This shows the universal property of exterior powers.
 
+Also, we can consider the ${\bigwedge}^k$ as a functor applied to the map $f : V \to W$. Then we have ${\bigwedge}^k f : {\bigwedge}^k V \to {\bigwedge}^k W$. Then the following diagram commutes:
+\begin{center}
+    \begin{tikzcd}
+        \overbrace{V \times V \times \cdots \times V}^{k \text{ times}} \arrow[r, "f \times f \times \cdots \times f"] \arrow[d, hook] & \overbrace{W \times W \times \cdots \times W}^{k \text{ times}} \arrow[d, hook] \\
+        {\bigwedge}^k V \arrow[r, "{\bigwedge}^k f", dashed] & {\bigwedge}^k W \\[-3.6em]
+        {\scriptscriptstyle \vec{v}_1 \wedge \vec{v}_2 \wedge \cdots \wedge \vec{v}_k} \arrow[r, mapsto] & {\scriptscriptstyle f(\vec{v}_1) \wedge f(\vec{v}_2) \wedge \cdots \wedge f(\vec{v}_k)}
+    \end{tikzcd}
+\end{center}
+
 Note that the permutation group $S_n$ acts on $\overbrace{V \times V \times \cdots \times V}^{n \text{ times}}$ by:
 \[
     \sigma_i : (v_1, v_2, \cdots, v_n) \mapsto (v_1, v_2, \cdots, v_{i - 1}, v_{i + 1}, v_i, v_{i + 2}, \cdots, v_n)
 \]
-Then we have:
+By the universal property of exterior powers, we have:
 \begin{center}
     \begin{tikzcd}
         \overbrace{V \times V \times \cdots \times V}^{n \text{ times}} \arrow[r, "\sigma_i"] \arrow[d] & \overbrace{V \times V \times \cdots \times V}^{n \text{ times}} \arrow[d] \\
-        {\bigwedge}^n V \arrow[r, "(\sigma_i)_*"] & {\bigwedge}^n V
+        {\bigwedge}^n V \arrow[r, "(\sigma_i)_*", dashed] & {\bigwedge}^n V
     \end{tikzcd}
 \end{center}
 
+Consider that $a \wedge b = - b \wedge a$. Then in general, we have:
+\[
+    P \wedge Q = (-1)^{pq} Q \wedge P
+\]
+where $P \in {\bigwedge}^p V$ and $Q \in {\bigwedge}^q V$. This is called the \emph{graded commutativity} of exterior algebras.
+
 \newpage
 
-\section{Determinant Formula}
-
-\newpage
-
-\section{Properties of Determinants}
+\section{Determinants and Duals}
 
 Let $V$ be an $n$-dimensional vector spaces over $\F$ and $\B_V = \{ v_1, v_2, \cdots, v_n \}$ be a basis of $V$. 
 
@@ -3818,11 +3828,440 @@ Note that $(\det v)^* \equiv \det v$ where $v \in \B_V$. So we have the followin
 \]
 The first equivalence is because of the commutative diagram above, and the second equivalence is because of the definition of dual basis.
 
-Consider $L$ be a line over $\F$ and $L^n$ defined as $\underbrace{L \otimes L \otimes \cdots \otimes L}_{n \text{ times}}$. Also, $L^0$ is defined as $\F$, $L^{-1} = L^*$ and $L^{-n} = (L^*)^n$. So $\{ L^n \}$ is a group. 
+Consider $L$ be a line over $\F$ and $L^n$ defined as $\overbrace{L \otimes L \otimes \cdots \otimes L}^{n \text{ times}}$. Also, $L^0$ is defined as $\F$. Normally, we have $L^* \otimes L \to \F$. However, as $L$ is 1-dimensional, we have the following isomorphism:
+\[
+    L^* \otimes L \equiv \F
+\]
+Then $L^*$ is regarded as $L^{-1}$, and they from a group under the tensor product operation, $(\{ L^k \}, \otimes)$ where $k \in \Z$.
+
+Consider $V_1$ and $V_2$ are two $n$-dimensional vector spaces over $\F$. Then we have the following diagram:
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        V_1 \arrow[rr, "f"] & \arrow[d, Rightarrow, shorten >= 1ex, "\det"'] & V_2 \arrow[r, Rightarrow, "(-)^*"] & V_1^* & \arrow[d, Rightarrow, shorten >= 1ex, "\det"] & V_2^* \arrow[ll, "f^*"'] \\
+        \det V_1 \arrow[rr, "\det f"] & \phantom{*} & \det V_2 \arrow[r, dashed, Rightarrow] & \det V_1^* & \phantom{*} & \det V_2^* \arrow[ll, "\det f^*"']
+    \end{tikzcd}
+\end{center}
+
+Then we consider the left part, we have:
+\[
+    \det f \in \Hom(\det V_1, \det V_2) \equiv (\det V_1)^* \otimes \det V_2
+\]
+Similarly, for the right part, we have:
+\[
+    \det f^* \in (\det V_2^*)^* \otimes \det V_1^* \equiv (\det V_2)^** \otimes \det V_1^* \equiv \det V_2 \otimes (\det V_1)^*
+\]
+Note that the first equivalence is due to $\det V^* \equiv (\det V)^*$. As the tensor product is commutative, we have:
+\[
+    \det f^* \equiv \det f
+\]
+
+\newpage
+
+\section{Determinant Formula}
+
+Consider the following diagram:
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        \F^n \arrow[rr, "A"] & \arrow[d, Rightarrow, shorten >= 1ex, "\det"'] & \F^n \\
+        \det \F^n \arrow[rr, "\det A"] & \phantom{*} & \det \F^n 
+    \end{tikzcd}
+\end{center}
+Given the standard basis $\B = \{ \vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n \}$ of $\F^n$, we have:
+\[
+    \det \B = \vec{e}_1 \wedge \vec{e}_2 \wedge \cdots \wedge \vec{e}_n
+\]
+Note that 
+\[
+    A = \begin{bmatrix}
+        | & | & & | \\
+        \vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n \\
+        | & | & & |
+    \end{bmatrix}
+\]
+Consider the map $\det A : \det \B \mapsto \det A \cdot \det \B$ where $\det A \in \F$ is a scalar, we have
+\[
+    \det A \cdot \det \B = A\vec{e}_1 \wedge A\vec{e}_2 \wedge \cdots \wedge A\vec{e}_n = \vec{a}_1 \wedge \vec{a}_2 \wedge \cdots \wedge \vec{a}_n
+\]
+So, we know that $\det A$ is multilinear and alternating in the columns of $A$. Also, $\det I = 1$. 
+
+Consider the elements of $A$ as $\vec{a}_j = \sum_{i_j = 1}^n a_j^{i_j} \vec{e}_{i_j}$ for all $1 \leq j \leq n$. Then we have:
+\[
+    \vec{a}_1 \wedge \cdots \wedge \vec{a}_n = \sum_{i_1 = 1}^n a_1^{i_1} \vec{e}_{i_1} \wedge \cdots \wedge \sum_{i_n = 1}^n a_n^{i_n} \vec{e}_{i_n} = \sum_{i_1, \cdots, i_n = 1}^n a_1^{i_1} \cdots a_n^{i_n} \ (\vec{e}_{i_1} \wedge \cdots \wedge \vec{e}_{i_n})
+\]
+We assume that $\vec{e}_{i_k}$ are mutally distinct for all $1 \leq k \leq n$. Otherwise, the term is $0$ because of the alternating property of exterior products. So there exists a unique permutation $\sigma \in S_n$ such that $i_k = \sigma(k)$ for all $1 \leq k \leq n$. Then we have:
+\[
+    \vec{a}_1 \wedge \cdots \wedge \vec{a}_n = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ (\vec{e}_{\sigma(1)} \wedge \cdots \wedge \vec{e}_{\sigma(n)}) = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ \sgn(\sigma) \ (\vec{e}_1 \wedge \cdots \wedge \vec{e}_n)
+\]
+
+Hence, we have the formula of determinants:
+\[
+    \det A = \sum_{\sigma \in S_n} \sgn(\sigma) \ a_1^{\sigma(1)} a_2^{\sigma(2)} \cdots a_n^{\sigma(n)}
+\]
+\begin{remark}
+    For the magnitude part in the formula, $a_1^{\sigma(1)} a_2^{\sigma(2)} \cdots a_n^{\sigma(n)}$, they are in distinct rows and in distinct columns. They are in distinct columns because of the subscript of $a_j^{\sigma(j)}$ is $j$ for all $1 \leq j \leq n$. They are in distinct rows due to the $\sigma$, otherwise it will be zero because of the alternating property of exterior products.
+\end{remark}
+
+\newpage
+
+\section{Properties of Determinants}
+
+The $\det A$ has the following properties:
+\begin{itemize}
+    \item Linear in each column: for all $1 \leq j \leq n$;
+    \item Alternating (skew-symmetric): $\cdots \vec{a}_i \cdots \vec{a}_j \cdots = - \cdots \vec{a}_j \cdots \vec{a}_i \cdots$ for all $i < j$;
+    \item $\det I = 1$;
+\end{itemize}
+For the alternating property, we have the following evaluation from the original definition of wedge products (we assumed that $\chart(\F) \neq 2$):
+\[
+    \begin{split}
+        \cdots \vec{a}_i \overbrace{\color{red} \cdots}^{k \text{ times}} \vec{a}_j \cdots & = (-1)^k \cdots {\color{red} \cdots} \vec{a}_i \vec{a}_j \cdots \\
+        & = (-1)^{k + 1} \cdots {\color{red} \cdots} \vec{a}_j \vec{a}_i \cdots \\
+        & = - \cdots \vec{a}_j {\color{red} \cdots} \vec{a}_i \cdots
+    \end{split}
+\]
+Moreover, the three properties above uniquely determine the determinant function.
+\begin{remark}
+    The first two properties can be defined on the rows of $A$ as well and they still hold. This is because the determinant of a matrix is equal to the determinant of its transpose, which is the matrix part of $\det f^* \equiv \det f$ shown in the previous section.
+\end{remark}
+
+If we drop the last property, then the function is called the \emph{alternating multilinear form}. Suppose that $\phi : \M{n \times n}{\F} \to \F$ is an alternating multilinear form, then we have:
+\[
+    \phi(A) = \det A \phi(I_n)
+\]
+
+\begin{proposition}
+    The following equality holds:
+    \[
+        \det \begin{bmatrix}
+            A_1 & * \\
+            0 & A_2
+        \end{bmatrix} = \det A_1 \cdot \det A_2
+    \]
+\end{proposition}
+\begin{proof}
+    Consider the part on the left-hand side, we know that it is multilinear in the columns and alternating. Then we have the following evaluation:
+    \[
+        \begin{split}
+            \det \begin{bmatrix}
+                A_1 & * \\
+                0 & A_2
+            \end{bmatrix} & = \det A_1 \cdot \det \begin{bmatrix}
+                I_{n_1} & * \\
+                0 & A_2
+            \end{bmatrix} \\
+            & = \det A_1 \cdot \det A_2 \cdot \det \begin{bmatrix}
+                I_{n_1} & * \\
+                0 & I_{n_2}
+            \end{bmatrix} \\
+            & = \det A_1 \cdot \det A_2 \cdot \det \begin{bmatrix}
+                I_{n_1} & 0 \\
+                0 & I_{n_2}
+            \end{bmatrix} \\
+            & = \det A_1 \cdot \det A_2 \cdot \det I_{n_1 + n_2} = \det A_1 \cdot \det A_2
+        \end{split}
+    \]
+    For the last equality, as we know the following property:
+    \[
+        \cdots \vec{a}_i \cdots (k\vec{a}_i + \vec{a}_j) \cdots = k \cdots \vec{a}_i \cdots \vec{a}_j \cdots + \cdots \vec{a}_i \cdots \vec{a}_j \cdots = \cdots \vec{a}_i \cdots \vec{a}_j \cdots
+    \]
+    Note that $k$ can be 0 as well. Therefore, we can eliminate all the $*$ in the matrix by using the above property without changing the determinant value.
+\end{proof}
+
+Instead of writing $\det$, we can use two pipes to denote the determinant. Concretely, we have the following determinants:
+\[
+    \left|
+        \begin{array}{cc|ccc}
+            1 & & * & * & * \\
+            & 1 & * & * & * \\
+            \hline
+            & & 1 & & \\
+            & & & 1 & \\
+            & & & & 1
+        \end{array}
+    \right| = \left|
+        \begin{array}{cc|ccc}
+            1 & & 0 & 0 & 0 \\
+            & 1 & * & * & * \\
+            \hline
+            & & 1 & & \\
+            & & & 1 & \\
+            & & & & 1
+        \end{array}
+    \right| = \left|
+        \begin{array}{cc|ccc}
+            1 & & 0 & 0 & 0 \\
+            & 1 & 0 & 0 & 0 \\
+            \hline
+            & & 1 & & \\
+            & & & 1 & \\
+            & & & & 1
+        \end{array}
+    \right| = |I_5| = 1
+\]
+For the first equality, we eliminated the first row's $*$ by using the first row. For the second equality, we eliminated the second row's $*$ by using the second row.
+
+So, for block upper-triangular matrices, its determinant is equal to the product of the determinants of the diagonal blocks. Same for the block lower-triangular matrices.
+
+In particular, we have the following equation:
+\[
+    \begin{vmatrix}
+        a_{11} & \cdots & * \\
+        \vdots & \ddots & \vdots \\
+        0 & \cdots & a_{nn}
+    \end{vmatrix} = a_{11} \cdots a_{nn}
+\]
+Also, $\det [a] = a \det[1] = a$.
+\begin{remark}
+    In determinant, we prefer to use $a_{ij}$ to denote the element in the $i$-th row and $j$-th column instead of using superscript and subscript like $a_j^{i}$. This is because in determinants, we usually consider the rows and columns instead of vectors.
+\end{remark}
+
+Consider the following determinant:
+\vspace{6ex}
+\[
+    \begin{split}
+        \begin{vmatrix}
+            & & & \mypoint{jcol}{\phantom{*}} \\
+            & * & & 0 & & * & \\ 
+            \\
+            \mypoint{irow}{a_{i,1}} & \cdots & a_{i,j-1} & 1 & a_{i,j+1} & \cdots & a_{i,n} \\
+            \\
+            & * & & 0 & & * & \\
+            \\
+        \end{vmatrix} & = (-1)^{i - 1} \begin{vmatrix}
+            a_{i,1} & \cdots & a_{i,j-1} & 1 & a_{i,j+1} & \cdots & a_{i,n} \\
+            \\ \\
+            & * & & 0 & & * & \\
+            \\ \\
+        \end{vmatrix} \\
+        & = (-1)^{i - 1 + j - 1} \begin{vmatrix}
+            1 & a_{i,1} & \cdots & \widehat{a_{i,j}} & \cdots & a_{i,n} \\
+            \\ \\
+            0 & & & A^i_j \\
+            \\ \\
+        \end{vmatrix} \\
+        & = (-1)^{i + j} \det A^i_j
+    \end{split}
+\]
+\begin{tikzpicture}[remember picture, overlay]
+    \node[above=20pt of jcol](textofhere1){the $j$-th column};
+    \draw[myarrow] (textofhere1) -- (jcol);
+    \node[left=20pt of irow](textofhere2){the $i$-th row};
+    \draw[myarrow] (textofhere2) -- (irow);
+\end{tikzpicture}
+Here $\widehat{a_{i,j}}$ means that the element $a_{i,j}$ is omitted, and $A^i_j$ is the submatrix obtained by deleting the $i$-th row and $j$-th column of $A$.
+
+Then we can consider general matrix $A$, for any $j$, we have:
+\[
+    \begin{split}
+        \det A & = \det [\cdots \quad \vec{a}_j \quad \cdots] \\
+        & = \sum_{i = 1}^n a_j^i \det [\cdots \quad \vec{e}_i \quad \cdots] \\
+        & = \sum_{i = 1}^n a_j^i (-1)^{i + j} \det A^i_j
+    \end{split}
+\]
+This is called the \emph{cofactor expansion} or \emph{Laplace expansion} along the $j$-th column. Similarly, we can have the cofactor expansion along the $i$-th row.
+
+Then we have the definition of \emph{adjoint} of a matrix.
+\begin{definition}[Adjoint Matrices]
+    An \emph{adjoint matrix} of $A$, denoted by $\adj A$, is defined as the matrix whose $(i,j)$-th entry is $(-1)^{i + j} \det A_i^j$.
+\end{definition}
+\begin{remark}
+    Beaware of the notation difference between $A_i^j$ and $A^i_j$. The former means deleting the $j$-th row and $i$-th column, while the latter means deleting the $i$-th row and $j$-th column. Also note that the notation of $\vec{e}_i$ means that the $i$-th row is 1 and other rows are 0 (standard basis vector), which is different from the notation in $A_i^j$ and $A^i_j$. To conclude, the subscript is for columns and the superscript is for rows, except they are in the notation of standard basis vectors.
+\end{remark}
+
+\begin{proposition}
+    The following equality holds:
+    \[
+        A \cdot \adj A = \adj A \cdot A = \det A I_n
+    \]
+    In particular, if $\det A \neq 0$, then $A^{-1} = \frac{1}{\det A} \adj A$.
+\end{proposition}
+\begin{proof}
+    In particular, we just have to show 
+    \[
+        \sum_{k = 1}^n a^k_j (\adj A)^i_k = \det A \delta^i_j
+    \]
+
+    From the previous Laplace expansion, we know:
+    \[
+        \det A = \sum_{i = 1}^n a_j^i (-1)^{i + j} \det A^i_j = \sum_{i = 1}^n a_j^i (\adj A)_i^j = (A \cdot \adj A)_j^j
+    \]
+    Then we know that for $i = j$, the equality holds. If $i \neq j$, then we can consider the following determinant:
+    \vspace{4ex}
+    \[
+        \det \begin{vmatrix}
+            \\
+            \cdots & \mypoint{icol}{\vec{a}_j} & \cdots & \mypoint{jcol}{\vec{a}_j} & \cdots \\
+            \\
+        \end{vmatrix} = 0
+    \]
+    \vspace{2ex}
+
+    This means that originally, there are two same columns in the determinant, so its value is zero. Then by the Laplace expansion along the $j$-th column, we have:
+    \[
+        0 = \sum_{k = 1}^n a_j^k (-1)^{k + j} \det A^k_i = \sum_{k = 1}^n a_j^k (\adj A)_k^i = (A \cdot \adj A)_j^i
+    \]
+\end{proof}
+\begin{tikzpicture}[remember picture, overlay]
+    \node[below=20pt of icol](textofhere1){the $i$-th column};
+    \draw[myarrow] (textofhere1) -- (icol);
+    \node[above=20pt of jcol](textofhere2){the $j$-th column};
+    \draw[myarrow] (textofhere2) -- (jcol);
+\end{tikzpicture}
+
+To better understand the reason why the equality holds when $i \neq j$, we can consider the following explanation \cite{1404250}. Consider the $3 \times 3$ case:
+\[
+    \underbrace{\begin{bmatrix}
+        A_1^1 & -A_1^2 & A_1^3 \\
+        -A_2^1 & A_2^2 & -A_2^3 \\
+        A_3^1 & -A_3^2 & A_3^3
+    \end{bmatrix}}_{\adj A} \cdot \underbrace{\begin{bmatrix}
+        {\color{red} a_1^1} & {\color{ocre} a_2^1} & a_3^1 \\
+        {\color{red} a_1^2} & {\color{ocre} a_2^2} & a_3^2 \\
+        {\color{red} a_1^3} & {\color{ocre} a_2^3} & a_3^3
+    \end{bmatrix}}_{A}
+\]
+If we multiply the first row of $\adj A$ with the first column of $A$, we have the same result as the Laplace expansion along the first column:
+\[
+    {\color{red} a_1^1} A_1^1 - {\color{red} a_1^2} A_1^2 + {\color{red} a_1^3} A_1^3 = \begin{vmatrix}
+        {\color{red} a_1^1} & a_2^1 & a_3^1 \\
+        {\color{red} a_1^2} & a_2^2 & a_3^2 \\
+        {\color{red} a_1^3} & a_2^3 & a_3^3
+    \end{vmatrix} = \det A = \sum_{k = 1}^3 {\color{red} a_1^k} A_1^k = \sum_{k = 1}^3 {\color{red} a_1^k} (\adj A)_k^1
+\]
+If we multiply the first row of $\adj A$ with the second column of $A$, we have:
+\[
+    {\color{ocre} a_2^1} A_1^1 - {\color{ocre} a_2^2} A_1^2 + {\color{ocre} a_2^3} A_1^3 = \begin{vmatrix}
+        {\color{ocre} a_2^1} & a_2^1 & a_3^1 \\
+        {\color{ocre} a_2^2} & a_2^2 & a_3^2 \\
+        {\color{ocre} a_2^3} & a_2^3 & a_3^3
+    \end{vmatrix} = 0 = \sum_{k = 1}^3 {\color{ocre} a_2^k} A_1^k = \sum_{k = 1}^3 {\color{ocre} a_2^k} (\adj A)_k^1
+\]
+
+\newpage
+
+\section{Vandermonde Determinant}
+
+Consider the following determinant, here the superscript means the power:
+\[
+    \det V_n = \begin{vmatrix}
+        1 & 1 & \cdots & 1 \\
+        x_1 & x_2 & \cdots & x_n \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_1^{n - 1} & x_2^{n - 1} & \cdots & x_n^{n - 1}
+    \end{vmatrix}
+\]
+Then we consider $x_1, x_2, \cdots, x_{n - 1}$ are fixed and we consider the determinant as a polynomial of $x_n$. Note that the degree of $x_n$ is $n - 1$, and the polynomial is:
+\[
+    \det V_n = (-1)^{n + 1} | \cdots | + (-1)^{n + 2} x_n | \cdots | + \cdots + (-1)^{n + n} x_n^{n - 1} \begin{vmatrix}
+        1 & 1 & \cdots & 1 \\
+        x_1 & x_2 & \cdots & x_{n - 1} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_1^{n - 1} & x_2^{n - 1} & \cdots & x_{n - 1}^{n - 1}
+    \end{vmatrix}
+\]
+Also note that if $x_n = x_i$ for some $1 \leq i \leq n - 1$, let say $i = n - 1$, then the determinant becomes:
+\[
+    \begin{vmatrix}
+        1 & 1 & \cdots & 1 & 1 \\
+        x_1 & x_2 & \cdots & x_{n - 1} & x_{n - 1} \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        x_1^{n - 1} & x_2^{n - 1} & \cdots & x_{n - 1}^{n - 1} & x_{n - 1}^{n - 1}
+    \end{vmatrix} = 0
+\]
+This means that $x_n - x_i$ is a factor of the polynomial. Therefore, by the fundamental theorem of algebra, we have:
+\[
+    \det V_n = C \overbrace{(x_n - x_1)(x_n - x_2) \cdots (x_n - x_{n - 1})}^{n - 1 \text{ factors}}
+\]
+Here $C$ is a constant that does not depend on $x_n$. To find $C$, we can consider the coefficient of $x_n^{n - 1}$. Note that the coefficient of $x_n^{n - 1}$ in the above polynomial expansion is $\det V_{n - 1}$. So $C = \det V_{n - 1}$. Then by induction, we have:
+\[
+    \det V_n = \prod_{1 \leq i < j \leq n} (x_j - x_i)
+\]
+
+\newpage
+
+\section{Feynman Diagram Formula}
+
+Consider the $\chart(\F) = 0$. Let $A$ be an $n \times n$ matrix and $I$ be the identity matrix of order $n$. Then we have the following formula:
+\[
+    \det (I + tA) = 1 - \tr A \ t + \left(\frac{(\tr A)^2}{2!} - \frac{\tr A^2}{2}\right) t^2 - \cdots + (-1)^n \det A \ t^n
+\]
+This is called the \emph{Feynman diagram formula}, as it is inspired by Feynman diagrams in quantum field theory. From this formula, the determinant can be expressed by traces.
+
+It is hard to remember the coefficients in the formula. However, we can use the following method to derive them. Consider the following diagram for $t^1$ term:
+\begin{center}
+    \begin{tikzpicture}
+        \draw (0, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (0.5, 0) node[right, ocre] {$A$};
+    \end{tikzpicture}
+\end{center}
+Here the circle means a trace operation, and the arrow means $A$. So the coefficient is $- \tr A$. 
+
+For $t^2$ term, we have diagram:
+\begin{center}
+    \begin{tikzpicture}
+        \draw (0, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (0.5, 0) node[right, ocre] {$A$};
+        \draw (2, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (2.5, 0) node[right, ocre] {$A$};
+
+        \draw (5, 0) circle (1cm) node {$-1$}
+            [arrow inside={end=stealth,opt={ocre,scale=1}}{0,0.5}];
+        \path (6, 0) node[right, ocre] {$A$}
+            (4, 0) node[left, ocre] {$A$}
+            (5, 1) node {$|$}
+            (5, -1) node {$|$};
+    \end{tikzpicture}
+\end{center}
+The left two circles mean $(- \tr A)^2$, and we have to divide by $2!$ because of the symmetry of the two identical circles. The right circle means $- \tr A^2$, but this is a cyclic group of order 2, so we have to divide by $2$. Therefore, the total term for $t^2$ is:
+\[
+    \frac{(- \tr A)^2}{2!} - \frac{\tr A^2}{2} = \frac{(\tr A)^2}{2!} - \frac{\tr A^2}{2}
+\]
+
+For $t^3$ term, we have diagram:
+\begin{center}
+    \begin{tikzpicture}
+        \draw (-2, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (-1.5, 0) node[right, ocre] {$A$};
+        \draw (0, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (0.5, 0) node[right, ocre] {$A$};
+        \draw (2, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (2.5, 0) node[right, ocre] {$A$};
+
+        \draw (5, 0) circle (1cm) node {$-1$}
+            [arrow inside={end=stealth,opt={ocre,scale=1}}{0,0.5}];
+        \path (6, 0) node[right, ocre] {$A$}
+            (4, 0) node[left, ocre] {$A$}
+            (5, 1) node {$|$}
+            (5, -1) node {$|$};
+        \draw (7.5, 0) circle (0.5cm) node {$-1$}
+			[arrow inside={end=stealth,opt={ocre,scale=1}}{0}];
+        \path (8, 0) node[right, ocre] {$A$};
+
+        \draw (10.5, 0) circle (1.5cm) node {$-1$}
+            [arrow inside={end=stealth,opt={ocre,scale=1}}{0.0833, 0.4167, 0.755}];
+        \path (11.8, 0.75) node[right, ocre] {$A$}
+            (9.2, 0.75) node[left, ocre] {$A$}
+            (10.5, -1.5) node[below, ocre] {$A$}
+            (10.5, 1.5) node {$|$}
+            (11.8, -0.75) node[rotate=240] {$|$}
+            (9.2, -0.75) node[rotate=120] {$|$};
+    \end{tikzpicture}
+\end{center}
+The left three circles mean $(- \tr A)^3$, and we have to divide by $3!$ because of the symmetry of the three identical circles. The second diagram means $(- \tr A)(- \tr A^2)$, and we have to divide by $2$ because of the cyclic group of order $2$ on the bigger circle. The last diagram means $- \tr A^3$, and this is a cyclic group of order 3, so we have to divide by $3$. Therefore, the total term for $t^3$ is:
+\[
+    \frac{(- \tr A)^3}{3!} + \frac{(- \tr A)(- \tr A^2)}{2} - \frac{\tr A^3}{3} = - \frac{(\tr A)^3}{3!} + \frac{(\tr A)(\tr A^2)}{2} - \frac{\tr A^3}{3}
+\]
 
 
 
-
+%----------------------------------------------------------------------------------------
+%	APPENDICES
 %----------------------------------------------------------------------------------------
 
 \begin{appendices}
@@ -3845,7 +4284,6 @@ We first state the formal definition of universal properties.
     \end{center}
     Such a property is called the \emph{universal property} of the object $A$. Note that the dual version of universal morphism from $F$ to $X$ can be defined similarly.
 \end{definition}
-
 \begin{remark}
     Such an object $A$ is an initial object in a new category:
     \begin{itemize}
@@ -3943,6 +4381,27 @@ The following are the universal properties of some common colimits in category t
         \end{tikzcd}
     \end{center}
 \end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\chapter*{Bibliography}
+\markboth{\sffamily\normalsize\bfseries Bibliography}{\sffamily\normalsize\bfseries Bibliography} % Set the page headers to display a Bibliography chapter name
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}} % Add a Bibliography heading to the table of contents
+
+\section*{Articles}
+\addcontentsline{toc}{section}{Articles} % Add the Articles subheading to the table of contents
+
+\printbibliography[heading=bibempty, type=article] % Output article bibliography entries
+
+\section*{Books}
+\addcontentsline{toc}{section}{Books} % Add the Books subheading to the table of contents
+
+\printbibliography[heading=bibempty, type=book] % Output book bibliography entries
+
+\section*{Website}
+\printbibliography[heading=bibempty, type=online] % Output online bibliography entries
 
 %------------------------------------------------
 
