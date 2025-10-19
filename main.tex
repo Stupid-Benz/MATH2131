@@ -1442,6 +1442,23 @@ where $C = \begin{bmatrix}
 
 The coordinate maps $[-]_{\B}$ and $[-]_{\B'}$ are linear equivalences and they are the trivialisation of $V$ and $W$, repsectively. The matrix $A$ is the standard matrix of the linear map $T: V \to W$ under the bases $\B$ and $\B'$. The matrix $C$ is the canonical form of $A$. The matrices $P$ and $Q$ are products of finite sequences of elementary row and column operation matrices, respectively. Both $P$ and $Q$ are elementary and invertible matrices.
 
+\newpage
+
+\section{Properties of Linear Maps}\index{Properties of Linear Maps}
+
+Let $f : V \to W$ be a linear map between two finite dimensional vector spaces over $\F$. We have the following properties:
+\begin{enumerate}
+    \item $f$ is injective if and only if $\ker f = \{0_V\}$, i.e., the kernel is trivial.
+    \item $f$ is surjective if and only if $\coker f = \{0_W\}$, i.e., the cokernel is trivial.
+    \item $f$ is an isomorphism if and only if $\ker f = \{0_V\}$ and $\coker f = \{0_W\}$.
+    \item $f$ is surjective if and only if for any linear map $g : W \to Z$, $g \circ f = 0$ implies $g = 0$.
+    \item $f$ is injective if and only if for any linear map $h : U \to V$, $f \circ h = 0$ implies $h = 0$.
+\end{enumerate}
+
+Let $f : V \to W$ be a set map between linear spaces. Then the graph of $f$, $\Gamma_f := \{ (v, f(v)) \mid v \in V \}$ is a linear subspace of $V \oplus W$ if and only if $f$ is a linear map. Also, the domain of $f$ is isomorphic to $\Gamma_f$.
+
+$f$ is injective if and only if $f$ is an imbedding, i.e., the map $\bar{f} : V \to \Im{f}$ that sends $v$ to $f(v)$ is an isomorphism.
+
 \chapter{Linear Spaces}
 
 \epigraph{``Babies have to survive, so they have the strong desire to learn stuffs. You think you are not good at math because you don't have the strong desire to learn math.''}{Guowu Meng}
@@ -1999,7 +2016,6 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 \begin{proposition} \label{prop:dimension_of_sum_of_subspaces}
     $\dim{(V_1 + V_2)} \leq \dim{V_1} + \dim{V_2}$. Equality holds if and only if the sum is direct.
 \end{proposition}
-
 \begin{proof}
     For $V_1$ and $V_2$, we can find the minimal spanning sets $S_1$ and $S_2$ respectively. Then we claim that $S_1 \cup S_2$ spans $V_1 + V_2$, i.e., $V_1 + V_2 = \Span\{S_1 \cup S_2\}$. 
     
@@ -2137,6 +2153,19 @@ As $V_1 \cong \Im{i_1}$ and $V_2 \cong \Im{i_2}$. $i_1$ and $i_2$ are injective 
 
 Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$. Similarly, we have $\dim{W} \geq \dim{V}$ and $\dim{W} \geq \dim{\quotient{W}{V}}$, where $V$ is a subspace of $W$.
 
+Consider Proposition \ref{prop:dimension_of_sum_of_subspaces}, more specifically, we have the following dimension formula:
+\[
+    \dim{(V_1 + V_2)} = \dim{V_1} + \dim{V_2} - \dim{(V_1 \cap V_2)}
+\]
+
+To proof the equality, we can consider the following short exact sequence:
+\begin{center}
+    \begin{tikzcd}
+        0 \arrow[r] & V_1 \cap V_2 \arrow[r, "\iota"] & V_1 \arrow[r, "\pi"] & \quotient{(V_1 + V_2)}{V_2} \arrow[r] & 0
+    \end{tikzcd}
+\end{center}
+Moreover, we have the isomorphism between $\quotient{(V_1 + V_2)}{V_2}$ and $\quotient{V_1}{(V_1 \cap V_2)}$.
+
 \newpage
 
 \epigraph{``No problem is difficult in linear algebra. All problems are trivial.''}{Guowu Meng}
@@ -2265,7 +2294,85 @@ The alternative, or normal, definition of rank is as follows.
         \rank{A^n} = \rank{A^{n+1}}
     \]
 \end{problem}
+\begin{proof}
+    We consider the following diagram:
+    \begin{center}
+        \begin{tikzcd}[column sep=normal]
+            I_n \arrow[r, "A"] & \Im{A} \arrow[r, "A"] & \Im{A^2} \arrow[r, "A"] & \cdots \arrow[r, "A"] & \Im{A^n} \arrow[r, "A"] & \cdots
+        \end{tikzcd}
+    \end{center}
+    As $I_n \supseteq \Im{A} \supseteq \Im{A^2} \supseteq \cdots$, we know that 
+    \[
+        n = \dim{I_n} \geq r(A) \geq r(A^2) \geq \cdots
+    \]
 
+    As the space is finite-dimensional, the sequence will eventually become constant. That means there exists a $k$ such that for all $j \geq k$, we have $r(A^j) = r(A^{j + 1})$. 
+
+    There are two possibilities: either $k \leq n$ or $k > n$. If $k \leq n$, the equality works properly, as for every $j \geq k$, including $j = n$, such that $r(A^j) = r(A^{j + 1})$ implies $r(A^n) = r(A^{n + 1})$. 
+
+    For $k > n$, consider the strict inequality, we know that each time the dimension must drop at least 1. Without the loss of generality, we may consider the sequence of dimension as $n, n - 1, n - 2, \cdots, 1, 0$. This involves $n$ times. So it is impossible to have $k > n$. 
+\end{proof}
+
+\newpage
+
+\section{Rank-Nullity Theorem}
+
+Actually, using short exact sequence, we can easily prove the rank-nullity theorem.
+\begin{theorem}[Rank-Nullity Theorem]
+    For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
+    \[
+        \rank{f} + \nullity{f} = \dim{V}
+    \]
+\end{theorem}
+\begin{proof}
+    Consider the following short exact sequence:
+    \begin{center}
+        \begin{tikzcd}[column sep=huge]
+            0 \arrow[r] & \ker{f} \arrow[r, "\iota", hook] & V \arrow[r, "f", two heads] & \Im{f} \arrow[r] & 0
+        \end{tikzcd}
+    \end{center}
+    Then we have $V \cong \ker{f} \oplus \Im{f}$. Thus, we have $\dim{V} = \dim{\ker{f}} + \dim{\Im{f}}$. This shows that $\rank{f} + \nullity{f} = \dim{V}$.
+\end{proof}
+
+Moreover, we have the following corollary.
+\begin{corollary}
+    For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
+    \[
+        \dim{W} = \rank{f} + \dim{\coker{f}}
+    \]
+\end{corollary}
+\begin{proof}
+    Consider the following short exact sequence:
+    \begin{center}
+        \begin{tikzcd}[column sep=huge]
+            0 \arrow[r] & \Im{f} \arrow[r, "\iota", hook] & W \arrow[r, "\pi", two heads] & \coker{f} \arrow[r] & 0
+        \end{tikzcd}
+    \end{center}
+    Then we have $W \cong \Im{f} \oplus \coker{f}$. Thus, we have $\dim{W} = \dim{\Im{f}} + \dim{\coker{f}}$. This shows that $\dim{W} = \rank{f} + \dim{\coker{f}}$.
+\end{proof}
+
+\begin{corollary}
+    For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
+    \[
+        \dim{V} = \nullity{f} + \dim{\coim{f}}
+    \]
+\end{corollary}
+\begin{proof}
+    Consider the following short exact sequence:
+    \begin{center}
+        \begin{tikzcd}[column sep=huge]
+            0 \arrow[r] & \ker{f} \arrow[r, "\iota", hook] & V \arrow[r, "\pi", two heads] & \coim{f} \arrow[r] & 0
+        \end{tikzcd}
+    \end{center}
+    Then we have $V \cong \ker{f} \oplus \coim{f}$. Thus, we have $\dim{V} = \dim{\ker{f}} + \dim{\coim{f}}$. This shows that $\dim{V} = \nullity{f} + \dim{\coim{f}}$.
+\end{proof}
+
+Moreover, we have the following properties for rank:
+\begin{enumerate}
+    \item The rank of a matrix is invariant under elementary row and column operations.
+    \item $\rank{A + B} \leq \rank{A} + \rank{B}$
+    \item $\rank{AB} \leq \rank{A}$ and $\rank{AB} \leq \rank{B}$
+\end{enumerate}
 
 \newpage
 
@@ -2277,7 +2384,7 @@ First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear s
     \begin{tikzcd}
         0 \arrow[d] & 0 \\
         \ker{f} \arrow[d, hook] & \coker{f} \arrow[u] \arrow[d, bend left, "s_2", red] \\
-        V_1 \arrow[d, two heads] \arrow[r, "f"] \arrow[dr, ocre, "f", two heads] & V_2 \arrow[u, two heads] \\
+        V_1 \arrow[d, two heads] \arrow[r, "f"] \arrow[dr, ocre, "\bar{f}", two heads] & V_2 \arrow[u, two heads] \\
         \coim{f} \arrow[d] \arrow[r, "\exists ! f'" swap, hook, two heads] \arrow[u, bend left, "s_1", red] & \Im{f} \arrow[u, hook] \\
         0 & 0 \arrow[u]
     \end{tikzcd}
@@ -2327,6 +2434,8 @@ The matrix $\begin{bmatrix}
         \end{bmatrix}$} (m-1-2);
     \end{tikzpicture}
 \end{center}
+
+Moreover, from the diagram of two exact sequences, we can see that $f$ can be decomposed into two linear maps: $f = \iota \circ \bar{f}$, where $\bar{f} : V_1 \to \coim{f}$ is a surjective map and $\iota : \coim{f} \to V_2$ is an injective map. Note that the decomposition is not unique, as we can choose the path from $V_1$ to $\coim{f}$ then to $V_2$.
 
 \newpage
 
@@ -3270,10 +3379,38 @@ where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The neg
     Then we have the natural equivalence: $(-)^{**} \equiv \id_{\Vect_{\F}}$.
 \end{example}
 
-Moreover, we have the following natural equivalence:
-\[
-    \F \otimes - \equiv \id_{\Vect_{\F}} \equiv - \otimes \F \equiv \Hom_{\F}(\F, -) \equiv (-)^{**}
-\]
+\begin{example}
+    We have the following natural equivalence:
+    \[
+        \Map^{\BL}(U \times V, -) \equiv \Hom_{\F}(U, \Hom_{\F}(V, -))
+    \]
+    where both are endofunctors on $\Vect_{\F}$. For any linear space $Z$ over $\F$, we have the natural isomorphism:
+    \[
+        \musNatural_Z : \Map^{\BL}(U \times V, Z) \to \Hom_{\F}(U, \Hom_{\F}(V, Z))
+    \]
+\end{example}
+
+\begin{example}
+    We have the following natural equivalence:
+    \[
+        \F \otimes - \equiv \id_{\Vect_{\F}} \equiv - \otimes \F \equiv \Hom_{\F}(\F, -) \equiv (-)^{**}
+    \]
+\end{example}
+
+\newpage
+
+\section{Exact Functors}
+
+\begin{definition}[Exact Functors]
+    Let $\C$ and $\D$ be two abelian categories. A functor $F : \C \to \D$ is called:
+    \begin{itemize}
+        \item \emph{left exact} if it preserves all finite limits, i.e., for any finite limit diagram in $\C$, the image under $F$ is a limit diagram in $\D$;
+        \item \emph{right exact} if it preserves all finite colimits, i.e., for any finite colimit diagram in $\C$, the image under $F$ is a colimit diagram in $\D$;
+        \item \emph{exact} if it is both left exact and right exact.
+    \end{itemize}
+\end{definition}
+
+
 
 \chapter{Tensor Algebra}
 
@@ -3285,7 +3422,7 @@ By the universal property of tensor product, we have a natural identification:
 \[
     \Map^{\BL}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
 \]
-Note that both are naturally identical to $\Hom(U, \Hom_{\F}(V, Z))$.
+Note that both are naturally identical to $\Hom_{\F}(U, \Hom_{\F}(V, Z))$.
 
 The natural identification is the universal property of tensor product. Consider the following commutative diagram:
 \begin{center}
@@ -3324,7 +3461,7 @@ where $\ideal_{U, V}$ is the subspace of $\F[U \times V]$ generated by the follo
 \end{itemize}
 Why the construction of $\ideal_{U, V}$ is like this? This is because we want $\iota$ to be a bilinear map. Then $\iota(\alpha u_1 + \beta u_2, v) = \alpha \iota(u_1, v) + \beta \iota(u_2, v)$ and $\iota(u, \alpha v_1 + \beta v_2) = \alpha \iota(u, v_1) + \beta \iota(u, v_2)$. This means that the elements in $\ideal_{U, V}$ should be mapped to $0$ by $\iota$. So we have to quotient $\F[U \times V]$ by $\ideal_{U, V}$ to make $\iota$ a bilinear map.
 
-Then we define $U \otimes V = \quotient{\F[U \times V]}{\ideal_{U, V}}$ and this shows the existence of tensor product.
+We define $U \otimes V = \quotient{\F[U \times V]}{\ideal_{U, V}}$ and this shows the existence of tensor product.
 \begin{remark}
     The inclusion map $\iota : U \times V \to U \otimes V$ is `surjective' in the sense that the image of $\iota$ spans $U \otimes V$, i.e. $\span{\Im{\iota}} = U \otimes V$. To know $\bar{\phi}$, it suffices to know $\bar{\phi}(u \otimes v) = \phi(u, v)$ for all $u \in U$ and $v \in V$.
 \end{remark}
@@ -3334,12 +3471,12 @@ We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreo
 \begin{center}
     \begin{tikzcd}
         V_1 \times V_2 \times V_3 \arrow[r] \arrow[d] & V_1 \otimes V_2 \otimes V_3 \\
-        (V_1 \otimes V_2) \times V_3 \arrow[r] & (V_1 \otimes V_2) \otimes V_3 \arrow[u, "\vequiv" description, phantom] \\
+        (V_1 \otimes V_2) \times V_3 \arrow[r] & (V_1 \otimes V_2) \otimes V_3 \arrow[u, "\vequiv" description, phantom]
     \end{tikzcd}
     \qquad
     \begin{tikzcd}
         V_1 \times V_2 \arrow[r] \arrow[d, leftrightarrow] & V_1 \otimes V_2 \\
-        V_2 \times V_1 \arrow[r] & V_2 \otimes V_1 \arrow[u, "\vequiv" description, phantom] \\
+        V_2 \times V_1 \arrow[r] & V_2 \otimes V_1 \arrow[u, "\vequiv" description, phantom]
     \end{tikzcd}
 \end{center}
 
