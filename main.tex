@@ -2572,6 +2572,8 @@ Consider the set of all invertible matrices over $\F$, it is also a small catego
 \end{center}
 The graph above shows the relation, the arrows show the subsets relation. The arrow head is the larger set and arrow tail is the subset.
 
+\newpage
+
 \section{Small Categories}
 
 \begin{definition}[Small Categories]
@@ -2717,7 +2719,7 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \end{example}
 
 \begin{example}
-    The category of set maps between finite sets, denoted by \textbf{FinSet}, is a subcategory of $\Set$.
+    The category of set maps between finite sets, denoted by $\boldsymbol{\mathsf{FinSet}}$, is a subcategory of $\Set$.
 \end{example}
 
 \begin{example}
@@ -3401,14 +3403,36 @@ where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The neg
 
 \section{Exact Functors}
 
-\begin{definition}[Exact Functors]
-    Let $\C$ and $\D$ be two abelian categories. A functor $F : \C \to \D$ is called:
+\begin{definition}[Covariant Exact Functors]
+    Let $\C$ and $\D$ be two abelian categories. A covariant functor $F : \C \to \D$ is called:
     \begin{itemize}
-        \item \emph{left exact} if it preserves all finite limits, i.e., for any finite limit diagram in $\C$, the image under $F$ is a limit diagram in $\D$;
-        \item \emph{right exact} if it preserves all finite colimits, i.e., for any finite colimit diagram in $\C$, the image under $F$ is a colimit diagram in $\D$;
+        \item \emph{left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to F(A) \to F(B) \to F(C)$ is exact in $\D$, i.e., it preserves all finite limits;
+        \item \emph{right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $F(A) \to F(B) \to F(C) \to 0$ is exact in $\D$, i.e., it preserves all finite colimits;
         \item \emph{exact} if it is both left exact and right exact.
     \end{itemize}
 \end{definition}
+
+\begin{definition}[Contravariant Exact Functors]
+    Let $\C$ and $\D$ be two abelian categories. A contravariant functor $G : \C \to \D$, it is called:
+    \begin{itemize}
+        \item \emph{contravariant left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to G(C) \to G(B) \to G(A)$ is exact in $\D$;
+        \item \emph{contravariant right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $G(C) \to G(B) \to G(A) \to 0$ is exact in $\D$;
+        \item \emph{contravariant exact} if it is both contravariant left exact and contravariant right exact.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    The dual functor $(-)^* : \Vect_{\F} \to \Vect_{\F}$ is a contravariant left exact functor, as it sends a short exact sequence $0 \to U \to V \to W \to 0$ to a left exact sequence $0 \to W^* \to V^* \to U^*$. Moreover, $U \to V \to W$ is exact if and only if $W^* \to V^* \to U^*$ is exact. Also, the map $U \to V$ is injective if and only if the map $V^* \to U^*$ is surjective; the map $U \to V$ is surjective if and only if the map $V^* \to U^*$ is injective. This can be shown by considering the following two exact sequences: $0 \to U \to V$ and $U \to V \to 0$.
+\end{example}
+
+In general, the hom-set functor $\Hom_{\C}(X, -) : \C \to \Set$ is a covariant left exact functor for any object $X$ in an abelian category $\C$, and the hom-set functor $\Hom_{\C}(-, X) : \C \to \Set$ is a contravariant left exact functor for any object $X$ in an abelian category $\C$.
+
+\begin{example}
+    The tensor product functor $- \otimes V$ is a covariant right exact functor, as it sends a short exact sequence $0 \to U \to V \to W \to 0$ to a right exact sequence $U \otimes V \to V \otimes V \to W \otimes V \to 0$. 
+\end{example}
+
+Note that the tensor product functor is a left adjoint functor, and left adjoint functors are right exact in general, while the $\Vect_{\F}(V, -)$ functor is a right adjoint functor, and right adjoint functors are left exact in general.
+
 
 
 
@@ -3422,7 +3446,7 @@ By the universal property of tensor product, we have a natural identification:
 \[
     \Map^{\BL}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
 \]
-Note that both are naturally identical to $\Hom_{\F}(U, \Hom_{\F}(V, Z))$.
+Note that both are naturally identical to $\Hom_{\F}(U, \Hom_{\F}(V, Z))$. Also note that $\Hom(- \otimes V, Z) \equiv \Hom(-, \Hom(V, Z))$ is a \emph{tensor-hom adjunction}.
 
 The natural identification is the universal property of tensor product. Consider the following commutative diagram:
 \begin{center}
@@ -3469,21 +3493,28 @@ We define $U \otimes V = \quotient{\F[U \times V]}{\ideal_{U, V}}$ and this show
 We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreover, the tensor product is associative and commutative up to isomorphism, i.e., $V_1 \otimes V_2 \otimes V_3 \cong (V_1 \otimes V_2) \otimes V_3 \cong V_1 \otimes (V_2 \otimes V_3)$ and $V_1 \otimes V_2 \cong V_2 \otimes V_1$. Both of them are natural isomorphisms.
 
 \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[row sep=normal]
         V_1 \times V_2 \times V_3 \arrow[r] \arrow[d] & V_1 \otimes V_2 \otimes V_3 \\
         (V_1 \otimes V_2) \times V_3 \arrow[r] & (V_1 \otimes V_2) \otimes V_3 \arrow[u, "\vequiv" description, phantom]
     \end{tikzcd}
     \qquad
-    \begin{tikzcd}
+    \begin{tikzcd}[row sep=normal]
         V_1 \times V_2 \arrow[r] \arrow[d, leftrightarrow] & V_1 \otimes V_2 \\
         V_2 \times V_1 \arrow[r] & V_2 \otimes V_1 \arrow[u, "\vequiv" description, phantom]
     \end{tikzcd}
 \end{center}
 
-Also, we have the following equation:
+We have a natural equivalence:
 \[
-    \dim(U \otimes V) = \dim(U) \cdot \dim(V)
+    \Hom(U, V \otimes W) \equiv \Hom(U, V) \otimes W
 \]
+Then we can prove that $\Hom(V_1, V_2) \equiv V_1^* \otimes V_2$ and $(V_1 \otimes V_2)^* \equiv V_1^* \otimes V_2^*$. Also, we have the following equation, by considering $V_1 \otimes V_2 \equiv \Hom(V_1^*, V_2)$:
+\[
+    \dim(V \otimes W) = \dim(V) \cdot \dim(W)
+\]
+If $e$ is a minimal spanning set of $V_1$ and $f$ is a minimal spanning set of $V_2$, then $e \otimes f$ is a minimal spanning set of $V_1 \otimes V_2$. Moreover, we have $\End{V} \equiv (\End{V})^*$ and the identity map $1_V$ corresponds to the \emph{trace} map $\tr : \End{V} \to \F$ under this identification.
+
+We also have the distribution of tensor product over direct sum: $V_1 \otimes (V_2 \oplus V_3) \equiv (V_1 \otimes V_2) \oplus (V_1 \otimes V_3)$. Moreover, $\Hom(V_1, V_2 \oplus V_3) \equiv \Hom(V_1, V_2) \oplus \Hom(V_1, V_3)$ and $\Hom(V_1 \oplus V_2, V_3) \equiv \Hom(V_1, V_3) \times \Hom(V_2, V_3)$.
 
 \newpage
 
