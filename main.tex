@@ -4519,7 +4519,7 @@ As $x$ is non-zero, then $(\lambda_i 1_V - T)$ is not injective, i.e. not invert
 \[
     \det (\lambda_i 1_V - T) = 0
 \]
-So the eigenvalues $\lambda_i$ are exactly the roots of the polynomial $\det (\lambda 1_V - T)$, which is called the \emph{characteristic polynomial} of $T$. Note that $\chi_T (\lambda) = \det (\lambda 1_V - T)$ is a polynomial of degree $n = \dim V$. Similarly, we can define the characteristic polynomial of a matrix $A$ as $\chi_A (\lambda) = \det (\lambda I_n - A)$.
+So the eigenvalues $\lambda_i$ are exactly the roots of the polynomial $\det (\lambda 1_V - T)$, which is called the \emph{characteristic polynomial} of $T$. Note that $p_T (\lambda) = \det (\lambda 1_V - T)$ is a polynomial of degree $n = \dim V$. Similarly, we can define the characteristic polynomial of a matrix $A$ as $p_A (\lambda) = \det (\lambda I_n - A)$.
 
 For example, consider the following matrix:
 \[
@@ -4529,9 +4529,9 @@ For example, consider the following matrix:
     \end{bmatrix}, \quad \lambda I - A = \begin{bmatrix}
         \lambda - 1 & -3 \\
         0 & \lambda - 2
-    \end{bmatrix}, \quad \chi_A (\lambda) = (\lambda - 1)(\lambda - 2)
+    \end{bmatrix}, \quad p_A (\lambda) = (\lambda - 1)(\lambda - 2)
 \]
-The roots of $\chi_A (\lambda)$ are $1$ and $2$, so the eigenvalues of $A$ are $1$ and $2$. Then we can find the eigenspaces:
+The roots of $p_A (\lambda)$ are $1$ and $2$, so the eigenvalues of $A$ are $1$ and $2$. Then we can find the eigenspaces:
 \[
     \begin{split}
         V_{\lambda = 1} &= \nul{1 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
@@ -4599,7 +4599,7 @@ Consider the following example:
     $A = \begin{bmatrix}
         0 & 1 \\
         0 & 0
-    \end{bmatrix}$ is not completely reducible. The $\chi_A (\lambda) = \lambda^2$, so the only eigenvalue is $0$. Then we have:
+    \end{bmatrix}$ is not completely reducible. The $p_A (\lambda) = \lambda^2$, so the only eigenvalue is $0$. Then we have:
     \[
         V_{\lambda = 0} = \nul{0 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
             0 & -1 \\
@@ -4640,7 +4640,7 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
         1 & 0 & 4 \\
         0 & 1 & 3 \\
         0 & 0 & 2
-    \end{bmatrix}$. Then we have $\chi_A (\lambda) = (\lambda - 1)^2 (\lambda - 2)$. The eigenvalues are $1$ and $2$, where $\lambda = 1$ has algebraic multiplicity $2$ and $\lambda = 2$ has algebraic multiplicity $1$. Then we can find the eigenspaces:
+    \end{bmatrix}$. Then we have $p_A (\lambda) = (\lambda - 1)^2 (\lambda - 2)$. The eigenvalues are $1$ and $2$, where $\lambda = 1$ has algebraic multiplicity $2$ and $\lambda = 2$ has algebraic multiplicity $1$. Then we can find the eigenspaces:
     \[
         \begin{split}
             E_{\lambda = 1} (A) &= \nul{1 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
@@ -4708,7 +4708,15 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
 Completely reducible matrix representations are ``the'' simplest forms of endomorphisms. Note that it is not unique, it is unique up to isomorphism, unless the field is ordered. However, not all endomorphisms are completely reducible. Then we have another term called \emph{semisimple}. These two terms are borrowed from representation theory of lie algebras.
 
 \begin{definition}[Completely Reducible]
-    We say $T$ is a completely reducible if there exists a matrix representation of $T$ that is diagonal. Equivalently, $T$ is completely reducible if $V$ has a non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$ with respect to which $T = \lambda_1 1_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k 1_{V_{\lambda_k}}$ for some distinct eigenvalues $\lambda_1, \cdots, \lambda_k$.
+    We say $T$ is a completely reducible if there exists a matrix representation of $T$ of the following form:
+    \[
+        \begin{bmatrix}
+            \lambda_1 I_{n_1} & & \\
+            & \ddots & \\
+            & & \lambda_k I_{n_k}
+        \end{bmatrix}
+    \]    
+    Equivalently, $T$ is completely reducible if $V$ has a non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$ with respect to which $T = \lambda_1 1_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k 1_{V_{\lambda_k}}$ for some distinct eigenvalues $\lambda_1, \cdots, \lambda_k$.
 \end{definition}
 
 \begin{definition}[Semisimple]
@@ -4727,13 +4735,13 @@ We can consider the $\End{V} \equiv \M{n \times n}{\F} \equiv \F^{n^2}$ as a vec
 Once we know that completely reducible endomorphisms are dense in $\End{V}$, then if we want to prove some identity, it suffices to prove it for completely reducible endormophisms. One of the example is the Cayley-Hamilton theorem.
 
 \begin{theorem}[Cayley-Hamilton Theorem]
-    Let $T : V \to V$ be an endomorphism of a finite dimensional vector space $V$ over $\F$. Then $T$ satisfies its own characteristic polynomial, i.e. $\left.\chi_T (\lambda)\right|_{\lambda = T} = 0$.
+    Let $T : V \to V$ be an endomorphism of a finite dimensional vector space $V$ over $\F$. Then $T$ satisfies its own characteristic polynomial, i.e. $\left.p_T (\lambda)\right|_{\lambda = T} = 0$.
 \end{theorem}
 \begin{remark}
-    $\chi_T (\lambda) = \det (\lambda 1_V - T) = \lambda^n + \cdots + (-1)^n \det(T) \lambda^0$, where $\lambda^0 = 1$ and $T^0 = 1_V$.
+    $p_T (\lambda) = \det (\lambda 1_V - T) = \lambda^n + \cdots + (-1)^n \det(T) \lambda^0$, where $\lambda^0 = 1$ and $T^0 = 1_V$.
 \end{remark}
 \begin{proof}
-    As $\left.\chi_T (\lambda)\right|_{\lambda = T}$ is a polynomial in $T$, it suffices to verify the theorem on a dense set. 
+    As $\left.p_T (\lambda)\right|_{\lambda = T}$ is a polynomial in $T$, it suffices to verify the theorem on a dense set. 
 
     Let $T = \lambda_1 1_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k 1_{V_{\lambda_k}}$ be a completely reducible endomorphism with distinct eigenvalues $\lambda_1, \cdots, \lambda_k$ and non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$. Then we have $1_V = 1_{V_{\lambda_1}} \oplus \cdots \oplus 1_{V_{\lambda_k}}$. Therefore, we have:
     \[
@@ -4741,15 +4749,15 @@ Once we know that completely reducible endomorphisms are dense in $\End{V}$, the
     \]
     Then the characteristic polynomial is:
     \[
-        \chi_T (\lambda) = \det (\lambda 1_V - T) = (\lambda - \lambda_1)^{\dim V_{\lambda_1}} \cdots (\lambda - \lambda_k)^{\dim V_{\lambda_k}} = \prod_{i = 1}^k (\lambda - \lambda_i)^{n_i}
+        p_T (\lambda) = \det (\lambda 1_V - T) = (\lambda - \lambda_1)^{\dim V_{\lambda_1}} \cdots (\lambda - \lambda_k)^{\dim V_{\lambda_k}} = \prod_{i = 1}^k (\lambda - \lambda_i)^{n_i}
     \]
     where $n_i = \dim V_{\lambda_i}$. Note that $\lambda_i 1_{V_{\lambda_i}} - T = 0$ on $V_{\lambda_i}$, as $T|_{V_{\lambda_i}} = \lambda_i 1_{V_{\lambda_i}}$. Therefore, we have:
     \[
-        \left.\chi_T (\lambda)\right|_{\lambda = T} = \prod_{i = 1}^k (\lambda_i 1_V - T)^{n_i} = 0
+        \left.p_T (\lambda)\right|_{\lambda = T} = \prod_{i = 1}^k (\lambda_i 1_V - T)^{n_i} = 0
     \]
     As for any $v \in V$, we can write $v = v_1 + \cdots + v_k$ with $v_i \in V_{\lambda_i}$, then we have:
     \[
-        (\lambda_i 1_{V_{\lambda_i}} - T)^{n_i} (v_i) = 0 \forall i \implies \left.\chi_T (\lambda)\right|_{\lambda = T} (v) = 0
+        (\lambda_i 1_{V_{\lambda_i}} - T)^{n_i} (v_i) = 0 \forall i \implies \left.p_T (\lambda)\right|_{\lambda = T} (v) = 0
     \]
     This completed the proof.
 \end{proof}
@@ -4758,9 +4766,9 @@ If $T$ is completely reducible, then
 \[
     n_i = \dim V_{\lambda_i}
 \]
-where $n_i$ is the algebraic multiplicity of eigenvalue $\lambda_i$ and $\dim V_{\lambda_i}$ is the geometric multiplicity of eigenvalue $\lambda_i$. In general, we have $n_i \geq \dim V_{\lambda_i}$. Then $\{ \lambda_1, \cdots, \lambda_k \}$ is the set of roots of $\chi_T (\lambda)$ and $V_{\lambda_i} = \ker{\lambda_i 1_V - T}$.
+where $n_i$ is the algebraic multiplicity of eigenvalue $\lambda_i$ and $\dim V_{\lambda_i}$ is the geometric multiplicity of eigenvalue $\lambda_i$. In general, we have $n_i \geq \dim V_{\lambda_i}$. Then $\{ \lambda_1, \cdots, \lambda_k \}$ is the set of roots of $p_T (\lambda)$ and $V_{\lambda_i} = \ker{\lambda_i 1_V - T}$.
 
-Then for any $T$, if the set of roots of $\chi_T (\lambda)$ in $\F$ is $\{ \lambda_1, \cdots, \lambda_k \}$, then we can define the \emph{generalised eigenspaces}:
+Then for any $T$, if the set of roots of $p_T (\lambda)$ in $\F$ is $\{ \lambda_1, \cdots, \lambda_k \}$, then we can define the \emph{generalised eigenspaces}:
 \[
     V_{\lambda_i} = \ker{\lambda_i 1_V - T} \quad \forall 1 \leq i \leq k
 \]
@@ -4939,19 +4947,19 @@ Note that $T$ is the same as the multiplication by $x$ in the module, i.e., $x\c
 Then we consider the following diagram:
 \begin{center}
     \begin{tikzcd}
-        \frac{\F[x]}{(x - \lambda_i)^{e_i}} \arrow[r, "x \cdot"] \arrow[d, "{[-]_{\B_i}}" swap] & \frac{\F[x]}{(x - \lambda_i)^{e_i}} \arrow[d, "{[-]_{\B_i}}"] \\
+        \frac{\F[x]}{(x - \lambda_i)^{e_i}} \arrow[r, "x \cdot", "T_i"'] \arrow[d, "{[-]_{\B_i}}" swap] & \frac{\F[x]}{(x - \lambda_i)^{e_i}} \arrow[d, "{[-]_{\B_i}}"] \\
         \F^{e_i} \arrow[r, "J_{e_i} (\lambda_i)" swap] & \F^{e_i}
     \end{tikzcd}
 \end{center}
 Then what is $J_{e_i} (\lambda_i)$? We have:
 \[
-    x \cdot 1 = x = 1 \cdot (x - \lambda_i) + \lambda_i
+    x \cdot 1 = x = 1 \cdot (x - \lambda_i) + \lambda_i \cdot 1
 \]
 So the first column of $J_{e_i} (\lambda_i)$ is $[\lambda_i \quad 1 \quad 0 \quad \cdots \quad 0]^T$. Similarly, we have:
 \[
     \begin{split}
-        x \cdot (x - \lambda_i) &= 1 \cdot (x - \lambda_i)^2 + \lambda_i (x - \lambda_i) \\
-        x \cdot (x - \lambda_i)^{e_i - 1} &= 1 \cdot (x - \lambda_i)^{e_i} + \lambda_i (x - \lambda_i)^{e_i - 1} = \lambda_i (x - \lambda_i)^{e_i - 1}
+        x \cdot (x - \lambda_i) &= 1 \cdot (x - \lambda_i)^2 + \lambda_i \cdot (x - \lambda_i) \\
+        x \cdot (x - \lambda_i)^{e_i - 1} &= 1 \cdot (x - \lambda_i)^{e_i} + \lambda_i \cdot (x - \lambda_i)^{e_i - 1} = \lambda_i \cdot (x - \lambda_i)^{e_i - 1}
     \end{split}
 \]
 So the matrix representation of $x \cdot$ on $\dfrac{\F[x]}{(x - \lambda_i)^{e_i}}$ with respect to the basis $\B_i$ is:
@@ -4985,6 +4993,198 @@ Then the matrix representation of $T$ on $V$ with respect to the basis $\B = \B_
         & & & J_{e_m} (\lambda_m)
     \end{bmatrix}
 \]
+
+\chapter{Euclidean Vector Spaces}
+
+Before studying Euclidean vector spaces, we first review tensors and then introduce inner products.
+
+\section{Tensor}
+
+Let $V$ be a finite dimensional vector space over a field $\F$. Then we have the following definitions.
+
+\begin{definition}[$k$-form]
+    A $k$-\emph{form} on $V$ is a multilinear map:
+    \[
+        \underbrace{V \times V \times \cdots \times V}_{k \text{ times}} \to \F
+    \]
+    which is linear in each argument. It is an element in $(V^*)^{\otimes k}$.
+\end{definition}
+
+More concretely, for 1-form, it is a linear functional on $V$, i.e. an element in $V^*$. It is also called \emph{covector}. For 2-form, it is a bilinear map on $V$, i.e. an element in $V^* \otimes V^*$. To prove that the set of all 2-forms on $V$ is isomorphic to $V^* \otimes V^*$, we can consider the following diagram:
+\begin{center}
+    \begin{tikzcd}
+        \Map^{\mathsf{ML}} (V \times V, \F) \arrow[r, "\equiv" description, phantom] \arrow[d, dashed] & \Hom(V, V^*) \arrow[d, "\equiv" description, phantom] \\
+        V^* \otimes V^* & \Hom(V, \F) \otimes V^* \arrow[l, "\vequiv" description, phantom]
+    \end{tikzcd}
+\end{center}
+
+Moreover, we have the following two special types of 2-forms.
+
+\begin{definition}[Symmetric and Skew-symmetric 2-forms]
+    A 2-form $\omega : V \times V \to \F$ is called \emph{symmetric} if 
+    \[
+        \omega (u, v) = \omega (v, u)
+    \]
+    for all $u, v \in V$. It is an element in $\mathcal{S}^2{V^*}$. The 2-form $\omega$ is called \emph{skew-symmetric}, or antisymmetric, if 
+    \[
+        \omega (u, v) = - \omega (v, u)
+    \]
+    for all $u, v \in V$. It is an element in ${\bigwedge}^2{V^*}$.
+\end{definition}
+
+Then we define the tensor spaces.
+
+\begin{definition}[Tensor Spaces]
+    Let $V$ be a finite dimensional vector space over a field $\F$. The \emph{tensor space of type} $(r, s)$ on $V$ is defined as:
+    \[
+        \mathcal{T}^{r, s} V = \underbrace{V \otimes V \otimes \cdots \otimes V}_{r \text{ times}} \otimes \underbrace{V^* \otimes V^* \otimes \cdots \otimes V^*}_{s \text{ times}}
+    \]
+    Elements in $\mathcal{T}^{r, s} V$ are called \emph{tensors of type} $(r, s)$ on $V$, which is a mixed type if $r, s \neq 0$.
+\end{definition}
+
+If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}. If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}. For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself. Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}.
+
+Then we know that $\End{V} \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$. Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$. Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part. To know that what $a^i_j$ means, we can consider the following diagram:
+\begin{center}
+    \begin{tikzcd}
+        V \arrow[r, "T"] \arrow[d, "{[-]_{\B_V}}" swap] & V \arrow[d, "{[-]_{\B_V}}"] \\
+        \F^n \arrow[r, "{A = [a^i_j]_{\B_V}}" swap] & \F^n
+    \end{tikzcd}
+\end{center}
+Then how to get the matrix representation $A = [a^i_j]_{\B_V}$ of $T$ with respect to the basis $\B_V$? We have:
+\[
+    \vec{a}_j = A \vec{e}_j, \qquad a^i_j = \vec{e}_i^T A \vec{e}_j = \hat{e}^i A \vec{e}_j = \langle \hat{e}^i, A \vec{e}_j \rangle.
+\]
+So we have $[a^i_j] = \langle \hat{v}^i, T \vec{v}_j \rangle$. We can have an identification between $\End{V}$ and $\mathcal{T}^{1, 1} V$ as follows:
+\[
+    T \leftrightarrow T\vec{v}_j \otimes \hat{v}^j
+\]
+
+For covariant and contravariant, we have the following table:
+
+\begin{center}
+\begin{tabularx}{\textwidth}{X X}
+    \toprule
+    \textbf{Object} & \textbf{Transformation Type} \\
+    \midrule
+    Standard Basis Vector ($\vec{e}_i$) & Covariant \\
+    \midrule
+    Dual Basis Vector ($\hat{e}^i$) & Contravariant \\
+    \midrule
+    Component of a Vector ($v^i$) & Contravariant \\
+    \midrule
+    Component Basis Vector ($v_i$) & Covariant \\
+    \bottomrule
+\end{tabularx}
+\end{center}
+
+An object is considered as covariant if it transform in the same way as the basis vectors of the original vector space. If you cannot understand it, make up some examples of scaling the vector spaces.
+
+In general, an element $t \in \mathcal{T}^{r, s} V$ can be represented as:
+\[
+    t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s} \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s}
+\]
+Note that the representation depends on the choice of basis $\B_V$ of $V$, i.e., the following two represents the same tensor with respect to different bases:
+\[
+    \left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]_{\B_V} \sim \left[\tilde{t}^{\tilde{i}_1 \tilde{i}_2 \cdots \tilde{i}_r}_{\tilde{j}_1 \tilde{j}_2 \cdots \tilde{j}_s}\right]_{\widetilde{\B_V}}
+\]
+The two representations are related by the base change matrices::
+\[
+    (\tilde{v}_1, \tilde{v}_2, \cdots, \tilde{v}_n) = (v_1, v_2, \cdots, v_n) A, \quad A = [a^i_{\tilde{j}}]_{\B_V}^{\widetilde{\B_V}} \in \GL(V)
+\]
+\begin{remark}
+    It is actually the right action of $\GL(V)$ on the set of all bases of $V$, $\B_V$:
+    \[
+        \B_V \times \GL(V) \to \B_V, \quad (v, A) \mapsto v A = \tilde{v}
+    \]
+\end{remark}
+Then we have the following equation:
+\[
+    \tilde{v}_{\tilde{j}} = v_i a^i_{\tilde{j}}
+\]
+For $A^{-1} = [b_j^{\tilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde{j}} b_j^{\tilde{k}} = \delta^{\tilde{k}}_{\tilde{j}}$ and $b_j^{\tilde{i}} a^j_{\tilde{k}} = \delta^{\tilde{i}}_{\tilde{k}}$. Therefore, we have:
+\[
+    v_k = \tilde{v}_{\tilde{j}} b_k^{\tilde{j}}
+\]
+\begin{remark}
+    For easier memorising, we use the calculus operators:
+    \[
+        \frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} = a^i_{\tilde{j}}, \quad \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = b_k^{\tilde{j}}
+    \]
+    To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators. (As lower twice, so flip to upper)
+
+    Then we can use the chain rule to verify the two equations of $A$ and $A^{-1}$:
+    \[
+        \frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = \delta^i_k
+    \]
+\end{remark}
+
+Then we have the transformation rule for the representation of $t \in \mathcal{T}^{r, s} V$ under the base change from $\B_V$ to $\widetilde{\B_V}$:
+\[
+    \tilde{t}^{{\color{ocre} \tilde{i}_1 \tilde{i}_2 \cdots \tilde{i}_r}}_{{\color{red} \tilde{j}_1 \tilde{j}_2 \cdots \tilde{j}_s}} = \left({\color{ocre} b_{i_1}^{\tilde{i}_1} b_{i_2}^{\tilde{i}_2} \cdots b_{i_r}^{\tilde{i}_r}}\right) t^{{\color{ocre} i_1 i_2 \cdots i_r}}_{{\color{red} j_1 j_2 \cdots j_s}} \left({\color{red} a^{j_1}_{\tilde{j}_1} a^{j_2}_{\tilde{j}_2} \cdots a^{j_s}_{\tilde{j}_s}}\right)
+\]
+
+Given that $\B_V = \{ \vec{v}_1, \cdots, \vec{v}_n \}$ is a basis of $V$, then we can define a basis of $\mathcal{T}^{r, s} V$ as follows:
+\[
+    \B_{\mathcal{T}^{r, s} V} = \{ \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s} : 1 \leq i_1, i_2, \cdots, i_r, j_1, j_2, \cdots, j_s \leq n \}
+\]
+Then for symmetric and skew-symmetric $k$-forms, we have:
+\[
+    \begin{split}
+        \B_{\mathcal{S}^k V} &= \{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \} \\
+        \B_{{\bigwedge}^k V} &= \{ \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \}
+    \end{split}
+\]
+Then ``honest'' definition of symmetric basis is:
+\[
+    \{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \}
+\]
+but it is redundant. We just have to make sure that the representation of any symmetric $k$-form is unique for a given basis. For example, in 2-form case with the basis $\{ \vec{e}_i \otimes \vec{e}_j \}$, we originally have to write:
+\[
+    t = \sum_{1 \leq i \leq j \leq n} t_{ij} \vec{e}_i \otimes \vec{e}_j
+\]
+but this is ugly, so we just write:
+\[
+    t = t^{ij} \vec{e}_i \vec{e}_j
+\]
+with $t^{ij} = t^{ji}$. If we ignored the condition on $t^{ij}$, then we have $a^{ij} = - a^{ji}$ such that:
+\[
+    t = t^{ij} \vec{e}_i \wedge \vec{e}_j + a^{ij} \vec{e}_i \wedge \vec{e}_j = (t^{ij} + a^{ij}) \vec{e}_i \wedge \vec{e}_j = 0
+\]
+As $a^{ij} = a^{ji} = - a^{ij}$. 
+
+Then for skew-symmetric basis, let say $t \in \B_{{\bigwedge}^k V}$, then we have:
+\[
+    t = t^{\mathcal{I}} \vec{v}_{\mathcal{I}} = t^{i_1 i_2 \cdots i_k} \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k}
+\]
+with $\mathcal{I} = (i_1, i_2, \cdots, i_k)$ being an ordered index set with $1 \leq i_1 < i_2 < \cdots < i_k \leq n$. Then for any permutation $\sigma \in S_k$, to make sure it is unique, we require:
+\[
+    t^{\sigma(\mathcal{I})} = \sgn(\sigma) t^{\mathcal{I}}
+\]
+where $\sigma(\mathcal{I}) = (i_{\sigma(1)}, i_{\sigma(2)}, \cdots, i_{\sigma(k)})$.
+
+In conclusion, we have to make sure that the representation of any symmetric or skew-symmetric $k$-form is unique for a given basis by the following conditions respectively:
+\[
+    \begin{split}
+        &\text{Symmetric:} \quad t^{i_1 i_2 \cdots i_k} = t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}} \\
+        &\text{Skew-symmetric:} \quad t^{i_1 i_2 \cdots i_k} = \sgn(\sigma) t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}}
+    \end{split}
+\]
+
+\newpage
+
+\section{Inner Product}
+
+Let $V$ be a finite dimensional real linear space. Then we have the following definitions.
+
+\begin{definition}[Inner Product]
+    A inner product on $V$ is a positive-definite 2-form on $V$, i.e., an element $(-, -) \in \mathcal{S}^2 V^*$ such that $(v, v) \geq 0$ for all $v \in V$ and $(v, v) = 0$ if and only if $v = 0$.
+\end{definition}
+
+\begin{definition}[Pseudo Inner Product]
+    A pseudo inner product on $V$ is a non-degenerate symmetric bilinear form on $V$, i.e., an element $(-, -) \in \mathcal{S}^2 V^*$ such that $(-, -)_{\musNatural} : V \to V^*$ is isomorphic.
+\end{definition}
+
 
 
 
