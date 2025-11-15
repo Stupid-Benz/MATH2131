@@ -1,0 +1,110 @@
+\newcommand{\smallbullet}{\scalebox{0.5}{$\bullet$}}
+
+\newcommand{\End}[1]{\mathsf{End}(#1)} % Endomorphism ring
+\newcommand{\Hom}{\mathsf{Hom}} % Hom-set
+\renewcommand{\ker}[1]{\mathsf{Ker}(#1)} % Kernel of a linear map
+\renewcommand{\Im}[1]{\mathsf{Im}(#1)} % Image of a linear map
+\renewcommand{\span}[1]{\mathsf{Span}(#1)} % Span of a set of vectors
+\renewcommand{\bar}[1]{\overline{#1}} % Bar notations
+\newcommand{\quotient}[2]{#1/\, #2} % Quotient notation
+\newcommand{\F}{\mathbb{F}} % Field notation
+\newcommand{\M}[2]{\mathsf{M}_{#1}(#2)} % Matrix set notation
+\newcommand{\Map}{\mathsf{Map}} % Map notation
+\newcommand{\rank}[1]{\mathsf{Rank}(#1)} % Rank of a matrix
+\newcommand{\coker}[1]{\mathsf{Coker}(#1)} % Cokernel of a linear map
+\newcommand{\coim}[1]{\mathsf{Coim}(#1)} % Coimage of a linear map
+\newcommand{\nullity}[1]{\mathsf{Nullity}(#1)} % Nullity of a linear map
+\newcommand{\id}{\mathsf{id}} % Identity map notation
+\newcommand{\nul}[1]{\mathsf{Nul}(#1)} % Null space of a linear map
+\newcommand{\col}[1]{\mathsf{Col}(#1)} % Column space of a matrix
+\newcommand{\C}{\mathcal{C}} % Category notation
+\newcommand{\D}{\mathcal{D}} % Another category notation
+\newcommand{\Set}{\boldsymbol{\mathsf{Set}}} % Set category notation
+\newcommand{\Vect}{\boldsymbol{\mathsf{Vec}}} % Vector space category notation
+\newcommand{\Mor}{\mathsf{Mor}} % Morphism set notation
+\newcommand{\Ob}[1]{\mathsf{Ob}(#1)} % Object set notation
+\newcommand{\B}{\mathcal{B}} % Basis notation
+\newcommand{\R}{\mathbb{R}} % Real number notation
+\newcommand{\T}{\mathcal{T}^{\smallbullet}} % Tensor algebra notation
+\newcommand{\BL}{\mathsf{BL}} % Bilinear map notation
+\newcommand{\chart}{\mathsf{char}} % Characteristic notation
+\renewcommand{\deg}{\mathsf{deg}} % Degree notation
+\newcommand{\Sym}{\mathcal{S}^{\smallbullet}} % Symmetric algebra notation
+\newcommand{\Ext}{{\bigwedge}^{\smallbullet}} % Exterior algebra notation
+\newcommand{\Env}{\mathcal{U}} % Universal enveloping algebra notation
+\newcommand{\ideal}{\mathcal{I}} % Ideal notation
+\newcommand{\Z}{\mathbb{Z}} % Integer notation
+\newcommand{\Alg}{\boldsymbol{\mathsf{Alg}}} % Algebra category notation
+\newcommand{\CAlg}{\boldsymbol{\mathsf{CAlg}}} % Commutative algebra category notation
+\newcommand{\SAlg}{\boldsymbol{\mathsf{SAlg}}} % Skew-commutative algebra category notation
+\renewcommand{\dim}{\mathsf{dim\;}} % Dimension notation
+\renewcommand{\det}{\mathsf{det\;}} % Determinant notation
+\newcommand{\GL}{\mathsf{GL}} % General linear group notation
+\newcommand{\Aut}{\mathsf{Aut}} % Automorphism group notation
+\newcommand{\sgn}{\mathsf{Sgn}} % Sign function notation
+\newcommand{\adj}{\mathsf{Adj\;}} % Adjoint matrix notation
+\newcommand{\tr}{\mathsf{tr\;}} % Trace notation
+\newcommand{\A}{\mathbb{A}} % Affine space notation
+\newcommand{\proj}{\mathsf{proj}} % Projection map notation
+
+\DeclareMathOperator{\Span}{\mathsf{Span}}
+
+% For arrows pointing
+\tikzset{%
+    myarrow/.style = {-Stealth, shorten >=5pt}
+}
+\newcommand{\mypoint}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
+
+% For arrows inside paths
+\tikzset{
+    set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+    set arrow inside={end/.initial=>, opt/.initial=},
+    /pgf/decoration/Mark/.style={
+        mark/.expanded=at position #1 with
+        {
+            \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+        }
+    },
+    arrow inside/.style 2 args={
+        set arrow inside={#1},
+        postaction={
+            decorate,decoration={
+                markings,Mark/.list={#2}
+            }
+        }
+    },
+}
+
+\usepackage{mathtools} % for \xhookrightarrow
+
+% For fake coproduct symbol
+\DeclareRobustCommand{\coprod}{\mathop{\text{\fakecoprod}}}
+\newcommand{\fakecoprod}{%
+    \sbox0{$\prod$}%
+    \smash{\raisebox{\dimexpr.9625\depth-\dp0}{\scalebox{1}[-1]{$\prod$}}}%
+    \vphantom{$\prod$}%
+}
+
+% For vertical equivalence symbol
+\newcommand{\vequiv}{\rotatebox{90}{$\equiv$}}
+\newcommand{\hdash}{\rotatebox{90}{$|$}}
+
+% For quotes
+\usepackage{epigraph}
+\renewcommand{\epigraphsize}{\small}
+
+\let\originalepigraph\epigraph 
+\renewcommand\epigraph[2]{\originalepigraph{#1}{\textsc{#2}}}
+
+% For tikzcd
+\tikzcdset{
+    /tikz/commutative diagrams/every diagram/.append style={
+        row sep=huge,
+        column sep=huge
+    },
+    row sep/subtext/.initial = 1pt,
+}
+
+\usepackage{musicography} % For music natural symbol
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} % Reset mathcal font to the default one

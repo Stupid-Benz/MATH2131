@@ -1,0 +1,437 @@
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+\chapter{Abstract Linear Spaces}
+
+\epigraph{``I assume you have learnt linear algebra.''}{Guowu Meng}
+
+\section{Binary Operation}\index{Binary Operation}
+
+We start with the definition of a binary operation.
+
+\begin{definition}[Binary Operation]
+    A \emph{binary operation} on a set $S$ is a mapping of the elements of the Cartesian product $S \times S$ to $S$.
+    \[ \begin{split}
+            \cdot : S \times S & \to S \\ (x,y) &\mapsto x \cdot y
+        \end{split}\]
+\end{definition}
+
+For easier understanding, binary operation is combining two objects into one. Hence, there is something called unary and ternary operations, corresponding to the action of combining one and three objects into one respectively.
+
+\begin{example}
+    A common example of a binary operation is addition on the set of natural numbers $\mathbb{N}$.
+    \begin{equation}
+        \begin{split}
+            + : \mathbb{N} \times \mathbb{N} & \to \mathbb{N} \\ (x,y) &\mapsto x+y
+        \end{split}
+    \end{equation}
+\end{example}
+
+\begin{definition}[Associative]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, 
+    \[ x \cdot (y \cdot z) = (x \cdot y) \cdot z \]
+\end{definition}
+
+\begin{example}
+    A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$. For all $x,y,z \in \mathbb{N}$, we have $x + (y + z) = (x + y) + z$.
+\end{example}
+
+\begin{definition}[Identifiable]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
+    \[ e \cdot x = x = x \cdot e \]
+\end{definition}
+
+\begin{example}
+    A common example of an identifiable (binary) operation is multiplication on the set of natural numbers $\mathbb{N}$. The identity element is $1$, and for all $x \in \mathbb{N}$, we have $x \cdot 1 = x = 1 \cdot x$.
+\end{example}
+
+\begin{proposition}
+    The identity element of an identifiable operation is unique.
+\end{proposition}
+
+\begin{proof}
+    Let $e_1$ and $e_2$ be two identity elements for the operation $\cdot$. Then, for any element $x \in S$, we have:
+    \[ e_1 \cdot x = x = x \cdot e_1 \]
+    \[ e_2 \cdot x = x = x \cdot e_2 \]
+    Now, consider the element $e_1$: $e_1 \cdot e_2 = e_1$.
+    But since $e_2$ is an identity element, we also have: $e_1 \cdot e_2 = e_2$.
+    Therefore, we conclude that $e_1 = e_2$, proving the uniqueness of the identity element.
+\end{proof}
+
+Note that the two-sided identity must be unique, but one-sided identities need not be. The following is an example of it.
+
+\begin{example}
+    Consider a set $X = \left\{ \begin{bmatrix}
+        1 & a \\
+        0 & 0 
+    \end{bmatrix} \; \middle| \; a \in \R \right\}$ with the binary operation defined as matrix multiplication. This set has many left identity elements, but no two-sided identity element.
+\end{example}
+
+\begin{definition}[Invertible]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that
+    \[ x \cdot y = e = y \cdot x \]
+    where $e$ is the identity element of the operation.
+\end{definition}
+\begin{remark}
+    An invertible operation must be identifiable, since the identity element is required in the definition of invertibility.
+\end{remark}
+
+\begin{example}
+    A common example of an invertible (binary) operation is addition on the set of integers $\Z$. For every integer $x \in \Z$, there exists an integer $y = -x$ such that:
+    \begin{equation}
+        x + (-x) = 0 = (-x) + x
+    \end{equation}
+    where $0$ is the identity element for addition.
+\end{example}
+
+\begin{proposition}
+    The inverse element of an invertible operation is unique.
+\end{proposition}
+
+\begin{proof}
+    Let $y_1$ and $y_2$ be two inverses of an element $x \in S$. Then, by definition of inverse, we have:
+    \[ x \cdot y_1 = e = y_1 \cdot x \]
+    \[ x \cdot y_2 = e = y_2 \cdot x \]
+    Now, consider the element $y_1$: $y_1 \cdot x = e$.
+    But since $y_2$ is also an inverse of $x$, we can substitute $e$ with $x \cdot y_2$: $y_1 \cdot x = x \cdot y_2 = e$.
+    By the associativity of the operation, we can rearrange this to:
+    \[ y_1 = y_1 \cdot e = y_1 \cdot (x \cdot y_2) = (y_1 \cdot x) \cdot y_2 = e \cdot y_2 = y_2 \]
+    Thus, the inverse element is unique.
+\end{proof}
+
+Same for the inverse, one-sided need not be unique. The example is left as an exercise.
+
+\begin{definition}[Commutative]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{commutative} if, for all $x,y \in S$, the following holds:
+    \[ x \cdot y = y \cdot x \]
+\end{definition}
+
+\begin{example}
+    A common example of a commutative operation is addition on the set of integers $\Z$. For all $x,y \in \Z$, we have: $x + y = y + x$
+\end{example}
+
+\begin{definition}[Distributive (Harmonic)]
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{distributive} with respect to another binary operation $+: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
+    \[ \begin{split}
+        x \cdot (y + z) &= x \cdot y + x \cdot z \\
+        (y + z) \cdot x &= y \cdot x + z \cdot x
+    \end{split} \]
+\end{definition}
+
+The professor preferred to use the word ``harmonic'' instead of ``distributive''. Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''. (The two binary operation in this sentence is not commutative.)
+
+\begin{example}
+    A common example of a distributive operation is multiplication over addition on the set of integers $\Z$. For all $x,y,z \in \Z$, we have:
+    \[ \begin{split}
+        x \cdot (y + z) &= x \cdot y + x \cdot z \\
+        (y + z) \cdot x &= y \cdot x + z \cdot x
+    \end{split} \]
+\end{example}
+
+\newpage
+
+\section{Groups, Rings, Fields}\index{Groups, Rings, Fields}
+
+With those five properties, we can construct monoid and groups.
+
+\begin{definition}[Monoid]
+    A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ having the following properties:
+    \begin{enumerate}
+        \item \emph{Associative}
+        \item \emph{Identifiable}
+    \end{enumerate}
+    We say $(M, f)$ is a monoid, and $f$ is the \emph{monoid operation} on the set $M$. A set $M$ with a monoid operation $f$ is the \emph{monoid structure}.
+\end{definition}
+
+\begin{definition}[Group]
+    A \emph{group} is a set $G$ equipped with a monoid operation $f: G \times G \to G$ with the additional property that every element has an inverse.
+\end{definition}
+
+\begin{example}
+    $(\R\setminus\{0\}, \times)$ is a group, but $(\R, \times)$ is not a group since $0$ does not have a multiplicative inverse.
+\end{example}
+
+\begin{definition}[Abelian Monoid / Group]
+    A monoid / group $(S, f)$ is said to be an \emph{abelian} if the operation $f$ is commutative.
+\end{definition}
+
+\begin{definition}[Unital Ring]
+    A \emph{unital ring} is a set $R$ equipped with two binary operations $f: R \times R \to R$ (addition) and $g: R \times R \to R$ (multiplication) such that the following properties hold:
+    \begin{enumerate}
+        \item \emph{Additive Group:} $(R, f)$ is an abelian group.
+        \item \emph{Multiplicative Monoid:} $(R, g)$ is a monoid.
+        \item \emph{Distributive Property:} $g$ with respect to $f$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Commutative Ring]
+    A \emph{commutative ring} is a unital ring $R$ such that the multiplication operation $g: R \times R \to R$ is commutative.
+\end{definition}
+
+\begin{example}
+    $(\Z, +, \times)$ is a commutative ring.
+\end{example}
+
+\begin{definition}[Field]
+    A \emph{field} is a commutative ring $\F$ such that every non-zero element has a multiplicative inverse.
+\end{definition}
+
+\begin{example}
+    $(\mathbb{Q}, +, \times)$, $(\R, +, \times)$ and $(\mathbb{C}, +, \times)$ are fields.
+\end{example}
+
+\begin{example}[Finite Field]
+    $(\Z/2\Z, +, \times)$ is a field, where $\Z/2\Z = \{[0], [1]\}$, $[0]$ is the set of even integers and $[1]$ is the set of odd integers. Note that any $\Z/p\Z$ is a finite field, where $p$ is a prime number.
+\end{example}
+
+We may draw a diagram for the relationship between the algebraic structures.
+
+\begin{center}
+    \begin{tikzcd}[column sep=3.5em, row sep=huge, math mode=false]
+        Set \arrow[r, "\scriptsize Closed Operation"] &
+        Magma \arrow[r, "\scriptsize Associativity"] &
+        Semigroup \arrow[d, "\scriptsize Identity"] \\
+
+        Abelian Group &
+        Group \arrow[swap, l, "\scriptsize Commutative"] &
+        Monoid \arrow[swap, l, "\scriptsize Inverse"] \arrow[r, "\scriptsize Commutative"] \arrow[dl, "$\times$", ocre] &
+        Abelian Monoid \arrow[dl, red, "$\times$", swap] \\
+
+        Rng \arrow[from=ur, "$+$" near end, swap] \arrow[from=urr] 
+        & {\color{ocre} Unital Ring} \arrow[ocre, from=ul, crossing over, "$+$" near start, swap] \arrow[r] 
+        & {\color{red} Commutative Ring} \arrow[from=ull, crossing over, red, "$+$", swap] \arrow[r, "\scriptsize Multiplicative", "\scriptsize Inverse" swap] 
+        & Field
+    \end{tikzcd}
+\end{center}
+
+\newpage
+
+\section{Morphisms}\index{Morphisms}
+
+Normally, when we have two sets we can have a set map. Then if the two are in the same algebraic structures? They are called the homomorphisms.
+
+\begin{definition}[Monoid Homomorphism]
+    A \emph{monoid homomorphism} is a morphism between two monoids that preserves the monoid structure. Formally, let $(M_1, \cdot_1)$ and $(M_2, \cdot_2)$ be two monoids with identity elements $e_1$ and $e_2$, respectively. A function $f: M_1 \to M_2$ is a monoid homomorphism if:
+    \begin{enumerate}
+        \item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in M_1$
+        \item $f(e_1) = e_2$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Group Homomorphism]
+    A \emph{group homomorphism} is a morphism between two groups that preserves the group structure. Formally, let $(G_1, \cdot_1)$ and $(G_2, \cdot_2)$ be two groups with identity elements $e_1$ and $e_2$, respectively. A function $f: G_1 \to G_2$ is a group homomorphism if:
+    \begin{enumerate}
+        \item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in G_1$
+        \item $f(e_1) = e_2$
+        \item $f(x^{-1}) = (f(x))^{-1} \quad \forall x \in G_1$
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    The second and third properties of a group homomorphism are consequences of the first property.
+\end{proposition}
+
+\begin{proof}
+    Let $f: G_1 \to G_2$ be a group homomorphism satisfying the first property.
+
+    \textbf{Second Property:} For any element $x \in G_1$, we have:
+    \[
+        f(x) = f(x \cdot_1 e_1) = f(x) \cdot_2 f(e_1)
+    \]
+    So for any $f(x) \in G_2$, this implies that $f(e_1)$ must be the identity element in $G_2$, i.e., $f(e_1) = e_2$.
+
+    \textbf{Third Property:} We have:
+    \[
+        e_2 = f(e_1) = f(x \cdot_1 x^{-1}) = f(x) \cdot_2 f(x^{-1})
+    \]
+    This shows that $f(x^{-1})$ is the inverse of $f(x)$ in $G_2$, i.e., $f(x^{-1}) = (f(x))^{-1}$.
+\end{proof}
+
+For monoid homomorphisms, the second property cannot be derived from the first property. Consider the identity element $e_1$ in $M_1$. If we apply the first property, we get $f(e_1 \cdot_1 e_1) = f(e_1) \cdot_2 f(e_1)$. This simplifies to $f(e_1) = f(e_1) \cdot_2 f(e_1)$, which does not necessarily imply that $f(e_1)$ is the identity element in $M_2$, i.e., $f(e_1) \neq e_2$, but $f(e_1)$ is the idempotent element in $M_2$. Therefore, the second property must be explicitly stated for monoid homomorphisms.
+
+However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element. Thus, for group homomorphisms, the second property can be derived from the first property.
+
+\begin{definition}[Idempotent Elements]
+    An element $a$ is said to be \emph{idempotent} if $a = a^2$.
+\end{definition}
+
+\newpage
+
+To introduce the vector space, the following two morphisms are required.
+
+\begin{definition}[Ring Homomorphism]
+    A \emph{ring homomorphism} is a morphism between two rings that preserves both the additive and multiplicative structures. Formally, let $(R_1, +_1, \cdot_1)$ and $(R_2, +_2, \cdot_2)$ be two rings with identity elements $0_1$, $1_1$ and $0_2$, $1_2$, respectively. A function $f: R_1 \to R_2$ is a ring homomorphism if:
+    \begin{enumerate}
+        \item $f(x +_1 y) = f(x) +_2 f(y) \quad \forall x, y \in R_1$
+        \item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in R_1$
+        \item $f(1_1) = 1_2$
+    \end{enumerate}    
+\end{definition}
+
+\begin{definition}[Endomorphism]
+    An \emph{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a set map such that:
+    \[
+        f(x \cdot y) = f(x) \cdot f(y) \quad \forall x, y \in A
+    \]
+\end{definition}
+
+The following two sets are the sets of all structure-preserving maps.
+
+\begin{definition}[Hom-set]
+    The set of all morphisms from an algebraic structure $A$ to another algebraic structure $B$ is called the \emph{hom-set}, denoted by $\Hom(A, B)$. 
+\end{definition}
+
+\begin{definition}[Endomorphism Ring]
+    The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End{A}$, forms a (non-commutative) ring under pointwise addition and composition of set maps. The addition and multiplication operations are defined as follows:
+    \[
+        \begin{split}
+            + : \End{A} \times \End{A} &\to \End{A} \\
+            (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad &f + g : A \to A \\ \\
+            \circ : \End{A} \times \End{A} &\to \End{A} \\
+            (f,g) &\mapsto (f \circ g: x \mapsto f(g(x))) \qquad &f \circ g : A \to A
+        \end{split}
+    \]
+    The identity element for addition is the zero endomorphism, which maps every element to the identity element of the group. 
+    \[ \begin{split}
+        0: A &\to A \\
+        x &\mapsto 0
+    \end{split}
+    \]
+    The identity element for multiplication is the identity endomorphism, which maps every element to itself. 
+    \[
+    \begin{split}
+        1: A &\to A \\
+        x &\mapsto x
+    \end{split}
+    \]
+    Note that all endomorphisms in $\End{A}$ are group homomorphisms and $\End{A} = \Hom(A, A)$.
+\end{definition}
+
+\newpage
+
+\section{Linear Spaces}\index{Linear Spaces}
+
+Then we can define what a linear structure is.
+
+\begin{definition}[Linear Structure]
+    A \emph{linear structure} over a field $\F$ on a set $V$ is a pair $(+, \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $\F \to \End{V}$, where $\End{V}$ is the endomorphism ring of the abelian group $(V, +)$.
+    \[ \begin{split}
+            \cdot : \F &\to \End{V} \\
+            \alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
+        \end{split}
+    \]
+    The ring homomorphism is a (ring) action of the field $\F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}. The ring action can be written as a binary operation:
+    \[
+        \begin{split}
+            \cdot : \F \times V &\to V \\
+            (\alpha, \vec{x}) &\mapsto \alpha \vec{x}
+        \end{split}
+    \]
+\end{definition}
+
+A linear space / vector space is a set with a linear structure over a field on the set. In normal textbook, a linear space will be defined as follows:
+
+\begin{corollary}[Linear Spaces]
+    A linear space over a field $\F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : \F \times V \to V$, satisfying the following axioms for all $\vec{u}, \vec{v}, \vec{w} \in V$ and $\alpha, \beta \in \F$:
+    \begin{center}
+        \begin{tabularx}{\textwidth}{XX}
+            \toprule
+            \textbf{Axiom} & \textbf{Statement} \\
+            \midrule
+            1. Associativity of addition & $(\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w})$ \\
+            2. Existence of additive identity & $\exists \vec{0} \in V$ such that $\forall \vec{u} \in V$, $\vec{u} + \vec{0} = \vec{u}$ \\
+            3. Existence of additive inverses & $\forall \vec{u} \in V$, $\exists -\vec{u} \in V$ such that $\vec{u} + (-\vec{u}) = \vec{0}$ \\
+            4. Commutativity of addition & $\vec{u} + \vec{v} = \vec{v} + \vec{u}$ \\
+            5. Distributivity of scalar multiplication with respect to vector addition & $\alpha (\vec{u} + \vec{v}) = \alpha \vec{u} + \alpha \vec{v}$ \\
+            6. Distributivity of scalar multiplication with respect to field addition & $(\alpha + \beta) \cdot = \alpha \cdot + \beta \cdot$ \\
+            7. Compatibility of scalar multiplication with field multiplication & $(\alpha \beta) \cdot = (\alpha \cdot) \circ (\beta \cdot)$ \\
+            8. Identity element of scalar multiplication & $\F \ni 1 \mapsto (1\cdot : x \mapsto x) \in \End{V}$ \\
+            \bottomrule
+        \end{tabularx}
+    \end{center}
+\end{corollary}
+\begin{remark}
+    The first four axioms ensure that $(V, +)$ is an abelian group, while the fifth axiom describes the distributivity inside $\End{A}$ and the last three axioms describe the ring homomorphism.
+\end{remark}
+
+\begin{example}
+    $\F$ is a linear space over itself with the usual addition and multiplication operations.
+    \[
+        \begin{split}
+            \cdot : \F \times \F &\to \F \\
+            (\alpha,\beta) &\mapsto \alpha \beta
+        \end{split}
+    \]
+    The first $\F$ is the field acting on the second $\F$, which is the abelian group.
+\end{example}
+
+\begin{example}
+    Let $X$ be a set and $\F$ be a field. ($f$ is a set map)
+    \[
+    \begin{split}
+        \F[[X]] = \Map(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $\F$-valued functions on } X \\
+        &=\joinrel= \left\{ f : X \to \F \right\}
+    \end{split}
+    \]
+    $\F[[X]]$ is a linear space over $\F$ with the following operations defined pointwisely:
+    \[
+        \begin{split}
+            + : \F[[X]] \times \F[[X]] &\to \F[[X]] \\
+            (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to \F \\ \\
+            \cdot : \F \times \F[[X]] &\to \F[[X]] \\
+            (\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to \F
+        \end{split}
+    \]
+\end{example}
+
+\begin{example}
+    Let $X$ be a set and $\F$ be a field.
+    \[
+        \begin{split}
+            \F[X] = \text{Map}_{\text{fin}}(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all finitely supported $\F$-valued functions on } X \\
+            &=\joinrel= \left\{ f : X \to \F \mid f \text{ is finitely supported} \right\}
+        \end{split}
+    \]
+    $\F[X]$ is a linear space over $\F$ as $\F[X] \subseteq \F[[X]]$ and the operations are defined pointwisely as in the previous example.
+
+    $f: X \to \F$ is finitely supported if the set $\{ x \in X \mid f(x) \neq 0 \}$ is finite or $f(x) \neq 0$ for only finitely many $x \in X$.
+\end{example}
+
+\begin{example}
+    Let $t$ be a formal variable. Then $\F[[t]] \overset{\mathrm{def}}{=\joinrel=} \F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^{\infty} a_n t^n$ is the set of all formal power series in $t$ with coefficients in $\F$ and $\F[t] \overset{\mathrm{def}}{=\joinrel=} \F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^{N} a_n t^n$ is the set of all polynomials in $t$ with coefficients in $\F$. Both $\F[[t]]$ and $\F[t]$ are linear spaces over $\F$.
+\end{example}
+
+There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Power Series ring, respectively.
+
+\begin{example}
+    Let $n$ be a positive integer and $\F$ be a field. Then 
+    \[
+        \F^n \overset{\mathrm{def}}{=\joinrel=} \left\{ 
+        \begin{bmatrix}
+        c_1 \\
+        \vdots \\
+        c_n
+        \end{bmatrix}
+        \;\middle|\; c_i \in \F
+        \right\}
+    \]
+    is the set of all \emph{column matrices} with $n$ entries in $\F$. Elements in $\F^n$ are written as $\vec{x}$ and are called \emph{column vectors}. $\F^n$ is a linear space over $\F$ with the following operations defined entrywisely:
+    \[
+        \begin{split}
+            + : \F^n \times \F^n &\to \F^n \\
+            (\vec{a}, \vec{b}) &\mapsto \vec{a} + \vec{b} = \begin{bmatrix}
+            a_1 + b_1 \\
+            \vdots \\
+            a_n + b_n
+            \end{bmatrix} \\ \\
+            \cdot : \F \times \F^n &\to \F^n \\
+            (\alpha, \vec{a}) &\mapsto \alpha \vec{a} = \begin{bmatrix}
+            \alpha a_1 \\
+            \vdots \\
+            \alpha a_n
+            \end{bmatrix}
+        \end{split}
+    \]
+    $\F^n$ is a linear space over $\F$ automatically as $\F$ is a linear space over itself.
+\end{example}
