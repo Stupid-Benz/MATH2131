@@ -40,13 +40,13 @@
 	%oneside, % Uncomment for oneside mode, this doesn't start new chapters and parts on odd pages (adding an empty page if required), this mode is more suitable if the book is to be read on a screen instead of printed
 ]{LegrandOrangeBook}
 
-% Book information for PDF metadata, remove/comment this block if not required 
+% Book information for PDF metadata, remove/comment this block if not required
 \hypersetup{
-	pdftitle={Title}, % Title field
-	pdfauthor={Author}, % Author field
-	pdfsubject={Subject}, % Subject field
-	pdfkeywords={Keyword1, Keyword2, ...}, % Keywords
-	pdfcreator={LaTeX}, % Content creator field
+	pdftitle={Lecture Notes for MATH 2131}, % Title field
+	pdfauthor={Stupid--Benz}, % Author field
+%	pdfsubject={Subject}, % Subject field
+%	pdfkeywords={Keyword1, Keyword2, ...}, % Keywords
+%	pdfcreator={LaTeX}, % Content creator field
 }
 
 \makeatletter\indexsetup{level=\@gobble, noclearpage}\makeatother % Disable \chapter in \printindex
@@ -55,14 +55,13 @@
 
 \definecolor{ocre}{RGB}{0,83,166} % Define the color used for highlighting throughout the book
 
-\chapterimage{orange1.jpg} % Chapter heading image
+\chapterimage{UST.jpg} % Chapter heading image
 \chapterspaceabove{8cm} % Default whitespace from the top of the page to the chapter title on chapter pages
 \chapterspacebelow{8cm} % Default amount of vertical whitespace from the top margin to the start of the text on chapter pages
 
 %----------------------------------------------------------------------------------------
 
 \usepackage{tabularx} % For tabbing to a certain point
-\usepackage{tikz}
 \usepackage{tikz-cd} % For commutative diagrams
 \usetikzlibrary{matrix, positioning, arrows.meta, decorations.pathreplacing, decorations.markings} % <-- Add this line to enable matrix of math nodes
 
@@ -72,7 +71,6 @@
 
 \begin{document}
 
-	\chapterimage{UST.jpg} % Chapter heading image
 	%----------------------------------------------------------------------------------------
 	%	TITLE PAGE
 	%----------------------------------------------------------------------------------------
