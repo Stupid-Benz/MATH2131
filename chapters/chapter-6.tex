@@ -52,7 +52,7 @@ Then we define the tensor spaces.
 
 If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}\index{tensor}. If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}\index{form}. For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself. Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
 
-Then we know that $\End{V} \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$. Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$. Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part. To know that what $a^i_j$ means, we can consider the following diagram:
+Then we know that $\End(V) \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$. Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$. Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part. To know that what $a^i_j$ means, we can consider the following diagram:
 \begin{center}
     \begin{tikzcd}
         V \arrow[r, "T"] \arrow[d, "{[-]_{\B_V}}" swap] & V \arrow[d, "{[-]_{\B_V}}"] \\
@@ -63,7 +63,7 @@ Then how to get the matrix representation $A = [a^i_j]_{\B_V}$ of $T$ with respe
 \[
     \vec{a}_j = A \vec{e}_j, \qquad a^i_j = \vec{e}_i^T A \vec{e}_j = \hat{e}^i A \vec{e}_j = \langle \hat{e}^i, A \vec{e}_j \rangle.
 \]
-So we have $[a^i_j] = \langle \hat{v}^i, T \vec{v}_j \rangle$. We can have an identification between $\End{V}$ and $\mathcal{T}^{1, 1} V$ as follows:
+So we have $[a^i_j] = \langle \hat{v}^i, T \vec{v}_j \rangle$. We can have an identification between $\End(V)$ and $\mathcal{T}^{1, 1} V$ as follows:
 \[
     T \leftrightarrow T\vec{v}_j \otimes \hat{v}^j
 \]
@@ -316,7 +316,7 @@ Let $V$ be a Euclidean vector space with inner product $\langle -, - \rangle$ an
 Note that the restriction $\langle -, - \rangle$ is still an inner product on $W$. Also, the positive-definiteness of $\langle -, - \rangle$ implies that $\langle -, - \rangle$ is non-degenerate, i.e., the map $\langle -, - \rangle_{\musNatural} : W \to W^*$ is isomorphism. Note that $W$ and $W^*$ have the same dimension and it has a trivial kernel: $\langle u, - \rangle_W = 0$ implies $\langle u, u \rangle_W = 0$ implies $u = 0$. Now, suppose $w = (w_1, \cdots, w_k)$ is a basis of $W$ and $w^* = (w_1^*, \cdots, w_k^*)$ is the dual basis of $W^*$, then we have the following diagram:
 \begin{center}
     \begin{tikzcd}
-        0 \arrow[r] & \ker{\lambda_w} \arrow[r] & V \arrow[r, "\lambda_w"', two heads] & \R^k \arrow[r] \arrow[l, bend right, "s"'] & 0 \\
+        0 \arrow[r] & \ker(\lambda_w) \arrow[r] & V \arrow[r, "\lambda_w"', two heads] & \R^k \arrow[r] \arrow[l, bend right, "s"'] & 0 \\
         & & W \arrow[u, hook] \arrow[r, "{\langle -, - \rangle_{\musNatural}}", hook, two heads] & W^* \arrow[u, "{[-]_{w^*}}"', two heads, hook] \\[-3.6em]
         & & {\scriptstyle w_i} \arrow[r, mapsto] & {\scriptstyle \langle w_i, - \rangle}
     \end{tikzcd}
@@ -327,7 +327,7 @@ where $\lambda_w = \begin{bmatrix}
     \langle w_k, - \rangle
 \end{bmatrix}$, and $s$ is a section of $\lambda_w$ with image $W$. Then we have the decomposition:
 \[
-    V = \Im{s} \oplus \ker{\lambda_w} = W \oplus \ker{\lambda_w}
+    V = \im{s} \oplus \ker(\lambda_w) = W \oplus \ker(\lambda_w)
 \]
 Note that it is an internal direct sum. Then we define the orthogonal complement of $W$ in $V$ as follows.
 \begin{definition}[Orthogonal Complement]
@@ -358,8 +358,8 @@ Then any vector $v \in V$ can be uniquely decomposed as $v = w + w^\perp$ with $
 Then we have the following properties of the orthogonal projection:
 \begin{enumerate}
     \item $(\proj_W)^2 = \proj_W$;
-    \item $\Im{\proj_W} = W$;
-    \item $\ker{\proj_W} = W^\perp$;
+    \item $\im{\proj_W} = W$;
+    \item $\ker(\proj_W) = W^\perp$;
     \item $\proj_W + \proj_{W^\perp} = \id_V$.
 \end{enumerate}
 

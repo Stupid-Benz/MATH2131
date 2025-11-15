@@ -64,9 +64,9 @@ Then we have the decomposition of $V$:
 \[
     V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \cdots \oplus V_{\lambda_k}
 \]
-where $V_i = \ker{T - \lambda_i 1_V}$ are the \emph{eigenspaces}\index{eigenspaces} of $T$ corresponding to eigenvalues $\lambda_i$. Moreover, we have the decomposition of $\F^n$:
+where $V_i = \ker(T - \lambda_i 1_V)$ are the \emph{eigenspaces}\index{eigenspaces} of $T$ corresponding to eigenvalues $\lambda_i$. Moreover, we have the decomposition of $\F^n$:
 \[
-    \F^n = \span{e_1, \cdots, e_{n_1}} \oplus \span{e_{n_1 + 1}, \cdots, e_{n_1 + n_2}} \oplus \cdots \oplus \span{e_{n_1 + \cdots + n_{k-1} + 1}, \cdots, e_{n_1 + \cdots + n_k}}
+    \F^n = \Span(e_1, \cdots, e_{n_1)} \oplus \Span(e_{n_1 + 1), \cdots, e_{n_1 + n_2}} \oplus \cdots \oplus \Span(e_{n_1 + \cdots + n_{k-1) + 1}, \cdots, e_{n_1 + \cdots + n_k}}
 \]
 Note that $\dim V_{\lambda_i} = n_i$ and $\sum_{i = 1}^k n_i = n$.
 
@@ -86,7 +86,7 @@ Then how to find the eigenvalues and eigenspaces? We can consider the following 
 \]
 Then we have the following equation:
 \[
-    Tx = \lambda_i x \iff (\lambda_i 1_V - T) x = 0 \iff x \in \ker{\lambda_i 1_V - T}
+    Tx = \lambda_i x \iff (\lambda_i 1_V - T) x = 0 \iff x \in \ker(\lambda_i 1_V - T)
 \]
 As $x$ is non-zero, then $(\lambda_i 1_V - T)$ is not injective, i.e. not invertible. Therefore, we have:
 \[
@@ -107,7 +107,7 @@ For example, consider the following matrix:
 The roots of $p_A (\lambda)$ are $1$ and $2$, so the eigenvalues of $A$ are $1$ and $2$. Then we can find the eigenspaces:
 \[
     \begin{split}
-        V_{\lambda = 1} &= \nul{1 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
+        V_{\lambda = 1} &= \nul(1 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
             0 & -3 \\
             0 & -1
         \end{bmatrix} = \mathsf{Nul} \begin{bmatrix}
@@ -117,7 +117,7 @@ The roots of $p_A (\lambda)$ are $1$ and $2$, so the eigenvalues of $A$ are $1$ 
             1 \\
             0
         \end{bmatrix} \\
-        V_{\lambda = 2} &= \nul{2 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
+        V_{\lambda = 2} &= \nul(2 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
             1 & -3 \\
             0 & 0
         \end{bmatrix} = \Span \begin{bmatrix}
@@ -174,7 +174,7 @@ Consider the following example:
         0 & 0
     \end{bmatrix}$ is not completely reducible. The $p_A (\lambda) = \lambda^2$, so the only eigenvalue is $0$. Then we have:
     \[
-        V_{\lambda = 0} = \nul{0 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
+        V_{\lambda = 0} = \nul(0 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
             0 & -1 \\
             0 & 0
         \end{bmatrix} = \Span \begin{bmatrix}
@@ -216,7 +216,7 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
     \end{bmatrix}$. Then we have $p_A (\lambda) = (\lambda - 1)^2 (\lambda - 2)$. The eigenvalues are $1$ and $2$, where $\lambda = 1$ has algebraic multiplicity $2$ and $\lambda = 2$ has algebraic multiplicity $1$. Then we can find the eigenspaces:
     \[
         \begin{split}
-            E_{\lambda = 1} (A) &= \nul{1 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
+            E_{\lambda = 1} (A) &= \nul(1 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
                 0 & 0 & -4 \\
                 0 & 0 & -3 \\
                 0 & 0 & -1
@@ -233,7 +233,7 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
                 1 \\
                 0
             \end{bmatrix} \right\} \\
-            E_{\lambda = 2} (A) &= \nul{2 \cdot I - A} = \mathsf{Nul} \begin{bmatrix}
+            E_{\lambda = 2} (A) &= \nul(2 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
                 1 & 0 & -4 \\
                 0 & 1 & -3 \\
                 0 & 0 & 0
@@ -303,9 +303,9 @@ Completely reducible matrix representations are ``the'' simplest forms of endomo
 
 In general, $T$ is not semisimple, but it can be decomposed into a semisimple part and a \emph{nilpotent}\index{nilpotent} part. Moreover, this decomposition is unique.
 
-We can consider the $\End{V} \equiv \M{n \times n}{\F} \equiv \F^{n^2}$ as a vector space. Then $T \in \F^{n^2}$ is a vector. Then such the set of containing such $T$ forms a dense open subset of $\End{V} = \F^{n^2}$. The dense open subset is in the Zariski topology. More precisely, the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End{V}$. We will study Zariski topology next section. 
+We can consider the $\End(V) \equiv \M{n \times n}{\F} \equiv \F^{n^2}$ as a vector space. Then $T \in \F^{n^2}$ is a vector. Then such the set of containing such $T$ forms a dense open subset of $\End(V) = \F^{n^2}$. The dense open subset is in the Zariski topology. More precisely, the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End(V)$. We will study Zariski topology next section.
 
-Once we know that completely reducible endomorphisms are dense in $\End{V}$, then if we want to prove some identity, it suffices to prove it for completely reducible endormophisms. One of the example is the Cayley-Hamilton theorem.
+Once we know that completely reducible endomorphisms are dense in $\End(V)$, then if we want to prove some identity, it suffices to prove it for completely reducible endormophisms. One of the example is the Cayley-Hamilton theorem.
 
 \begin{theorem}[Cayley-Hamilton Theorem]
     Let $T : V \to V$ be an endomorphism of a finite dimensional vector space $V$ over $\F$. Then $T$ satisfies its own characteristic polynomial, i.e. $\left.p_T (\lambda)\right|_{\lambda = T} = 0$.
@@ -339,11 +339,11 @@ If $T$ is completely reducible, then
 \[
     n_i = \dim V_{\lambda_i}
 \]
-where $n_i$ is the algebraic multiplicity of eigenvalue $\lambda_i$ and $\dim V_{\lambda_i}$ is the geometric multiplicity of eigenvalue $\lambda_i$. In general, we have $n_i \geq \dim V_{\lambda_i}$. Then $\{ \lambda_1, \cdots, \lambda_k \}$ is the set of roots of $p_T (\lambda)$ and $V_{\lambda_i} = \ker{\lambda_i 1_V - T}$.
+where $n_i$ is the algebraic multiplicity of eigenvalue $\lambda_i$ and $\dim V_{\lambda_i}$ is the geometric multiplicity of eigenvalue $\lambda_i$. In general, we have $n_i \geq \dim V_{\lambda_i}$. Then $\{ \lambda_1, \cdots, \lambda_k \}$ is the set of roots of $p_T (\lambda)$ and $V_{\lambda_i} = \ker(\lambda_i 1_V - T)$.
 
 Then for any $T$, if the set of roots of $p_T (\lambda)$ in $\F$ is $\{ \lambda_1, \cdots, \lambda_k \}$, then we can define the \emph{generalised eigenspaces}:
 \[
-    V_{\lambda_i} = \ker{\lambda_i 1_V - T} \quad \forall 1 \leq i \leq k
+    V_{\lambda_i} = \ker(\lambda_i 1_V - T) \quad \forall 1 \leq i \leq k
 \]
 Then we check whether $\dim V = \sum_{i = 1}^k \dim V_{\lambda_i}$. If it holds, then $T$ is completely reducible. If not, then $T$ is not. So this characterise completely reducible endomorphisms.
 
@@ -396,7 +396,7 @@ Then Zariski topology is defined as follows.
     The pair $(\A, \tau_{Zar})$ is called a \emph{Zariski topological space}, where $\tau_{Zar}$ is the Zariski topology on $\A$.
 \end{definition}
 
-Then the $A \in \F^{n^2} \equiv \A_{\F}^{n^2}$ can be viewed as a point in the affine space $\A_{\F}^{n^2}$ over $\F$. Then the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End{V} = \F^{n^2}$ in the Zariski topology. Dense means that its closure is the whole space. Open means that its complement is a closed set, i.e. the zero locus of some set of polynomials in $\F[x_1, \cdots, x_{n^2}]$.
+Then the $A \in \F^{n^2} \equiv \A_{\F}^{n^2}$ can be viewed as a point in the affine space $\A_{\F}^{n^2}$ over $\F$. Then the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End(V) = \F^{n^2}$ in the Zariski topology. Dense means that its closure is the whole space. Open means that its complement is a closed set, i.e. the zero locus of some set of polynomials in $\F[x_1, \cdots, x_{n^2}]$.
 
 \newpage
 
@@ -505,7 +505,7 @@ Then for any endomorphism $T : V \to V$. It is equivalent to consider $V$ as a m
 \]
 
 \begin{example}
-    Let $p(x) = 2x^2 + 3x - 1 \in \F[x]$ and $T \in \End{V}$. Then for any $v \in V$, we have $p(T) v = 2 T^2 v + 3 T v - v$.
+    Let $p(x) = 2x^2 + 3x - 1 \in \F[x]$ and $T \in \End(V)$. Then for any $v \in V$, we have $p(T) v = 2 T^2 v + 3 T v - v$.
 \end{example}
 
 $V$ is the finite dimensional linear space over $\F$, so it is a finitely generated module over $\F[x]$ with rank $0$. It is the torsion part only. Therefore, by the classification theorem of finitely generated modules over a PID, we have:

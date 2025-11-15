@@ -163,7 +163,7 @@
 		\midrule
 		$\Mor_{\C}(V, W)$ & the set of all morphisms from $V$ to $W$ in category $\C$ \\
 		$\Hom(V, W)$ & Hom-set of $V$ to $W$ \\
-		$\End{A}$ & Endomorphism ring of $A$ \\
+		$\End(A)$ & Endomorphism ring of $A$ \\
 		$\M{m \times n}{\F}$ & the set of all $m \times n$ matrices over $\F$ \\
 		\midrule
 		$\vec{x}$ & column vector with entries $x_i$ \\
@@ -178,11 +178,11 @@
 		$\delta_X$ & the set of all Kronecker delta functions \\
 		$\delta_{ij}$ & the Kronecker delta symbol \\
 		\midrule
-		$\ker{T}$ & Kernel of linear map $T$ \\
-		$\Im{T}$ & Image of linear map $T$ \\
-		$\coker{T}$ & Cokernel of linear map $T$ \\
-		$\coim{T}$ & Coimage of linear map $T$ \\
-		$\span{S}$ & Span of a set of vectors $S$ \\
+		$\ker(T)$ & Kernel of linear map $T$ \\
+		$\im(T)$ & Image of linear map $T$ \\
+		$\coker(T)$ & Cokernel of linear map $T$ \\
+		$\coim(T)$ & Coimage of linear map $T$ \\
+		$\Span(S)$ & Span of a set of vectors $S$ \\
 		\midrule
 		$\prod$ & Product \\
 		$\coprod$ & Coproduct \\
@@ -247,7 +247,7 @@
 		We first state the formal definition of universal properties.
 
 		\begin{definition}[Universal Properties]
-			Let $F : \C \to \D$ be a functor between two categories $\C$ and $\D$. A universal morphism from an object $X \in \Ob{\mathbb{D}}$ to the functor $F$ is a unique pair $(A, u : X \to F(A))$ in $\D$ such that for any morphism $f : X \to F(A')$ in $\D$, there exists a unique morphism $\bar{f} : A \to A'$ in $\C$ such that the following diagram commutes:
+			Let $F : \C \to \D$ be a functor between two categories $\C$ and $\D$. A universal morphism from an object $X \in \Ob(\mathbb{D)}$ to the functor $F$ is a unique pair $(A, u : X \to F(A))$ in $\D$ such that for any morphism $f : X \to F(A')$ in $\D$, there exists a unique morphism $\bar{f} : A \to A'$ in $\C$ such that the following diagram commutes:
 			\begin{center}
 				\begin{tikzcd}
 					X \arrow[r, "u", red] \arrow[dr, "f" swap] & F({\color{ocre} A}) \arrow[d, "F(\bar{f})", dashed] & {\color{ocre} A} \arrow[d, "\bar{f}", dashed] \\
@@ -259,7 +259,7 @@
 		\begin{remark}
 			Such an object $A$ is an initial object in a new category:
 			\begin{itemize}
-				\item Objects: all pairs $(B, f : X \to F(B))$ for all $B \in \Ob{\C}$;
+				\item Objects: all pairs $(B, f : X \to F(B))$ for all $B \in \Ob(\C)$;
 				\item Morphisms: commutative diagrams in $\C$:
 			\end{itemize}
 			\begin{center}
@@ -290,7 +290,7 @@
 			\begin{center}
 				\begin{tikzcd}
 					& X \arrow[dr, "f"] & \\
-					& \ker{f} \arrow[u, "\iota" swap, hook] \arrow[r, "0"] & Y \\
+					& \ker(f) \arrow[u, "\iota" swap, hook] \arrow[r, "0"] & Y \\
 					Z \arrow[urr, "0" swap] \arrow[ur, "u" description, dashed] \arrow[uur, "\iota'", hook]
 				\end{tikzcd}
 			\end{center}
@@ -323,7 +323,7 @@
 			\begin{center}
 				\begin{tikzcd}
 					& Y \arrow[d, "\pi" swap, two heads] \arrow[ddr, "\pi'", two heads] \\
-					X \arrow[ur, "f"] \arrow[r, "0"] \arrow[drr, "0" swap] & \coker{f} \arrow[dr, "u" description, dashed] \\
+					X \arrow[ur, "f"] \arrow[r, "0"] \arrow[drr, "0" swap] & \coker(f) \arrow[dr, "u" description, dashed] \\
 					& & Z
 				\end{tikzcd}
 			\end{center}

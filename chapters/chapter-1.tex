@@ -283,12 +283,12 @@ The following two sets are the sets of all structure-preserving maps.
 \end{definition}
 
 \begin{definition}[Endomorphism Ring]
-    The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End{A}$, forms a (non-commutative) ring under pointwise addition and composition of set maps. The addition and multiplication operations are defined as follows:
+    The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End(A)$, forms a (non-commutative) ring under pointwise addition and composition of set maps. The addition and multiplication operations are defined as follows:
     \[
         \begin{split}
-            + : \End{A} \times \End{A} &\to \End{A} \\
+            + : \End(A) \times \End(A) &\to \End(A) \\
             (f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad &f + g : A \to A \\ \\
-            \circ : \End{A} \times \End{A} &\to \End{A} \\
+            \circ : \End(A) \times \End(A) &\to \End(A) \\
             (f,g) &\mapsto (f \circ g: x \mapsto f(g(x))) \qquad &f \circ g : A \to A
         \end{split}
     \]
@@ -305,7 +305,7 @@ The following two sets are the sets of all structure-preserving maps.
         x &\mapsto x
     \end{split}
     \]
-    Note that all endomorphisms in $\End{A}$ are group homomorphisms and $\End{A} = \Hom(A, A)$.
+    Note that all endomorphisms in $\End(A)$ are group homomorphisms and $\End(A) = \Hom(A, A)$.
 \end{definition}
 
 \newpage
@@ -315,9 +315,9 @@ The following two sets are the sets of all structure-preserving maps.
 Then we can define what a linear structure is.
 
 \begin{definition}[Linear Structure]
-    A \emph{linear structure} over a field $\F$ on a set $V$ is a pair $(+, \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $\F \to \End{V}$, where $\End{V}$ is the endomorphism ring of the abelian group $(V, +)$.
+    A \emph{linear structure} over a field $\F$ on a set $V$ is a pair $(+, \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $\F \to \End(V)$, where $\End(V)$ is the endomorphism ring of the abelian group $(V, +)$.
     \[ \begin{split}
-            \cdot : \F &\to \End{V} \\
+            \cdot : \F &\to \End(V) \\
             \alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
         \end{split}
     \]
@@ -346,13 +346,13 @@ A linear space / vector space is a set with a linear structure over a field on t
             5. Distributivity of scalar multiplication with respect to vector addition & $\alpha (\vec{u} + \vec{v}) = \alpha \vec{u} + \alpha \vec{v}$ \\
             6. Distributivity of scalar multiplication with respect to field addition & $(\alpha + \beta) \cdot = \alpha \cdot + \beta \cdot$ \\
             7. Compatibility of scalar multiplication with field multiplication & $(\alpha \beta) \cdot = (\alpha \cdot) \circ (\beta \cdot)$ \\
-            8. Identity element of scalar multiplication & $\F \ni 1 \mapsto (1\cdot : x \mapsto x) \in \End{V}$ \\
+            8. Identity element of scalar multiplication & $\F \ni 1 \mapsto (1\cdot : x \mapsto x) \in \End(V)$ \\
             \bottomrule
         \end{tabularx}
     \end{center}
 \end{corollary}
 \begin{remark}
-    The first four axioms ensure that $(V, +)$ is an abelian group, while the fifth axiom describes the distributivity inside $\End{A}$ and the last three axioms describe the ring homomorphism.
+    The first four axioms ensure that $(V, +)$ is an abelian group, while the fifth axiom describes the distributivity inside $\End(A)$ and the last three axioms describe the ring homomorphism.
 \end{remark}
 
 \begin{example}

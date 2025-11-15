@@ -172,7 +172,7 @@ where $i$ is summed from $1$ to $n$.
     where the second equality is due to the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
 \end{proof}
 \begin{remark}
-    Note that $\End{V} = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
+    Note that $\End(V) = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
 
 Then we can say that
@@ -550,7 +550,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \end{remark}
 
 \begin{definition}[Rank of a Matrix]
-    The \emph{rank}\index{rank} of an $m \times n$ matrix $A$ over a field $\F$, denoted by $\rank{A}$, is the number of leading 1's in the matrix $\begin{bmatrix}
+    The \emph{rank}\index{rank} of an $m \times n$ matrix $A$ over a field $\F$, denoted by $\rank(A)$, is the number of leading 1's in the matrix $\begin{bmatrix}
         I_r & 0 \\
         0 & 0
     \end{bmatrix}$ obtained from $A$ by a finite sequence of elementary row and column operations on $A$.
@@ -571,7 +571,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
     Let $A$ be an $m \times n$ matrix over a field $\F$. Then the following statements are equivalent:
     \[
         A \text{ is invertible } \iff m \left\{\left[\vphantom{\matriximg}\right.\right.\kern-2\nulldelimiterspace
-        \underbrace{\matriximg}_{\text{\normalsize $n$}}\kern-\nulldelimiterspace\left.\vphantom{\matriximg}\right] \text{ is invertible } \iff \rank{A} = m = n \iff \begin{bmatrix}
+        \underbrace{\matriximg}_{\text{\normalsize $n$}}\kern-\nulldelimiterspace\left.\vphantom{\matriximg}\right] \text{ is invertible } \iff \rank(A) = m = n \iff \begin{bmatrix}
             I_r & 0 \\
             0 & 0
         \end{bmatrix} = I_m = I_n
@@ -581,9 +581,9 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \begin{proof}
     If $A$ is invertible, then the matrix $PAQ^{-1}$ is also invertible, as $P$ and $Q$ are elementary and invertible matrices, and hence the product is invertible.
 
-    If $PAQ^{-1}$ is invertible, and note that $m = n$ is automatically true. As only square matrix is invertible. Without the loss of generality, let say $PAQ^{-1}$ is a $m \times m$ matrix, then we have $\rank{PAQ^{-1}} = m$. Also note that the rank is invarient under multiplication by invertible matrices, so $\rank{A} = \rank{PAQ^{-1}}$. Hence, $\rank{A} = m = n$.
+    If $PAQ^{-1}$ is invertible, and note that $m = n$ is automatically true. As only square matrix is invertible. Without the loss of generality, let say $PAQ^{-1}$ is a $m \times m$ matrix, then we have $\rank(PAQ^{-1)} = m$. Also note that the rank is invarient under multiplication by invertible matrices, so $\rank(A) = \rank(PAQ^{-1)}$. Hence, $\rank(A) = m = n$.
 
-    If $\rank{A} = m = n$, as the canonical matrix remains the $m \times n$ structure, we know that the canonical form is actually a square matrix, let say $m \times m$. Also $r = \rank{A} = m$. Hence the whole canonical form become an identity matrix $I_m$.
+    If $\rank(A) = m = n$, as the canonical matrix remains the $m \times n$ structure, we know that the canonical form is actually a square matrix, let say $m \times m$. Also $r = \rank(A) = m$. Hence the whole canonical form become an identity matrix $I_m$.
 
     If the canonical form is an identity matrix $I$, i.e., it is invertible. Then the matrix $P^{-1}IQ = A$ is also invertible for some elementary and invertible matrices $P$ and $Q$.
 \end{proof}
@@ -591,7 +591,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \begin{proposition}
     Let $A$ be an $m \times n$ matrix over a field $\F$. Then the following statements are equivalent:
     \[
-        A \text{ has a left inverse } \iff A \text{ is injective } \iff \rank{A} = n \iff \begin{bmatrix}
+        A \text{ has a left inverse } \iff A \text{ is injective } \iff \rank(A) = n \iff \begin{bmatrix}
             I_r & 0 \\
             0 & 0
         \end{bmatrix} = \begin{bmatrix}
@@ -619,7 +619,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
     \]
     where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively. Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything. As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$. Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$. Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0. Hence the rank of $A$ is $n$.
 
-    If $\rank{A} = n$, then the canonical form of $A$ is
+    If $\rank(A) = n$, then the canonical form of $A$ is
     \[
         \begin{bmatrix}
             I_{r \times r} & 0_{r \times (n - r)} \\
@@ -648,7 +648,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \begin{proposition}
     Let $A$ be an $m \times n$ matrix over a field $\F$. Then the following statements are equivalent:
     \[
-        A \text{ has a right inverse } \iff A \text{ is surjective } \iff \rank{A} = m \iff \begin{bmatrix}
+        A \text{ has a right inverse } \iff A \text{ is surjective } \iff \rank(A) = m \iff \begin{bmatrix}
             I_r & 0 \\
             0 & 0
         \end{bmatrix} = \begin{bmatrix}
@@ -695,4 +695,4 @@ Let $f : V \to W$ be a linear map between two finite dimensional vector spaces o
 
 Let $f : V \to W$ be a set map between linear spaces. Then the graph of $f$, $\Gamma_f := \{ (v, f(v)) \mid v \in V \}$ is a linear subspace of $V \oplus W$ if and only if $f$ is a linear map. Also, the domain of $f$ is isomorphic to $\Gamma_f$.
 
-$f$ is injective if and only if $f$ is an imbedding, i.e., the map $\bar{f} : V \to \Im{f}$ that sends $v$ to $f(v)$ is an isomorphism.
+$f$ is injective if and only if $f$ is an imbedding, i.e., the map $\bar{f} : V \to \im{f}$ that sends $v$ to $f(v)$ is an isomorphism.

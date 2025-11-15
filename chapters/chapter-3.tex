@@ -44,20 +44,20 @@ Here, we discuss linear spaces with more in depth terms.
 \end{example}
 
 \begin{definition}[Images]
-    Let $f : V \to W$ be a linear map. The \emph{image}\index{image} of $f$, denoted by $\Im f$, is defined as
+    Let $f : V \to W$ be a linear map. The \emph{image}\index{image} of $f$, denoted by $\im f$, is defined as
     \[
-        \Im f \overset{\text{def}}{=\joinrel=} \{ f(v) \mid v \in V \} \subset W
+        \im f \overset{\text{def}}{=\joinrel=} \{ f(v) \mid v \in V \} \subset W
     \]
 \end{definition}
 
 \begin{example}
-    Let $f : V \to W$ be a linear map. $\Im f$ is a subspace of codomain of $f$, i.e., $W$.
+    Let $f : V \to W$ be a linear map. $\im f$ is a subspace of codomain of $f$, i.e., $W$.
 
-    First, we have $f(0_V) = 0_W \in \Im f$, so $\Im f$ is not empty.
+    First, we have $f(0_V) = 0_W \in \im f$, so $\im f$ is not empty.
 
-    Then we consider $\alpha^1, \alpha^2 \in \F$ and $f(v_1), f(v_2) \in \Im f$. We have 
+    Then we consider $\alpha^1, \alpha^2 \in \F$ and $f(v_1), f(v_2) \in \im f$. We have
     \[
-        \alpha^1 f(v_1) + \alpha^2 f(v_2) = f(\alpha^1 v_1 + \alpha^2 v_2) \in \Im f
+        \alpha^1 f(v_1) + \alpha^2 f(v_2) = f(\alpha^1 v_1 + \alpha^2 v_2) \in \im f
     \]
     The equality is due to the linearity of $f$.
 \end{example}
@@ -81,23 +81,23 @@ Then we consider the duality of the intersection and union of subspaces. Whether
 \section{Linear Span and Linear Independence}
 
 \begin{definition}[Linear Span]
-    Let $V$ be a linear space over a field $\F$ and $S \subset V$. The \emph{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
+    Let $V$ be a linear space over a field $\F$ and $S \subset V$. The \emph{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\Span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
 \end{definition}
 
 \begin{corollary}
     The linear span of $S$ can also be defined as the intersection of all subspaces of $V$ containing $S$, which is the smallest linear subspace of $V$ containing $S$. It can be written as:
     \[
-        \span S = \bigcap_{\alpha \in I} V_{\alpha} \subset V \quad \text{where } I = \{ V_{\alpha} \subset V \mid V_{\alpha} \text{ is a subspace of } V \text{ and } S \subset V_{\alpha} \}
+        \Span S = \bigcap_{\alpha \in I} V_{\alpha} \subset V \quad \text{where } I = \{ V_{\alpha} \subset V \mid V_{\alpha} \text{ is a subspace of } V \text{ and } S \subset V_{\alpha} \}
     \]
 \end{corollary}
 \begin{remark}
-    Note that $I$ is not empty as $V \in I$. Thus, $\span S$ is well-defined. $V$ is the largest subspace of itself and $\{0_V\}$ is the smallest subspace of $V$.
+    Note that $I$ is not empty as $V \in I$. Thus, $\Span S$ is well-defined. $V$ is the largest subspace of itself and $\{0_V\}$ is the smallest subspace of $V$.
 \end{remark}
 
 \begin{proposition}
     Let $W$ be a linear space over a field $\F$ and $S \subset W$. Then 
     \[
-        \span S = \left\{ \sum_{i=1}^{n} \alpha^i s_i \mid n \in \mathbb{N}, \alpha^i \in \F, s_i \in S \right\}
+        \Span S = \left\{ \sum_{i=1}^{n} \alpha^i s_i \mid n \in \mathbb{N}, \alpha^i \in \F, s_i \in S \right\}
     \]
     Note that the summation is a finite summation.
 \end{proposition}
@@ -106,7 +106,7 @@ Then we consider the duality of the intersection and union of subspaces. Whether
     Let $W$ be a linear space over a field $\F$ and $V_1, \cdots, V_k$ be subspaces of $W$. The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^{k} v_i = 0_W$, then $v_i = 0_W$ for all $i$.
 \end{definition}
 
-Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspaces $\span{v_1}$, $\span{v_2}$, $\cdots$, $\span{v_k}$ are linearly independent.
+Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspaces $\Span(v_1)$, $\Span(v_2)$, $\cdots$, $\Span(v_k)$ are linearly independent.
 
 \begin{proposition}
     $v_1, v_2, \cdots, v_k \in W$ are linearly independent if and only if there is one and only one way to write $0_W \in W$ as the combination of $v_1, \cdots, v_k$ with coefficients in $\F$, i.e., the equation 
@@ -127,13 +127,13 @@ If we consider a set, what does it mean by being linearly independent? Is there 
 \end{definition}
 
 \begin{definition}[Spanning Sets]
-    Let $V$ be a linear space over a field $\F$. A subset $S \subseteq V$ is said to be a \emph{spanning set} of $V$ if $\span{S} = V$.
+    Let $V$ be a linear space over a field $\F$. A subset $S \subseteq V$ is said to be a \emph{spanning set} of $V$ if $\Span(S) = V$.
 \end{definition}
 
 \begin{example}
     Let $V = \F^3$ and consider the three vectors $\vec{e}_1$, $\vec{e}_2$ and $\vec{e}_3$. 
     
-    Then the set $S = \{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ is not a spanning set of $V$ as $\span{S} = \Span \{\vec{e}_1, \vec{e}_2\} \neq V$. If we consider the $\Span \{\vec{e}_1, \vec{e}_2\} = W$, then $\{\vec{e}_1, \vec{e}_2\}$ is a minimal spanning set of $W$.
+    Then the set $S = \{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ is not a spanning set of $V$ as $\Span(S) = \Span \{\vec{e}_1, \vec{e}_2\} \neq V$. If we consider the $\Span \{\vec{e}_1, \vec{e}_2\} = W$, then $\{\vec{e}_1, \vec{e}_2\}$ is a minimal spanning set of $W$.
 
     The set $S = \{\vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2 + \vec{e}_3\}$ is a spanning set of $V$.
 \end{example}
@@ -146,15 +146,15 @@ If we consider a set, what does it mean by being linearly independent? Is there 
             0 & 0 & 0
         \end{bmatrix}
     \]
-    Then we have $\rank{A} = 2 < 3$. Thus, the set is not a spanning set of $\F^3$.
+    Then we have $\rank(A) = 2 < 3$. Thus, the set is not a spanning set of $\F^3$.
 \end{remark}
 
 \begin{example}
-    Consider the subset $S = \{ 1, t, t^2, \cdots \} \subset \F[[t]]$. Then $\span{S} = \F[t]$ which is a proper subspace of $\F[[t]]$. As the linear combination of finitely many elements in $S$ is a polynomial, but an element in $\F[[t]]$ can be a power series.
+    Consider the subset $S = \{ 1, t, t^2, \cdots \} \subset \F[[t]]$. Then $\Span(S) = \F[t]$ which is a proper subspace of $\F[[t]]$. As the linear combination of finitely many elements in $S$ is a polynomial, but an element in $\F[[t]]$ can be a power series.
 \end{example}
 
 \begin{definition}[Minimal Spanning Sets]
-    Let $V$ be a linear space over a field $\F$. A spanning set $S \subseteq V$ is said to be a \emph{minimal spanning set} of $V$ if no proper subset of $S$ is a spanning set of $V$, i.e., $S' \subset S \implies \span{S'} \subset \span{S} = V$ where $\span{S'} \neq V$.
+    Let $V$ be a linear space over a field $\F$. A spanning set $S \subseteq V$ is said to be a \emph{minimal spanning set} of $V$ if no proper subset of $S$ is a spanning set of $V$, i.e., $S' \subset S \implies \Span(S') \subset \Span(S) = V$ where $\Span(S') \neq V$.
 \end{definition}
 
 The following is also the equivalence definition of linearly independent sets, spanning sets and minimal spanning sets.
@@ -194,7 +194,7 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
     \]
     Clearly, $\delta_x$ has finite support, thus $\delta_x \in \F[X]$.
 
-    Then we have a set $\delta_X = \{\delta_x \mid x \in X\} \subset \F[X]$. We have $\span{\delta_X} = \F[X]$ as any finite support function $f: X \to \F$ can be written as a linear combination of finitely many delta functions. Thus, $\delta_X$ is a spanning set of $\F[X]$.
+    Then we have a set $\delta_X = \{\delta_x \mid x \in X\} \subset \F[X]$. We have $\Span(\delta_X) = \F[X]$ as any finite support function $f: X \to \F$ can be written as a linear combination of finitely many delta functions. Thus, $\delta_X$ is a spanning set of $\F[X]$.
 
     Moreover, $\delta_X$ is a linearly independent set. Assume that there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_{y}$. Then we have $\delta_x(x) = 1 = \sum \alpha^y \delta_y(x) = 0$. This is a contradiction. Thus, $\delta_X$ is a linearly independent set.
 \end{example}
@@ -465,31 +465,31 @@ Generally, we may consider the following commutative diagrams, where left is the
 
 \begin{center}
     \begin{tikzcd}
-        & \Im{f} \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
+        & \im{f} \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
         & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
-        Z & & \coker{f} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
+        Z & & \coker(f) \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed]
     \end{tikzcd}
     \begin{tikzcd}[swap]
-        & \coim{f} \arrow[from=d, "\iota", hook] \arrow[from=ddl, bend left, "0" swap] \arrow[from=ddr, bend right, "0"] \\
+        & \coim(f) \arrow[from=d, "\iota", hook] \arrow[from=ddl, bend left, "0" swap] \arrow[from=ddr, bend right, "0"] \\
         & W \arrow[from=dl, "\forall \phi" swap] \arrow[from=dr, "\pi"] \\
-        Z & & \ker{f} \arrow[from=ll, "\exists ! \tilde{\phi}" swap, dashed] 
+        Z & & \ker(f) \arrow[from=ll, "\exists ! \tilde{\phi}" swap, dashed]
     \end{tikzcd}
 \end{center}
 
 \begin{definition}[Cokernel]
-    Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$. The \emph{cokernel}\index{cokernel} of $f$, denoted by $\coker{f}$, is defined as the quotient space of $W$ by the image of $f$, i.e.,
+    Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$. The \emph{cokernel}\index{cokernel} of $f$, denoted by $\coker(f)$, is defined as the quotient space of $W$ by the image of $f$, i.e.,
     \[
-        \coker{f} = \quotient{W}{\Im{f}} = W / \Im{f}
+        \coker(f) = \quotient{W}{\im{f}} = W / \im{f}
     \]
-    where $\Im{f} = \{ f(v) \mid v \in V \}$ is the image of $f$.
+    where $\im{f} = \{ f(v) \mid v \in V \}$ is the image of $f$.
 \end{definition}
 
 \begin{definition}[Coimage]
-    Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage}\index{coimage} of $f$, denoted by $\coim{f}$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
+    Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage}\index{coimage} of $f$, denoted by $\coim(f)$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
     \[
-        \coim{f} = \quotient{W}{\ker{f}} = W / \ker{f}
+        \coim(f) = \quotient{W}{\ker(f)} = W / \ker(f)
     \]
-    where $\ker{f} = \{ w \in W \mid f(w) = 0_V \}$ is the kernel of $f$.
+    where $\ker(f) = \{ w \in W \mid f(w) = 0_V \}$ is the kernel of $f$.
 \end{definition}
 
 \newpage
@@ -508,7 +508,7 @@ Generally, we may consider the following commutative diagrams, where left is the
 \end{proposition}
 
 \begin{proposition}
-    $V_1 + V_2 = \span{V_1 \cup V_2}$.
+    $V_1 + V_2 = \Span(V_1 \cup V_2)$.
 \end{proposition}
 
 Recall the definition of linear independence (Definition \ref{def:linear_independence}): $V_1$ and $V_2$ are said to be \emph{linearly independent} if $V_1$ and $V_2$ are non-trivial and $x_1 + x_2 = 0$ for $x_i \in V_i$ implies that $x_1 = x_2 = 0$.
@@ -583,7 +583,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
         \end{tikzcd}
     \end{center}
     is said to be \emph{exact}\index{exact} at $V_i$ if
-    \[ \Im{f_{i-1}} = \ker{f_i} \]
+    \[ \im{f_{i-1}} = \ker(f_i) \]
     i.e., the image of the map before $V_i$ is equal to the kernel of the map after $V_i$.
 
     The sequence is said to be an \emph{exact sequence} if it is exact at every $V_i$.
@@ -598,9 +598,9 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
     \end{center}
     for which $V_2$ is assumed to have a minimal spanning set. Then 
     \begin{itemize}
-        \item the exactness at $V_1$ implies that $\{0_{V_1}\} = \Im{0} = \ker{i_1}$, thus $i_1$ is injective. 
-        \item the exactness at $V$ implies that $\Im{i_1} = \ker{j_2}$, thus $V_1 \cong \Im{i_1} \subseteq V$. 
-        \item the exactness at $V_2$ implies that $\Im{j_2} = \ker{0} = V_2$, thus $j_2$ is surjective.
+        \item the exactness at $V_1$ implies that $\{0_{V_1}\} = \im{0} = \ker(i_1)$, thus $i_1$ is injective.
+        \item the exactness at $V$ implies that $\im{i_1} = \ker(j_2)$, thus $V_1 \cong \im{i_1} \subseteq V$.
+        \item the exactness at $V_2$ implies that $\im{j_2} = \ker(0) = V_2$, thus $j_2$ is surjective.
     \end{itemize}
     
     Somehow, we can draw a Euler diagram to illustrate the situation:
@@ -617,16 +617,16 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
             \draw (2.5,0) ellipse (0.5cm and 1cm) node [below=1.75cm] {$V_2$};
 
 
-            \draw[red, -Stealth] (-5,0) -- (-2.5,0) node [midway, above] {\scriptsize $\Im{0}$};
-            \draw[blue, -Stealth] (0,0) -- (-2.5,0) node [midway, above] {\scriptsize $\ker{i_1}$};
-            \draw[red, -Stealth] (-2.5,0.75) -- (0,1) node [midway, above] {\scriptsize $\Im{i_1}$};
-            \draw[red, -Stealth] (-2.5,-0.75) -- (0,-1) node [midway, below] {\scriptsize $\Im{i_1}$};
-            \draw[blue, -Stealth] (2.5,0) -- (0,1) node [midway, above] {\scriptsize $\ker{j_2}$};
-            \draw[blue, -Stealth] (2.5,0) -- (0,-1) node [midway, below] {\scriptsize $\ker{j_2}$};
-            \draw[red, -Stealth] (0,1.5) -- (2.5,1) node [midway, above] {\scriptsize $\Im{j_2}$};
-            \draw[red, -Stealth] (0,-1.5) -- (2.5,-1) node [midway, below] {\scriptsize $\Im{j_2}$};
-            \draw[blue, -Stealth] (5,0) -- (2.5,1) node [midway, above] {\scriptsize $\ker{0}$};
-            \draw[blue, -Stealth] (5,0) -- (2.5,-1) node [midway, below] {\scriptsize $\ker{0}$};
+            \draw[red, -Stealth] (-5,0) -- (-2.5,0) node [midway, above] {\scriptsize $\im{0}$};
+            \draw[blue, -Stealth] (0,0) -- (-2.5,0) node [midway, above] {\scriptsize $\ker(i_1)$};
+            \draw[red, -Stealth] (-2.5,0.75) -- (0,1) node [midway, above] {\scriptsize $\im{i_1}$};
+            \draw[red, -Stealth] (-2.5,-0.75) -- (0,-1) node [midway, below] {\scriptsize $\im{i_1}$};
+            \draw[blue, -Stealth] (2.5,0) -- (0,1) node [midway, above] {\scriptsize $\ker(j_2)$};
+            \draw[blue, -Stealth] (2.5,0) -- (0,-1) node [midway, below] {\scriptsize $\ker(j_2)$};
+            \draw[red, -Stealth] (0,1.5) -- (2.5,1) node [midway, above] {\scriptsize $\im{j_2}$};
+            \draw[red, -Stealth] (0,-1.5) -- (2.5,-1) node [midway, below] {\scriptsize $\im{j_2}$};
+            \draw[blue, -Stealth] (5,0) -- (2.5,1) node [midway, above] {\scriptsize $\ker(0)$};
+            \draw[blue, -Stealth] (5,0) -- (2.5,-1) node [midway, below] {\scriptsize $\ker(0)$};
 
 
             \filldraw (-5,0) circle (1pt) node [below=1.75cm] {$0$};
@@ -662,25 +662,25 @@ There are some equalities about the composition of the maps in an exact sequence
 \begin{itemize}
     \item $j_1 \circ i_1 = \id_{V_1}$ because $j_1$ is a left inverse of $i_1$.
     \item $j_2 \circ i_2 = \id_{V_2}$ because $i_2$ is a right inverse of $j_2$.
-    \item $j_2 \circ i_1 = 0$ because $\Im{i_1} = \ker{j_2}$.
-    \item $j_1 \circ i_2 = 0$ because $\Im{i_2} = \ker{j_1}$.
-    \item $i_1 \circ j_1 + i_2 \circ j_2 = \id_V$ because for all $v \in V$, we have $v = (v - i_2(j_2(v))) + i_2(j_2(v))$ where $v - i_2(j_2(v)) \in \Im{i_1}$ and $i_2(j_2(v)) \in \Im{i_2}$. Also, $\Im{i_1} \cap \Im{i_2} = \{0_V\}$.
+    \item $j_2 \circ i_1 = 0$ because $\im{i_1} = \ker(j_2)$.
+    \item $j_1 \circ i_2 = 0$ because $\im{i_2} = \ker(j_1)$.
+    \item $i_1 \circ j_1 + i_2 \circ j_2 = \id_V$ because for all $v \in V$, we have $v = (v - i_2(j_2(v))) + i_2(j_2(v))$ where $v - i_2(j_2(v)) \in \im{i_1}$ and $i_2(j_2(v)) \in \im{i_2}$. Also, $\im{i_1} \cap \im{i_2} = \{0_V\}$.
 \end{itemize}
 
 There is actually one more fact about the short exact sequence.
 \begin{proposition}
-    $V \cong \Im{i_1} \oplus \Im{i_2}$.
+    $V \cong \im{i_1} \oplus \im{i_2}$.
 \end{proposition}
 \begin{proof}
-    The meaning of $V \cong \Im{i_1} \oplus \Im{i_2}$ is that for any $x \in V$, it can be uniquely written as $x = x_1 + x_2$ where $x_i \in \Im{i_i}$. Why? Suppose $x = x_1 + x_2 = x'_1 + x'_2$ where $x_i, x'_i \in \Im{i_i}$. Then we have $(x_1 - x'_1) + (x_2 - x'_2) = 0$. Note that $x_1 - x'_1 \in \Im{i_1}$ and $x_2 - x'_2 \in \Im{i_2}$. Thus, we have $x_1 - x'_1 = 0$ and $x_2 - x'_2 = 0$. This shows the uniqueness.
+    The meaning of $V \cong \im{i_1} \oplus \im{i_2}$ is that for any $x \in V$, it can be uniquely written as $x = x_1 + x_2$ where $x_i \in \im{i_i}$. Why? Suppose $x = x_1 + x_2 = x'_1 + x'_2$ where $x_i, x'_i \in \im{i_i}$. Then we have $(x_1 - x'_1) + (x_2 - x'_2) = 0$. Note that $x_1 - x'_1 \in \im{i_1}$ and $x_2 - x'_2 \in \im{i_2}$. Thus, we have $x_1 - x'_1 = 0$ and $x_2 - x'_2 = 0$. This shows the uniqueness.
 
     Note that all $V$, $V_1$ and $V_2$ are finite-dimensional. Then $V_2$ has a minimal spanning set, let say $S$. Then we construct $i_2 : s \mapsto i_2(s)$ where $i_2(s)$ is a choice of element from $j_2^{-1}(s) \neq \emptyset$ for each $s \in S$. Then we extend it to the whole space linearly. Thus, $i_2$ is injective. 
 
-    Then we want to prove that $\Im{i_1}$ and $\Im{i_2}$ are weakly independent. Assume that $x_1 + x_2 = 0$ where $x_i \in \Im{i_i}$. Then we have $j_2(x_1 + x_2) = j_2(x_1) + j_2(x_2) = 0$. Note that $j_2(x_1) = 0$ because $x_1 \in \Im{i_1} = \ker{j_2}$, the exactness of $V$. Thus, we have $j_2(x_2) = 0$. However, $j_2$ is injective on $\Im{i_2}$ because $j_2 \circ i_2 = \id_{V_2}$. Thus, we have $x_2 = 0$ and $x_1 = 0$. This shows that $\Im{i_1}$ and $\Im{i_2}$ are weakly independent.
+    Then we want to prove that $\im{i_1}$ and $\im{i_2}$ are weakly independent. Assume that $x_1 + x_2 = 0$ where $x_i \in \im{i_i}$. Then we have $j_2(x_1 + x_2) = j_2(x_1) + j_2(x_2) = 0$. Note that $j_2(x_1) = 0$ because $x_1 \in \im{i_1} = \ker(j_2)$, the exactness of $V$. Thus, we have $j_2(x_2) = 0$. However, $j_2$ is injective on $\im{i_2}$ because $j_2 \circ i_2 = \id_{V_2}$. Thus, we have $x_2 = 0$ and $x_1 = 0$. This shows that $\im{i_1}$ and $\im{i_2}$ are weakly independent.
 
-    Finally, we want to prove that $\Im{i_1} + \Im{i_2} = V$. For all $x \in V$, we let $x_2 = i_2(j_2(x)) \in \Im{i_2}$ and $x_1 = x - x_2$. Then we have to show that $x_1 \in \Im{i_1} = \ker{j_2}$. Note that $j_2(x) = j_2(x_1) + j_2(x_2) = j_2(x_1) + j_2 \circ i_2(j_2(x)) = j_2(x_1) + j_2(x)$. This shows that $j_2(x_1) = 0$. Thus, $x_1 \in \ker{j_2} = \Im{i_1}$. This shows that $\Im{i_1} + \Im{i_2} = V$.
+    Finally, we want to prove that $\im{i_1} + \im{i_2} = V$. For all $x \in V$, we let $x_2 = i_2(j_2(x)) \in \im{i_2}$ and $x_1 = x - x_2$. Then we have to show that $x_1 \in \im{i_1} = \ker(j_2)$. Note that $j_2(x) = j_2(x_1) + j_2(x_2) = j_2(x_1) + j_2 \circ i_2(j_2(x)) = j_2(x_1) + j_2(x)$. This shows that $j_2(x_1) = 0$. Thus, $x_1 \in \ker(j_2) = \im{i_1}$. This shows that $\im{i_1} + \im{i_2} = V$.
 
-    Actually $j_1$ is the projection from $\Im{i_1} \oplus \Im{i_2}$ to $\Im{i_1}$ and it exists due to the uniqueness of the decomposition.
+    Actually $j_1$ is the projection from $\im{i_1} \oplus \im{i_2}$ to $\im{i_1}$ and it exists due to the uniqueness of the decomposition.
 \end{proof}
 
 The equalities can be summarized as follows:
@@ -690,9 +690,9 @@ The equalities can be summarized as follows:
 
 For the dimension of the spaces, we have:
 \[
-    \dim{V} = \dim{\Im{i_1}} + \dim{\Im{i_2}} = \dim{V_1} + \dim{V_2}
+    \dim{V} = \dim{\im{i_1}} + \dim{\im{i_2}} = \dim{V_1} + \dim{V_2}
 \]
-As $V_1 \cong \Im{i_1}$ and $V_2 \cong \Im{i_2}$. $i_1$ and $i_2$ are injective and $V_k \to \Im{i_k}$ are surjective. 
+As $V_1 \cong \im{i_1}$ and $V_2 \cong \im{i_2}$. $i_1$ and $i_2$ are injective and $V_k \to \im{i_k}$ are surjective.
 
 Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$. Similarly, we have $\dim{W} \geq \dim{V}$ and $\dim{W} \geq \dim{\quotient{W}{V}}$, where $V$ is a subspace of $W$.
 
@@ -741,39 +741,39 @@ Later, we will get into the two problems that were asked by the students from Fu
 Let $A$ be a $m \times n$ matrix. Then we consider the following diagram:
 \begin{center}
     \begin{tikzcd}
-        \ker{f} \subseteq \F^n \arrow[r, "f", "A" swap] & \F^m \supseteq \Im{f}
+        \ker(f) \subseteq \F^n \arrow[r, "f", "A" swap] & \F^m \supseteq \im{f}
     \end{tikzcd}
 \end{center}
 
 In normal linear algebra, we have four fundamental concepts: column space, null space, rank and nullity.
 \begin{definition}[Column Space]
-    The \emph{column space} of $A$, denoted by $\col{A}$, is defined as the image of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
+    The \emph{column space} of $A$, denoted by $\col(A)$, is defined as the image of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
     \[
-        \col{A} = \Im{f} = \{ Ax \mid x \in \F^n \} \subseteq \F^m
+        \col(A) = \im{f} = \{ Ax \mid x \in \F^n \} \subseteq \F^m
     \]
 \end{definition}
 
 \newpage
 
 \begin{definition}[Null Space]
-    The \emph{null space} of $A$, denoted by $\nul{A}$, is defined as the kernel of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
+    The \emph{null space} of $A$, denoted by $\nul(A)$, is defined as the kernel of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
     \[
-        \nul{A} = \ker{f} = \{ x \in \F^n \mid Ax = 0 \} \subseteq \F^n
+        \nul(A) = \ker(f) = \{ x \in \F^n \mid Ax = 0 \} \subseteq \F^n
     \]
 \end{definition}
 
 The alternative, or normal, definition of rank is as follows.
 \begin{definition}[Rank]
-    The \emph{rank}\index{rank} of $A$, denoted by $\rank{A}$, is defined as the dimension of the column space of $A$, i.e.,
+    The \emph{rank}\index{rank} of $A$, denoted by $\rank(A)$, is defined as the dimension of the column space of $A$, i.e.,
     \[
-        \rank{A} = \dim{\col{A}} = \dim{\Im{f}} \leq m
+        \rank(A) = \dim{\col(A)} = \dim{\im{f}} \leq m
     \]
 \end{definition}
 
 \begin{definition}[Nullity]
-    The \emph{nullity}\index{nullity} of $A$, denoted by $\nullity{A}$, is defined as the dimension of the null space of $A$, i.e.,
+    The \emph{nullity}\index{nullity} of $A$, denoted by $\nullity(A)$, is defined as the dimension of the null space of $A$, i.e.,
     \[
-        \nullity{A} = \dim{\nul{A}} = \dim{\ker{f}} \leq n
+        \nullity(A) = \dim{\nul(A)} = \dim{\ker(f)} \leq n
     \]
 \end{definition}
 
@@ -782,7 +782,7 @@ The alternative, or normal, definition of rank is as follows.
 \begin{problem}
     Suppose we have three matrices $A$, $B$ and $C$. Then prove that 
     \[
-        \rank{B} + \rank{ABC} \geq \rank{AB} + \rank{BC}
+        \rank(B) + \rank(ABC) \geq \rank(AB) + \rank(BC)
     \]
 \end{problem}
 
@@ -791,40 +791,40 @@ The alternative, or normal, definition of rank is as follows.
     \begin{center}
         \begin{tikzcd}[row sep=huge, column sep=large]
             0 \arrow[r] & 
-            | [alias=D] | \col{BC} \arrow[r, hook, "C" description, red] \arrow[d, two heads, "A" description, blue] \arrow[rdr, start anchor=south, rounded corners, to path={
+            | [alias=D] | \col(BC) \arrow[r, hook, "C" description, red] \arrow[d, two heads, "A" description, blue] \arrow[rdr, start anchor=south, rounded corners, to path={
                 -- (B.south)
                 -- (\tikztotarget.north west) 
             }, orange, thick, -Stealth] \arrow[drr, start anchor=south, rounded corners, to path={
                 -- (D.south west)
                 |- (\tikztotarget.south west)
             }, violet, thick, -Stealth] & 
-            | [alias=B] | \col{B} \arrow[r, two heads, "\pi_1" description, blue] \arrow[d, two heads, "A" description, blue] \arrow[dr, two heads, teal] & 
-            \quotient{\col{B}}{\col{BC}} \arrow[r] \arrow[d, two heads, "\exists ! \phi" description, dashed, ocre] & 
+            | [alias=B] | \col(B) \arrow[r, two heads, "\pi_1" description, blue] \arrow[d, two heads, "A" description, blue] \arrow[dr, two heads, teal] &
+            \quotient{\col(B)}{\col(BC)} \arrow[r] \arrow[d, two heads, "\exists ! \phi" description, dashed, ocre] &
             0 \\
 
             0 \arrow[r] & 
-            | [alias=C] | \col{ABC} \arrow[r, hook, "C" description, red] & 
-            | [alias=A] | \col{AB} \arrow[r, two heads, "\pi_2" description, blue] & 
-            \quotient{\col{AB}}{\col{ABC}} \arrow[r] & 
+            | [alias=C] | \col(ABC) \arrow[r, hook, "C" description, red] &
+            | [alias=A] | \col(AB) \arrow[r, two heads, "\pi_2" description, blue] &
+            \quotient{\col(AB)}{\col(ABC)} \arrow[r] &
             0
         \end{tikzcd}
     \end{center}
 
-    We denote the injective map with red color and the surjective map with blue color. Notice that there is a surjective map from $\col{B}$ to $\quotient{\col{AB}}{\col{ABC}}$ due to the surjectivity of $A$ and $\pi_2$. Then we denote this surjective map with teal color.
+    We denote the injective map with red color and the surjective map with blue color. Notice that there is a surjective map from $\col(B)$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the surjectivity of $A$ and $\pi_2$. Then we denote this surjective map with teal color.
 
-    Then we have to consider whether the map from $\col{BC}$ to $\quotient{\col{AB}}{\col{ABC}}$ is zero. If the map is zero, then we can construct a unique surjective map $\phi$ from $\quotient{\col{B}}{\col{BC}}$ to $\quotient{\col{AB}}{\col{ABC}}$ due to the universal property of quotient space.
+    Then we have to consider whether the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is zero. If the map is zero, then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\col(BC)}$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the universal property of quotient space.
 
-    Note that the map from $\col{BC}$ to $\quotient{\col{AB}}{\col{ABC}}$ is a zero map. As both upper and lower sequences are exact, we have the exactness at $\col{AB}$, i.e., $\Im{C} = \ker{\pi_2}$. Thus the composite map $\pi_2 \circ C$ is a zero map. This shows that the map from $\col{BC}$ to $\quotient{\col{AB}}{\col{ABC}}$ is a zero map.
+    Note that the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is a zero map. As both upper and lower sequences are exact, we have the exactness at $\col(AB)$, i.e., $\im{C} = \ker(\pi_2)$. Thus the composite map $\pi_2 \circ C$ is a zero map. This shows that the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is a zero map.
 
-    Then we can construct a unique surjective map $\phi$ from $\quotient{\col{B}}{\col{BC}}$ to $\quotient{\col{AB}}{\col{ABC}}$ due to the universal property of quotient space.
+    Then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\col(BC)}$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the universal property of quotient space.
 
     Finally, we consider the dimensions of the spaces. Note that $\phi$ is surjective, thus we have
     \[
         \begin{split}
-            \dim{\quotient{\col{B}}{\col{BC}}} & \geq \dim{\quotient{\col{AB}}{\col{ABC}}} \\
-            \dim{\col{B}} - \dim{\col{BC}} & \geq \dim{\col{AB}} - \dim{\col{ABC}} \\
-            \dim{\col{B}} + \dim{\col{ABC}} & \geq \dim{\col{AB}} + \dim{\col{BC}} \\
-            \rank{B} + \rank{ABC} & \geq \rank{AB} + \rank{BC}
+            \dim{\quotient{\col(B)}{\col(BC)}} & \geq \dim{\quotient{\col(AB)}{\col(ABC)}} \\
+            \dim{\col(B)} - \dim{\col(BC)} & \geq \dim{\col(AB)} - \dim{\col(ABC)} \\
+            \dim{\col(B)} + \dim{\col(ABC)} & \geq \dim{\col(AB)} + \dim{\col(BC)} \\
+            \rank(B) + \rank(ABC) & \geq \rank(AB) + \rank(BC)
         \end{split}
     \]
 \end{proof}
@@ -834,17 +834,17 @@ The alternative, or normal, definition of rank is as follows.
 \begin{problem}
     If $A$ is a $n \times n$ matrix then prove that
     \[
-        \rank{A^n} = \rank{A^{n+1}}
+        \rank(A^n) = \rank(A^{n+1)}
     \]
 \end{problem}
 \begin{proof}
     We consider the following diagram:
     \begin{center}
         \begin{tikzcd}[column sep=normal]
-            I_n \arrow[r, "A"] & \Im{A} \arrow[r, "A"] & \Im{A^2} \arrow[r, "A"] & \cdots \arrow[r, "A"] & \Im{A^n} \arrow[r, "A"] & \cdots
+            I_n \arrow[r, "A"] & \im{A} \arrow[r, "A"] & \im{A^2} \arrow[r, "A"] & \cdots \arrow[r, "A"] & \im{A^n} \arrow[r, "A"] & \cdots
         \end{tikzcd}
     \end{center}
-    As $I_n \supseteq \Im{A} \supseteq \Im{A^2} \supseteq \cdots$, we know that 
+    As $I_n \supseteq \im{A} \supseteq \im{A^2} \supseteq \cdots$, we know that
     \[
         n = \dim{I_n} \geq r(A) \geq r(A^2) \geq \cdots
     \]
@@ -864,98 +864,98 @@ Actually, using short exact sequence, we can easily prove the rank-nullity theor
 \begin{theorem}[Rank-Nullity Theorem]
     For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
     \[
-        \rank{f} + \nullity{f} = \dim{V}
+        \rank(f) + \nullity(f) = \dim{V}
     \]
 \end{theorem}
 \begin{proof}
     Consider the following short exact sequence:
     \begin{center}
         \begin{tikzcd}[column sep=huge]
-            0 \arrow[r] & \ker{f} \arrow[r, "\iota", hook] & V \arrow[r, "f", two heads] & \Im{f} \arrow[r] & 0
+            0 \arrow[r] & \ker(f) \arrow[r, "\iota", hook] & V \arrow[r, "f", two heads] & \im{f} \arrow[r] & 0
         \end{tikzcd}
     \end{center}
-    Then we have $V \cong \ker{f} \oplus \Im{f}$. Thus, we have $\dim{V} = \dim{\ker{f}} + \dim{\Im{f}}$. This shows that $\rank{f} + \nullity{f} = \dim{V}$.
+    Then we have $V \cong \ker(f) \oplus \im{f}$. Thus, we have $\dim{V} = \dim{\ker(f)} + \dim{\im{f}}$. This shows that $\rank(f) + \nullity(f) = \dim{V}$.
 \end{proof}
 
 Moreover, we have the following corollary.
 \begin{corollary}
     For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
     \[
-        \dim{W} = \rank{f} + \dim{\coker{f}}
+        \dim{W} = \rank(f) + \dim{\coker(f)}
     \]
 \end{corollary}
 \begin{proof}
     Consider the following short exact sequence:
     \begin{center}
         \begin{tikzcd}[column sep=huge]
-            0 \arrow[r] & \Im{f} \arrow[r, "\iota", hook] & W \arrow[r, "\pi", two heads] & \coker{f} \arrow[r] & 0
+            0 \arrow[r] & \im{f} \arrow[r, "\iota", hook] & W \arrow[r, "\pi", two heads] & \coker(f) \arrow[r] & 0
         \end{tikzcd}
     \end{center}
-    Then we have $W \cong \Im{f} \oplus \coker{f}$. Thus, we have $\dim{W} = \dim{\Im{f}} + \dim{\coker{f}}$. This shows that $\dim{W} = \rank{f} + \dim{\coker{f}}$.
+    Then we have $W \cong \im{f} \oplus \coker(f)$. Thus, we have $\dim{W} = \dim{\im{f}} + \dim{\coker(f)}$. This shows that $\dim{W} = \rank(f) + \dim{\coker(f)}$.
 \end{proof}
 
 \begin{corollary}
     For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
     \[
-        \dim{V} = \nullity{f} + \dim{\coim{f}}
+        \dim{V} = \nullity(f) + \dim{\coim(f)}
     \]
 \end{corollary}
 \begin{proof}
     Consider the following short exact sequence:
     \begin{center}
         \begin{tikzcd}[column sep=huge]
-            0 \arrow[r] & \ker{f} \arrow[r, "\iota", hook] & V \arrow[r, "\pi", two heads] & \coim{f} \arrow[r] & 0
+            0 \arrow[r] & \ker(f) \arrow[r, "\iota", hook] & V \arrow[r, "\pi", two heads] & \coim(f) \arrow[r] & 0
         \end{tikzcd}
     \end{center}
-    Then we have $V \cong \ker{f} \oplus \coim{f}$. Thus, we have $\dim{V} = \dim{\ker{f}} + \dim{\coim{f}}$. This shows that $\dim{V} = \nullity{f} + \dim{\coim{f}}$.
+    Then we have $V \cong \ker(f) \oplus \coim(f)$. Thus, we have $\dim{V} = \dim{\ker(f)} + \dim{\coim(f)}$. This shows that $\dim{V} = \nullity(f) + \dim{\coim(f)}$.
 \end{proof}
 
 Moreover, we have the following properties for rank:
 \begin{enumerate}
     \item The rank of a matrix is invariant under elementary row and column operations.
-    \item $\rank{A + B} \leq \rank{A} + \rank{B}$
-    \item $\rank{AB} \leq \rank{A}$ and $\rank{AB} \leq \rank{B}$
+    \item $\rank(A + B) \leq \rank(A) + \rank(B)$
+    \item $\rank(AB) \leq \rank(A)$ and $\rank(AB) \leq \rank(B)$
 \end{enumerate}
 
 \newpage
 
 \section{Canonical Form of Linear Map}
 
-First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$. Recall that $\ker{f} = f^{-1} (0)$, $\Im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim{f} = \quotient{V_1}{\ker{f}}$ and $\coker{f} = \quotient{V_2}{\Im{f}}$. We have the following commutative diagram:
+First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$. Recall that $\ker(f) = f^{-1} (0)$, $\im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim(f) = \quotient{V_1}{\ker(f)}$ and $\coker(f) = \quotient{V_2}{\im{f}}$. We have the following commutative diagram:
 
 \begin{center}
     \begin{tikzcd}
         0 \arrow[d] & 0 \\
-        \ker{f} \arrow[d, hook] & \coker{f} \arrow[u] \arrow[d, bend left, "s_2", red] \\
+        \ker(f) \arrow[d, hook] & \coker(f) \arrow[u] \arrow[d, bend left, "s_2", red] \\
         V_1 \arrow[d, two heads] \arrow[r, "f"] \arrow[dr, ocre, "\bar{f}", two heads] & V_2 \arrow[u, two heads] \\
-        \coim{f} \arrow[d] \arrow[r, "\exists ! f'" swap, hook, two heads] \arrow[u, bend left, "s_1", red] & \Im{f} \arrow[u, hook] \\
+        \coim(f) \arrow[d] \arrow[r, "\exists ! f'" swap, hook, two heads] \arrow[u, bend left, "s_1", red] & \im{f} \arrow[u, hook] \\
         0 & 0 \arrow[u]
     \end{tikzcd}
 \end{center}
 
 Here, each column is an exact sequence, and the square in the middle is commutative, as the lower left triangle and upper right triangle are commutative.
 
-Moreover, the $f'$, the universal property for quotient map, is a linear equivalence. It is injective due to the trivial $\ker{f'}$. 
+Moreover, the $f'$, the universal property for quotient map, is a linear equivalence. It is injective due to the trivial $\ker(f')$.
 
 $s_1$ and $s_2$ are the \emph{right inverses} or called \emph{sections}\index{sections}.
 
-With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 = \Im{s_1} \oplus \ker{f}$ and $V_2 = \Im{f} \oplus \Im{s_2}$, the linear map $f$ is decomposed as follows:
+With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 = \im{s_1} \oplus \ker(f)$ and $V_2 = \im{f} \oplus \im{s_2}$, the linear map $f$ is decomposed as follows:
 \begin{center}
     \begin{tikzpicture}
         \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
-        {\Im{s_1} \oplus \ker{f} & \Im{f} \oplus \Im{s_2} \\};
+        {\im{s_1} \oplus \ker(f) & \im{f} \oplus \im{s_2} \\};
         \path[->] (m-1-1) edge node[above] {$f = \begin{bmatrix}
             \tilde{f} & 0 \\
             0 & 0
         \end{bmatrix}$} (m-1-2);
     \end{tikzpicture}
 \end{center}
-where $\tilde{f} : \Im{s_1} \to \Im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim{f} \to \Im{f}$ and $s_1 : \coim{f} \to \Im{s_1}$. Then the graph below commutes:
+where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim(f) \to \im{f}$ and $s_1 : \coim(f) \to \im{s_1}$. Then the graph below commutes:
 
 \begin{center}
     \begin{tikzcd}
-        \Im{s_1} \arrow[r, hook, two heads] & \Im{f} \\
-        \coim{f} \arrow[u, hook, two heads, "s_1"] \arrow[ur, hook, two heads, "f'" swap]
+        \im{s_1} \arrow[r, hook, two heads] & \im{f} \\
+        \coim(f) \arrow[u, hook, two heads, "s_1"] \arrow[ur, hook, two heads, "f'" swap]
     \end{tikzcd}
 \end{center}
 \begin{remark}
@@ -965,7 +965,7 @@ where $\tilde{f} : \Im{s_1} \to \Im{f}$ is a linear equivalence, as there are li
 The matrix $\begin{bmatrix}
     \tilde{f} & 0 \\
     0 & 0
-\end{bmatrix}$ is the canonical form of the linear map. Just as the canonical form of a matrix, it reveals the essential structure of the linear map. However, the rank of $\tilde{f}$ is unique, which is equal to $\rank{f} = \dim{\Im{f}}$.
+\end{bmatrix}$ is the canonical form of the linear map. Just as the canonical form of a matrix, it reveals the essential structure of the linear map. However, the rank of $\tilde{f}$ is unique, which is equal to $\rank(f) = \dim{\im{f}}$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -978,7 +978,7 @@ The matrix $\begin{bmatrix}
     \end{tikzpicture}
 \end{center}
 
-Moreover, from the diagram of two exact sequences, we can see that $f$ can be decomposed into two linear maps: $f = \iota \circ \bar{f}$, where $\bar{f} : V_1 \to \coim{f}$ is a surjective map and $\iota : \coim{f} \to V_2$ is an injective map. Note that the decomposition is not unique, as we can choose the path from $V_1$ to $\coim{f}$ then to $V_2$.
+Moreover, from the diagram of two exact sequences, we can see that $f$ can be decomposed into two linear maps: $f = \iota \circ \bar{f}$, where $\bar{f} : V_1 \to \coim(f)$ is a surjective map and $\iota : \coim(f) \to V_2$ is an injective map. Note that the decomposition is not unique, as we can choose the path from $V_1$ to $\coim(f)$ then to $V_2$.
 
 \newpage
 
@@ -991,7 +991,7 @@ Let $X$ be a set and $\delta_X = \{ \delta_x \mid x \in X \}$. Here $\delta_x : 
 \end{proposition}
 
 \begin{proposition}
-    $\span{\delta_X} = \F[X]$
+    $\Span(\delta_X) = \F[X]$
 \end{proposition}
 
 Then $\delta_X$ is a minimal spanning set for $\F[X]$.

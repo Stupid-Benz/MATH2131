@@ -200,9 +200,9 @@ Then the following is the second definition of small category, which is also the
     \end{enumerate}
 \end{definition}
 
-For a small category $\C$, the set of objects is denoted by $\Ob{\C}$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor(X, Y)$, $\Mor_{\C} (X, Y)$, Hom$_{\C}(X, Y)$ or simply $\C(X, Y)$.
+For a small category $\C$, the set of objects is denoted by $\Ob(\C)$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor(X, Y)$, $\Mor_{\C} (X, Y)$, Hom$_{\C}(X, Y)$ or simply $\C(X, Y)$.
 
-If we allow $\Ob{\C}$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}\index{class}, (a larger collection than set), we end up with the definition of \emph{category}\index{category}.
+If we allow $\Ob(\C)$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}\index{class}, (a larger collection than set), we end up with the definition of \emph{category}\index{category}.
 
 We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\index{invertible} if it has a two-sided inverse. A category such that every morphism is isomorphic is called a \emph{groupoid}\index{groupoid}.
 
@@ -215,7 +215,7 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \end{example}
 
 \begin{example}
-    If $\C$ and $\D$ are two categories, then we have the product category $\C \times \D$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob{\C}$, $Y \in \Ob{\D}$, $f \in \Mor_{\C}(X, X')$ and $g \in \Mor_{\D}(Y, Y')$.
+    If $\C$ and $\D$ are two categories, then we have the product category $\C \times \D$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob(\C)$, $Y \in \Ob(\D)$, $f \in \Mor_{\C}(X, X')$ and $g \in \Mor_{\D}(Y, Y')$.
 \end{example}
 
 \begin{example}
@@ -225,7 +225,7 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \begin{example}
     Fix an object $X$ in a category $\C$. Then the collection of all morphisms with source $X$, denoted by $\C(X, -)$, is a new category:
     \begin{itemize}
-        \item Objects: all morphisms $f : X \to Y$ in $\C$ for all $Y \in \Ob{\C}$;
+        \item Objects: all morphisms $f : X \to Y$ in $\C$ for all $Y \in \Ob(\C)$;
         \item Morphisms: commutative triangles in $\C$:
         \begin{center}
             \begin{tikzcd}
@@ -258,7 +258,7 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \end{example}
 
 \begin{definition}[Terminal Object and Initial Object]
-    Let $\C$ be a category. An object $T \in \Ob{\C}$ is called a \emph{terminal object} if for all object $X$, there exists a unique morphism from $X$ to $T$, i.e., $|\C(X, T)| = 1$. An object $I \in \Ob{\C}$ is called an \emph{initial object} if for all object $X$, there exists a unique morphism from $I$ to $X$, i.e., $|\C(I, X)| = 1$.
+    Let $\C$ be a category. An object $T \in \Ob(\C)$ is called a \emph{terminal object} if for all object $X$, there exists a unique morphism from $X$ to $T$, i.e., $|\C(X, T)| = 1$. An object $I \in \Ob(\C)$ is called an \emph{initial object} if for all object $X$, there exists a unique morphism from $I$ to $X$, i.e., $|\C(I, X)| = 1$.
 \end{definition}
 
 \begin{corollary}
@@ -284,7 +284,7 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \subsection{Products}
 
 \begin{definition}[Products]
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product}\index{product} of $X$ and $Y$ is an object $X \prod Y$ together with two morphisms $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ such that the following diagram commutes:
+    Let $\C$ be a category and $X, Y \in \Ob(\C)$. The \emph{product}\index{product} of $X$ and $Y$ is an object $X \prod Y$ together with two morphisms $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ such that the following diagram commutes:
     \begin{center}
         \begin{tikzcd}
             & Z \arrow[dl, "f_X" swap] \arrow[d, dashed, "\exists ! f"] \arrow[dr, "f_Y"] \\
@@ -297,9 +297,9 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \end{remark}
 
 \begin{corollary}
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. Consider the following new category:
+    Let $\C$ be a category and $X, Y \in \Ob(\C)$. Consider the following new category:
     \begin{itemize}
-        \item Objects: all morphisms \begin{tikzcd}[cramped, swap, column sep=normal] X \arrow[from=r, "f_X"] & Z & Y \arrow[from=l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob{\C}$;
+        \item Objects: all morphisms \begin{tikzcd}[cramped, swap, column sep=normal] X \arrow[from=r, "f_X"] & Z & Y \arrow[from=l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob(\C)$;
         \item Morphisms: commutative diagrams in $\C$:
     \end{itemize}
     \begin{center}
@@ -336,7 +336,7 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \subsection{Coproducts}
 
 \begin{definition}[Coproducts]
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct}\index{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ together with two morphisms $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ and any two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
+    Let $\C$ be a category and $X, Y \in \Ob(\C)$. The \emph{coproduct}\index{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ together with two morphisms $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ and any two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
     \begin{center}
         \begin{tikzcd}
             X \arrow[r, "\iota_X"] \arrow[dr, "f_X" swap] & X \coprod Y \arrow[d, dashed, "\exists ! f"] & Y \arrow[l, "\iota_Y" swap] \arrow[dl, "f_Y"] \\
@@ -349,9 +349,9 @@ We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\in
 \end{remark}
 
 \begin{corollary}
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct}\index{coproduct} of $X$ and $Y$ is the initial object in the new category:
+    Let $\C$ be a category and $X, Y \in \Ob(\C)$. The \emph{coproduct}\index{coproduct} of $X$ and $Y$ is the initial object in the new category:
     \begin{itemize}
-        \item Objects: all morphisms \begin{tikzcd}[cramped, column sep=normal] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob{\C}$;
+        \item Objects: all morphisms \begin{tikzcd}[cramped, column sep=normal] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob(\C)$;
         \item Morphisms: commutative diagrams in $\C$:
     \end{itemize}
     \begin{center}
@@ -401,7 +401,7 @@ In general, we may have the product or coproduct of a family of objects.
 
 Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}. The \emph{product}\index{product} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the terminal object in the new category:
 \begin{itemize}
-    \item Objects: all collections of morphisms $\{ f_{\alpha} : Z \to X_{\alpha} \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob{\C}$;
+    \item Objects: all collections of morphisms $\{ f_{\alpha} : Z \to X_{\alpha} \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
     \item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
 \end{itemize}
 \begin{center}
@@ -413,7 +413,7 @@ Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of 
 
 The \emph{coproduct}\index{coproduct} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the initial object in the new category:
 \begin{itemize}
-    \item Objects: all collections of morphisms $\{ f_{\alpha} : X_{\alpha} \to Z \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob{\C}$;
+    \item Objects: all collections of morphisms $\{ f_{\alpha} : X_{\alpha} \to Z \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
     \item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
 \end{itemize}
 \begin{center}
@@ -554,12 +554,12 @@ The left shows the diagram in generalised version, but it can be squeezed to the
 \begin{definition}[Functors]
     Let $\C$ and $\D$ be two categories. A \emph{functor}\index{functor} $F : \C \to \D$ consists of the following data:
     \begin{itemize}
-        \item A map $F : \Ob{\C} \to \Ob{\D}$;
-        \item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\D}(F(X), F(Y))$ for all $X, Y \in \Ob{\C}$;
+        \item A map $F : \Ob(\C) \to \Ob(\D)$;
+        \item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\D}(F(X), F(Y))$ for all $X, Y \in \Ob(\C)$;
     \end{itemize}
     such that the following conditions are satisfied:
     \begin{enumerate}[label=(\alph*)]
-        \item For all $X \in \Ob{\C}$, we have $F(1_X) = 1_{F(X)}$;
+        \item For all $X \in \Ob(\C)$, we have $F(1_X) = 1_{F(X)}$;
         \item For all appropriate morphisms $f, g$ in $\C$, we have $F(fg) = F(f) F(g)$.
     \end{enumerate}
 \end{definition}
@@ -601,7 +601,7 @@ This is called the \emph{universal property of free vector space over a set}. He
     \[
         \D(F(X), Y) \equiv \C(X, G(Y))
     \]
-    for all $X \in \Ob{\C}$ and $Y \in \Ob{\D}$.
+    for all $X \in \Ob(\C)$ and $Y \in \Ob(\D)$.
 \end{definition}
 
 \begin{example}
@@ -959,7 +959,7 @@ The natural identification is the universal property of tensor product. Consider
 \end{center}
 Note that the map $\iota$ and $\phi$ are bilinear maps, and the existence of the unique linear map $\bar{\phi}$ follows from the universal property of the tensor product. We can also consider it as the initial object in a new category:
 \begin{itemize}
-    \item Objects: all bilinear maps $\phi : U \times V \to Z$ for all $Z \in \Ob{\Vect_{\F}}$;
+    \item Objects: all bilinear maps $\phi : U \times V \to Z$ for all $Z \in \Ob(\Vect_{\F)}$;
     \item Morphisms: commutative diagrams in $\Vect_{\F}$:
 \end{itemize}
 \begin{center}
@@ -989,7 +989,7 @@ Why the construction of $\ideal_{U, V}$ is like this? This is because we want $\
 
 We define $U \otimes V = \quotient{\F[U \times V]}{\ideal_{U, V}}$ and this shows the existence of tensor product.
 \begin{remark}
-    The inclusion map $\iota : U \times V \to U \otimes V$ is `surjective' in the sense that the image of $\iota$ spans $U \otimes V$, i.e. $\span{\Im{\iota}} = U \otimes V$. To know $\bar{\phi}$, it suffices to know $\bar{\phi}(u \otimes v) = \phi(u, v)$ for all $u \in U$ and $v \in V$.
+    The inclusion map $\iota : U \times V \to U \otimes V$ is `surjective' in the sense that the image of $\iota$ spans $U \otimes V$, i.e. $\Span(\im{\iota)} = U \otimes V$. To know $\bar{\phi}$, it suffices to know $\bar{\phi}(u \otimes v) = \phi(u, v)$ for all $u \in U$ and $v \in V$.
 \end{remark}
 
 We can talk about the tensor product of $k$ linear spaces with $k \geq 2$. Moreover, the tensor product is associative and commutative up to isomorphism, i.e., $V_1 \otimes V_2 \otimes V_3 \cong (V_1 \otimes V_2) \otimes V_3 \cong V_1 \otimes (V_2 \otimes V_3)$ and $V_1 \otimes V_2 \cong V_2 \otimes V_1$. Both of them are natural isomorphisms.
@@ -1014,7 +1014,7 @@ Then we can prove that $\Hom(V_1, V_2) \equiv V_1^* \otimes V_2$ and $(V_1 \otim
 \[
     \dim(V \otimes W) = \dim(V) \cdot \dim(W)
 \]
-If $e$ is a minimal spanning set of $V_1$ and $f$ is a minimal spanning set of $V_2$, then $e \otimes f$ is a minimal spanning set of $V_1 \otimes V_2$. Moreover, we have $\End{V} \equiv (\End{V})^*$ and the identity map $1_V$ corresponds to the \emph{trace}\index{trace} map $\tr : \End{V} \to \F$ under this identification.
+If $e$ is a minimal spanning set of $V_1$ and $f$ is a minimal spanning set of $V_2$, then $e \otimes f$ is a minimal spanning set of $V_1 \otimes V_2$. Moreover, we have $\End(V) \equiv (\End(V))^*$ and the identity map $1_V$ corresponds to the \emph{trace}\index{trace} map $\tr : \End(V) \to \F$ under this identification.
 
 We also have the distribution of tensor product over direct sum: $V_1 \otimes (V_2 \oplus V_3) \equiv (V_1 \otimes V_2) \oplus (V_1 \otimes V_3)$. Moreover, $\Hom(V_1, V_2 \oplus V_3) \equiv \Hom(V_1, V_2) \oplus \Hom(V_1, V_3)$ and $\Hom(V_1 \oplus V_2, V_3) \equiv \Hom(V_1, V_3) \times \Hom(V_2, V_3)$.
 
@@ -1292,7 +1292,7 @@ As $\det$ is a functor, we have the following two properties:
     \det \id_V = \id_{\det V}, \qquad \det fg = \det f \cdot \det g
 \]
 
-In particular, if $f \in \End{V}$, then $\det f : \det V \to \det V$ is a multiplication by a scalar in $\F$. So we can identify $\det f$ with a scalar in $\F$. This scalar is called the \emph{determinant}\index{determinant} of $f$ and is denoted by $\det f$.
+In particular, if $f \in \End(V)$, then $\det f : \det V \to \det V$ is a multiplication by a scalar in $\F$. So we can identify $\det f$ with a scalar in $\F$. This scalar is called the \emph{determinant}\index{determinant} of $f$ and is denoted by $\det f$.
 
 Consider the following commutative diagram:
 \begin{center}
@@ -1302,7 +1302,7 @@ Consider the following commutative diagram:
         \F^n \arrow[r, "A", ocre] & \F^n
     \end{tikzcd}
 \end{center}
-where $V$ is an $n$-dimensional vector space over $\F$, $\B$ and $\B'$ are two bases of $V$, $f \in \End{V}$, $A$ and $A'$ are the matrix representations of $f$ under the bases $\B$ and $\B'$ respectively, and $P$ is the change of basis matrix from $\B$ to $\B'$. Then by focusing the red and blue commutative square, we have:
+where $V$ is an $n$-dimensional vector space over $\F$, $\B$ and $\B'$ are two bases of $V$, $f \in \End(V)$, $A$ and $A'$ are the matrix representations of $f$ under the bases $\B$ and $\B'$ respectively, and $P$ is the change of basis matrix from $\B$ to $\B'$. Then by focusing the red and blue commutative square, we have:
 \[
     AP = PA', \qquad A = P A' P^{-1}
 \]
@@ -1421,7 +1421,7 @@ Consider the following exact sequence:
         1 \arrow[r] & A_n \arrow[r, hook] & S_n \arrow[r, "\sgn", two heads] & \{ \pm 1 \} \arrow[r] & 1
     \end{tikzcd}
 \end{center}
-where $A_n$ is the \emph{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn : S_n \to \{ \pm 1 \}$, the \emph{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$. Note that $\ker{\sgn} = A_n$ and $\Im{\sgn} = \{ \pm 1 \}$.
+where $A_n$ is the \emph{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn : S_n \to \{ \pm 1 \}$, the \emph{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$. Note that $\ker(\sgn) = A_n$ and $\im{\sgn} = \{ \pm 1 \}$.
 \begin{remark}
     $A_n$ is simple for all $n \geq 5$. This means that $A_n$ has no non-trivial normal subgroups for all $n \geq 5$.
 \end{remark}
