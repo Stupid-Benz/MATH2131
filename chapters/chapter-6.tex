@@ -11,14 +11,14 @@ Before studying Euclidean vector spaces, we first review tensors and then introd
 Let $V$ be a finite dimensional vector space over a field $\F$. Then we have the following definitions.
 
 \begin{definition}[$k$-form]
-    A $k$-\emph{form} on $V$ is a multilinear map:
+    A $k$-\emph{form}\index{form} on $V$ is a multilinear map:
     \[
         \underbrace{V \times V \times \cdots \times V}_{k \text{ times}} \to \F
     \]
     which is linear in each argument. It is an element in $(V^*)^{\otimes k}$.
 \end{definition}
 
-More concretely, for 1-form, it is a linear functional on $V$, i.e. an element in $V^*$. It is also called \emph{covector}. For 2-form, it is a bilinear map on $V$, i.e. an element in $V^* \otimes V^*$. To prove that the set of all 2-forms on $V$ is isomorphic to $V^* \otimes V^*$, we can consider the following diagram:
+More concretely, for 1-form, it is a linear functional on $V$, i.e. an element in $V^*$. It is also called \emph{covector}\index{covector}. For 2-form, it is a bilinear map on $V$, i.e. an element in $V^* \otimes V^*$. To prove that the set of all 2-forms on $V$ is isomorphic to $V^* \otimes V^*$, we can consider the following diagram:
 \begin{center}
     \begin{tikzcd}
         \Map^{\mathsf{ML}} (V \times V, \F) \arrow[r, "\equiv" description, phantom] \arrow[d, dashed] & \Hom(V, V^*) \arrow[d, "\equiv" description, phantom] \\
@@ -29,7 +29,7 @@ More concretely, for 1-form, it is a linear functional on $V$, i.e. an element i
 Moreover, we have the following two special types of 2-forms.
 
 \begin{definition}[Symmetric and Skew-symmetric 2-forms]
-    A 2-form $\omega : V \times V \to \F$ is called \emph{symmetric} if 
+    A 2-form $\omega : V \times V \to \F$ is called \emph{symmetric}\index{symmetric} if
     \[
         \omega (u, v) = \omega (v, u)
     \]
@@ -50,7 +50,7 @@ Then we define the tensor spaces.
     Elements in $\mathcal{T}^{r, s} V$ are called \emph{tensors of type} $(r, s)$ on $V$, which is a mixed type if $r, s \neq 0$.
 \end{definition}
 
-If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}. If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}. For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself. Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}.
+If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}\index{tensor}. If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}\index{form}. For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself. Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
 
 Then we know that $\End{V} \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$. Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$. Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part. To know that what $a^i_j$ means, we can consider the following diagram:
 \begin{center}
@@ -211,7 +211,7 @@ Then a real linear space $V$ with an inner product $\langle -, - \rangle$ is cal
     \end{enumerate}
 \end{definition}
 
-If we want to combine the metric structure with the linear structure on $V$, we have to make sure that the distance function $d : V \times V \to \R$ satisfies the two additional properties in order to be compatible with the linear structure. We would say the properties are \emph{harmonic} with the linear structure.
+If we want to combine the metric structure with the linear structure on $V$, we have to make sure that the distance function $d : V \times V \to \R$ satisfies the two additional properties in order to be compatible with the linear structure. We would say the properties are \emph{harmonic}\index{harmonic} with the linear structure.
 
 \begin{definition}[Normed Linear Space]
     A real normed linear space is a real linear space $V$ together with a compatible metric structure or a normed structure, i.e., a distance function $d : V \times V \to \R$ such that

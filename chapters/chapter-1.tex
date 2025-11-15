@@ -29,7 +29,7 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{example}
 
 \begin{definition}[Associative]
-    A binary operation $\cdot: S \times S \to S$ is said to be \emph{associative} if, for all $x,y,z \in S$, 
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{associative}\index{associative} if, for all $x,y,z \in S$,
     \[ x \cdot (y \cdot z) = (x \cdot y) \cdot z \]
 \end{definition}
 
@@ -38,7 +38,7 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{example}
 
 \begin{definition}[Identifiable]
-    A binary operation $\cdot: S \times S \to S$ is said to be \emph{identifiable}, or \emph{unital}, if there exists an element $e \in S$, the \emph{identity} or \emph{unit element}, such that, for all $x \in S$
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{identifiable}\index{identifiable}, or \emph{unital}\index{unital}, if there exists an element $e \in S$, the \emph{identity}\index{identity} or \emph{unit element}, such that, for all $x \in S$
     \[ e \cdot x = x = x \cdot e \]
 \end{definition}
 
@@ -69,7 +69,7 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 \end{example}
 
 \begin{definition}[Invertible]
-    A binary operation $\cdot: S \times S \to S$ is said to be \emph{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse} of $x$, denoted as $x^{-1}$, such that
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{invertible}\index{invertible} if, for every element $x \in S$, there exists an element $y \in S$, called the two-sided \emph{inverse}\index{inverse} of $x$, denoted as $x^{-1}$, such that
     \[ x \cdot y = e = y \cdot x \]
     where $e$ is the identity element of the operation.
 \end{definition}
@@ -103,7 +103,7 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 Same for the inverse, one-sided need not be unique. The example is left as an exercise.
 
 \begin{definition}[Commutative]
-    A binary operation $\cdot: S \times S \to S$ is said to be \emph{commutative} if, for all $x,y \in S$, the following holds:
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{commutative}\index{commutative} if, for all $x,y \in S$, the following holds:
     \[ x \cdot y = y \cdot x \]
 \end{definition}
 
@@ -112,7 +112,7 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 \end{example}
 
 \begin{definition}[Distributive (Harmonic)]
-    A binary operation $\cdot: S \times S \to S$ is said to be \emph{distributive} with respect to another binary operation $+: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
+    A binary operation $\cdot: S \times S \to S$ is said to be \emph{distributive}\index{distributive} with respect to another binary operation $+: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
     \[ \begin{split}
         x \cdot (y + z) &= x \cdot y + x \cdot z \\
         (y + z) \cdot x &= y \cdot x + z \cdot x
@@ -136,16 +136,16 @@ The professor preferred to use the word ``harmonic'' instead of ``distributive''
 With those five properties, we can construct monoid and groups.
 
 \begin{definition}[Monoid]
-    A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ having the following properties:
+    A \emph{monoid}\index{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ having the following properties:
     \begin{enumerate}
-        \item \emph{Associative}
-        \item \emph{Identifiable}
+        \item \emph{Associative}\index{Associative}
+        \item \emph{Identifiable}\index{Identifiable}
     \end{enumerate}
     We say $(M, f)$ is a monoid, and $f$ is the \emph{monoid operation} on the set $M$. A set $M$ with a monoid operation $f$ is the \emph{monoid structure}.
 \end{definition}
 
 \begin{definition}[Group]
-    A \emph{group} is a set $G$ equipped with a monoid operation $f: G \times G \to G$ with the additional property that every element has an inverse.
+    A \emph{group}\index{group} is a set $G$ equipped with a monoid operation $f: G \times G \to G$ with the additional property that every element has an inverse.
 \end{definition}
 
 \begin{example}
@@ -153,7 +153,7 @@ With those five properties, we can construct monoid and groups.
 \end{example}
 
 \begin{definition}[Abelian Monoid / Group]
-    A monoid / group $(S, f)$ is said to be an \emph{abelian} if the operation $f$ is commutative.
+    A monoid / group $(S, f)$ is said to be an \emph{abelian}\index{abelian} if the operation $f$ is commutative.
 \end{definition}
 
 \begin{definition}[Unital Ring]
@@ -174,7 +174,7 @@ With those five properties, we can construct monoid and groups.
 \end{example}
 
 \begin{definition}[Field]
-    A \emph{field} is a commutative ring $\F$ such that every non-zero element has a multiplicative inverse.
+    A \emph{field}\index{field} is a commutative ring $\F$ such that every non-zero element has a multiplicative inverse.
 \end{definition}
 
 \begin{example}
@@ -253,7 +253,7 @@ For monoid homomorphisms, the second property cannot be derived from the first p
 However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element. Thus, for group homomorphisms, the second property can be derived from the first property.
 
 \begin{definition}[Idempotent Elements]
-    An element $a$ is said to be \emph{idempotent} if $a = a^2$.
+    An element $a$ is said to be \emph{idempotent}\index{idempotent} if $a = a^2$.
 \end{definition}
 
 \newpage
@@ -270,7 +270,7 @@ To introduce the vector space, the following two morphisms are required.
 \end{definition}
 
 \begin{definition}[Endomorphism]
-    An \emph{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a set map such that:
+    An \emph{endomorphism}\index{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a set map such that:
     \[
         f(x \cdot y) = f(x) \cdot f(y) \quad \forall x, y \in A
     \]

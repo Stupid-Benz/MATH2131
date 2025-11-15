@@ -49,6 +49,8 @@
 	pdfcreator={LaTeX}, % Content creator field
 }
 
+\makeatletter\indexsetup{level=\@gobble, noclearpage}\makeatother % Disable \chapter in \printindex
+
 \addbibresource{bibliography.bib} % Bibliography file
 
 \definecolor{ocre}{RGB}{0,83,166} % Define the color used for highlighting throughout the book
@@ -375,6 +377,16 @@
 		\section*{Websites}
 		\addcontentsline{toc}{section}{Websites} % Add the Websites subheading to the table of contents
 		\printbibliography[heading=bibempty, type=online] % Output online bibliography entries
+
+		%----------------------------------------------------------------------------------------
+		%	INDEX
+		%----------------------------------------------------------------------------------------
+
+		\chapter*{Index}
+		\markboth{\sffamily\normalsize\bfseries Index}{\sffamily\normalsize\bfseries Index}
+		\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
+
+		\printindex
 
 		%------------------------------------------------
 

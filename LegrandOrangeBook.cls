@@ -449,7 +449,7 @@
 %	INDEX
 %----------------------------------------------------------------------------------------
 
-\usepackage{makeidx} % Required to make an index
+\usepackage{imakeidx} % Required to make an index
 
 \makeindex % Tells LaTeX to create the files required for indexing
 

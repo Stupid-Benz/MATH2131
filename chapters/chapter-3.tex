@@ -25,7 +25,7 @@ Here, we discuss linear spaces with more in depth terms.
 \end{proof}
 
 \begin{definition}[Kernels]
-    Let $f : V \to W$ be a linear map. The \emph{kernel} of $f$, denoted as $\ker f$, is defined as 
+    Let $f : V \to W$ be a linear map. The \emph{kernel}\index{kernel} of $f$, denoted as $\ker f$, is defined as
     \[
         \ker f \overset{\text{def}}{=\joinrel=} f^{-1}(0_W) = \{ v \in V \mid f(v) = 0_W \}
     \]
@@ -44,7 +44,7 @@ Here, we discuss linear spaces with more in depth terms.
 \end{example}
 
 \begin{definition}[Images]
-    Let $f : V \to W$ be a linear map. The \emph{image} of $f$, denoted by $\Im f$, is defined as 
+    Let $f : V \to W$ be a linear map. The \emph{image}\index{image} of $f$, denoted by $\Im f$, is defined as
     \[
         \Im f \overset{\text{def}}{=\joinrel=} \{ f(v) \mid v \in V \} \subset W
     \]
@@ -73,7 +73,7 @@ Here, we discuss linear spaces with more in depth terms.
 Then we consider the duality of the intersection and union of subspaces. Whether the union of two subspaces is still a subspace? Unfortunately, the answer is no in general case. However, we have the following proposition.
 
 \begin{proposition}
-    Let $W$ be a linear space over a field $\F$ and consider the family of subspaces $\{V_\alpha\}_{\alpha \in I}$. Then $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is a subspace of $W$ where $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is the completion of $\bigcup_{\alpha \in I} V_\alpha$ under linear combinations. We call $\bar{\bigcup_{\alpha \in I} V_\alpha}$ the \emph{sum} of the subspaces $\{V_\alpha\}_{\alpha \in I}$, denoted by $\sum_{\alpha \in I} V_\alpha$.
+    Let $W$ be a linear space over a field $\F$ and consider the family of subspaces $\{V_\alpha\}_{\alpha \in I}$. Then $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is a subspace of $W$ where $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is the completion of $\bigcup_{\alpha \in I} V_\alpha$ under linear combinations. We call $\bar{\bigcup_{\alpha \in I} V_\alpha}$ the \emph{sum}\index{sum} of the subspaces $\{V_\alpha\}_{\alpha \in I}$, denoted by $\sum_{\alpha \in I} V_\alpha$.
 \end{proposition}
 
 \newpage
@@ -181,7 +181,7 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
     The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be a minimal spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is bijective.
 \end{proposition}
 \begin{remark}
-    A order minimal spanning set is regarded as \emph{basis}.
+    A order minimal spanning set is regarded as \emph{basis}\index{basis}.
 \end{remark}
 
 \begin{example}
@@ -243,7 +243,7 @@ Then we have the following group action:
 \end{center}
 
 \begin{definition}[Orbits]
-    Let $G$ be a group acting on a set $X$. The \emph{orbit} of the action through a point $x \in X$, denoted as $G \cdot x$, is defined as the set of points in $X$ that can be reached from $x$ by the action of elements of $G$, i.e., 
+    Let $G$ be a group acting on a set $X$. The \emph{orbit}\index{orbit} of the action through a point $x \in X$, denoted as $G \cdot x$, is defined as the set of points in $X$ that can be reached from $x$ by the action of elements of $G$, i.e.,
     \[
         G \cdot x = \{g \cdot x \mid g \in G\}
     \]
@@ -251,10 +251,10 @@ Then we have the following group action:
 
 There is only two situation for the orbits, either the origin or a circle.
 
-In the following section, we may regard the orbits $G \cdot x$ as a \emph{coset}.
+In the following section, we may regard the orbits $G \cdot x$ as a \emph{coset}\index{coset}.
 
 \begin{definition}[Partition]
-    A \emph{partition} of a set $X$ is a collection of non-empty, disjoint subsets of $X$ whose union is $X$. The partition of the set $X$ is the same as an equivalence relation on $X$.
+    A \emph{partition}\index{partition} of a set $X$ is a collection of non-empty, disjoint subsets of $X$ whose union is $X$. The partition of the set $X$ is the same as an equivalence relation on $X$.
 \end{definition}
 
 Orbits give a partition of the set $X$, i.e., $X$ can be expressed as the disjoint union of its orbits. The orbits of the action are the equivalence classes of the equivalence relation.
@@ -294,7 +294,7 @@ This group action defines the following equivalence relation on $W$, where $V$ i
     \[
         \quotient{W}{V} = \{ V \cdot w \mid w \in W \} = \{ w + V \mid w \in W \}
     \]
-    where $V \cdot w = w + V = \{ w + v \mid v \in V \}$ is called the \emph{coset} of $V$ in $W$ containing $w$.
+    where $V \cdot w = w + V = \{ w + v \mid v \in V \}$ is called the \emph{coset}\index{coset} of $V$ in $W$ containing $w$.
 \end{definition}
 
 \begin{definition}[Quotient Map]
@@ -477,7 +477,7 @@ Generally, we may consider the following commutative diagrams, where left is the
 \end{center}
 
 \begin{definition}[Cokernel]
-    Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$. The \emph{cokernel} of $f$, denoted by $\coker{f}$, is defined as the quotient space of $W$ by the image of $f$, i.e., 
+    Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$. The \emph{cokernel}\index{cokernel} of $f$, denoted by $\coker{f}$, is defined as the quotient space of $W$ by the image of $f$, i.e.,
     \[
         \coker{f} = \quotient{W}{\Im{f}} = W / \Im{f}
     \]
@@ -485,7 +485,7 @@ Generally, we may consider the following commutative diagrams, where left is the
 \end{definition}
 
 \begin{definition}[Coimage]
-    Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage} of $f$, denoted by $\coim{f}$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
+    Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage}\index{coimage} of $f$, denoted by $\coim{f}$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
     \[
         \coim{f} = \quotient{W}{\ker{f}} = W / \ker{f}
     \]
@@ -497,7 +497,7 @@ Generally, we may consider the following commutative diagrams, where left is the
 \section{Sum and Direct Sum}
 
 \begin{definition}[Sum of Subspaces]
-    Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. The \emph{sum} of $V_1$ and $V_2$, denoted by $V_1 + V_2$, is defined as the set of all possible sums of elements from $V_1$ and $V_2$, i.e.,
+    Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. The \emph{sum}\index{sum} of $V_1$ and $V_2$, denoted by $V_1 + V_2$, is defined as the set of all possible sums of elements from $V_1$ and $V_2$, i.e.,
     \[
         V_1 + V_2 = \{ v_1 + v_2 \mid v_1 \in V_1, v_2 \in V_2 \}
     \]
@@ -582,7 +582,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
             \cdots \arrow[r, "f_{i-2}"] & V_{i-1} \arrow[r, "f_{i-1}"] & V_i \arrow[r, "f_i"] & V_{i+1} \arrow[r, "f_{i+1}"] & \cdots
         \end{tikzcd}
     \end{center}
-    is said to be \emph{exact} at $V_i$ if 
+    is said to be \emph{exact}\index{exact} at $V_i$ if
     \[ \Im{f_{i-1}} = \ker{f_i} \]
     i.e., the image of the map before $V_i$ is equal to the kernel of the map after $V_i$.
 
@@ -764,14 +764,14 @@ In normal linear algebra, we have four fundamental concepts: column space, null 
 
 The alternative, or normal, definition of rank is as follows.
 \begin{definition}[Rank]
-    The \emph{rank} of $A$, denoted by $\rank{A}$, is defined as the dimension of the column space of $A$, i.e.,
+    The \emph{rank}\index{rank} of $A$, denoted by $\rank{A}$, is defined as the dimension of the column space of $A$, i.e.,
     \[
         \rank{A} = \dim{\col{A}} = \dim{\Im{f}} \leq m
     \]
 \end{definition}
 
 \begin{definition}[Nullity]
-    The \emph{nullity} of $A$, denoted by $\nullity{A}$, is defined as the dimension of the null space of $A$, i.e.,
+    The \emph{nullity}\index{nullity} of $A$, denoted by $\nullity{A}$, is defined as the dimension of the null space of $A$, i.e.,
     \[
         \nullity{A} = \dim{\nul{A}} = \dim{\ker{f}} \leq n
     \]
@@ -937,7 +937,7 @@ Here, each column is an exact sequence, and the square in the middle is commutat
 
 Moreover, the $f'$, the universal property for quotient map, is a linear equivalence. It is injective due to the trivial $\ker{f'}$. 
 
-$s_1$ and $s_2$ are the \emph{right inverses} or called \emph{sections}.
+$s_1$ and $s_2$ are the \emph{right inverses} or called \emph{sections}\index{sections}.
 
 With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 = \Im{s_1} \oplus \ker{f}$ and $V_2 = \Im{f} \oplus \Im{s_2}$, the linear map $f$ is decomposed as follows:
 \begin{center}

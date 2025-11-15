@@ -61,7 +61,7 @@ The following shows the associativity law:
 
 Hence, the set of all matrices form a small category.
 
-Consider the set of all invertible matrices over $\F$, it is also a small category, in fact, it is a \emph{groupoid}. Groupoid is defined as a small category such that every morphism is invertible.
+Consider the set of all invertible matrices over $\F$, it is also a small category, in fact, it is a \emph{groupoid}\index{groupoid}. Groupoid is defined as a small category such that every morphism is invertible.
 
 \begin{center}
     \begin{tikzcd}[column sep=3.5em, row sep=huge, math mode=false]
@@ -153,8 +153,8 @@ We may draw the associativity law this way:
     \end{center}
 \end{example}
 \begin{remark}
-    Elements in $\C$ are \emph{morphisms} or \emph{arrows}, and elements in $\C_0$ are \emph{identity morphisms}. A morphism $f$ is viewed as an arrow from $s(f) \in C_0$ to $t(f) \in C_0$, i.e., $f : s(f) \to t(f)$.
-    An identity morphism is drawn in the following way with $X$ being called the \emph{object}:
+    Elements in $\C$ are \emph{morphisms}\index{morphisms} or \emph{arrows}\index{arrows}, and elements in $\C_0$ are \emph{identity morphisms}. A morphism $f$ is viewed as an arrow from $s(f) \in C_0$ to $t(f) \in C_0$, i.e., $f : s(f) \to t(f)$.
+    An identity morphism is drawn in the following way with $X$ being called the \emph{object}\index{object}:
     \begin{center}
         \begin{tikzcd}[row sep=subtext, swap]
             * & * \arrow[l, "1_X"] \\
@@ -202,9 +202,9 @@ Then the following is the second definition of small category, which is also the
 
 For a small category $\C$, the set of objects is denoted by $\Ob{\C}$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor(X, Y)$, $\Mor_{\C} (X, Y)$, Hom$_{\C}(X, Y)$ or simply $\C(X, Y)$.
 
-If we allow $\Ob{\C}$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}, (a larger collection than set), we end up with the definition of \emph{category}.
+If we allow $\Ob{\C}$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}\index{class}, (a larger collection than set), we end up with the definition of \emph{category}\index{category}.
 
-We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-sided inverse. A category such that every morphism is isomorphic is called a \emph{groupoid}.
+We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\index{invertible} if it has a two-sided inverse. A category such that every morphism is isomorphic is called a \emph{groupoid}\index{groupoid}.
 
 \begin{example}
     The collection of all sets and set maps, denoted by $\Set$, is a category.
@@ -284,7 +284,7 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \subsection{Products}
 
 \begin{definition}[Products]
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product} of $X$ and $Y$ is an object $X \prod Y$ together with two morphisms $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ such that the following diagram commutes:
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{product}\index{product} of $X$ and $Y$ is an object $X \prod Y$ together with two morphisms $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ and any two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ such that the following diagram commutes:
     \begin{center}
         \begin{tikzcd}
             & Z \arrow[dl, "f_X" swap] \arrow[d, dashed, "\exists ! f"] \arrow[dr, "f_Y"] \\
@@ -336,7 +336,7 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \subsection{Coproducts}
 
 \begin{definition}[Coproducts]
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ together with two morphisms $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ and any two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct}\index{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ together with two morphisms $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ and any two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
     \begin{center}
         \begin{tikzcd}
             X \arrow[r, "\iota_X"] \arrow[dr, "f_X" swap] & X \coprod Y \arrow[d, dashed, "\exists ! f"] & Y \arrow[l, "\iota_Y" swap] \arrow[dl, "f_Y"] \\
@@ -349,7 +349,7 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 \end{remark}
 
 \begin{corollary}
-    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct} of $X$ and $Y$ is the initial object in the new category:
+    Let $\C$ be a category and $X, Y \in \Ob{\C}$. The \emph{coproduct}\index{coproduct} of $X$ and $Y$ is the initial object in the new category:
     \begin{itemize}
         \item Objects: all morphisms \begin{tikzcd}[cramped, column sep=normal] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y" swap] \end{tikzcd} in $\C$ for all $Z \in \Ob{\C}$;
         \item Morphisms: commutative diagrams in $\C$:
@@ -373,7 +373,7 @@ We say a morphism is \emph{isomorphic} or \emph{invertible} if it has a two-side
 
 \subsection{Biproducts}
 
-In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$. Then we will say the \emph{biproduct} of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$. The following diagram commutes:
+In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$. Then we will say the \emph{biproduct}\index{biproduct} of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$. The following diagram commutes:
 \begin{center}
     \begin{tikzcd}[row sep=normal]
         & V_1 \times V_2 \arrow[dl, "\pi_{V_1}" swap] \arrow[dr, "\pi_{V_2}"] \\
@@ -383,7 +383,7 @@ In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \
 \end{center}
 
 \begin{definition}[Biproducts]
-    The \emph{biproduct} of two objects $X$ and $Y$ in a category $\C$ is an object $X \oplus Y$ that is both the product and coproduct of $X$ and $Y$.
+    The \emph{biproduct}\index{biproduct} of two objects $X$ and $Y$ in a category $\C$ is an object $X \oplus Y$ that is both the product and coproduct of $X$ and $Y$.
 \end{definition}
 \begin{remark}
     The biproduct exists if and only if the product and coproduct exist and are isomorphic, or if the initial object and the terminal object exist and are isomorphic.
@@ -399,7 +399,7 @@ However, in $\Set$, the empty set is an initial object but the terminal object i
 
 In general, we may have the product or coproduct of a family of objects.
 
-Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}. The \emph{product} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the terminal object in the new category:
+Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}. The \emph{product}\index{product} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the terminal object in the new category:
 \begin{itemize}
     \item Objects: all collections of morphisms $\{ f_{\alpha} : Z \to X_{\alpha} \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob{\C}$;
     \item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
@@ -411,7 +411,7 @@ Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of 
     \end{tikzcd}
 \end{center}
 
-The \emph{coproduct} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the initial object in the new category:
+The \emph{coproduct}\index{coproduct} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the initial object in the new category:
 \begin{itemize}
     \item Objects: all collections of morphisms $\{ f_{\alpha} : X_{\alpha} \to Z \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob{\C}$;
     \item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
@@ -552,7 +552,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
 \section{Functors}
 
 \begin{definition}[Functors]
-    Let $\C$ and $\D$ be two categories. A \emph{functor} $F : \C \to \D$ consists of the following data:
+    Let $\C$ and $\D$ be two categories. A \emph{functor}\index{functor} $F : \C \to \D$ consists of the following data:
     \begin{itemize}
         \item A map $F : \Ob{\C} \to \Ob{\D}$;
         \item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\D}(F(X), F(Y))$ for all $X, Y \in \Ob{\C}$;
@@ -609,7 +609,7 @@ This is called the \emph{universal property of free vector space over a set}. He
 \end{example}
 
 \begin{definition}[Endofunctors]
-    An \emph{endofunctor} is a functor $F : \C \to \C$ that maps a category to itself.
+    An \emph{endofunctor}\index{endofunctor} is a functor $F : \C \to \C$ that maps a category to itself.
 \end{definition}
 
 \begin{example}
@@ -660,7 +660,7 @@ Consider the following two diagrams:
         & {\scriptstyle \equiv \F[X_1] \oplus \F[X_2]}
     \end{tikzcd}
 \end{center}
-The left diagram shows that the free functor sends the product of two sets to the tensor product of two vector spaces. The right diagram shows that the free functor sends the coproduct of two sets to the direct sum of two vector spaces, i.e., the coproduct of two vector spaces. Note that the tensor product of two vector spaces is \emph{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$. There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 \oplus V_2$.
+The left diagram shows that the free functor sends the product of two sets to the tensor product of two vector spaces. The right diagram shows that the free functor sends the coproduct of two sets to the direct sum of two vector spaces, i.e., the coproduct of two vector spaces. Note that the tensor product of two vector spaces is \emph{not}\index{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$. There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 \oplus V_2$.
 \begin{remark}
     The left adjoint functor preserves coproducts, and the right adjoint functor preserves products. This is the consequences of the \emph{adjoint functor theorem}.
 \end{remark}
@@ -680,7 +680,7 @@ Note that $\Vect_{\F}(X, Z)$ is a vector space over $\F$, as $\Vect_{\F} \equiv 
 
 \section{Dual Spaces and Dual Bases}
 
-Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}.
+Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}\index{covectors}.
 
 \begin{proposition}
     Let $V$ be a finite dimensional linear space over $\F$. Then $\dim(V^*) = \dim(V)$. So, $V^*$ is isomorphic to $V$ but not naturally isomorphic to $V$.
@@ -692,7 +692,7 @@ Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of
 We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e}^i$. This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
 
 \begin{definition}[Bases]
-    A \emph{basis} of a linear space $V$ over $\F$ is the minimal spanning set of $V$ with an order. The set of all bases of $V$ is denoted by $\B_V$.
+    A \emph{basis}\index{basis} of a linear space $V$ over $\F$ is the minimal spanning set of $V$ with an order. The set of all bases of $V$ is denoted by $\B_V$.
 \end{definition}
 
 \begin{proposition}
@@ -806,7 +806,7 @@ There is a natural transformation from $\id_{\Vect_{\F}}$ to $(-)^{**}$ defined 
 Let $\langle-,-\rangle : V^* \times V \to \F$ be the natural pairing defined by $\langle\alpha, u\rangle = \alpha(u)$ where $\alpha : V \to \F$ that sends $u \to \alpha{u}$. It is the pairing of a covector with a vector and the map is bilinear.
 
 \begin{definition}[Bilinear Maps]
-    A map $B : U \times V \to W$ is called \emph{bilinear} if for all $u \in U$, the map $B(u, -) : V \to W$ is linear, and for all $v \in V$, the map $B(-, v) : U \to W$ is linear.
+    A map $B : U \times V \to W$ is called \emph{bilinear}\index{bilinear} if for all $u \in U$, the map $B(u, -) : V \to W$ is linear, and for all $v \in V$, the map $B(-, v) : U \to W$ is linear.
 \end{definition}
 
 We have the following natural identification:
@@ -826,7 +826,7 @@ We have the following natural identification:
 where $\iota_V : V \to V^{**}$ is defined by $\iota_V(u) = \check{u}$ such that $\check{u}(\alpha) = \alpha(u)$. Then $V^{**} = \Hom_{\F}(V^*, \F) \equiv V$.
 
 \begin{definition}[Doubles]
-    Let $V$ be a linear space over $\F$. The \emph{double} of $V$, denoted by $D(V)$, is defined as follows:
+    Let $V$ be a linear space over $\F$. The \emph{double}\index{double} of $V$, denoted by $D(V)$, is defined as follows:
     \[
         D(V) = V \oplus V^*
     \]
@@ -908,7 +908,7 @@ where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The neg
     \begin{itemize}
         \item \emph{left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to F(A) \to F(B) \to F(C)$ is exact in $\D$, i.e., it preserves all finite limits;
         \item \emph{right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $F(A) \to F(B) \to F(C) \to 0$ is exact in $\D$, i.e., it preserves all finite colimits;
-        \item \emph{exact} if it is both left exact and right exact.
+        \item \emph{exact}\index{exact} if it is both left exact and right exact.
     \end{itemize}
 \end{definition}
 
@@ -1014,7 +1014,7 @@ Then we can prove that $\Hom(V_1, V_2) \equiv V_1^* \otimes V_2$ and $(V_1 \otim
 \[
     \dim(V \otimes W) = \dim(V) \cdot \dim(W)
 \]
-If $e$ is a minimal spanning set of $V_1$ and $f$ is a minimal spanning set of $V_2$, then $e \otimes f$ is a minimal spanning set of $V_1 \otimes V_2$. Moreover, we have $\End{V} \equiv (\End{V})^*$ and the identity map $1_V$ corresponds to the \emph{trace} map $\tr : \End{V} \to \F$ under this identification.
+If $e$ is a minimal spanning set of $V_1$ and $f$ is a minimal spanning set of $V_2$, then $e \otimes f$ is a minimal spanning set of $V_1 \otimes V_2$. Moreover, we have $\End{V} \equiv (\End{V})^*$ and the identity map $1_V$ corresponds to the \emph{trace}\index{trace} map $\tr : \End{V} \to \F$ under this identification.
 
 We also have the distribution of tensor product over direct sum: $V_1 \otimes (V_2 \oplus V_3) \equiv (V_1 \otimes V_2) \oplus (V_1 \otimes V_3)$. Moreover, $\Hom(V_1, V_2 \oplus V_3) \equiv \Hom(V_1, V_2) \oplus \Hom(V_1, V_3)$ and $\Hom(V_1 \oplus V_2, V_3) \equiv \Hom(V_1, V_3) \times \Hom(V_2, V_3)$.
 
@@ -1023,7 +1023,7 @@ We also have the distribution of tensor product over direct sum: $V_1 \otimes (V
 \section{Algebras}
 
 \begin{definition}[Algebras]
-    An \emph{algebra} over a field $\F$ is a linear space $A$ over $\F$ equipped with a bilinear product map $A \times A \to A$, or equivalently a linear map $A \otimes A \to A$.
+    An \emph{algebra}\index{algebra} over a field $\F$ is a linear space $A$ over $\F$ equipped with a bilinear product map $A \times A \to A$, or equivalently a linear map $A \otimes A \to A$.
 \end{definition}
 
 \begin{example}
@@ -1143,7 +1143,7 @@ In this section, we will discuss three quotient algebras associated with a vecto
 Before that we need to introduce the concept of ideals in algebras.
 
 \begin{definition}[Ideals of Algebras]
-    An \emph{ideal} of an algebra $A$ over a field $\F$ is a non-empty subset $I$ of $A$ which is closed under linear combinations and algebra multiplications by elements in $A$. That is, for all $x, y \in I$, $\alpha, \beta \in \F$ and $a \in A$, we have:
+    An \emph{ideal}\index{ideal} of an algebra $A$ over a field $\F$ is a non-empty subset $I$ of $A$ which is closed under linear combinations and algebra multiplications by elements in $A$. That is, for all $x, y \in I$, $\alpha, \beta \in \F$ and $a \in A$, we have:
     \begin{itemize}
         \item $\alpha x + \beta y \in I$;
         \item $ax \in I$ and $xa \in I$.
@@ -1261,7 +1261,7 @@ Let $V_{\smallbullet} = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded fini
 
 As the Hilbert-Poincaré series of the exterior algebra $\Ext V$ is a polynomial of degree $\dim{V}$, we have ${\bigwedge}^k V = 0$ for all $k > \dim{V}$. Especially, if $\dim{V} = n$, then ${\bigwedge}^n V$ is 1-dimensional and ${\bigwedge}^{n + 1} V = 0$. This is because any $(n + 1)$ vectors in an $n$-dimensional vector space are linearly dependent, so the exterior product of them is $0$. Moreover, $\dim({\bigwedge}^k V) = \dim({\bigwedge}^{n - k} V)$ for all $0 \leq k \leq n$.
 
-Any one-dimensional linear space is called a \emph{line}.
+Any one-dimensional linear space is called a \emph{line}\index{line}.
 \chapter{Determinants}
 
 \epigraph{``If you are willing to prove it, you can prove it. There is no trick.''}{Guowu Meng}
@@ -1292,7 +1292,7 @@ As $\det$ is a functor, we have the following two properties:
     \det \id_V = \id_{\det V}, \qquad \det fg = \det f \cdot \det g
 \]
 
-In particular, if $f \in \End{V}$, then $\det f : \det V \to \det V$ is a multiplication by a scalar in $\F$. So we can identify $\det f$ with a scalar in $\F$. This scalar is called the \emph{determinant} of $f$ and is denoted by $\det f$.
+In particular, if $f \in \End{V}$, then $\det f : \det V \to \det V$ is a multiplication by a scalar in $\F$. So we can identify $\det f$ with a scalar in $\F$. This scalar is called the \emph{determinant}\index{determinant} of $f$ and is denoted by $\det f$.
 
 Consider the following commutative diagram:
 \begin{center}
@@ -1321,7 +1321,7 @@ In ordinary linear algebra, $A$ and $A'$ are called \emph{similar matrices}, i.e
 Before we derive the explicit formula of determinants, we need to introduce the concept of permutation groups.
 
 \begin{definition}[Automorphisms]
-    An \emph{automorphism} is an isomorphism from a mathematical object to itself.
+    An \emph{automorphism}\index{automorphism} is an isomorphism from a mathematical object to itself.
 \end{definition}
 
 \begin{definition}[Automorphism Groups]
@@ -1346,7 +1346,7 @@ Then the order of $S_n$, denoted by $|S_n|$, is $n!$.
     The permutation group $S_2$ has two elements: the identity permutation $1$ and the transposition $\sigma_1$ defined by $\sigma_1(1) = 2$ and $\sigma_1(2) = 1$.
 \end{example}
 
-Instead of writing $S_2 = \{ 1, \sigma_1 \}$, we can write $S_2 = \langle \sigma_1 \mid \sigma_1^2 = 1 \rangle$, where $\sigma_1$ is called the \emph{generator} of $S_2$ and $\sigma_1^2 = 1$ is called the \emph{relation} of $S_2$. This is called the \emph{presentation} of $S_2$.
+Instead of writing $S_2 = \{ 1, \sigma_1 \}$, we can write $S_2 = \langle \sigma_1 \mid \sigma_1^2 = 1 \rangle$, where $\sigma_1$ is called the \emph{generator}\index{generator} of $S_2$ and $\sigma_1^2 = 1$ is called the \emph{relation}\index{relation} of $S_2$. This is called the \emph{presentation}\index{presentation} of $S_2$.
 
 In general, the generator $\sigma_i$ of $S_n$ is defined by:
 \[
@@ -1730,7 +1730,7 @@ Then we can consider general matrix $A$, for any $j$, we have:
 \]
 This is called the \emph{cofactor expansion} or \emph{Laplace expansion} along the $j$-th column. Similarly, we can have the cofactor expansion along the $i$-th row.
 
-Then we have the definition of \emph{adjoint} of a matrix.
+Then we have the definition of \emph{adjoint}\index{adjoint} of a matrix.
 \begin{definition}[Adjoint Matrices]
     An \emph{adjoint matrix} of $A$, denoted by $\adj A$, is defined as the matrix whose $(i,j)$-th entry is $(-1)^{i + j} \det A_i^j$.
 \end{definition}

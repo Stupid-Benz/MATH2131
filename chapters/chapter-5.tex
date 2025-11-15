@@ -25,7 +25,7 @@ Generically, we have the following form:
         & & & \lambda_n
     \end{bmatrix}
 \]
-where empty places are filled with zeros. It is called the \emph{diagonal matrix}. Here $\lambda_i$ are the \emph{eigenvalues} of $T$. If such form exists, we say that $T$ is \emph{completely reducible}, or normally say that $T$ is \emph{diagonalisable}. If $T$ is not completely reducible, then we have to consider more complicated forms, which will be discussed later.
+where empty places are filled with zeros. It is called the \emph{diagonal matrix}. Here $\lambda_i$ are the \emph{eigenvalues}\index{eigenvalues} of $T$. If such form exists, we say that $T$ is \emph{completely reducible}, or normally say that $T$ is \emph{diagonalisable}\index{diagonalisable}. If $T$ is not completely reducible, then we have to consider more complicated forms, which will be discussed later.
 
 Then we have the diagram:
 \begin{center}
@@ -64,7 +64,7 @@ Then we have the decomposition of $V$:
 \[
     V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \cdots \oplus V_{\lambda_k}
 \]
-where $V_i = \ker{T - \lambda_i 1_V}$ are the \emph{eigenspaces} of $T$ corresponding to eigenvalues $\lambda_i$. Moreover, we have the decomposition of $\F^n$:
+where $V_i = \ker{T - \lambda_i 1_V}$ are the \emph{eigenspaces}\index{eigenspaces} of $T$ corresponding to eigenvalues $\lambda_i$. Moreover, we have the decomposition of $\F^n$:
 \[
     \F^n = \span{e_1, \cdots, e_{n_1}} \oplus \span{e_{n_1 + 1}, \cdots, e_{n_1 + n_2}} \oplus \cdots \oplus \span{e_{n_1 + \cdots + n_{k-1} + 1}, \cdots, e_{n_1 + \cdots + n_k}}
 \]
@@ -78,7 +78,7 @@ Then we have the following commutative diagram:
     \end{tikzcd}
 \end{center}
 
-In other words, if $T$ is completely reducible, then there are distinct numbers $\lambda_1, \cdots, \lambda_k \in \F$ and a non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$ such that $T|_{V_{\lambda_i}} = \lambda_i 1_{V_{\lambda_i}}$ for each $1 \leq i \leq k$, and $T = \lambda_1 1_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k 1_{V_{\lambda_k}}$. Each non-zero vector $v_i$ in $V_{\lambda_i}$ is an \emph{eigenvector} of $T$ corresponding to eigenvalue $\lambda_i$. This answered the first question.
+In other words, if $T$ is completely reducible, then there are distinct numbers $\lambda_1, \cdots, \lambda_k \in \F$ and a non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$ such that $T|_{V_{\lambda_i}} = \lambda_i 1_{V_{\lambda_i}}$ for each $1 \leq i \leq k$, and $T = \lambda_1 1_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k 1_{V_{\lambda_k}}$. Each non-zero vector $v_i$ in $V_{\lambda_i}$ is an \emph{eigenvector}\index{eigenvector} of $T$ corresponding to eigenvalue $\lambda_i$. This answered the first question.
 
 Then how to find the eigenvalues and eigenspaces? We can consider the following linear map:
 \[
@@ -278,7 +278,7 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
     \]
 \end{example}
 
-Completely reducible matrix representations are ``the'' simplest forms of endomorphisms. Note that it is not unique, it is unique up to isomorphism, unless the field is ordered. However, not all endomorphisms are completely reducible. Then we have another term called \emph{semisimple}. These two terms are borrowed from representation theory of lie algebras.
+Completely reducible matrix representations are ``the'' simplest forms of endomorphisms. Note that it is not unique, it is unique up to isomorphism, unless the field is ordered. However, not all endomorphisms are completely reducible. Then we have another term called \emph{semisimple}\index{semisimple}. These two terms are borrowed from representation theory of lie algebras.
 
 \begin{definition}[Completely Reducible]
     We say $T$ is a completely reducible if there exists a matrix representation of $T$ of the following form:
@@ -301,7 +301,7 @@ Completely reducible matrix representations are ``the'' simplest forms of endomo
     Note that $- \otimes \F \equiv \id_{\F}$, so if we change it to $- \otimes_{\F} \bar{\F}$, then we are just changing the field from $\F$ to $\bar{\F}$ without changing the values inside. For example, $1$ can be viewed as an element in $\R$ or $\mathbb{C}$.
 \end{remark}
 
-In general, $T$ is not semisimple, but it can be decomposed into a semisimple part and a \emph{nilpotent} part. Moreover, this decomposition is unique. 
+In general, $T$ is not semisimple, but it can be decomposed into a semisimple part and a \emph{nilpotent}\index{nilpotent} part. Moreover, this decomposition is unique.
 
 We can consider the $\End{V} \equiv \M{n \times n}{\F} \equiv \F^{n^2}$ as a vector space. Then $T \in \F^{n^2}$ is a vector. Then such the set of containing such $T$ forms a dense open subset of $\End{V} = \F^{n^2}$. The dense open subset is in the Zariski topology. More precisely, the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End{V}$. We will study Zariski topology next section. 
 
@@ -358,7 +358,7 @@ Before studying Zariski topology, we first introduce \emph{affine spaces}.
     \[
         + : \A \times \F^n \to \A, \quad (P, \vec{v}) \mapsto P + \vec{v}
     \]
-    Each element $P \in \A$ is called a \emph{point} in $\A$.
+    Each element $P \in \A$ is called a \emph{point}\index{point} in $\A$.
 \end{definition}
 
 Principal means that the group action is free and transitive. Free means that if $g$ is not the identity element, then $g \cdot x \neq x$ for any $x$ in the set. Transitivity means that any two elements $x, y$ in the set are related by some action of the group, $g$, such that $g \cdot x = y$.
@@ -368,7 +368,7 @@ For example, consider the $SO(2)$ action on the plane $\R^2$. The action is not 
 Then we introduce what topology is.
 
 \begin{definition}[Topology]
-    Let $X$ be a set. A \emph{topology} on $X$ is a collection $\tau$ of subsets of $X$ such that:
+    Let $X$ be a set. A \emph{topology}\index{topology} on $X$ is a collection $\tau$ of subsets of $X$ such that:
     \begin{enumerate}
         \item $\phi, X \in \tau$;
         \item the union of any collection of sets in $\tau$ is also in $\tau$;
@@ -378,7 +378,7 @@ Then we introduce what topology is.
 \end{definition}
 We can define \emph{closed sets} in $X$ as the complements of open sets in $X$. Then we have the following equivalent definition of topology.
 \begin{definition}[Topology (Closed Set Version)]
-    Let $X$ be a set. A \emph{topology} on $X$ is a collection $\tau$ of subsets of $X$ such that:
+    Let $X$ be a set. A \emph{topology}\index{topology} on $X$ is a collection $\tau$ of subsets of $X$ such that:
     \begin{enumerate}
         \item $\phi, X \in \tau$;
         \item the intersection of any collection of sets in $\tau$ is also in $\tau$;
@@ -405,7 +405,7 @@ Then the $A \in \F^{n^2} \equiv \A_{\F}^{n^2}$ can be viewed as a point in the a
 Before studying the canonical forms of not completely reducible endormorphisms, we need to introduce some concepts in ring theory.
 
 \begin{definition}[Domain]
-    A \emph{domain} is a non-trivial commutative ring $R$ with unity $1_R \neq 0_R$ if non-zero elements $a, b \in R$ satisfy $ab \neq 0_R$.
+    A \emph{domain}\index{domain} is a non-trivial commutative ring $R$ with unity $1_R \neq 0_R$ if non-zero elements $a, b \in R$ satisfy $ab \neq 0_R$.
 \end{definition}
 
 \begin{example}
@@ -425,11 +425,11 @@ Before studying the canonical forms of not completely reducible endormorphisms, 
 \end{example}
 
 \begin{definition}[Submodule]
-    A \emph{submodule} $N$ of a module $M$ over a ring $R$ is a subgroup of $(M, +)$ that is closed under the ring action of $R$ on $M$, i.e. for any $r \in R$ and $n \in N$, we have $r \cdot n \in N$.
+    A \emph{submodule}\index{submodule} $N$ of a module $M$ over a ring $R$ is a subgroup of $(M, +)$ that is closed under the ring action of $R$ on $M$, i.e. for any $r \in R$ and $n \in N$, we have $r \cdot n \in N$.
 \end{definition}
 
 \begin{definition}[Ideal]
-    An \emph{ideal} $I$ of a ring $R$ is a submodule of the module $R$ over itself.
+    An \emph{ideal}\index{ideal} $I$ of a ring $R$ is a submodule of the module $R$ over itself.
 \end{definition}
 
 \begin{example}

@@ -188,7 +188,7 @@ Then we can say that
 Similar to normal maps, there are injective, surjective and bijective linear maps.
 
 \begin{definition}[Injective Lienar Maps]
-    A linear map $f: V \to W$ between two linear spaces over a field $\F$ is said to be \emph{injective} (or one-to-one) if for all $u, v \in V$, the following holds:
+    A linear map $f: V \to W$ between two linear spaces over a field $\F$ is said to be \emph{injective}\index{injective} (or one-to-one) if for all $u, v \in V$, the following holds:
     \[
         f(u) = f(v) \implies u = v
     \]
@@ -199,19 +199,19 @@ Similar to normal maps, there are injective, surjective and bijective linear map
 \end{definition}
 
 \begin{definition}[Surjective Lienar Maps]
-    A linear map $f: V \to W$ is said to be \emph{surjective} (or onto) if for every $w \in W$, there exists at least one $v \in V$ such that:
+    A linear map $f: V \to W$ is said to be \emph{surjective}\index{surjective} (or onto) if for every $w \in W$, there exists at least one $v \in V$ such that:
     \[
         w = f(v)
     \]
 \end{definition}
 
 \begin{definition}[Invertible Linear Maps / Linear Equivalences]
-    A linear map $T: V \to W$ is said to be \emph{invertible} if $T$ has a unique two-sided inverse $S$, denoted by $T^{-1}$, i.e., there exists a linear map $S: W \to V$ such that:
+    A linear map $T: V \to W$ is said to be \emph{invertible}\index{invertible} if $T$ has a unique two-sided inverse $S$, denoted by $T^{-1}$, i.e., there exists a linear map $S: W \to V$ such that:
     \[
         TS = 1_W \quad \text{and} \quad ST = 1_V
     \]
     where $1_V: V \to V$ and $1_W: W \to W$ are the identity maps on $V$ and $W$, respectively.
-    In this case, we say that the linear spaces $V$ and $W$ are \emph{isomorphic} or \emph{linear equivalent}, denoted by $V \cong W$.
+    In this case, we say that the linear spaces $V$ and $W$ are \emph{isomorphic}\index{isomorphic} or \emph{linear equivalent}, denoted by $V \cong W$.
 \end{definition}
 
 \begin{corollary}[Invertible Linear Maps]
@@ -245,7 +245,7 @@ Similar to normal maps, there are injective, surjective and bijective linear map
 \end{proof}
 
 \begin{definition}[Characteristic of a Field]
-    The \emph{characteristic} of a field $\F$ is the smallest positive integer $n$ such that:
+    The \emph{characteristic}\index{characteristic} of a field $\F$ is the smallest positive integer $n$ such that:
     \[
         \underbrace{1 + 1 + \cdots + 1}_{n \text{ times}} = 0
     \]
@@ -550,7 +550,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \end{remark}
 
 \begin{definition}[Rank of a Matrix]
-    The \emph{rank} of an $m \times n$ matrix $A$ over a field $\F$, denoted by $\rank{A}$, is the number of leading 1's in the matrix $\begin{bmatrix}
+    The \emph{rank}\index{rank} of an $m \times n$ matrix $A$ over a field $\F$, denoted by $\rank{A}$, is the number of leading 1's in the matrix $\begin{bmatrix}
         I_r & 0 \\
         0 & 0
     \end{bmatrix}$ obtained from $A$ by a finite sequence of elementary row and column operations on $A$.
