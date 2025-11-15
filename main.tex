@@ -5251,12 +5251,10 @@ We can use the norm with the properties above to define the distance function by
         \item \emph{Triangle Inequality:} By Cauchy-Schwarz inequality, we have:
         \[
             \begin{split}
-                \| u + v \| &= \sqrt{\langle u + v, u + v \rangle} \\
-                &= \sqrt{\langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle} \\
+                \| u + v \| &= \sqrt{\langle u + v, u + v \rangle} = \sqrt{\langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle} \\
                 &= \sqrt{\| u \|^2 + \| v \|^2 + 2 \langle u, v \rangle} \\
                 &\leq \sqrt{\| u \|^2 + \| v \|^2 + 2 \| u \| \| v \|} \\
-                &= \sqrt{(\| u \| + \| v \|)^2} \\
-                &= \| u \| + \| v \|
+                &= \sqrt{(\| u \| + \| v \|)^2} = \| u \| + \| v \|
             \end{split}
         \]
         Therefore, the triangle inequality holds.
@@ -5265,17 +5263,15 @@ We can use the norm with the properties above to define the distance function by
             \begin{split}
                 \| u + v \|^2 + \| u - v \|^2 &= \langle u + v, u + v \rangle + \langle u - v, u - v \rangle \\
                 &= \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle u, u \rangle + \langle v, v \rangle - \langle u, v \rangle - \langle v, u \rangle \\
-                &= 2 \langle u, u \rangle + 2 \langle v, v \rangle \\
-                &= 2 \| u \|^2 + 2 \| v \|^2
+                &= 2 \langle u, u \rangle + 2 \langle v, v \rangle = 2 \| u \|^2 + 2 \| v \|^2
             \end{split}
         \]
     \end{enumerate}
 
-    ($\leftarrow$) Let $(V, \| - \|)$ be a real normed linear space which satisfies the parallelogram law. Then we can define the inner product on $V$ as:
+    ($\Leftarrow$) We define the inner product for all $u, v \in V$ as follows and the proof is left as an exercise:
     \[
         \langle u, v \rangle = \frac{1}{2} \left( \| u + v \|^2 - \| u \|^2 - \| v \|^2 \right)
     \]
-    for all $u, v \in V$. Then it is left as an exercise to verify the three properties of inner product.
 \end{proof}
 
 \begin{theorem}[Cauchy-Schwarz Inequality]
@@ -5291,6 +5287,14 @@ We can use the norm with the properties above to define the distance function by
         \Delta = 4 \langle u, v \rangle^2 - 4 \| u \|^2 \| v \|^2 \leq 0 \implies \langle u, v \rangle^2 \leq \| u \|^2 \| v \|^2
     \]
 \end{proof}
+
+\begin{definition}
+    If both $u, v \in V$ are non-zero vectors in a Euclidean vector space $(V, \langle -, - \rangle)$, then the angle $\theta$ between $u$ and $v$ is defined as:
+    \[
+        \theta = \arccos{\left( \frac{\langle u, v \rangle}{\| u \| \| v \|} \right)}
+    \]
+    Moreover, if $\langle u, v \rangle = 0$, then we say that $u$ and $v$ are orthogonal.
+\end{definition}
 
 \newpage
 
@@ -5364,6 +5368,9 @@ Then we have the following proposition.
     Note that $\R^n$ is up to isomorphism the only Euclidean vector space with dimension $n$.
 \end{remark}
 
+\newpage
+
+\section{Gram-Schmidt Process}
 
 
 
