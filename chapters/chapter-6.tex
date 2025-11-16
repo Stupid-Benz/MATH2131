@@ -10,17 +10,22 @@ Before studying Euclidean spaces, we first review tensors and then introduce inn
 
 \section{Tensor}
 
-Let $V$ be a finite dimensional vector space over a field $\F$. Then we have the following definitions.
+Let $V$ be a finite dimensional vector space over a field $\F$.
+Then we have the following definitions.
 
 \begin{definition}[$k$-form]
 	A $k$-\emph{form} on $V$ is a multilinear map:
 	\[
 		\underbrace{V \times V \times \cdots \times V}_{k \text{ times}} \to \F
 	\]
-	which is linear in each argument. It is an element in $(V^*)^{\otimes k}$.
+	which is linear in each argument.
+	It is an element in $(V^*)^{\otimes k}$.
 \end{definition}
 
-More concretely, for 1-form, it is a linear functional on $V$, i.e. an element in $V^*$. It is also called \emph{covector}. For 2-form, it is a bilinear map on $V$, i.e. an element in $V^* \otimes V^*$. To prove that the set of all 2-forms on $V$ is isomorphic to $V^* \otimes V^*$, we can consider the following diagram:
+More concretely, for 1-form, it is a linear functional on $V$, i.e. an element in $V^*$.
+It is also called \emph{covector}.
+For 2-form, it is a bilinear map on $V$, i.e. an element in $V^* \otimes V^*$.
+To prove that the set of all 2-forms on $V$ is isomorphic to $V^* \otimes V^*$, we can consider the following diagram:
 \begin{center}
 	\begin{tikzcd}
 		\Map^{\mathsf{ML}} (V \times V, \F) \arrow[r, "\equiv" description, phantom] \arrow[d, dashed] & \Hom(V, V^*) \arrow[d, "\vequiv" description, phantom] \\
@@ -36,26 +41,36 @@ Moreover, we have the following two special types of 2-forms which are the eleme
 	\[
 		\omega (u, v) = \omega (v, u)
 	\]
-	for all $u, v \in V$. It is an element in $\mathcal{S}^2{V^*}$. The 2-form $\omega$ is called \emph{skew-symmetric}, or antisymmetric, if
+	for all $u, v \in V$.
+	It is an element in $\mathcal{S}^2{V^*}$.
+	The 2-form $\omega$ is called \emph{skew-symmetric}, or antisymmetric, if
 	\[
 		\omega (u, v) = - \omega (v, u)
 	\]
-	for all $u, v \in V$. It is an element in ${\bigwedge}^2{V^*}$.
+	for all $u, v \in V$.
+	It is an element in ${\bigwedge}^2{V^*}$.
 \end{definition}
 
 Then we define the tensor spaces.
 
 \begin{definition}[Tensor Spaces]
-	Let $V$ be a finite dimensional vector space over a field $\F$. The \emph{tensor space of type} $(r, s)$ on $V$ is defined as:
+	Let $V$ be a finite dimensional vector space over a field $\F$.
+	The \emph{tensor space of type} $(r, s)$ on $V$ is defined as:
 	\[
 		\mathcal{T}^{r, s} V = \underbrace{V \otimes V \otimes \cdots \otimes V}_{r \text{ times}} \otimes \underbrace{V^* \otimes V^* \otimes \cdots \otimes V^*}_{s \text{ times}}
 	\]
 	Elements in $\mathcal{T}^{r, s} V$ are called \emph{tensors of type} $(r, s)$ on $V$, which is a mixed type if $r, s \neq 0$.
 \end{definition}
 
-If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}\index{tensor}. If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}\index{form}. For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself. Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
+If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}\index{tensor}.
+If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}\index{form}.
+For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself.
+Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
 
-Then we know that $\End(V) \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$. Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$. Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part. To know that what $a^i_j$ means, we can consider the following diagram:
+Then we know that $\End(V) \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$.
+Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$.
+Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part.
+To know that what $a^i_j$ means, we can consider the following diagram:
 \begin{center}
 	\begin{tikzcd}
 		V \arrow[r, "T"] \arrow[d, "{[-]_{\B_V}}" swap] & V \arrow[d, "{[-]_{\B_V}}"] \\
@@ -66,7 +81,8 @@ Then how to get the matrix representation $A = [a^i_j]_{\B_V}$ of $T$ with respe
 \[
 	\vec{a}_j = A \vec{e}_j, \qquad a^i_j = \vec{e}_i^T A \vec{e}_j = \hat{e}^i A \vec{e}_j = \langle \hat{e}^i, A \vec{e}_j \rangle.
 \]
-So we have $[a^i_j] = \langle \hat{v}^i, T \vec{v}_j \rangle$. We can have an identification between $\End(V)$ and $\mathcal{T}^{1, 1} V$ as follows:
+So we have $[a^i_j] = \langle \hat{v}^i, T \vec{v}_j \rangle$.
+We can have an identification between $\End(V)$ and $\mathcal{T}^{1, 1} V$ as follows:
 \[
 	T \leftrightarrow T\vec{v}_j \otimes \hat{v}^j
 \]
@@ -89,7 +105,8 @@ For covariant and contravariant, we have the following table:
 \end{tabularx}
 \end{center}
 
-An object is considered as covariant if it transform in the same way as the basis vectors of the original vector space. If you cannot understand it, make up some examples of scaling the vector spaces.
+An object is considered as covariant if it transform in the same way as the basis vectors of the original vector space.
+If you cannot understand it, make up some examples of scaling the vector spaces.
 
 In general, an element $t \in \mathcal{T}^{r, s} V$ can be represented as:
 \[
@@ -113,7 +130,8 @@ Then we have the following equation:
 \[
 	\tilde{v}_{\tilde{j}} = v_i a^i_{\tilde{j}}
 \]
-For $A^{-1} = [b_j^{\tilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde{j}} b_j^{\tilde{k}} = \delta^{\tilde{k}}_{\tilde{j}}$ and $b_j^{\tilde{i}} a^j_{\tilde{k}} = \delta^{\tilde{i}}_{\tilde{k}}$. Therefore, we have:
+For $A^{-1} = [b_j^{\tilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde{j}} b_j^{\tilde{k}} = \delta^{\tilde{k}}_{\tilde{j}}$ and $b_j^{\tilde{i}} a^j_{\tilde{k}} = \delta^{\tilde{i}}_{\tilde{k}}$.
+Therefore, we have:
 \[
 	v_k = \tilde{v}_{\tilde{j}} b_k^{\tilde{j}}
 \]
@@ -122,7 +140,8 @@ For $A^{-1} = [b_j^{\tilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde
 	\[
 		\frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} = a^i_{\tilde{j}}, \quad \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = b_k^{\tilde{j}}
 	\]
-	To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators. (As lower twice, so flip to upper)
+	To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators.
+	(As lower twice, so flip to upper)
 
 	Then we can use the chain rule to verify the two equations of $A$ and $A^{-1}$:
 	\[
@@ -148,7 +167,9 @@ Then ``honest'' definition of symmetric basis is:
 \[
 	\{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \}
 \]
-but it is redundant. We just have to make sure that the representation of any symmetric $k$-form is unique for a given basis. For example, in 2-form case with the basis $\{ \vec{e}_i \otimes \vec{e}_j \}$, we originally have to write:
+but it is redundant.
+We just have to make sure that the representation of any symmetric $k$-form is unique for a given basis.
+For example, in 2-form case with the basis $\{ \vec{e}_i \otimes \vec{e}_j \}$, we originally have to write:
 \[
 	t = \sum_{1 \leq i \leq j \leq n} t_{ij} \vec{e}_i \otimes \vec{e}_j
 \]
@@ -156,17 +177,20 @@ but this is ugly, so we just write:
 \[
 	t = t^{ij} \vec{e}_i \vec{e}_j
 \]
-with $t^{ij} = t^{ji}$. If we ignored the condition on $t^{ij}$, then we have $a^{ij} = - a^{ji}$ such that:
+with $t^{ij} = t^{ji}$.
+If we ignored the condition on $t^{ij}$, then we have $a^{ij} = - a^{ji}$ such that:
 \[
 	t = t^{ij} \vec{e}_i \wedge \vec{e}_j + a^{ij} \vec{e}_i \wedge \vec{e}_j = (t^{ij} + a^{ij}) \vec{e}_i \wedge \vec{e}_j = 0
 \]
-As $a^{ij} = a^{ji} = - a^{ij}$. 
+As $a^{ij} = a^{ji} = - a^{ij}$.
+
 
 Then for skew-symmetric basis, let say $t \in \B_{{\bigwedge}^k V}$, then we have:
 \[
 	t = t^{\mathcal{I}} \vec{v}_{\mathcal{I}} = t^{i_1 i_2 \cdots i_k} \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k}
 \]
-with $\mathcal{I} = (i_1, i_2, \cdots, i_k)$ being an ordered index set with $1 \leq i_1 < i_2 < \cdots < i_k \leq n$. Then for any permutation $\sigma \in S_k$, to make sure it is unique, we require:
+with $\mathcal{I} = (i_1, i_2, \cdots, i_k)$ being an ordered index set with $1 \leq i_1 < i_2 < \cdots < i_k \leq n$.
+Then for any permutation $\sigma \in S_k$, to make sure it is unique, we require:
 \[
 	t^{\sigma(\mathcal{I})} = \sgn(\sigma) t^{\mathcal{I}}
 \]
@@ -182,7 +206,8 @@ In conclusion, we have to make sure that the representation of any symmetric or 
 
 \section{Inner Product}
 
-Let $V$ be a finite dimensional real linear space. Then we have the following definitions.
+Let $V$ be a finite dimensional real linear space.
+Then we have the following definitions.
 
 \begin{definition}[Inner Product]
 	An inner product on $V$ is a map $\langle -, - \rangle : V \times V \to \R$ such that
@@ -210,7 +235,8 @@ Then a real linear space $V$ with an inner product $\langle -, - \rangle$ is cal
 	\end{enumerate}
 \end{definition}
 
-If we want to combine the metric structure with the linear structure on $V$, we have to make sure that the distance function $d : V \times V \to \R$ satisfies the two additional properties in order to be compatible with the linear structure. We would say the properties are \emph{harmonic}\index{harmonic} with the linear structure.
+If we want to combine the metric structure with the linear structure on $V$, we have to make sure that the distance function $d : V \times V \to \R$ satisfies the two additional properties in order to be compatible with the linear structure.
+We would say the properties are \emph{harmonic}\index{harmonic} with the linear structure.
 
 \begin{definition}[Normed Linear Space]
 	A real normed linear space is a real linear space $V$ together with a compatible metric structure or a normed structure, i.e., a distance function $d : V \times V \to \R$ such that
@@ -250,7 +276,9 @@ We can use the norm with the properties above to define the distance function by
 	An inner product on $V$ is equivalence to a norm structure on $V$ which satisfies the parallelogram law.
 \end{proposition}
 \begin{proof}
-	($\Rightarrow$) Let $(V, \langle -, - \rangle)$ be a Euclidean space. Then we can define the norm on $V$ as $\| v \| = \sqrt{\langle v, v \rangle}$ for all $v \in V$. Then we have:
+	($\Rightarrow$) Let $(V, \langle -, - \rangle)$ be a Euclidean space.
+	Then we can define the norm on $V$ as $\| v \| = \sqrt{\langle v, v \rangle}$ for all $v \in V$.
+	Then we have:
 	\begin{enumerate}
 		\item \emph{Positive-definiteness:} $\| v \| = \sqrt{\langle v, v \rangle} \geq 0$ for all $v \in V$ with equality if and only if $v = 0$;
 		\item \emph{Homogeneity:} $\| \alpha v \| = \sqrt{\langle \alpha v, \alpha v \rangle} = \sqrt{\alpha^2 \langle v, v \rangle} = |\alpha| \| v \|$ for all $v \in V$ and $\alpha \in \R$;
@@ -278,14 +306,18 @@ We can use the norm with the properties above to define the distance function by
 \end{proof}
 
 \begin{theorem}[Cauchy-Schwarz Inequality]
-	Let $(V, \langle -, - \rangle)$ be a Euclidean space. Then for all $u, v \in V$, we have:
+	Let $(V, \langle -, - \rangle)$ be a Euclidean space.
+	Then for all $u, v \in V$, we have:
 	\[
 		|\langle u, v \rangle| \leq \| u \| \| v \|
 	\]
 	with equality if and only if $u$ and $v$ are linearly dependent.
 \end{theorem}
 \begin{proof}
-	Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2t \langle u, v \rangle + \| v \|^2$ for all $t \in \R$. Then we have $f(t) \geq 0$ for all $t \in \R$. For $u = 0$, the inequality holds trivially. For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
+	Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2t \langle u, v \rangle + \| v \|^2$ for all $t \in \R$.
+	Then we have $f(t) \geq 0$ for all $t \in \R$.
+	For $u = 0$, the inequality holds trivially.
+	For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
 	\[
 		\Delta = 4 \langle u, v \rangle^2 - 4 \| u \|^2 \| v \|^2 \leq 0 \implies \langle u, v \rangle^2 \leq \| u \|^2 \| v \|^2
 	\]
@@ -303,13 +335,18 @@ We can use the norm with the properties above to define the distance function by
 
 \section{Orthogonality}
 
-Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$ and $W \subseteq V$ is a subspace of $V$. Then we claim that $W$ inherits an Euclidean structure from $\langle -, - \rangle$ in $V$. We can simply restrict the inner product $\langle -, - \rangle$ on $V$ to $W$:
+Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$ and $W \subseteq V$ is a subspace of $V$.
+Then we claim that $W$ inherits an Euclidean structure from $\langle -, - \rangle$ in $V$.
+We can simply restrict the inner product $\langle -, - \rangle$ on $V$ to $W$:
 \begin{center}
 	\begin{tikzcd}
 		W \times W \arrow[r, hook] \arrow[rr, bend right, "{\langle -, - \rangle}"'] & V \times V \arrow[r, "{\langle -, - \rangle}"] & \R
 	\end{tikzcd}
 \end{center}
-Note that the restriction $\langle -, - \rangle$ is still an inner product on $W$. Also, the positive-definiteness of $\langle -, - \rangle$ implies that $\langle -, - \rangle$ is non-degenerate, i.e., the map $\langle -, - \rangle_{\musNatural} : W \to W^*$ is isomorphism. Note that $W$ and $W^*$ have the same dimension and it has a trivial kernel: $\langle u, - \rangle_W = 0$ implies $\langle u, u \rangle_W = 0$ implies $u = 0$. Now, suppose $w = (w_1, \cdots, w_k)$ is a basis of $W$ and $w^* = (w_1^*, \cdots, w_k^*)$ is the dual basis of $W^*$, then we have the following diagram:
+Note that the restriction $\langle -, - \rangle$ is still an inner product on $W$.
+Also, the positive-definiteness of $\langle -, - \rangle$ implies that $\langle -, - \rangle$ is non-degenerate, i.e., the map $\langle -, - \rangle_{\musNatural} : W \to W^*$ is isomorphism.
+Note that $W$ and $W^*$ have the same dimension and it has a trivial kernel: $\langle u, - \rangle_W = 0$ implies $\langle u, u \rangle_W = 0$ implies $u = 0$.
+Now, suppose $w = (w_1, \cdots, w_k)$ is a basis of $W$ and $w^* = (w_1^*, \cdots, w_k^*)$ is the dual basis of $W^*$, then we have the following diagram:
 \begin{center}
 	\begin{tikzcd}
 		0 \arrow[r] & \ker(\lambda_w) \arrow[r] & V \arrow[r, "\lambda_w"', two heads] & \R^k \arrow[r] \arrow[l, bend right, "s"'] & 0 \\
@@ -321,11 +358,13 @@ where $\lambda_w = \begin{bmatrix}
 	\langle w_1, - \rangle \\
 	\vdots \\
 	\langle w_k, - \rangle
-\end{bmatrix}$, and $s$ is a section of $\lambda_w$ with image $W$. Then we have the decomposition:
+\end{bmatrix}$, and $s$ is a section of $\lambda_w$ with image $W$.
+Then we have the decomposition:
 \[
 	V = \im{s} \oplus \ker(\lambda_w) = W \oplus \ker(\lambda_w)
 \]
-Note that it is an internal direct sum. Then we define the orthogonal complement of $W$ in $V$ as follows.
+Note that it is an internal direct sum.
+Then we define the orthogonal complement of $W$ in $V$ as follows.
 \begin{definition}[Orthogonal Complement]
 	The orthogonal complement of $W$ in $V$, denoted by $W^\perp$, is defined as:
 	\[
@@ -337,7 +376,9 @@ Note that it is an internal direct sum. Then we define the orthogonal complement
 	\]
 \end{definition}
 
-Then any vector $v \in V$ can be uniquely decomposed as $v = w + w^\perp$ with $w = \proj_W(v) \in W$ and $w^\perp = \proj_{W^\perp}(v) \in W^\perp$. The map $\proj_W : V \to W$ is called the orthogonal projection onto $W$ along $W^\perp$. Take a look at the following figure:
+Then any vector $v \in V$ can be uniquely decomposed as $v = w + w^\perp$ with $w = \proj_W(v) \in W$ and $w^\perp = \proj_{W^\perp}(v) \in W^\perp$.
+The map $\proj_W : V \to W$ is called the orthogonal projection onto $W$ along $W^\perp$.
+Take a look at the following figure:
 \begin{center}
 	\begin{tikzpicture}
 		\draw (-0.1, 0.2) -- (-0.3, 0.1) -- (-0.2, -0.1);
@@ -360,12 +401,14 @@ Then we have the following properties of the orthogonal projection:
 \end{enumerate}
 
 \begin{definition}[Orthonormal Basis]
-	A basis $v$ is orthogonal if $\langle v_i, v_j \rangle = 0$ for all $i \neq j$. An orthogonal basis is orthonormal if $\| v_i \| = 1$ for all $i$.
+	A basis $v$ is orthogonal if $\langle v_i, v_j \rangle = 0$ for all $i \neq j$.
+	An orthogonal basis is orthonormal if $\| v_i \| = 1$ for all $i$.
 \end{definition}
 
 Then we have the following proposition.
 \begin{proposition}
-	For any Euclidean space $V$ with inner product, there exists an orthonormal basis of $V$. Moreover, there exists a linear isometric isomorphism between $V$ and $\R^n$ with the standard inner product, the dot product.
+	For any Euclidean space $V$ with inner product, there exists an orthonormal basis of $V$.
+	Moreover, there exists a linear isometric isomorphism between $V$ and $\R^n$ with the standard inner product, the dot product.
 \end{proposition}
 Note that $(\R^n, \cdot)$ is up to isomorphism the only Euclidean space with dimension $n$, where $\cdot$ denotes the standard dot product.
 
@@ -373,7 +416,8 @@ Moreover, if $w = (w_1, w_2, \cdots, w_k)$ is an orthonormal basis of $W$, then
 \[
 	\proj_W u = \sum_{i = 1}^k \langle w_i, u \rangle w_i
 \]
-for all $u \in V$. In case $w$ is orthogonal but not orthonormal, then we have:
+for all $u \in V$.
+In case $w$ is orthogonal but not orthonormal, then we have:
 \[
 	\proj_W u = \sum_{i = 1}^k \frac{\langle w_i, u \rangle}{\langle w_i, w_i \rangle} w_i
 \]
@@ -382,7 +426,8 @@ for all $u \in V$. In case $w$ is orthogonal but not orthonormal, then we have:
 
 \section{Gram-Schmidt Process}
 
-Let $w = (w_1, w_2, \cdots, w_k)$ be an orthonormal basis of $W \subseteq V$. Then we have:
+Let $w = (w_1, w_2, \cdots, w_k)$ be an orthonormal basis of $W \subseteq V$.
+Then we have:
 \[
 	x = \underbrace{\sum_{i = 1}^k \langle w_i, x \rangle w_i}_{\in W} + \underbrace{x - \sum_{i = 1}^k \langle w_i, x \rangle w_i}_{\in W^\perp} = \proj_W x + \proj_{W^\perp} x.
 \]
@@ -394,9 +439,15 @@ To show that $\proj_{W^\perp} x \in W^\perp$, it suffices to show that $\langle 
 \end{align*}
 Note that the key step is to use the bilinearity of the inner product and the orthonormality of $w$.
 
-Now, given any basis $x = (x_1, x_2, \cdots, x_n)$ of $V$, we can use the Gram-Schmidt process to construct an orthonormal basis $w = (w_1, w_2, \cdots, w_n)$ of $V$ by inductive argument. The idea is: We have $V_n \supset V_{n - 1} \supset \cdots \supset V_2 \supset V_1 \supset V_0 = \{ 0 \}$ with the dimension $n, n - 1, \cdots, 2, 1, 0$ respectively. Then we have $w_1$ as the orthonormal basis of $V_1$, then we can extend it to $w_1, w_2$ as the orthonormal basis of $V_2$, and so on and so forth until we reach $V_n = V$.
+Now, given any basis $x = (x_1, x_2, \cdots, x_n)$ of $V$, we can use the Gram-Schmidt process to construct an orthonormal basis $w = (w_1, w_2, \cdots, w_n)$ of $V$ by inductive argument.
+The idea is: We have $V_n \supset V_{n - 1} \supset \cdots \supset V_2 \supset V_1 \supset V_0 = \{ 0 \}$ with the dimension $n, n - 1, \cdots, 2, 1, 0$ respectively.
+Then we have $w_1$ as the orthonormal basis of $V_1$, then we can extend it to $w_1, w_2$ as the orthonormal basis of $V_2$, and so on and so forth until we reach $V_n = V$.
 
-Then we consider the first two cases to illustrate the idea. Let $v_1 = u_1$. Then we have $w_1 = \frac{v_1}{\| v_1 \|}$ as the orthonormal basis of $V_1 = \Span\{u_1\}$. Then we want to find the $w_2$ such that $w_1, w_2$ is the orthonormal basis of $V_2 = \Span\{u_1, u_2\}$. We can consider the following diagram:
+Then we consider the first two cases to illustrate the idea.
+Let $v_1 = u_1$.
+Then we have $w_1 = \frac{v_1}{\| v_1 \|}$ as the orthonormal basis of $V_1 = \Span\{u_1\}$.
+Then we want to find the $w_2$ such that $w_1, w_2$ is the orthonormal basis of $V_2 = \Span\{u_1, u_2\}$.
+We can consider the following diagram:
 \begin{center}
 	\begin{tikzpicture}
 		\draw (-0.1, 0.2) -- (-0.3, 0.1) -- (-0.2, -0.1);
@@ -413,7 +464,11 @@ Then we consider the first two cases to illustrate the idea. Let $v_1 = u_1$. Th
 		\draw[red, dashed] (1, 3) -- (-1, 2) node[midway, above, rotate=26.57] {$\scriptstyle x_2 - \proj_{V_1} x_2$};
 	\end{tikzpicture}
 \end{center}
-Then $v_2 = x_2 - \proj_{V_1} x_2 = x_2 - \langle w_1, x_2 \rangle w_1$ is orthogonal to $w_1$. Note that $w_1$ is normalised. Then we can normalise $v_2$ to get $w_2 = \frac{v_2}{\| v_2 \|}$. Therefore, $w_1, w_2$ is the orthonormal basis of $V_2$. Then for general $k$-th step, we have:
+Then $v_2 = x_2 - \proj_{V_1} x_2 = x_2 - \langle w_1, x_2 \rangle w_1$ is orthogonal to $w_1$.
+Note that $w_1$ is normalised.
+Then we can normalise $v_2$ to get $w_2 = \frac{v_2}{\| v_2 \|}$.
+Therefore, $w_1, w_2$ is the orthonormal basis of $V_2$.
+Then for general $k$-th step, we have:
 \[
 	v_k = x_k - \sum_{i = 1}^{k - 1} \langle w_i, x_k \rangle w_i = x_k - \sum_{i = 1}^{k - 1} \frac{\langle v_i, x_k \rangle}{\langle v_i, v_i \rangle} v_i, \quad w_k = \frac{v_k}{\| v_k \|}
 \]
@@ -421,7 +476,9 @@ given that $w_1, w_2, \cdots, w_{k - 1}$ is the orthonormal basis of $V_{k - 1} 
 
 Then there is a useful corollary of the Gram-Schmidt process, the $QR$ Decomposition.
 
-Let $V$ be a Euclidean space. We can interpret it as $(\R^n, \cdot)$ up to isomorphism. Then we have a basis $(\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n)$ of $V$ and we can form an invertible matrix $A$ whose columns are the vectors $\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n$, i.e.,
+Let $V$ be a Euclidean space.
+We can interpret it as $(\R^n, \cdot)$ up to isomorphism.
+Then we have a basis $(\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n)$ of $V$ and we can form an invertible matrix $A$ whose columns are the vectors $\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n$, i.e.,
 \[
 	A = \begin{bmatrix}
 		| & | & & | \\
@@ -429,7 +486,9 @@ Let $V$ be a Euclidean space. We can interpret it as $(\R^n, \cdot)$ up to isomo
 		| & | & & |
 	\end{bmatrix}
 \]
-Then we have an orthogonal basis $(\vec{v}_1, \cdots, \vec{v}_n)$ of $V$ and an orthonormal basis $(\vec{w}_1, \cdots, \vec{w}_n)$ obtained by the Gram-Schmidt process. Then we should have an invertible matrix to convert between bases. Then what is the matrix to convert from the original basis to the orthonormal basis?
+Then we have an orthogonal basis $(\vec{v}_1, \cdots, \vec{v}_n)$ of $V$ and an orthonormal basis $(\vec{w}_1, \cdots, \vec{w}_n)$ obtained by the Gram-Schmidt process.
+Then we should have an invertible matrix to convert between bases.
+Then what is the matrix to convert from the original basis to the orthonormal basis?
 
 Note that each $\vec{x}_k$ can be expressed as a linear combination of $\vec{w}_1, \cdots, \vec{w}_k$:
 \[
@@ -469,32 +528,40 @@ Then we have the matrix equation:
 		0 & 0 & 0 & \langle \vec{w}_n, \vec{x}_n \rangle
 	\end{bmatrix}}_{R}
 \]
-which is called the \emph{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries. However, normally we denote the orthogonal matrix by $O$ instead of $Q$ and an upper-triangular matrix by $U$ instead of $R$.
+which is called the \emph{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries.
+However, normally we denote the orthogonal matrix by $O$ instead of $Q$ and an upper-triangular matrix by $U$ instead of $R$.
 
 \newpage
 
 \section{Orthogonal Group and Special Orthogonal Group}
 
-Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$. Then we view $V$ as a linear space, and we have $\Aut(V) = \GL(V)$. If we view $V$ as a Euclidean space, then we have $\Aut(V) = \Orth(V) \subseteq \GL(V)$, where $\Orth(V)$ is the subgroup of $\GL(V)$ that respects the Euclidean structure, i.e., for all $T \in \Orth(V)$, we have:
+Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$.
+Then we view $V$ as a linear space, and we have $\Aut(V) = \GL(V)$.
+If we view $V$ as a Euclidean space, then we have $\Aut(V) = \Orth(V) \subseteq \GL(V)$, where $\Orth(V)$ is the subgroup of $\GL(V)$ that respects the Euclidean structure, i.e., for all $T \in \Orth(V)$, we have:
 \[
 	\langle T(u), T(v) \rangle = \langle u, v \rangle
 \]
-for all $u, v \in V$, so length and angles are preserved under $T$. Or equivalently, the following diagram commutes:
+for all $u, v \in V$, so length and angles are preserved under $T$.
+Or equivalently, the following diagram commutes:
 \begin{center}
 	\begin{tikzcd}[column sep=normal]
 		& V \times V \arrow[dr, "{\langle -, - \rangle}"] \\
 		V \times V \arrow[ur, "T \times T"] \arrow[rr, "{\langle -, - \rangle}"'] & & \R
 	\end{tikzcd}
 \end{center}
-We can also define the orthogonal group $\Orth(n)$ using this property. Let $V = \R^n$ with the dot product. Then for any $A \in \GL_n(\R)$, $A \in \Orth(n)$ if and only if $A$ satisfies:
+We can also define the orthogonal group $\Orth(n)$ using this property.
+Let $V = \R^n$ with the dot product.
+Then for any $A \in \GL_n(\R)$, $A \in \Orth(n)$ if and only if $A$ satisfies:
 \[
 	\langle \vec{a}_i, \vec{a}_j \rangle = \langle A\vec{e}_i, A\vec{e}_j \rangle = \langle \vec{e}_i, \vec{e}_j \rangle = \delta_{ij}
 \]
-It is equivalent to say that $A^T A = I_n$, i.e., $A^T = A^{-1}$. Therefore, we have:
+It is equivalent to say that $A^T A = I_n$, i.e., $A^T = A^{-1}$.
+Therefore, we have:
 \[
 	\Orth(n) = \{ A \in \GL_n(\R) \mid A^T A = I_n \}
 \]
-Note that $\det(A^T) = \det(A)^T = \det(A)$. Therefore, we have $\det(A)^2 = 1$ for all $A \in \Orth(n)$, i.e., $\det(A) = \pm 1$.
+Note that $\det(A^T) = \det(A)^T = \det(A)$.
+Therefore, we have $\det(A)^2 = 1$ for all $A \in \Orth(n)$, i.e., $\det(A) = \pm 1$.
 
 Then consider the following exact sequence:
 \begin{center}
@@ -502,7 +569,8 @@ Then consider the following exact sequence:
 		1 \arrow[r] & \SL(V) \arrow[r, hook] & \GL(V) \arrow[r, "\det", two heads] & \R^\times \arrow[r] & 1
 	\end{tikzcd}
 \end{center}
-where $\R^\times = \GL_1(\R) = \R \setminus \{ 0 \}$ is the multiplicative group of non-zero real numbers. As for any automorphism $A \in \GL(V)$, we have a determinant $\det{A} \in \R^\times$, which is surjective. $\SL(V)$ is defined as the kernel of the determinant map, i.e., $\SL(V) = \{ A \in \GL(V) \mid \det{A} = 1 \}$.
+where $\R^\times = \GL_1(\R) = \R \setminus \{ 0 \}$ is the multiplicative group of non-zero real numbers.
+As for any automorphism $A \in \GL(V)$, we have a determinant $\det{A} \in \R^\times$, which is surjective. $\SL(V)$ is defined as the kernel of the determinant map, i.e., $\SL(V) = \{ A \in \GL(V) \mid \det{A} = 1 \}$.
 
 Similarly, we have the special orthogonal group $\SO(V)$ as the subgroup of $\Orth(V)$ with determinant $1$:
 \[
@@ -513,7 +581,9 @@ Similarly, we have the special orthogonal group $\SO(V)$ as the subgroup of $\Or
 
 \section{Matrix Representation of Inner Products}
 
-Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$. Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$. Then we have
+Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$.
+Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$.
+Then we have
 \[
 	x = x^i v_i = \begin{bmatrix}
 		x^1 \\
@@ -531,14 +601,18 @@ Then the inner product $\langle x, y \rangle$ can be represented as:
 \[
 	\langle x, y \rangle = x^i y^j \langle v_i, v_j \rangle = x^T \omega y = x \cdot (\omega y)
 \]
-where we let $\omega = [\langle v_i, v_j \rangle]$ be the matrix representation of the inner product with respect to the basis $v$. Then $\langle -, - \rangle = \cdot \omega -$. To find the canonical form of the inner product, we left it to the next chapter.
+where we let $\omega = [\langle v_i, v_j \rangle]$ be the matrix representation of the inner product with respect to the basis $v$.
+Then $\langle -, - \rangle = \cdot \omega -$.
+To find the canonical form of the inner product, we left it to the next chapter.
 
 \begin{proposition}[Spectral Theorem for Real Symmetric Matrices]\label{prop:spectral-theorem-real-symmetric-matrices}
-	Let $A$ be a $n \times n$ real symmetric matrix. Then there exists an orthogonal matrix $O$ and a diagonal matrix $D$ such that:
+	Let $A$ be a $n \times n$ real symmetric matrix.
+	Then there exists an orthogonal matrix $O$ and a diagonal matrix $D$ such that:
 	\[
 		A = O D O^{-1} = O D O^T
 	\]
-	where the entries of $D$ are the eigenvalues of $A$. Or equivalently, there exists an orthonormal basis of $\R^n$ consisting of eigenvectors of $A$.
+	where the entries of $D$ are the eigenvalues of $A$.
+	Or equivalently, there exists an orthonormal basis of $\R^n$ consisting of eigenvectors of $A$.
 \end{proposition}
 To prove this proposition, we would use the result in Hermitian spaces, so we leave the proof to the next chapter.
 
@@ -550,7 +624,8 @@ To prove this proposition, we would use the result in Hermitian spaces, so we le
 
 Similar to the definitions in Euclidean spaces, we can define Hermitian forms and Hermitian spaces as follows.
 \begin{definition}[Hermitian Form]
-	Let $V$ be a complex vector space. A \emph{Hermitian form} or \emph{Hermitian product} on $V$ is a map $\langle -, - \rangle : V \times V \to \mathbb{C}$ such that the following properties hold:
+	Let $V$ be a complex vector space.
+	A \emph{Hermitian form} or \emph{Hermitian product} on $V$ is a map $\langle -, - \rangle : V \times V \to \mathbb{C}$ such that the following properties hold:
 	\begin{enumerate}
 		\item \emph{Sesquilinearity:} For all $u, v \in V$ and $\alpha \in \mathbb{C}$, we have:
 		\begin{enumerate}
@@ -574,14 +649,17 @@ We can also define the norm of a vector $v \in V$ as:
 \[
 	\| v \| = \sqrt{\langle v, v \rangle}
 \]
-The other four properties of norm is the same as in Euclidean spaces. Moreover the Cauchy-Schwarz inequality is as follows:
+The other four properties of norm is the same as in Euclidean spaces.
+Moreover the Cauchy-Schwarz inequality is as follows:
 \[
 	|\langle u, v \rangle| \leq \| u \| \| v \|
 \]
-for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly dependent. The proof is left as an exercise.
+for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly dependent.
+The proof is left as an exercise.
 % TODO: Add proof of Cauchy-Schwarz inequality in Hermitian spaces.
 
-The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $\overline{V} \times V \to \mathbb{C}$, where $\overline{V}$ is the complex conjugate vector space of $V$, or linear map $\overline{V} \otimes V \to \mathbb{C}$. The complex conjuage vector space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
+The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $\overline{V} \times V \to \mathbb{C}$, where $\overline{V}$ is the complex conjugate vector space of $V$, or linear map $\overline{V} \otimes V \to \mathbb{C}$.
+The complex conjuage vector space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
 \[
 	\mathbb{C} \times \overline{V} \to \overline{V}, \quad (\alpha, v) \mapsto \overline{\alpha} v
 \]
@@ -592,25 +670,36 @@ Then we have the following examples:
 	\[
 		\langle \vec{u}, \vec{v} \rangle = \vec{u}^\dagger \vec{v} = \overline{\vec{u}}^T \vec{v}
 	\]
-	for all $\vec{u}, \vec{v} \in \mathbb{C}^n$. It is straightforward to verify that it satisfies all the properties of Hermitian forms. For example, the positive-definiteness property holds since:
+	for all $\vec{u}, \vec{v} \in \mathbb{C}^n$.
+	It is straightforward to verify that it satisfies all the properties of Hermitian forms.
+	For example, the positive-definiteness property holds since:
 	\[
 		\vec{u}^\dagger \vec{u} = \sum_{i = 1}^n \overline{u_i} u_i = \sum_{i = 1}^n |u_i|^2 \geq 0
 	\]
 \end{example}
 
-Then a complex linear space $V$ with an Hermitian form $\langle -, - \rangle$ is called a \emph{Hermitian space}. Also, the model / standard Hermitian space is $(\mathbb{C}^n, \langle -, - \rangle)$ with the standard Hermitian form, that is, the inner product defined above.
+Then a complex linear space $V$ with an Hermitian form $\langle -, - \rangle$ is called a \emph{Hermitian space}.
+Also, the model / standard Hermitian space is $(\mathbb{C}^n, \langle -, - \rangle)$ with the standard Hermitian form, that is, the inner product defined above.
 
-Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we say $u, v \in V$ are orthogonal if $\langle u, v \rangle = 0$. Similar to the Euclidean case, we can define orthogonal complement, orthogonal projection, orthonormal basis, and Gram-Schmidt process in Hermitian spaces. We also have the decomposition $V = W^\perp \oplus W$ for any subspace $W \subseteq V$.
+Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
+Then we say $u, v \in V$ are orthogonal if $\langle u, v \rangle = 0$.
+Similar to the Euclidean case, we can define orthogonal complement, orthogonal projection, orthonormal basis, and Gram-Schmidt process in Hermitian spaces.
+We also have the decomposition $V = W^\perp \oplus W$ for any subspace $W \subseteq V$.
 
 Similarly, there is only one Hermitian space up to isomorphism with dimension $n$, that is, $(\mathbb{C}^n, \langle -, - \rangle)$ with the standard Hermitian form, i.e., for any Hermitian space $V$ with dimension $n$, there exists a linear isometric isomorphism between $V$ and $(\mathbb{C}^n, \langle -, - \rangle)$.
 
 \subsection{Unitary Groups}
 
-Similar to the orthogonal groups in Euclidean spaces, we can define unitary groups in Hermitian spaces as the automorphism groups that respect the Hermitian structure. Then we have
+Similar to the orthogonal groups in Euclidean spaces, we can define unitary groups in Hermitian spaces as the automorphism groups that respect the Hermitian structure.
+Then we have
 \[
 	\Uni(n) = \{ A \in \GL_n(\mathbb{C}) \mid A^\dagger A = I \}
 \]
-where $A^\dagger = \overline{A}^T$ is the conjugate transpose of $A$. Note that $\det(A^\dagger) = \overline{\det(A)}$. Therefore, we have $|\det(A)|^2 = 1$ for all $A \in \Uni(V)$, i.e., $|\det(A)| = 1$. This means $\Uni(1) = \{ z \in \mathbb{C} \mid |z| = 1 \}$ is the unit circle in the complex plane. Graphically we have:
+where $A^\dagger = \overline{A}^T$ is the conjugate transpose of $A$.
+Note that $\det(A^\dagger) = \overline{\det(A)}$.
+Therefore, we have $|\det(A)|^2 = 1$ for all $A \in \Uni(V)$, i.e., $|\det(A)| = 1$.
+This means $\Uni(1) = \{ z \in \mathbb{C} \mid |z| = 1 \}$ is the unit circle in the complex plane.
+Graphically we have:
 \begin{center}
 	\begin{tikzpicture}
 		\draw[thick, -latex] (-3, 0) -- (3, 0) node[right] {Re};
@@ -620,7 +709,10 @@ where $A^\dagger = \overline{A}^T$ is the conjugate transpose of $A$. Note that 
 		\filldraw[fill=red] (-2, 0) circle(2pt) node[below left] {-1};
 	\end{tikzpicture}
 \end{center}
-where the unit circle represents $\Uni(1)$ in the complex plane. Also in orthogonal group, the determinant of any orthogonal matrix is either $1$ or $-1$. This is the special case of unitary group when the entries are real numbers. Also we have the special unitary group $\SU(n)$ as the subgroup of $\Uni(n)$ with determinant $1$.
+where the unit circle represents $\Uni(1)$ in the complex plane.
+Also in orthogonal group, the determinant of any orthogonal matrix is either $1$ or $-1$.
+This is the special case of unitary group when the entries are real numbers.
+Also we have the special unitary group $\SU(n)$ as the subgroup of $\Uni(n)$ with determinant $1$.
 
 Then we have the following definition similar to orthogonal matrices:
 \begin{definition}[Unitary Matrix]
@@ -630,37 +722,47 @@ Using similar Gram-Schmidt process in Euclidean spaces, we get the following $QR
 \[
 	A = QR
 \]
-where $Q$ is a unitary matrix and $R$ is an upper-triangular matrix with positive real diagonal entries. However, normally we denote the unitary matrix by $U$ instead of $Q$. One reason why others use $QR$ instead is to distinguish the same notation on unitary and upper-triangular matrices in Hermitian spaces and orthogonal and upper-triangular matrices in Euclidean spaces.
+where $Q$ is a unitary matrix and $R$ is an upper-triangular matrix with positive real diagonal entries.
+However, normally we denote the unitary matrix by $U$ instead of $Q$.
+One reason why others use $QR$ instead is to distinguish the same notation on unitary and upper-triangular matrices in Hermitian spaces and orthogonal and upper-triangular matrices in Euclidean spaces.
 
 \subsection{Matrix representation of Hermitian forms}
 
 Then we have the matrix representation of Hermitian forms as follows.
 
-Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$. Then we have
+Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
+Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$.
+Then we have
 \[
 	\omega = [\langle v_i, v_j \rangle]
 \]
-Note that $\omega$ is a Hermitian matrix, i.e., $\omega^\dagger = \omega$. Then we claim that if $A$ and $\tilde{A}$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\tilde{v}$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
+Note that $\omega$ is a Hermitian matrix, i.e., $\omega^\dagger = \omega$.
+Then we claim that if $A$ and $\tilde{A}$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\tilde{v}$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
 \[
 	\tilde{A} = P^\dagger A P
 \]
-where $P$ is the change-of-basis matrix from $v$ to $\tilde{v}$. Or equivalently,
+where $P$ is the change-of-basis matrix from $v$ to $\tilde{v}$.
+Or equivalently,
 \[
 	\mathsf{H}_n(\mathbb{C}) \times \GL_n(\mathbb{C}) \to \mathsf{H}_n(\mathbb{C}), \quad (A, P) \mapsto P^\dagger A P
 \]
-where $\mathsf{H}_n(\mathbb{C})$ is the real linear space of Hermitian matrix of order $n$. The reason why it is real, as it is not closed under multiplication by complex numbers. Take $n = 1$, then $\mathsf{H}_1(\mathbb{C}) = \mathbb{R}$, which is not closed under multiplication by complex numbers.
+where $\mathsf{H}_n(\mathbb{C})$ is the real linear space of Hermitian matrix of order $n$.
+The reason why it is real, as it is not closed under multiplication by complex numbers.
+Take $n = 1$, then $\mathsf{H}_1(\mathbb{C}) = \mathbb{R}$, which is not closed under multiplication by complex numbers.
 
 \newpage
 
 \section{Self-Adjoint Operators and Unitary Operators}
 
-Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we have the following definitions.
+Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
+Then we have the following definitions.
 \begin{definition}[Self-Adjoint Operator]
 	A linear operator $T : V \to V$ is called a \emph{self-adjoint operator} or \emph{Hermitian operator} if:
 	\[
 		\langle Tu, v \rangle = \langle u, Tv \rangle
 	\]
-	for all $u, v \in V$. Or equivalently, $T = T^\dagger$, where $T^\dagger$ is the adjoint operator of $T$ defined as the unique operator satisfying:
+	for all $u, v \in V$.
+	Or equivalently, $T = T^\dagger$, where $T^\dagger$ is the adjoint operator of $T$ defined as the unique operator satisfying:
 	\[
 		\langle Tu, v \rangle = \langle u, T^\dagger v \rangle
 	\]
@@ -670,7 +772,8 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
 	\[
 		\langle Uu, Uv \rangle = \langle u, v \rangle
 	\]
-	for all $u, v \in V$. Or equivalently, $U^\dagger = U^{-1}$.
+	for all $u, v \in V$.
+	Or equivalently, $U^\dagger = U^{-1}$.
 \end{definition}
 
 \begin{proposition}
@@ -680,19 +783,26 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
 	\]
 \end{proposition}
 \begin{proof}
-	We can reduce the problem to $\mathbb{C}^n$ and $\mathbb{C}^m$ with standard Hermitian forms by choosing orthonormal bases of $V$ and $W$. Then we have $T$ represented by a matrix $A \in \M{m \times n}{\mathbb{C}}$. Then we propose there is a matrix $B \in \M{n \times m}{\mathbb{C}}$ such that for all $\vec{e}_i \in \mathbb{C}^n$ and $\vec{f}_j \in \mathbb{C}^m$, we have:
+	We can reduce the problem to $\mathbb{C}^n$ and $\mathbb{C}^m$ with standard Hermitian forms by choosing orthonormal bases of $V$ and $W$.
+	Then we have $T$ represented by a matrix $A \in \M{m \times n}{\mathbb{C}}$.
+	Then we propose there is a matrix $B \in \M{n \times m}{\mathbb{C}}$ such that for all $\vec{e}_i \in \mathbb{C}^n$ and $\vec{f}_j \in \mathbb{C}^m$, we have:
 	\[
 		\langle A\vec{e}_i, \vec{f}_j \rangle = (A\vec{e}_i)^\dagger \vec{f}_j = \vec{e}_i^\dagger A^\dagger \vec{f}_j = \vec{e}_i^T A^\dagger \vec{f}_j
 	\]
-	which is the $(i, j)$-th entry of $A^\dagger$. On the other hand, we have:
+	which is the $(i, j)$-th entry of $A^\dagger$.
+	On the other hand, we have:
 	\[
 		\langle \vec{e}_i, B\vec{f}_j \rangle = \vec{e}_i^\dagger (B\vec{f}_j) = \vec{e}_i^T B \vec{f}_j
 	\]
-	which is the $(i, j)$-th entry of $B$. Therefore, we have $B = A^\dagger$. This proves the existence of the adjoint operator. The uniqueness is straightforward.
+	which is the $(i, j)$-th entry of $B$.
+	Therefore, we have $B = A^\dagger$.
+	This proves the existence of the adjoint operator.
+	The uniqueness is straightforward.
 \end{proof}
 
 \begin{proposition}
-	Let $T$ be a self-adjoint operator on a Hermitian space $V$. Then we have the following properties:
+	Let $T$ be a self-adjoint operator on a Hermitian space $V$.
+	Then we have the following properties:
 	\begin{enumerate}
 		\item All eigenvalues of $T$ are real numbers.
 		\item Eigenspaces of $T$ are mutually orthogonal, i.e., if $u$ and $v$ are eigenvectors of $T$ corresponding to distinct eigenvalues, then $\langle u, v \rangle = 0$.
@@ -703,7 +813,8 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
 \begin{proof}
 	Given that $T^\dagger = T$, we have:
 	\begin{enumerate}
-		\item Let $\lambda \neq 0$ be an eigenvalue of $T$, so there exists a non-zero eigenvector $v$ such that $Tv = \lambda v$. Then we have:
+		\item Let $\lambda \neq 0$ be an eigenvalue of $T$, so there exists a non-zero eigenvector $v$ such that $Tv = \lambda v$.
+		Then we have:
 		\[
 			\langle Tv, v \rangle = \langle v, T^\dagger v \rangle = \langle v, Tv \rangle
 		\]
@@ -711,8 +822,10 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
 		\[
 			\lambda \langle v, v \rangle = \overline{\lambda} \langle v, v \rangle
 		\]
-		Since $v \neq 0$, we have $\langle v, v \rangle > 0$. Therefore, we have $\lambda = \overline{\lambda}$, i.e., $\lambda$ is a real number.
-		\item Let $\lambda_1$ and $\lambda_2$ be two distinct eigenvalues of $T$ with corresponding eigenvectors $v_1$ and $v_2$. Then we have:
+		Since $v \neq 0$, we have $\langle v, v \rangle > 0$.
+		Therefore, we have $\lambda = \overline{\lambda}$, i.e., $\lambda$ is a real number.
+		\item Let $\lambda_1$ and $\lambda_2$ be two distinct eigenvalues of $T$ with corresponding eigenvectors $v_1$ and $v_2$.
+		Then we have:
 		\[
 			\langle Tv_1, v_2 \rangle = \langle v_1, T^\dagger v_2 \rangle
 		\]
@@ -721,16 +834,27 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
 			\lambda_1 \langle v_1, v_2 \rangle = \overline{\lambda_2} \langle v_1, v_2 \rangle
 		\]
 		Since $\lambda_1 \neq \lambda_2$, we have $\langle v_1, v_2 \rangle = 0$.
-		\item We know that $V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$. To show the equality, we let $W = V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$. Since $T$ is self-adjoint, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$. As for all $w \in W$ and $w^\perp \in W^\perp$, we have:
+		\item We know that $V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$.
+		To show the equality, we let $W = V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$.
+		Since $T$ is self-adjoint, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$.
+		As for all $w \in W$ and $w^\perp \in W^\perp$, we have:
 		\[
 			\langle T w^\perp, w \rangle = \langle w^\perp, T^\dagger w \rangle = \langle w^\perp, T w \rangle = 0
 		\]
-		where $T w \in W$ since $W$ is $T$-invariant. Then we propose that $W^\perp = \{ 0 \}$. If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\tilde{T} : W^\perp \to W^\perp$ defined by $\tilde{T}(w^\perp) = T(w^\perp)$. Then $\tilde{T} w^\perp = \lambda w^\perp$ and $\tilde{T} w^\perp = T w^\perp$ by definition. So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$. Say $\lambda = \lambda_1$. Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$. Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$.
+		where $T w \in W$ since $W$ is $T$-invariant.
+		Then we propose that $W^\perp = \{ 0 \}$.
+		If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\tilde{T} : W^\perp \to W^\perp$ defined by $\tilde{T}(w^\perp) = T(w^\perp)$.
+		Then $\tilde{T} w^\perp = \lambda w^\perp$ and $\tilde{T} w^\perp = T w^\perp$ by definition.
+		So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$.
+		Say $\lambda = \lambda_1$.
+		Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$.
+		Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$.
 	\end{enumerate}
 \end{proof}
 
 \begin{proposition}
-	Let $T$ be a unitary operator on a Hermitian space $V$. Then we have the following properties:
+	Let $T$ be a unitary operator on a Hermitian space $V$.
+	Then we have the following properties:
 	\begin{enumerate}
 		\item All eigenvalues of $T$ are complex numbers with absolute value $1$.
 		\item Eigenspaces of $T$ are mutually orthogonal, i.e., if $u$ and $v$ are eigenvectors of $T$ corresponding to distinct eigenvalues, then $\langle u, v \rangle = 0$.
@@ -745,7 +869,8 @@ The proof is left as an exercise.
 
 \section{Spectral Theorem}
 
-The canonical matrix representation of self-adjoint operator is a real diagonal matrix, and the canonical matrix representation of unitary operator is a diagonal matrix with entries on the unit circle in the complex plane. This is stated in the following spectral theorem.
+The canonical matrix representation of self-adjoint operator is a real diagonal matrix, and the canonical matrix representation of unitary operator is a diagonal matrix with entries on the unit circle in the complex plane.
+This is stated in the following spectral theorem.
 
 \begin{theorem}[Spectral Theorem]
 	For any Hermitian matrix $A$ of order $n$, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
@@ -754,6 +879,8 @@ The canonical matrix representation of self-adjoint operator is a real diagonal 
 	\]
 \end{theorem}
 
-If $U$ is a unitary matrix, then the columns of $U$ form an orthonormal basis of $\mathbb{C}^n$. Moreover, the columns of $U$ are eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$. As $\mathbb{C}^n = \bigoplus_i E_{\lambda_i} (A)$, where $\lambda_i$ are the eigenvalues of $A$, we have found an orthonormal basis consisting of eigenvectors of $A$.
+If $U$ is a unitary matrix, then the columns of $U$ form an orthonormal basis of $\mathbb{C}^n$.
+Moreover, the columns of $U$ are eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$.
+As $\mathbb{C}^n = \bigoplus_i E_{\lambda_i} (A)$, where $\lambda_i$ are the eigenvalues of $A$, we have found an orthonormal basis consisting of eigenvectors of $A$.
 
 If we change the Hermitian matrix $A$ to a real symmetric matrix, then the spectral theorem reduces to the spectral theorem in Euclidean spaces, which is Proposition \ref{prop:spectral-theorem-real-symmetric-matrices}.

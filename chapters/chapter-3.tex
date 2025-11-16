@@ -19,13 +19,15 @@ Here, we discuss linear spaces with more in depth terms.
 \end{proposition}
 
 \begin{proof}
-	If $V$ is a subspace of $W$, then $V$ is non-empty as a linear space must contain a zero vector by definition, as $V$ is also a linear space. Also, the other two are due to the axioms of linear space.
+	If $V$ is a subspace of $W$, then $V$ is non-empty as a linear space must contain a zero vector by definition, as $V$ is also a linear space.
+	Also, the other two are due to the axioms of linear space.
 
 	If $V$ is not empty and closed under $+$ and $\cdot$, we just have to check the each axiom.
 \end{proof}
 
 \begin{definition}[Kernels]
-	Let $f : V \to W$ be a linear map. The \emph{kernel}\index{kernel} of $f$, denoted as $\ker f$, is defined as
+	Let $f : V \to W$ be a linear map.
+	The \emph{kernel}\index{kernel} of $f$, denoted as $\ker f$, is defined as
 	\[
 		\ker f \overset{\text{def}}{=\joinrel=} f^{-1}(0_W) = \{ v \in V \mid f(v) = 0_W \}
 	\]
@@ -44,7 +46,8 @@ Here, we discuss linear spaces with more in depth terms.
 \end{example}
 
 \begin{definition}[Images]
-	Let $f : V \to W$ be a linear map. The \emph{image}\index{image} of $f$, denoted by $\im f$, is defined as
+	Let $f : V \to W$ be a linear map.
+	The \emph{image}\index{image} of $f$, denoted by $\im f$, is defined as
 	\[
 		\im f \overset{\text{def}}{=\joinrel=} \{ f(v) \mid v \in V \} \subset W
 	\]
@@ -55,7 +58,8 @@ Here, we discuss linear spaces with more in depth terms.
 
 	First, we have $f(0_V) = 0_W \in \im f$, so $\im f$ is not empty.
 
-	Then we consider $\alpha^1, \alpha^2 \in \F$ and $f(v_1), f(v_2) \in \im f$. We have
+	Then we consider $\alpha^1, \alpha^2 \in \F$ and $f(v_1), f(v_2) \in \im f$.
+	We have
 	\[
 		\alpha^1 f(v_1) + \alpha^2 f(v_2) = f(\alpha^1 v_1 + \alpha^2 v_2) \in \im f
 	\]
@@ -63,17 +67,27 @@ Here, we discuss linear spaces with more in depth terms.
 \end{example}
 
 \begin{example}
-	Let $W$ be a linear space over a field $\F$ and $\{V_\alpha\}_{\alpha \in I}$ be the family of subspaces of $W$ indexed by the element in the index set $I$. Then $\bigcap_{\alpha \in I} V_\alpha$ is also a subspace of $W$.
+	Let $W$ be a linear space over a field $\F$ and $\{V_\alpha\}_{\alpha \in I}$ be the family of subspaces of $W$ indexed by the element in the index set $I$.
+	Then $\bigcap_{\alpha \in I} V_\alpha$ is also a subspace of $W$.
 
-	First, we have $0_W \in V_\alpha$ for all $\alpha \in I$, so $0_W \in \bigcap_{\alpha \in I} V_\alpha$. Thus, $\bigcap_{\alpha \in I} V_\alpha$ is not empty.
+	First, we have $0_W \in V_\alpha$ for all $\alpha \in I$, so $0_W \in \bigcap_{\alpha \in I} V_\alpha$.
+	Thus, $\bigcap_{\alpha \in I} V_\alpha$ is not empty.
 
-	Then we consider $\alpha^1, \alpha^2 \in \F$ and $v_1, v_2 \in \bigcap_{\alpha \in I} V_\alpha$. We have $v_1, v_2 \in V_\alpha$ for all $\alpha \in I$. Thus, $\alpha^1 v_1 + \alpha^2 v_2 \in V_\alpha$ for all $\alpha \in I$. This shows that $\alpha^1 v_1 + \alpha^2 v_2 \in \bigcap_{\alpha \in I} V_\alpha$.
+	Then we consider $\alpha^1, \alpha^2 \in \F$ and $v_1, v_2 \in \bigcap_{\alpha \in I} V_\alpha$.
+	We have $v_1, v_2 \in V_\alpha$ for all $\alpha \in I$.
+	Thus, $\alpha^1 v_1 + \alpha^2 v_2 \in V_\alpha$ for all $\alpha \in I$.
+	This shows that $\alpha^1 v_1 + \alpha^2 v_2 \in \bigcap_{\alpha \in I} V_\alpha$.
 \end{example}
 
-Then we consider the duality of the intersection and union of subspaces. Whether the union of two subspaces is still a subspace? Unfortunately, the answer is no in general case. However, we have the following proposition.
+Then we consider the duality of the intersection and union of subspaces.
+Whether the union of two subspaces is still a subspace?
+Unfortunately, the answer is no in general case.
+However, we have the following proposition.
 
 \begin{proposition}
-	Let $W$ be a linear space over a field $\F$ and consider the family of subspaces $\{V_\alpha\}_{\alpha \in I}$. Then $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is a subspace of $W$ where $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is the completion of $\bigcup_{\alpha \in I} V_\alpha$ under linear combinations. We call $\bar{\bigcup_{\alpha \in I} V_\alpha}$ the \emph{sum}\index{sum} of the subspaces $\{V_\alpha\}_{\alpha \in I}$, denoted by $\sum_{\alpha \in I} V_\alpha$.
+	Let $W$ be a linear space over a field $\F$ and consider the family of subspaces $\{V_\alpha\}_{\alpha \in I}$.
+	Then $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is a subspace of $W$ where $\bar{\bigcup_{\alpha \in I} V_\alpha}$ is the completion of $\bigcup_{\alpha \in I} V_\alpha$ under linear combinations.
+	We call $\bar{\bigcup_{\alpha \in I} V_\alpha}$ the \emph{sum}\index{sum} of the subspaces $\{V_\alpha\}_{\alpha \in I}$, denoted by $\sum_{\alpha \in I} V_\alpha$.
 \end{proposition}
 
 \newpage
@@ -81,21 +95,25 @@ Then we consider the duality of the intersection and union of subspaces. Whether
 \section{Linear Span and Linear Independence}
 
 \begin{definition}[Linear Span]
-	Let $V$ be a linear space over a field $\F$ and $S \subset V$. The \emph{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\Span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
+	Let $V$ be a linear space over a field $\F$ and $S \subset V$.
+	The \emph{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\Span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
 \end{definition}
 
 \begin{corollary}
-	The linear span of $S$ can also be defined as the intersection of all subspaces of $V$ containing $S$, which is the smallest linear subspace of $V$ containing $S$. It can be written as:
+	The linear span of $S$ can also be defined as the intersection of all subspaces of $V$ containing $S$, which is the smallest linear subspace of $V$ containing $S$.
+	It can be written as:
 	\[
 		\Span S = \bigcap_{\alpha \in I} V_{\alpha} \subset V \quad \text{where } I = \{ V_{\alpha} \subset V \mid V_{\alpha} \text{ is a subspace of } V \text{ and } S \subset V_{\alpha} \}
 	\]
 \end{corollary}
 \begin{remark}
-	Note that $I$ is not empty as $V \in I$. Thus, $\Span S$ is well-defined. $V$ is the largest subspace of itself and $\{0_V\}$ is the smallest subspace of $V$.
+	Note that $I$ is not empty as $V \in I$.
+	Thus, $\Span S$ is well-defined. $V$ is the largest subspace of itself and $\{0_V\}$ is the smallest subspace of $V$.
 \end{remark}
 
 \begin{proposition}
-	Let $W$ be a linear space over a field $\F$ and $S \subset W$. Then
+	Let $W$ be a linear space over a field $\F$ and $S \subset W$.
+	Then
 	\[
 		\Span S = \left\{ \sum_{i=1}^{n} \alpha^i s_i \mid n \in \mathbb{N}, \alpha^i \in \F, s_i \in S \right\}
 	\]
@@ -103,7 +121,8 @@ Then we consider the duality of the intersection and union of subspaces. Whether
 \end{proposition}
 
 \begin{definition}[Linear Independences] \label{def:linear_independence}
-	Let $W$ be a linear space over a field $\F$ and $V_1, \cdots, V_k$ be subspaces of $W$. The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^{k} v_i = 0_W$, then $v_i = 0_W$ for all $i$.
+	Let $W$ be a linear space over a field $\F$ and $V_1, \cdots, V_k$ be subspaces of $W$.
+	The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^{k} v_i = 0_W$, then $v_i = 0_W$ for all $i$.
 \end{definition}
 
 Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspaces $\Span(v_1)$, $\Span(v_2)$, $\cdots$, $\Span(v_k)$ are linearly independent.
@@ -120,20 +139,24 @@ Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspace
 
 \section{Linearly Independent Sets and Spanning Sets}
 
-If we consider a set, what does it mean by being linearly independent? Is there any properties for spanning if the set spans the whole codomain?
+If we consider a set, what does it mean by being linearly independent?
+Is there any properties for spanning if the set spans the whole codomain?
 
 \begin{definition}[Linearly Independent Sets]
-	Let $V$ be a linear space over a field $\F$. A subset $S \subseteq V$ is said to be a \emph{linearly independent set} of vectors in $V$ if no elements in $S$ can be expressed as a linear combination of the finitely many other elements in $S$.
+	Let $V$ be a linear space over a field $\F$.
+	A subset $S \subseteq V$ is said to be a \emph{linearly independent set} of vectors in $V$ if no elements in $S$ can be expressed as a linear combination of the finitely many other elements in $S$.
 \end{definition}
 
 \begin{definition}[Spanning Sets]
-	Let $V$ be a linear space over a field $\F$. A subset $S \subseteq V$ is said to be a \emph{spanning set} of $V$ if $\Span(S) = V$.
+	Let $V$ be a linear space over a field $\F$.
+	A subset $S \subseteq V$ is said to be a \emph{spanning set} of $V$ if $\Span(S) = V$.
 \end{definition}
 
 \begin{example}
 	Let $V = \F^3$ and consider the three vectors $\vec{e}_1$, $\vec{e}_2$ and $\vec{e}_3$.
 
-	Then the set $S = \{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ is not a spanning set of $V$ as $\Span(S) = \Span \{\vec{e}_1, \vec{e}_2\} \neq V$. If we consider the $\Span \{\vec{e}_1, \vec{e}_2\} = W$, then $\{\vec{e}_1, \vec{e}_2\}$ is a minimal spanning set of $W$.
+	Then the set $S = \{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ is not a spanning set of $V$ as $\Span(S) = \Span \{\vec{e}_1, \vec{e}_2\} \neq V$.
+	If we consider the $\Span \{\vec{e}_1, \vec{e}_2\} = W$, then $\{\vec{e}_1, \vec{e}_2\}$ is a minimal spanning set of $W$.
 
 	The set $S = \{\vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2 + \vec{e}_3\}$ is a spanning set of $V$.
 \end{example}
@@ -146,20 +169,26 @@ If we consider a set, what does it mean by being linearly independent? Is there 
 			0 & 0 & 0
 		\end{bmatrix}
 	\]
-	Then we have $\rank(A) = 2 < 3$. Thus, the set is not a spanning set of $\F^3$.
+	Then we have $\rank(A) = 2 < 3$.
+	Thus, the set is not a spanning set of $\F^3$.
 \end{remark}
 
 \begin{example}
-	Consider the subset $S = \{ 1, t, t^2, \cdots \} \subset \F[[t]]$. Then $\Span(S) = \F[t]$ which is a proper subspace of $\F[[t]]$. As the linear combination of finitely many elements in $S$ is a polynomial, but an element in $\F[[t]]$ can be a power series.
+	Consider the subset $S = \{ 1, t, t^2, \cdots \} \subset \F[[t]]$.
+	Then $\Span(S) = \F[t]$ which is a proper subspace of $\F[[t]]$.
+	As the linear combination of finitely many elements in $S$ is a polynomial, but an element in $\F[[t]]$ can be a power series.
 \end{example}
 
 \begin{definition}[Minimal Spanning Sets]
-	Let $V$ be a linear space over a field $\F$. A spanning set $S \subseteq V$ is said to be a \emph{minimal spanning set} of $V$ if no proper subset of $S$ is a spanning set of $V$, i.e., $S' \subset S \implies \Span(S') \subset \Span(S) = V$ where $\Span(S') \neq V$.
+	Let $V$ be a linear space over a field $\F$.
+	A spanning set $S \subseteq V$ is said to be a \emph{minimal spanning set} of $V$ if no proper subset of $S$ is a spanning set of $V$, i.e., $S' \subset S \implies \Span(S') \subset \Span(S) = V$ where $\Span(S') \neq V$.
 \end{definition}
 
 The following is also the equivalence definition of linearly independent sets, spanning sets and minimal spanning sets.
 
-Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$. The order set $S$ forms a linear map $\phi_S: \F^n \to V$ defined by:
+Given a linear space $V$ over a field $\F$.
+We define the order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$.
+The order set $S$ forms a linear map $\phi_S: \F^n \to V$ defined by:
 \[
 	\phi_S(\vec{x}) = \phi_S\left(\begin{bmatrix}
 		x^1 \\
@@ -185,7 +214,8 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
 \end{remark}
 
 \begin{example}
-	Let $X$ be a set, $\F[[X]]$ be the set of all functions $f: X \to \F$ and $\F[X]$ be the set of all finite support functions $f: X \to \F$. For each $x \in X$, we define the Kronecker delta function $\delta_x : X \to \F$ at point $x$ by
+	Let $X$ be a set, $\F[[X]]$ be the set of all functions $f: X \to \F$ and $\F[X]$ be the set of all finite support functions $f: X \to \F$.
+	For each $x \in X$, we define the Kronecker delta function $\delta_x : X \to \F$ at point $x$ by
 	\[
 		\delta_x(y) = \begin{cases}
 			1 & \text{if } y = x \\
@@ -194,19 +224,27 @@ Given a linear space $V$ over a field $\F$. We define the order set $S := \{\vec
 	\]
 	Clearly, $\delta_x$ has finite support, thus $\delta_x \in \F[X]$.
 
-	Then we have a set $\delta_X = \{\delta_x \mid x \in X\} \subset \F[X]$. We have $\Span(\delta_X) = \F[X]$ as any finite support function $f: X \to \F$ can be written as a linear combination of finitely many delta functions. Thus, $\delta_X$ is a spanning set of $\F[X]$.
+	Then we have a set $\delta_X = \{\delta_x \mid x \in X\} \subset \F[X]$.
+	We have $\Span(\delta_X) = \F[X]$ as any finite support function $f: X \to \F$ can be written as a linear combination of finitely many delta functions.
+	Thus, $\delta_X$ is a spanning set of $\F[X]$.
 
-	Moreover, $\delta_X$ is a linearly independent set. Assume that there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_{y}$. Then we have $\delta_x(x) = 1 = \sum \alpha^y \delta_y(x) = 0$. This is a contradiction. Thus, $\delta_X$ is a linearly independent set.
+	Moreover, $\delta_X$ is a linearly independent set.
+	Assume that there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_{y}$.
+	Then we have $\delta_x(x) = 1 = \sum \alpha^y \delta_y(x) = 0$.
+	This is a contradiction.
+	Thus, $\delta_X$ is a linearly independent set.
 \end{example}
 
 \newpage
 
 \section{Group Actions}
 
-Next, we discuss quotient space. However, before introducing quotient space, we have to understand what group actions are. 
+Next, we discuss quotient space.
+However, before introducing quotient space, we have to understand what group actions are.
 
 \begin{definition}[Group Actions]
-	Let $G$ be a group and $X$ be a set. A \emph{left group action} of $G$ on $X$ is a map $\cdot : G \times X \to X$, $(g, x) \mapsto g \cdot x$, such that for all $g_1, g_2 \in G$ and $x \in X$, the following properties hold:
+	Let $G$ be a group and $X$ be a set.
+	A \emph{left group action} of $G$ on $X$ is a map $\cdot : G \times X \to X$, $(g, x) \mapsto g \cdot x$, such that for all $g_1, g_2 \in G$ and $x \in X$, the following properties hold:
 	\begin{enumerate}
 		\item Compatibility: $(g_1 g_2) \cdot x = g_1 \cdot (g_2 \cdot x)$.
 		\item Identity: $e \cdot x = x$ where $e$ is the identity element of $G$.
@@ -215,7 +253,8 @@ Next, we discuss quotient space. However, before introducing quotient space, we 
 
 Same for the right group action of $G$ on $X$, just think it dually.
 
-Consider rotation on a plane. It is a group action of the group $SO(2)$ on the set $\R^2$.
+Consider rotation on a plane.
+It is a group action of the group $SO(2)$ on the set $\R^2$.
 \[
 	g = \begin{pmatrix}
 		\cos{\theta} & -\sin{\theta} \\
@@ -243,7 +282,8 @@ Then we have the following group action:
 \end{center}
 
 \begin{definition}[Orbits]
-	Let $G$ be a group acting on a set $X$. The \emph{orbit}\index{orbit} of the action through a point $x \in X$, denoted as $G \cdot x$, is defined as the set of points in $X$ that can be reached from $x$ by the action of elements of $G$, i.e.,
+	Let $G$ be a group acting on a set $X$.
+	The \emph{orbit}\index{orbit} of the action through a point $x \in X$, denoted as $G \cdot x$, is defined as the set of points in $X$ that can be reached from $x$ by the action of elements of $G$, i.e.,
 	\[
 		G \cdot x = \{g \cdot x \mid g \in G\}
 	\]
@@ -254,19 +294,26 @@ There is only two situation for the orbits, either the origin or a circle.
 In the following section, we may regard the orbits $G \cdot x$ as a \emph{coset}\index{coset}.
 
 \begin{definition}[Partition]
-	A \emph{partition}\index{partition} of a set $X$ is a collection of non-empty, disjoint subsets of $X$ whose union is $X$. The partition of the set $X$ is the same as an equivalence relation on $X$.
+	A \emph{partition}\index{partition} of a set $X$ is a collection of non-empty, disjoint subsets of $X$ whose union is $X$.
+	The partition of the set $X$ is the same as an equivalence relation on $X$.
 \end{definition}
 
-Orbits give a partition of the set $X$, i.e., $X$ can be expressed as the disjoint union of its orbits. The orbits of the action are the equivalence classes of the equivalence relation.
+Orbits give a partition of the set $X$, i.e., $X$ can be expressed as the disjoint union of its orbits.
+The orbits of the action are the equivalence classes of the equivalence relation.
 
-Let $f : X \to Y$ be a map between two sets $X$ and $Y$. Then $f$ defines a partition of $X$ by the equivalence relation. The equivalence classes are the preimages of points in $Y$, i.e., $f^{-1}(y)$ for each $y \in Y$.
+Let $f : X \to Y$ be a map between two sets $X$ and $Y$.
+Then $f$ defines a partition of $X$ by the equivalence relation.
+The equivalence classes are the preimages of points in $Y$, i.e., $f^{-1}(y)$ for each $y \in Y$.
 
 \newpage
 
 \section{Quotient Spaces}
 
-Let $V$ be a subspace of a linear space $W$ over a field $\F$. We know $(V, +)$ is an abelian group. Then we have the group action of $V$ on $W$ defined by: $(v, w) \mapsto v \cdot w$ for all $v \in V, w \in W$. $v \cdot w$ is defined as $v + w$ where $+$ is the addition operation in $W$.
-We know that $(v_1 + v_2) + w = v_1 + (v_2 + w)$ and $0_V + w = w$ for all $v_1, v_2 \in V$ and $w \in W$. Thus, it is a group action. 
+Let $V$ be a subspace of a linear space $W$ over a field $\F$.
+We know $(V, +)$ is an abelian group.
+Then we have the group action of $V$ on $W$ defined by: $(v, w) \mapsto v \cdot w$ for all $v \in V, w \in W$. $v \cdot w$ is defined as $v + w$ where $+$ is the addition operation in $W$.
+We know that $(v_1 + v_2) + w = v_1 + (v_2 + w)$ and $0_V + w = w$ for all $v_1, v_2 \in V$ and $w \in W$.
+Thus, it is a group action.
 
 The following commutative diagram illustrates the group action, where the associative and identity properties are inherited from the addition operation in $W$, i.e., we need not prove the group action as above.
 
@@ -288,7 +335,8 @@ This group action defines the following equivalence relation on $W$, where $V$ i
 \end{align*}
 
 \begin{definition}[Quotient Spaces]
-	Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$. The \emph{quotient space} of $W$ by $V$, denoted by $\quotient{W}{V}$, is defined as the set of orbits of the group action of $V$ on $W$, or the set of $V$-equivalence classes in $W$ with the equivalence relation defined above, i.e.,
+	Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$.
+	The \emph{quotient space} of $W$ by $V$, denoted by $\quotient{W}{V}$, is defined as the set of orbits of the group action of $V$ on $W$, or the set of $V$-equivalence classes in $W$ with the equivalence relation defined above, i.e.,
 	\[
 		\quotient{W}{V} = \{ V \cdot w \mid w \in W \} = \{ w + V \mid w \in W \}
 	\]
@@ -296,7 +344,8 @@ This group action defines the following equivalence relation on $W$, where $V$ i
 \end{definition}
 
 \begin{definition}[Quotient Map]
-	The natural surjective map $\pi : W \to \quotient{W}{V}$ defined by $\pi(w) = w + V$ for all $w \in W$ is called the \emph{quotient map} or \emph{projection map}. Note that $w + V$ can be written as $\bar{w}$ or $[w]$.
+	The natural surjective map $\pi : W \to \quotient{W}{V}$ defined by $\pi(w) = w + V$ for all $w \in W$ is called the \emph{quotient map} or \emph{projection map}.
+	Note that $w + V$ can be written as $\bar{w}$ or $[w]$.
 \end{definition}
 
 In general, if a group $G$ acts on a set $X$, then the quotient set $\quotient{X}{G}$ is defined as the set of orbits of the action, i.e.,
@@ -330,31 +379,48 @@ The following is a graphical illustration of the quotient space.
 	\end{tikzpicture}
 \end{center}
 
-We can see that each line parallel to $V$ represents a coset of $V$ in $W$. The quotient space $\quotient{W}{V}$ is the set of all such lines. We may consider each line as an orbit of the group action of $V$ on $W$. Note that there is not only one unique way to represent the coset $w + V$. Just like the illustration above, $w_1$ and $w'_1$ are two different representatives of the same coset $w_1 + V = w'_1 + V$. Note that their difference is an element in $V$, i.e., $w_1 - w'_1 \in V$.
+We can see that each line parallel to $V$ represents a coset of $V$ in $W$.
+The quotient space $\quotient{W}{V}$ is the set of all such lines.
+We may consider each line as an orbit of the group action of $V$ on $W$.
+Note that there is not only one unique way to represent the coset $w + V$.
+Just like the illustration above, $w_1$ and $w'_1$ are two different representatives of the same coset $w_1 + V = w'_1 + V$.
+Note that their difference is an element in $V$, i.e., $w_1 - w'_1 \in V$.
 
-Note that we now do not know whether $\quotient{W}{V}$ is a linear space or not. We will show that it is indeed a linear space by using the following proposition.
+Note that we now do not know whether $\quotient{W}{V}$ is a linear space or not.
+We will show that it is indeed a linear space by using the following proposition.
 
 \begin{proposition}
 	There is a unique linear structure on $\quotient{W}{V}$ such that the quotient map $\pi : W \to \quotient{W}{V}$ is a linear map.
 \end{proposition}
 
 \begin{proof}
-	Assume that such a linear structure exists. Then for all $w_1, w_2 \in W$ and $\alpha_1, \alpha_2 \in \F$, we have
+	Assume that such a linear structure exists.
+	Then for all $w_1, w_2 \in W$ and $\alpha_1, \alpha_2 \in \F$, we have
 	\[
 		\pi(\alpha_1 w_1 + \alpha_2 w_2) = [\alpha_1 w_1 + \alpha_2 w_2] = \alpha_1 [w_1] + \alpha_2 [w_2] = \alpha_1 \pi(w_1) + \alpha_2 \pi(w_2)
 	\]
-	This suggests that $\alpha_1 [w_1] + \alpha_2 [w_2]$ should be defined as $[\alpha_1 w_1 + \alpha_2 w_2]$ if $\pi$ is linear. As there is only one formula, this proves the uniqueness of the linear structure on $\quotient{W}{V}$.
+	This suggests that $\alpha_1 [w_1] + \alpha_2 [w_2]$ should be defined as $[\alpha_1 w_1 + \alpha_2 w_2]$ if $\pi$ is linear.
+	As there is only one formula, this proves the uniqueness of the linear structure on $\quotient{W}{V}$.
 
-	Then we consider whether the linear combination on $\quotient{W}{V}$ is well-defined. Assume that $[w_1] = [w'_1]$ and $[w_2] = [w'_2]$, i.e., $w_1 - w'_1 \in V$ and $w_2 - w'_2 \in V$. Then we have
+	Then we consider whether the linear combination on $\quotient{W}{V}$ is well-defined.
+	Assume that $[w_1] = [w'_1]$ and $[w_2] = [w'_2]$, i.e., $w_1 - w'_1 \in V$ and $w_2 - w'_2 \in V$.
+	Then we have
 	\[
 		(\alpha_1 w_1 + \alpha_2 w_2) - (\alpha_1 w'_1 + \alpha_2 w'_2) = \alpha_1 (w_1 - w'_1) + \alpha_2 (w_2 - w'_2) \in V
 	\]
-	which means $[\alpha_1 w_1 + \alpha_2 w_2] = [\alpha_1 w'_1 + \alpha_2 w'_2]$. This means that the linear combination is independent of the choice of representatives. Thus, the linear combination is well-defined.
+	which means $[\alpha_1 w_1 + \alpha_2 w_2] = [\alpha_1 w'_1 + \alpha_2 w'_2]$.
+	This means that the linear combination is independent of the choice of representatives.
+	Thus, the linear combination is well-defined.
 \end{proof}
 
-In normal procedure, we first define the operations and then check whether the set is closed under the operations and zero exists. Then we check whether the map preserves the structure and show the uniqueness of the structure. However, in this case, we first assume that such a structure exists and then derive the operations from the assumption. Then we check whether the operations are well-defined.
+In normal procedure, we first define the operations and then check whether the set is closed under the operations and zero exists.
+Then we check whether the map preserves the structure and show the uniqueness of the structure.
+However, in this case, we first assume that such a structure exists and then derive the operations from the assumption.
+Then we check whether the operations are well-defined.
 
-In the first part, we show that there is only one possible way to define the operations if the quotient map is linear. Also, during the definition, it ensures the preservation of the linear structure. In the second part, we show that the operations on the set $\quotient{W}{V}$ are well-defined.
+In the first part, we show that there is only one possible way to define the operations if the quotient map is linear.
+Also, during the definition, it ensures the preservation of the linear structure.
+In the second part, we show that the operations on the set $\quotient{W}{V}$ are well-defined.
 
 If we consider the graphical representation of the quotient space $\quotient{W}{V}$ and the quotient map $\pi$, we may use the following diagram:
 
@@ -396,7 +462,8 @@ If we consider the graphical representation of the quotient space $\quotient{W}{
 \section{Universal Properties}
 
 \begin{proposition}
-	Let $V$ be a linear space over a field $\F$ and $S$ be a minimal spanning set of $V$. Then for any set map $\phi : S \to Z$, where $Z$ is any linear space over $\F$, there is a unique linear map $\tilde{\phi} : V \to Z$ such that $\tilde{\phi}|_S = \phi$.
+	Let $V$ be a linear space over a field $\F$ and $S$ be a minimal spanning set of $V$.
+	Then for any set map $\phi : S \to Z$, where $Z$ is any linear space over $\F$, there is a unique linear map $\tilde{\phi} : V \to Z$ such that $\tilde{\phi}|_S = \phi$.
 
 	In other words, the following diagram commutes:
 	\begin{center}
@@ -408,16 +475,19 @@ If we consider the graphical representation of the quotient space $\quotient{W}{
 \end{proposition}
 
 \begin{proof}
-	Assume the existence of such a linear map $\tilde{\phi}$. Then for all $s \in S$, we have $\tilde{\phi} \circ \iota (s) = \tilde{\phi}(s) = \phi(s)$.
+	Assume the existence of such a linear map $\tilde{\phi}$.
+	Then for all $s \in S$, we have $\tilde{\phi} \circ \iota (s) = \tilde{\phi}(s) = \phi(s)$.
 
-	Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^{n} \alpha_i s_i$ where $\alpha_i \in \F$ and $s_i \in S$ are distinct. Then we have
+	Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^{n} \alpha_i s_i$ where $\alpha_i \in \F$ and $s_i \in S$ are distinct.
+	Then we have
 	\[
 		\tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \sum_{i=1}^{n} \alpha^i \tilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha^i \phi(s_i) = \phi\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \phi(v)
 	\]
 	This shows that $\tilde{\phi}$ agrees with $\phi$ on all of $V$, and thus $\tilde{\phi}$ is uniquely determined by $\phi$.
 \end{proof}
 
-Note that we first define the map on the spanning set and then extend it to the whole space. The uniqueness is due to the fact that there is only one way to write each element in $V$ as a linear combination of elements in $S$ and the existence is due to the fact that we can always define the map on $V$ by using the linear combination.
+Note that we first define the map on the spanning set and then extend it to the whole space.
+The uniqueness is due to the fact that there is only one way to write each element in $V$ as a linear combination of elements in $S$ and the existence is due to the fact that we can always define the map on $V$ by using the linear combination.
 
 This proposition shows thats a linear space with a minimal spanning set has the following universal property: any set map from the minimal spanning set to another linear space can be uniquely extended to a linear map from the whole space to that linear space.
 
@@ -430,7 +500,8 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 \end{center}
 
 \begin{proposition}
-	Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$. Then we have the following commutative diagram:
+	Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$.
+	Then we have the following commutative diagram:
 	\begin{center}
 		\begin{tikzcd}
 			& V \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
@@ -438,13 +509,24 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 			Z & & \quotient{W}{V} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed]
 		\end{tikzcd}
 	\end{center}
-	where $Z$ is any linear space over $\F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$. Then there is a unique linear map $\tilde{\phi} : \quotient{W}{V} \to Z$ such that $\tilde{\phi} \circ \pi = \phi$.
+	where $Z$ is any linear space over $\F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$.
+	Then there is a unique linear map $\tilde{\phi} : \quotient{W}{V} \to Z$ such that $\tilde{\phi} \circ \pi = \phi$.
 \end{proposition}
 
 \begin{proof}
-	Assume the existence of such a linear map $\tilde{\phi}$. Then for all $w \in W$, we have $\tilde{\phi}([w]) = \phi(w)$. However, this may not be well-defined. Then, we check whether it is well-defined. Assume that $[w] = [w']$, then we have $\tilde{\phi}([w']) = \phi(w')$. Note that $w - w' \in V$. Thus, we have $\phi(w' - w) = 0_Z$. This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$. This shows that $\tilde{\phi}([w']) = \tilde{\phi}([w])$. Thus, $\tilde{\phi}$ is well-defined.
+	Assume the existence of such a linear map $\tilde{\phi}$.
+	Then for all $w \in W$, we have $\tilde{\phi}([w]) = \phi(w)$.
+	However, this may not be well-defined.
+	Then, we check whether it is well-defined.
+	Assume that $[w] = [w']$, then we have $\tilde{\phi}([w']) = \phi(w')$.
+	Note that $w - w' \in V$.
+	Thus, we have $\phi(w' - w) = 0_Z$.
+	This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$.
+	This shows that $\tilde{\phi}([w']) = \tilde{\phi}([w])$.
+	Thus, $\tilde{\phi}$ is well-defined.
 
-	Then we consider the linearity of $\tilde{\phi}$. For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha^1, \alpha^2 \in \F$, we have
+	Then we consider the linearity of $\tilde{\phi}$.
+	For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha^1, \alpha^2 \in \F$, we have
 	\begin{align*}
 		\tilde{\phi}(\alpha^1 [w_1] + \alpha^2 [w_2]) &= \tilde{\phi}([\alpha^1 w_1 + \alpha^2 w_2]) \\
 		&= \phi(\alpha^1 w_1 + \alpha^2 w_2) \\
@@ -454,7 +536,12 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 	This shows that $\tilde{\phi}$ is linear.
 \end{proof}
 \begin{remark}
-	Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
+	Note that $[0] = V$.
+	If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$.
+	Thus, $\pi(v) = [v] = [0]$ for all $v \in V$.
+	So the map from $V \to \quotient{W}{V}$ is the zero map.
+	Thus, the triangle commutes.
+	Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
 \end{remark}
 
 Generally, we may consider the following commutative diagrams, where left is the general case and right is the dual case:
@@ -473,7 +560,8 @@ Generally, we may consider the following commutative diagrams, where left is the
 \end{center}
 
 \begin{definition}[Cokernel]
-	Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$. The \emph{cokernel}\index{cokernel} of $f$, denoted by $\coker(f)$, is defined as the quotient space of $W$ by the image of $f$, i.e.,
+	Let $f : V \to W$ be a linear map between two linear spaces over a field $\F$.
+	The \emph{cokernel}\index{cokernel} of $f$, denoted by $\coker(f)$, is defined as the quotient space of $W$ by the image of $f$, i.e.,
 	\[
 		\coker(f) = \quotient{W}{\im{f}} = W / \im{f}
 	\]
@@ -481,7 +569,8 @@ Generally, we may consider the following commutative diagrams, where left is the
 \end{definition}
 
 \begin{definition}[Coimage]
-	Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$. The \emph{coimage}\index{coimage} of $f$, denoted by $\coim(f)$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
+	Let $f : W \to V$ be a linear map between two linear spaces over a field $\F$.
+	The \emph{coimage}\index{coimage} of $f$, denoted by $\coim(f)$, is defined as the quotient space of the domain $W$ by the kernel of $f$, i.e.,
 	\[
 		\coim(f) = \quotient{W}{\ker(f)} = W / \ker(f)
 	\]
@@ -493,7 +582,8 @@ Generally, we may consider the following commutative diagrams, where left is the
 \section{Sum and Direct Sum}
 
 \begin{definition}[Sum of Subspaces]
-	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. The \emph{sum}\index{sum} of $V_1$ and $V_2$, denoted by $V_1 + V_2$, is defined as the set of all possible sums of elements from $V_1$ and $V_2$, i.e.,
+	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$.
+	The \emph{sum}\index{sum} of $V_1$ and $V_2$, denoted by $V_1 + V_2$, is defined as the set of all possible sums of elements from $V_1$ and $V_2$, i.e.,
 	\[
 		V_1 + V_2 = \{ v_1 + v_2 \mid v_1 \in V_1, v_2 \in V_2 \}
 	\]
@@ -511,22 +601,29 @@ Recall the definition of linear independence (Definition \ref{def:linear_indepen
 
 We have the following definition for weakly linear independence.
 \begin{definition}[Weak Linear Independence]
-	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. $V_1$ and $V_2$ are said to be \emph{weakly linearly independent} if $x_1 + x_2 = 0$ for $x_1 \in V_1$ and $x_2 \in V_2$ implies that $x_1 = x_2 = 0$. Note that $V_1$ or $V_2$ can be trivial.
+	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. $V_1$ and $V_2$ are said to be \emph{weakly linearly independent} if $x_1 + x_2 = 0$ for $x_1 \in V_1$ and $x_2 \in V_2$ implies that $x_1 = x_2 = 0$.
+	Note that $V_1$ or $V_2$ can be trivial.
 \end{definition}
 
 Then the definition of direct sum is as follows.
 \begin{definition}[Direct Sum of Subspaces]
-	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. The \emph{direct sum} of $V_1$ and $V_2$, denoted by $V_1 \oplus V_2$, is defined as the sum $V_1 + V_2$ when $V_1$ and $V_2$ are weakly linearly independent, i.e.,
+	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$.
+	The \emph{direct sum} of $V_1$ and $V_2$, denoted by $V_1 \oplus V_2$, is defined as the sum $V_1 + V_2$ when $V_1$ and $V_2$ are weakly linearly independent, i.e.,
 	\[
 		V_1 \oplus V_2 = V_1 + V_2
 	\]
 	when $V_1$ and $V_2$ are weakly linearly independent.
 \end{definition}
 
-Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a finite dimensional if $W \cong \F^n$ for some positive integer $n$. It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite spanning set.
+Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a finite dimensional if $W \cong \F^n$ for some positive integer $n$.
+It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite spanning set.
 
 \begin{proof}
-	If we have a map $\phi : \F^n \to W$, then $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$. However, the set $\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$ may not be linearly independent. Thus, we can always find a minimal spanning set of $W$ from it. WLOG, we can say $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$ for some $k \leq n$. Then using (Proposition \ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \cdots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$.
+	If we have a map $\phi : \F^n \to W$, then $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$.
+	However, the set $\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$ may not be linearly independent.
+	Thus, we can always find a minimal spanning set of $W$ from it.
+	WLOG, we can say $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$ for some $k \leq n$.
+	Then using (Proposition \ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \cdots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$.
 \end{proof}
 
 \begin{proposition} \label{prop:finite_dimensional_subspace_quotient_space}
@@ -541,7 +638,8 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 			\F^n \arrow[u, hook, two heads] \arrow[ur, two heads, dashed, "\phi"]
 		\end{tikzcd}
 	\end{center}
-	Then the map $\phi : \F^n \to U$ is defined by $x = \alpha^1 \vec{e}_1 + \cdots + \alpha^n \vec{e}_n \mapsto \phi(x) = \alpha^1 \phi(\vec{e}_1) + \cdots + \alpha^n \phi(\vec{e}_n)$. Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e}_1), \phi(\vec{e}_2), \cdots, \phi(\vec{e}_n)\}$.
+	Then the map $\phi : \F^n \to U$ is defined by $x = \alpha^1 \vec{e}_1 + \cdots + \alpha^n \vec{e}_n \mapsto \phi(x) = \alpha^1 \phi(\vec{e}_1) + \cdots + \alpha^n \phi(\vec{e}_n)$.
+	Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e}_1), \phi(\vec{e}_2), \cdots, \phi(\vec{e}_n)\}$.
 
 	For quotient space $\quotient{W}{V}$ and $W$ is finite dimensional, we have:
 	\begin{center}
@@ -549,22 +647,31 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 			V \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \quotient{W}{V}
 		\end{tikzcd}
 	\end{center}
-	Then we know that $\pi(\vec{e}_1), \pi(\vec{e}_2), \cdots, \pi(\vec{e}_n)$ spans $\quotient{W}{V}$. Thus, $\quotient{W}{V}$ is finitely spanned.
+	Then we know that $\pi(\vec{e}_1), \pi(\vec{e}_2), \cdots, \pi(\vec{e}_n)$ spans $\quotient{W}{V}$.
+	Thus, $\quotient{W}{V}$ is finitely spanned.
 \end{proof}
 
 \begin{proposition} \label{prop:dimension_of_sum_of_subspaces}
-	$\dim{(V_1 + V_2)} \leq \dim{V_1} + \dim{V_2}$. Equality holds if and only if the sum is direct.
+	$\dim{(V_1 + V_2)} \leq \dim{V_1} + \dim{V_2}$.
+	Equality holds if and only if the sum is direct.
 \end{proposition}
 \begin{proof}
-	For $V_1$ and $V_2$, we can find the minimal spanning sets $S_1$ and $S_2$ respectively. Then we claim that $S_1 \cup S_2$ spans $V_1 + V_2$, i.e., $V_1 + V_2 = \Span\{S_1 \cup S_2\}$.
+	For $V_1$ and $V_2$, we can find the minimal spanning sets $S_1$ and $S_2$ respectively.
+	Then we claim that $S_1 \cup S_2$ spans $V_1 + V_2$, i.e., $V_1 + V_2 = \Span\{S_1 \cup S_2\}$.
 
-	This is because for all $v \in V_1 + V_2$, we have $v = v_1 + v_2$ for some $v_i \in V_i$. Then we can write $v_i$ as a linear combination of finitely many elements in $S_i$, i.e., $v_i = \sum_{j=1}^{n_i} \alpha_i^j s_i^j$ where $\alpha_i^j \in \F$ and $s_i^j \in S_i$ are distinct. Thus, we have
+	This is because for all $v \in V_1 + V_2$, we have $v = v_1 + v_2$ for some $v_i \in V_i$.
+	Then we can write $v_i$ as a linear combination of finitely many elements in $S_i$, i.e., $v_i = \sum_{j=1}^{n_i} \alpha_i^j s_i^j$ where $\alpha_i^j \in \F$ and $s_i^j \in S_i$ are distinct.
+	Thus, we have
 	\[
 		v = v_1 + v_2 = \sum_{j=1}^{n_1} \alpha_1^j s_1^j + \sum_{j=1}^{n_2} \alpha_2^j s_2^j \in \Span\{S_1 \cup S_2\}
 	\]
-	This shows that $V_1 + V_2 \subseteq \Span\{S_1 \cup S_2\}$. The other direction is obvious. Thus, we have $V_1 + V_2 = \Span\{S_1 \cup S_2\}$.
+	This shows that $V_1 + V_2 \subseteq \Span\{S_1 \cup S_2\}$.
+	The other direction is obvious.
+	Thus, we have $V_1 + V_2 = \Span\{S_1 \cup S_2\}$.
 
-	Then we have $\dim{(V_1 + V_2)} \leq |S_1| + |S_2| = \dim{V_1} + \dim{V_2}$, as $S_1 \cup S_2$ may not be a minimal spanning set. The equality holds if and only if $S_1 \cup S_2$ is a minimal spanning set of $V_1 + V_2$, which is equivalent to saying that $V_1$ and $V_2$ are weakly linearly independent. Thus, the equality holds if and only if the sum is direct.
+	Then we have $\dim{(V_1 + V_2)} \leq |S_1| + |S_2| = \dim{V_1} + \dim{V_2}$, as $S_1 \cup S_2$ may not be a minimal spanning set.
+	The equality holds if and only if $S_1 \cup S_2$ is a minimal spanning set of $V_1 + V_2$, which is equivalent to saying that $V_1$ and $V_2$ are weakly linearly independent.
+	Thus, the equality holds if and only if the sum is direct.
 \end{proof}
 
 \newpage
@@ -592,7 +699,8 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 			0 \arrow[r] & V_1 \arrow[r, "i_1"] & V \arrow [r, "j_2"] & V_2 \arrow[r] & 0
 		\end{tikzcd}
 	\end{center}
-	for which $V_2$ is assumed to have a minimal spanning set. Then
+	for which $V_2$ is assumed to have a minimal spanning set.
+	Then
 	\begin{itemize}
 		\item the exactness at $V_1$ implies that $\{0_{V_1}\} = \im{0} = \ker(i_1)$, thus $i_1$ is injective.
 		\item the exactness at $V$ implies that $\im{i_1} = \ker(j_2)$, thus $V_1 \cong \im{i_1} \subseteq V$.
@@ -639,10 +747,13 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
 	\begin{itemize}
 		\item $j_2$ has a right inverse, i.e., there exists a linear map $i_2 : V_2 \to V$ such that $j_2 \circ i_2 = \id_{V_2}$.
 
-		This is because $V_2$ has a minimal spanning set. Thus, for each element in the minimal spanning set of $V_2$, we can choose one representative in $V$ and define the map on the minimal spanning set. Then we can extend it to the whole space.
+		This is because $V_2$ has a minimal spanning set.
+		Thus, for each element in the minimal spanning set of $V_2$, we can choose one representative in $V$ and define the map on the minimal spanning set.
+		Then we can extend it to the whole space.
 		\item $i_1$ has a left inverse, i.e., there exists a linear map $j_1 : V \to V_1$ such that $j_1 \circ i_1 = \id_{V_1}$.
 
-		This is because $i_1$ is injective. Thus, for each element in $V_1$, we can choose one representative in $V$ and define the map on the whole space by sending all other elements to zero.
+		This is because $i_1$ is injective.
+		Thus, for each element in $V_1$, we can choose one representative in $V$ and define the map on the whole space by sending all other elements to zero.
 	\end{itemize}
 
 	The exact sequence becomes:
@@ -660,7 +771,8 @@ There are some equalities about the composition of the maps in an exact sequence
 	\item $j_2 \circ i_2 = \id_{V_2}$ because $i_2$ is a right inverse of $j_2$.
 	\item $j_2 \circ i_1 = 0$ because $\im{i_1} = \ker(j_2)$.
 	\item $j_1 \circ i_2 = 0$ because $\im{i_2} = \ker(j_1)$.
-	\item $i_1 \circ j_1 + i_2 \circ j_2 = \id_V$ because for all $v \in V$, we have $v = (v - i_2(j_2(v))) + i_2(j_2(v))$ where $v - i_2(j_2(v)) \in \im{i_1}$ and $i_2(j_2(v)) \in \im{i_2}$. Also, $\im{i_1} \cap \im{i_2} = \{0_V\}$.
+	\item $i_1 \circ j_1 + i_2 \circ j_2 = \id_V$ because for all $v \in V$, we have $v = (v - i_2(j_2(v))) + i_2(j_2(v))$ where $v - i_2(j_2(v)) \in \im{i_1}$ and $i_2(j_2(v)) \in \im{i_2}$.
+	Also, $\im{i_1} \cap \im{i_2} = \{0_V\}$.
 \end{itemize}
 
 There is actually one more fact about the short exact sequence.
@@ -668,13 +780,36 @@ There is actually one more fact about the short exact sequence.
 	$V \cong \im{i_1} \oplus \im{i_2}$.
 \end{proposition}
 \begin{proof}
-	The meaning of $V \cong \im{i_1} \oplus \im{i_2}$ is that for any $x \in V$, it can be uniquely written as $x = x_1 + x_2$ where $x_i \in \im{i_i}$. Why? Suppose $x = x_1 + x_2 = x'_1 + x'_2$ where $x_i, x'_i \in \im{i_i}$. Then we have $(x_1 - x'_1) + (x_2 - x'_2) = 0$. Note that $x_1 - x'_1 \in \im{i_1}$ and $x_2 - x'_2 \in \im{i_2}$. Thus, we have $x_1 - x'_1 = 0$ and $x_2 - x'_2 = 0$. This shows the uniqueness.
+	The meaning of $V \cong \im{i_1} \oplus \im{i_2}$ is that for any $x \in V$, it can be uniquely written as $x = x_1 + x_2$ where $x_i \in \im{i_i}$.
+	Why?
+	Suppose $x = x_1 + x_2 = x'_1 + x'_2$ where $x_i, x'_i \in \im{i_i}$.
+	Then we have $(x_1 - x'_1) + (x_2 - x'_2) = 0$.
+	Note that $x_1 - x'_1 \in \im{i_1}$ and $x_2 - x'_2 \in \im{i_2}$.
+	Thus, we have $x_1 - x'_1 = 0$ and $x_2 - x'_2 = 0$.
+	This shows the uniqueness.
 
-	Note that all $V$, $V_1$ and $V_2$ are finite-dimensional. Then $V_2$ has a minimal spanning set, let say $S$. Then we construct $i_2 : s \mapsto i_2(s)$ where $i_2(s)$ is a choice of element from $j_2^{-1}(s) \neq \emptyset$ for each $s \in S$. Then we extend it to the whole space linearly. Thus, $i_2$ is injective.
+	Note that all $V$, $V_1$ and $V_2$ are finite-dimensional.
+	Then $V_2$ has a minimal spanning set, let say $S$.
+	Then we construct $i_2 : s \mapsto i_2(s)$ where $i_2(s)$ is a choice of element from $j_2^{-1}(s) \neq \emptyset$ for each $s \in S$.
+	Then we extend it to the whole space linearly.
+	Thus, $i_2$ is injective.
 
-	Then we want to prove that $\im{i_1}$ and $\im{i_2}$ are weakly independent. Assume that $x_1 + x_2 = 0$ where $x_i \in \im{i_i}$. Then we have $j_2(x_1 + x_2) = j_2(x_1) + j_2(x_2) = 0$. Note that $j_2(x_1) = 0$ because $x_1 \in \im{i_1} = \ker(j_2)$, the exactness of $V$. Thus, we have $j_2(x_2) = 0$. However, $j_2$ is injective on $\im{i_2}$ because $j_2 \circ i_2 = \id_{V_2}$. Thus, we have $x_2 = 0$ and $x_1 = 0$. This shows that $\im{i_1}$ and $\im{i_2}$ are weakly independent.
+	Then we want to prove that $\im{i_1}$ and $\im{i_2}$ are weakly independent.
+	Assume that $x_1 + x_2 = 0$ where $x_i \in \im{i_i}$.
+	Then we have $j_2(x_1 + x_2) = j_2(x_1) + j_2(x_2) = 0$.
+	Note that $j_2(x_1) = 0$ because $x_1 \in \im{i_1} = \ker(j_2)$, the exactness of $V$.
+	Thus, we have $j_2(x_2) = 0$.
+	However, $j_2$ is injective on $\im{i_2}$ because $j_2 \circ i_2 = \id_{V_2}$.
+	Thus, we have $x_2 = 0$ and $x_1 = 0$.
+	This shows that $\im{i_1}$ and $\im{i_2}$ are weakly independent.
 
-	Finally, we want to prove that $\im{i_1} + \im{i_2} = V$. For all $x \in V$, we let $x_2 = i_2(j_2(x)) \in \im{i_2}$ and $x_1 = x - x_2$. Then we have to show that $x_1 \in \im{i_1} = \ker(j_2)$. Note that $j_2(x) = j_2(x_1) + j_2(x_2) = j_2(x_1) + j_2 \circ i_2(j_2(x)) = j_2(x_1) + j_2(x)$. This shows that $j_2(x_1) = 0$. Thus, $x_1 \in \ker(j_2) = \im{i_1}$. This shows that $\im{i_1} + \im{i_2} = V$.
+	Finally, we want to prove that $\im{i_1} + \im{i_2} = V$.
+	For all $x \in V$, we let $x_2 = i_2(j_2(x)) \in \im{i_2}$ and $x_1 = x - x_2$.
+	Then we have to show that $x_1 \in \im{i_1} = \ker(j_2)$.
+	Note that $j_2(x) = j_2(x_1) + j_2(x_2) = j_2(x_1) + j_2 \circ i_2(j_2(x)) = j_2(x_1) + j_2(x)$.
+	This shows that $j_2(x_1) = 0$.
+	Thus, $x_1 \in \ker(j_2) = \im{i_1}$.
+	This shows that $\im{i_1} + \im{i_2} = V$.
 
 	Actually $j_1$ is the projection from $\im{i_1} \oplus \im{i_2}$ to $\im{i_1}$ and it exists due to the uniqueness of the decomposition.
 \end{proof}
@@ -690,7 +825,8 @@ For the dimension of the spaces, we have:
 \]
 As $V_1 \cong \im{i_1}$ and $V_2 \cong \im{i_2}$. $i_1$ and $i_2$ are injective and $V_k \to \im{i_k}$ are surjective.
 
-Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$. Similarly, we have $\dim{W} \geq \dim{V}$ and $\dim{W} \geq \dim{\quotient{W}{V}}$, where $V$ is a subspace of $W$.
+Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$.
+Similarly, we have $\dim{W} \geq \dim{V}$ and $\dim{W} \geq \dim{\quotient{W}{V}}$, where $V$ is a subspace of $W$.
 
 Consider Proposition \ref{prop:dimension_of_sum_of_subspaces}, more specifically, we have the following dimension formula:
 \[
@@ -714,17 +850,30 @@ Moreover, we have the isomorphism between $\quotient{(V_1 + V_2)}{V_2}$ and $\qu
 Students from Fudan University asked two hard problems but were completely cooked by Professor Guowu Meng
 
 \subsection{The story behind the two problems}
-``Well, linear algebra basically, no problem is difficult. All problems are trivial. 
+``Well, linear algebra basically, no problem is difficult.
+All problems are trivial.
 
-``People don't believe me, because many years ago, more than 20 years ago, there were two exchange students from Fudan University, and when they came here, they carry solution manual with some sets of hard linear algebra problems. I told them `nothing is difficult'. 
+``People don't believe me, because many years ago, more than 20 years ago, there were two exchange students from Fudan University, and when they came here, they carry solution manual with some sets of hard linear algebra problems.
+I told them `nothing is difficult'.
 
-``They don't believe me, so they dig out one hard problem from that solution book. Well, I told them I haven't seen this problem before, because when I was educated as a physicist engineer, I don't work on hard problems. I just deal with textbook. I don't read anything extract. I don't know but doesn't matter. Let me just write everything on board, and then pretty soon I figured out the answer. 
+``They don't believe me, so they dig out one hard problem from that solution book.
+Well, I told them I haven't seen this problem before, because when I was educated as a physicist engineer, I don't work on hard problems.
+I just deal with textbook.
+I don't read anything extract.
+I don't know but doesn't matter.
+Let me just write everything on board, and then pretty soon I figured out the answer.
 
-``Ok may be they say that I am lucky. Then the next day they came back with another problem. So again, I said I don't know how to do it but anyway doesn't matter. I put everything on board, then I draw some obvious facts in my mind about linear algebra. 
+``Ok may be they say that I am lucky.
+Then the next day they came back with another problem.
+So again, I said I don't know how to do it but anyway doesn't matter.
+I put everything on board, then I draw some obvious facts in my mind about linear algebra.
 
-``I say no problems are difficult in linear algebra under the assumption that you know linear algebra inside-out, you know every facts about it. Usually you will say I have seen this type of problems before, and then step 1, step 2 step 3, but this is a very wrong way to do it. This is the way that AI does it, but we are human, we are smarter than machine. 
+``I say no problems are difficult in linear algebra under the assumption that you know linear algebra inside-out, you know every facts about it.
+Usually you will say I have seen this type of problems before, and then step 1, step 2 step 3, but this is a very wrong way to do it.
+This is the way that AI does it, but we are human, we are smarter than machine.
 
-``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this. Then I see a path from here to there.'' 
+``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this.
+Then I see a path from here to there.''
 
 \begin{flushright}
 	--- Guowu Meng on the lecture of September 19, 2025.
@@ -732,9 +881,11 @@ Students from Fudan University asked two hard problems but were completely cooke
 
 \subsection{Introduction to the two problems}
 
-Later, we will get into the two problems that were asked by the students from Fudan University, but were completely cooked by Professor Guowu Meng. Before looking into the two problems, we need to introduce some basic terminologies in normal linear algebra.
+Later, we will get into the two problems that were asked by the students from Fudan University, but were completely cooked by Professor Guowu Meng.
+Before looking into the two problems, we need to introduce some basic terminologies in normal linear algebra.
 
-Let $A$ be a $m \times n$ matrix. Then we consider the following diagram:
+Let $A$ be a $m \times n$ matrix.
+Then we consider the following diagram:
 \begin{center}
 	\begin{tikzcd}
 		\ker(f) \subseteq \F^n \arrow[r, "f", "A" swap] & \F^m \supseteq \im{f}
@@ -776,7 +927,8 @@ The alternative, or normal, definition of rank is as follows.
 \subsection{Problem 1}
 
 \begin{problem}
-	Suppose we have three matrices $A$, $B$ and $C$. Then prove that
+	Suppose we have three matrices $A$, $B$ and $C$.
+	Then prove that
 	\[
 		\rank(B) + \rank(ABC) \geq \rank(AB) + \rank(BC)
 	\]
@@ -806,15 +958,22 @@ The alternative, or normal, definition of rank is as follows.
 		\end{tikzcd}
 	\end{center}
 
-	We denote the injective map with red color and the surjective map with blue color. Notice that there is a surjective map from $\col(B)$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the surjectivity of $A$ and $\pi_2$. Then we denote this surjective map with teal color.
+	We denote the injective map with red color and the surjective map with blue color.
+	Notice that there is a surjective map from $\col(B)$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the surjectivity of $A$ and $\pi_2$.
+	Then we denote this surjective map with teal color.
 
-	Then we have to consider whether the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is zero. If the map is zero, then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\col(BC)}$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the universal property of quotient space.
+	Then we have to consider whether the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is zero.
+	If the map is zero, then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\col(BC)}$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the universal property of quotient space.
 
-	Note that the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is a zero map. As both upper and lower sequences are exact, we have the exactness at $\col(AB)$, i.e., $\im{C} = \ker(\pi_2)$. Thus the composite map $\pi_2 \circ C$ is a zero map. This shows that the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is a zero map.
+	Note that the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is a zero map.
+	As both upper and lower sequences are exact, we have the exactness at $\col(AB)$, i.e., $\im{C} = \ker(\pi_2)$.
+	Thus the composite map $\pi_2 \circ C$ is a zero map.
+	This shows that the map from $\col(BC)$ to $\quotient{\col(AB)}{\col(ABC)}$ is a zero map.
 
 	Then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\col(BC)}$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the universal property of quotient space.
 
-	Finally, we consider the dimensions of the spaces. Note that $\phi$ is surjective, thus we have
+	Finally, we consider the dimensions of the spaces.
+	Note that $\phi$ is surjective, thus we have
 	\begin{align*}
 		\dim{\quotient{\col(B)}{\col(BC)}} & \geq \dim{\quotient{\col(AB)}{\col(ABC)}} \\
 		\dim{\col(B)} - \dim{\col(BC)} & \geq \dim{\col(AB)} - \dim{\col(ABC)} \\
@@ -843,11 +1002,16 @@ The alternative, or normal, definition of rank is as follows.
 		n = \dim{I_n} \geq r(A) \geq r(A^2) \geq \cdots
 	\]
 
-	As the space is finite-dimensional, the sequence will eventually become constant. That means there exists a $k$ such that for all $j \geq k$, we have $r(A^j) = r(A^{j + 1})$.
+	As the space is finite-dimensional, the sequence will eventually become constant.
+	That means there exists a $k$ such that for all $j \geq k$, we have $r(A^j) = r(A^{j + 1})$.
 
-	There are two possibilities: either $k \leq n$ or $k > n$. If $k \leq n$, the equality works properly, as for every $j \geq k$, including $j = n$, such that $r(A^j) = r(A^{j + 1})$ implies $r(A^n) = r(A^{n + 1})$.
+	There are two possibilities: either $k \leq n$ or $k > n$.
+	If $k \leq n$, the equality works properly, as for every $j \geq k$, including $j = n$, such that $r(A^j) = r(A^{j + 1})$ implies $r(A^n) = r(A^{n + 1})$.
 
-	For $k > n$, consider the strict inequality, we know that each time the dimension must drop at least 1. Without the loss of generality, we may consider the sequence of dimension as $n, n - 1, n - 2, \cdots, 1, 0$. This involves $n$ times. So it is impossible to have $k > n$.
+	For $k > n$, consider the strict inequality, we know that each time the dimension must drop at least 1.
+	Without the loss of generality, we may consider the sequence of dimension as $n, n - 1, n - 2, \cdots, 1, 0$.
+	This involves $n$ times.
+	So it is impossible to have $k > n$.
 \end{proof}
 
 \newpage
@@ -868,7 +1032,9 @@ Actually, using short exact sequence, we can easily prove the rank-nullity theor
 			0 \arrow[r] & \ker(f) \arrow[r, "\iota", hook] & V \arrow[r, "f", two heads] & \im{f} \arrow[r] & 0
 		\end{tikzcd}
 	\end{center}
-	Then we have $V \cong \ker(f) \oplus \im{f}$. Thus, we have $\dim{V} = \dim{\ker(f)} + \dim{\im{f}}$. This shows that $\rank(f) + \nullity(f) = \dim{V}$.
+	Then we have $V \cong \ker(f) \oplus \im{f}$.
+	Thus, we have $\dim{V} = \dim{\ker(f)} + \dim{\im{f}}$.
+	This shows that $\rank(f) + \nullity(f) = \dim{V}$.
 \end{proof}
 
 Moreover, we have the following corollary.
@@ -885,7 +1051,9 @@ Moreover, we have the following corollary.
 			0 \arrow[r] & \im{f} \arrow[r, "\iota", hook] & W \arrow[r, "\pi", two heads] & \coker(f) \arrow[r] & 0
 		\end{tikzcd}
 	\end{center}
-	Then we have $W \cong \im{f} \oplus \coker(f)$. Thus, we have $\dim{W} = \dim{\im{f}} + \dim{\coker(f)}$. This shows that $\dim{W} = \rank(f) + \dim{\coker(f)}$.
+	Then we have $W \cong \im{f} \oplus \coker(f)$.
+	Thus, we have $\dim{W} = \dim{\im{f}} + \dim{\coker(f)}$.
+	This shows that $\dim{W} = \rank(f) + \dim{\coker(f)}$.
 \end{proof}
 
 \begin{corollary}
@@ -901,7 +1069,9 @@ Moreover, we have the following corollary.
 			0 \arrow[r] & \ker(f) \arrow[r, "\iota", hook] & V \arrow[r, "\pi", two heads] & \coim(f) \arrow[r] & 0
 		\end{tikzcd}
 	\end{center}
-	Then we have $V \cong \ker(f) \oplus \coim(f)$. Thus, we have $\dim{V} = \dim{\ker(f)} + \dim{\coim(f)}$. This shows that $\dim{V} = \nullity(f) + \dim{\coim(f)}$.
+	Then we have $V \cong \ker(f) \oplus \coim(f)$.
+	Thus, we have $\dim{V} = \dim{\ker(f)} + \dim{\coim(f)}$.
+	This shows that $\dim{V} = \nullity(f) + \dim{\coim(f)}$.
 \end{proof}
 
 Moreover, we have the following properties for rank:
@@ -915,7 +1085,9 @@ Moreover, we have the following properties for rank:
 
 \section{Canonical Form of Linear Map}
 
-First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$. Recall that $\ker(f) = f^{-1} (0)$, $\im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim(f) = \quotient{V_1}{\ker(f)}$ and $\coker(f) = \quotient{V_2}{\im{f}}$. We have the following commutative diagram:
+First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$.
+Recall that $\ker(f) = f^{-1} (0)$, $\im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim(f) = \quotient{V_1}{\ker(f)}$ and $\coker(f) = \quotient{V_2}{\im{f}}$.
+We have the following commutative diagram:
 
 \begin{center}
 	\begin{tikzcd}
@@ -929,7 +1101,8 @@ First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear s
 
 Here, each column is an exact sequence, and the square in the middle is commutative, as the lower left triangle and upper right triangle are commutative.
 
-Moreover, the $f'$, the universal property for quotient map, is a linear equivalence. It is injective due to the trivial $\ker(f')$.
+Moreover, the $f'$, the universal property for quotient map, is a linear equivalence.
+It is injective due to the trivial $\ker(f')$.
 
 $s_1$ and $s_2$ are the \emph{right inverses} or called \emph{sections}\index{sections}.
 
@@ -944,7 +1117,8 @@ With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 
 		\end{bmatrix}$} (m-1-2);
 	\end{tikzpicture}
 \end{center}
-where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim(f) \to \im{f}$ and $s_1 : \coim(f) \to \im{s_1}$. Then the graph below commutes:
+where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim(f) \to \im{f}$ and $s_1 : \coim(f) \to \im{s_1}$.
+Then the graph below commutes:
 
 \begin{center}
 	\begin{tikzcd}
@@ -959,7 +1133,9 @@ where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are li
 The matrix $\begin{bmatrix}
 	\tilde{f} & 0 \\
 	0 & 0
-\end{bmatrix}$ is the canonical form of the linear map. Just as the canonical form of a matrix, it reveals the essential structure of the linear map. However, the rank of $\tilde{f}$ is unique, which is equal to $\rank(f) = \dim{\im{f}}$.
+\end{bmatrix}$ is the canonical form of the linear map.
+Just as the canonical form of a matrix, it reveals the essential structure of the linear map.
+However, the rank of $\tilde{f}$ is unique, which is equal to $\rank(f) = \dim{\im{f}}$.
 
 \begin{center}
 	\begin{tikzpicture}
@@ -972,13 +1148,15 @@ The matrix $\begin{bmatrix}
 	\end{tikzpicture}
 \end{center}
 
-Moreover, from the diagram of two exact sequences, we can see that $f$ can be decomposed into two linear maps: $f = \iota \circ \bar{f}$, where $\bar{f} : V_1 \to \coim(f)$ is a surjective map and $\iota : \coim(f) \to V_2$ is an injective map. Note that the decomposition is not unique, as we can choose the path from $V_1$ to $\coim(f)$ then to $V_2$.
+Moreover, from the diagram of two exact sequences, we can see that $f$ can be decomposed into two linear maps: $f = \iota \circ \bar{f}$, where $\bar{f} : V_1 \to \coim(f)$ is a surjective map and $\iota : \coim(f) \to V_2$ is an injective map.
+Note that the decomposition is not unique, as we can choose the path from $V_1$ to $\coim(f)$ then to $V_2$.
 
 \newpage
 
 \section{Free Vector Space}
 
-Let $X$ be a set and $\delta_X = \{ \delta_x \mid x \in X \}$. Here $\delta_x : X \to \F$ is the $\delta$-function at $x$. 
+Let $X$ be a set and $\delta_X = \{ \delta_x \mid x \in X \}$.
+Here $\delta_x : X \to \F$ is the $\delta$-function at $x$.
 
 \begin{proposition}
 	$\delta_X$ is a linearly independent set of $\F[[X]] =$ the linear space of $\F$-valued functions on $X$.
@@ -994,7 +1172,8 @@ Then $\delta_X$ is a minimal spanning set for $\F[X]$.
 	There is a natural set isomorphism $X \to \delta_X$ which maps $x$ to $\delta_x$.
 \end{proposition}
 
-Then we have an injective set map $\iota : X \equiv \delta_X \to \F[X]$ which maps $x$ to $\delta_x$. This is a set mapping to a linear space.
+Then we have an injective set map $\iota : X \equiv \delta_X \to \F[X]$ which maps $x$ to $\delta_x$.
+This is a set mapping to a linear space.
 
 Among all set maps from $X$ to a linear space over $\F$, the set map $\iota : X \to \F[X]$ is universal in the following sense:
 \begin{center}
@@ -1006,10 +1185,14 @@ Among all set maps from $X$ to a linear space over $\F$, the set map $\iota : X 
 For any set map $\phi : X \to Z$, there exists a unique linear map $\tilde{\phi} : \F[X] \to Z$ such that $\tilde{\phi} \circ \iota = \phi$.
 
 \begin{proof}
-	Assume the existence of such $\tilde{\phi}$, then $\tilde{\phi} \circ \iota (x) = \phi(x)$ for all $x \in X$, i.e., $\tilde{\phi} (\delta_x) = \phi(x)$ for all $x \in X$. As $\{ \delta_x \mid x \in X \}$ is a minimal spanning set for $\F[X]$, $\tilde{\phi}$ must be the linear map such that $\tilde{\phi} (\delta_x) = \phi(x)$, thus unique. Existence of $\tilde{\phi}$ is also proved.
+	Assume the existence of such $\tilde{\phi}$, then $\tilde{\phi} \circ \iota (x) = \phi(x)$ for all $x \in X$, i.e., $\tilde{\phi} (\delta_x) = \phi(x)$ for all $x \in X$.
+	As $\{ \delta_x \mid x \in X \}$ is a minimal spanning set for $\F[X]$, $\tilde{\phi}$ must be the linear map such that $\tilde{\phi} (\delta_x) = \phi(x)$, thus unique.
+	Existence of $\tilde{\phi}$ is also proved.
 \end{proof}
 
-Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an element $\sum \alpha_x \delta_x \in F[X]$, where the sum is finite and $\alpha_x \in \F$, is naturally identified with $\sum \alpha_x x$, which is called a \emph{formal linear combination} of elements in $X$. Hereafter, we always use this natural identification, so $\F[X]$ is now defined as \emph{the set of formal linear combinations of elements in the set $X$}. Then $\iota : X \to \F[X]$ is just the inclusion map : $x \mapsto x$.
+Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an element $\sum \alpha_x \delta_x \in F[X]$, where the sum is finite and $\alpha_x \in \F$, is naturally identified with $\sum \alpha_x x$, which is called a \emph{formal linear combination} of elements in $X$.
+Hereafter, we always use this natural identification, so $\F[X]$ is now defined as \emph{the set of formal linear combinations of elements in the set $X$}.
+Then $\iota : X \to \F[X]$ is just the inclusion map : $x \mapsto x$.
 
 The universal map is unique in the following sense: suppose that $\iota' : X \to \F[X]'$ is another inclusion map, then there is a unique linear equivalence $\lambda$ in the commutative triangle:
 \begin{center}
@@ -1026,9 +1209,11 @@ This can be seen from the following diagram:
 		\F[X]' \arrow[r, "\mu" swap, dashed] \arrow[rrr, bend right, "1"] & \F[X] \arrow[rr, "\lambda" swap, dashed] \arrow[rrr, bend right, "1"] & & \F[X]' \arrow[r, "\mu" swap, dashed] & \F[X]
 	\end{tikzcd}
 \end{center}
-$\lambda$ exists because $\iota$ is universal, and $\mu$ exists because $\iota'$ is universal. $\lambda \mu = 1$ because $\iota'$ is universal, same for $\mu \lambda = 1$. Then $\lambda$ is isomorphism.
+$\lambda$ exists because $\iota$ is universal, and $\mu$ exists because $\iota'$ is universal. $\lambda \mu = 1$ because $\iota'$ is universal, same for $\mu \lambda = 1$.
+Then $\lambda$ is isomorphism.
 
-The universal property implies an assignment of a linear map $\F[f] : \F[X] \to \F[Y]$ to any set map $f : X \to Y$. Indeed,
+The universal property implies an assignment of a linear map $\F[f] : \F[X] \to \F[Y]$ to any set map $f : X \to Y$.
+Indeed,
 \begin{center}
 	\begin{tikzcd}
 		X \arrow[r, "f"] \arrow[d, "\iota" swap, hook] \arrow[dr, "\iota f"] & Y \arrow[d, "\iota", hook] \\

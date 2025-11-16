@@ -11,23 +11,27 @@
 Linear map, sometimes linear transformation, is a homomorphism preserving linear structure.
 
 \begin{definition}[Linear Maps]
-	Let $V$ and $W$ be two linear spaces over a field $\F$. A \emph{linear map} is a set map $T: V \to W$ such that for all $u, v \in V$ and $\alpha \in \F$, the following holds:
+	Let $V$ and $W$ be two linear spaces over a field $\F$.
+	A \emph{linear map} is a set map $T: V \to W$ such that for all $u, v \in V$ and $\alpha \in \F$, the following holds:
 	\begin{align*}
 		T(u + v) &= T(u) + T(v) \\
 		T(\alpha u) &= \alpha T(u)
 	\end{align*}
-	The set of all linear maps from $V$ to $W$ is denoted by $\Hom(V, W)$. Some may write {$\mathcal{L}(V, W)$}.
+	The set of all linear maps from $V$ to $W$ is denoted by $\Hom(V, W)$.
+	Some may write {$\mathcal{L}(V, W)$}.
 \end{definition}
 
 \begin{definition}[Linear Combinations]
-	Let $V$ be a linear space over a field $\F$. A \emph{linear combination} of vectors $v_1, v_2, \cdots, v_n \in V$ is a vector of the form:
+	Let $V$ be a linear space over a field $\F$.
+	A \emph{linear combination} of vectors $v_1, v_2, \cdots, v_n \in V$ is a vector of the form:
 	\[
 		\alpha^1 v_1 + \alpha^2 v_2 + \cdots + \alpha^n v_n
 	\]
 	where $\alpha^1, \alpha^2, \cdots, \alpha^n \in \F$ are scalars.
 \end{definition}
 
-The reason of using the superscript for scalars is to avoid confusion with the subscript of vectors. Also, it is due to the concept of dual space, which will be introduced later.
+The reason of using the superscript for scalars is to avoid confusion with the subscript of vectors.
+Also, it is due to the concept of dual space, which will be introduced later.
 
 We can combine the two properties of linear maps into one property.
 
@@ -39,7 +43,8 @@ We can combine the two properties of linear maps into one property.
 \end{corollary}
 
 \begin{example}
-	Let $A$ be an $m \times n$ matrix with entries in a field $\F$. The map $T: \F^n \to \F^m$ defined by
+	Let $A$ be an $m \times n$ matrix with entries in a field $\F$.
+	The map $T: \F^n \to \F^m$ defined by
 	\[
 		Tx = T(x) = Ax
 	\]
@@ -47,7 +52,8 @@ We can combine the two properties of linear maps into one property.
 \end{example}
 
 \begin{proposition}
-	A linear map $T: \F^n \to \F^m$ is a matrix multiplication by a unique $m \times n$ matrix $A$ with entries in $\F$. The matrix $A$ is called the \emph{standard matrix} of the linear map $T$.
+	A linear map $T: \F^n \to \F^m$ is a matrix multiplication by a unique $m \times n$ matrix $A$ with entries in $\F$.
+	The matrix $A$ is called the \emph{standard matrix} of the linear map $T$.
 
 	\begin{center}
 		\begin{tikzcd}[column sep=huge, row sep=tiny]
@@ -68,11 +74,13 @@ We can combine the two properties of linear maps into one property.
 \end{proposition}
 
 \begin{proof}
-	Consider a column matrix $x \in \F^n$ with entries $x^1, x^2, \cdots, x^n \in \F$. Then $x$ can be expressed as a linear combination of the vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
+	Consider a column matrix $x \in \F^n$ with entries $x^1, x^2, \cdots, x^n \in \F$.
+	Then $x$ can be expressed as a linear combination of the vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
 	\[
 		x = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n = \sum_{i=1}^{n} x^i \vec{e}_i
 	\]
-	Since $T$ is a linear map, it respects linear combinations. Therefore, we have:
+	Since $T$ is a linear map, it respects linear combinations.
+	Therefore, we have:
 	\[
 		Tx = T\left( \sum_{i=1}^{n} x^i \vec{e}_i \right) = \sum_{i=1}^{n} x^i T(\vec{e}_i) = \sum_{i=1}^{n} x^i \vec{a}_i = A\vec{x}
 	\]
@@ -80,10 +88,14 @@ We can combine the two properties of linear maps into one property.
 		| & | & & | \\
 		T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
 		| & | & & |
-	\end{bmatrix}$. Thus, we have $T\vec{x} = A\vec{x}$ for all $\vec{x} \in \F^n$. This shows that $T$ can be represented as a matrix multiplication by the matrix $A$.
+	\end{bmatrix}$.
+	Thus, we have $T\vec{x} = A\vec{x}$ for all $\vec{x} \in \F^n$.
+	This shows that $T$ can be represented as a matrix multiplication by the matrix $A$.
 \end{proof}
 
-There is a simpler way to write $\sum_{i=1}^{n} x^i \vec{e}_i$: The Einstein Summation Convention. When an index variable appears twice in a single term and is not otherwise defined, it implies summation of that term over all the values of the index. Therefore, we can write:
+There is a simpler way to write $\sum_{i=1}^{n} x^i \vec{e}_i$: The Einstein Summation Convention.
+When an index variable appears twice in a single term and is not otherwise defined, it implies summation of that term over all the values of the index.
+Therefore, we can write:
 \[
 	x = x^i \vec{e}_i
 \]
@@ -114,7 +126,9 @@ where $i$ is summed from $1$ to $n$.
 	\[
 		D\left( \sum_{n=0}^{N} a_n t^n \right) = \sum_{n=1}^{N} n a_n t^{n-1}
 	\]
-	for all polynomials $\sum_{n=0}^{N} a_n t^n \in \F[t]$. The differentiation operator $D$ is a linear map over $\F$. The standard matrix of $D$ with respect to the standard basis $\{1, t, t^2, \cdots, t^N\}$ of $\F[t]$ is given by:
+	for all polynomials $\sum_{n=0}^{N} a_n t^n \in \F[t]$.
+	The differentiation operator $D$ is a linear map over $\F$.
+	The standard matrix of $D$ with respect to the standard basis $\{1, t, t^2, \cdots, t^N\}$ of $\F[t]$ is given by:
 	\[
 		A = \begin{bmatrix}
 			0 & 1 & 0 & 0 & \cdots & 0 \\
@@ -128,7 +142,8 @@ where $i$ is summed from $1$ to $n$.
 \end{example}
 
 \begin{proposition}
-	Let $X$ be a set and $W$ be a linear space over a field $\F$. Then the set of all set maps from $X$ to $W$, denoted by $\Map(X, W)$, is a linear space over $\F$ with the following operations defined pointwisely:
+	Let $X$ be a set and $W$ be a linear space over a field $\F$.
+	Then the set of all set maps from $X$ to $W$, denoted by $\Map(X, W)$, is a linear space over $\F$ with the following operations defined pointwisely:
 	\begin{align*}
 		+ : \Map(X, W) \times \Map(X, W) &\to \Map(X, W) \\
 		(f,g) &\mapsto (f + g) : x \mapsto f(x) + g(x) \\
@@ -142,7 +157,8 @@ where $i$ is summed from $1$ to $n$.
 \end{proof}
 
 \begin{proposition}
-	Let $V$ and $W$ be two linear spaces over a field $\F$. Then $\Hom(V, W)$ is a linear space over $\F$ with the following operations defined pointwisely:
+	Let $V$ and $W$ be two linear spaces over a field $\F$.
+	Then $\Hom(V, W)$ is a linear space over $\F$ with the following operations defined pointwisely:
 	\begin{align*}
 		+ : \Hom(V, W) \times \Hom(V, W) &\to \Hom(V, W) \\
 		(f,g) &\mapsto (f + g): v \mapsto f(v) + g(v) \\
@@ -152,19 +168,23 @@ where $i$ is summed from $1$ to $n$.
 \end{proposition}
 
 \begin{proof}
-	Note that $\Hom(V, W) \subseteq \Map(V, W)$. We need to show that the operations defined above are closed in $\Hom(V, W)$, i.e., for all $f, g \in \Hom(V, W)$ and $\alpha \in \F$, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$ or equivalently, $f$ respects linear combinations.
+	Note that $\Hom(V, W) \subseteq \Map(V, W)$.
+	We need to show that the operations defined above are closed in $\Hom(V, W)$, i.e., for all $f, g \in \Hom(V, W)$ and $\alpha \in \F$, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$ or equivalently, $f$ respects linear combinations.
 
-	Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in \F$. Since $f, g \in \Hom(V, W)$, we have:
+	Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in \F$.
+	Since $f, g \in \Hom(V, W)$, we have:
 	\begin{align*}
 		(f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
 		&=\joinrel= \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
 		&=\joinrel= \alpha (f(\vec{u}) + g(\vec{u})) + \beta (f(\vec{v}) + g(\vec{v})) \\
 		&\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
 	\end{align*}
-	where the second equality is due to the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
+	where the second equality is due to the linearity of $f$ and $g$.
+	Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
 \end{proof}
 \begin{remark}
-	Note that $\End(V) = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section. The addition operation is commutative, but the multiplication operation is not necessarily commutative.
+	Note that $\End(V) = \Hom(V, V)$ is a linear space over $\F$ and also a ring with the addition and multiplication operations defined in the previous section.
+	The addition operation is commutative, but the multiplication operation is not necessarily commutative.
 \end{remark}
 
 Then we can say that
@@ -209,27 +229,38 @@ Similar to normal maps, there are injective, surjective and bijective linear map
 \end{corollary}
 
 \begin{proof}
-	($\Rightarrow$) Assume $T: V \to W$ is invertible. By definition, there exists a linear map $S: W \to V$ such that $TS = 1_W$ and $ST = 1_V$.
+	($\Rightarrow$) Assume $T: V \to W$ is invertible.
+	By definition, there exists a linear map $S: W \to V$ such that $TS = 1_W$ and $ST = 1_V$.
 
-	To show that $T$ is injective, suppose $T(u) = T(v)$ for some $u, v \in V$. We have:
+	To show that $T$ is injective, suppose $T(u) = T(v)$ for some $u, v \in V$.
+	We have:
 	\[
 		S(T(u)) = S(T(v)) \implies (ST)(u) = (ST)(v) \implies 1_V(u) = 1_V(v) \implies u = v
 	\]
-	Thus, $T$ is injective. Then, to show that $T$ is surjective, let $w \in W$. Since $TS = 1_W$, we have:
+	Thus, $T$ is injective.
+	Then, to show that $T$ is surjective, let $w \in W$.
+	Since $TS = 1_W$, we have:
 	\[
 		T(S(w)) = 1_W(w) = w
 	\]
-	Then for every $w \in W$, there exists a $v = S(w) \in V$ such that $T(v) = w$. Thus, $T$ is surjective.
+	Then for every $w \in W$, there exists a $v = S(w) \in V$ such that $T(v) = w$.
+	Thus, $T$ is surjective.
 
-	($\Leftarrow$) Now assume that $T: V \to W$ is both injective and surjective. We need to show that there exists a linear map $S: W \to V$ such that $TS = 1_W$ and $ST = 1_V$.
+	($\Leftarrow$) Now assume that $T: V \to W$ is both injective and surjective.
+	We need to show that there exists a linear map $S: W \to V$ such that $TS = 1_W$ and $ST = 1_V$.
 
-	Since $T$ is surjective, for each $w \in W$, there exists at least one $v \in V$ such that $T(v) = w$. Define the map $S: W \to V$ by choosing one such preimage for each $w$:
+	Since $T$ is surjective, for each $w \in W$, there exists at least one $v \in V$ such that $T(v) = w$.
+	Define the map $S: W \to V$ by choosing one such preimage for each $w$:
 	\[
 		S(w) = \text{a chosen } v \text{ such that } T(v) = w
 	\]
-	To show that $S$ is well-defined, we need to ensure that if $T(v_1) = T(v_2)$, then $v_1 = v_2$. This follows from the injectivity of $T$.
+	To show that $S$ is well-defined, we need to ensure that if $T(v_1) = T(v_2)$, then $v_1 = v_2$.
+	This follows from the injectivity of $T$.
 
-	Now we verify that $TS = 1_W$: $(TS)(w) = T(S(w)) = w$ for all $w \in W$. Thus, $TS = 1_W$. Next, we verify that $ST = 1_V$: $(ST)(v) = S(T(v)) = v$ for all $v \in V$. Thus, $ST = 1_V$.
+	Now we verify that $TS = 1_W$: $(TS)(w) = T(S(w)) = w$ for all $w \in W$.
+	Thus, $TS = 1_W$.
+	Next, we verify that $ST = 1_V$: $(ST)(v) = S(T(v)) = v$ for all $v \in V$.
+	Thus, $ST = 1_V$.
 
 	Therefore, $T$ has a two-sided inverse $S$, and hence $T$ is invertible.
 \end{proof}
@@ -251,7 +282,8 @@ Similar to normal maps, there are injective, surjective and bijective linear map
 
 \section{Matrix Multiplications and Compositions of Linear Maps}
 
-We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with standard matrices $A$ and $B$, respectively. We want to find the standard matrix of the composition $ST: \F^n \to \F^k$.
+We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with standard matrices $A$ and $B$, respectively.
+We want to find the standard matrix of the composition $ST: \F^n \to \F^k$.
 
 \begin{center}
 	\begin{tikzpicture}
@@ -273,7 +305,8 @@ We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with stand
 \end{proposition}
 
 \begin{proof}
-	Let $x \in \F^n$ be a column matrix with entries $x^1, x^2, \cdots, x^n \in \F$. Then $x$ can be expressed as a linear combination of the standard basis vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
+	Let $x \in \F^n$ be a column matrix with entries $x^1, x^2, \cdots, x^n \in \F$.
+	Then $x$ can be expressed as a linear combination of the standard basis vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
 	\[
 		x = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n = x^i \vec{e}_i
 	\]
@@ -281,7 +314,8 @@ We consider two linear maps $T: \F^n \to \F^m$ and $S: \F^m \to \F^k$ with stand
 	\[
 		(ST)\vec{e}_j = S(T(\vec{e}_j)) = S(\vec{a}_j) = B\vec{a}_j = (BA)\vec{e}_j
 	\]
-	for all $j = 1, 2, \cdots, n$. This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
+	for all $j = 1, 2, \cdots, n$.
+	This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
 \end{proof}
 \begin{remark}
 	Note that $B$ is a $k \times m$ matrix and $A$ is an $m \times n$ matrix, so the matrix multiplication $BA$ is defined and results in a $k \times n$ matrix.
@@ -299,39 +333,47 @@ The matrix multiplication $BA$ can be computed as follows:
 		| & | & & |
 	\end{bmatrix}
 \]
-where $\vec{a}_i = T(\vec{e}_i)$ is the $i$-th column of the matrix $A$. Also,
+where $\vec{a}_i = T(\vec{e}_i)$ is the $i$-th column of the matrix $A$.
+Also,
 \[
 	Bx = x^1 \vec{b}_1 + x^2 \vec{b}_2 + \cdots + x^n \vec{b}_n = x^i \vec{b}_i
 \]
-where $\vec{b}_i = B\vec{a}_i$ is the $i$-th column of the matrix $B$. Note that $B$ is a $k \times m$ matrix, and $x \in \F^m$. Thus, the matrix multiplication $Bx$ is defined and results in a column matrix in $\F^k$.
+where $\vec{b}_i = B\vec{a}_i$ is the $i$-th column of the matrix $B$.
+Note that $B$ is a $k \times m$ matrix, and $x \in \F^m$.
+Thus, the matrix multiplication $Bx$ is defined and results in a column matrix in $\F^k$.
 
 \newpage
 
 \section{Elementary Row Operations}
 
 \begin{definition}[Elementary Row Operations]
-	Let $A$ be an $m \times n$ matrix over a field $\F$. An \emph{elementary row operation} on $A$ is one of the following operations:
+	Let $A$ be an $m \times n$ matrix over a field $\F$.
+	An \emph{elementary row operation} on $A$ is one of the following operations:
 	\begin{enumerate}
 		\item Row Interchange: \qquad $R_i \leftrightarrow R_j$.
 		\item Row Multiplication: \quad $R_i \to \alpha R_i$, where $\alpha \in \F \setminus \{0\}$.
 		\item Row Addition: \qquad\quad\ $R_i \to R_i + \alpha R_j$, where $\alpha \in \F$ and $i \neq j$.
 	\end{enumerate}
-	Each elementary row operation can be represented by \emph{left multiplication} of $A$ by an appropriate $m \times m$ matrix over $\F$. Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
+	Each elementary row operation can be represented by \emph{left multiplication} of $A$ by an appropriate $m \times m$ matrix over $\F$.
+	Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
 
 For easier notations, we introduce the idea of matrix units, which is similar to the standard basis vectors $\vec{e_i}$.
 
 \begin{definition}[Matrix Units]
-	Let $m$ and $n$ be two positive integers and $\F$ be a field. The \emph{matrix unit} $E_i^j$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
+	Let $m$ and $n$ be two positive integers and $\F$ be a field.
+	The \emph{matrix unit} $E_i^j$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
 	\[
 		(E_i^j)_k^l = \begin{cases}
 			1 & \text{if } (k,l) = (i,j) \\
 			0 & \text{otherwise}
 		\end{cases}
 	\]
-	for all $1 \leq k \leq m$ and $1 \leq l \leq n$. The $(i,j)$-th position is the entry in the $i$-th row and $j$-th column.
+	for all $1 \leq k \leq m$ and $1 \leq l \leq n$.
+	The $(i,j)$-th position is the entry in the $i$-th row and $j$-th column.
 
-	It can also be defined as $E_i^j = \vec{e}_i \hat{e}^j \in \M{m \times n}{\F}$ where $\vec{e}_i \in \F^m$ and $\vec{e}_j^T = \hat{e}^j \in (\F^n)^*$ are the $i$-th and $j$-th standard basis vectors, respectively. The $\hat{e}^j$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
+	It can also be defined as $E_i^j = \vec{e}_i \hat{e}^j \in \M{m \times n}{\F}$ where $\vec{e}_i \in \F^m$ and $\vec{e}_j^T = \hat{e}^j \in (\F^n)^*$ are the $i$-th and $j$-th standard basis vectors, respectively.
+	The $\hat{e}^j$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
 \end{definition}
 \begin{remark}
 	Note that for any $m \times n$ matrix $A$ over a field $\F$, we have:
@@ -339,7 +381,8 @@ For easier notations, we introduce the idea of matrix units, which is similar to
 		A\vec{e}_j &= \text{the } j\text{-th column of } A \in \F^n \\
 		\hat{e}^iA &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
 	\end{align*}
-	where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$. Then we have: (Beaware of the difference between superscript and subscript)
+	where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$.
+	Then we have: (Beaware of the difference between superscript and subscript)
 	\[
 		a_j^i = \hat{e}^i A \vec{e}_j = \text{the } (i,j)\text{-th entry of } A
 	\]
@@ -382,7 +425,8 @@ Then we consider the row operations by using the matrix units.
 \end{proposition}
 
 \begin{proof}
-	The linear map $T: \F^n \to \F^n$ is defined pointwisely. We can say the map is:
+	The linear map $T: \F^n \to \F^n$ is defined pointwisely.
+	We can say the map is:
 	\[
 		\vec{e}_k \mapsto \begin{cases}
 			\vec{e}_j & \text{if } k = i \\
@@ -406,7 +450,8 @@ Then we consider the row operations by using the matrix units.
 \end{proposition}
 
 \begin{proof}
-	The linear map $T: \F^n \to \F^n$ is defined pointwisely. We can say the map is:
+	The linear map $T: \F^n \to \F^n$ is defined pointwisely.
+	We can say the map is:
 	\[
 		\vec{e}_k \mapsto \begin{cases}
 			\alpha \vec{e}_i & \text{if } k = i \\
@@ -429,7 +474,8 @@ Then we consider the row operations by using the matrix units.
 \end{proposition}
 
 \begin{proof}
-	The linear map $T: \F^n \to \F^n$ is defined pointwisely. We can say the map is:
+	The linear map $T: \F^n \to \F^n$ is defined pointwisely.
+	We can say the map is:
 	\[
 		\vec{e}_k \mapsto \begin{cases}
 			\vec{e}_i + \alpha \vec{e_j} & \text{if } k = i \\
@@ -452,7 +498,8 @@ Then we consider the row operations by using the matrix units.
 \section{Dimensions of Vector Spaces}
 
 \begin{definition}[Finite Dimensional Vector Spaces] \label{def:finite_dimensional_vector_space}
-	A linear space $V$ over a field $\F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$. In this case, we say that the dimension of $V$ is $n$, denoted $\dim_{\F} V = n$ or simply $\dim V = n$.
+	A linear space $V$ over a field $\F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$.
+	In this case, we say that the dimension of $V$ is $n$, denoted $\dim_{\F} V = n$ or simply $\dim V = n$.
 \end{definition}
 
 \begin{definition}[Infinite Dimensional Vector Spaces]
@@ -466,13 +513,17 @@ We have to proof if the dimension of a finite dimensional vector space is well-d
 \end{proposition}
 
 \begin{proof}
-	Since $S$ is linear equivalence, it has a unique two-sided inverses $S^{-1}: \F^n \to V$. Consider the composition of this map:
+	Since $S$ is linear equivalence, it has a unique two-sided inverses $S^{-1}: \F^n \to V$.
+	Consider the composition of this map:
 	\[
 		TS^{-1}: \F^n \to \F^m
 	\]
-	Since $TS^{-1}$ is compositions of linear equivalences, it is also a linear equivalence. Mutantis mutandis, for the opposite direction.
+	Since $TS^{-1}$ is compositions of linear equivalences, it is also a linear equivalence.
+	Mutantis mutandis, for the opposite direction.
 
-	Now, we know that a linear equivalence between two finite-dimensional vector spaces. Then we have $\dim \F^n = \dim \F^m$ or $n = m$. Thus, the dimension of a finite dimensional vector space is well-defined.
+	Now, we know that a linear equivalence between two finite-dimensional vector spaces.
+	Then we have $\dim \F^n = \dim \F^m$ or $n = m$.
+	Thus, the dimension of a finite dimensional vector space is well-defined.
 \end{proof}
 
 Graphically, we have the following commutative diagram:
@@ -491,13 +542,15 @@ Graphically, we have the following commutative diagram:
 \section{Elementary Column Operations, Canonical Form and Rank}
 
 \begin{definition}[Elementary Column Operations]
-	Let $A$ be an $m \times n$ matrix over a field $\F$. An \emph{elementary column operation} on $A$ is one of the following operations:
+	Let $A$ be an $m \times n$ matrix over a field $\F$.
+	An \emph{elementary column operation} on $A$ is one of the following operations:
 	\begin{enumerate}
 		\item Column Interchange: \qquad $C_i \leftrightarrow C_j$.
 		\item Column Multiplication: \quad $C_i \to \alpha C_i$, where $\alpha \in \F \setminus \{0\}$.
 		\item Column Addition: \qquad\quad\ $C_i \to C_i + \alpha C_j$, where $\alpha \in \F$ and $i \neq j$.
 	\end{enumerate}
-	Each elementary column operation can be represented by \emph{right multiplication} of $A$ by an appropriate $n \times n$ matrix over $\F$. Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
+	Each elementary column operation can be represented by \emph{right multiplication} of $A$ by an appropriate $n \times n$ matrix over $\F$.
+	Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
 
 \begin{proposition}
@@ -519,7 +572,9 @@ The following is the commutative diagram of the proposition above, where $B = \b
 	\end{tikzcd}
 \end{center}
 
-Note that $P$ is the product of a finite sequence of elementary row operation matrices and $Q$ is the product of a finite sequence of elementary column operation matrices. Both $P$ and $Q$ are elementary and invertible matrices. Thus, we have:
+Note that $P$ is the product of a finite sequence of elementary row operation matrices and $Q$ is the product of a finite sequence of elementary column operation matrices.
+Both $P$ and $Q$ are elementary and invertible matrices.
+Thus, we have:
 \[
 	\begin{bmatrix}
 		I_r & 0 \\
@@ -556,7 +611,8 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 }
 
 \begin{proposition}
-	Let $A$ be an $m \times n$ matrix over a field $\F$. Then the following statements are equivalent:
+	Let $A$ be an $m \times n$ matrix over a field $\F$.
+	Then the following statements are equivalent:
 	\[
 		A \text{ is invertible } \iff m \left\{\left[\vphantom{\matriximg}\right.\right.\kern-2\nulldelimiterspace
 		\underbrace{\matriximg}_{\text{\normalsize $n$}}\kern-\nulldelimiterspace\left.\vphantom{\matriximg}\right] \text{ is invertible } \iff \rank(A) = m = n \iff \begin{bmatrix}
@@ -569,15 +625,23 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \begin{proof}
 	If $A$ is invertible, then the matrix $PAQ^{-1}$ is also invertible, as $P$ and $Q$ are elementary and invertible matrices, and hence the product is invertible.
 
-	If $PAQ^{-1}$ is invertible, and note that $m = n$ is automatically true. As only square matrix is invertible. Without the loss of generality, let say $PAQ^{-1}$ is a $m \times m$ matrix, then we have $\rank(PAQ^{-1)} = m$. Also note that the rank is invarient under multiplication by invertible matrices, so $\rank(A) = \rank(PAQ^{-1)}$. Hence, $\rank(A) = m = n$.
+	If $PAQ^{-1}$ is invertible, and note that $m = n$ is automatically true.
+	As only square matrix is invertible.
+	Without the loss of generality, let say $PAQ^{-1}$ is a $m \times m$ matrix, then we have $\rank(PAQ^{-1)} = m$.
+	Also note that the rank is invarient under multiplication by invertible matrices, so $\rank(A) = \rank(PAQ^{-1)}$.
+	Hence, $\rank(A) = m = n$.
 
-	If $\rank(A) = m = n$, as the canonical matrix remains the $m \times n$ structure, we know that the canonical form is actually a square matrix, let say $m \times m$. Also $r = \rank(A) = m$. Hence the whole canonical form become an identity matrix $I_m$.
+	If $\rank(A) = m = n$, as the canonical matrix remains the $m \times n$ structure, we know that the canonical form is actually a square matrix, let say $m \times m$.
+	Also $r = \rank(A) = m$.
+	Hence the whole canonical form become an identity matrix $I_m$.
 
-	If the canonical form is an identity matrix $I$, i.e., it is invertible. Then the matrix $P^{-1}IQ = A$ is also invertible for some elementary and invertible matrices $P$ and $Q$.
+	If the canonical form is an identity matrix $I$, i.e., it is invertible.
+	Then the matrix $P^{-1}IQ = A$ is also invertible for some elementary and invertible matrices $P$ and $Q$.
 \end{proof}
 
 \begin{proposition}
-	Let $A$ be an $m \times n$ matrix over a field $\F$. Then the following statements are equivalent:
+	Let $A$ be an $m \times n$ matrix over a field $\F$.
+	Then the following statements are equivalent:
 	\[
 		A \text{ has a left inverse } \iff A \text{ is injective } \iff \rank(A) = n \iff \begin{bmatrix}
 			I_r & 0 \\
@@ -590,9 +654,15 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 \end{proposition}
 
 \begin{proof}
-	If $A$ has a left inverse, let say $B$, then we have $BA = I_n$. Then for $B(A(x_1)) = B(A(x_2))$, we have $(BA)x_1 = (BA)x_2$, which implies $x_1 = x_2$. Hence it is injective.
+	If $A$ has a left inverse, let say $B$, then we have $BA = I_n$.
+	Then for $B(A(x_1)) = B(A(x_2))$, we have $(BA)x_1 = (BA)x_2$, which implies $x_1 = x_2$.
+	Hence it is injective.
 
-	If $A$ is injective, we can consider $A = P^{-1}CQ$, where $C$ is the canonical form of the matrix $A$. Then we consider $P^{-1}CQ\vec{x} = \vec{0}$. Since $P^{-1}$ is invertible, it won't produce non-trivial solutions. We can consider $C(Q\vec{x}) = \vec{0} = C\vec{y}$. Then we have
+	If $A$ is injective, we can consider $A = P^{-1}CQ$, where $C$ is the canonical form of the matrix $A$.
+	Then we consider $P^{-1}CQ\vec{x} = \vec{0}$.
+	Since $P^{-1}$ is invertible, it won't produce non-trivial solutions.
+	We can consider $C(Q\vec{x}) = \vec{0} = C\vec{y}$.
+	Then we have
 	\[
 		\begin{bmatrix}
 			I_r & 0 \\
@@ -605,7 +675,12 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 			0
 		\end{bmatrix}
 	\]
-	where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively. Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything. As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$. Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$. Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0. Hence the rank of $A$ is $n$.
+	where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively.
+	Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything.
+	As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$.
+	Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$.
+	Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0.
+	Hence the rank of $A$ is $n$.
 
 	If $\rank(A) = n$, then the canonical form of $A$ is
 	\[
@@ -627,14 +702,21 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
 	If the canonical form of $A$ is $\begin{bmatrix}
 		I_n \\
 		0
-	\end{bmatrix}$, then we consider $PAQ^{-1} = C$. Also, $A = P^{-1}CQ$. We construct a candidate for left inverse $D = [I_n \quad 0]$. Then we have $DC = [I_n \quad 0] \begin{bmatrix}
+	\end{bmatrix}$, then we consider $PAQ^{-1} = C$.
+	Also, $A = P^{-1}CQ$.
+	We construct a candidate for left inverse $D = [I_n \quad 0]$.
+	Then we have $DC = [I_n \quad 0] \begin{bmatrix}
 		I_n \\
 		0
-	\end{bmatrix} = I_n$. Then the left inverse of $A$ is $L = QDP^{-1}$. Then we check, $LA = QDP^{-1}A = QDP^{-1}PCQ^{-1} = I_n$. Hence, $A$ indeed has a left inverse.
+	\end{bmatrix} = I_n$.
+	Then the left inverse of $A$ is $L = QDP^{-1}$.
+	Then we check, $LA = QDP^{-1}A = QDP^{-1}PCQ^{-1} = I_n$.
+	Hence, $A$ indeed has a left inverse.
 \end{proof}
 
 \begin{proposition}
-	Let $A$ be an $m \times n$ matrix over a field $\F$. Then the following statements are equivalent:
+	Let $A$ be an $m \times n$ matrix over a field $\F$.
+	Then the following statements are equivalent:
 	\[
 		A \text{ has a right inverse } \iff A \text{ is surjective } \iff \rank(A) = m \iff \begin{bmatrix}
 			I_r & 0 \\
@@ -666,13 +748,18 @@ where $C = \begin{bmatrix}
 	0 & 0
 \end{bmatrix}$, $\dim V = n$ and $\dim W = m$.
 
-The coordinate maps $[-]_{\B}$ and $[-]_{\B'}$ are linear equivalences and they are the trivialisation of $V$ and $W$, respectively. The matrix $A$ is the standard matrix of the linear map $T: V \to W$ under the bases $\B$ and $\B'$. The matrix $C$ is the canonical form of $A$. The matrices $P$ and $Q$ are products of finite sequences of elementary row and column operation matrices, respectively. Both $P$ and $Q$ are elementary and invertible matrices.
+The coordinate maps $[-]_{\B}$ and $[-]_{\B'}$ are linear equivalences and they are the trivialisation of $V$ and $W$, respectively.
+The matrix $A$ is the standard matrix of the linear map $T: V \to W$ under the bases $\B$ and $\B'$.
+The matrix $C$ is the canonical form of $A$.
+The matrices $P$ and $Q$ are products of finite sequences of elementary row and column operation matrices, respectively.
+Both $P$ and $Q$ are elementary and invertible matrices.
 
 \newpage
 
 \section{Properties of Linear Maps}
 
-Let $f : V \to W$ be a linear map between two finite dimensional vector spaces over $\F$. We have the following properties:
+Let $f : V \to W$ be a linear map between two finite dimensional vector spaces over $\F$.
+We have the following properties:
 \begin{enumerate}
 	\item $f$ is injective if and only if $\ker f = \{0_V\}$, i.e., the kernel is trivial.
 	\item $f$ is surjective if and only if $\coker f = \{0_W\}$, i.e., the cokernel is trivial.
@@ -681,6 +768,8 @@ Let $f : V \to W$ be a linear map between two finite dimensional vector spaces o
 	\item $f$ is injective if and only if for any linear map $h : U \to V$, $f \circ h = 0$ implies $h = 0$.
 \end{enumerate}
 
-Let $f : V \to W$ be a set map between linear spaces. Then the graph of $f$, $\Gamma_f := \{ (v, f(v)) \mid v \in V \}$ is a linear subspace of $V \oplus W$ if and only if $f$ is a linear map. Also, the domain of $f$ is isomorphic to $\Gamma_f$.
+Let $f : V \to W$ be a set map between linear spaces.
+Then the graph of $f$, $\Gamma_f := \{ (v, f(v)) \mid v \in V \}$ is a linear subspace of $V \oplus W$ if and only if $f$ is a linear map.
+Also, the domain of $f$ is isomorphic to $\Gamma_f$.
 
 $f$ is injective if and only if $f$ is an imbedding, i.e., the map $\bar{f} : V \to \im{f}$ that sends $v$ to $f(v)$ is an isomorphism.

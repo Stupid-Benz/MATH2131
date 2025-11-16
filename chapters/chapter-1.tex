@@ -17,7 +17,8 @@ We start with the definition of a binary operation.
 	\end{align*}
 \end{definition}
 
-For easier understanding, binary operation is combining two objects into one. Hence, there is something called unary and ternary operations, corresponding to the action of combining one and three objects into one respectively.
+For easier understanding, binary operation is combining two objects into one.
+Hence, there is something called unary and ternary operations, corresponding to the action of combining one and three objects into one respectively.
 
 \begin{example}
 	A common example of a binary operation is addition on the set of natural numbers $\mathbb{N}$.
@@ -34,7 +35,8 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{definition}
 
 \begin{example}
-	A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$. For all $x,y,z \in \mathbb{N}$, we have $x + (y + z) = (x + y) + z$.
+	A common example of an associative (binary) operation is addition on the set of natural numbers $\mathbb{N}$.
+	For all $x,y,z \in \mathbb{N}$, we have $x + (y + z) = (x + y) + z$.
 \end{example}
 
 \begin{definition}[Identifiable]
@@ -43,7 +45,8 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{definition}
 
 \begin{example}
-	A common example of an identifiable (binary) operation is multiplication on the set of natural numbers $\mathbb{N}$. The identity element is $1$, and for all $x \in \mathbb{N}$, we have $x \cdot 1 = x = 1 \cdot x$.
+	A common example of an identifiable (binary) operation is multiplication on the set of natural numbers $\mathbb{N}$.
+	The identity element is $1$, and for all $x \in \mathbb{N}$, we have $x \cdot 1 = x = 1 \cdot x$.
 \end{example}
 
 \begin{proposition}
@@ -51,7 +54,8 @@ For easier understanding, binary operation is combining two objects into one. He
 \end{proposition}
 
 \begin{proof}
-	Let $e_1$ and $e_2$ be two identity elements for the operation $\cdot$. Then, for any element $x \in S$, we have:
+	Let $e_1$ and $e_2$ be two identity elements for the operation $\cdot$.
+	Then, for any element $x \in S$, we have:
 	\begin{gather*}
 		e_1 \cdot x = x = x \cdot e_1 \\
 		e_2 \cdot x = x = x \cdot e_2
@@ -61,13 +65,15 @@ For easier understanding, binary operation is combining two objects into one. He
 	Therefore, we conclude that $e_1 = e_2$, proving the uniqueness of the identity element.
 \end{proof}
 
-Note that the two-sided identity must be unique, but one-sided identities need not be. The following is an example of it.
+Note that the two-sided identity must be unique, but one-sided identities need not be.
+The following is an example of it.
 
 \begin{example}
 	Consider a set $X = \left\{ \begin{bmatrix}
 		1 & a \\
 		0 & 0 
-	\end{bmatrix} \; \middle| \; a \in \R \right\}$ with the binary operation defined as matrix multiplication. This set has many left identity elements, but no two-sided identity element.
+	\end{bmatrix} \; \middle| \; a \in \R \right\}$ with the binary operation defined as matrix multiplication.
+	This set has many left identity elements, but no two-sided identity element.
 \end{example}
 
 \begin{definition}[Invertible]
@@ -80,7 +86,8 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 \end{remark}
 
 \begin{example}
-	A common example of an invertible (binary) operation is addition on the set of integers $\Z$. For every integer $x \in \Z$, there exists an integer $y = -x$ such that:
+	A common example of an invertible (binary) operation is addition on the set of integers $\Z$.
+	For every integer $x \in \Z$, there exists an integer $y = -x$ such that:
 	\begin{equation}
 		x + (-x) = 0 = (-x) + x
 	\end{equation}
@@ -92,7 +99,8 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 \end{proposition}
 
 \begin{proof}
-	Let $y_1$ and $y_2$ be two inverses of an element $x \in S$. Then, by definition of inverse, we have:
+	Let $y_1$ and $y_2$ be two inverses of an element $x \in S$.
+	Then, by definition of inverse, we have:
 	\begin{gather*}
 		x \cdot y_1 = e = y_1 \cdot x\\
 		x \cdot y_2 = e = y_2 \cdot x
@@ -104,7 +112,8 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 	Thus, the inverse element is unique.
 \end{proof}
 
-Same for the inverse, one-sided need not be unique. The example is left as an exercise.
+Same for the inverse, one-sided need not be unique.
+The example is left as an exercise.
 
 \begin{definition}[Commutative]
 	A binary operation $\cdot: S \times S \to S$ is said to be \emph{commutative}\index{commutative} if, for all $x,y \in S$, the following holds:
@@ -112,7 +121,8 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 \end{definition}
 
 \begin{example}
-	A common example of a commutative operation is addition on the set of integers $\Z$. For all $x,y \in \Z$, we have: $x + y = y + x$
+	A common example of a commutative operation is addition on the set of integers $\Z$.
+	For all $x,y \in \Z$, we have: $x + y = y + x$
 \end{example}
 
 \begin{definition}[Distributive (Harmonic)]
@@ -123,10 +133,13 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 	\end{align*}
 \end{definition}
 
-The professor preferred to use the word ``harmonic'' instead of ``distributive''. Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''. (The two binary operation in this sentence is not commutative.)
+The professor preferred to use the word ``harmonic'' instead of ``distributive''.
+Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''.
+(The two binary operation in this sentence is not commutative.)
 
 \begin{example}
-	A common example of a distributive operation is multiplication over addition on the set of integers $\Z$. For all $x,y,z \in \Z$, we have:
+	A common example of a distributive operation is multiplication over addition on the set of integers $\Z$.
+	For all $x,y,z \in \Z$, we have:
 	 \begin{align*}
 		x \cdot (y + z) &= x \cdot y + x \cdot z \\
 		(y + z) \cdot x &= y \cdot x + z \cdot x
@@ -145,7 +158,8 @@ With those five properties, we can construct monoid and groups.
 		\item \emph{Associative}\index{Associative}
 		\item \emph{Identifiable}\index{Identifiable}
 	\end{enumerate}
-	We say $(M, f)$ is a monoid, and $f$ is the \emph{monoid operation} on the set $M$. A set $M$ with a monoid operation $f$ is the \emph{monoid structure}.
+	We say $(M, f)$ is a monoid, and $f$ is the \emph{monoid operation} on the set $M$.
+	A set $M$ with a monoid operation $f$ is the \emph{monoid structure}.
 \end{definition}
 
 \begin{definition}[Group]
@@ -186,7 +200,8 @@ With those five properties, we can construct monoid and groups.
 \end{example}
 
 \begin{example}[Finite Field]
-	$(\Z/2\Z, +, \times)$ is a field, where $\Z/2\Z = \{[0], [1]\}$, $[0]$ is the set of even integers and $[1]$ is the set of odd integers. Note that any $\Z/p\Z$ is a finite field, where $p$ is a prime number.
+	$(\Z/2\Z, +, \times)$ is a field, where $\Z/2\Z = \{[0], [1]\}$, $[0]$ is the set of even integers and $[1]$ is the set of odd integers.
+	Note that any $\Z/p\Z$ is a finite field, where $p$ is a prime number.
 \end{example}
 
 We may draw a diagram for the relationship between the algebraic structures.
@@ -213,10 +228,14 @@ We may draw a diagram for the relationship between the algebraic structures.
 
 \section{Morphisms}
 
-Normally, when we have two sets we can have a set map. Then if the two are in the same algebraic structures? They are called the homomorphisms.
+Normally, when we have two sets we can have a set map.
+Then if the two are in the same algebraic structures?
+They are called the homomorphisms.
 
 \begin{definition}[Monoid Homomorphism]
-	A \emph{monoid homomorphism} is a morphism between two monoids that preserves the monoid structure. Formally, let $(M_1, \cdot_1)$ and $(M_2, \cdot_2)$ be two monoids with identity elements $e_1$ and $e_2$, respectively. A function $f: M_1 \to M_2$ is a monoid homomorphism if:
+	A \emph{monoid homomorphism} is a morphism between two monoids that preserves the monoid structure.
+	Formally, let $(M_1, \cdot_1)$ and $(M_2, \cdot_2)$ be two monoids with identity elements $e_1$ and $e_2$, respectively.
+	A function $f: M_1 \to M_2$ is a monoid homomorphism if:
 	\begin{enumerate}
 		\item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in M_1$
 		\item $f(e_1) = e_2$
@@ -224,7 +243,9 @@ Normally, when we have two sets we can have a set map. Then if the two are in th
 \end{definition}
 
 \begin{definition}[Group Homomorphism]
-	A \emph{group homomorphism} is a morphism between two groups that preserves the group structure. Formally, let $(G_1, \cdot_1)$ and $(G_2, \cdot_2)$ be two groups with identity elements $e_1$ and $e_2$, respectively. A function $f: G_1 \to G_2$ is a group homomorphism if:
+	A \emph{group homomorphism} is a morphism between two groups that preserves the group structure.
+	Formally, let $(G_1, \cdot_1)$ and $(G_2, \cdot_2)$ be two groups with identity elements $e_1$ and $e_2$, respectively.
+	A function $f: G_1 \to G_2$ is a group homomorphism if:
 	\begin{enumerate}
 		\item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in G_1$
 		\item $f(e_1) = e_2$
@@ -252,9 +273,14 @@ Normally, when we have two sets we can have a set map. Then if the two are in th
 	This shows that $f(x^{-1})$ is the inverse of $f(x)$ in $G_2$, i.e., $f(x^{-1}) = (f(x))^{-1}$.
 \end{proof}
 
-For monoid homomorphisms, the second property cannot be derived from the first property. Consider the identity element $e_1$ in $M_1$. If we apply the first property, we get $f(e_1 \cdot_1 e_1) = f(e_1) \cdot_2 f(e_1)$. This simplifies to $f(e_1) = f(e_1) \cdot_2 f(e_1)$, which does not necessarily imply that $f(e_1)$ is the identity element in $M_2$, i.e., $f(e_1) \neq e_2$, but $f(e_1)$ is the idempotent element in $M_2$. Therefore, the second property must be explicitly stated for monoid homomorphisms.
+For monoid homomorphisms, the second property cannot be derived from the first property.
+Consider the identity element $e_1$ in $M_1$.
+If we apply the first property, we get $f(e_1 \cdot_1 e_1) = f(e_1) \cdot_2 f(e_1)$.
+This simplifies to $f(e_1) = f(e_1) \cdot_2 f(e_1)$, which does not necessarily imply that $f(e_1)$ is the identity element in $M_2$, i.e., $f(e_1) \neq e_2$, but $f(e_1)$ is the idempotent element in $M_2$.
+Therefore, the second property must be explicitly stated for monoid homomorphisms.
 
-However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element. Thus, for group homomorphisms, the second property can be derived from the first property.
+However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element.
+Thus, for group homomorphisms, the second property can be derived from the first property.
 
 \begin{definition}[Idempotent Elements]
 	An element $a$ is said to be \emph{idempotent}\index{idempotent} if $a = a^2$.
@@ -265,7 +291,9 @@ However in the case of group homomorphisms, the existence of inverses ensures th
 To introduce the vector space, the following two morphisms are required.
 
 \begin{definition}[Ring Homomorphism]
-	A \emph{ring homomorphism} is a morphism between two rings that preserves both the additive and multiplicative structures. Formally, let $(R_1, +_1, \cdot_1)$ and $(R_2, +_2, \cdot_2)$ be two rings with identity elements $0_1$, $1_1$ and $0_2$, $1_2$, respectively. A function $f: R_1 \to R_2$ is a ring homomorphism if:
+	A \emph{ring homomorphism} is a morphism between two rings that preserves both the additive and multiplicative structures.
+	Formally, let $(R_1, +_1, \cdot_1)$ and $(R_2, +_2, \cdot_2)$ be two rings with identity elements $0_1$, $1_1$ and $0_2$, $1_2$, respectively.
+	A function $f: R_1 \to R_2$ is a ring homomorphism if:
 	\begin{enumerate}
 		\item $f(x +_1 y) = f(x) +_2 f(y) \quad \forall x, y \in R_1$
 		\item $f(x \cdot_1 y) = f(x) \cdot_2 f(y) \quad \forall x, y \in R_1$
@@ -274,7 +302,9 @@ To introduce the vector space, the following two morphisms are required.
 \end{definition}
 
 \begin{definition}[Endomorphism]
-	An \emph{endomorphism}\index{endomorphism} is a morphism from an algebraic structure to itself. Formally, let $(A, \cdot)$ be an algebraic structure. An endomorphism $f: A \to A$ is a set map such that:
+	An \emph{endomorphism}\index{endomorphism} is a morphism from an algebraic structure to itself.
+	Formally, let $(A, \cdot)$ be an algebraic structure.
+	An endomorphism $f: A \to A$ is a set map such that:
 	\[
 		f(x \cdot y) = f(x) \cdot f(y) \quad \forall x, y \in A
 	\]
@@ -287,7 +317,8 @@ The following two sets are the sets of all structure-preserving maps.
 \end{definition}
 
 \begin{definition}[Endomorphism Ring]
-	The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End(A)$, forms a (non-commutative) ring under pointwise addition and composition of set maps. The addition and multiplication operations are defined as follows:
+	The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End(A)$, forms a (non-commutative) ring under pointwise addition and composition of set maps.
+	The addition and multiplication operations are defined as follows:
 	\begin{align*}
 		+ : \End(A) \times \End(A) &\to \End(A) \\
 		(f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad &f + g : A \to A \\
@@ -319,14 +350,16 @@ Then we can define what a linear structure is.
 		\cdot : \F &\to \End(V) \\
 		\alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
 	\end{align*}
-	The ring homomorphism is a (ring) action of the field $\F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}. The ring action can be written as a binary operation:
+	The ring homomorphism is a (ring) action of the field $\F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}.
+	The ring action can be written as a binary operation:
 	\begin{align*}
 		\cdot : \F \times V &\to V \\
 		(\alpha, \vec{x}) &\mapsto \alpha \vec{x}
 	\end{align*}
 \end{definition}
 
-A linear space / vector space is a set with a linear structure over a field on the set. In normal textbook, a linear space will be defined as follows:
+A linear space / vector space is a set with a linear structure over a field on the set.
+In normal textbook, a linear space will be defined as follows:
 
 \begin{corollary}[Linear Spaces]
 	A linear space over a field $\F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : \F \times V \to V$, satisfying the following axioms for all $\vec{u}, \vec{v}, \vec{w} \in V$ and $\alpha, \beta \in \F$:
@@ -361,7 +394,8 @@ A linear space / vector space is a set with a linear structure over a field on t
 \end{example}
 
 \begin{example}
-	Let $X$ be a set and $\F$ be a field. ($f$ is a set map)
+	Let $X$ be a set and $\F$ be a field.
+	($f$ is a set map)
 	\begin{align*}
 		\F[[X]] = \Map(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $\F$-valued functions on } X \\
 		&=\joinrel= \left\{ f : X \to \F \right\}
@@ -387,13 +421,16 @@ A linear space / vector space is a set with a linear structure over a field on t
 \end{example}
 
 \begin{example}
-	Let $t$ be a formal variable. Then $\F[[t]] \overset{\mathrm{def}}{=\joinrel=} \F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^{\infty} a_n t^n$ is the set of all formal power series in $t$ with coefficients in $\F$ and $\F[t] \overset{\mathrm{def}}{=\joinrel=} \F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^{N} a_n t^n$ is the set of all polynomials in $t$ with coefficients in $\F$. Both $\F[[t]]$ and $\F[t]$ are linear spaces over $\F$.
+	Let $t$ be a formal variable.
+	Then $\F[[t]] \overset{\mathrm{def}}{=\joinrel=} \F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^{\infty} a_n t^n$ is the set of all formal power series in $t$ with coefficients in $\F$ and $\F[t] \overset{\mathrm{def}}{=\joinrel=} \F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^{N} a_n t^n$ is the set of all polynomials in $t$ with coefficients in $\F$.
+	Both $\F[[t]]$ and $\F[t]$ are linear spaces over $\F$.
 \end{example}
 
 There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Power Series ring, respectively.
 
 \begin{example}
-	Let $n$ be a positive integer and $\F$ be a field. Then 
+	Let $n$ be a positive integer and $\F$ be a field.
+	Then
 	\[
 		\F^n \overset{\mathrm{def}}{=\joinrel=} \left\{ 
 		\begin{bmatrix}
@@ -404,7 +441,8 @@ There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Po
 		\;\middle|\; c_i \in \F
 		\right\}
 	\]
-	is the set of all \emph{column matrices} with $n$ entries in $\F$. Elements in $\F^n$ are written as $\vec{x}$ and are called \emph{column vectors}. $\F^n$ is a linear space over $\F$ with the following operations defined entrywisely:
+	is the set of all \emph{column matrices} with $n$ entries in $\F$.
+	Elements in $\F^n$ are written as $\vec{x}$ and are called \emph{column vectors}. $\F^n$ is a linear space over $\F$ with the following operations defined entrywisely:
 	\begin{align*}
 		+ : \F^n \times \F^n &\to \F^n \\
 		(\vec{a}, \vec{b}) &\mapsto \vec{a} + \vec{b} = \begin{bmatrix}
