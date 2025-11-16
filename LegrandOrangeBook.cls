@@ -434,8 +434,7 @@
 
 \usepackage[
 	backend=biber, % Use the biber engine for compiling the bibliography
-	bibstyle=numeric, % Main bibliography style
-	citestyle=numeric, % In-text citation style
+	style=alphabetic-verb, % The biblatex preset that is most similar to the AMS style is this one
 	sorting=nyt, % Sort references in the bibliography by name, then year, then title
 	sortcites=true, % If multiple citekeys are passed to a citation command, sort them in the citation
 	abbreviate=false, % Suppress abbreviations such as "Ed." for Editor

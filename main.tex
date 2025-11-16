@@ -104,11 +104,11 @@
 
 	\vspace{8pt}
 
-	\noindent This lecture notes was written by a student in the course MATH 2131 -- Honors in Linear and Abstract Algebra by Professor Meng Guowu in HKUST in 2025-26 Fall.
+	\noindent This lecture notes was written by a student in the course MATH 2131 -- Honors in Linear and Abstract Algebra by Professor Meng Guowu\nocite{mgw} in HKUST in 2025--26 Fall.
 
 	\noindent All diagrams in this lecture notes are written in LaTeX TikZ code.
 
-	\noindent The notes is with reference to textbooks \textit{`Linear Algebra'} by Friedberg, Insel and Spence, \textit{`Abstract Algebra'} by Artin and \textit{`A First Course in Abstract Algebra'} by Fraleigh.
+	\noindent The notes is with reference to textbooks \citetitle{Friedberg2018-su} by \citeauthor{Friedberg2018-su}, \citetitle{artin_2018} by \citeauthor{artin_2018} and \citetitle{Fraleigh2002-ck} by \citeauthor{Fraleigh2002-ck}.
 
 	\noindent Also, this notes is with reference to the other the notes of two other professors teaching the same course before, Professor Ivan Ip and Professor Min Yan.
 
@@ -367,14 +367,17 @@
 
 		% \printbibliography[heading=bibempty, type=article] % Output article bibliography entries
 
-		% \section*{Books}
-		% \addcontentsline{toc}{section}{Books} % Add the Books subheading to the table of contents
-
-		% \printbibliography[heading=bibempty, type=book] % Output book bibliography entries
+		\section*{Books}
+		\addcontentsline{toc}{section}{Books} % Add the Books subheading to the table of contents
+		\printbibliography[heading=bibempty, type=book] % Output book bibliography entries
 
 		\section*{Websites}
 		\addcontentsline{toc}{section}{Websites} % Add the Websites subheading to the table of contents
 		\printbibliography[heading=bibempty, type=online] % Output online bibliography entries
+
+		\section*{Others}
+		\addcontentsline{toc}{section}{Others}
+		\printbibliography[heading=bibempty, type=misc]
 
 		%----------------------------------------------------------------------------------------
 		%	INDEX
