@@ -446,7 +446,7 @@ Then we consider the row operations by using the matrix units.
 \end{proof}
 
 \begin{proposition}
-	The row operation $R_i \to \alpha R_i$ where $\alpha \in \F^{\times} := \F \setminus \{0\}$ is a linear map where the standard matrix is $A_{R_i \to \alpha R_i} = I + (\alpha - 1) E_i^i$.
+	The row operation $R_i \to \alpha R_i$ where $\alpha \in \F^\times := \F \setminus \{0\}$ is a linear map where the standard matrix is $A_{R_i \to \alpha R_i} = I + (\alpha - 1) E_i^i$.
 \end{proposition}
 
 \begin{proof}
@@ -499,7 +499,7 @@ Then we consider the row operations by using the matrix units.
 
 \begin{definition}[Finite Dimensional Vector Spaces] \label{def:finite_dimensional_vector_space}
 	A linear space $V$ over a field $\F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$.
-	In this case, we say that the dimension of $V$ is $n$, denoted $\dim_{\F} V = n$ or simply $\dim V = n$.
+	In this case, we say that the dimension of $V$ is $n$, denoted $\dim_\F V = n$ or simply $\dim V = n$.
 \end{definition}
 
 \begin{definition}[Infinite Dimensional Vector Spaces]
@@ -738,7 +738,7 @@ Linear Algebra is the study of linear map between two finite dimensional vector 
 
 \begin{center}
 	\begin{tikzcd}
-		V \arrow[d, hook, two heads, "{[-]_{\B}}" swap] \arrow[dd, bend right=60, hook, two heads] \arrow[r, "T", hook, two heads] & W \arrow[d, hook, two heads, "{[-]_{\B'}}"] \arrow[dd, bend left=60, hook, two heads] \\
+		V \arrow[d, hook, two heads, "{[-]_\B}" swap] \arrow[dd, bend right=60, hook, two heads] \arrow[r, "T", hook, two heads] & W \arrow[d, hook, two heads, "{[-]_{\B'}}"] \arrow[dd, bend left=60, hook, two heads] \\
 		\F^n \arrow[d, hook, two heads, "Q" swap] \arrow[r, "A", hook, two heads] & \F^m \arrow[d, hook, two heads, "P"] \\
 		\F^n \arrow[r, "C", hook, two heads] & \F^m
 	\end{tikzcd}
@@ -748,7 +748,7 @@ where $C = \begin{bmatrix}
 	0 & 0
 \end{bmatrix}$, $\dim V = n$ and $\dim W = m$.
 
-The coordinate maps $[-]_{\B}$ and $[-]_{\B'}$ are linear equivalences and they are the trivialisation of $V$ and $W$, respectively.
+The coordinate maps $[-]_\B$ and $[-]_{\B'}$ are linear equivalences and they are the trivialisation of $V$ and $W$, respectively.
 The matrix $A$ is the standard matrix of the linear map $T: V \to W$ under the bases $\B$ and $\B'$.
 The matrix $C$ is the canonical form of $A$.
 The matrices $P$ and $Q$ are products of finite sequences of elementary row and column operation matrices, respectively.

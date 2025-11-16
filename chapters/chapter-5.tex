@@ -13,7 +13,7 @@ It is natural to ask what is the canonical form of linear maps from a vector spa
 Consider the following diagram:
 \begin{center}
 	\begin{tikzcd}
-		V \arrow[r, "T"] \arrow[d, "{[-]_{\B}}"'] & V \arrow[d, "{[-]_{\B}}"] \\
+		V \arrow[r, "T"] \arrow[d, "{[-]_\B}"'] & V \arrow[d, "{[-]_\B}"] \\
 		\F^n \arrow[d] \arrow[r, "A"] & \F^n \arrow[d] \\
 		\F^n \arrow[r, "\bar{A}"] & \F^n
 	\end{tikzcd}
@@ -335,14 +335,14 @@ These two terms are borrowed from representation theory of lie algebras.
 \end{definition}
 
 \begin{definition}[Semisimple]
-	We say $T$ is semisimple if $T \otimes_{\F} \bar{\F} : V \otimes_{\F} \bar{\F} \to V \otimes_{\F} \bar{\F}$ is completely reducible, where $\bar{\F}$ is the algebraic closure of $\F$ and $V \otimes_{\F} \bar{\F}$ is linear space over $\bar{\F}$.
+	We say $T$ is semisimple if $T \otimes_\F \bar{\F} : V \otimes_\F \bar{\F} \to V \otimes_\F \bar{\F}$ is completely reducible, where $\bar{\F}$ is the algebraic closure of $\F$ and $V \otimes_\F \bar{\F}$ is linear space over $\bar{\F}$.
 \end{definition}
 \begin{remark}
 	We can take $\F = \R$, then $\bar{\F} = \mathbb{C}$.
 	Algebraic closure means that every polynomial in $\bar{\F}[x]$ has a root in $\bar{\F}$.
 	For example, $x^2 + 1$ has no root in $\R$, but it has roots $\pm i$ in $\mathbb{C}$.
 
-	Note that $- \otimes \F \equiv \id_{\F}$, so if we change it to $- \otimes_{\F} \bar{\F}$, then we are just changing the field from $\F$ to $\bar{\F}$ without changing the values inside.
+	Note that $- \otimes \F \equiv \id_\F$, so if we change it to $- \otimes_\F \bar{\F}$, then we are just changing the field from $\F$ to $\bar{\F}$ without changing the values inside.
 	For example, $1$ can be viewed as an element in $\R$ or $\mathbb{C}$.
 \end{remark}
 
@@ -466,12 +466,12 @@ Then Zariski topology is defined as follows.
 	The \emph{Zariski topology} on $\A$ is defined by taking the closed sets to be the zero loci of sets of polynomials in $\F[x_1, \cdots, x_n]$.
 	More precisely, for any set of polynomials $S \subseteq \F[x_1, \cdots, x_n]$, the corresponding closed set is:
 	\[
-		V(S) = \{ P \in \A : f(P) = 0 \quad \forall f \in S \} = \bigcap_{\alpha} \{ f_\alpha = 0 \}
+		V(S) = \{ P \in \A : f(P) = 0 \quad \forall f \in S \} = \bigcap_\alpha \{ f_\alpha = 0 \}
 	\]
 	The pair $(\A, \tau_{Zar})$ is called a \emph{Zariski topological space}, where $\tau_{Zar}$ is the Zariski topology on $\A$.
 \end{definition}
 
-Then the $A \in \F^{n^2} \equiv \A_{\F}^{n^2}$ can be viewed as a point in the affine space $\A_{\F}^{n^2}$ over $\F$.
+Then the $A \in \F^{n^2} \equiv \A_\F^{n^2}$ can be viewed as a point in the affine space $\A_\F^{n^2}$ over $\F$.
 Then the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End(V) = \F^{n^2}$ in the Zariski topology.
 Dense means that its closure is the whole space.
 Open means that its complement is a closed set, i.e. the zero locus of some set of polynomials in $\F[x_1, \cdots, x_{n^2}]$.
@@ -582,9 +582,9 @@ There is another decomposition called primary decomposition, or elementary divis
 
 For any ring $R$, we can decomposite as follows:
 \[
-	R = \{ 0 \} \cup R^{\times} \cup S
+	R = \{ 0 \} \cup R^\times \cup S
 \]
-where $R^{\times}$ is the set of units in $R$ and $S$ is the set of non-units and non-zero elements in $R$.
+where $R^\times$ is the set of units in $R$ and $S$ is the set of non-units and non-zero elements in $R$.
 Then any $u \in R$ is called a unit if there exists some $v \in R$ such that $uv = vu = 1_R$.
 For example, in $\Z$, the units are $\pm 1$.
 In $\F[x]$, the units are all non-zero constant polynomials.
@@ -593,7 +593,7 @@ Then the set of all prime elements and the set of all irreducible elements in $R
 In general, they are not the same.
 The set of all prime elements is a subset of the set of all irreducible elements.
 However, in a principal ideal domain, they are the same.
-Irreducible elements are elements that cannot be factored into the product of two non-unit elements, i.e., if $x \neq 0$ and $x \notin R^{\times}$, then whenever $x = yz$, then $y$ or $z$ must be a unit.
+Irreducible elements are elements that cannot be factored into the product of two non-unit elements, i.e., if $x \neq 0$ and $x \notin R^\times$, then whenever $x = yz$, then $y$ or $z$ must be a unit.
 
 \newpage
 

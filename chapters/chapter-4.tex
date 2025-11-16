@@ -8,12 +8,12 @@
 
 \section{Categories and Functors}
 
-The collection of set maps is denoted as $\Set$ and the collection of linear maps over $\F$ is denoted as $\Vect_{\F}$.
+The collection of set maps is denoted as $\Set$ and the collection of linear maps over $\F$ is denoted as $\Vect_\F$.
 There is a diagram below:
 \begin{center}
 	\begin{tikzcd}
 		\Set \arrow[d, "{\F[-]}"] \\
-		\Vect_{\F}
+		\Vect_\F
 	\end{tikzcd}
 \end{center}
 where $\F[-]$ sends set map $f : X \to Y$ to a linear map $\F[f] : \F[X] \to \F[Y]$.
@@ -217,9 +217,9 @@ Then the following is the second definition of small category, which is also the
 	\end{enumerate}
 \end{definition}
 
-For a small category $\C$, the set of objects is denoted by $\Ob(\C)$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor(X, Y)$, $\Mor_{\C} (X, Y)$, Hom$_{\C}(X, Y)$ or simply $\C(X, Y)$.
+For a small category $\C$, the set of objects is denoted by $\Ob(\C)$ and the set of morphisms for any pair of objects $(X, Y)$ is denoted by $\Mor(X, Y)$, $\Mor_\C (X, Y)$, Hom$_\C(X, Y)$ or simply $\C(X, Y)$.
 
-If we allow $\Ob(\C)$ and $\Mor_{\C}(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}\index{class}, (a larger collection than set), we end up with the definition of \emph{category}\index{category}.
+If we allow $\Ob(\C)$ and $\Mor_\C(X, Y)$ for any pair of objects $(X, Y)$ being a \emph{class}\index{class}, (a larger collection than set), we end up with the definition of \emph{category}\index{category}.
 
 We say a morphism is \emph{isomorphic}\index{isomorphic} or \emph{invertible}\index{invertible} if it has a two-sided inverse.
 A category such that every morphism is isomorphic is called a \emph{groupoid}\index{groupoid}.
@@ -229,11 +229,11 @@ A category such that every morphism is isomorphic is called a \emph{groupoid}\in
 \end{example}
 
 \begin{example}
-	The collection of all linear spaces over $\F$ and linear maps, denoted by $\Vect_{\F}$, is a category.
+	The collection of all linear spaces over $\F$ and linear maps, denoted by $\Vect_\F$, is a category.
 \end{example}
 
 \begin{example}
-	If $\C$ and $\D$ are two categories, then we have the product category $\C \times \D$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob(\C)$, $Y \in \Ob(\D)$, $f \in \Mor_{\C}(X, X')$ and $g \in \Mor_{\D}(Y, Y')$.
+	If $\C$ and $\D$ are two categories, then we have the product category $\C \times \D$ with objects $(X, Y)$ and morphisms $(f, g)$, where $X \in \Ob(\C)$, $Y \in \Ob(\D)$, $f \in \Mor_\C(X, X')$ and $g \in \Mor_\D(Y, Y')$.
 \end{example}
 
 \begin{example}
@@ -266,8 +266,8 @@ A category such that every morphism is isomorphic is called a \emph{groupoid}\in
 	Let $V$ be a subspace of the linear space $W$ over $\F$.
 	Then we have a category:
 	\begin{itemize}
-		\item Objects: all morphisms $f : W \to Z$ in $\Vect_{\F}$ such that $f\mid_V = 0$;
-		\item Morphisms: commutative triangles in $\Vect_{\F}$:
+		\item Objects: all morphisms $f : W \to Z$ in $\Vect_\F$ such that $f\mid_V = 0$;
+		\item Morphisms: commutative triangles in $\Vect_\F$:
 		\begin{center}
 			\begin{tikzcd}
 				& W \arrow[dl, "f_1" swap] \arrow[dr, "f_2"] \\
@@ -296,7 +296,7 @@ A category such that every morphism is isomorphic is called a \emph{groupoid}\in
 \end{example}
 
 \begin{example}
-	In $\Vect_{\F}$, the zero vector space is both a terminal object and an initial object.
+	In $\Vect_\F$, the zero vector space is both a terminal object and an initial object.
 \end{example}
 
 \newpage
@@ -349,7 +349,7 @@ A category such that every morphism is isomorphic is called a \emph{groupoid}\in
 \end{example}
 
 \begin{example}
-	In $\Vect_{\F}$, the product of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct product $V_1 \times V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$ with the projection maps $\pi_{V_1}(v_1, v_2) = v_1$ and $\pi_{V_2}(v_1, v_2) = v_2$.
+	In $\Vect_\F$, the product of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct product $V_1 \times V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$ with the projection maps $\pi_{V_1}(v_1, v_2) = v_1$ and $\pi_{V_2}(v_1, v_2) = v_2$.
 	Then with $f(z) = (f_{V_1}(z), f_{V_2}(z))$ for all $z \in Z$, we have the following commutative diagram:
 	\begin{center}
 		\begin{tikzcd}
@@ -396,12 +396,12 @@ A category such that every morphism is isomorphic is called a \emph{groupoid}\in
 \end{example}
 
 \begin{example}
-	In $\Vect_{\F}$, the coproduct of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct sum $V_1 \oplus V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$.
+	In $\Vect_\F$, the coproduct of two linear spaces $V_1$ and $V_2$ over $\F$ is the direct sum $V_1 \oplus V_2 = \{ (v_1, v_2) \mid v_1 \in V_1, v_2 \in V_2 \}$.
 \end{example}
 
 \subsection{Biproducts}
 
-In $\Vect_{\F}$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$.
+In $\Vect_\F$, the product and coproduct are the same, i.e., $V_1 \times V_2 \cong V_1 \oplus V_2$.
 Then we will say the \emph{biproduct}\index{biproduct} of $V_1$ and $V_2$ and denote it by $V_1 \oplus V_2$.
 The following diagram commutes:
 \begin{center}
@@ -420,7 +420,7 @@ The following diagram commutes:
 \end{remark}
 
 \begin{example}
-	In $\Vect_{\F}$, the zero vector space is both a terminal object and an initial object, so the biproduct exists.
+	In $\Vect_\F$, the zero vector space is both a terminal object and an initial object, so the biproduct exists.
 \end{example}
 
 However, in $\Set$, the empty set is an initial object but the terminal object is any singleton set, so the biproduct does not exist.
@@ -429,10 +429,10 @@ However, in $\Set$, the empty set is an initial object but the terminal object i
 
 In general, we may have the product or coproduct of a family of objects.
 
-Let $\C$ be a category and $\{ X_{\alpha} \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}.
-The \emph{product}\index{product} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the terminal object in the new category:
+Let $\C$ be a category and $\{ X_\alpha \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}.
+The \emph{product}\index{product} of $\{ X_\alpha \}_{\alpha \in I}$ is the terminal object in the new category:
 \begin{itemize}
-	\item Objects: all collections of morphisms $\{ f_{\alpha} : Z \to X_{\alpha} \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
+	\item Objects: all collections of morphisms $\{ f_\alpha : Z \to X_\alpha \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
 	\item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
 \end{itemize}
 \begin{center}
@@ -442,9 +442,9 @@ The \emph{product}\index{product} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the te
 	\end{tikzcd}
 \end{center}
 
-The \emph{coproduct}\index{coproduct} of $\{ X_{\alpha} \}_{\alpha \in I}$ is the initial object in the new category:
+The \emph{coproduct}\index{coproduct} of $\{ X_\alpha \}_{\alpha \in I}$ is the initial object in the new category:
 \begin{itemize}
-	\item Objects: all collections of morphisms $\{ f_{\alpha} : X_{\alpha} \to Z \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
+	\item Objects: all collections of morphisms $\{ f_\alpha : X_\alpha \to Z \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
 	\item Morphisms: for all $\alpha \in I$, commutative diagrams in $\C$:
 \end{itemize}
 \begin{center}
@@ -467,7 +467,7 @@ Then the product and coproduct have the following universal properties respectiv
 	\end{tikzcd}
 \end{center}
 
-The elements in the product of a family of objects in $\Vect_{\F}$ can be written as ordered tuples: $(v_\alpha)_{\alpha \in I}$.
+The elements in the product of a family of objects in $\Vect_\F$ can be written as ordered tuples: $(v_\alpha)_{\alpha \in I}$.
 Then the product can be defined as follows:
 \[
 	\prod_{\alpha \in I} V_\alpha = \{ (v_\alpha)_{\alpha \in I} \mid v_\alpha \in V_\alpha \}
@@ -596,7 +596,7 @@ So we can consider the set map as $s : S \to \F$ as shown on the right.
 	A \emph{functor}\index{functor} $F : \C \to \D$ consists of the following data:
 	\begin{itemize}
 		\item A map $F : \Ob(\C) \to \Ob(\D)$;
-		\item A map $F : \Mor_{\C}(X, Y) \to \Mor_{\D}(F(X), F(Y))$ for all $X, Y \in \Ob(\C)$;
+		\item A map $F : \Mor_\C(X, Y) \to \Mor_\D(F(X), F(Y))$ for all $X, Y \in \Ob(\C)$;
 	\end{itemize}
 	such that the following conditions are satisfied:
 	\begin{enumerate}[label=(\alph*)]
@@ -606,10 +606,10 @@ So we can consider the set map as $s : S \to \F$ as shown on the right.
 \end{definition}
 
 \begin{example}
-	There are two functors from $\Set$ to $\Vect_{\F}$:
+	There are two functors from $\Set$ to $\Vect_\F$:
 	\begin{center}
 		\begin{tikzcd}
-			\Set \arrow[r, "{\F[-]}", yshift=0.5ex] & \Vect_{\F} \arrow[l, "|-|", yshift=-0.5ex]
+			\Set \arrow[r, "{\F[-]}", yshift=0.5ex] & \Vect_\F \arrow[l, "|-|", yshift=-0.5ex]
 		\end{tikzcd}
 	\end{center}
 	where $\F[-]$ sends set $X$ to the free vector space $\F[X]$ generated by $X$, and a set map $f : X \to Y$ to the linear map $\F[f] : \F[X] \to \F[Y]$ induced by $f$.
@@ -631,13 +631,13 @@ Here $\iota : X \to \F[X]$ is the inclusion map, $\phi : X \to V$ is any set map
 \begin{remark}
 	The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any vector space $V$, there is a natural identification:
 	\[
-		\Set(X, |V|) \equiv \Vect_{\F}(\F[X], V)
+		\Set(X, |V|) \equiv \Vect_\F(\F[X], V)
 	\]
-	where $\Set(X, |V|)$ is the set of all set maps from $X$ to the underlying set of $V$, and $\Vect_{\F}(\F[X], V)$ is the set of all linear maps from the free vector space $\F[X]$ to $V$.
+	where $\Set(X, |V|)$ is the set of all set maps from $X$ to the underlying set of $V$, and $\Vect_\F(\F[X], V)$ is the set of all linear maps from the free vector space $\F[X]$ to $V$.
 
-	If we consider $\phi : X \to |V|$ as an element in $\Set(X, |V|)$, then the corresponding element in $\Vect_{\F}(\F[X], V)$ is the unique linear map $\bar{\phi} : \F[X] \to V$ induced by $\phi$.
+	If we consider $\phi : X \to |V|$ as an element in $\Set(X, |V|)$, then the corresponding element in $\Vect_\F(\F[X], V)$ is the unique linear map $\bar{\phi} : \F[X] \to V$ induced by $\phi$.
 
-	Note that $\iota \equiv 1_{\F[X]}$ is the identity element in $\Vect_{\F}(\F[X], \F[X])$, so it corresponds to an element in $\Set(X, |\F[X]|)$, which is exactly the inclusion map $\iota : X \to |\F[X]|$.
+	Note that $\iota \equiv 1_{\F[X]}$ is the identity element in $\Vect_\F(\F[X], \F[X])$, so it corresponds to an element in $\Set(X, |\F[X]|)$, which is exactly the inclusion map $\iota : X \to |\F[X]|$.
 \end{remark}
 
 \begin{definition}[Adjoint Functors]
@@ -650,7 +650,7 @@ Here $\iota : X \to \F[X]$ is the inclusion map, $\phi : X \to V$ is any set map
 \end{definition}
 
 \begin{example}
-	The free functor $\F[-] : \Set \to \Vect_{\F}$ is a left adjoint of the underlying functor $|-| : \Vect_{\F} \to \Set$.
+	The free functor $\F[-] : \Set \to \Vect_\F$ is a left adjoint of the underlying functor $|-| : \Vect_\F \to \Set$.
 	This is exactly the universal property of free vector space over a set.
 \end{example}
 
@@ -720,13 +720,13 @@ There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 
 
 Similarly, we have the following natural identifications:
 \[
-	\Vect_{\F}(X \otimes Y, Z) \equiv \Vect_{\F}(Y, \Vect_{\F}(X, Z))
+	\Vect_\F(X \otimes Y, Z) \equiv \Vect_\F(Y, \Vect_\F(X, Z))
 \]
-Note that $\Vect_{\F}(X, Z)$ is a vector space over $\F$, as $\Vect_{\F} \equiv \Hom_{\F}$.
-Then, we have the following adjoint pair of endofunctors on $\Vect_{\F}$:
+Note that $\Vect_\F(X, Z)$ is a vector space over $\F$, as $\Vect_\F \equiv \Hom_\F$.
+Then, we have the following adjoint pair of endofunctors on $\Vect_\F$:
 \begin{center}
 	\begin{tikzcd}
-		\Vect_{\F} \arrow[r, "- \otimes X", yshift=0.5ex] & \Vect_{\F} \arrow[l, "{\Hom_{\F}(X, -)}", yshift=-0.5ex]
+		\Vect_\F \arrow[r, "- \otimes X", yshift=0.5ex] & \Vect_\F \arrow[l, "{\Hom_\F(X, -)}", yshift=-0.5ex]
 	\end{tikzcd}
 \end{center}
 
@@ -735,7 +735,7 @@ Then, we have the following adjoint pair of endofunctors on $\Vect_{\F}$:
 \section{Dual Spaces and Dual Bases}
 
 Let $V$ be a finite dimensional linear space over $\F$.
-The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}\index{covectors}.
+The \emph{dual space} of $V$ is the vector space $V^* = \Hom_\F(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}\index{covectors}.
 
 \begin{proposition}
 	Let $V$ be a finite dimensional linear space over $\F$.
@@ -744,7 +744,7 @@ The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the s
 \end{proposition}
 \begin{proof}
 	Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$.
-	Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries.
+	Then $V^* = \Hom_\F(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries.
 	The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n$.
 	So $\dim(V^*) = n = \dim(V)$.
 	We can say $V^* \cong V$.
@@ -840,18 +840,18 @@ Finally, we have the natural identification:
 	In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
 \end{example}
 
-The dual functor is not naturally isomorphic to the identity functor on $\Vect_{\F}$, as $(-)^*$ is a contravariant functor, while the identity is a contravariant functor, so there is no natural transformation from $\id_{\Vect_{\F}}$ to $(-)^*$.
+The dual functor is not naturally isomorphic to the identity functor on $\Vect_\F$, as $(-)^*$ is a contravariant functor, while the identity is a contravariant functor, so there is no natural transformation from $\id_{\Vect_\F}$ to $(-)^*$.
 
 \begin{center}
 	\begin{tikzcd}[row sep=normal]
-		\Vect_{\F} \arrow[r, "\id_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
+		\Vect_\F \arrow[r, "\id_{\Vect_\F}"] & \Vect_\F \\[-1.8em]
 		Y \arrow[dd, "f" swap] & Y \arrow[dd, "f"] \\
 		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
 		Z & Z
 	\end{tikzcd}
 	\qquad\qquad
 	\begin{tikzcd}[row sep=normal]
-		\Vect_{\F} \arrow[r, "(-)^*"] & \Vect_{\F} \\[-1.8em]
+		\Vect_\F \arrow[r, "(-)^*"] & \Vect_\F \\[-1.8em]
 		Y \arrow[dd, "f" swap] & Y^* \\
 		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
 		Z & Z^* \arrow[uu, "f^*" swap]
@@ -862,25 +862,25 @@ The dual functor is not naturally isomorphic to the identity functor on $\Vect_{
 
 \section{Double Dual Spaces and Doubles}
 
-Consider the endofunctors on $\Vect_{\F}$:
+Consider the endofunctors on $\Vect_\F$:
 \begin{center}
 	\begin{tikzcd}
-		\Vect_{\F} \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_{\F}}" swap, yshift=-0.5ex] & \Vect_{\F}
+		\Vect_\F \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_\F}" swap, yshift=-0.5ex] & \Vect_\F
 	\end{tikzcd}
 \end{center}
-There is a natural transformation from $\id_{\Vect_{\F}}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$.
-As $\id_{\Vect_{\F}}$ and $(-)^{**}$ are covariant functors, there is a natural transformation between them.
+There is a natural transformation from $\id_{\Vect_\F}$ to $(-)^{**}$ defined by the natural identification: $V \equiv V^{**}$.
+As $\id_{\Vect_\F}$ and $(-)^{**}$ are covariant functors, there is a natural transformation between them.
 
 \begin{center}
 	\begin{tikzcd}[row sep=normal]
-		\Vect_{\F} \arrow[r, "\id_{\Vect_{\F}}"] & \Vect_{\F} \\[-1.8em]
+		\Vect_\F \arrow[r, "\id_{\Vect_\F}"] & \Vect_\F \\[-1.8em]
 		Y \arrow[dd, "f" swap] & Y \arrow[dd, "f"] \\
 		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
 		Z & Z
 	\end{tikzcd}
 	\qquad\qquad
 	\begin{tikzcd}[row sep=normal]
-		\Vect_{\F} \arrow[r, "(-)^{**}"] & \Vect_{\F} \\[-1.8em]
+		\Vect_\F \arrow[r, "(-)^{**}"] & \Vect_\F \\[-1.8em]
 		Y \arrow[dd, "f" swap] & Y^{**} \arrow[dd, "f^{**}" swap] \\
 		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
 		Z & Z^{**}
@@ -898,18 +898,18 @@ We have the following natural identification:
 \begin{center}
 	\begin{tikzcd}[row sep=normal, column sep=normal]
 		V^* \times V \arrow[rr, "{\langle-,-\rangle}"] & \arrow[d, "\vequiv" description, phantom] & \F \arrow[r, "\equiv" description, phantom]
-		& V^* \arrow[rr, "1_{V^*}"] & \arrow[d, "\vequiv" description, phantom] & \Hom_{\F}(V, \F) \\
+		& V^* \arrow[rr, "1_{V^*}"] & \arrow[d, "\vequiv" description, phantom] & \Hom_\F(V, \F) \\
 
 
 		V \times V^* \arrow[d, hook, two heads] \arrow[rr] & \phantom{*} & \F \arrow[r, "\equiv" description, phantom]
-		& V \arrow[rr, "\iota_V"] & \phantom{*} & \Hom_{\F}(V^*, \F) \\[1.8em]
+		& V \arrow[rr, "\iota_V"] & \phantom{*} & \Hom_\F(V^*, \F) \\[1.8em]
 
 
 		V^* \times V \arrow[urr, "{\langle-,-\rangle}" swap]
 	\end{tikzcd}
 \end{center}
 where $\iota_V : V \to V^{**}$ is defined by $\iota_V(u) = \check{u}$ such that $\check{u}(\alpha) = \alpha(u)$.
-Then $V^{**} = \Hom_{\F}(V^*, \F) \equiv V$.
+Then $V^{**} = \Hom_\F(V^*, \F) \equiv V$.
 
 \begin{definition}[Doubles]
 	Let $V$ be a linear space over $\F$.
@@ -955,38 +955,38 @@ The negative sign is used to make the isomorphism a symplectic isomorphism, whic
 \end{definition}
 
 \begin{example}
-	Consider the endofunctors on $\Vect_{\F}$:
+	Consider the endofunctors on $\Vect_\F$:
 	\begin{center}
 		\begin{tikzcd}
-			\Vect_{\F} \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_{\F}}" swap, yshift=-0.5ex] & \Vect_{\F}
+			\Vect_\F \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_\F}" swap, yshift=-0.5ex] & \Vect_\F
 		\end{tikzcd}
 	\end{center}
 	We have the following natural transformation:
 	\begin{center}
 		\begin{tikzcd}
 			(-)^{**} \arrow[d, "\vequiv", phantom] & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1^{**} \arrow[r, "f^{**}"] \arrow[d, "\eta_{V_1}" swap, ocre, "\cong"] & V_2^{**} \arrow[d, "\eta_{V_2}", ocre, "\cong" swap] \\
-			\id_{\Vect_{\F}} & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1 \arrow[r, "f"] & V_2
+			\id_{\Vect_\F} & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1 \arrow[r, "f"] & V_2
 		\end{tikzcd}
 	\end{center}
-	Then we have the natural equivalence: $(-)^{**} \equiv \id_{\Vect_{\F}}$.
+	Then we have the natural equivalence: $(-)^{**} \equiv \id_{\Vect_\F}$.
 \end{example}
 
 \begin{example}
 	We have the following natural equivalence:
 	\[
-		\Map^{\BL}(U \times V, -) \equiv \Hom_{\F}(U, \Hom_{\F}(V, -))
+		\Map^\BL(U \times V, -) \equiv \Hom_\F(U, \Hom_\F(V, -))
 	\]
-	where both are endofunctors on $\Vect_{\F}$.
+	where both are endofunctors on $\Vect_\F$.
 	For any linear space $Z$ over $\F$, we have the natural isomorphism:
 	\[
-		\musNatural_Z : \Map^{\BL}(U \times V, Z) \to \Hom_{\F}(U, \Hom_{\F}(V, Z))
+		{\musNatural}_Z : \Map^\BL(U \times V, Z) \to \Hom_\F(U, \Hom_\F(V, Z))
 	\]
 \end{example}
 
 \begin{example}
 	We have the following natural equivalence:
 	\[
-		\F \otimes - \equiv \id_{\Vect_{\F}} \equiv - \otimes \F \equiv \Hom_{\F}(\F, -) \equiv (-)^{**}
+		\F \otimes - \equiv \id_{\Vect_\F} \equiv - \otimes \F \equiv \Hom_\F(\F, -) \equiv (-)^{**}
 	\]
 \end{example}
 
@@ -1015,19 +1015,19 @@ The negative sign is used to make the isomorphism a symplectic isomorphism, whic
 \end{definition}
 
 \begin{example}
-	The dual functor $(-)^* : \Vect_{\F} \to \Vect_{\F}$ is a contravariant left exact functor, as it sends a short exact sequence $0 \to U \to V \to W \to 0$ to a left exact sequence $0 \to W^* \to V^* \to U^*$.
+	The dual functor $(-)^* : \Vect_\F \to \Vect_\F$ is a contravariant left exact functor, as it sends a short exact sequence $0 \to U \to V \to W \to 0$ to a left exact sequence $0 \to W^* \to V^* \to U^*$.
 	Moreover, $U \to V \to W$ is exact if and only if $W^* \to V^* \to U^*$ is exact.
 	Also, the map $U \to V$ is injective if and only if the map $V^* \to U^*$ is surjective; the map $U \to V$ is surjective if and only if the map $V^* \to U^*$ is injective.
 	This can be shown by considering the following two exact sequences: $0 \to U \to V$ and $U \to V \to 0$.
 \end{example}
 
-In general, the hom-set functor $\Hom_{\C}(X, -) : \C \to \Set$ is a covariant left exact functor for any object $X$ in an abelian category $\C$, and the hom-set functor $\Hom_{\C}(-, X) : \C \to \Set$ is a contravariant left exact functor for any object $X$ in an abelian category $\C$.
+In general, the hom-set functor $\Hom_\C(X, -) : \C \to \Set$ is a covariant left exact functor for any object $X$ in an abelian category $\C$, and the hom-set functor $\Hom_\C(-, X) : \C \to \Set$ is a contravariant left exact functor for any object $X$ in an abelian category $\C$.
 
 \begin{example}
 	The tensor product functor $- \otimes V$ is a covariant right exact functor, as it sends a short exact sequence $0 \to U \to V \to W \to 0$ to a right exact sequence $U \otimes V \to V \otimes V \to W \otimes V \to 0$.
 \end{example}
 
-Note that the tensor product functor is a left adjoint functor, and left adjoint functors are right exact in general, while the $\Vect_{\F}(V, -)$ functor is a right adjoint functor, and right adjoint functors are left exact in general.
+Note that the tensor product functor is a left adjoint functor, and left adjoint functors are right exact in general, while the $\Vect_\F(V, -)$ functor is a right adjoint functor, and right adjoint functors are left exact in general.
 
 
 
@@ -1039,14 +1039,14 @@ Note that the tensor product functor is a left adjoint functor, and left adjoint
 \section{Tensor Products}
 
 Let $U$ and $V$ be two fixed linear spaces over $\F$ and $Z$ be any linear space over $\F$.
-Consider the set of all bilinear maps from $U \times V$ to $Z$, denoted by $\Map^{\BL}(U \times V, Z)$.
+Consider the set of all bilinear maps from $U \times V$ to $Z$, denoted by $\Map^\BL(U \times V, Z)$.
 It is a vector space over $\F$ as it is a subset of $\Map(U \times V, Z)$, the set of all maps from $U \times V$ to $Z$.
 
 By the universal property of tensor product, we have a natural identification:
 \[
-	\Map^{\BL}(U \times V, Z) \equiv \Hom_{\F}(U \otimes V, Z)
+	\Map^\BL(U \times V, Z) \equiv \Hom_\F(U \otimes V, Z)
 \]
-Note that both are naturally identical to $\Hom_{\F}(U, \Hom_{\F}(V, Z))$.
+Note that both are naturally identical to $\Hom_\F(U, \Hom_\F(V, Z))$.
 Also note that $\Hom(- \otimes V, Z) \equiv \Hom(-, \Hom(V, Z))$ is a \emph{tensor-hom adjunction}.
 
 The natural identification is the universal property of tensor product.
@@ -1061,7 +1061,7 @@ Note that the map $\iota$ and $\phi$ are bilinear maps, and the existence of the
 We can also consider it as the initial object in a new category:
 \begin{itemize}
 	\item Objects: all bilinear maps $\phi : U \times V \to Z$ for all $Z \in \Ob(\Vect_{\F)}$;
-	\item Morphisms: commutative diagrams in $\Vect_{\F}$:
+	\item Morphisms: commutative diagrams in $\Vect_\F$:
 \end{itemize}
 \begin{center}
 	\begin{tikzcd}[row sep=normal]
@@ -1173,16 +1173,16 @@ Moreover, $\Hom(V_1, V_2 \oplus V_3) \equiv \Hom(V_1, V_2) \oplus \Hom(V_1, V_3)
 \end{definition}
 
 \begin{definition}[Graded Linear Space]
-	A linear space $V_{\smallbullet}$ over $\F$ is called a \emph{$\Z_{\geq 0}$-graded linear space} or \emph{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \Z_{\geq 0}$:
+	A linear space $V_\smallbullet$ over $\F$ is called a \emph{$\Z_{\geq 0}$-graded linear space} or \emph{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \Z_{\geq 0}$:
 	\[
-		V_{\smallbullet} = \bigoplus_{n = 0}^{\infty} V_n
+		V_\smallbullet = \bigoplus_{n = 0}^\infty V_n
 	\]
 	The elements in $V_n$ are called \emph{homogeneous elements} of degree $n$.
 	If $v \in V_n$ is a homogeneous element, we write $\deg(v) = n$.
 \end{definition}
 
 \begin{definition}[Graded Linear Maps]
-	A linear map $\phi : V_{\smallbullet} \to W_{\smallbullet}$ is called a \emph{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \Z_{\geq 0}$.
+	A linear map $\phi : V_\smallbullet \to W_\smallbullet$ is called a \emph{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \Z_{\geq 0}$.
 \end{definition}
 
 \newpage
@@ -1200,7 +1200,7 @@ Also, $\dim(V^{\otimes k}) = (\dim{V})^k$ for all $k \geq 0$.
 
 We define the \emph{tensor algebra} of $V$ over $\F$, denoted by $\T V$, as follows:
 \[
-	\T V = \bigoplus_{k = 0}^{\infty} V^{\otimes k} = \F \oplus V \oplus (V \otimes V) \oplus (V \otimes V \otimes V) \oplus \cdots
+	\T V = \bigoplus_{k = 0}^\infty V^{\otimes k} = \F \oplus V \oplus (V \otimes V) \oplus (V \otimes V \otimes V) \oplus \cdots
 \]
 
 The tensor algebra $\T V$ is an algebra over $\F$ with the bilinear product map defined by the tensor product:
@@ -1253,20 +1253,20 @@ There is a universal property of tensor algebras.
 Consider the following commutative diagram:
 \begin{center}
 	\begin{tikzcd}
-		V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
+		V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^\smallbullet \\
 		\T V \arrow[ur, dashed, "\exists ! \bar{\phi}" swap]
 	\end{tikzcd}
 \end{center}
 Note that $V = V^{\otimes 1} = 0 \oplus V \oplus 0 \oplus \cdots \subseteq \T V$ and $\iota$ is the inclusion map.
-Here $A^{\smallbullet}$ is any graded unital associative algebra over $\F$ and $\phi : V \to A^{\smallbullet}$ is a graded linear map with graded degree $0$.
-Then there exists a unique graded algebra homomorphism with graded degree $0$ $\bar{\phi} : \T V \to A^{\smallbullet}$ such that $\bar{\phi} \circ \iota = \phi$.
+Here $A^\smallbullet$ is any graded unital associative algebra over $\F$ and $\phi : V \to A^\smallbullet$ is a graded linear map with graded degree $0$.
+Then there exists a unique graded algebra homomorphism with graded degree $0$ $\bar{\phi} : \T V \to A^\smallbullet$ such that $\bar{\phi} \circ \iota = \phi$.
 This shows the universal property of tensor algebras.
-More specifically, the map $\phi$ is a map from $V$ to the degree $1$ part of $A^{\smallbullet}$, i.e., $\phi : V \to A_1$, then with an inclusion map.
+More specifically, the map $\phi$ is a map from $V$ to the degree $1$ part of $A^\smallbullet$, i.e., $\phi : V \to A_1$, then with an inclusion map.
 
-The tensor algebra construction is actually a functor from $\Vect_{\F}$ to the category of graded unital associative algebras over $\F$, denoted by $\Z_{\geq 0} - \Alg_{\F}$:
+The tensor algebra construction is actually a functor from $\Vect_\F$ to the category of graded unital associative algebras over $\F$, denoted by $\Z_{\geq 0} - \Alg_\F$:
 \begin{center}
 	\begin{tikzcd}[row sep=normal]
-		\Vect_{\F} \arrow[r, "\T"] & \Z_{\geq 0} - \Alg_{\F} \\[-1.8em]
+		\Vect_\F \arrow[r, "\T"] & \Z_{\geq 0} - \Alg_\F \\[-1.8em]
 		V \arrow[dd, "f" swap] & \T V \arrow[dd, "\T f"] \\
 		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
 		W & \T W
@@ -1308,9 +1308,9 @@ The following is an example of an ideal in a ring, which is an example of ideal 
 
 The \emph{symmetric algebra} of a vector space $V$ over a field $\F$, denoted by $\Sym V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $u \otimes v - v \otimes u$ for all $u, v \in V$:
 \[
-	\Sym V = \quotient{\T V}{\ideal_{\Sym}} = \quotient{\T V}{\langle u \otimes v - v \otimes u \mid u, v \in V \rangle}
+	\Sym V = \quotient{\T V}{\ideal_\Sym} = \quotient{\T V}{\langle u \otimes v - v \otimes u \mid u, v \in V \rangle}
 \]
-The $\ideal_{\Sym}$ is called the \emph{symmetrising ideal} of $\T V$.
+The $\ideal_\Sym$ is called the \emph{symmetrising ideal} of $\T V$.
 It is actually the \emph{ideal completion} of the relation $u \otimes v = v \otimes u$ for all $u, v \in V$.
 We use $\langle - \rangle$ to denote the ideal generated by a set.
 
@@ -1320,12 +1320,12 @@ Note that $uv = [u \otimes v] = [v \otimes u] = vu$ in $\Sym V$, as $[u \otimes 
 So the product in $\Sym V$ is commutative.
 \begin{remark}
 	Symmetric algebra is still a graded algebra.
-	As the ideal $\ideal_{\Sym}$ is a graded ideal, i.e., $\ideal_{\Sym} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Sym} \cap V^{\otimes k})$.
+	As the ideal $\ideal_\Sym$ is a graded ideal, i.e., $\ideal_\Sym = \bigoplus_{k = 0}^\infty (\ideal_\Sym \cap V^{\otimes k})$.
 \end{remark}
 
 Similar to tensor algebras, we have the following expression:
 \[
-	\Sym V = \bigoplus_{k = 0}^{\infty} \mathcal{S}^k V
+	\Sym V = \bigoplus_{k = 0}^\infty \mathcal{S}^k V
 \]
 where $\mathcal{S}^k V$ is the $k$-th symmetric power of $V$.
 
@@ -1333,22 +1333,22 @@ We also have the following universal property of symmetric algebras.
 Consider the following commutative diagram:
 \begin{center}
 	\begin{tikzcd}[row sep = normal]
-		V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
+		V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^\smallbullet \\
 		\T V \arrow[d, "\pi" swap, two heads] \arrow[ur, dashed] & \\
 		\Sym V \arrow[uur, dashed, "\exists ! \bar{\phi}" swap]
 	\end{tikzcd}
 \end{center}
-Here $A^{\smallbullet}$ is any graded unital commutative associative algebra over $\F$.
+Here $A^\smallbullet$ is any graded unital commutative associative algebra over $\F$.
 
-Similarly, $\Sym V$ is the \emph{free graded commutative algebra functor} from $\Vect_{\F}$ to the category of graded unital commutative associative algebras over $\F$, denoted by $\Z_{\geq 0} - \CAlg_{\F}$:
+Similarly, $\Sym V$ is the \emph{free graded commutative algebra functor} from $\Vect_\F$ to the category of graded unital commutative associative algebras over $\F$, denoted by $\Z_{\geq 0} - \CAlg_\F$:
 
 \subsection{Exterior Algebras}
 
 The \emph{exterior algebra} of a vector space $V$ over a field $\F$, denoted by $\Ext V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $v \otimes v$ for all $v \in V$:
 \[
-	\Ext V = \quotient{\T V}{\ideal_{\Ext}} = \quotient{\T V}{\langle v \otimes v \mid v \in V \rangle} = \quotient{\T V}{\langle v \otimes w + w \otimes v \mid v, w \in V \rangle}
+	\Ext V = \quotient{\T V}{\ideal_\Ext} = \quotient{\T V}{\langle v \otimes v \mid v \in V \rangle} = \quotient{\T V}{\langle v \otimes w + w \otimes v \mid v, w \in V \rangle}
 \]
-The $\ideal_{\Ext}$ is called the \emph{alternating ideal} of $\T V$.
+The $\ideal_\Ext$ is called the \emph{alternating ideal} of $\T V$.
 It is actually the \emph{ideal completion} of the relation $v \otimes v = 0$ for all $v \in V$, or equivalently $v \otimes w = - w \otimes v$ for all $v, w \in V$.
 Sometimes the exterior algebra is also called the \emph{skew-symmetric algebra}.
 Note that the characteristic of the field $\F$ should not be $2$, i.e., $\chart(\F) \neq 2$, otherwise $v \otimes w = - w \otimes v$ implies that $v \otimes w = w \otimes v$.
@@ -1358,12 +1358,12 @@ We have $u \wedge v = - v \wedge u$ in $\Ext V$ for all $u, v \in V$.
 So the product in $\Ext V$ is skew-commutative.
 \begin{remark}
 	Exterior algebra is still a graded algebra.
-	As the ideal $\ideal_{\Ext}$ is a graded ideal, i.e., $\ideal_{\Ext} = \bigoplus_{k = 0}^{\infty} (\ideal_{\Ext} \cap V^{\otimes k})$.
+	As the ideal $\ideal_\Ext$ is a graded ideal, i.e., $\ideal_\Ext = \bigoplus_{k = 0}^\infty (\ideal_\Ext \cap V^{\otimes k})$.
 \end{remark}
 
 Then we have the following expression:
 \[
-	\Ext V = \bigoplus_{k = 0}^{\infty} {\bigwedge}^k V
+	\Ext V = \bigoplus_{k = 0}^\infty {\bigwedge}^k V
 \]
 where ${\bigwedge}^k V$ is the $k$-th exterior power of $V$.
 
@@ -1371,57 +1371,57 @@ We also have the following universal property of exterior algebras.
 Consider the following commutative diagram:
 \begin{center}
 	\begin{tikzcd}[row sep = normal]
-		V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^{\smallbullet} \\
+		V \arrow[r, "\forall \phi"] \arrow[d, "\iota" swap, hook] & A^\smallbullet \\
 		\T V \arrow[d, "\pi" swap, two heads] \arrow[ur, dashed] & \\
 		\Ext V \arrow[uur, dashed, "\exists ! \bar{\phi}" swap]
 	\end{tikzcd}
 \end{center}
-Here $A^{\smallbullet}$ is any graded unital associative skew-commutative algebra over $\F$.
+Here $A^\smallbullet$ is any graded unital associative skew-commutative algebra over $\F$.
 
-Similarly, $\Ext V$ is the \emph{free graded skew-commutative algebra functor} from $\Vect_{\F}$ to the category of graded unital associative skew-commutative algebras over $\F$, denoted by $\Z_{\geq 0} - \SAlg_{\F}$:
+Similarly, $\Ext V$ is the \emph{free graded skew-commutative algebra functor} from $\Vect_\F$ to the category of graded unital associative skew-commutative algebras over $\F$, denoted by $\Z_{\geq 0} - \SAlg_\F$:
 
 \subsection{Universal Enveloping Algebras}
 
 Let $\mathfrak{g}$ be a lie algebra over a field $\F$.
 The \emph{universal enveloping algebra} of $\mathfrak{g}$ over $\F$, denoted by $\Env \mathfrak{g}$, is defined as the quotient algebra of the tensor algebra $\T \mathfrak{g}$ by the ideal of $\T \mathfrak{g}$ generated by elements of the form $x \otimes y - y \otimes x - [x, y]$ for all $x, y \in \mathfrak{g}$:
 \[
-	\Env \mathfrak{g} = \quotient{\T \mathfrak{g}}{\ideal_{\Env}} = \quotient{\T \mathfrak{g}}{\langle x \otimes y - y \otimes x - [x, y] \mid x, y \in \mathfrak{g} \rangle}
+	\Env \mathfrak{g} = \quotient{\T \mathfrak{g}}{\ideal_\Env} = \quotient{\T \mathfrak{g}}{\langle x \otimes y - y \otimes x - [x, y] \mid x, y \in \mathfrak{g} \rangle}
 \]
-The $\ideal_{\Env}$ is called the \emph{lie ideal} of $\T \mathfrak{g}$.
+The $\ideal_\Env$ is called the \emph{lie ideal} of $\T \mathfrak{g}$.
 It is actually the \emph{ideal completion} of the relation $xy - yx = [x, y]$ for all $x, y \in \mathfrak{g}$.
 \begin{remark}
 	However, the universal enveloping algebra is not a graded algebra.
-	As the ideal $\ideal_{\Env}$ is not a graded ideal.
+	As the ideal $\ideal_\Env$ is not a graded ideal.
 	The $x \otimes y - y \otimes x$ is in $\mathfrak{g}^{\otimes 2}$ but $[x, y]$ is in $\mathfrak{g}^{\otimes 1}$.
 \end{remark}
 
 \newpage
 
 \section{Hilbert-Poincaré Series}
-Let $V_{\smallbullet} = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded finite dimensional linear space over a field $\F$.
-The \emph{Hilbert-Poincaré series} of $V_{\smallbullet}$ is defined as the following formal power series:
+Let $V_\smallbullet = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded finite dimensional linear space over a field $\F$.
+The \emph{Hilbert-Poincaré series} of $V_\smallbullet$ is defined as the following formal power series:
 \[
-	P_{V_{\smallbullet}}(t) = \sum_{i = 0}^{\infty} \dim(V_i)\ t^i
+	P_{V_\smallbullet}(t) = \sum_{i = 0}^\infty \dim(V_i)\ t^i
 \]
 
 \begin{example}
 	The Hilbert-Poincaré series of the tensor algebra $\T V$ is:
 	\[
-		P_{\T V}(t) = \sum_{i = 0}^{\infty} \dim(V^{\otimes i})\ t^i = \sum_{i = 0}^{\infty} (\dim{V})^i\ t^i = \frac{1}{1 - \dim{V}\ t}
+		P_{\T V}(t) = \sum_{i = 0}^\infty \dim(V^{\otimes i})\ t^i = \sum_{i = 0}^\infty (\dim{V})^i\ t^i = \frac{1}{1 - \dim{V}\ t}
 	\]
 \end{example}
 
 \begin{example}
 	The Hilbert-Poincaré series of the symmetric algebra $\Sym V$ is:
 	\[
-		P_{\Sym V}(t) = \sum_{i = 0}^{\infty} \dim(\mathcal{S}^i V)\ t^i = \frac{1}{(1 - t)^{\dim{V}}}
+		P_{\Sym V}(t) = \sum_{i = 0}^\infty \dim(\mathcal{S}^i V)\ t^i = \frac{1}{(1 - t)^{\dim{V}}}
 	\]
 \end{example}
 
 \begin{example}
 	The Hilbert-Poincaré series of the exterior algebra $\Ext V$ is:
 	\[
-		P_{\Ext V}(t) = \sum_{i = 0}^{\infty} \dim({\bigwedge}^i V)\ t^i = (1 + t)^{\dim{V}}
+		P_{\Ext V}(t) = \sum_{i = 0}^\infty \dim({\bigwedge}^i V)\ t^i = (1 + t)^{\dim{V}}
 	\]
 \end{example}
 
@@ -1447,10 +1447,10 @@ So we can define the following:
 	\]
 \end{definition}
 
-Note that the $\det = {\bigwedge}^k$ is a functor from the category of vector spaces with $n$-dimensions $\Vect_{\F}^n$ to the category of vector spaces with 1-dimensional, i.e., the category of lines, $\Vect_{\F}^1$ for all $k \geq 0$:
+Note that the $\det = {\bigwedge}^k$ is a functor from the category of vector spaces with $n$-dimensions $\Vect_\F^n$ to the category of vector spaces with 1-dimensional, i.e., the category of lines, $\Vect_\F^1$ for all $k \geq 0$:
 \begin{center}
 	\begin{tikzcd}[row sep=normal]
-		\Vect_{\F}^n \arrow[r, "{\bigwedge}^n = \det"] & \Vect_{\F}^1 \\[-1.8em]
+		\Vect_\F^n \arrow[r, "{\bigwedge}^n = \det"] & \Vect_\F^1 \\[-1.8em]
 		V_1 \arrow[dd, "f" swap] & {\bigwedge}^n V_1 = \det{V_1} \arrow[dd, "{\bigwedge}^n f = \det{f}"] \\
 		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
 		V_2 & {\bigwedge}^n V_2 = \det{V_2}
@@ -1470,7 +1470,7 @@ Consider the following commutative diagram:
 \begin{center}
 	\begin{tikzcd}
 		\F^n \arrow[r, "A'", red] \arrow[dd, bend right=60, "P" swap, ocre] & \F^n \arrow[dd, bend left=60, "P", red] \\
-		V \arrow[r, "f"] \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_{\B}}" swap] & V \arrow[u, "{[-]_{\B}}" swap] \arrow[d, "{[-]_{\B'}}"] \\
+		V \arrow[r, "f"] \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_\B}" swap] & V \arrow[u, "{[-]_\B}" swap] \arrow[d, "{[-]_{\B'}}"] \\
 		\F^n \arrow[r, "A", ocre] & \F^n
 	\end{tikzcd}
 \end{center}
