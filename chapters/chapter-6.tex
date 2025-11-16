@@ -140,12 +140,10 @@ Given that $\B_V = \{ \vec{v}_1, \cdots, \vec{v}_n \}$ is a basis of $V$, then w
 	\B_{\mathcal{T}^{r, s} V} = \{ \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s} : 1 \leq i_1, i_2, \cdots, i_r, j_1, j_2, \cdots, j_s \leq n \}
 \]
 Then for symmetric and skew-symmetric $k$-forms, we have:
-\[
-	\begin{split}
-		\B_{\mathcal{S}^k V} &= \{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \} \\
-		\B_{{\bigwedge}^k V} &= \{ \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \}
-	\end{split}
-\]
+\begin{align*}
+	\B_{\mathcal{S}^k V} &= \{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \} \\
+	\B_{{\bigwedge}^k V} &= \{ \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \}
+\end{align*}
 Then ``honest'' definition of symmetric basis is:
 \[
 	\{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \}
@@ -175,12 +173,10 @@ with $\mathcal{I} = (i_1, i_2, \cdots, i_k)$ being an ordered index set with $1 
 where $\sigma(\mathcal{I}) = (i_{\sigma(1)}, i_{\sigma(2)}, \cdots, i_{\sigma(k)})$.
 
 In conclusion, we have to make sure that the representation of any symmetric or skew-symmetric $k$-form is unique for a given basis by the following conditions respectively:
-\[
-	\begin{split}
-		&\text{Symmetric:} \quad t^{i_1 i_2 \cdots i_k} = t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}} \\
-		&\text{Skew-symmetric:} \quad t^{i_1 i_2 \cdots i_k} = \sgn(\sigma) t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}}
-	\end{split}
-\]
+\begin{align*}
+	&\text{Symmetric:} \quad t^{i_1 i_2 \cdots i_k} = t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}} \\
+	&\text{Skew-symmetric:} \quad t^{i_1 i_2 \cdots i_k} = \sgn(\sigma) t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}}
+\end{align*}
 
 \newpage
 
@@ -259,23 +255,19 @@ We can use the norm with the properties above to define the distance function by
 		\item \emph{Positive-definiteness:} $\| v \| = \sqrt{\langle v, v \rangle} \geq 0$ for all $v \in V$ with equality if and only if $v = 0$;
 		\item \emph{Homogeneity:} $\| \alpha v \| = \sqrt{\langle \alpha v, \alpha v \rangle} = \sqrt{\alpha^2 \langle v, v \rangle} = |\alpha| \| v \|$ for all $v \in V$ and $\alpha \in \R$;
 		\item \emph{Triangle Inequality:} By Cauchy-Schwarz inequality, we have:
-		\[
-			\begin{split}
-				\| u + v \| &= \sqrt{\langle u + v, u + v \rangle} = \sqrt{\langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle} \\
-				&= \sqrt{\| u \|^2 + \| v \|^2 + 2 \langle u, v \rangle} \\
-				&\leq \sqrt{\| u \|^2 + \| v \|^2 + 2 \| u \| \| v \|} \\
-				&= \sqrt{(\| u \| + \| v \|)^2} = \| u \| + \| v \|
-			\end{split}
-		\]
+		\begin{align*}
+			\| u + v \| &= \sqrt{\langle u + v, u + v \rangle} = \sqrt{\langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle} \\
+			&= \sqrt{\| u \|^2 + \| v \|^2 + 2 \langle u, v \rangle} \\
+			&\leq \sqrt{\| u \|^2 + \| v \|^2 + 2 \| u \| \| v \|} \\
+			&= \sqrt{(\| u \| + \| v \|)^2} = \| u \| + \| v \|
+		\end{align*}
 		Therefore, the triangle inequality holds.
 		\item \emph{Parallelogram Law:} We have:
-		\[
-			\begin{split}
-				\| u + v \|^2 + \| u - v \|^2 &= \langle u + v, u + v \rangle + \langle u - v, u - v \rangle \\
-				&= \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle u, u \rangle + \langle v, v \rangle - \langle u, v \rangle - \langle v, u \rangle \\
-				&= 2 \langle u, u \rangle + 2 \langle v, v \rangle = 2 \| u \|^2 + 2 \| v \|^2
-			\end{split}
-		\]
+		\begin{align*}
+			\| u + v \|^2 + \| u - v \|^2 &= \langle u + v, u + v \rangle + \langle u - v, u - v \rangle \\
+			&= \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle u, u \rangle + \langle v, v \rangle - \langle u, v \rangle - \langle v, u \rangle \\
+			&= 2 \langle u, u \rangle + 2 \langle v, v \rangle = 2 \| u \|^2 + 2 \| v \|^2
+		\end{align*}
 	\end{enumerate}
 
 	($\Leftarrow$) We define the inner product for all $u, v \in V$ as follows and the proof is left as an exercise:
@@ -395,13 +387,11 @@ Let $w = (w_1, w_2, \cdots, w_k)$ be an orthonormal basis of $W \subseteq V$. Th
 	x = \underbrace{\sum_{i = 1}^k \langle w_i, x \rangle w_i}_{\in W} + \underbrace{x - \sum_{i = 1}^k \langle w_i, x \rangle w_i}_{\in W^\perp} = \proj_W x + \proj_{W^\perp} x.
 \]
 To show that $\proj_{W^\perp} x \in W^\perp$, it suffices to show that $\langle w_j, \proj_{W^\perp} x \rangle = 0$ for all $1 \leq j \leq k$:
-\[
-	\begin{split}
-		\langle w_j, \proj_{W^\perp} x \rangle &= \langle w_j, x - \sum_{i = 1}^k \langle w_i, x \rangle w_i \rangle \\
-		&= \langle w_j, x \rangle - \sum_{i = 1}^k \langle w_i, x \rangle \langle w_j, w_i \rangle \\
-		&= \langle w_j, x \rangle - \langle w_j, x \rangle = 0
-	\end{split}
-\]
+\begin{align*}
+	\langle w_j, \proj_{W^\perp} x \rangle &= \langle w_j, x - \sum_{i = 1}^k \langle w_i, x \rangle w_i \rangle \\
+	&= \langle w_j, x \rangle - \sum_{i = 1}^k \langle w_i, x \rangle \langle w_j, w_i \rangle \\
+	&= \langle w_j, x \rangle - \langle w_j, x \rangle = 0
+\end{align*}
 Note that the key step is to use the bilinearity of the inner product and the orthonormality of $w$.
 
 Now, given any basis $x = (x_1, x_2, \cdots, x_n)$ of $V$, we can use the Gram-Schmidt process to construct an orthonormal basis $w = (w_1, w_2, \cdots, w_n)$ of $V$ by inductive argument. The idea is: We have $V_n \supset V_{n - 1} \supset \cdots \supset V_2 \supset V_1 \supset V_0 = \{ 0 \}$ with the dimension $n, n - 1, \cdots, 2, 1, 0$ respectively. Then we have $w_1$ as the orthonormal basis of $V_1$, then we can extend it to $w_1, w_2$ as the orthonormal basis of $V_2$, and so on and so forth until we reach $V_n = V$.

@@ -12,12 +12,10 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
 
 \begin{definition}[Linear Maps]
 	Let $V$ and $W$ be two linear spaces over a field $\F$. A \emph{linear map} is a set map $T: V \to W$ such that for all $u, v \in V$ and $\alpha \in \F$, the following holds:
-	\[
-		\begin{split}
-			T(u + v) &= T(u) + T(v) \\
-			T(\alpha u) &= \alpha T(u)
-		\end{split}
-	\]
+	\begin{align*}
+		T(u + v) &= T(u) + T(v) \\
+		T(\alpha u) &= \alpha T(u)
+	\end{align*}
 	The set of all linear maps from $V$ to $W$ is denoted by $\Hom(V, W)$. Some may write {$\mathcal{L}(V, W)$}.
 \end{definition}
 
@@ -131,14 +129,12 @@ where $i$ is summed from $1$ to $n$.
 
 \begin{proposition}
 	Let $X$ be a set and $W$ be a linear space over a field $\F$. Then the set of all set maps from $X$ to $W$, denoted by $\Map(X, W)$, is a linear space over $\F$ with the following operations defined pointwisely:
-	\[
-		\begin{split}
-			+ : \Map(X, W) \times \Map(X, W) &\to \Map(X, W) \\
-			(f,g) &\mapsto (f + g) : x \mapsto f(x) + g(x) \\ \\
-			\cdot : \F \times \Map(X, W) &\to \Map(X, W) \\
-			(\alpha,f) &\mapsto (\alpha f) : x \mapsto \alpha f(x)
-		\end{split}
-	\]
+	\begin{align*}
+		+ : \Map(X, W) \times \Map(X, W) &\to \Map(X, W) \\
+		(f,g) &\mapsto (f + g) : x \mapsto f(x) + g(x) \\
+		\cdot : \F \times \Map(X, W) &\to \Map(X, W) \\
+		(\alpha,f) &\mapsto (\alpha f) : x \mapsto \alpha f(x)
+	\end{align*}
 \end{proposition}
 
 \begin{proof}
@@ -147,28 +143,24 @@ where $i$ is summed from $1$ to $n$.
 
 \begin{proposition}
 	Let $V$ and $W$ be two linear spaces over a field $\F$. Then $\Hom(V, W)$ is a linear space over $\F$ with the following operations defined pointwisely:
-	\[
-		\begin{split}
-			+ : \Hom(V, W) \times \Hom(V, W) &\to \Hom(V, W) \\
-			(f,g) &\mapsto (f + g): v \mapsto f(v) + g(v) \\ \\
-			\cdot : \F \times \Hom(V, W) &\to \Hom(V, W) \\
-			(\alpha,f) &\mapsto (\alpha f): v \mapsto \alpha f(v)
-		\end{split}
-	\]
+	\begin{align*}
+		+ : \Hom(V, W) \times \Hom(V, W) &\to \Hom(V, W) \\
+		(f,g) &\mapsto (f + g): v \mapsto f(v) + g(v) \\
+		\cdot : \F \times \Hom(V, W) &\to \Hom(V, W) \\
+		(\alpha,f) &\mapsto (\alpha f): v \mapsto \alpha f(v)
+	\end{align*}
 \end{proposition}
 
 \begin{proof}
 	Note that $\Hom(V, W) \subseteq \Map(V, W)$. We need to show that the operations defined above are closed in $\Hom(V, W)$, i.e., for all $f, g \in \Hom(V, W)$ and $\alpha \in \F$, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$ or equivalently, $f$ respects linear combinations.
 
 	Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in \F$. Since $f, g \in \Hom(V, W)$, we have:
-	\[
-		\begin{split}
-			(f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
-			&=\joinrel= \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
-			&=\joinrel= \alpha (f(\vec{u}) + g(\vec{u})) + \beta (f(\vec{v}) + g(\vec{v})) \\
-			&\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
-		\end{split}
-	\]
+	\begin{align*}
+		(f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
+		&=\joinrel= \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
+		&=\joinrel= \alpha (f(\vec{u}) + g(\vec{u})) + \beta (f(\vec{v}) + g(\vec{v})) \\
+		&\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
+	\end{align*}
 	where the second equality is due to the linearity of $f$ and $g$. Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
 \end{proof}
 \begin{remark}
@@ -176,9 +168,7 @@ where $i$ is summed from $1$ to $n$.
 \end{remark}
 
 Then we can say that
-\begin{center}
-	$\Map(\F^n, \F^m) \supseteq \Hom(\F^n, \F^m) \cong \M{m \times n}{\F}$
-\end{center}
+\[ \Map(\F^n, \F^m) \supseteq \Hom(\F^n, \F^m) \cong \M{m \times n}{\F} \]
 
 
 \newpage
@@ -345,12 +335,10 @@ For easier notations, we introduce the idea of matrix units, which is similar to
 \end{definition}
 \begin{remark}
 	Note that for any $m \times n$ matrix $A$ over a field $\F$, we have:
-	\[
-		\begin{split}
-			A\vec{e}_j &= \text{the } j\text{-th column of } A \in \F^n \\
-			\hat{e}^iA &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
-		\end{split}
-	\]
+	\begin{align*}
+		A\vec{e}_j &= \text{the } j\text{-th column of } A \in \F^n \\
+		\hat{e}^iA &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
+	\end{align*}
 	where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$. Then we have: (Beaware of the difference between superscript and subscript)
 	\[
 		a_j^i = \hat{e}^i A \vec{e}_j = \text{the } (i,j)\text{-th entry of } A

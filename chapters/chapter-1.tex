@@ -12,9 +12,9 @@ We start with the definition of a binary operation.
 
 \begin{definition}[Binary Operation]
 	A \emph{binary operation} on a set $S$ is a mapping of the elements of the Cartesian product $S \times S$ to $S$.
-	\[ \begin{split}
-			\cdot : S \times S & \to S \\ (x,y) &\mapsto x \cdot y
-		\end{split}\]
+	\begin{align*}
+		\cdot : S \times S & \to S \\ (x,y) &\mapsto x \cdot y
+	\end{align*}
 \end{definition}
 
 For easier understanding, binary operation is combining two objects into one. Hence, there is something called unary and ternary operations, corresponding to the action of combining one and three objects into one respectively.
@@ -52,8 +52,10 @@ For easier understanding, binary operation is combining two objects into one. He
 
 \begin{proof}
 	Let $e_1$ and $e_2$ be two identity elements for the operation $\cdot$. Then, for any element $x \in S$, we have:
-	\[ e_1 \cdot x = x = x \cdot e_1 \]
-	\[ e_2 \cdot x = x = x \cdot e_2 \]
+	\begin{gather*}
+		e_1 \cdot x = x = x \cdot e_1 \\
+		e_2 \cdot x = x = x \cdot e_2
+	\end{gather*}
 	Now, consider the element $e_1$: $e_1 \cdot e_2 = e_1$.
 	But since $e_2$ is an identity element, we also have: $e_1 \cdot e_2 = e_2$.
 	Therefore, we conclude that $e_1 = e_2$, proving the uniqueness of the identity element.
@@ -91,8 +93,10 @@ Note that the two-sided identity must be unique, but one-sided identities need n
 
 \begin{proof}
 	Let $y_1$ and $y_2$ be two inverses of an element $x \in S$. Then, by definition of inverse, we have:
-	\[ x \cdot y_1 = e = y_1 \cdot x \]
-	\[ x \cdot y_2 = e = y_2 \cdot x \]
+	\begin{gather*}
+		x \cdot y_1 = e = y_1 \cdot x\\
+		x \cdot y_2 = e = y_2 \cdot x
+	\end{gather*}
 	Now, consider the element $y_1$: $y_1 \cdot x = e$.
 	But since $y_2$ is also an inverse of $x$, we can substitute $e$ with $x \cdot y_2$: $y_1 \cdot x = x \cdot y_2 = e$.
 	By the associativity of the operation, we can rearrange this to:
@@ -113,20 +117,20 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
 
 \begin{definition}[Distributive (Harmonic)]
 	A binary operation $\cdot: S \times S \to S$ is said to be \emph{distributive}\index{distributive} with respect to another binary operation $+: S \times S \to S$ if, for all $x,y,z \in S$, the following holds:
-	\[ \begin{split}
+	 \begin{align*}
 		x \cdot (y + z) &= x \cdot y + x \cdot z \\
 		(y + z) \cdot x &= y \cdot x + z \cdot x
-	\end{split} \]
+	\end{align*}
 \end{definition}
 
 The professor preferred to use the word ``harmonic'' instead of ``distributive''. Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''. (The two binary operation in this sentence is not commutative.)
 
 \begin{example}
 	A common example of a distributive operation is multiplication over addition on the set of integers $\Z$. For all $x,y,z \in \Z$, we have:
-	\[ \begin{split}
+	 \begin{align*}
 		x \cdot (y + z) &= x \cdot y + x \cdot z \\
 		(y + z) \cdot x &= y \cdot x + z \cdot x
-	\end{split} \]
+	\end{align*}
 \end{example}
 
 \newpage
@@ -284,27 +288,22 @@ The following two sets are the sets of all structure-preserving maps.
 
 \begin{definition}[Endomorphism Ring]
 	The set of all endomorphisms of an abelian group $(A, +)$, denoted by $\End(A)$, forms a (non-commutative) ring under pointwise addition and composition of set maps. The addition and multiplication operations are defined as follows:
-	\[
-		\begin{split}
-			+ : \End(A) \times \End(A) &\to \End(A) \\
-			(f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad &f + g : A \to A \\ \\
-			\circ : \End(A) \times \End(A) &\to \End(A) \\
-			(f,g) &\mapsto (f \circ g: x \mapsto f(g(x))) \qquad &f \circ g : A \to A
-		\end{split}
-	\]
+	\begin{align*}
+		+ : \End(A) \times \End(A) &\to \End(A) \\
+		(f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad &f + g : A \to A \\
+		\circ : \End(A) \times \End(A) &\to \End(A) \\
+		(f,g) &\mapsto (f \circ g: x \mapsto f(g(x))) \qquad &f \circ g : A \to A
+	\end{align*}
 	The identity element for addition is the zero endomorphism, which maps every element to the identity element of the group. 
-	\[ \begin{split}
+	\begin{align*}
 		0: A &\to A \\
 		x &\mapsto 0
-	\end{split}
-	\]
-	The identity element for multiplication is the identity endomorphism, which maps every element to itself. 
-	\[
-	\begin{split}
+	\end{align*}
+	The identity element for multiplication is the identity endomorphism, which maps every element to itself.
+	\begin{align*}
 		1: A &\to A \\
 		x &\mapsto x
-	\end{split}
-	\]
+	\end{align*}
 	Note that all endomorphisms in $\End(A)$ are group homomorphisms and $\End(A) = \Hom(A, A)$.
 \end{definition}
 
@@ -316,18 +315,15 @@ Then we can define what a linear structure is.
 
 \begin{definition}[Linear Structure]
 	A \emph{linear structure} over a field $\F$ on a set $V$ is a pair $(+, \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $\F \to \End(V)$, where $\End(V)$ is the endomorphism ring of the abelian group $(V, +)$.
-	\[ \begin{split}
-			\cdot : \F &\to \End(V) \\
-			\alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
-		\end{split}
-	\]
+	\begin{align*}
+		\cdot : \F &\to \End(V) \\
+		\alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
+	\end{align*}
 	The ring homomorphism is a (ring) action of the field $\F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}. The ring action can be written as a binary operation:
-	\[
-		\begin{split}
-			\cdot : \F \times V &\to V \\
-			(\alpha, \vec{x}) &\mapsto \alpha \vec{x}
-		\end{split}
-	\]
+	\begin{align*}
+		\cdot : \F \times V &\to V \\
+		(\alpha, \vec{x}) &\mapsto \alpha \vec{x}
+	\end{align*}
 \end{definition}
 
 A linear space / vector space is a set with a linear structure over a field on the set. In normal textbook, a linear space will be defined as follows:
@@ -357,42 +353,34 @@ A linear space / vector space is a set with a linear structure over a field on t
 
 \begin{example}
 	$\F$ is a linear space over itself with the usual addition and multiplication operations.
-	\[
-		\begin{split}
-			\cdot : \F \times \F &\to \F \\
-			(\alpha,\beta) &\mapsto \alpha \beta
-		\end{split}
-	\]
+	\begin{align*}
+		\cdot : \F \times \F &\to \F \\
+		(\alpha,\beta) &\mapsto \alpha \beta
+	\end{align*}
 	The first $\F$ is the field acting on the second $\F$, which is the abelian group.
 \end{example}
 
 \begin{example}
 	Let $X$ be a set and $\F$ be a field. ($f$ is a set map)
-	\[
-	\begin{split}
+	\begin{align*}
 		\F[[X]] = \Map(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all $\F$-valued functions on } X \\
 		&=\joinrel= \left\{ f : X \to \F \right\}
-	\end{split}
-	\]
+	\end{align*}
 	$\F[[X]]$ is a linear space over $\F$ with the following operations defined pointwisely:
-	\[
-		\begin{split}
-			+ : \F[[X]] \times \F[[X]] &\to \F[[X]] \\
-			(f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to \F \\ \\
-			\cdot : \F \times \F[[X]] &\to \F[[X]] \\
-			(\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to \F
-		\end{split}
-	\]
+	\begin{align*}
+		+ : \F[[X]] \times \F[[X]] &\to \F[[X]] \\
+		(f,g) &\mapsto (f+g: x \mapsto f(x) + g(x)) \qquad f + g : X \to \F \\
+		\cdot : \F \times \F[[X]] &\to \F[[X]] \\
+		(\alpha,f) &\mapsto (\alpha f: x \mapsto \alpha f(x)) \qquad \alpha f : X \to \F
+	\end{align*}
 \end{example}
 
 \begin{example}
 	Let $X$ be a set and $\F$ be a field.
-	\[
-		\begin{split}
-			\F[X] = \text{Map}_{\text{fin}}(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all finitely supported $\F$-valued functions on } X \\
-			&=\joinrel= \left\{ f : X \to \F \mid f \text{ is finitely supported} \right\}
-		\end{split}
-	\]
+	\begin{align*}
+		\F[X] = \text{Map}_{\text{fin}}(X, \F) &\overset{\mathrm{def}}{=\joinrel=} \text{the set of all finitely supported $\F$-valued functions on } X \\
+		&=\joinrel= \left\{ f : X \to \F \mid f \text{ is finitely supported} \right\}
+	\end{align*}
 	$\F[X]$ is a linear space over $\F$ as $\F[X] \subseteq \F[[X]]$ and the operations are defined pointwisely as in the previous example.
 
 	$f: X \to \F$ is finitely supported if the set $\{ x \in X \mid f(x) \neq 0 \}$ is finite or $f(x) \neq 0$ for only finitely many $x \in X$.
@@ -417,21 +405,19 @@ There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Po
 		\right\}
 	\]
 	is the set of all \emph{column matrices} with $n$ entries in $\F$. Elements in $\F^n$ are written as $\vec{x}$ and are called \emph{column vectors}. $\F^n$ is a linear space over $\F$ with the following operations defined entrywisely:
-	\[
-		\begin{split}
-			+ : \F^n \times \F^n &\to \F^n \\
-			(\vec{a}, \vec{b}) &\mapsto \vec{a} + \vec{b} = \begin{bmatrix}
-			a_1 + b_1 \\
-			\vdots \\
-			a_n + b_n
-			\end{bmatrix} \\ \\
-			\cdot : \F \times \F^n &\to \F^n \\
-			(\alpha, \vec{a}) &\mapsto \alpha \vec{a} = \begin{bmatrix}
-			\alpha a_1 \\
-			\vdots \\
-			\alpha a_n
-			\end{bmatrix}
-		\end{split}
-	\]
+	\begin{align*}
+		+ : \F^n \times \F^n &\to \F^n \\
+		(\vec{a}, \vec{b}) &\mapsto \vec{a} + \vec{b} = \begin{bmatrix}
+		a_1 + b_1 \\
+		\vdots \\
+		a_n + b_n
+		\end{bmatrix} \\
+		\cdot : \F \times \F^n &\to \F^n \\
+		(\alpha, \vec{a}) &\mapsto \alpha \vec{a} = \begin{bmatrix}
+		\alpha a_1 \\
+		\vdots \\
+		\alpha a_n
+		\end{bmatrix}
+	\end{align*}
 	$\F^n$ is a linear space over $\F$ automatically as $\F$ is a linear space over itself.
 \end{example}

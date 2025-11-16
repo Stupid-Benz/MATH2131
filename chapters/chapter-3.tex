@@ -282,12 +282,10 @@ The following commutative diagram illustrates the group action, where the associ
 \end{center}
 
 This group action defines the following equivalence relation on $W$, where $V$ is the acting group:
-\[
-	\begin{split}
-		w_1 \sim w_2 & \implies \exists v \in V \text{ such that } w_2 = v + w_1 \\
-		& \iff w_2 - w_1 \in V
-	\end{split}
-\]
+\begin{align*}
+	w_1 \sim w_2 & \implies \exists v \in V \text{ such that } w_2 = v + w_1 \\
+	& \iff w_2 - w_1 \in V
+\end{align*}
 
 \begin{definition}[Quotient Spaces]
 	Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$. The \emph{quotient space} of $W$ by $V$, denoted by $\quotient{W}{V}$, is defined as the set of orbits of the group action of $V$ on $W$, or the set of $V$-equivalence classes in $W$ with the equivalence relation defined above, i.e.,
@@ -447,14 +445,12 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 	Assume the existence of such a linear map $\tilde{\phi}$. Then for all $w \in W$, we have $\tilde{\phi}([w]) = \phi(w)$. However, this may not be well-defined. Then, we check whether it is well-defined. Assume that $[w] = [w']$, then we have $\tilde{\phi}([w']) = \phi(w')$. Note that $w - w' \in V$. Thus, we have $\phi(w' - w) = 0_Z$. This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$. This shows that $\tilde{\phi}([w']) = \tilde{\phi}([w])$. Thus, $\tilde{\phi}$ is well-defined.
 
 	Then we consider the linearity of $\tilde{\phi}$. For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha^1, \alpha^2 \in \F$, we have
-	\[
-		\begin{split}
-			\tilde{\phi}(\alpha^1 [w_1] + \alpha^2 [w_2]) &= \tilde{\phi}([\alpha^1 w_1 + \alpha^2 w_2]) \\
-			&= \phi(\alpha^1 w_1 + \alpha^2 w_2) \\
-			&= \alpha^1 \phi(w_1) + \alpha^2 \phi(w_2) \\
-			&= \alpha^1 \tilde{\phi}([w_1]) + \alpha^2 \tilde{\phi}([w_2])
-		\end{split}
-	\]
+	\begin{align*}
+		\tilde{\phi}(\alpha^1 [w_1] + \alpha^2 [w_2]) &= \tilde{\phi}([\alpha^1 w_1 + \alpha^2 w_2]) \\
+		&= \phi(\alpha^1 w_1 + \alpha^2 w_2) \\
+		&= \alpha^1 \phi(w_1) + \alpha^2 \phi(w_2) \\
+		&= \alpha^1 \tilde{\phi}([w_1]) + \alpha^2 \tilde{\phi}([w_2])
+	\end{align*}
 	This shows that $\tilde{\phi}$ is linear.
 \end{proof}
 \begin{remark}
@@ -819,14 +815,12 @@ The alternative, or normal, definition of rank is as follows.
 	Then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\col(BC)}$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the universal property of quotient space.
 
 	Finally, we consider the dimensions of the spaces. Note that $\phi$ is surjective, thus we have
-	\[
-		\begin{split}
-			\dim{\quotient{\col(B)}{\col(BC)}} & \geq \dim{\quotient{\col(AB)}{\col(ABC)}} \\
-			\dim{\col(B)} - \dim{\col(BC)} & \geq \dim{\col(AB)} - \dim{\col(ABC)} \\
-			\dim{\col(B)} + \dim{\col(ABC)} & \geq \dim{\col(AB)} + \dim{\col(BC)} \\
-			\rank(B) + \rank(ABC) & \geq \rank(AB) + \rank(BC)
-		\end{split}
-	\]
+	\begin{align*}
+		\dim{\quotient{\col(B)}{\col(BC)}} & \geq \dim{\quotient{\col(AB)}{\col(ABC)}} \\
+		\dim{\col(B)} - \dim{\col(BC)} & \geq \dim{\col(AB)} - \dim{\col(ABC)} \\
+		\dim{\col(B)} + \dim{\col(ABC)} & \geq \dim{\col(AB)} + \dim{\col(BC)} \\
+		\rank(B) + \rank(ABC) & \geq \rank(AB) + \rank(BC)
+	\end{align*}
 \end{proof}
 
 \subsection{Problem 2}

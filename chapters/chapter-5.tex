@@ -107,27 +107,25 @@ For example, consider the following matrix:
 	\end{bmatrix}, \quad p_A (\lambda) = (\lambda - 1)(\lambda - 2)
 \]
 The roots of $p_A (\lambda)$ are $1$ and $2$, so the eigenvalues of $A$ are $1$ and $2$. Then we can find the eigenspaces:
-\[
-	\begin{split}
-		V_{\lambda = 1} &= \nul(1 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
-			0 & -3 \\
-			0 & -1
-		\end{bmatrix} = \mathsf{Nul} \begin{bmatrix}
-			0 & 1 \\
-			0 & 0
-		\end{bmatrix} = \Span \begin{bmatrix}
-			1 \\
-			0
-		\end{bmatrix} \\
-		V_{\lambda = 2} &= \nul(2 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
-			1 & -3 \\
-			0 & 0
-		\end{bmatrix} = \Span \begin{bmatrix}
-			3 \\
-			1
-		\end{bmatrix}
-	\end{split}
-\]
+\begin{align*}
+	V_{\lambda = 1} &= \nul(1 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
+		0 & -3 \\
+		0 & -1
+	\end{bmatrix} = \mathsf{Nul} \begin{bmatrix}
+		0 & 1 \\
+		0 & 0
+	\end{bmatrix} = \Span \begin{bmatrix}
+		1 \\
+		0
+	\end{bmatrix} \\
+	V_{\lambda = 2} &= \nul(2 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
+		1 & -3 \\
+		0 & 0
+	\end{bmatrix} = \Span \begin{bmatrix}
+		3 \\
+		1
+	\end{bmatrix}
+\end{align*}
 Then we have:
 \[
 	A = \begin{bmatrix}
@@ -216,36 +214,34 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
 		0 & 1 & 3 \\
 		0 & 0 & 2
 	\end{bmatrix}$. Then we have $p_A (\lambda) = (\lambda - 1)^2 (\lambda - 2)$. The eigenvalues are $1$ and $2$, where $\lambda = 1$ has algebraic multiplicity $2$ and $\lambda = 2$ has algebraic multiplicity $1$. Then we can find the eigenspaces:
-	\[
-		\begin{split}
-			E_{\lambda = 1} (A) &= \nul(1 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
-				0 & 0 & -4 \\
-				0 & 0 & -3 \\
-				0 & 0 & -1
-			\end{bmatrix} = \mathsf{Nul} \begin{bmatrix}
-				0 & 0 & 1 \\
-				0 & 0 & 0 \\
-				0 & 0 & 0
-			\end{bmatrix} = \Span \left\{ \begin{bmatrix}
-				1 \\
-				0 \\
-				0
-			\end{bmatrix}, \begin{bmatrix}
-				0 \\
-				1 \\
-				0
-			\end{bmatrix} \right\} \\
-			E_{\lambda = 2} (A) &= \nul(2 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
-				1 & 0 & -4 \\
-				0 & 1 & -3 \\
-				0 & 0 & 0
-			\end{bmatrix} = \Span \begin{bmatrix}
-				4 \\
-				3 \\
-				1
-			\end{bmatrix}
-		\end{split}
-	\]
+	\begin{align*}
+		E_{\lambda = 1} (A) &= \nul(1 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
+			0 & 0 & -4 \\
+			0 & 0 & -3 \\
+			0 & 0 & -1
+		\end{bmatrix} = \mathsf{Nul} \begin{bmatrix}
+			0 & 0 & 1 \\
+			0 & 0 & 0 \\
+			0 & 0 & 0
+		\end{bmatrix} = \Span \left\{ \begin{bmatrix}
+			1 \\
+			0 \\
+			0
+		\end{bmatrix}, \begin{bmatrix}
+			0 \\
+			1 \\
+			0
+		\end{bmatrix} \right\} \\
+		E_{\lambda = 2} (A) &= \nul(2 \cdot I - A) = \mathsf{Nul} \begin{bmatrix}
+			1 & 0 & -4 \\
+			0 & 1 & -3 \\
+			0 & 0 & 0
+		\end{bmatrix} = \Span \begin{bmatrix}
+			4 \\
+			3 \\
+			1
+		\end{bmatrix}
+	\end{align*}
 	Then we have $\dim E_{\lambda = 1} + \dim E_{\lambda = 2} = 2 + 1 = 3 = \dim V$. Therefore, $A$ is completely reducible. Then we can find the diagonalisation:
 	\[
 		\begin{bmatrix}
@@ -531,12 +527,10 @@ Then what is $J_{e_i} (\lambda_i)$? We have:
 	x \cdot 1 = x = 1 \cdot (x - \lambda_i) + \lambda_i \cdot 1
 \]
 So the first column of $J_{e_i} (\lambda_i)$ is $[\lambda_i \quad 1 \quad 0 \quad \cdots \quad 0]^T$. Similarly, we have:
-\[
-	\begin{split}
-		x \cdot (x - \lambda_i) &= 1 \cdot (x - \lambda_i)^2 + \lambda_i \cdot (x - \lambda_i) \\
-		x \cdot (x - \lambda_i)^{e_i - 1} &= 1 \cdot (x - \lambda_i)^{e_i} + \lambda_i \cdot (x - \lambda_i)^{e_i - 1} = \lambda_i \cdot (x - \lambda_i)^{e_i - 1}
-	\end{split}
-\]
+\begin{align*}
+	x \cdot (x - \lambda_i) &= 1 \cdot (x - \lambda_i)^2 + \lambda_i \cdot (x - \lambda_i) \\
+	x \cdot (x - \lambda_i)^{e_i - 1} &= 1 \cdot (x - \lambda_i)^{e_i} + \lambda_i \cdot (x - \lambda_i)^{e_i - 1} = \lambda_i \cdot (x - \lambda_i)^{e_i - 1}
+\end{align*}
 So the matrix representation of $x \cdot$ on $\dfrac{\F[x]}{(x - \lambda_i)^{e_i}}$ with respect to the basis $\B_i$ is:
 \[
 	J_{e_i} (\lambda_i) = \begin{bmatrix}
