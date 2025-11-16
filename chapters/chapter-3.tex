@@ -597,7 +597,7 @@ Generally, we may consider the following commutative diagrams, where left is the
 	$V_1 + V_2 = \Span(V_1 \cup V_2)$.
 \end{proposition}
 
-Recall the definition of linear independence (Definition \ref{def:linear_independence}): $V_1$ and $V_2$ are said to be \emph{linearly independent} if $V_1$ and $V_2$ are non-trivial and $x_1 + x_2 = 0$ for $x_i \in V_i$ implies that $x_1 = x_2 = 0$.
+Recall the definition of linear independence (Definition~\ref{def:linear_independence}): $V_1$ and $V_2$ are said to be \emph{linearly independent} if $V_1$ and $V_2$ are non-trivial and $x_1 + x_2 = 0$ for $x_i \in V_i$ implies that $x_1 = x_2 = 0$.
 
 We have the following definition for weakly linear independence.
 \begin{definition}[Weak Linear Independence]
@@ -615,7 +615,7 @@ Then the definition of direct sum is as follows.
 	when $V_1$ and $V_2$ are weakly linearly independent.
 \end{definition}
 
-Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a finite dimensional if $W \cong \F^n$ for some positive integer $n$.
+Recall (Definition~\ref{def:finite_dimensional_vector_space}) that $W$ is a finite dimensional if $W \cong \F^n$ for some positive integer $n$.
 It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite spanning set.
 
 \begin{proof}
@@ -623,7 +623,7 @@ It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite s
 	However, the set $\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$ may not be linearly independent.
 	Thus, we can always find a minimal spanning set of $W$ from it.
 	WLOG, we can say $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$ for some $k \leq n$.
-	Then using (Proposition \ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \cdots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$.
+	Then using (Proposition~\ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \cdots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$.
 \end{proof}
 
 \begin{proposition} \label{prop:finite_dimensional_subspace_quotient_space}
@@ -828,7 +828,7 @@ As $V_1 \cong \im{i_1}$ and $V_2 \cong \im{i_2}$. $i_1$ and $i_2$ are injective 
 Also, we know that $\dim{V} \geq \dim{V_1}$ and $\dim{V} \geq \dim{V_2}$.
 Similarly, we have $\dim{W} \geq \dim{V}$ and $\dim{W} \geq \dim{\quotient{W}{V}}$, where $V$ is a subspace of $W$.
 
-Consider Proposition \ref{prop:dimension_of_sum_of_subspaces}, more specifically, we have the following dimension formula:
+Consider Proposition~\ref{prop:dimension_of_sum_of_subspaces}, more specifically, we have the following dimension formula:
 \[
 	\dim{(V_1 + V_2)} = \dim{V_1} + \dim{V_2} - \dim{(V_1 \cap V_2)}
 \]

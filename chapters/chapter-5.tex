@@ -9,7 +9,7 @@
 \section{Diagonal Forms}
 
 Before, we have studied the canonical matrix representation of linear maps between two different dimension vector spaces.
-It is natural to ask what is the canonical form of linear maps from a vector space to itself, i.e. endomorphisms.
+It is natural to ask what is the canonical form of linear maps from a vector space to itself, i.e.~endomorphisms.
 Consider the following diagram:
 \begin{center}
 	\begin{tikzcd}
@@ -49,7 +49,7 @@ Then we have:
 \[
 	A = P D P^{-1}
 \]
-We have $A \sim D$, i.e. $A$ is similar to $D$.
+We have $A \sim D$, i.e.~$A$ is similar to $D$.
 
 
 Then we have two questions:
@@ -105,7 +105,7 @@ Then we have the following equation:
 \[
 	Tx = \lambda_i x \iff (\lambda_i 1_V - T) x = 0 \iff x \in \ker(\lambda_i 1_V - T)
 \]
-As $x$ is non-zero, then $(\lambda_i 1_V - T)$ is not injective, i.e. not invertible.
+As $x$ is non-zero, then $(\lambda_i 1_V - T)$ is not injective, i.e.~not invertible.
 Therefore, we have:
 \[
 	\det (\lambda_i 1_V - T) = 0
@@ -187,7 +187,7 @@ In matrix, we have:
 	\begin{enumerate}
 		\item $T$ is completely reducible.
 		\item $T = \lambda_1 1_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k 1_{V_{\lambda_k}}$ for some distinct eigenvalues $\lambda_1, \cdots, \lambda_k$ and non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$.
-		\item $V$ has an eigenvector basis of $T$, i.e. there exists a basis of $V$ consisting of eigenvectors of $T$.
+		\item $V$ has an eigenvector basis of $T$, i.e.~there exists a basis of $V$ consisting of eigenvectors of $T$.
 		\item $\dim V = \sum_{i = 1}^k \dim E_{\lambda_i} (T) = \sum_{i = 1}^k \dim V_{\lambda_i}$, where $\lambda_1, \cdots, \lambda_k$ are the distinct eigenvalues of $T$ and $V_{\lambda_i} = E_{\lambda_i} (T)$ are the eigenspaces of $T$.
 	\end{enumerate}
 \end{proposition}
@@ -237,7 +237,7 @@ Consider the following example:
 	This completed the induction.
 \end{proof}
 
-Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}$.
+Then we know that the sum of eigenspaces is a direct sum, i.e.~$E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}$.
 Then we have:
 \[
 	\dim V = \sum \dim E_{\lambda_i} (T)
@@ -361,7 +361,7 @@ One of the example is the Cayley-Hamilton theorem.
 
 \begin{theorem}[Cayley-Hamilton Theorem]
 	Let $T : V \to V$ be an endomorphism of a finite dimensional vector space $V$ over $\F$.
-	Then $T$ satisfies its own characteristic polynomial, i.e. $\left.p_T (\lambda)\right|_{\lambda = T} = 0$.
+	Then $T$ satisfies its own characteristic polynomial, i.e.~$\left.p_T (\lambda)\right|_{\lambda = T} = 0$.
 \end{theorem}
 \begin{remark}
 	$p_T (\lambda) = \det (\lambda 1_V - T) = \lambda^n + \cdots + (-1)^n \det(T) \lambda^0$, where $\lambda^0 = 1$ and $T^0 = 1_V$.
@@ -416,7 +416,7 @@ So this characterise completely reducible endomorphisms.
 Before studying Zariski topology, we first introduce \emph{affine spaces}.
 
 \begin{definition}[Affine Spaces]
-	A set $\A$ is called an \emph{affine space} over a field $\F$ if it is a principal $(\F^n, +)$-set, i.e. there is a free and transitive action of the additive group $(\F^n, +)$ on $\A$:
+	A set $\A$ is called an \emph{affine space} over a field $\F$ if it is a principal $(\F^n, +)$-set, i.e.~there is a free and transitive action of the additive group $(\F^n, +)$ on $\A$:
 	\[
 		+ : \A \times \F^n \to \A, \quad (P, \vec{v}) \mapsto P + \vec{v}
 	\]
@@ -431,7 +431,7 @@ For example, consider the $SO(2)$ action on the plane $\R^2$.
 The action is not free and not transitive.
 It is not free because rotating a point on the plane by $0$ degree (the identity element) keeps the point unchanged, but rotating it by any other angle will change the point.
 It is not transitive because there is no rotation that can map a point to another point with a different distance from the origin.
-However, if we consider the orbits of the action, i.e. circles centered at the origin, then the action is transitive on each orbit and free except for the origin.
+However, if we consider the orbits of the action, i.e.~circles centered at the origin, then the action is transitive on each orbit and free except for the origin.
 
 Then we introduce what topology is.
 
@@ -474,7 +474,7 @@ Then Zariski topology is defined as follows.
 Then the $A \in \F^{n^2} \equiv \A_\F^{n^2}$ can be viewed as a point in the affine space $\A_\F^{n^2}$ over $\F$.
 Then the set of all completely reducible endomorphisms with distinct eigenvalues forms a dense open subset of $\End(V) = \F^{n^2}$ in the Zariski topology.
 Dense means that its closure is the whole space.
-Open means that its complement is a closed set, i.e. the zero locus of some set of polynomials in $\F[x_1, \cdots, x_{n^2}]$.
+Open means that its complement is a closed set, i.e.~the zero locus of some set of polynomials in $\F[x_1, \cdots, x_{n^2}]$.
 
 \newpage
 
@@ -505,7 +505,7 @@ Before studying the canonical forms of not completely reducible endormorphisms, 
 \end{example}
 
 \begin{definition}[Submodule]
-	A \emph{submodule}\index{submodule} $N$ of a module $M$ over a ring $R$ is a subgroup of $(M, +)$ that is closed under the ring action of $R$ on $M$, i.e. for any $r \in R$ and $n \in N$, we have $r \cdot n \in N$.
+	A \emph{submodule}\index{submodule} $N$ of a module $M$ over a ring $R$ is a subgroup of $(M, +)$ that is closed under the ring action of $R$ on $M$, i.e.~for any $r \in R$ and $n \in N$, we have $r \cdot n \in N$.
 \end{definition}
 
 \begin{definition}[Ideal]
@@ -562,7 +562,7 @@ Then we introduce the following theorem which can derive Jordan canonical form.
 \end{remark}
 Here $R^r$ is the free part of $M$ and $\bigoplus_{i = 1}^m \quotient{R}{(a_i)}$ is the torsion part of $M$.
 The torsion part prevents the existence of basis of $M$.
-If the torsion part is trivial, i.e. $m = 0$, then $M$ is a free module and has a basis.
+If the torsion part is trivial, i.e.~$m = 0$, then $M$ is a free module and has a basis.
 Moreover, $r$ is the rank of $M$ and is unique. $a_i$ are called the invariant factors of $M$ and are unique up to multiplication by units in $R$.
 This is called the invariant factor decomposition of $M$.
 There is another decomposition called primary decomposition, or elementary divisor decomposition, or Chinese Remainder decomposition.
