@@ -1309,7 +1309,7 @@ where $V$ is an $n$-dimensional vector space over $\F$, $\B$ and $\B'$ are two b
 
 Then we have:
 \[
-    \det A \overset{\text{def}}{=\joinrel=} \det f  \overset{\text{def}}{=\joinrel=} \det A'
+    \det A \overset{\text{def}}{=\joinrel=} \det f \overset{\text{def}}{=\joinrel=} \det A'
 \]
 
 In ordinary linear algebra, $A$ and $A'$ are called \emph{similar matrices}, i.e., $A \sim A'$. This means they represent the same endomorphism, so they have the same determinant.
@@ -1558,7 +1558,7 @@ Consider the elements of $A$ as $\vec{a}_j = \sum_{i_j = 1}^n a_j^{i_j} \vec{e}_
 \[
     \vec{a}_1 \wedge \cdots \wedge \vec{a}_n = \sum_{i_1 = 1}^n a_1^{i_1} \vec{e}_{i_1} \wedge \cdots \wedge \sum_{i_n = 1}^n a_n^{i_n} \vec{e}_{i_n} = \sum_{i_1, \cdots, i_n = 1}^n a_1^{i_1} \cdots a_n^{i_n} \ (\vec{e}_{i_1} \wedge \cdots \wedge \vec{e}_{i_n})
 \]
-We assume that $\vec{e}_{i_k}$ are mutally distinct for all $1 \leq k \leq n$. Otherwise, the term is $0$ because of the alternating property of exterior products. So there exists a unique permutation $\sigma \in S_n$ such that $i_k = \sigma(k)$ for all $1 \leq k \leq n$. Then we have:
+We assume that $\vec{e}_{i_k}$ are mutually distinct for all $1 \leq k \leq n$. Otherwise, the term is $0$ because of the alternating property of exterior products. So there exists a unique permutation $\sigma \in S_n$ such that $i_k = \sigma(k)$ for all $1 \leq k \leq n$. Then we have:
 \[
     \vec{a}_1 \wedge \cdots \wedge \vec{a}_n = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ (\vec{e}_{\sigma(1)} \wedge \cdots \wedge \vec{e}_{\sigma(n)}) = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ \sgn(\sigma) \ (\vec{e}_1 \wedge \cdots \wedge \vec{e}_n)
 \]
