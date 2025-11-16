@@ -2,7 +2,8 @@
 
 This repository is for HKUST MATH 2131 in 2025-26 Fall.
 
-You may read the PDF version of the [Lecture Notes](main.pdf).
+[//]: # (You may read the PDF version of the [Lecture Notes]&#40;main.pdf&#41;.)
+[//]: # (normally this shound link to the releases section in github)
 
 Welcome to contribute this notes. All proofs may be subject to errors.
 
