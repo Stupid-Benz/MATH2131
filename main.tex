@@ -50,6 +50,11 @@
 }
 
 \makeatletter\indexsetup{level=\@gobble, noclearpage}\makeatother % Disable \chapter in \printindex
+% Header override for index
+\fancypagestyle{index}[fancy]{
+	\fancyhead[LO]{\sffamily\normalsize Index}
+	\fancyhead[RE]{\sffamily\normalsize\bfseries Index}
+}
 
 \addbibresource{bibliography.bib} % Bibliography file
 
@@ -393,8 +398,8 @@
 		%	INDEX
 		%----------------------------------------------------------------------------------------
 
+		\pagestyle{index}
 		\chapter*{Index}
-		\markboth{\sffamily\normalsize\bfseries Index}{\sffamily\normalsize\bfseries Index}
 		\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
 
 		\printindex
