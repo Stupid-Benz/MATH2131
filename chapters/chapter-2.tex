@@ -18,7 +18,7 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
 		T(\alpha u) &= \alpha T(u)
 	\end{align*}
 	The set of all linear maps from $V$ to $W$ is denoted by $\Hom(V, W)$.
-	Some may write {$\mathcal{L}(V, W)$}.
+	Some may write $\mathcal{L}(V, W)$.
 \end{definition}
 
 \begin{definition}[Linear Combinations]
@@ -62,42 +62,42 @@ We can combine the two properties of linear maps into one property.
 			A\cdot & A \arrow[l, mapsto]
 		\end{tikzcd}
 	\end{center}
-	where $A\cdot : \vec{x} \mapsto A\vec{x}$ and $A$ can be expressed as follows:
+	where $A\cdot : \vec x \mapsto A\vec x$ and $A$ can be expressed as follows:
 	\[
 		A = \begin{bmatrix}
 			| & | & & | \\
-			T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
+			T\vec e_1 & T\vec e_2 & \cdots & T\vec e_n \\
 			| & | & & |
 		\end{bmatrix}
 	\]
-	The vector $\vec{e}_i$ is the column vectors where only has the value 1 at the $i$-th place and 0 at other places.
+	The vector $\vec e_i$ is the column vectors where only has the value 1 at the $i$-th place and 0 at other places.
 \end{proposition}
 
 \begin{proof}
 	Consider a column matrix $x \in \F^n$ with entries $x^1, x^2, \cdots, x^n \in \F$.
-	Then $x$ can be expressed as a linear combination of the vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
+	Then $x$ can be expressed as a linear combination of the vectors $\vec e_1, \vec e_2, \cdots, \vec e_n$:
 	\[
-		x = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n = \sum_{i=1}^{n} x^i \vec{e}_i
+		x = x^1 \vec e_1 + x^2 \vec e_2 + \cdots + x^n \vec e_n = \sum_{i=1}^n x^i \vec e_i
 	\]
 	Since $T$ is a linear map, it respects linear combinations.
 	Therefore, we have:
 	\[
-		Tx = T\left( \sum_{i=1}^{n} x^i \vec{e}_i \right) = \sum_{i=1}^{n} x^i T(\vec{e}_i) = \sum_{i=1}^{n} x^i \vec{a}_i = A\vec{x}
+		Tx = T\left( \sum_{i=1}^n x^i \vec e_i \right) = \sum_{i=1}^n x^i T(\vec e_i) = \sum_{i=1}^n x^i \vec a_i = A\vec x
 	\]
-	where $\vec{a}_i = T\vec{e}_i$ is the $i$-th column of the matrix $A = \begin{bmatrix}
+	where $\vec a_i = T\vec e_i$ is the $i$-th column of the matrix $A = \begin{bmatrix}
 		| & | & & | \\
-		T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
+		T\vec e_1 & T\vec e_2 & \cdots & T\vec e_n \\
 		| & | & & |
 	\end{bmatrix}$.
-	Thus, we have $T\vec{x} = A\vec{x}$ for all $\vec{x} \in \F^n$.
+	Thus, we have $T\vec x = A\vec x$ for all $\vec x \in \F^n$.
 	This shows that $T$ can be represented as a matrix multiplication by the matrix $A$.
 \end{proof}
 
-There is a simpler way to write $\sum_{i=1}^{n} x^i \vec{e}_i$: The Einstein Summation Convention.
+There is a simpler way to write $\sum_{i=1}^n x^i \vec e_i$: The Einstein Summation Convention.
 When an index variable appears twice in a single term and is not otherwise defined, it implies summation of that term over all the values of the index.
 Therefore, we can write:
 \[
-	x = x^i \vec{e}_i
+	x = x^i \vec e_i
 \]
 where $i$ is summed from $1$ to $n$.
 
@@ -124,9 +124,9 @@ where $i$ is summed from $1$ to $n$.
 \begin{example}
 	Let $D: \F[t] \to \F[t]$ be the differentiation operator defined by:
 	\[
-		D\left( \sum_{n=0}^{N} a_n t^n \right) = \sum_{n=1}^{N} n a_n t^{n-1}
+		D\left( \sum_{n=0}^N a_n t^n \right) = \sum_{n=1}^N n a_n t^{n-1}
 	\]
-	for all polynomials $\sum_{n=0}^{N} a_n t^n \in \F[t]$.
+	for all polynomials $\sum_{n=0}^N a_n t^n \in \F[t]$.
 	The differentiation operator $D$ is a linear map over $\F$.
 	The standard matrix of $D$ with respect to the standard basis $\{1, t, t^2, \cdots, t^N\}$ of $\F[t]$ is given by:
 	\[
@@ -171,13 +171,13 @@ where $i$ is summed from $1$ to $n$.
 	Note that $\Hom(V, W) \subseteq \Map(V, W)$.
 	We need to show that the operations defined above are closed in $\Hom(V, W)$, i.e., for all $f, g \in \Hom(V, W)$ and $\alpha \in \F$, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$ or equivalently, $f$ respects linear combinations.
 
-	Let $\vec{u}, \vec{v} \in V$ and $\alpha, \beta \in \F$.
+	Let $\vec u, \vec v \in V$ and $\alpha, \beta \in \F$.
 	Since $f, g \in \Hom(V, W)$, we have:
 	\begin{align*}
-		(f + g)(\alpha\vec{u} + \beta\vec{v}) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec{u} + \beta\vec{v}) + g(\alpha\vec{u} + \beta\vec{v}) \\
-		&=\joinrel= \alpha f(\vec{u}) + \beta f(\vec{v}) + \alpha g(\vec{u}) + \beta g(\vec{v}) \\
-		&=\joinrel= \alpha (f(\vec{u}) + g(\vec{u})) + \beta (f(\vec{v}) + g(\vec{v})) \\
-		&\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec{u}) + \beta (f + g)(\vec{v})
+		(f + g)(\alpha\vec u + \beta\vec v) &\overset{\mathrm{def}}{=\joinrel=} f(\alpha\vec u + \beta\vec v) + g(\alpha\vec u + \beta\vec v) \\
+		&=\joinrel= \alpha f(\vec u) + \beta f(\vec v) + \alpha g(\vec u) + \beta g(\vec v) \\
+		&=\joinrel= \alpha (f(\vec u) + g(\vec u)) + \beta (f(\vec v) + g(\vec v)) \\
+		&\overset{\mathrm{def}}{=\joinrel=} \alpha (f + g)(\vec u) + \beta (f + g)(\vec v)
 	\end{align*}
 	where the second equality is due to the linearity of $f$ and $g$.
 	Thus, $f + g \in \Hom(V, W)$ and $\alpha f \in \Hom(V, W)$.
@@ -306,13 +306,13 @@ We want to find the standard matrix of the composition $ST: \F^n \to \F^k$.
 
 \begin{proof}
 	Let $x \in \F^n$ be a column matrix with entries $x^1, x^2, \cdots, x^n \in \F$.
-	Then $x$ can be expressed as a linear combination of the standard basis vectors $\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n$:
+	Then $x$ can be expressed as a linear combination of the standard basis vectors $\vec e_1, \vec e_2, \cdots, \vec e_n$:
 	\[
-		x = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n = x^i \vec{e}_i
+		x = x^1 \vec e_1 + x^2 \vec e_2 + \cdots + x^n \vec e_n = x^i \vec e_i
 	\]
 	Consider the $j$-th column of $BA$, it is given by:
 	\[
-		(ST)\vec{e}_j = S(T(\vec{e}_j)) = S(\vec{a}_j) = B\vec{a}_j = (BA)\vec{e}_j
+		(ST)\vec e_j = S(T(\vec e_j)) = S(\vec a_j) = B\vec a_j = (BA)\vec e_j
 	\]
 	for all $j = 1, 2, \cdots, n$.
 	This shows that the standard matrix of the composition $ST$ is indeed the matrix multiplication $BA$.
@@ -325,20 +325,20 @@ The matrix multiplication $BA$ can be computed as follows:
 \[
 	BA = B\begin{bmatrix}
 		| & | & & | \\
-		\vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n \\
+		\vec a_1 & \vec a_2 & \cdots & \vec a_n \\
 		| & | & & |
 	\end{bmatrix} = \begin{bmatrix}
 		| & | & & | \\
-		B\vec{a}_1 & B\vec{a}_2 & \cdots & B\vec{a}_n \\
+		B\vec a_1 & B\vec a_2 & \cdots & B\vec a_n \\
 		| & | & & |
 	\end{bmatrix}
 \]
-where $\vec{a}_i = T(\vec{e}_i)$ is the $i$-th column of the matrix $A$.
+where $\vec a_i = T(\vec e_i)$ is the $i$-th column of the matrix $A$.
 Also,
 \[
-	Bx = x^1 \vec{b}_1 + x^2 \vec{b}_2 + \cdots + x^n \vec{b}_n = x^i \vec{b}_i
+	Bx = x^1 \vec b_1 + x^2 \vec b_2 + \cdots + x^n \vec b_n = x^i \vec b_i
 \]
-where $\vec{b}_i = B\vec{a}_i$ is the $i$-th column of the matrix $B$.
+where $\vec b_i = B\vec a_i$ is the $i$-th column of the matrix $B$.
 Note that $B$ is a $k \times m$ matrix, and $x \in \F^m$.
 Thus, the matrix multiplication $Bx$ is defined and results in a column matrix in $\F^k$.
 
@@ -358,7 +358,7 @@ Thus, the matrix multiplication $Bx$ is defined and results in a column matrix i
 	Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
 
-For easier notations, we introduce the idea of matrix units, which is similar to the standard basis vectors $\vec{e_i}$.
+For easier notations, we introduce the idea of matrix units, which is similar to the standard basis vectors $\vec e_i$.
 
 \begin{definition}[Matrix Units]
 	Let $m$ and $n$ be two positive integers and $\F$ be a field.
@@ -372,26 +372,26 @@ For easier notations, we introduce the idea of matrix units, which is similar to
 	for all $1 \leq k \leq m$ and $1 \leq l \leq n$.
 	The $(i,j)$-th position is the entry in the $i$-th row and $j$-th column.
 
-	It can also be defined as $E_i^j = \vec{e}_i \hat{e}^j \in \M{m \times n}{\F}$ where $\vec{e}_i \in \F^m$ and $\vec{e}_j^T = \hat{e}^j \in (\F^n)^*$ are the $i$-th and $j$-th standard basis vectors, respectively.
-	The $\hat{e}^j$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
+	It can also be defined as $E_i^j = \vec e_i \hat e^j \in \M{m \times n}{\F}$ where $\vec e_i \in \F^m$ and $\vec e_j^T = \hat e^j \in (\F^n)^*$ are the $i$-th and $j$-th standard basis vectors, respectively.
+	The $\hat e^j$ is the row matrix with 1 in the $j$-th column and 0 anywhere else.
 \end{definition}
 \begin{remark}
 	Note that for any $m \times n$ matrix $A$ over a field $\F$, we have:
 	\begin{align*}
-		A\vec{e}_j &= \text{the } j\text{-th column of } A \in \F^n \\
-		\hat{e}^iA &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
+		A\vec e_j &= \text{the } j\text{-th column of } A \in \F^n \\
+		\hat e^i A &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
 	\end{align*}
-	where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$.
+	where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat e^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$.
 	Then we have: (Beaware of the difference between superscript and subscript)
 	\[
-		a_j^i = \hat{e}^i A \vec{e}_j = \text{the } (i,j)\text{-th entry of } A
+		a_j^i = \hat e^i A \vec e_j = \text{the } (i,j)\text{-th entry of } A
 	\]
 \end{remark}
 
 We can write the $E_i^j$ as:
 \vspace{6ex}
 \[
-	E_i^j = \vec{e}_i \hat{e}^j = \begin{bmatrix}
+	E_i^j = \vec e_i \hat e^j = \begin{bmatrix}
 		0 \\
 		\vdots \\
 		0 \\
@@ -428,17 +428,17 @@ Then we consider the row operations by using the matrix units.
 	The linear map $T: \F^n \to \F^n$ is defined pointwisely.
 	We can say the map is:
 	\[
-		\vec{e}_k \mapsto \begin{cases}
-			\vec{e}_j & \text{if } k = i \\
-			\vec{e}_i & \text{if } k = j \\
-			\vec{e}_k & \text{if } k \neq i, j
+		\vec e_k \mapsto \begin{cases}
+			\vec e_j & \text{if } k = i \\
+			\vec e_i & \text{if } k = j \\
+			\vec e_k & \text{if } k \neq i, j
 		\end{cases}
 	\]
 	Then the standard matrix of $T$ is:
 	\[
 		A_{R_i \leftrightarrow R_j} = \begin{bmatrix}
 			| & & | & & | & & | \\
-			\vec{e}_1 & \cdots & \vec{e}_j & \cdots & \vec{e}_i & \cdots & \vec{e}_n \\
+			\vec e_1 & \cdots & \vec e_j & \cdots & \vec e_i & \cdots & \vec e_n \\
 			| & & | & & | & & |
 		\end{bmatrix} = I - E_i^i - E_j^j + E_i^j + E_j^i
 	\]
@@ -453,16 +453,16 @@ Then we consider the row operations by using the matrix units.
 	The linear map $T: \F^n \to \F^n$ is defined pointwisely.
 	We can say the map is:
 	\[
-		\vec{e}_k \mapsto \begin{cases}
-			\alpha \vec{e}_i & \text{if } k = i \\
-			\vec{e}_k & \text{if } k \neq i
+		\vec e_k \mapsto \begin{cases}
+			\alpha \vec e_i & \text{if } k = i \\
+			\vec e_k & \text{if } k \neq i
 		\end{cases}
 	\]
 	Then the standard matrix of $T$ is:
 	\[
 		A_{R_i \to \alpha R_i} = \begin{bmatrix}
 			| & & | & & | \\
-			\vec{e}_1 & \cdots & \alpha\vec{e}_i & \cdots & \vec{e}_n \\
+			\vec e_1 & \cdots & \alpha\vec e_i & \cdots & \vec e_n \\
 			| & & | & & |
 		\end{bmatrix} = I + (\alpha - 1) E_i^i
 	\]
@@ -477,16 +477,16 @@ Then we consider the row operations by using the matrix units.
 	The linear map $T: \F^n \to \F^n$ is defined pointwisely.
 	We can say the map is:
 	\[
-		\vec{e}_k \mapsto \begin{cases}
-			\vec{e}_i + \alpha \vec{e_j} & \text{if } k = i \\
-			\vec{e}_k & \text{if } k \neq i
+		\vec e_k \mapsto \begin{cases}
+			\vec e_i + \alpha \vec e_j & \text{if } k = i \\
+			\vec e_k & \text{if } k \neq i
 		\end{cases}
 	\]
 	Then the standard matrix of $T$ is:
 	\[
 		A_{R_i \to R_i + \alpha R_j} = \begin{bmatrix}
 			| & & | & & | & & | \\
-			\vec{e}_1 & \cdots & \vec{e}_i + \alpha\vec{e}_j & \cdots & \vec{e}_n \\
+			\vec e_1 & \cdots & \vec e_i + \alpha\vec e_j & \cdots & \vec e_n \\
 			| & & | & & |
 		\end{bmatrix} = I + \alpha E_i^j
 	\]
@@ -659,17 +659,17 @@ Thus, we have:
 	Hence it is injective.
 
 	If $A$ is injective, we can consider $A = P^{-1}CQ$, where $C$ is the canonical form of the matrix $A$.
-	Then we consider $P^{-1}CQ\vec{x} = \vec{0}$.
+	Then we consider $P^{-1}CQ\vec x = \vec 0$.
 	Since $P^{-1}$ is invertible, it won't produce non-trivial solutions.
-	We can consider $C(Q\vec{x}) = \vec{0} = C\vec{y}$.
+	We can consider $C(Q\vec x) = \vec 0 = C\vec y$.
 	Then we have
 	\[
 		\begin{bmatrix}
 			I_r & 0 \\
 			0 & 0
 		\end{bmatrix} \begin{bmatrix}
-			\vec{y}_1 \\
-			\vec{y}_2
+			\vec y_1 \\
+			\vec y_2
 		\end{bmatrix} = \begin{bmatrix}
 			0 \\
 			0
@@ -677,9 +677,9 @@ Thus, we have:
 	\]
 	where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively.
 	Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything.
-	As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$.
-	Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$.
-	Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0.
+	As $A$ is invertible, then $A\vec x = \vec 0$ only has one trivial solution $\vec x = \vec 0$.
+	Also, $Q$ is invertible, hence $\vec y$ has only one trivial solution $\vec 0$, i.e., $\vec y_2 = \vec 0$.
+	Hence we have $n - r = 0$ due to the size of $\vec y_2$ being 0.
 	Hence the rank of $A$ is $n$.
 
 	If $\rank(A) = n$, then the canonical form of $A$ is
@@ -728,10 +728,10 @@ Thus, we have:
 \end{proposition}
 
 \begin{proposition}
-	For every $\vec{b}$, $\begin{bmatrix}
+	For every $\vec b$, $\begin{bmatrix}
 		I_r & 0 \\
 		0 & 0
-	\end{bmatrix} \vec{x} = \vec{b}$ has a unique solution.
+	\end{bmatrix} \vec x = \vec b$ has a unique solution.
 \end{proposition}
 
 Linear Algebra is the study of linear map between two finite dimensional vector spaces.

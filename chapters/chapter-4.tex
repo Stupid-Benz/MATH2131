@@ -745,12 +745,12 @@ The \emph{dual space} of $V$ is the vector space $V^* = \Hom_\F(V, \F)$, the set
 \begin{proof}
 	Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$.
 	Then $V^* = \Hom_\F(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries.
-	The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n$.
+	The linear space is the span of $n$ standard basis row matrices: $\hat e^1, \hat e^2, \cdots, \hat e^n$.
 	So $\dim(V^*) = n = \dim(V)$.
 	We can say $V^* \cong V$.
 \end{proof}
 
-We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n\}$ defined by $\phi_s(\vec{x}) = \sum_{i=1}^n x_i \hat{e}^i$.
+We have a map $\phi_s : \F^n \to (\F^n)^* \supset S = \{\hat e^1, \hat e^2, \cdots, \hat e^n\}$ defined by $\phi_s(\vec x) = \sum_{i=1}^n x_i \hat e^i$.
 This is a vector space isomorphism but not a natural isomorphism, as it depends on the choice of $S$.
 
 \begin{definition}[Bases]
@@ -762,9 +762,9 @@ This is a vector space isomorphism but not a natural isomorphism, as it depends 
 	$\B_V$ and $\B_{V^*}$ are naturally isomorphic in $\Set$, i.e., the following natural identification holds:
 	\begin{align*}
 		\B_V &\equiv \B_{V^*} \\
-		v = (\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n) &\equiv (\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n) = v^* \\
+		v = (\vec v_1, \vec v_2, \cdots, \vec v_n) &\equiv (\hat v^1, \hat v^2, \cdots, \hat v^n) = v^* \\
 	\end{align*}
-	where $\hat{v}^i \in V^*$ is defined by $\hat{v}^i(\vec{v}_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
+	where $\hat v^i \in V^*$ is defined by $\hat v^i(\vec v_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
 \end{proposition}
 
 \begin{proof}
@@ -775,24 +775,24 @@ Consider the following commutative diagram:
 		\F^n \arrow[r, "\pi_i"] & \F
 	\end{tikzcd}
 \end{center}
-The projection map $\pi_i$ is a linear functional in $\F^n$ that sends $\vec{x} = (x_1, x_2, \cdots, x_n)$ to $x_i$.
-It is actually $\hat{e}^i$.
-Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $v = (\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n) \in \B_V$ such that $[\vec{v}_j]_V = \vec{e}_j$ for all $1 \leq j \leq n$.
-It is a unique linear map which identify $\vec{v}_i$ with $\vec{e}_i$.
+The projection map $\pi_i$ is a linear functional in $\F^n$ that sends $\vec x = (x_1, x_2, \cdots, x_n)$ to $x_i$.
+It is actually $\hat e^i$.
+Note that $[-]_V : V \to \F^n$ is a coordinate map defined by a basis $v = (\vec v_1, \vec v_2, \cdots, \vec v_n) \in \B_V$ such that $[\vec v_j]_V = \vec e_j$ for all $1 \leq j \leq n$.
+It is a unique linear map which identify $\vec v_i$ with $\vec e_i$.
 It can be done by trivialisation of $V$ with respect to the basis $v$.
-Then we define $\hat{v}^i(\vec{v}_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
+Then we define $\hat v^i(\vec v_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
 
-Then we have to consider whether $(\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$ is a basis of $V^*$.
-As $\dim{V^*} = n$, we only need to show that $(\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$ is a spanning set of $V^*$ or linearly independent.
-We have to check whether the equation $\sum_{i=1}^n x_i \hat{v}^i = 0$ for some $x_i \in \F$ has only the trivial solution.
-Applying it to $\vec{v}_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat{v}^i(\vec{v}_j) = \sum_{i=1}^n x_i \delta_j^i = x_j$.
+Then we have to consider whether $(\hat v^1, \hat v^2, \cdots, \hat v^n)$ is a basis of $V^*$.
+As $\dim{V^*} = n$, we only need to show that $(\hat v^1, \hat v^2, \cdots, \hat v^n)$ is a spanning set of $V^*$ or linearly independent.
+We have to check whether the equation $\sum_{i=1}^n x_i \hat v^i = 0$ for some $x_i \in \F$ has only the trivial solution.
+Applying it to $\vec v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat v^i(\vec v_j) = \sum_{i=1}^n x_i \delta_j^i = x_j$.
 So $x_j = 0$ for all $1 \leq j \leq n$.
-This means that $(\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$ is linearly independent, and hence it is a basis of $V^*$.
-We call it the \emph{dual basis} of the basis $\vec{v} = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec{v}^* = (\hat{v}^1, \hat{v}^2, \cdots, \hat{v}^n)$.
+This means that $(\hat v^1, \hat v^2, \cdots, \hat v^n)$ is linearly independent, and hence it is a basis of $V^*$.
+We call it the \emph{dual basis} of the basis $\vec v = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec v^* = (\hat v^1, \hat v^2, \cdots, \hat v^n)$.
 
-Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat{v}^i(\vec{v}_j) = \delta^i_j$.
-Let $V = \F^n$ and $v = (\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n)$ be a basis of $V$.
-Then $A = [\vec{v}_1 \quad \vec{v}_2 \quad \cdots \quad \vec{v}_n]$ is an invertible matrix.
+Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat v^i(\vec v_j) = \delta^i_j$.
+Let $V = \F^n$ and $v = (\vec v_1, \vec v_2, \cdots, \vec v_n)$ be a basis of $V$.
+Then $A = [\vec v_1 \quad \vec v_2 \quad \cdots \quad \vec v_n]$ is an invertible matrix.
 Let $(\alpha^1, \alpha^2, \cdots, \alpha^n)$ be a basis of $V^*$.
 Then we have the following equations:
 \[
@@ -828,14 +828,14 @@ Finally, we have the natural identification:
 			\draw[dashed] plot[smooth cycle, tension=1] coordinates{(4.5,1.5) (2.5,2.91) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
 			\path (2.5,1.75) node {$U$};
 
-			\draw[-Stealth, ocre] (3.5,1) -- (4,2) node[midway, right] {$\vec{u}$};
-			\draw[-Stealth, ocre] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
+			\draw[-Stealth, ocre] (3.5,1) -- (4,2) node[midway, right] {$\vec u$};
+			\draw[-Stealth, ocre] (0,0) -- (0.5,1) node[midway, right] {$\vec u$};
 		\end{tikzpicture}
 	\end{center}
 	Consider the cotangent vector $df_p$ at point $p$ for some smooth function $f : U \to \R$.
-	It is a linear functional d$f_p : \text{T}_p U \to \R$ defined by d$f_p(\vec{u}) = \nabla f(p) \cdot \vec{u}$ for all $\vec{u} \in \text{T}_p U$.
+	It is a linear functional d$f_p : \text{T}_p U \to \R$ defined by d$f_p(\vec u) = \nabla f(p) \cdot \vec u$ for all $\vec u \in \text{T}_p U$.
 	Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$.
-	Note that both $\vec{u}$ and $\nabla f(p)$ are depending on the choice of a coordinate system.
+	Note that both $\vec u$ and $\nabla f(p)$ are depending on the choice of a coordinate system.
 	However, d$f_p$ is independent of any choice of coordinate system.
 	In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
 \end{example}
@@ -1643,7 +1643,7 @@ Then the following diagram commutes:
 	\begin{tikzcd}
 		\overbrace{V \times V \times \cdots \times V}^{k \text{ times}} \arrow[r, "f \times f \times \cdots \times f"] \arrow[d, hook] & \overbrace{W \times W \times \cdots \times W}^{k \text{ times}} \arrow[d, hook] \\
 		{\bigwedge}^k V \arrow[r, "{\bigwedge}^k f", dashed] & {\bigwedge}^k W \\[-3.6em]
-		{\scriptscriptstyle \vec{v}_1 \wedge \vec{v}_2 \wedge \cdots \wedge \vec{v}_k} \arrow[r, mapsto] & {\scriptscriptstyle f(\vec{v}_1) \wedge f(\vec{v}_2) \wedge \cdots \wedge f(\vec{v}_k)}
+		{\scriptscriptstyle \vec v_1 \wedge \vec v_2 \wedge \cdots \wedge \vec v_k} \arrow[r, mapsto] & {\scriptscriptstyle f(\vec v_1) \wedge f(\vec v_2) \wedge \cdots \wedge f(\vec v_k)}
 	\end{tikzcd}
 \end{center}
 
@@ -1676,7 +1676,7 @@ Let $V$ be an $n$-dimensional vector spaces over $\F$ and $\B_V = \{ v_1, v_2, \
 As $\det V$ is a 1-dimensional vector space, so there is a basis.
 So the basis of $\det V$ is actually equivalent to $\det V \setminus \{ 0 \}$ Then we have a map from $\B_V$ to $\B_{\det V}$ defined by:
 \[
-	\vec{v} = (v_1, v_2, \cdots, v_n) \mapsto v_1 \wedge v_2 \wedge \cdots \wedge v_n = \det \vec{v} \in \det V
+	\vec v = (v_1, v_2, \cdots, v_n) \mapsto v_1 \wedge v_2 \wedge \cdots \wedge v_n = \det \vec v \in \det V
 \]
 
 Then we have the following commutative diagram:
@@ -1737,36 +1737,36 @@ Consider the following diagram:
 		\det \F^n \arrow[rr, "\det A"] & \phantom{*} & \det \F^n
 	\end{tikzcd}
 \end{center}
-Given the standard basis $\B = \{ \vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n \}$ of $\F^n$, we have:
+Given the standard basis $\B = \{ \vec e_1, \vec e_2, \cdots, \vec e_n \}$ of $\F^n$, we have:
 \[
-	\det \B = \vec{e}_1 \wedge \vec{e}_2 \wedge \cdots \wedge \vec{e}_n
+	\det \B = \vec e_1 \wedge \vec e_2 \wedge \cdots \wedge \vec e_n
 \]
 Note that
 \[
 	A = \begin{bmatrix}
 		| & | & & | \\
-		\vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n \\
+		\vec a_1 & \vec a_2 & \cdots & \vec a_n \\
 		| & | & & |
 	\end{bmatrix}
 \]
 Consider the map $\det A : \det \B \mapsto \det A \cdot \det \B$ where $\det A \in \F$ is a scalar, we have
 \[
-	\det A \cdot \det \B = A\vec{e}_1 \wedge A\vec{e}_2 \wedge \cdots \wedge A\vec{e}_n = \vec{a}_1 \wedge \vec{a}_2 \wedge \cdots \wedge \vec{a}_n
+	\det A \cdot \det \B = A\vec e_1 \wedge A\vec e_2 \wedge \cdots \wedge A\vec e_n = \vec a_1 \wedge \vec a_2 \wedge \cdots \wedge \vec a_n
 \]
 So, we know that $\det A$ is multilinear and alternating in the columns of $A$.
 Also, $\det I = 1$.
 
-Consider the elements of $A$ as $\vec{a}_j = \sum_{i_j = 1}^n a_j^{i_j} \vec{e}_{i_j}$ for all $1 \leq j \leq n$.
+Consider the elements of $A$ as $\vec a_j = \sum_{i_j = 1}^n a_j^{i_j} \vec e_{i_j}$ for all $1 \leq j \leq n$.
 Then we have:
 \[
-	\vec{a}_1 \wedge \cdots \wedge \vec{a}_n = \sum_{i_1 = 1}^n a_1^{i_1} \vec{e}_{i_1} \wedge \cdots \wedge \sum_{i_n = 1}^n a_n^{i_n} \vec{e}_{i_n} = \sum_{i_1, \cdots, i_n = 1}^n a_1^{i_1} \cdots a_n^{i_n} \ (\vec{e}_{i_1} \wedge \cdots \wedge \vec{e}_{i_n})
+	\vec a_1 \wedge \cdots \wedge \vec a_n = \sum_{i_1 = 1}^n a_1^{i_1} \vec e_{i_1} \wedge \cdots \wedge \sum_{i_n = 1}^n a_n^{i_n} \vec e_{i_n} = \sum_{i_1, \cdots, i_n = 1}^n a_1^{i_1} \cdots a_n^{i_n} \ (\vec e_{i_1} \wedge \cdots \wedge \vec e_{i_n})
 \]
-We assume that $\vec{e}_{i_k}$ are mutually distinct for all $1 \leq k \leq n$.
+We assume that $\vec e_{i_k}$ are mutually distinct for all $1 \leq k \leq n$.
 Otherwise, the term is $0$ because of the alternating property of exterior products.
 So there exists a unique permutation $\sigma \in S_n$ such that $i_k = \sigma(k)$ for all $1 \leq k \leq n$.
 Then we have:
 \[
-	\vec{a}_1 \wedge \cdots \wedge \vec{a}_n = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ (\vec{e}_{\sigma(1)} \wedge \cdots \wedge \vec{e}_{\sigma(n)}) = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ \sgn(\sigma) \ (\vec{e}_1 \wedge \cdots \wedge \vec{e}_n)
+	\vec a_1 \wedge \cdots \wedge \vec a_n = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ (\vec e_{\sigma(1)} \wedge \cdots \wedge \vec e_{\sigma(n)}) = \sum_{\sigma \in S_n} a_1^{\sigma(1)} \cdots a_n^{\sigma(n)} \ \sgn(\sigma) \ (\vec e_1 \wedge \cdots \wedge \vec e_n)
 \]
 
 Hence, we have the formula of determinants:
@@ -1786,14 +1786,14 @@ Hence, we have the formula of determinants:
 The $\det A$ has the following properties:
 \begin{itemize}
 	\item Linear in each column: for all $1 \leq j \leq n$;
-	\item Alternating (skew-symmetric): $\cdots \vec{a}_i \cdots \vec{a}_j \cdots = - \cdots \vec{a}_j \cdots \vec{a}_i \cdots$ for all $i < j$;
+	\item Alternating (skew-symmetric): $\cdots \vec a_i \cdots \vec a_j \cdots = - \cdots \vec a_j \cdots \vec a_i \cdots$ for all $i < j$;
 	\item $\det I = 1$;
 \end{itemize}
 For the alternating property, we have the following evaluation from the original definition of wedge products (we assumed that $\chart(\F) \neq 2$):
 \begin{align*}
-	\cdots \vec{a}_i \overbrace{\color{red} \cdots}^{k \text{ times}} \vec{a}_j \cdots & = (-1)^k \cdots {\color{red} \cdots} \vec{a}_i \vec{a}_j \cdots \\
-	& = (-1)^{k + 1} \cdots {\color{red} \cdots} \vec{a}_j \vec{a}_i \cdots \\
-	& = - \cdots \vec{a}_j {\color{red} \cdots} \vec{a}_i \cdots
+	\cdots \vec a_i \overbrace{\color{red} \cdots}^{k \text{ times}} \vec a_j \cdots & = (-1)^k \cdots {\color{red} \cdots} \vec a_i \vec a_j \cdots \\
+	& = (-1)^{k + 1} \cdots {\color{red} \cdots} \vec a_j \vec a_i \cdots \\
+	& = - \cdots \vec a_j {\color{red} \cdots} \vec a_i \cdots
 \end{align*}
 Moreover, the three properties above uniquely determine the determinant function.
 \begin{remark}
@@ -1839,7 +1839,7 @@ Suppose that $\phi : \M{n \times n}{\F} \to \F$ is an alternating multilinear fo
 	\end{align*}
 	For the last equality, as we know the following property:
 	\[
-		\cdots \vec{a}_i \cdots (k\vec{a}_i + \vec{a}_j) \cdots = k \cdots \vec{a}_i \cdots \vec{a}_j \cdots + \cdots \vec{a}_i \cdots \vec{a}_j \cdots = \cdots \vec{a}_i \cdots \vec{a}_j \cdots
+		\cdots \vec a_i \cdots (k\vec a_i + \vec a_j) \cdots = k \cdots \vec a_i \cdots \vec a_j \cdots + \cdots \vec a_i \cdots \vec a_j \cdots = \cdots \vec a_i \cdots \vec a_j \cdots
 	\]
 	Note that $k$ can be 0 as well.
 	Therefore, we can eliminate all the $*$ in the matrix by using the above property without changing the determinant value.
@@ -1893,7 +1893,7 @@ In particular, we have the following equation:
 \]
 Also, $\det [a] = a \det[1] = a$.
 \begin{remark}
-	In determinant, we prefer to use $a_{ij}$ to denote the element in the $i$-th row and $j$-th column instead of using superscript and subscript like $a_j^{i}$.
+	In determinant, we prefer to use $a_{ij}$ to denote the element in the $i$-th row and $j$-th column instead of using superscript and subscript like $a_j^i$.
 	This is because in determinants, we usually consider the rows and columns instead of vectors.
 \end{remark}
 
@@ -1933,8 +1933,8 @@ Here $\widehat{a_{i,j}}$ means that the element $a_{i,j}$ is omitted, and $A^i_j
 
 Then we can consider general matrix $A$, for any $j$, we have:
 \begin{align*}
-	\det A & = \det [\cdots \quad \vec{a}_j \quad \cdots] \\
-	& = \sum_{i = 1}^n a_j^i \det [\cdots \quad \vec{e}_i \quad \cdots] \\
+	\det A & = \det [\cdots \quad \vec a_j \quad \cdots] \\
+	& = \sum_{i = 1}^n a_j^i \det [\cdots \quad \vec e_i \quad \cdots] \\
 	& = \sum_{i = 1}^n a_j^i (-1)^{i + j} \det A^i_j
 \end{align*}
 This is called the \emph{cofactor expansion} or \emph{Laplace expansion} along the $j$-th column.
@@ -1947,7 +1947,7 @@ Then we have the definition of \emph{adjoint}\index{adjoint} of a matrix.
 \begin{remark}
 	Beaware of the notation difference between $A_i^j$ and $A^i_j$.
 	The former means deleting the $j$-th row and $i$-th column, while the latter means deleting the $i$-th row and $j$-th column.
-	Also note that the notation of $\vec{e}_i$ means that the $i$-th row is 1 and other rows are 0 (standard basis vector), which is different from the notation in $A_i^j$ and $A^i_j$.
+	Also note that the notation of $\vec e_i$ means that the $i$-th row is 1 and other rows are 0 (standard basis vector), which is different from the notation in $A_i^j$ and $A^i_j$.
 	To conclude, the subscript is for columns and the superscript is for rows, except they are in the notation of standard basis vectors.
 \end{remark}
 
@@ -1974,7 +1974,7 @@ Then we have the definition of \emph{adjoint}\index{adjoint} of a matrix.
 	\[
 		\det \begin{vmatrix}
 			\\
-			\cdots & \mypoint{icol}{\vec{a}_j} & \cdots & \mypoint{jcol}{\vec{a}_j} & \cdots \\
+			\cdots & \mypoint{icol}{\vec a_j} & \cdots & \mypoint{jcol}{\vec a_j} & \cdots \\
 			\\
 		\end{vmatrix} = 0
 	\]

@@ -348,13 +348,13 @@ Then we can define what a linear structure is.
 	A \emph{linear structure} over a field $\F$ on a set $V$ is a pair $(+, \cdot)$ where $(V, +)$ is an abelian group with a ring homomorphism $\F \to \End(V)$, where $\End(V)$ is the endomorphism ring of the abelian group $(V, +)$.
 	\begin{align*}
 		\cdot : \F &\to \End(V) \\
-		\alpha &\mapsto (\alpha\cdot : \vec{x} \mapsto \alpha \vec{x}) \qquad \alpha \cdot : V \to V
+		\alpha &\mapsto (\alpha\cdot : \vec x \mapsto \alpha \vec x) \qquad \alpha \cdot : V \to V
 	\end{align*}
 	The ring homomorphism is a (ring) action of the field $\F$ on the abelian group $(V, +)$, called \emph{scalar multiplication}.
 	The ring action can be written as a binary operation:
 	\begin{align*}
 		\cdot : \F \times V &\to V \\
-		(\alpha, \vec{x}) &\mapsto \alpha \vec{x}
+		(\alpha, \vec x) &\mapsto \alpha \vec x
 	\end{align*}
 \end{definition}
 
@@ -362,17 +362,17 @@ A linear space / vector space is a set with a linear structure over a field on t
 In normal textbook, a linear space will be defined as follows:
 
 \begin{corollary}[Linear Spaces]
-	A linear space over a field $\F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : \F \times V \to V$, satisfying the following axioms for all $\vec{u}, \vec{v}, \vec{w} \in V$ and $\alpha, \beta \in \F$:
+	A linear space over a field $\F$ is a set $V$ equipped with two operations: vector addition $+: V \times V \to V$ and scalar multiplication $\cdot : \F \times V \to V$, satisfying the following axioms for all $\vec u, \vec v, \vec w \in V$ and $\alpha, \beta \in \F$:
 	\begin{center}
 		\begin{tabularx}{\textwidth}{XX}
 			\toprule
 			\textbf{Axiom} & \textbf{Statement} \\
 			\midrule
-			1. Associativity of addition & $(\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w})$ \\
-			2. Existence of additive identity & $\exists \vec{0} \in V$ such that $\forall \vec{u} \in V$, $\vec{u} + \vec{0} = \vec{u}$ \\
-			3. Existence of additive inverses & $\forall \vec{u} \in V$, $\exists -\vec{u} \in V$ such that $\vec{u} + (-\vec{u}) = \vec{0}$ \\
-			4. Commutativity of addition & $\vec{u} + \vec{v} = \vec{v} + \vec{u}$ \\
-			5. Distributivity of scalar multiplication with respect to vector addition & $\alpha (\vec{u} + \vec{v}) = \alpha \vec{u} + \alpha \vec{v}$ \\
+			1. Associativity of addition & $(\vec u + \vec v) + \vec w = \vec u + (\vec v + \vec w)$ \\
+			2. Existence of additive identity & $\exists \vec 0 \in V$ such that $\forall \vec u \in V$, $\vec u + \vec 0 = \vec u$ \\
+			3. Existence of additive inverses & $\forall \vec u \in V$, $\exists -\vec u \in V$ such that $\vec u + (-\vec u) = \vec 0$ \\
+			4. Commutativity of addition & $\vec u + \vec v = \vec v + \vec u$ \\
+			5. Distributivity of scalar multiplication with respect to vector addition & $\alpha (\vec u + \vec v) = \alpha \vec u + \alpha \vec v$ \\
 			6. Distributivity of scalar multiplication with respect to field addition & $(\alpha + \beta) \cdot = \alpha \cdot + \beta \cdot$ \\
 			7. Compatibility of scalar multiplication with field multiplication & $(\alpha \beta) \cdot = (\alpha \cdot) \circ (\beta \cdot)$ \\
 			8. Identity element of scalar multiplication & $\F \ni 1 \mapsto (1\cdot : x \mapsto x) \in \End(V)$ \\
@@ -422,7 +422,7 @@ In normal textbook, a linear space will be defined as follows:
 
 \begin{example}
 	Let $t$ be a formal variable.
-	Then $\F[[t]] \overset{\mathrm{def}}{=\joinrel=} \F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^\infty a_n t^n$ is the set of all formal power series in $t$ with coefficients in $\F$ and $\F[t] \overset{\mathrm{def}}{=\joinrel=} \F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^{N} a_n t^n$ is the set of all polynomials in $t$ with coefficients in $\F$.
+	Then $\F[[t]] \overset{\mathrm{def}}{=\joinrel=} \F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^\infty a_n t^n$ is the set of all formal power series in $t$ with coefficients in $\F$ and $\F[t] \overset{\mathrm{def}}{=\joinrel=} \F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^N a_n t^n$ is the set of all polynomials in $t$ with coefficients in $\F$.
 	Both $\F[[t]]$ and $\F[t]$ are linear spaces over $\F$.
 \end{example}
 
@@ -442,16 +442,16 @@ There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Po
 		\right\}
 	\]
 	is the set of all \emph{column matrices} with $n$ entries in $\F$.
-	Elements in $\F^n$ are written as $\vec{x}$ and are called \emph{column vectors}. $\F^n$ is a linear space over $\F$ with the following operations defined entrywisely:
+	Elements in $\F^n$ are written as $\vec x$ and are called \emph{column vectors}. $\F^n$ is a linear space over $\F$ with the following operations defined entrywisely:
 	\begin{align*}
 		+ : \F^n \times \F^n &\to \F^n \\
-		(\vec{a}, \vec{b}) &\mapsto \vec{a} + \vec{b} = \begin{bmatrix}
+		(\vec a, \vec b) &\mapsto \vec a + \vec b = \begin{bmatrix}
 			a_1 + b_1 \\
 			\vdots \\
 			a_n + b_n
 		\end{bmatrix} \\
 		\cdot : \F \times \F^n &\to \F^n \\
-		(\alpha, \vec{a}) &\mapsto \alpha \vec{a} = \begin{bmatrix}
+		(\alpha, \vec a) &\mapsto \alpha \vec a = \begin{bmatrix}
 			\alpha a_1 \\
 			\vdots \\
 			\alpha a_n

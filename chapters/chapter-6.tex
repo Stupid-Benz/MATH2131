@@ -68,7 +68,7 @@ For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself.
 Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
 
 Then we know that $\End(V) \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$.
-Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \}$ of $V$.
+Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec v_1, \vec v_2, \cdots, \vec v_n \}$ of $V$.
 Here the upper index $i$ represents the contravariant part and the lower index $j$ represents the covariant part.
 To know that what $a^i_j$ means, we can consider the following diagram:
 \begin{center}
@@ -79,12 +79,12 @@ To know that what $a^i_j$ means, we can consider the following diagram:
 \end{center}
 Then how to get the matrix representation $A = [a^i_j]_{\B_V}$ of $T$ with respect to the basis $\B_V$? We have:
 \[
-	\vec{a}_j = A \vec{e}_j, \qquad a^i_j = \vec{e}_i^T A \vec{e}_j = \hat{e}^i A \vec{e}_j = \langle \hat{e}^i, A \vec{e}_j \rangle.
+	\vec a_j = A \vec e_j, \qquad a^i_j = \vec e_i^T A \vec e_j = \hat e^i A \vec e_j = \langle \hat e^i, A \vec e_j \rangle.
 \]
-So we have $[a^i_j] = \langle \hat{v}^i, T \vec{v}_j \rangle$.
+So we have $[a^i_j] = \langle \hat v^i, T \vec v_j \rangle$.
 We can have an identification between $\End(V)$ and $\mathcal{T}^{1, 1} V$ as follows:
 \[
-	T \leftrightarrow T\vec{v}_j \otimes \hat{v}^j
+	T \leftrightarrow T\vec v_j \otimes \hat v^j
 \]
 
 For covariant and contravariant, we have the following table:
@@ -94,9 +94,9 @@ For covariant and contravariant, we have the following table:
 	\toprule
 	\textbf{Object} & \textbf{Transformation Type} \\
 	\midrule
-	Standard Basis Vector ($\vec{e}_i$) & Covariant \\
+	Standard Basis Vector ($\vec e_i$) & Covariant \\
 	\midrule
-	Dual Basis Vector ($\hat{e}^i$) & Contravariant \\
+	Dual Basis Vector ($\hat e^i$) & Contravariant \\
 	\midrule
 	Component of a Vector ($v^i$) & Contravariant \\
 	\midrule
@@ -110,84 +110,84 @@ If you cannot understand it, make up some examples of scaling the vector spaces.
 
 In general, an element $t \in \mathcal{T}^{r, s} V$ can be represented as:
 \[
-	t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s} \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s}
+	t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s} \vec v_{i_1} \otimes \vec v_{i_2} \otimes \cdots \otimes \vec v_{i_r} \otimes \hat v^{j_1} \otimes \hat v^{j_2} \otimes \cdots \otimes \hat v^{j_s}
 \]
 Note that the representation depends on the choice of basis $\B_V$ of $V$, i.e., the following two represents the same tensor with respect to different bases:
 \[
-	\left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]_{\B_V} \sim \left[\tilde{t}^{\tilde{i}_1 \tilde{i}_2 \cdots \tilde{i}_r}_{\tilde{j}_1 \tilde{j}_2 \cdots \tilde{j}_s}\right]_{\widetilde{\B_V}}
+	\left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]_{\B_V} \sim \left[\tilde t^{\tilde i_1 \tilde i_2 \cdots \tilde i_r}_{\tilde j_1 \tilde j_2 \cdots \tilde j_s}\right]_{\widetilde{\B_V}}
 \]
 The two representations are related by the base change matrices::
 \[
-	(\tilde{v}_1, \tilde{v}_2, \cdots, \tilde{v}_n) = (v_1, v_2, \cdots, v_n) A, \quad A = [a^i_{\tilde{j}}]_{\B_V}^{\widetilde{\B_V}} \in \GL(V)
+	(\tilde v_1, \tilde v_2, \cdots, \tilde v_n) = (v_1, v_2, \cdots, v_n) A, \quad A = [a^i_{\tilde j}]_{\B_V}^{\widetilde{\B_V}} \in \GL(V)
 \]
 \begin{remark}
 	It is actually the right action of $\GL(V)$ on the set of all bases of $V$, $\B_V$:
 	\[
-		\B_V \times \GL(V) \to \B_V, \quad (v, A) \mapsto v A = \tilde{v}
+		\B_V \times \GL(V) \to \B_V, \quad (v, A) \mapsto v A = \tilde v
 	\]
 \end{remark}
 Then we have the following equation:
 \[
-	\tilde{v}_{\tilde{j}} = v_i a^i_{\tilde{j}}
+	\tilde v_{\tilde j} = v_i a^i_{\tilde j}
 \]
-For $A^{-1} = [b_j^{\tilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde{j}} b_j^{\tilde{k}} = \delta^{\tilde{k}}_{\tilde{j}}$ and $b_j^{\tilde{i}} a^j_{\tilde{k}} = \delta^{\tilde{i}}_{\tilde{k}}$.
+For $A^{-1} = [b_j^{\tilde i}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde j} b_j^{\tilde k} = \delta^{\tilde k}_{\tilde j}$ and $b_j^{\tilde i} a^j_{\tilde k} = \delta^{\tilde i}_{\tilde k}$.
 Therefore, we have:
 \[
-	v_k = \tilde{v}_{\tilde{j}} b_k^{\tilde{j}}
+	v_k = \tilde v_{\tilde j} b_k^{\tilde j}
 \]
 \begin{remark}
 	For easier memorising, we use the calculus operators:
 	\[
-		\frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} = a^i_{\tilde{j}}, \quad \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = b_k^{\tilde{j}}
+		\frac{\partial \tilde v_{\tilde j}}{\partial v_i} = a^i_{\tilde j}, \quad \frac{\partial v_k}{\partial \tilde v_{\tilde j}} = b_k^{\tilde j}
 	\]
 	To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators.
 	(As lower twice, so flip to upper)
 
 	Then we can use the chain rule to verify the two equations of $A$ and $A^{-1}$:
 	\[
-		\frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = \delta^i_k
+		\frac{\partial \tilde v_{\tilde j}}{\partial v_i} \frac{\partial v_k}{\partial \tilde v_{\tilde j}} = \delta^i_k
 	\]
 \end{remark}
 
 Then we have the transformation rule for the representation of $t \in \mathcal{T}^{r, s} V$ under the base change from $\B_V$ to $\widetilde{\B_V}$:
 \[
-	\tilde{t}^{{\color{ocre} \tilde{i}_1 \tilde{i}_2 \cdots \tilde{i}_r}}_{{\color{red} \tilde{j}_1 \tilde{j}_2 \cdots \tilde{j}_s}} = \left({\color{ocre} b_{i_1}^{\tilde{i}_1} b_{i_2}^{\tilde{i}_2} \cdots b_{i_r}^{\tilde{i}_r}}\right) t^{{\color{ocre} i_1 i_2 \cdots i_r}}_{{\color{red} j_1 j_2 \cdots j_s}} \left({\color{red} a^{j_1}_{\tilde{j}_1} a^{j_2}_{\tilde{j}_2} \cdots a^{j_s}_{\tilde{j}_s}}\right)
+	\tilde t^{{\color{ocre} \tilde i_1 \tilde i_2 \cdots \tilde i_r}}_{{\color{red} \tilde j_1 \tilde j_2 \cdots \tilde j_s}} = \left({\color{ocre} b_{i_1}^{\tilde i_1} b_{i_2}^{\tilde i_2} \cdots b_{i_r}^{\tilde i_r}}\right) t^{{\color{ocre} i_1 i_2 \cdots i_r}}_{{\color{red} j_1 j_2 \cdots j_s}} \left({\color{red} a^{j_1}_{\tilde j_1} a^{j_2}_{\tilde j_2} \cdots a^{j_s}_{\tilde j_s}}\right)
 \]
 
-Given that $\B_V = \{ \vec{v}_1, \cdots, \vec{v}_n \}$ is a basis of $V$, then we can define a basis of $\mathcal{T}^{r, s} V$ as follows:
+Given that $\B_V = \{ \vec v_1, \cdots, \vec v_n \}$ is a basis of $V$, then we can define a basis of $\mathcal{T}^{r, s} V$ as follows:
 \[
-	\B_{\mathcal{T}^{r, s} V} = \{ \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s} : 1 \leq i_1, i_2, \cdots, i_r, j_1, j_2, \cdots, j_s \leq n \}
+	\B_{\mathcal{T}^{r, s} V} = \{ \vec v_{i_1} \otimes \vec v_{i_2} \otimes \cdots \otimes \vec v_{i_r} \otimes \hat v^{j_1} \otimes \hat v^{j_2} \otimes \cdots \otimes \hat v^{j_s} : 1 \leq i_1, i_2, \cdots, i_r, j_1, j_2, \cdots, j_s \leq n \}
 \]
 Then for symmetric and skew-symmetric $k$-forms, we have:
 \begin{align*}
-	\B_{\mathcal{S}^k V} &= \{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \} \\
-	\B_{{\bigwedge}^k V} &= \{ \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \}
+	\B_{\mathcal{S}^k V} &= \{ \vec v_{i_1} \vec v_{i_2} \cdots \vec v_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \} \\
+	\B_{{\bigwedge}^k V} &= \{ \vec v_{i_1} \wedge \vec v_{i_2} \wedge \cdots \wedge \vec v_{i_k} : 1 \leq i_1, i_2, \cdots, i_k \leq n \}
 \end{align*}
 Then ``honest'' definition of symmetric basis is:
 \[
-	\{ \vec{v}_{i_1} \vec{v}_{i_2} \cdots \vec{v}_{i_k} : 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \}
+	\{ \vec v_{i_1} \vec v_{i_2} \cdots \vec v_{i_k} : 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \}
 \]
 but it is redundant.
 We just have to make sure that the representation of any symmetric $k$-form is unique for a given basis.
-For example, in 2-form case with the basis $\{ \vec{e}_i \otimes \vec{e}_j \}$, we originally have to write:
+For example, in 2-form case with the basis $\{ \vec e_i \otimes \vec e_j \}$, we originally have to write:
 \[
-	t = \sum_{1 \leq i \leq j \leq n} t_{ij} \vec{e}_i \otimes \vec{e}_j
+	t = \sum_{1 \leq i \leq j \leq n} t_{ij} \vec e_i \otimes \vec e_j
 \]
 but this is ugly, so we just write:
 \[
-	t = t^{ij} \vec{e}_i \vec{e}_j
+	t = t^{ij} \vec e_i \vec e_j
 \]
 with $t^{ij} = t^{ji}$.
 If we ignored the condition on $t^{ij}$, then we have $a^{ij} = - a^{ji}$ such that:
 \[
-	t = t^{ij} \vec{e}_i \wedge \vec{e}_j + a^{ij} \vec{e}_i \wedge \vec{e}_j = (t^{ij} + a^{ij}) \vec{e}_i \wedge \vec{e}_j = 0
+	t = t^{ij} \vec e_i \wedge \vec e_j + a^{ij} \vec e_i \wedge \vec e_j = (t^{ij} + a^{ij}) \vec e_i \wedge \vec e_j = 0
 \]
 As $a^{ij} = a^{ji} = - a^{ij}$.
 
 
 Then for skew-symmetric basis, let say $t \in \B_{{\bigwedge}^k V}$, then we have:
 \[
-	t = t^{\mathcal{I}} \vec{v}_{\mathcal{I}} = t^{i_1 i_2 \cdots i_k} \vec{v}_{i_1} \wedge \vec{v}_{i_2} \wedge \cdots \wedge \vec{v}_{i_k}
+	t = t^{\mathcal{I}} \vec v_{\mathcal{I}} = t^{i_1 i_2 \cdots i_k} \vec v_{i_1} \wedge \vec v_{i_2} \wedge \cdots \wedge \vec v_{i_k}
 \]
 with $\mathcal{I} = (i_1, i_2, \cdots, i_k)$ being an ordered index set with $1 \leq i_1 < i_2 < \cdots < i_k \leq n$.
 Then for any permutation $\sigma \in S_k$, to make sure it is unique, we require:
@@ -384,7 +384,7 @@ Take a look at the following figure:
 		\draw (-0.1, 0.2) -- (-0.3, 0.1) -- (-0.2, -0.1);
 		\draw[ocre] (-4, -2) -- (4, 2) node[right] {$W$};
 		\draw[red] (-1.5, 3) node[above] {$W^\perp$} -- (1.5, -3);
-		\draw[thick, -latex] (0, 0) -- (4, 0) node[right] {$\vec{v}$};
+		\draw[thick, -latex] (0, 0) -- (4, 0) node[right] {$\vec v$};
 		\draw[ocre, -latex] (0, 0) -- (3.2, 1.6) node[midway, above, rotate=26.57] {$\scriptstyle w = \proj_W v$};
 		\draw[red, -latex] (0, 0) -- (0.8, -1.6) node[midway, below, rotate=-63.43] {$\scriptstyle w^\perp = \proj_{W^\perp} v$};
 		\draw[ocre, dashed] (4, 0) -- (3.2, 1.6);
@@ -478,34 +478,34 @@ Then there is a useful corollary of the Gram-Schmidt process, the $QR$ Decomposi
 
 Let $V$ be a Euclidean space.
 We can interpret it as $(\R^n, \cdot)$ up to isomorphism.
-Then we have a basis $(\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n)$ of $V$ and we can form an invertible matrix $A$ whose columns are the vectors $\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n$, i.e.,
+Then we have a basis $(\vec x_1, \vec x_2, \cdots, \vec x_n)$ of $V$ and we can form an invertible matrix $A$ whose columns are the vectors $\vec x_1, \vec x_2, \cdots, \vec x_n$, i.e.,
 \[
 	A = \begin{bmatrix}
 		| & | & & | \\
-		\vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \\
+		\vec x_1 & \vec x_2 & \cdots & \vec x_n \\
 		| & | & & |
 	\end{bmatrix}
 \]
-Then we have an orthogonal basis $(\vec{v}_1, \cdots, \vec{v}_n)$ of $V$ and an orthonormal basis $(\vec{w}_1, \cdots, \vec{w}_n)$ obtained by the Gram-Schmidt process.
+Then we have an orthogonal basis $(\vec v_1, \cdots, \vec v_n)$ of $V$ and an orthonormal basis $(\vec w_1, \cdots, \vec w_n)$ obtained by the Gram-Schmidt process.
 Then we should have an invertible matrix to convert between bases.
 Then what is the matrix to convert from the original basis to the orthonormal basis?
 
-Note that each $\vec{x}_k$ can be expressed as a linear combination of $\vec{w}_1, \cdots, \vec{w}_k$:
+Note that each $\vec x_k$ can be expressed as a linear combination of $\vec w_1, \cdots, \vec w_k$:
 \[
-	\vec{x}_k = \vec{v}_k + \sum_{i = 1}^{k - 1} \frac{\langle \vec{v}_i, \vec{x}_k \rangle}{\langle \vec{v}_i, \vec{v}_i \rangle} \vec{v}_i = \| \vec{v}_k \| \vec{w}_k + \sum_{i = 1}^{k - 1} \langle \vec{w}_i, \vec{x}_k \rangle \vec{w}_i
+	\vec x_k = \vec v_k + \sum_{i = 1}^{k - 1} \frac{\langle \vec v_i, \vec x_k \rangle}{\langle \vec v_i, \vec v_i \rangle} \vec v_i = \| \vec v_k \| \vec w_k + \sum_{i = 1}^{k - 1} \langle \vec w_i, \vec x_k \rangle \vec w_i
 \]
-Also, we can express $\vec{x}_k$ as follows:
+Also, we can express $\vec x_k$ as follows:
 \[
-	\vec{x}_k = \begin{bmatrix}
+	\vec x_k = \begin{bmatrix}
 		| & | & & | \\
-		\vec{w}_1 & \vec{w}_2 & \cdots & \vec{w}_n \\
+		\vec w_1 & \vec w_2 & \cdots & \vec w_n \\
 		| & | & & |
 	\end{bmatrix} \begin{bmatrix}
-		\langle \vec{w}_1, \vec{x}_k \rangle \\
-		\langle \vec{w}_2, \vec{x}_k \rangle \\
+		\langle \vec w_1, \vec x_k \rangle \\
+		\langle \vec w_2, \vec x_k \rangle \\
 		\vdots \\
-		\langle \vec{w}_{k - 1}, \vec{x}_k \rangle \\
-		\| \vec{v}_k \| \\
+		\langle \vec w_{k - 1}, \vec x_k \rangle \\
+		\| \vec v_k \| \\
 		0 \\
 		\vdots \\
 		0
@@ -515,17 +515,17 @@ Then we have the matrix equation:
 \[
 	\underbrace{\begin{bmatrix}
 		| & | & & | \\
-		\vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \\
+		\vec x_1 & \vec x_2 & \cdots & \vec x_n \\
 		| & | & & |
 	\end{bmatrix}}_{A} = \underbrace{\begin{bmatrix}
 		| & | & & | \\
-		\vec{w}_1 & \vec{w}_2 & \cdots & \vec{w}_n \\
+		\vec w_1 & \vec w_2 & \cdots & \vec w_n \\
 		| & | & & |
 	\end{bmatrix}}_{Q} \underbrace{\begin{bmatrix}
-		\langle \vec{w}_1, \vec{x}_1 \rangle & \langle \vec{w}_1, \vec{x}_2 \rangle & \cdots & \langle \vec{w}_1, \vec{x}_n \rangle \\
-		0 & \langle \vec{w}_2, \vec{x}_2 \rangle & \cdots & \langle \vec{w}_2, \vec{x}_n \rangle \\
+		\langle \vec w_1, \vec x_1 \rangle & \langle \vec w_1, \vec x_2 \rangle & \cdots & \langle \vec w_1, \vec x_n \rangle \\
+		0 & \langle \vec w_2, \vec x_2 \rangle & \cdots & \langle \vec w_2, \vec x_n \rangle \\
 		0 & 0 & \ddots & \vdots \\
-		0 & 0 & 0 & \langle \vec{w}_n, \vec{x}_n \rangle
+		0 & 0 & 0 & \langle \vec w_n, \vec x_n \rangle
 	\end{bmatrix}}_{R}
 \]
 which is called the \emph{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries.
@@ -553,7 +553,7 @@ We can also define the orthogonal group $\Orth(n)$ using this property.
 Let $V = \R^n$ with the dot product.
 Then for any $A \in \GL_n(\R)$, $A \in \Orth(n)$ if and only if $A$ satisfies:
 \[
-	\langle \vec{a}_i, \vec{a}_j \rangle = \langle A\vec{e}_i, A\vec{e}_j \rangle = \langle \vec{e}_i, \vec{e}_j \rangle = \delta_{ij}
+	\langle \vec a_i, \vec a_j \rangle = \langle A\vec e_i, A\vec e_j \rangle = \langle \vec e_i, \vec e_j \rangle = \delta_{ij}
 \]
 It is equivalent to say that $A^T A = I_n$, i.e., $A^T = A^{-1}$.
 Therefore, we have:
@@ -668,13 +668,13 @@ Then we have the following examples:
 \begin{example}
 	We define the standard Hermitian form on $\mathbb{C}^n$ as:
 	\[
-		\langle \vec{u}, \vec{v} \rangle = \vec{u}^\dagger \vec{v} = \overline{\vec{u}}^T \vec{v}
+		\langle \vec u, \vec v \rangle = \vec u^\dagger \vec v = \overline{\vec u}^T \vec v
 	\]
-	for all $\vec{u}, \vec{v} \in \mathbb{C}^n$.
+	for all $\vec u, \vec v \in \mathbb{C}^n$.
 	It is straightforward to verify that it satisfies all the properties of Hermitian forms.
 	For example, the positive-definiteness property holds since:
 	\[
-		\vec{u}^\dagger \vec{u} = \sum_{i = 1}^n \overline{u_i} u_i = \sum_{i = 1}^n |u_i|^2 \geq 0
+		\vec u^\dagger \vec u = \sum_{i = 1}^n \overline{u_i} u_i = \sum_{i = 1}^n |u_i|^2 \geq 0
 	\]
 \end{example}
 
@@ -737,11 +737,11 @@ Then we have
 	\omega = [\langle v_i, v_j \rangle]
 \]
 Note that $\omega$ is a Hermitian matrix, i.e., $\omega^\dagger = \omega$.
-Then we claim that if $A$ and $\tilde{A}$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\tilde{v}$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
+Then we claim that if $A$ and $\tilde A$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\tilde v$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
 \[
-	\tilde{A} = P^\dagger A P
+	\tilde A = P^\dagger A P
 \]
-where $P$ is the change-of-basis matrix from $v$ to $\tilde{v}$.
+where $P$ is the change-of-basis matrix from $v$ to $\tilde v$.
 Or equivalently,
 \[
 	\mathsf{H}_n(\mathbb{C}) \times \GL_n(\mathbb{C}) \to \mathsf{H}_n(\mathbb{C}), \quad (A, P) \mapsto P^\dagger A P
@@ -785,14 +785,14 @@ Then we have the following definitions.
 \begin{proof}
 	We can reduce the problem to $\mathbb{C}^n$ and $\mathbb{C}^m$ with standard Hermitian forms by choosing orthonormal bases of $V$ and $W$.
 	Then we have $T$ represented by a matrix $A \in \M{m \times n}{\mathbb{C}}$.
-	Then we propose there is a matrix $B \in \M{n \times m}{\mathbb{C}}$ such that for all $\vec{e}_i \in \mathbb{C}^n$ and $\vec{f}_j \in \mathbb{C}^m$, we have:
+	Then we propose there is a matrix $B \in \M{n \times m}{\mathbb{C}}$ such that for all $\vec e_i \in \mathbb{C}^n$ and $\vec f_j \in \mathbb{C}^m$, we have:
 	\[
-		\langle A\vec{e}_i, \vec{f}_j \rangle = (A\vec{e}_i)^\dagger \vec{f}_j = \vec{e}_i^\dagger A^\dagger \vec{f}_j = \vec{e}_i^T A^\dagger \vec{f}_j
+		\langle A\vec e_i, \vec f_j \rangle = (A\vec e_i)^\dagger \vec f_j = \vec e_i^\dagger A^\dagger \vec f_j = \vec e_i^T A^\dagger \vec f_j
 	\]
 	which is the $(i, j)$-th entry of $A^\dagger$.
 	On the other hand, we have:
 	\[
-		\langle \vec{e}_i, B\vec{f}_j \rangle = \vec{e}_i^\dagger (B\vec{f}_j) = \vec{e}_i^T B \vec{f}_j
+		\langle \vec e_i, B\vec f_j \rangle = \vec e_i^\dagger (B\vec f_j) = \vec e_i^T B \vec f_j
 	\]
 	which is the $(i, j)$-th entry of $B$.
 	Therefore, we have $B = A^\dagger$.
@@ -843,8 +843,8 @@ Then we have the following definitions.
 		\]
 		where $T w \in W$ since $W$ is $T$-invariant.
 		Then we propose that $W^\perp = \{ 0 \}$.
-		If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\tilde{T} : W^\perp \to W^\perp$ defined by $\tilde{T}(w^\perp) = T(w^\perp)$.
-		Then $\tilde{T} w^\perp = \lambda w^\perp$ and $\tilde{T} w^\perp = T w^\perp$ by definition.
+		If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\tilde T : W^\perp \to W^\perp$ defined by $\tilde T(w^\perp) = T(w^\perp)$.
+		Then $\tilde T w^\perp = \lambda w^\perp$ and $\tilde T w^\perp = T w^\perp$ by definition.
 		So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$.
 		Say $\lambda = \lambda_1$.
 		Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$.

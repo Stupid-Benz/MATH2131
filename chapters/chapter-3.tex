@@ -115,14 +115,14 @@ However, we have the following proposition.
 	Let $W$ be a linear space over a field $\F$ and $S \subset W$.
 	Then
 	\[
-		\Span S = \left\{ \sum_{i=1}^{n} \alpha^i s_i \mid n \in \mathbb{N}, \alpha^i \in \F, s_i \in S \right\}
+		\Span S = \left\{ \sum_{i=1}^n \alpha^i s_i \mid n \in \mathbb{N}, \alpha^i \in \F, s_i \in S \right\}
 	\]
 	Note that the summation is a finite summation.
 \end{proposition}
 
 \begin{definition}[Linear Independences] \label{def:linear_independence}
 	Let $W$ be a linear space over a field $\F$ and $V_1, \cdots, V_k$ be subspaces of $W$.
-	The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^{k} v_i = 0_W$, then $v_i = 0_W$ for all $i$.
+	The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^k v_i = 0_W$, then $v_i = 0_W$ for all $i$.
 \end{definition}
 
 Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspaces $\Span(v_1)$, $\Span(v_2)$, $\cdots$, $\Span(v_k)$ are linearly independent.
@@ -153,15 +153,15 @@ Is there any properties for spanning if the set spans the whole codomain?
 \end{definition}
 
 \begin{example}
-	Let $V = \F^3$ and consider the three vectors $\vec{e}_1$, $\vec{e}_2$ and $\vec{e}_3$.
+	Let $V = \F^3$ and consider the three vectors $\vec e_1$, $\vec e_2$ and $\vec e_3$.
 
-	Then the set $S = \{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ is not a spanning set of $V$ as $\Span(S) = \Span \{\vec{e}_1, \vec{e}_2\} \neq V$.
-	If we consider the $\Span \{\vec{e}_1, \vec{e}_2\} = W$, then $\{\vec{e}_1, \vec{e}_2\}$ is a minimal spanning set of $W$.
+	Then the set $S = \{\vec e_1, \vec e_2, \vec e_1 + \vec e_2\}$ is not a spanning set of $V$ as $\Span(S) = \Span \{\vec e_1, \vec e_2\} \neq V$.
+	If we consider the $\Span \{\vec e_1, \vec e_2\} = W$, then $\{\vec e_1, \vec e_2\}$ is a minimal spanning set of $W$.
 
-	The set $S = \{\vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2 + \vec{e}_3\}$ is a spanning set of $V$.
+	The set $S = \{\vec e_1, \vec e_1 + \vec e_2, \vec e_1 + \vec e_2 + \vec e_3\}$ is a spanning set of $V$.
 \end{example}
 \begin{remark}
-	If we consider the matrix of $\{\vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2\}$ with respect to the standard basis of $\F^3$, we have:
+	If we consider the matrix of $\{\vec e_1, \vec e_2, \vec e_1 + \vec e_2\}$ with respect to the standard basis of $\F^3$, we have:
 	\[
 		A = \begin{bmatrix}
 			1 & 0 & 1 \\
@@ -187,27 +187,27 @@ Is there any properties for spanning if the set spans the whole codomain?
 The following is also the equivalence definition of linearly independent sets, spanning sets and minimal spanning sets.
 
 Given a linear space $V$ over a field $\F$.
-We define the order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$.
+We define the order set $S := \{\vec v_1, \vec v_2, \cdots, \vec v_n\} \subseteq V$.
 The order set $S$ forms a linear map $\phi_S: \F^n \to V$ defined by:
 \[
-	\phi_S(\vec{x}) = \phi_S\left(\begin{bmatrix}
+	\phi_S(\vec x) = \phi_S\left(\begin{bmatrix}
 		x^1 \\
 		x^2 \\
 		\vdots \\
 		x^n
-	\end{bmatrix}\right) = x^1 \vec{v}_1 + x^2 \vec{v}_2 + \cdots + x^n \vec{v}_n = \sum_{i=1}^{n} x^i \vec{v}_i
+	\end{bmatrix}\right) = x^1 \vec v_1 + x^2 \vec v_2 + \cdots + x^n \vec v_n = \sum_{i=1}^n x^i \vec v_i
 \]
 
 \begin{proposition}
-	The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be linearly independent if and only if the linear map $\phi_S: \F^n \to V$ defined above is injective.
+	The order set $S := \{\vec v_1, \vec v_2, \cdots, \vec v_n\} \subseteq V$ is said to be linearly independent if and only if the linear map $\phi_S: \F^n \to V$ defined above is injective.
 \end{proposition}
 
 \begin{proposition}
-	The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be a spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is surjective.
+	The order set $S := \{\vec v_1, \vec v_2, \cdots, \vec v_n\} \subseteq V$ is said to be a spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is surjective.
 \end{proposition}
 
 \begin{proposition} \label{prop:minimal_spanning_set}
-	The order set $S := \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\} \subseteq V$ is said to be a minimal spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is bijective.
+	The order set $S := \{\vec v_1, \vec v_2, \cdots, \vec v_n\} \subseteq V$ is said to be a minimal spanning set of $V$ if and only if the linear map $\phi_S: \F^n \to V$ defined above is bijective.
 \end{proposition}
 \begin{remark}
 	A order minimal spanning set is regarded as \emph{basis}\index{basis}.
@@ -271,10 +271,10 @@ Then we have the following group action:
 		\draw[red] (0,0) circle (0.5cm);
 		\draw[red] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{Orbits};
 
-		\filldraw[ocre] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec{v}$};
+		\filldraw[ocre] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec v$};
 		\draw[-Stealth] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
 		\draw[-Stealth] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
-		\filldraw[ocre] (2,0) circle (1pt) node[below right]{$\vec{v}$};
+		\filldraw[ocre] (2,0) circle (1pt) node[below right]{$\vec v$};
 		\draw[-Stealth,ocre] (2,0) arc[start angle=0,end angle=45,radius=2];
 		\draw[-Stealth,red] (0,2) arc[start angle=90,end angle=135,radius=2];
 		\draw[-Stealth,red] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
@@ -478,10 +478,10 @@ If we consider the graphical representation of the quotient space $\quotient{W}{
 	Assume the existence of such a linear map $\tilde{\phi}$.
 	Then for all $s \in S$, we have $\tilde{\phi} \circ \iota (s) = \tilde{\phi}(s) = \phi(s)$.
 
-	Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^{n} \alpha_i s_i$ where $\alpha_i \in \F$ and $s_i \in S$ are distinct.
+	Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^n \alpha_i s_i$ where $\alpha_i \in \F$ and $s_i \in S$ are distinct.
 	Then we have
 	\[
-		\tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \sum_{i=1}^{n} \alpha^i \tilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha^i \phi(s_i) = \phi\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \phi(v)
+		\tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^n \alpha^i s_i\right) = \sum_{i=1}^n \alpha^i \tilde{\phi}(s_i) = \sum_{i=1}^n \alpha^i \phi(s_i) = \phi\left(\sum_{i=1}^n \alpha^i s_i\right) = \phi(v)
 	\]
 	This shows that $\tilde{\phi}$ agrees with $\phi$ on all of $V$, and thus $\tilde{\phi}$ is uniquely determined by $\phi$.
 \end{proof}
@@ -638,8 +638,8 @@ It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite s
 			\F^n \arrow[u, hook, two heads] \arrow[ur, two heads, dashed, "\phi"]
 		\end{tikzcd}
 	\end{center}
-	Then the map $\phi : \F^n \to U$ is defined by $x = \alpha^1 \vec{e}_1 + \cdots + \alpha^n \vec{e}_n \mapsto \phi(x) = \alpha^1 \phi(\vec{e}_1) + \cdots + \alpha^n \phi(\vec{e}_n)$.
-	Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e}_1), \phi(\vec{e}_2), \cdots, \phi(\vec{e}_n)\}$.
+	Then the map $\phi : \F^n \to U$ is defined by $x = \alpha^1 \vec e_1 + \cdots + \alpha^n \vec e_n \mapsto \phi(x) = \alpha^1 \phi(\vec e_1) + \cdots + \alpha^n \phi(\vec e_n)$.
+	Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec e_1), \phi(\vec e_2), \cdots, \phi(\vec e_n)\}$.
 
 	For quotient space $\quotient{W}{V}$ and $W$ is finite dimensional, we have:
 	\begin{center}
@@ -647,7 +647,7 @@ It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite s
 			V \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \quotient{W}{V}
 		\end{tikzcd}
 	\end{center}
-	Then we know that $\pi(\vec{e}_1), \pi(\vec{e}_2), \cdots, \pi(\vec{e}_n)$ spans $\quotient{W}{V}$.
+	Then we know that $\pi(\vec e_1), \pi(\vec e_2), \cdots, \pi(\vec e_n)$ spans $\quotient{W}{V}$.
 	Thus, $\quotient{W}{V}$ is finitely spanned.
 \end{proof}
 
@@ -816,7 +816,7 @@ There is actually one more fact about the short exact sequence.
 
 The equalities can be summarized as follows:
 \[
-	j_m \circ i_n = \delta_{mn} \id_{V_n}, \quad \sum_{k=1}^{2} i_k \circ j_k = \id_V
+	j_m \circ i_n = \delta_{mn} \id_{V_n}, \quad \sum_{k=1}^2 i_k \circ j_k = \id_V
 \]
 
 For the dimension of the spaces, we have:
@@ -1112,12 +1112,12 @@ With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 
 		\matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
 		{\im{s_1} \oplus \ker(f) & \im{f} \oplus \im{s_2} \\};
 		\path[->] (m-1-1) edge node[above] {$f = \begin{bmatrix}
-			\tilde{f} & 0 \\
+			\tilde f & 0 \\
 			0 & 0
 		\end{bmatrix}$} (m-1-2);
 	\end{tikzpicture}
 \end{center}
-where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim(f) \to \im{f}$ and $s_1 : \coim(f) \to \im{s_1}$.
+where $\tilde f : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim(f) \to \im{f}$ and $s_1 : \coim(f) \to \im{s_1}$.
 Then the graph below commutes:
 
 \begin{center}
@@ -1131,11 +1131,11 @@ Then the graph below commutes:
 \end{remark}
 
 The matrix $\begin{bmatrix}
-	\tilde{f} & 0 \\
+	\tilde f & 0 \\
 	0 & 0
 \end{bmatrix}$ is the canonical form of the linear map.
 Just as the canonical form of a matrix, it reveals the essential structure of the linear map.
-However, the rank of $\tilde{f}$ is unique, which is equal to $\rank(f) = \dim{\im{f}}$.
+However, the rank of $\tilde f$ is unique, which is equal to $\rank(f) = \dim{\im{f}}$.
 
 \begin{center}
 	\begin{tikzpicture}
