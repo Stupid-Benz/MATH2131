@@ -434,8 +434,7 @@
 
 \usepackage[
 	backend=biber, % Use the biber engine for compiling the bibliography
-	bibstyle=numeric, % Main bibliography style
-	citestyle=numeric, % In-text citation style
+	style=alphabetic-verb, % The biblatex preset that is most similar to the AMS style is this one
 	sorting=nyt, % Sort references in the bibliography by name, then year, then title
 	sortcites=true, % If multiple citekeys are passed to a citation command, sort them in the citation
 	abbreviate=false, % Suppress abbreviations such as "Ed." for Editor
@@ -449,7 +448,7 @@
 %	INDEX
 %----------------------------------------------------------------------------------------
 
-\usepackage{makeidx} % Required to make an index
+\usepackage{imakeidx} % Required to make an index
 
 \makeindex % Tells LaTeX to create the files required for indexing
 
@@ -529,29 +528,16 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\titlepage}[1]{
+\renewcommand{\titlepage}[2]{
 	\thispagestyle{empty} % Suppress headers and footers on the title page
-	
+
 	\begin{tikzpicture}[remember picture, overlay]
-		\node [anchor=center, inner sep=1.25cm, text opacity=1, minimum height=\paperheight, minimum width=\paperwidth, text width=0.8\paperwidth] at (current page.center) {}; % Title highlight box with title(s) and author(s)
-		
+		\node [inner sep=0pt] at (current page.center) {#1}; % Background image
+		\node [anchor=center, inner sep=1.25cm, rectangle, fill=ocre!30!white, fill opacity=0.6, text opacity=1, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.8\paperwidth] at (current page.center) {#2}; % Title highlight box with title(s) and author(s)
 	\end{tikzpicture}
-	
-	{#1}
 
 	\newpage
 }
-
-% \renewcommand{\titlepage}[2]{
-% 	\thispagestyle{empty} % Suppress headers and footers on the title page
-
-% 	\begin{tikzpicture}[remember picture, overlay]
-% 		\node [inner sep=0pt] at (current page.center) {#1}; % Background image
-% 		\node [anchor=center, inner sep=1.25cm, rectangle, fill=ocre!30!white, fill opacity=0.6, text opacity=1, minimum height=0.2\paperheight, minimum width=\paperwidth, text width=0.8\paperwidth] at (current page.center) {#2}; % Title highlight box with title(s) and author(s)
-% 	\end{tikzpicture}
-	
-% 	\newpage
-% }
 
 %----------------------------------------------------------------------------------------
 %	THEOREM STYLES

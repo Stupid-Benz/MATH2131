@@ -1,0 +1,122 @@
+\newcommand{\smallbullet}{{\scalebox{0.5}{$\bullet$}}}
+
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\quotient}[2]{#1/\, #2}
+
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\A}{{\mathbb{A}}}
+
+\newcommand{\M}[2]{\mathsf{M}_{#1}(#2)}
+
+\DeclareMathOperator\End{End}
+\DeclareMathOperator\Hom{Hom}
+%\DeclareMathOperator\ker{Ker}
+\DeclareMathOperator\im{Im}
+\DeclareMathOperator\Span{Span}
+\DeclareMathOperator\Map{Map}
+\DeclareMathOperator\rank{rank}
+\DeclareMathOperator\coker{Coker}
+\DeclareMathOperator\coim{Coim}
+\DeclareMathOperator\nullity{Nullity}
+\DeclareMathOperator\id{id}
+\DeclareMathOperator\nul{Nul}
+\DeclareMathOperator\col{Col}
+\DeclareMathOperator\Mor{Mor}
+\DeclareMathOperator\Ob{Ob}
+\DeclareMathOperator\chart{char}
+%\DeclareMathOperator\deg{deg}
+%\DeclareMathOperator\dim{dim}
+%\DeclareMathOperator\det{det}
+\DeclareMathOperator\Aut{Aut}
+\DeclareMathOperator\sgn{sgn}
+\DeclareMathOperator\adj{adj}
+\DeclareMathOperator\tr{tr}
+\DeclareMathOperator\proj{proj}
+
+\newcommand{\C}{{\mathcal{C}}}
+\newcommand{\D}{{\mathcal{D}}}
+
+\newcommand{\Set}{{\mathbf{Set}}}
+\newcommand{\Vect}{{\mathbf{Vec}}}
+\newcommand{\Alg}{{\mathbf{Alg}}}
+\newcommand{\CAlg}{{\mathbf{CAlg}}}
+\newcommand{\SAlg}{{\mathbf{SAlg}}}
+
+\newcommand{\B}{{\mathcal{B}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\T}{{\mathcal{T}^\smallbullet}}
+
+\newcommand{\BL}{{\mathsf{BL}}}
+
+\newcommand{\Sym}{{\mathcal{S}^\smallbullet}}
+\newcommand{\Ext}{{\bigwedge^\smallbullet}}
+\newcommand{\Env}{{\mathcal{U}}}
+\newcommand{\ideal}{{\mathcal{I}}}
+
+\newcommand{\GL}{{\mathsf{GL}}}
+\newcommand{\Orth}{{\mathsf{O}}}
+\newcommand{\SO}{{\mathsf{SO}}}
+\newcommand{\Uni}{{\mathsf{U}}}
+\newcommand{\SU}{{\mathsf{SU}}}
+\newcommand{\SL}{{\mathsf{SL}}}
+
+% For arrows pointing
+\tikzset{%
+	myarrow/.style = {-Stealth, shorten >=5pt}
+}
+\newcommand{\mypoint}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
+
+% For arrows inside paths
+\tikzset{
+	set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+	set arrow inside={end/.initial=>, opt/.initial=},
+	/pgf/decoration/Mark/.style={
+		mark/.expanded=at position #1 with
+		{
+			\noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+		}
+	},
+	arrow inside/.style 2 args={
+		set arrow inside={#1},
+		postaction={
+			decorate,decoration={
+				markings,Mark/.list={#2}
+			}
+		}
+	},
+}
+
+\usepackage{mathtools} % for \xhookrightarrow
+
+% For fake coproduct symbol
+\DeclareRobustCommand{\coprod}{\mathop{\text{\fakecoprod}}}
+\newcommand{\fakecoprod}{%
+	\sbox0{$\prod$}%
+	\smash{\raisebox{\dimexpr.9625\depth-\dp0}{\scalebox{1}[-1]{$\prod$}}}%
+	\vphantom{$\prod$}%
+}
+
+% For vertical equivalence symbol
+\newcommand{\vequiv}{\rotatebox{90}{$\equiv$}}
+\newcommand{\hdash}{\rotatebox{90}{$|$}}
+
+% For quotes
+\usepackage{epigraph}
+\renewcommand{\epigraphsize}{\small}
+
+\let\originalepigraph\epigraph 
+\renewcommand\epigraph[2]{\originalepigraph{#1}{\textsc{#2}}}
+
+% For tikzcd
+\tikzcdset{
+	/tikz/commutative diagrams/every diagram/.append style={
+		row sep=huge,
+		column sep=huge
+	},
+	row sep/subtext/.initial = 1pt,
+}
+
+\usepackage{musicography} % For music natural symbol
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} % Reset mathcal font to the default one
