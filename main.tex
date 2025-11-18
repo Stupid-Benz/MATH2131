@@ -140,9 +140,13 @@
 
 	\pagestyle{fancy} % Enable default headers and footers again
 
-	\newpage
+	\cleardoublepage
 
-	\noindent {\Large\bfseries\sffamily List of Symbols}
+	% LIST OF SYMBOLS
+
+	\section*{List of Symbols}
+	\markboth{\sffamily\normalsize\bfseries Index}{\sffamily\normalsize\bfseries List of Symbols}
+	\addcontentsline{toc}{section}{\textcolor{ocre}{List of Symbols}}
 
 	\vspace{8pt}
 
@@ -222,6 +226,8 @@
 		$(-)^*$ & Dual space functor \\
 		\bottomrule
 	\end{tabularx}
+
+	\cleardoublepage
 
 
 	%----------------------------------------------------------------------------------------
