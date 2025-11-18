@@ -38,7 +38,7 @@ Then $ab$ is viewed as the composition of arrows:
 
 Recall that a monoid $M$ is a set, which is called a small collection of objects, together with a binary operation, which is also called composition, on $M$ with both the associtivity law and identity law satisfied.
 
-By relaxing the condition on binary operation, allowing the composition being partially defined, we end up with the notion of \emph{small category}.
+By relaxing the condition on binary operation, allowing the composition being partially defined, we end up with the notion of \emph{small category}\index{small category}.
 
 Being partially defined means that the composition may not be always defined.
 For example, take $f : X \to Y$ and $g : W \to Z$, then $gf$ is not defined.
@@ -101,7 +101,7 @@ Here $\C \times_{s, t} \C$ is defined as the pullback of the diagram below:
 where the set $\C \times_{s, t} \C = \{ (x, y) \in \C \times \C \mid s(x) = t(y) \}$.
 Intuitively, the pullback is to filter out the mappings that can do composition, such as $f, g \in \C \times_{(s, t)} \C$ where \begin{tikzcd}[cramped, column sep=normal] A \arrow[r, "f"] & B \arrow[r, "g"] & C \end{tikzcd}.
 
-The $s$ and $t$ are called the \emph{source map} and \emph{target map} respectively.
+The $s$ and $t$ are called the \emph{source map}\index{source map} and \emph{target map}\index{target map} respectively.
 We can picture the composition graphically as follows:
 \begin{center}
 	\begin{tikzcd}[row sep=subtext, column sep=tiny]
@@ -165,7 +165,7 @@ We may draw the associativity law this way:
 	\end{center}
 \end{example}
 \begin{remark}
-	Elements in $\C$ are \emph{morphisms}\index{morphisms} or \emph{arrows}\index{arrows}, and elements in $\C_0$ are \emph{identity morphisms}.
+	Elements in $\C$ are \emph{morphisms}\index{morphisms} or \emph{arrows}\index{arrows}, and elements in $\C_0$ are \emph{identity morphisms}\index{identity morphisms}.
 	A morphism $f$ is viewed as an arrow from $s(f) \in C_0$ to $t(f) \in C_0$, i.e., $f : s(f) \to t(f)$.
 	An identity morphism is drawn in the following way with $X$ being called the \emph{object}\index{object}:
 	\begin{center}
@@ -279,8 +279,8 @@ A category such that every morphism is isomorphic is called a \emph{groupoid}\in
 
 \begin{definition}[Terminal Object and Initial Object]
 	Let $\C$ be a category.
-	An object $T \in \Ob(\C)$ is called a \emph{terminal object} if for all object $X$, there exists a unique morphism from $X$ to $T$, i.e., $|\C(X, T)| = 1$.
-	An object $I \in \Ob(\C)$ is called an \emph{initial object} if for all object $X$, there exists a unique morphism from $I$ to $X$, i.e., $|\C(I, X)| = 1$.
+	An object $T \in \Ob(\C)$ is called a \emph{terminal object}\index{terminal object} if for all object $X$, there exists a unique morphism from $X$ to $T$, i.e., $|\C(X, T)| = 1$.
+	An object $I \in \Ob(\C)$ is called an \emph{initial object}\index{initial object} if for all object $X$, there exists a unique morphism from $I$ to $X$, i.e., $|\C(I, X)| = 1$.
 \end{definition}
 
 \begin{corollary}
@@ -429,7 +429,7 @@ However, in $\Set$, the empty set is an initial object but the terminal object i
 
 In general, we may have the product or coproduct of a family of objects.
 
-Let $\C$ be a category and $\{ X_\alpha \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}.
+Let $\C$ be a category and $\{ X_\alpha \}_{\alpha \in I}$ be a collection of objects in $\C$ indexed by a set $I$, called the \emph{indexing set}\index{indexing set}.
 The \emph{product}\index{product} of $\{ X_\alpha \}_{\alpha \in I}$ is the terminal object in the new category:
 \begin{itemize}
 	\item Objects: all collections of morphisms $\{ f_\alpha : Z \to X_\alpha \}_{\alpha \in I}$ in $\C$ for all $Z \in \Ob(\C)$;
@@ -533,8 +533,8 @@ Consider the following diagram:
 	So $s_2$ may not be an element in the coproduct $\bigoplus V_\alpha$ if $I$ is an infinite set, but most likely to be.
 \end{remark}
 
-So the product $\prod V_\alpha$ contains all possible sections $s : I \to \bigcup V_\alpha$, so it is called the \emph{space of sections}.
-The coproduct $\bigoplus V_\alpha$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}.
+So the product $\prod V_\alpha$ contains all possible sections $s : I \to \bigcup V_\alpha$, so it is called the \emph{space of sections}\index{space of sections}.
+The coproduct $\bigoplus V_\alpha$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}\index{space of sections with finite support}.
 The elements in the coproduct $\bigoplus V_\alpha$ written as ordered tuples $(v_\alpha)_{\alpha \in I}$ can also be written as finite sums $\sum_{\alpha \in I} v_\alpha$ since only finitely many $v_\alpha$ are non-zero.
 
 Actually, the product and coproduct are the generalisation of the polynomial ring and the formal power series ring respectively.
@@ -615,8 +615,8 @@ So we can consider the set map as $s : S \to \F$ as shown on the right.
 	where $\F[-]$ sends set $X$ to the free vector space $\F[X]$ generated by $X$, and a set map $f : X \to Y$ to the linear map $\F[f] : \F[X] \to \F[Y]$ induced by $f$.
 	The functor $|-|$ sends a vector space $V$ to its underlying set $|V|$, and a linear map $\phi : V \to W$ to the set map $|\phi| : |V| \to |W|$ induced by $\phi$.
 
-	The $\F[-]$ is called the \emph{free functor}, specifically it is the \emph{free vector space functor}.
-	The $|-|$ is called the \emph{underlying functor} or \emph{forgetful functor}.
+	The $\F[-]$ is called the \emph{free functor}\index{free functor}, specifically it is the \emph{free vector space functor}\index{free vector space functor}.
+	The $|-|$ is called the \emph{underlying functor}\index{underlying functor} or \emph{forgetful functor}\index{forgetful functor}.
 \end{example}
 
 For some set $X$ and any vector space $V$, we can consider the following diagram:
@@ -626,7 +626,7 @@ For some set $X$ and any vector space $V$, we can consider the following diagram
 		\F[X] \arrow[ur, dashed, "\exists ! \bar{\phi}" swap]
 	\end{tikzcd}
 \end{center}
-This is called the \emph{universal property of free vector space over a set}.
+This is called the \emph{universal property of free vector space over a set}\index{universal property of free vector space over a set}.
 Here $\iota : X \to \F[X]$ is the inclusion map, $\phi : X \to V$ is any set map, and $\bar{\phi} : \F[X] \to V$ is the unique linear map induced by $\phi$.
 \begin{remark}
 	The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any vector space $V$, there is a natural identification:
@@ -642,7 +642,7 @@ Here $\iota : X \to \F[X]$ is the inclusion map, $\phi : X \to V$ is any set map
 
 \begin{definition}[Adjoint Functors]
 	Let $\C$ and $\D$ be two categories.
-	A functor $F : \C \to \D$ is called a \emph{left adjoint} of a functor $G : \D \to \C$, and $G$ is called a \emph{right adjoint} of $F$, if there is a natural identification:
+	A functor $F : \C \to \D$ is called a \emph{left adjoint}\index{left adjoint} of a functor $G : \D \to \C$, and $G$ is called a \emph{right adjoint}\index{right adjoint} of $F$, if there is a natural identification:
 	\[
 		\D(F(X), Y) \equiv \C(X, G(Y))
 	\]
@@ -711,11 +711,11 @@ Consider the following two diagrams:
 \end{center}
 The left diagram shows that the free functor sends the product of two sets to the tensor product of two vector spaces.
 The right diagram shows that the free functor sends the coproduct of two sets to the direct sum of two vector spaces, i.e., the coproduct of two vector spaces.
-Note that the tensor product of two vector spaces is \emph{not}\index{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$.
+Note that the tensor product of two vector spaces is \emph{not} the product of two vector spaces, as the dimension of the tensor product is $\dim(V_1 \otimes V_2) = \dim(V_1) \cdot \dim(V_2)$ while the dimension of the product is $\dim(V_1 \oplus V_2) = \dim(V_1) + \dim(V_2)$.
 There is a unique but not isomorphic linear map $\phi : V_1 \otimes V_2 \to V_1 \oplus V_2$.
 \begin{remark}
 	The left adjoint functor preserves coproducts, and the right adjoint functor preserves products.
-	This is the consequences of the \emph{adjoint functor theorem}.
+	This is the consequences of the \emph{adjoint functor theorem}\index{adjoint functor theorem}.
 \end{remark}
 
 Similarly, we have the following natural identifications:
@@ -735,7 +735,7 @@ Then, we have the following adjoint pair of endofunctors on $\Vect_\F$:
 \section{Dual Spaces and Dual Bases}
 
 Let $V$ be a finite dimensional linear space over $\F$.
-The \emph{dual space} of $V$ is the vector space $V^* = \Hom_\F(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}\index{covectors}.
+The \emph{dual space}\index{dual space} of $V$ is the vector space $V^* = \Hom_\F(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}\index{covectors}.
 
 \begin{proposition}
 	Let $V$ be a finite dimensional linear space over $\F$.
@@ -788,7 +788,7 @@ We have to check whether the equation $\sum_{i=1}^n x_i \hat v^i = 0$ for some $
 Applying it to $\vec v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i \hat v^i(\vec v_j) = \sum_{i=1}^n x_i \delta_j^i = x_j$.
 So $x_j = 0$ for all $1 \leq j \leq n$.
 This means that $(\hat v^1, \hat v^2, \cdots, \hat v^n)$ is linearly independent, and hence it is a basis of $V^*$.
-We call it the \emph{dual basis} of the basis $\vec v = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec v^* = (\hat v^1, \hat v^2, \cdots, \hat v^n)$.
+We call it the \emph{dual basis}\index{dual basis} of the basis $\vec v = (v_1, v_2, \cdots, v_n)$ and denote it by $\vec v^* = (\hat v^1, \hat v^2, \cdots, \hat v^n)$.
 
 Then we have to show that there is a unique basis in $V^*$ that satisfies $\hat v^i(\vec v_j) = \delta^i_j$.
 Let $V = \F^n$ and $v = (\vec v_1, \vec v_2, \cdots, \vec v_n)$ be a basis of $V$.
@@ -837,7 +837,7 @@ Finally, we have the natural identification:
 	Here T$_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$.
 	Note that both $\vec u$ and $\nabla f(p)$ are depending on the choice of a coordinate system.
 	However, d$f_p$ is independent of any choice of coordinate system.
-	In normal calculus, d$f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
+	In normal calculus, d$f_p$ is called the \emph{first partial derivative}\index{first partial derivative} of $f$ at point $p$, and normally we write it as $\frac{\partial f}{\partial x}(p)$ and $\frac{\partial f}{\partial y}(p)$.
 \end{example}
 
 The dual functor is not naturally isomorphic to the identity functor on $\Vect_\F$, as $(-)^*$ is a contravariant functor, while the identity is a contravariant functor, so there is no natural transformation from $\id_{\Vect_\F}$ to $(-)^*$.
@@ -940,7 +940,7 @@ The negative sign is used to make the isomorphism a symplectic isomorphism, whic
 
 \begin{definition}[Natural Transformations]
 	Let $F, G : \C \to \D$ be two functors.
-	A \emph{natural transformation} $\eta : F \to G$ is a collection of morphisms $\eta_X : F(X) \to G(X)$ in $\D$ for all objects $X$ in $\C$, such that for all morphisms $f : X \to Y$ in $\C$, the following diagram commutes:
+	A \emph{natural transformation}\index{natural transformation} $\eta : F \to G$ is a collection of morphisms $\eta_X : F(X) \to G(X)$ in $\D$ for all objects $X$ in $\C$, such that for all morphisms $f : X \to Y$ in $\C$, the following diagram commutes:
 	\begin{center}
 		\begin{tikzcd}
 			F(X) \arrow[r, "F(f)"] \arrow[d, "\eta_X" swap] & F(Y) \arrow[d, "\eta_Y"] \\
@@ -950,8 +950,8 @@ The negative sign is used to make the isomorphism a symplectic isomorphism, whic
 \end{definition}
 
 \begin{definition}[Natural Equivalences]
-	A \emph{natural equivalence} from functor $F$ to functor $G$ is a natural transformation $\eta : F \to G$ which has a two-sided inverse natural transformation $\eta^{-1} : G \to F$ such that $\eta \eta^{-1} = 1_G$ and $\eta^{-1} \eta = 1_F$.
-	In this case, we say that $F$ and $G$ are \emph{naturally equivalent}, denoted by $F \equiv G$.
+	A \emph{natural equivalence}\index{natural equivalence} from functor $F$ to functor $G$ is a natural transformation $\eta : F \to G$ which has a two-sided inverse natural transformation $\eta^{-1} : G \to F$ such that $\eta \eta^{-1} = 1_G$ and $\eta^{-1} \eta = 1_F$.
+	In this case, we say that $F$ and $G$ are \emph{naturally equivalent}\index{naturally equivalent}, denoted by $F \equiv G$.
 \end{definition}
 
 \begin{example}
@@ -998,8 +998,8 @@ The negative sign is used to make the isomorphism a symplectic isomorphism, whic
 	Let $\C$ and $\D$ be two abelian categories.
 	A covariant functor $F : \C \to \D$ is called:
 	\begin{itemize}
-		\item \emph{left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to F(A) \to F(B) \to F(C)$ is exact in $\D$, i.e., it preserves all finite limits;
-		\item \emph{right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $F(A) \to F(B) \to F(C) \to 0$ is exact in $\D$, i.e., it preserves all finite colimits;
+		\item \emph{left exact}\index{left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to F(A) \to F(B) \to F(C)$ is exact in $\D$, i.e., it preserves all finite limits;
+		\item \emph{right exact}\index{right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $F(A) \to F(B) \to F(C) \to 0$ is exact in $\D$, i.e., it preserves all finite colimits;
 		\item \emph{exact}\index{exact} if it is both left exact and right exact.
 	\end{itemize}
 \end{definition}
@@ -1008,9 +1008,9 @@ The negative sign is used to make the isomorphism a symplectic isomorphism, whic
 	Let $\C$ and $\D$ be two abelian categories.
 	A contravariant functor $G : \C \to \D$, it is called:
 	\begin{itemize}
-		\item \emph{contravariant left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to G(C) \to G(B) \to G(A)$ is exact in $\D$;
-		\item \emph{contravariant right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $G(C) \to G(B) \to G(A) \to 0$ is exact in $\D$;
-		\item \emph{contravariant exact} if it is both contravariant left exact and contravariant right exact.
+		\item \emph{contravariant left exact}\index{contravariant left exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $0 \to G(C) \to G(B) \to G(A)$ is exact in $\D$;
+		\item \emph{contravariant right exact}\index{contravariant right exact} if whenever $0 \to A \to B \to C \to 0$ is exact then $G(C) \to G(B) \to G(A) \to 0$ is exact in $\D$;
+		\item \emph{contravariant exact}\index{contravariant exact} if it is both contravariant left exact and contravariant right exact.
 	\end{itemize}
 \end{definition}
 
@@ -1047,7 +1047,7 @@ By the universal property of tensor product, we have a natural identification:
 	\Map^\BL(U \times V, Z) \equiv \Hom_\F(U \otimes V, Z)
 \]
 Note that both are naturally identical to $\Hom_\F(U, \Hom_\F(V, Z))$.
-Also note that $\Hom(- \otimes V, Z) \equiv \Hom(-, \Hom(V, Z))$ is a \emph{tensor-hom adjunction}.
+Also note that $\Hom(- \otimes V, Z) \equiv \Hom(-, \Hom(V, Z))$ is a \emph{tensor-hom adjunction}\index{tensor-hom adjunction}.
 
 The natural identification is the universal property of tensor product.
 Consider the following commutative diagram:
@@ -1165,7 +1165,7 @@ Moreover, $\Hom(V_1, V_2 \oplus V_3) \equiv \Hom(V_1, V_2) \oplus \Hom(V_1, V_3)
 \end{remark}
 
 \begin{definition}[Lie Algebras]
-	An algebra is $\mathfrak{g}$ over a field $\F$ is called a \emph{lie algebra} if the \emph{lie bracket} or lie product $[-, -] : \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$ satisfies the following two conditions:
+	An algebra is $\mathfrak{g}$ over a field $\F$ is called a \emph{lie algebra}\index{lie algebra} if the \emph{lie bracket}\index{lie bracket} or lie product $[-, -] : \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}$ satisfies the following two conditions:
 	\begin{itemize}
 		\item Skew-symmetry: $[x, x] = 0$ for all $x \in \mathfrak{g}$, i.e., $[x, y] = -[y, x]$ for all $x, y \in \mathfrak{g}$ if $\chart(\F) \neq 2$;
 		\item Jacobi Identity: $[x, [y, z]] + [y, [z, x]] + [z, [x, y]] = 0$ for all $x, y, z \in \mathfrak{g}$.
@@ -1173,16 +1173,16 @@ Moreover, $\Hom(V_1, V_2 \oplus V_3) \equiv \Hom(V_1, V_2) \oplus \Hom(V_1, V_3)
 \end{definition}
 
 \begin{definition}[Graded Linear Space]
-	A linear space $V_\smallbullet$ over $\F$ is called a \emph{$\Z_{\geq 0}$-graded linear space} or \emph{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \Z_{\geq 0}$:
+	A linear space $V_\smallbullet$ over $\F$ is called a \emph{$\Z_{\geq 0}$-graded linear space} or \emph{graded vector space}\index{graded vector space} if it is a direct sum of linear subspaces $V_n$ for all $n \in \Z_{\geq 0}$:
 	\[
 		V_\smallbullet = \bigoplus_{n = 0}^\infty V_n
 	\]
-	The elements in $V_n$ are called \emph{homogeneous elements} of degree $n$.
+	The elements in $V_n$ are called \emph{homogeneous elements}\index{homogeneous elements} of degree $n$.
 	If $v \in V_n$ is a homogeneous element, we write $\deg(v) = n$.
 \end{definition}
 
 \begin{definition}[Graded Linear Maps]
-	A linear map $\phi : V_\smallbullet \to W_\smallbullet$ is called a \emph{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \Z_{\geq 0}$.
+	A linear map $\phi : V_\smallbullet \to W_\smallbullet$ is called a \emph{graded linear map}\index{graded linear map} with graded degree $k \geq 0$ if $\phi(V_n) \subseteq W_{n + k}$ for all $n \in \Z_{\geq 0}$.
 \end{definition}
 
 \newpage
@@ -1198,7 +1198,7 @@ for all $k \geq 0$.
 Note that $V^{\otimes 0} = \F$.
 Also, $\dim(V^{\otimes k}) = (\dim{V})^k$ for all $k \geq 0$.
 
-We define the \emph{tensor algebra} of $V$ over $\F$, denoted by $\T V$, as follows:
+We define the \emph{tensor algebra}\index{tensor algebra} of $V$ over $\F$, denoted by $\T V$, as follows:
 \[
 	\T V = \bigoplus_{k = 0}^\infty V^{\otimes k} = \F \oplus V \oplus (V \otimes V) \oplus (V \otimes V \otimes V) \oplus \cdots
 \]
@@ -1276,7 +1276,7 @@ where $\T f : \T V \to \T W$ is the unique graded algebra homomorphism with grad
 Here $\iota_V : V \to \T V$ and $\iota_W : W \to \T W$ are the inclusion maps.
 
 The existence of the functor $\T$ follows from the universal property of tensor algebras.
-It is called the \emph{free graded algebra functor}, normally the ``unital'' and ``associative'' will be omitted.
+It is called the \emph{free graded algebra functor}\index{free graded algebra functor}, normally the ``unital'' and ``associative'' will be omitted.
 
 \newpage
 
@@ -1306,12 +1306,12 @@ The following is an example of an ideal in a ring, which is an example of ideal 
 
 \subsection{Symmetric Algebras}
 
-The \emph{symmetric algebra} of a vector space $V$ over a field $\F$, denoted by $\Sym V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $u \otimes v - v \otimes u$ for all $u, v \in V$:
+The \emph{symmetric algebra}\index{symmetric algebra} of a vector space $V$ over a field $\F$, denoted by $\Sym V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $u \otimes v - v \otimes u$ for all $u, v \in V$:
 \[
 	\Sym V = \quotient{\T V}{\ideal_\Sym} = \quotient{\T V}{\langle u \otimes v - v \otimes u \mid u, v \in V \rangle}
 \]
-The $\ideal_\Sym$ is called the \emph{symmetrising ideal} of $\T V$.
-It is actually the \emph{ideal completion} of the relation $u \otimes v = v \otimes u$ for all $u, v \in V$.
+The $\ideal_\Sym$ is called the \emph{symmetrising ideal}\index{symmetrising ideal} of $\T V$.
+It is actually the \emph{ideal completion}\index{ideal completion} of the relation $u \otimes v = v \otimes u$ for all $u, v \in V$.
 We use $\langle - \rangle$ to denote the ideal generated by a set.
 
 Then the elements in $\Sym V$ are equivalence classes of elements in $\T V$.
@@ -1340,20 +1340,20 @@ Consider the following commutative diagram:
 \end{center}
 Here $A^\smallbullet$ is any graded unital commutative associative algebra over $\F$.
 
-Similarly, $\Sym V$ is the \emph{free graded commutative algebra functor} from $\Vect_\F$ to the category of graded unital commutative associative algebras over $\F$, denoted by $\Z_{\geq 0} - \CAlg_\F$:
+Similarly, $\Sym V$ is the \emph{free graded commutative algebra functor}\index{free graded commutative algebra functor} from $\Vect_\F$ to the category of graded unital commutative associative algebras over $\F$, denoted by $\Z_{\geq 0} - \CAlg_\F$:
 
 \subsection{Exterior Algebras}
 
-The \emph{exterior algebra} of a vector space $V$ over a field $\F$, denoted by $\Ext V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $v \otimes v$ for all $v \in V$:
+The \emph{exterior algebra}\index{exterior algebra} of a vector space $V$ over a field $\F$, denoted by $\Ext V$, is defined as the quotient algebra of the tensor algebra $\T V$ by the ideal of $\T V$ generated by elements of the form $v \otimes v$ for all $v \in V$:
 \[
 	\Ext V = \quotient{\T V}{\ideal_\Ext} = \quotient{\T V}{\langle v \otimes v \mid v \in V \rangle} = \quotient{\T V}{\langle v \otimes w + w \otimes v \mid v, w \in V \rangle}
 \]
-The $\ideal_\Ext$ is called the \emph{alternating ideal} of $\T V$.
-It is actually the \emph{ideal completion} of the relation $v \otimes v = 0$ for all $v \in V$, or equivalently $v \otimes w = - w \otimes v$ for all $v, w \in V$.
-Sometimes the exterior algebra is also called the \emph{skew-symmetric algebra}.
+The $\ideal_\Ext$ is called the \emph{alternating ideal}\index{alternating ideal} of $\T V$.
+It is actually the \emph{ideal completion}\index{ideal completion} of the relation $v \otimes v = 0$ for all $v \in V$, or equivalently $v \otimes w = - w \otimes v$ for all $v, w \in V$.
+Sometimes the exterior algebra is also called the \emph{skew-symmetric algebra}\index{skew-symmetric algebra}.
 Note that the characteristic of the field $\F$ should not be $2$, i.e., $\chart(\F) \neq 2$, otherwise $v \otimes w = - w \otimes v$ implies that $v \otimes w = w \otimes v$.
 
-Then the product in $\Ext V$ is called the \emph{exterior product} or \emph{wedge product}, denoted by $\wedge$.
+Then the product in $\Ext V$ is called the \emph{exterior product}\index{exterior product} or \emph{wedge product}\index{wedge product}, denoted by $\wedge$.
 We have $u \wedge v = - v \wedge u$ in $\Ext V$ for all $u, v \in V$.
 So the product in $\Ext V$ is skew-commutative.
 \begin{remark}
@@ -1378,17 +1378,17 @@ Consider the following commutative diagram:
 \end{center}
 Here $A^\smallbullet$ is any graded unital associative skew-commutative algebra over $\F$.
 
-Similarly, $\Ext V$ is the \emph{free graded skew-commutative algebra functor} from $\Vect_\F$ to the category of graded unital associative skew-commutative algebras over $\F$, denoted by $\Z_{\geq 0} - \SAlg_\F$:
+Similarly, $\Ext V$ is the \emph{free graded skew-commutative algebra functor}\index{free graded skew-commutative algebra functor} from $\Vect_\F$ to the category of graded unital associative skew-commutative algebras over $\F$, denoted by $\Z_{\geq 0} - \SAlg_\F$:
 
 \subsection{Universal Enveloping Algebras}
 
 Let $\mathfrak{g}$ be a lie algebra over a field $\F$.
-The \emph{universal enveloping algebra} of $\mathfrak{g}$ over $\F$, denoted by $\Env \mathfrak{g}$, is defined as the quotient algebra of the tensor algebra $\T \mathfrak{g}$ by the ideal of $\T \mathfrak{g}$ generated by elements of the form $x \otimes y - y \otimes x - [x, y]$ for all $x, y \in \mathfrak{g}$:
+The \emph{universal enveloping algebra}\index{universal enveloping algebra} of $\mathfrak{g}$ over $\F$, denoted by $\Env \mathfrak{g}$, is defined as the quotient algebra of the tensor algebra $\T \mathfrak{g}$ by the ideal of $\T \mathfrak{g}$ generated by elements of the form $x \otimes y - y \otimes x - [x, y]$ for all $x, y \in \mathfrak{g}$:
 \[
 	\Env \mathfrak{g} = \quotient{\T \mathfrak{g}}{\ideal_\Env} = \quotient{\T \mathfrak{g}}{\langle x \otimes y - y \otimes x - [x, y] \mid x, y \in \mathfrak{g} \rangle}
 \]
-The $\ideal_\Env$ is called the \emph{lie ideal} of $\T \mathfrak{g}$.
-It is actually the \emph{ideal completion} of the relation $xy - yx = [x, y]$ for all $x, y \in \mathfrak{g}$.
+The $\ideal_\Env$ is called the \emph{lie ideal}\index{lie ideal} of $\T \mathfrak{g}$.
+It is actually the \emph{ideal completion}\index{ideal completion} of the relation $xy - yx = [x, y]$ for all $x, y \in \mathfrak{g}$.
 \begin{remark}
 	However, the universal enveloping algebra is not a graded algebra.
 	As the ideal $\ideal_\Env$ is not a graded ideal.
@@ -1441,7 +1441,7 @@ We have known that the top exterior power ${\bigwedge}^n V$ of an $n$-dimensiona
 So we can define the following:
 
 \begin{definition}[Determinant Lines]
-	The \emph{determinant line} of an $n$-dimensional vector space $V$ over a field $\F$ is defined as the top exterior power of $V$:
+	The \emph{determinant line}\index{determinant line} of an $n$-dimensional vector space $V$ over a field $\F$ is defined as the top exterior power of $V$:
 	\[
 		\det{V} = {\bigwedge}^n V = {\bigwedge}^{\dim{V}} V
 	\]
@@ -1485,7 +1485,7 @@ Then we have:
 	\det A \overset{\text{def}}{=\joinrel=} \det f \overset{\text{def}}{=\joinrel=} \det A'
 \]
 
-In ordinary linear algebra, $A$ and $A'$ are called \emph{similar matrices}, i.e., $A \sim A'$.
+In ordinary linear algebra, $A$ and $A'$ are called \emph{similar matrices}\index{similar matrices}, i.e., $A \sim A'$.
 This means they represent the same endomorphism, so they have the same determinant.
 
 \newpage
@@ -1515,8 +1515,8 @@ Before we derive the explicit formula of determinants, we need to introduce the 
 \end{example}
 
 \begin{definition}[Permutation Groups]
-	A \emph{permutation group} $S_n$ on a set $\underline{n} := \{ 1, 2, \cdots, n \}$ is the group of all bijections from $\underline{n}$ to itself, i.e., $S_n = \Aut(\underline{n})$.
-	It is called the \emph{symmetric group} on $n$ elements.
+	A \emph{permutation group}\index{permutation group} $S_n$ on a set $\underline{n} := \{ 1, 2, \cdots, n \}$ is the group of all bijections from $\underline{n}$ to itself, i.e., $S_n = \Aut(\underline{n})$.
+	It is called the \emph{symmetric group}\index{symmetric group} on $n$ elements.
 	The group operation is the composition of functions.
 \end{definition}
 
@@ -1567,14 +1567,14 @@ In general, the presentation of $S_n$ is:
 	S_n = \langle \sigma_1, \sigma_2, \cdots, \sigma_{n - 1} \mid \sigma_i^2 = 1, \sigma_i \sigma_j = \sigma_j \sigma_i\ (|i - j| > 1), \sigma_i \sigma_{i + 1} \sigma_i = \sigma_{i + 1} \sigma_i \sigma_{i + 1} \rangle
 \]
 
-The last two relations are called the \emph{braid relations}:
+The last two relations are called the \emph{braid relations}\index{braid relations}:
 \begin{itemize}
 	\item \emph{Far commutativity:} $\sigma_i \sigma_j = \sigma_j \sigma_i$ for all $|i - j| > 1$;
 	\item \emph{Braid relation:} $\sigma_i \sigma_{i + 1} \sigma_i = \sigma_{i + 1} \sigma_i \sigma_{i + 1}$.
 \end{itemize}
 
 The permutation group $S_n$ is generated by quotienting the braid group $B_n$ by the relations $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$.
-We call $B_n$ the \emph{braid group} on $n$ strands.
+We call $B_n$ the \emph{braid group}\index{braid group} on $n$ strands.
 A simple way to visualise the braid group is to think about braiding $n$ strands of hair.
 The braid group $B_n$ has the same presentation as $S_n$ except that there is no relation $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$.
 Consider the following diagrams:
@@ -1606,7 +1606,7 @@ Consider the following exact sequence:
 		1 \arrow[r] & A_n \arrow[r, hook] & S_n \arrow[r, "\sgn", two heads] & \{ \pm 1 \} \arrow[r] & 1
 	\end{tikzcd}
 \end{center}
-where $A_n$ is the \emph{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn : S_n \to \{ \pm 1 \}$, the \emph{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$.
+where $A_n$ is the \emph{alternating group}\index{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn : S_n \to \{ \pm 1 \}$, the \emph{sign homomorphism}\index{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$.
 Note that $\ker(\sgn) = A_n$ and $\im{\sgn} = \{ \pm 1 \}$.
 \begin{remark}
 	$A_n$ is simple for all $n \geq 5$.
@@ -1665,7 +1665,7 @@ Then in general, we have:
 	P \wedge Q = (-1)^{pq} Q \wedge P
 \]
 where $P \in {\bigwedge}^p V$ and $Q \in {\bigwedge}^q V$.
-This is called the \emph{graded commutativity} of exterior algebras.
+This is called the \emph{graded commutativity}\index{graded commutativity} of exterior algebras.
 
 \newpage
 
@@ -1801,7 +1801,7 @@ Moreover, the three properties above uniquely determine the determinant function
 	This is because the determinant of a matrix is equal to the determinant of its transpose, which is the matrix part of $\det f^* \equiv \det f$ shown in the previous section.
 \end{remark}
 
-If we drop the last property, then the function is called the \emph{alternating multilinear form}.
+If we drop the last property, then the function is called the \emph{alternating multilinear form}\index{alternating multilinear form}.
 Suppose that $\phi : \M{n \times n}{\F} \to \F$ is an alternating multilinear form, then we have:
 \[
 	\phi(A) = \det A \phi(I_n)
@@ -1937,12 +1937,12 @@ Then we can consider general matrix $A$, for any $j$, we have:
 	& = \sum_{i = 1}^n a_j^i \det [\cdots \quad \vec e_i \quad \cdots] \\
 	& = \sum_{i = 1}^n a_j^i (-1)^{i + j} \det A^i_j
 \end{align*}
-This is called the \emph{cofactor expansion} or \emph{Laplace expansion} along the $j$-th column.
+This is called the \emph{cofactor expansion}\index{cofactor expansion} or \emph{Laplace expansion}\index{Laplace expansion} along the $j$-th column.
 Similarly, we can have the cofactor expansion along the $i$-th row.
 
 Then we have the definition of \emph{adjoint}\index{adjoint} of a matrix.
 \begin{definition}[Adjoint Matrices]
-	An \emph{adjoint matrix} of $A$, denoted by $\adj A$, is defined as the matrix whose $(i,j)$-th entry is $(-1)^{i + j} \det A_i^j$.
+	An \emph{adjoint matrix}\index{adjoint matrix} of $A$, denoted by $\adj A$, is defined as the matrix whose $(i,j)$-th entry is $(-1)^{i + j} \det A_i^j$.
 \end{definition}
 \begin{remark}
 	Beaware of the notation difference between $A_i^j$ and $A^i_j$.
@@ -2079,7 +2079,7 @@ Then we have the following formula:
 \[
 	\det (I + tA) = 1 - \tr A \ t + \left(\frac{(\tr A)^2}{2!} - \frac{\tr A^2}{2}\right) t^2 - \cdots + (-1)^n \det A \ t^n
 \]
-This is called the \emph{Feynman diagram formula}, as it is inspired by Feynman diagrams in quantum field theory.
+This is called the \emph{Feynman diagram formula}\index{Feynman diagram formula}, as it is inspired by Feynman diagrams in quantum field theory.
 From this formula, the determinant can be expressed by traces.
 
 It is hard to remember the coefficients in the formula.

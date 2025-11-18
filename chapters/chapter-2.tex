@@ -12,7 +12,7 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
 
 \begin{definition}[Linear Maps]
 	Let $V$ and $W$ be two linear spaces over a field $\F$.
-	A \emph{linear map} is a set map $T: V \to W$ such that for all $u, v \in V$ and $\alpha \in \F$, the following holds:
+	A \emph{linear map}\index{linear map} is a set map $T: V \to W$ such that for all $u, v \in V$ and $\alpha \in \F$, the following holds:
 	\begin{align*}
 		T(u + v) &= T(u) + T(v) \\
 		T(\alpha u) &= \alpha T(u)
@@ -23,7 +23,7 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
 
 \begin{definition}[Linear Combinations]
 	Let $V$ be a linear space over a field $\F$.
-	A \emph{linear combination} of vectors $v_1, v_2, \cdots, v_n \in V$ is a vector of the form:
+	A \emph{linear combination}\index{linear combination} of vectors $v_1, v_2, \cdots, v_n \in V$ is a vector of the form:
 	\[
 		\alpha^1 v_1 + \alpha^2 v_2 + \cdots + \alpha^n v_n
 	\]
@@ -53,7 +53,7 @@ We can combine the two properties of linear maps into one property.
 
 \begin{proposition}
 	A linear map $T: \F^n \to \F^m$ is a matrix multiplication by a unique $m \times n$ matrix $A$ with entries in $\F$.
-	The matrix $A$ is called the \emph{standard matrix} of the linear map $T$.
+	The matrix $A$ is called the \emph{standard matrix}\index{standard matrix} of the linear map $T$.
 
 	\begin{center}
 		\begin{tikzcd}[column sep=huge, row sep=tiny]
@@ -102,7 +102,7 @@ Therefore, we can write:
 where $i$ is summed from $1$ to $n$.
 
 \begin{definition}[Linear Functional / Homogeneous Linear Function]
-	A linear map $f: \F^n \to \F$ is called a \emph{homogeneous linear function} or a \emph{linear functional} if for all $\alpha \in \F$ and $x \in \F^n$, the following holds:
+	A linear map $f: \F^n \to \F$ is called a \emph{homogeneous linear function}\index{homogeneous linear function} or a \emph{linear functional}\index{linear functional} if for all $\alpha \in \F$ and $x \in \F^n$, the following holds:
 	\[
 		f(\alpha x) = \alpha f(x)
 	\]
@@ -221,7 +221,7 @@ Similar to normal maps, there are injective, surjective and bijective linear map
 		TS = 1_W \quad \text{and} \quad ST = 1_V
 	\]
 	where $1_V: V \to V$ and $1_W: W \to W$ are the identity maps on $V$ and $W$, respectively.
-	In this case, we say that the linear spaces $V$ and $W$ are \emph{isomorphic}\index{isomorphic} or \emph{linear equivalent}, denoted by $V \cong W$.
+	In this case, we say that the linear spaces $V$ and $W$ are \emph{isomorphic}\index{isomorphic} or \emph{linear equivalent}\index{linear equivalent}, denoted by $V \cong W$.
 \end{definition}
 
 \begin{corollary}[Invertible Linear Maps]
@@ -348,13 +348,13 @@ Thus, the matrix multiplication $Bx$ is defined and results in a column matrix i
 
 \begin{definition}[Elementary Row Operations]
 	Let $A$ be an $m \times n$ matrix over a field $\F$.
-	An \emph{elementary row operation} on $A$ is one of the following operations:
+	An \emph{elementary row operation}\index{elementary row operation} on $A$ is one of the following operations:
 	\begin{enumerate}
 		\item Row Interchange: \qquad $R_i \leftrightarrow R_j$.
 		\item Row Multiplication: \quad $R_i \to \alpha R_i$, where $\alpha \in \F \setminus \{0\}$.
 		\item Row Addition: \qquad\quad\ $R_i \to R_i + \alpha R_j$, where $\alpha \in \F$ and $i \neq j$.
 	\end{enumerate}
-	Each elementary row operation can be represented by \emph{left multiplication} of $A$ by an appropriate $m \times m$ matrix over $\F$.
+	Each elementary row operation can be represented by \emph{left multiplication}\index{left multiplication} of $A$ by an appropriate $m \times m$ matrix over $\F$.
 	Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
 
@@ -362,7 +362,7 @@ For easier notations, we introduce the idea of matrix units, which is similar to
 
 \begin{definition}[Matrix Units]
 	Let $m$ and $n$ be two positive integers and $\F$ be a field.
-	The \emph{matrix unit} $E_i^j$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
+	The \emph{matrix unit}\index{matrix unit} $E_i^j$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
 	\[
 		(E_i^j)_k^l = \begin{cases}
 			1 & \text{if } (k,l) = (i,j) \\
@@ -498,12 +498,12 @@ Then we consider the row operations by using the matrix units.
 \section{Dimensions of Vector Spaces}
 
 \begin{definition}[Finite Dimensional Vector Spaces] \label{def:finite_dimensional_vector_space}
-	A linear space $V$ over a field $\F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$.
+	A linear space $V$ over a field $\F$ is said to be \emph{finite dimensional}\index{finite dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$.
 	In this case, we say that the dimension of $V$ is $n$, denoted $\dim_\F V = n$ or simply $\dim V = n$.
 \end{definition}
 
 \begin{definition}[Infinite Dimensional Vector Spaces]
-	A linear space $V$ over a field $\F$ is said to be \emph{infinite dimensional} if $V$ is not finite dimensional.
+	A linear space $V$ over a field $\F$ is said to be \emph{infinite dimensional}\index{infinite dimensional} if $V$ is not finite dimensional.
 \end{definition}
 
 We have to proof if the dimension of a finite dimensional vector space is well-defined.
@@ -543,13 +543,13 @@ Graphically, we have the following commutative diagram:
 
 \begin{definition}[Elementary Column Operations]
 	Let $A$ be an $m \times n$ matrix over a field $\F$.
-	An \emph{elementary column operation} on $A$ is one of the following operations:
+	An \emph{elementary column operation}\index{elementary column operation} on $A$ is one of the following operations:
 	\begin{enumerate}
 		\item Column Interchange: \qquad $C_i \leftrightarrow C_j$.
 		\item Column Multiplication: \quad $C_i \to \alpha C_i$, where $\alpha \in \F \setminus \{0\}$.
 		\item Column Addition: \qquad\quad\ $C_i \to C_i + \alpha C_j$, where $\alpha \in \F$ and $i \neq j$.
 	\end{enumerate}
-	Each elementary column operation can be represented by \emph{right multiplication} of $A$ by an appropriate $n \times n$ matrix over $\F$.
+	Each elementary column operation can be represented by \emph{right multiplication}\index{right multiplication} of $A$ by an appropriate $n \times n$ matrix over $\F$.
 	Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
 
@@ -586,10 +586,10 @@ Thus, we have:
 	The matrix $\begin{bmatrix}
 		I_r & 0 \\
 		0 & 0
-	\end{bmatrix}$ obtained from an $m \times n$ matrix $A$ by a finite sequence of elementary row and column operations on $A$ is called the \emph{canonical form} of $A$.
+	\end{bmatrix}$ obtained from an $m \times n$ matrix $A$ by a finite sequence of elementary row and column operations on $A$ is called the \emph{canonical form}\index{canonical form} of $A$.
 \end{definition}
 \begin{remark}
-	The canonical form of a matrix defined is also called the \emph{Smith Normal Form} or \emph{Normal Form} of a matrix.
+	The canonical form of a matrix defined is also called the \emph{Smith Normal Form}\index{Smith Normal Form} or \emph{Normal Form}\index{Normal Form} of a matrix.
 \end{remark}
 
 \begin{definition}[Rank of a Matrix]

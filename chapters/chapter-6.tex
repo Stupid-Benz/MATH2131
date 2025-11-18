@@ -13,8 +13,8 @@ Before studying Euclidean spaces, we first review tensors and then introduce inn
 Let $V$ be a finite dimensional vector space over a field $\F$.
 Then we have the following definitions.
 
-\begin{definition}[$k$-form]
-	A $k$-\emph{form} on $V$ is a multilinear map:
+\begin{definition}[$k$-forms]
+	A \emph{$k$-form}\index{k-form@$k$-form} on $V$ is a multilinear map:
 	\[
 		\underbrace{V \times V \times \cdots \times V}_{k \text{ times}} \to \F
 	\]
@@ -23,7 +23,7 @@ Then we have the following definitions.
 \end{definition}
 
 More concretely, for 1-form, it is a linear functional on $V$, i.e.~an element in $V^*$.
-It is also called \emph{covector}.
+It is also called \emph{covector}\index{covector}.
 For 2-form, it is a bilinear map on $V$, i.e.~an element in $V^* \otimes V^*$.
 To prove that the set of all 2-forms on $V$ is isomorphic to $V^* \otimes V^*$, we can consider the following diagram:
 \begin{center}
@@ -43,7 +43,7 @@ Moreover, we have the following two special types of 2-forms which are the eleme
 	\]
 	for all $u, v \in V$.
 	It is an element in $\mathcal{S}^2{V^*}$.
-	The 2-form $\omega$ is called \emph{skew-symmetric}, or antisymmetric, if
+	The 2-form $\omega$ is called \emph{skew-symmetric}\index{skew-symmetric}, or antisymmetric, if
 	\[
 		\omega (u, v) = - \omega (v, u)
 	\]
@@ -55,17 +55,17 @@ Then we define the tensor spaces.
 
 \begin{definition}[Tensor Spaces]
 	Let $V$ be a finite dimensional vector space over a field $\F$.
-	The \emph{tensor space of type} $(r, s)$ on $V$ is defined as:
+	The \emph{tensor space of type $(r, s)$ on $V$}\index{tensor space} is defined as:
 	\[
 		\mathcal{T}^{r, s} V = \underbrace{V \otimes V \otimes \cdots \otimes V}_{r \text{ times}} \otimes \underbrace{V^* \otimes V^* \otimes \cdots \otimes V^*}_{s \text{ times}}
 	\]
-	Elements in $\mathcal{T}^{r, s} V$ are called \emph{tensors of type} $(r, s)$ on $V$, which is a mixed type if $r, s \neq 0$.
+	Elements in $\mathcal{T}^{r, s} V$ are called \emph{tensors of type $(r, s)$ on $V$}, which is a mixed type if $r, s \neq 0$.
 \end{definition}
 
-If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{tensor}\index{tensor}.
-If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor} or simply a \emph{form}\index{form}.
+If a tensor of type $(r, 0)$, then it is called a \emph{contravariant tensor}\index{contravariant tensor} or simply a \emph{tensor}\index{tensor}.
+If a tensor of type $(0, s)$, then it is called a \emph{covariant tensor}\index{covariant tensor} or simply a \emph{form}\index{form}.
 For $\mathcal{T}^{0, 0} V$, it is defined as $\F$ itself.
-Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
+Any elements in $\mathcal{T}^{0, 0} V$ are \emph{scalar type}\index{scalar type} tensor on $V$, or simply \emph{scalars}\index{scalars}.
 
 Then we know that $\End(V) \equiv V \otimes V^* \equiv \mathcal{T}^{1, 1} V$.
 Therefore, any endomorphism on $V$ can be viewed as a tensor of type $(1, 1)$ on $V$, represented by $a^i_j$ with respect to a basis $\B_V = \{ \vec v_1, \vec v_2, \cdots, \vec v_n \}$ of $V$.
@@ -224,7 +224,7 @@ Note that an inner product on $V$ is a positive-definite symmetric 2-form on $V$
 	A pseudo inner product on $V$ is a non-degenerate symmetric bilinear form on $V$, i.e., an element $\langle-, -\rangle \in \mathcal{S}^2 V^*$ such that $\langle-, -\rangle_{\musNatural} : V \to V^*$ is isomorphic.
 \end{definition}
 
-Then a real linear space $V$ with an inner product $\langle -, - \rangle$ is called a \emph{Euclidean space}, denoted by $(V, \langle -, - \rangle)$.
+Then a real linear space $V$ with an inner product $\langle -, - \rangle$ is called a \emph{Euclidean space}\index{Euclidean space}, denoted by $(V, \langle -, - \rangle)$.
 
 \begin{definition}[Metric Space]
 	A metric space is a non-empty set $X$ together with a metric structure, i.e., a distance function $d : X \times X \to \R$ that sends $(x, y)$ to $d(x, y)$ such that
@@ -528,7 +528,7 @@ Then we have the matrix equation:
 		0 & 0 & 0 & \langle \vec w_n, \vec x_n \rangle
 	\end{bmatrix}}_{R}
 \]
-which is called the \emph{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries.
+which is called the \emph{QR Decomposition}\index{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries.
 However, normally we denote the orthogonal matrix by $O$ instead of $Q$ and an upper-triangular matrix by $U$ instead of $R$.
 
 \newpage
@@ -625,7 +625,7 @@ To prove this proposition, we would use the result in Hermitian spaces, so we le
 Similar to the definitions in Euclidean spaces, we can define Hermitian forms and Hermitian spaces as follows.
 \begin{definition}[Hermitian Form]
 	Let $V$ be a complex vector space.
-	A \emph{Hermitian form} or \emph{Hermitian product} on $V$ is a map $\langle -, - \rangle : V \times V \to \mathbb{C}$ such that the following properties hold:
+	A \emph{Hermitian form}\index{Hermitian form} or \emph{Hermitian product}\index{Hermitian product} on $V$ is a map $\langle -, - \rangle : V \times V \to \mathbb{C}$ such that the following properties hold:
 	\begin{enumerate}
 		\item \emph{Sesquilinearity:} For all $u, v \in V$ and $\alpha \in \mathbb{C}$, we have:
 		\begin{enumerate}
@@ -643,7 +643,7 @@ Similar to the definitions in Euclidean spaces, we can define Hermitian forms an
 			\langle v, v \rangle \geq 0
 		\]
 	\end{enumerate}
-	When the positive-definiteness property becomes non-degeneracy, i.e., $\langle v, v \rangle = 0$ implies $v = 0$, then the Hermitian form is called a \emph{pseudo Hermitian form}.
+	When the positive-definiteness property becomes non-degeneracy, i.e., $\langle v, v \rangle = 0$ implies $v = 0$, then the Hermitian form is called a \emph{pseudo Hermitian form}\index{pseudo Hermitian form}.
 \end{definition}
 We can also define the norm of a vector $v \in V$ as:
 \[
@@ -678,7 +678,7 @@ Then we have the following examples:
 	\]
 \end{example}
 
-Then a complex linear space $V$ with an Hermitian form $\langle -, - \rangle$ is called a \emph{Hermitian space}.
+Then a complex linear space $V$ with an Hermitian form $\langle -, - \rangle$ is called a \emph{Hermitian space}\index{Hermitian space}.
 Also, the model / standard Hermitian space is $(\mathbb{C}^n, \langle -, - \rangle)$ with the standard Hermitian form, that is, the inner product defined above.
 
 Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
@@ -716,7 +716,7 @@ Also we have the special unitary group $\SU(n)$ as the subgroup of $\Uni(n)$ wit
 
 Then we have the following definition similar to orthogonal matrices:
 \begin{definition}[Unitary Matrix]
-	A matrix $A \in \GL_n(\mathbb{C})$ is called a \emph{unitary matrix} if $A^\dagger A = I_n$, i.e., $A^{-1} = A^\dagger$.
+	A matrix $A \in \GL_n(\mathbb{C})$ is called a \emph{unitary matrix}\index{unitary matrix} if $A^\dagger A = I_n$, i.e., $A^{-1} = A^\dagger$.
 \end{definition}
 Using similar Gram-Schmidt process in Euclidean spaces, we get the following $QR$ decomposition in Hermitian spaces:
 \[
@@ -757,7 +757,7 @@ Take $n = 1$, then $\mathsf{H}_1(\mathbb{C}) = \mathbb{R}$, which is not closed 
 Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
 Then we have the following definitions.
 \begin{definition}[Self-Adjoint Operator]
-	A linear operator $T : V \to V$ is called a \emph{self-adjoint operator} or \emph{Hermitian operator} if:
+	A linear operator $T : V \to V$ is called a \emph{self-adjoint operator}\index{self-adjoint operator} or \emph{Hermitian operator}\index{Hermitian operator} if:
 	\[
 		\langle Tu, v \rangle = \langle u, Tv \rangle
 	\]
@@ -768,7 +768,7 @@ Then we have the following definitions.
 	\]
 \end{definition}
 \begin{definition}[Unitary Operator]
-	A linear operator $U : V \to V$ is called a \emph{unitary operator} if:
+	A linear operator $U : V \to V$ is called a \emph{unitary operator}\index{unitary operator} if:
 	\[
 		\langle Uu, Uv \rangle = \langle u, v \rangle
 	\]

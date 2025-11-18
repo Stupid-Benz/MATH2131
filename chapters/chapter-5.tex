@@ -32,9 +32,9 @@ Generically, we have the following form:
 	\end{bmatrix}
 \]
 where empty places are filled with zeros.
-It is called the \emph{diagonal matrix}.
+It is called the \emph{diagonal matrix}\index{diagonal matrix}.
 Here $\lambda_i$ are the \emph{eigenvalues}\index{eigenvalues} of $T$.
-If such form exists, we say that $T$ is \emph{completely reducible}, or normally say that $T$ is \emph{diagonalisable}\index{diagonalisable}.
+If such form exists, we say that $T$ is \emph{completely reducible}\index{completely reducible}, or normally say that $T$ is \emph{diagonalisable}\index{diagonalisable}.
 If $T$ is not completely reducible, then we have to consider more complicated forms, which will be discussed later.
 
 Then we have the diagram:
@@ -110,7 +110,7 @@ Therefore, we have:
 \[
 	\det (\lambda_i 1_V - T) = 0
 \]
-So the eigenvalues $\lambda_i$ are exactly the roots of the polynomial $\det (\lambda 1_V - T)$, which is called the \emph{characteristic polynomial} of $T$.
+So the eigenvalues $\lambda_i$ are exactly the roots of the polynomial $\det (\lambda 1_V - T)$, which is called the \emph{characteristic polynomial}\index{characteristic polynomial} of $T$.
 Note that $p_T (\lambda) = \det (\lambda 1_V - T)$ is a polynomial of degree $n = \dim V$.
 Similarly, we can define the characteristic polynomial of a matrix $A$ as $p_A (\lambda) = \det (\lambda I_n - A)$.
 
@@ -400,7 +400,7 @@ where $n_i$ is the algebraic multiplicity of eigenvalue $\lambda_i$ and $\dim V_
 In general, we have $n_i \geq \dim V_{\lambda_i}$.
 Then $\{ \lambda_1, \cdots, \lambda_k \}$ is the set of roots of $p_T (\lambda)$ and $V_{\lambda_i} = \ker(\lambda_i 1_V - T)$.
 
-Then for any $T$, if the set of roots of $p_T (\lambda)$ in $\F$ is $\{ \lambda_1, \cdots, \lambda_k \}$, then we can define the \emph{generalised eigenspaces}:
+Then for any $T$, if the set of roots of $p_T (\lambda)$ in $\F$ is $\{ \lambda_1, \cdots, \lambda_k \}$, then we can define the \emph{generalised eigenspaces}\index{generalised eigenspaces}:
 \[
 	V_{\lambda_i} = \ker(\lambda_i 1_V - T) \quad \forall 1 \leq i \leq k
 \]
@@ -413,10 +413,10 @@ So this characterise completely reducible endomorphisms.
 
 \section{Zariski Topology}
 
-Before studying Zariski topology, we first introduce \emph{affine spaces}.
+Before studying Zariski topology, we first introduce \emph{affine spaces}\index{affine spaces}.
 
 \begin{definition}[Affine Spaces]
-	A set $\A$ is called an \emph{affine space} over a field $\F$ if it is a principal $(\F^n, +)$-set, i.e.~there is a free and transitive action of the additive group $(\F^n, +)$ on $\A$:
+	A set $\A$ is called an \emph{affine space}\index{affine space} over a field $\F$ if it is a principal $(\F^n, +)$-set, i.e.~there is a free and transitive action of the additive group $(\F^n, +)$ on $\A$:
 	\[
 		+ : \A \times \F^n \to \A, \quad (P, \vec v) \mapsto P + \vec v
 	\]
@@ -443,10 +443,10 @@ Then we introduce what topology is.
 		\item the union of any collection of sets in $\tau$ is also in $\tau$;
 		\item the intersection of any finite number of sets in $\tau$ is also in $\tau$.
 	\end{enumerate}
-	The pair $(X, \tau)$ is called a \emph{topological space}.
-	Each set in $\tau$ is called an \emph{open set} in $X$.
+	The pair $(X, \tau)$ is called a \emph{topological space}\index{topological space}.
+	Each set in $\tau$ is called an \emph{open set}\index{open set} in $X$.
 \end{definition}
-We can define \emph{closed sets} in $X$ as the complements of open sets in $X$.
+We can define \emph{closed sets}\index{closed set} in $X$ as the complements of open sets in $X$.
 Then we have the following equivalent definition of topology.
 \begin{definition}[Topology (Closed Set Version)]
 	Let $X$ be a set.
@@ -456,19 +456,19 @@ Then we have the following equivalent definition of topology.
 		\item the intersection of any collection of sets in $\tau$ is also in $\tau$;
 		\item the union of any finite number of sets in $\tau$ is also in $\tau$.
 	\end{enumerate}
-	The pair $(X, \tau)$ is called a \emph{topological space}.
-	Each set in $\tau$ is called an \emph{closed set} in $X$.
+	The pair $(X, \tau)$ is called a \emph{topological space}\index{topological space}.
+	Each set in $\tau$ is called an \emph{closed set}\index{closed set} in $X$.
 \end{definition}
 
 Then Zariski topology is defined as follows.
 \begin{definition}[Zariski Topology]
 	Let $\A$ be an affine space over a field $\F$.
-	The \emph{Zariski topology} on $\A$ is defined by taking the closed sets to be the zero loci of sets of polynomials in $\F[x_1, \cdots, x_n]$.
+	The \emph{Zariski topology}\index{Zariski topology} on $\A$ is defined by taking the closed sets to be the zero loci of sets of polynomials in $\F[x_1, \cdots, x_n]$.
 	More precisely, for any set of polynomials $S \subseteq \F[x_1, \cdots, x_n]$, the corresponding closed set is:
 	\[
 		V(S) = \{ P \in \A : f(P) = 0 \quad \forall f \in S \} = \bigcap_\alpha \{ f_\alpha = 0 \}
 	\]
-	The pair $(\A, \tau_{Zar})$ is called a \emph{Zariski topological space}, where $\tau_{Zar}$ is the Zariski topology on $\A$.
+	The pair $(\A, \tau_{Zar})$ is called a \emph{Zariski topological space}\index{Zariski topological space}, where $\tau_{Zar}$ is the Zariski topology on $\A$.
 \end{definition}
 
 Then the $A \in \F^{n^2} \equiv \A_\F^{n^2}$ can be viewed as a point in the affine space $\A_\F^{n^2}$ over $\F$.
@@ -526,7 +526,7 @@ Before studying the canonical forms of not completely reducible endormorphisms, 
 \end{example}
 
 \begin{definition}[Principal Ideal Domain]
-	A \emph{principal ideal domain} (PID) is a domain $R$ such that every ideal of $R$ is of the form $(a) = aR$ for some $a \in R$.
+	A \emph{principal ideal domain}\index{principal ideal domain} (PID) is a domain $R$ such that every ideal of $R$ is of the form $(a) = aR$ for some $a \in R$.
 \end{definition}
 
 \begin{example}
@@ -539,7 +539,7 @@ Before studying the canonical forms of not completely reducible endormorphisms, 
 \end{example}
 
 \begin{definition}[Finitely Generated Module]
-	A module $M$ over a ring $R$ is called \emph{finitely generated} if $M$ is the span of a finite set of elements in $M$, i.e., $M = \langle m_1, m_2, \cdots, m_k \rangle$ for some $m_1, m_2, \cdots, m_k \in M$.
+	A module $M$ over a ring $R$ is called \emph{finitely generated}\index{finitely generated} if $M$ is the span of a finite set of elements in $M$, i.e., $M = \langle m_1, m_2, \cdots, m_k \rangle$ for some $m_1, m_2, \cdots, m_k \in M$.
 	It may not be unique.
 \end{definition}
 
@@ -668,7 +668,7 @@ We can switch the order of basis elements in $\B_i$ to get the following equival
 		& & & & \lambda_i
 	\end{bmatrix}
 \]
-This is called a \emph{Jordan block} of size $e_i$ with eigenvalue $\lambda_i$.
+This is called a \emph{Jordan block}\index{Jordan block} of size $e_i$ with eigenvalue $\lambda_i$.
 
 Then the matrix representation of $T$ on $V$ with respect to the basis $\B = \B_1 \cup \B_2 \cup \cdots \cup \B_m$ is:
 \[

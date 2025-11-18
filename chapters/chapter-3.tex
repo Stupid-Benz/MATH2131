@@ -11,7 +11,7 @@
 Here, we discuss linear spaces with more in depth terms.
 
 \begin{definition}[Linear Subspaces]
-	Let $W$ be a linear space over $\F$ and $V$ is a subset of $W$, denoted as $V \subset W$. $V$ is a \emph{linear subspace} of $W$ if $V$, with $+$ and $\cdot$ inherited from those of $W$, is a linear space.
+	Let $W$ be a linear space over $\F$ and $V$ is a subset of $W$, denoted as $V \subset W$. $V$ is a \emph{linear subspace}\index{linear subspace} of $W$ if $V$, with $+$ and $\cdot$ inherited from those of $W$, is a linear space.
 \end{definition}
 
 \begin{proposition}
@@ -96,7 +96,7 @@ However, we have the following proposition.
 
 \begin{definition}[Linear Span]
 	Let $V$ be a linear space over a field $\F$ and $S \subset V$.
-	The \emph{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\Span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
+	The \emph{linear span}\index{linear span} of $S$, denoted by $\Span_\F (S)$ or simply $\Span S$ or $\bar{S}$ or $\langle S \rangle$, is defined as the completion of $S$ inside $V$ under linear combinations.
 \end{definition}
 
 \begin{corollary}
@@ -122,7 +122,7 @@ However, we have the following proposition.
 
 \begin{definition}[Linear Independences] \label{def:linear_independence}
 	Let $W$ be a linear space over a field $\F$ and $V_1, \cdots, V_k$ be subspaces of $W$.
-	The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^k v_i = 0_W$, then $v_i = 0_W$ for all $i$.
+	The subspaces $V_1, \cdots, V_k$ are said to be \emph{linearly independent}\index{linearly independent} if $V_i \neq \{0_W\}$ for all $i$ and there is one and only one way to split $0_W \in W$ as a sum of vectors from each $V_i$, i.e., if $v_i \in V_i$ for all $i$ and $\sum_{i=1}^k v_i = 0_W$, then $v_i = 0_W$ for all $i$.
 \end{definition}
 
 Vectors $v_1, v_2, \cdots, v_k \in W$ are said to be independent if the subspaces $\Span(v_1)$, $\Span(v_2)$, $\cdots$, $\Span(v_k)$ are linearly independent.
@@ -144,12 +144,12 @@ Is there any properties for spanning if the set spans the whole codomain?
 
 \begin{definition}[Linearly Independent Sets]
 	Let $V$ be a linear space over a field $\F$.
-	A subset $S \subseteq V$ is said to be a \emph{linearly independent set} of vectors in $V$ if no elements in $S$ can be expressed as a linear combination of the finitely many other elements in $S$.
+	A subset $S \subseteq V$ is said to be a \emph{linearly independent set}\index{linearly independent set} of vectors in $V$ if no elements in $S$ can be expressed as a linear combination of the finitely many other elements in $S$.
 \end{definition}
 
 \begin{definition}[Spanning Sets]
 	Let $V$ be a linear space over a field $\F$.
-	A subset $S \subseteq V$ is said to be a \emph{spanning set} of $V$ if $\Span(S) = V$.
+	A subset $S \subseteq V$ is said to be a \emph{spanning set}\index{spanning set} of $V$ if $\Span(S) = V$.
 \end{definition}
 
 \begin{example}
@@ -181,7 +181,7 @@ Is there any properties for spanning if the set spans the whole codomain?
 
 \begin{definition}[Minimal Spanning Sets]
 	Let $V$ be a linear space over a field $\F$.
-	A spanning set $S \subseteq V$ is said to be a \emph{minimal spanning set} of $V$ if no proper subset of $S$ is a spanning set of $V$, i.e., $S' \subset S \implies \Span(S') \subset \Span(S) = V$ where $\Span(S') \neq V$.
+	A spanning set $S \subseteq V$ is said to be a \emph{minimal spanning set}\index{minimal spanning set} of $V$ if no proper subset of $S$ is a spanning set of $V$, i.e., $S' \subset S \implies \Span(S') \subset \Span(S) = V$ where $\Span(S') \neq V$.
 \end{definition}
 
 The following is also the equivalence definition of linearly independent sets, spanning sets and minimal spanning sets.
@@ -244,7 +244,7 @@ However, before introducing quotient space, we have to understand what group act
 
 \begin{definition}[Group Actions]
 	Let $G$ be a group and $X$ be a set.
-	A \emph{left group action} of $G$ on $X$ is a map $\cdot : G \times X \to X$, $(g, x) \mapsto g \cdot x$, such that for all $g_1, g_2 \in G$ and $x \in X$, the following properties hold:
+	A \emph{left group action}\index{left group action} of $G$ on $X$ is a map $\cdot : G \times X \to X$, $(g, x) \mapsto g \cdot x$, such that for all $g_1, g_2 \in G$ and $x \in X$, the following properties hold:
 	\begin{enumerate}
 		\item Compatibility: $(g_1 g_2) \cdot x = g_1 \cdot (g_2 \cdot x)$.
 		\item Identity: $e \cdot x = x$ where $e$ is the identity element of $G$.
@@ -336,7 +336,7 @@ This group action defines the following equivalence relation on $W$, where $V$ i
 
 \begin{definition}[Quotient Spaces]
 	Let $W$ be a linear space over a field $\F$ and $V$ be a subspace of $W$.
-	The \emph{quotient space} of $W$ by $V$, denoted by $\quotient{W}{V}$, is defined as the set of orbits of the group action of $V$ on $W$, or the set of $V$-equivalence classes in $W$ with the equivalence relation defined above, i.e.,
+	The \emph{quotient space}\index{quotient space} of $W$ by $V$, denoted by $\quotient{W}{V}$, is defined as the set of orbits of the group action of $V$ on $W$, or the set of $V$-equivalence classes in $W$ with the equivalence relation defined above, i.e.,
 	\[
 		\quotient{W}{V} = \{ V \cdot w \mid w \in W \} = \{ w + V \mid w \in W \}
 	\]
@@ -344,7 +344,7 @@ This group action defines the following equivalence relation on $W$, where $V$ i
 \end{definition}
 
 \begin{definition}[Quotient Map]
-	The natural surjective map $\pi : W \to \quotient{W}{V}$ defined by $\pi(w) = w + V$ for all $w \in W$ is called the \emph{quotient map} or \emph{projection map}.
+	The natural surjective map $\pi : W \to \quotient{W}{V}$ defined by $\pi(w) = w + V$ for all $w \in W$ is called the \emph{quotient map}\index{quotient map} or \emph{projection map}\index{projection map}.
 	Note that $w + V$ can be written as $\bar{w}$ or $[w]$.
 \end{definition}
 
@@ -597,18 +597,18 @@ Generally, we may consider the following commutative diagrams, where left is the
 	$V_1 + V_2 = \Span(V_1 \cup V_2)$.
 \end{proposition}
 
-Recall the definition of linear independence (Definition~\ref{def:linear_independence}): $V_1$ and $V_2$ are said to be \emph{linearly independent} if $V_1$ and $V_2$ are non-trivial and $x_1 + x_2 = 0$ for $x_i \in V_i$ implies that $x_1 = x_2 = 0$.
+Recall the definition of linear independence (Definition~\ref{def:linear_independence}): $V_1$ and $V_2$ are said to be \emph{linearly independent}\index{linearly independent} if $V_1$ and $V_2$ are non-trivial and $x_1 + x_2 = 0$ for $x_i \in V_i$ implies that $x_1 = x_2 = 0$.
 
 We have the following definition for weakly linear independence.
 \begin{definition}[Weak Linear Independence]
-	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. $V_1$ and $V_2$ are said to be \emph{weakly linearly independent} if $x_1 + x_2 = 0$ for $x_1 \in V_1$ and $x_2 \in V_2$ implies that $x_1 = x_2 = 0$.
+	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$. $V_1$ and $V_2$ are said to be \emph{weakly linearly independent}\index{weakly linearly independent} if $x_1 + x_2 = 0$ for $x_1 \in V_1$ and $x_2 \in V_2$ implies that $x_1 = x_2 = 0$.
 	Note that $V_1$ or $V_2$ can be trivial.
 \end{definition}
 
 Then the definition of direct sum is as follows.
 \begin{definition}[Direct Sum of Subspaces]
 	Let $V_1$ and $V_2$ be two subspaces of a linear space $W$ over a field $\F$.
-	The \emph{direct sum} of $V_1$ and $V_2$, denoted by $V_1 \oplus V_2$, is defined as the sum $V_1 + V_2$ when $V_1$ and $V_2$ are weakly linearly independent, i.e.,
+	The \emph{direct sum}\index{direct sum} of $V_1$ and $V_2$, denoted by $V_1 \oplus V_2$, is defined as the sum $V_1 + V_2$ when $V_1$ and $V_2$ are weakly linearly independent, i.e.,
 	\[
 		V_1 \oplus V_2 = V_1 + V_2
 	\]
@@ -689,7 +689,7 @@ It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite s
 	\[ \im{f_{i-1}} = \ker(f_i) \]
 	i.e., the image of the map before $V_i$ is equal to the kernel of the map after $V_i$.
 
-	The sequence is said to be an \emph{exact sequence} if it is exact at every $V_i$.
+	The sequence is said to be an \emph{exact sequence}\index{exact sequence} if it is exact at every $V_i$.
 \end{definition}
 
 \begin{example}
@@ -894,7 +894,7 @@ Then we consider the following diagram:
 
 In normal linear algebra, we have four fundamental concepts: column space, null space, rank and nullity.
 \begin{definition}[Column Space]
-	The \emph{column space} of $A$, denoted by $\col(A)$, is defined as the image of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
+	The \emph{column space}\index{column space} of $A$, denoted by $\col(A)$, is defined as the image of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
 	\[
 		\col(A) = \im{f} = \{ Ax \mid x \in \F^n \} \subseteq \F^m
 	\]
@@ -903,7 +903,7 @@ In normal linear algebra, we have four fundamental concepts: column space, null 
 \newpage
 
 \begin{definition}[Null Space]
-	The \emph{null space} of $A$, denoted by $\nul(A)$, is defined as the kernel of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
+	The \emph{null space}\index{null space} of $A$, denoted by $\nul(A)$, is defined as the kernel of the linear map $f : \F^n \to \F^m$ defined by $f(x) = Ax$, i.e.,
 	\[
 		\nul(A) = \ker(f) = \{ x \in \F^n \mid Ax = 0 \} \subseteq \F^n
 	\]
@@ -1104,7 +1104,7 @@ Here, each column is an exact sequence, and the square in the middle is commutat
 Moreover, the $f'$, the universal property for quotient map, is a linear equivalence.
 It is injective due to the trivial $\ker(f')$.
 
-$s_1$ and $s_2$ are the \emph{right inverses} or called \emph{sections}\index{sections}.
+$s_1$ and $s_2$ are the \emph{right inverses}\index{right inverses} or called \emph{sections}\index{sections}.
 
 With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 = \im{s_1} \oplus \ker(f)$ and $V_2 = \im{f} \oplus \im{s_2}$, the linear map $f$ is decomposed as follows:
 \begin{center}
@@ -1190,8 +1190,8 @@ For any set map $\phi : X \to Z$, there exists a unique linear map $\tilde{\phi}
 	Existence of $\tilde{\phi}$ is also proved.
 \end{proof}
 
-Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an element $\sum \alpha_x \delta_x \in F[X]$, where the sum is finite and $\alpha_x \in \F$, is naturally identified with $\sum \alpha_x x$, which is called a \emph{formal linear combination} of elements in $X$.
-Hereafter, we always use this natural identification, so $\F[X]$ is now defined as \emph{the set of formal linear combinations of elements in the set $X$}.
+Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an element $\sum \alpha_x \delta_x \in F[X]$, where the sum is finite and $\alpha_x \in \F$, is naturally identified with $\sum \alpha_x x$, which is called a \emph{formal linear combination}\index{formal linear combination} of elements in $X$.
+Hereafter, we always use this natural identification, so $\F[X]$ is now defined as \emph{the set of formal linear combinations of elements in the set $X$}\index{the set of formal linear combinations of elements in the set $X$}.
 Then $\iota : X \to \F[X]$ is just the inclusion map : $x \mapsto x$.
 
 The universal map is unique in the following sense: suppose that $\iota' : X \to \F[X]'$ is another inclusion map, then there is a unique linear equivalence $\lambda$ in the commutative triangle:
