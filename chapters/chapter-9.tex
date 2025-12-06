@@ -38,9 +38,9 @@ Then we claim that any invertible matrix $A$ can be uniquely decomposed as $A = 
 	\]
 	and
 	\[
-		\vec{z}^\dagger A^\dagger A \vec{z} = (A \vec{z})^\dagger (A \vec{z}) > 0 \implies \| P \vec{z} \| \geq 0
+		\vec z^\dagger A^\dagger A \vec z = (A \vec z)^\dagger (A \vec z) > 0 \implies \| P \vec z \| \geq 0
 	\]
-	for all $\vec{z}$ and equal to 0 if and only if $\vec{z} = 0$ as $A \in \GL_n(\mathbb{C})$.
+	for all $\vec z$ and equal to 0 if and only if $\vec z = 0$ as $A \in \GL_n(\mathbb{C})$.
 	Therefore, $P$ and $A^\dagger A$ are positive Hermitian.
 	Then we know that $A^\dagger A = U' D U'^\dagger$ where $U' \in \Uni(n)$ and $D$ is a diagonal matrix with positive real numbers on the diagonal.
 	Then we have $P = U' \sqrt{D} U'^\dagger$.
@@ -72,14 +72,14 @@ We consider the following commutative diagram:
 		(\nul{A})^\perp \oplus \nul{A} \arrow[d, "\cong"'] \arrow[r, "A"] & \col{A} \oplus (\col{A})^\perp \arrow[d, "\cong"] \\
 		\mathbb{C}^r \oplus \mathbb{C}^{n-r} \arrow[d, "\cong"'] & \mathbb{C}^r \oplus \mathbb{C}^{m-r} \arrow[d, "\cong"] \\
 		\mathbb{C}^n \arrow[r, "A'"] & \mathbb{C}^m \\[-3.6em]
-		\Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \} & \Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}
+		\Span\{ \vec e_1, \cdots, \vec e_r \} \oplus \Span\{ \vec e_{r+1}, \cdots, \vec e_n \} & \Span\{ \vec e_1, \cdots, \vec e_r \} \oplus \Span\{ \vec e_{r+1}, \cdots, \vec e_m \}
 	\end{tikzcd}
 \end{center}
 where $A' = \begin{bmatrix}
 	\overline{A} & 0 \\
 	0 & 0
 \end{bmatrix}$ with $\overline{A} \in \GL_r(\mathbb{C})$.
-Moreover, the direct sum in $(\nul{A})^\perp \oplus \nul{A}$ and $\col{A} \oplus (\col{A})^\perp$ are orthogonal direct sums; the direct sum in $\mathbb{C}^r \oplus \mathbb{C}^{n-r}$ and $\mathbb{C}^r \oplus \mathbb{C}^{m-r}$ are external direct sums; the direct sum in $\Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \}$ and $\Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}$ are internal direct sums.
+Moreover, the direct sum in $(\nul{A})^\perp \oplus \nul{A}$ and $\col{A} \oplus (\col{A})^\perp$ are orthogonal direct sums; the direct sum in $\mathbb{C}^r \oplus \mathbb{C}^{n-r}$ and $\mathbb{C}^r \oplus \mathbb{C}^{m-r}$ are external direct sums; the direct sum in $\Span\{ \vec e_1, \cdots, \vec e_r \} \oplus \Span\{ \vec e_{r+1}, \cdots, \vec e_n \}$ and $\Span\{ \vec e_1, \cdots, \vec e_r \} \oplus \Span\{ \vec e_{r+1}, \cdots, \vec e_m \}$ are internal direct sums.
 Note that all the isomorphisms in the diagram are of Hermitian spaces.
 Then we may simplify the diagram as follows:
 \begin{center}
@@ -153,7 +153,7 @@ $V = U_1^\dagger \begin{bmatrix}
 	\[
 		\mathbb{C}^n = \bigoplus_{\alpha=1}^l E_{\vec{\lambda_\alpha}}
 	\]
-	such that for all $\vec{z} \in E_{\vec{\lambda_\alpha}}$ and $A_i \vec{z} = \lambda_\alpha(i) \vec{z}$ for all $1 \leq i \leq k$.
+	such that for all $\vec z \in E_{\vec{\lambda_\alpha}}$ and $A_i \vec z = \lambda_\alpha(i) \vec z$ for all $1 \leq i \leq k$.
 	In particular, there is a unitary matrix $U \in \Uni(n)$ such that:
 	\[
 		A_i = U D_i U^\dagger, \quad D_i = \begin{bmatrix}
@@ -170,16 +170,16 @@ $V = U_1^\dagger \begin{bmatrix}
 	Then we have $A_1$ acts on $\mathbb{C}^n = E_{\lambda_1} (A_1) \oplus E_{\lambda_2} (A_1) \oplus \cdots \oplus E_{\lambda_k} (A_1)$ where $\lambda_1, \lambda_2, \cdots, \lambda_k$ are the distinct eigenvalues of $A_1$.
 	Then we also consider $A_2$ acts on $\mathbb{C}^n$.
 	We have the following claim: The action of $A_2$ on $\mathbb{C}^n$ leaves each eigenspace of $A_1$ invariant.
-	For any $\vec{z} \in E_{\lambda_i} (A_1)$, we have:
+	For any $\vec z \in E_{\lambda_i} (A_1)$, we have:
 	\[
-		A_1 (A_2 \vec{z}) = A_2 (A_1 \vec{z}) = A_2 (\lambda_i \vec{z}) = \lambda_i (A_2 \vec{z})
+		A_1 (A_2 \vec z) = A_2 (A_1 \vec z) = A_2 (\lambda_i \vec z) = \lambda_i (A_2 \vec z)
 	\]
-	Hence, $A_2 \vec{z} \in E_{\lambda_i} (A_1)$.
+	Hence, $A_2 \vec z \in E_{\lambda_i} (A_1)$.
 	Then, we have $A_2 = A_2^1 \oplus A_2^2 \oplus \cdots \oplus A_2^k$.
 	We claim that each $A_2^i$ is Hermitian on $E_{\lambda_i} (A_1)$.
-	For any $\vec{x}, \vec{y} \in E_{\lambda_i} (A_1)$, we have:
+	For any $\vec x, \vec y \in E_{\lambda_i} (A_1)$, we have:
 	\[
-		\langle \vec{x}, A_2^i \vec{y} \rangle = \langle \vec{x}, A_2 \vec{y} \rangle = \langle A_2 \vec{x}, \vec{y} \rangle = \langle A_2^i \vec{x}, \vec{y} \rangle
+		\langle \vec x, A_2^i \vec y \rangle = \langle \vec x, A_2 \vec y \rangle = \langle A_2 \vec x, \vec y \rangle = \langle A_2^i \vec x, \vec y \rangle
 	\]
 	So, $A_2^i$ is diagonalisable on $E_{\lambda_i} (A_1)$ with an orthonormal eigenbasis and distinct eigenvalues $\mu_j$.
 	Therefore, we have:
@@ -274,10 +274,10 @@ An affine space of dimension $n$ over $\F$, $\A$, is a principal $(\F^n, +)$-set
 	\[
 		\begin{split}
 			(\F^n, +) \times \F^n &\to \F^n \\
-			(\vec{v}, \vec{x}) &\mapsto \vec{v} + \vec{x}
+			(\vec v, \vec x) &\mapsto \vec v + \vec x
 		\end{split}
 	\]
-	For any $\vec{x}, \vec{y} \in \F^n$, there is a unique $\vec{v} = \vec{y} - \vec{x} \in \F^n$ such that $\vec{v} + \vec{x} = \vec{y}$.
+	For any $\vec x, \vec y \in \F^n$, there is a unique $\vec v = \vec y - \vec x \in \F^n$ such that $\vec v + \vec x = \vec y$.
 	Therefore, the action is transitive and free.
 \end{example}
 
@@ -293,10 +293,10 @@ Then the group action is:
 \[
 	\begin{split}
 		(\F^n, +) \times \A_\F^n &\to \A_\F^n \\
-		(\vec{v}, \vec{x}) &\mapsto \vec{v} + \vec{x} := (v_1 + x_1, \cdots, v_n + x_n)
+		(\vec v, \vec x) &\mapsto \vec v + \vec x := (v_1 + x_1, \cdots, v_n + x_n)
 	\end{split}
 \]
-for all $\vec{v} = (v_1, \cdots, v_n) \in \F^n$ and $\vec{x} = (x_1, \cdots, x_n) \in \A_\F^n$.
+for all $\vec v = (v_1, \cdots, v_n) \in \F^n$ and $\vec x = (x_1, \cdots, x_n) \in \A_\F^n$.
 Moreover, up to isomorphism, there is only one affine space of dimension $n$ over $\F$.
 
 Similarly, we have the following conversion table:
@@ -362,10 +362,10 @@ For the representation of the affine map, we have the following commutative diag
 		\A_1 \arrow[d] \arrow[r, "\phi"] & \A_2 \arrow[d] \\
 		\A_\F^n \arrow[d] \arrow[r] & \A_\F^m \arrow[d] \\
 		\F^n \arrow[r, "A"] & \F^m \\[-3.6em]
-		\vec{x} = x - 0 \arrow[r, mapsto] & A\vec{x} + \vec{b}
+		\vec x = x - 0 \arrow[r, mapsto] & A\vec x + \vec b
 	\end{tikzcd}
 \end{center}
-where $A \in \M{m \times n}{\F}$ and $\vec{b} \in \F^m$.
+where $A \in \M{m \times n}{\F}$ and $\vec b \in \F^m$.
 Note that the representation of $\phi$ depends on the choice of origins in $\A_1$ and $\A_2$.
 
 A Euclidean space is a finite dimensional real affine space with a Euclidean structure on its tangent space.
@@ -373,7 +373,7 @@ The Euclidean structure means the translation invariant assignment of inner prod
 Let $\A$ be an $n$-dimensional real affine space.
 Take $p \in \A$.
 Then the pointed affine space $(\A, p)$ is isomorphic to the vector space $\mathcal{T}_p \A$.
-Moreover, it is equivalent to $\R^n$ with the standard inner product, and $q \in (\A, p)$ corresponds to the vector $\vec{v} = q - p \in \R^n$.
+Moreover, it is equivalent to $\R^n$ with the standard inner product, and $q \in (\A, p)$ corresponds to the vector $\vec v = q - p \in \R^n$.
 Then we have:
 \[
 	\alpha_1 q_1 + \alpha_2 q_2 = p + \alpha_1 (q_1 - p) + \alpha_2 (q_2 - p)
@@ -390,12 +390,12 @@ Then the translation invariant means that the length and angle remains unchanged
 		\fill (0.5,0.5,1) coordinate(P') circle (1pt) node[left] {$p'$};
 		\draw[->] (P') -- ($(P') + (0,1.5,0)$) coordinate (Q') node[above] {$q'$};
 		\draw[->] (P') -- ($(P') + (1.5,0,0)$) coordinate (R') node[below] {$r'$};
-		\draw[dashed, ->, red] (Q) -- (Q') node[midway, above] {$\vec{v}$};
-		\draw[dashed, ->, red] (R) -- (R') node[midway, below] {$\vec{v}$};
+		\draw[dashed, ->, red] (Q) -- (Q') node[midway, above] {$\vec v$};
+		\draw[dashed, ->, red] (R) -- (R') node[midway, below] {$\vec v$};
 	\end{tikzpicture}
 \end{center}
-Then $q = q' + \vec{v}$ and $r = r' + \vec{v}$.
-Note that $\mathcal{T}_p \A$ is different from $\mathcal{T}_{p'} \A$ as they are tangent spaces at different points, but they are isomorphic via translation by $\vec{v}$.
+Then $q = q' + \vec v$ and $r = r' + \vec v$.
+Note that $\mathcal{T}_p \A$ is different from $\mathcal{T}_{p'} \A$ as they are tangent spaces at different points, but they are isomorphic via translation by $\vec v$.
 We may consider the tangent line on the circle at different points as an example.
 
 Up to isomorphism, there is only one Euclidean space of dimension $n$, denoted by $\mathbb{E}^n := (\A_\R^n, \langle \cdot, \cdot \rangle)$ where $\langle \cdot, \cdot \rangle$ is:
@@ -418,8 +418,8 @@ Then we have the following commutative diagram:
 We have two space-time affine space in Physics, namely Minkowski and Galilean.
 
 The Minkowski space-time $\mathbb{M}$ is a 4-dimensional real affine space $\A_\R^4$ with a Lorentz structure.
-Take a point $p \in \A_\R^4$ and $u = (u_0, \vec{u}), v = (v_0, \vec{v}) \in \R^4$.
-Then the Lorentzian inner product is $\langle u, v \rangle_p = u_0 v_0 - \vec{u} \cdot \vec{v}$.
+Take a point $p \in \A_\R^4$ and $u = (u_0, \vec u), v = (v_0, \vec v) \in \R^4$.
+Then the Lorentzian inner product is $\langle u, v \rangle_p = u_0 v_0 - \vec u \cdot \vec v$.
 
 The Galilean space-time $\mathbb{G}$ is a 4-dimensional real affine space $\A_\R^4$ with a Galilean structure.
 It is the Minkowski space-time taking the limit of light speed $c \to \infty$.
