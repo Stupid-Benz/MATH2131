@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="main" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+    <texify>
+      <compiler>PDFLATEX</compiler>
+      <compiler-path />
+      <pdf-viewer>SumatraPDF</pdf-viewer>
+      <require-focus>true</require-focus>
+      <viewer-command />
+      <compiler-arguments />
+      <envs />
+      <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+      <before-run-command />
+      <main-file>$PROJECT_DIR$/main.tex</main-file>
+      <output-path>{projectDir}/out</output-path>
+      <auxil-path>{projectDir}/out</auxil-path>
+      <compile-twice>false</compile-twice>
+      <output-format>PDF</output-format>
+      <latex-distribution>MIKTEX</latex-distribution>
+      <has-been-run>false</has-been-run>
+      <bib-run-config>[]</bib-run-config>
+      <makeindex-run-config>[]</makeindex-run-config>
+    </texify>
+    <method v="2" />
+  </configuration>
+</component>
