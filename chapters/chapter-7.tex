@@ -263,15 +263,18 @@ The proof is left as an exercise.
 
 \section{Spectral Theorem}
 
-The canonical matrix representation of self-adjoint operator is a real diagonal matrix, and the canonical matrix representation of unitary operator is a diagonal matrix with entries on the unit circle in the complex plane. This is stated in the following spectral theorem.
+The canonical matrix representation of self-adjoint operator is a real diagonal matrix, and the canonical matrix representation of unitary operator is a diagonal matrix with entries on the unit circle in the complex plane.
+This is stated in the following spectral theorem.
 
 \begin{theorem}[Spectral Theorem]
-	A Hermitian or unitary operator $T$ on a Hermitian space $V$ is ``diagonalisable'' by a unitary matrix in the following sense: Choose an orthonormal basis of $V$ such that $T$ is represented by a Hermitian matrix $A$. Then there is a unitary matrix $U$ and a diagonal matrix $D$ such that:
+	A Hermitian or unitary operator $T$ on a Hermitian space $V$ is ``diagonalisable'' by a unitary matrix in the following sense: Choose an orthonormal basis of $V$ such that $T$ is represented by a Hermitian matrix $A$.
+	Then there is a unitary matrix $U$ and a diagonal matrix $D$ such that:
 	\[
 		A = U D U^{-1} = U D U^\dagger
 	\]
 \end{theorem}
-Note that the diagonal entries of $D$ are all real numbers if $T$ is Hermitian, and the diagonal entries of $D$ are all complex numbers with modulus $1$ if $T$ is unitary. Moreover, $D$ is the cononical form of $T$, i.e., there exists a set of distinct complex eigenvalues $\{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$ and a set of non-trivial complex linear subspaces $\{ V_{\lambda_1}, V_{\lambda_2}, \cdots, V_{\lambda_k} \}$ such that:
+Note that the diagonal entries of $D$ are all real numbers if $T$ is Hermitian, and the diagonal entries of $D$ are all complex numbers with modulus $1$ if $T$ is unitary.
+Moreover, $D$ is the cononical form of $T$, i.e., there exists a set of distinct complex eigenvalues $\{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$ and a set of non-trivial complex linear subspaces $\{ V_{\lambda_1}, V_{\lambda_2}, \cdots, V_{\lambda_k} \}$ such that:
 \[
 	V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \cdots \oplus V_{\lambda_k}
 \]
@@ -280,18 +283,29 @@ with respect to which $T$ has the decomposition:
 	T = \lambda_1 1_{V_{\lambda_1}} + \lambda_2 1_{V_{\lambda_2}} + \cdots + \lambda_k 1_{V_{\lambda_k}}
 \]
 
-If $U$ is a unitary matrix, then the columns of $U$ form an orthonormal basis of $\mathbb{C}^n$. Moreover, the columns of $U$ are eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$. As $\mathbb{C}^n = \bigoplus_i E_{\lambda_i} (A)$, where $\lambda_i$ are the eigenvalues of $A$, we have found an orthonormal basis consisting of eigenvectors of $A$.
+If $U$ is a unitary matrix, then the columns of $U$ form an orthonormal basis of $\mathbb{C}^n$.
+Moreover, the columns of $U$ are eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$.
+As $\mathbb{C}^n = \bigoplus_i E_{\lambda_i} (A)$, where $\lambda_i$ are the eigenvalues of $A$, we have found an orthonormal basis consisting of eigenvectors of $A$.
 
-If $V$ is a complex linear space, then $V$ is a real linear space with dimension doubled and we write $V_\R$ for the underlying real linear space of $V$. Then we losed some information from $V$ to $V_\R$. Then we add an extra structure $\J : V_\R \to V_\R$ defined by $\J(v) = iv$ for all $v \in V$. Then we have $\J^2 = -1_{V_\R}$. Such a structure is called an \emph{complex structure} on $V_\R$. Moreover, we have the following commutative diagram:
+If $V$ is a complex linear space, then $V$ is a real linear space with dimension doubled and we write $V_\R$ for the underlying real linear space of $V$.
+Then we losed some information from $V$ to $V_\R$.
+Then we add an extra structure $\J : V_\R \to V_\R$ defined by $\J(v) = iv$ for all $v \in V$.
+Then we have $\J^2 = -1_{V_\R}$.
+Such a structure is called an \emph{complex structure} on $V_\R$.
+Moreover, we have the following commutative diagram:
 \begin{center}
 	\begin{tikzcd}
 		\mathbb{C} \times V \arrow[r, "\text{complex scalar mult.}"] & V \\
 		\mathbb{R} \times V_\R \arrow[u, "\iota \times \text{id}", hook] \arrow[ur, "\text{real scalar mult.}"']
 	\end{tikzcd}
 \end{center}
-For example, we can write $(a + bi) v = a v + b \J(v)$ for all $a + bi \in \mathbb{C}$ and $v \in V$. Note that as $(\det \J)^2 = (-1)^{\dim_\R V}$, we have $\dim_\R V$ is even. The dimension doubled as we consider $v = (v_1, v_2, \cdots, v_n) \in V$ as $v_\R = (v_1, v_2, \cdots, v_n, \J v_1, \J v_2, \cdots, \J v_n) \in V_\R$.
+For example, we can write $(a + bi) v = a v + b \J(v)$ for all $a + bi \in \mathbb{C}$ and $v \in V$.
+Note that as $(\det \J)^2 = (-1)^{\dim_\R V}$, we have $\dim_\R V$ is even.
+The dimension doubled as we consider $v = (v_1, v_2, \cdots, v_n) \in V$ as $v_\R = (v_1, v_2, \cdots, v_n, \J v_1, \J v_2, \cdots, \J v_n) \in V_\R$.
 
-Then we can do the reverse process. Let $W$ be a real linear space. The complexification of $W$, denoted by $W_\mathbb{C}$, is defined to be the following complex linear space:
+Then we can do the reverse process.
+Let $W$ be a real linear space.
+The complexification of $W$, denoted by $W_\mathbb{C}$, is defined to be the following complex linear space:
 \[
 	W \otimes_\R \mathbb{C}
 \]
@@ -302,7 +316,8 @@ Then we have the following natural identification:
 		w &\mapsto w \otimes_\R 1
 	\end{split}
 \]
-Then $W$ is a real linear subspace of $W_\mathbb{C}$. Note that $\dim_\mathbb{C} W_\mathbb{C} = \dim_\R W$.
+Then $W$ is a real linear subspace of $W_\mathbb{C}$.
+Note that $\dim_\mathbb{C} W_\mathbb{C} = \dim_\R W$.
 
 There are two corollories of the spectral theorem as follows.
 \begin{corollary}
@@ -314,11 +329,18 @@ There are two corollories of the spectral theorem as follows.
 \begin{proof}
 	\textbf{The proof is just a draft and needs to be polished.} % TODO: Polish the proof.
 
-	Let $A$ be a real symmetric matrix. Then we can consider $A$ as a Hermitian matrix over $\mathbb{C}$. By the spectral theorem, there exists a unitary matrix $U$ and a diagonal matrix $D$ such that:
+	Let $A$ be a real symmetric matrix.
+	Then we can consider $A$ as a Hermitian matrix over $\mathbb{C}$.
+	By the spectral theorem, there exists a unitary matrix $U$ and a diagonal matrix $D$ such that:
 	\[
 		A = U D U^\dagger
 	\]
-	where the entries of $D$ are all real numbers as $A$ is Hermitian. Then $D$ is also a real diagonal matrix. Given that $A$ is a real matrix and $D$ is a real diagonal matrix, then the eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$ can be chosen to be real vectors. Therefore, we can choose $U$ to be a real matrix. Moreover, as $U$ is unitary and real, we have $U$ is orthogonal. This completes the proof.
+	where the entries of $D$ are all real numbers as $A$ is Hermitian.
+	Then $D$ is also a real diagonal matrix.
+	Given that $A$ is a real matrix and $D$ is a real diagonal matrix, then the eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$ can be chosen to be real vectors.
+	Therefore, we can choose $U$ to be a real matrix.
+	Moreover, as $U$ is unitary and real, we have $U$ is orthogonal.
+	This completes the proof.
 \end{proof}
 
 \begin{corollary}
@@ -342,7 +364,8 @@ There are two corollories of the spectral theorem as follows.
 \end{corollary}
 
 \begin{corollary}
-	The matrix representation $H$ of the Hermitian form on a complex vector space $V$ with respect to a basis $v$ is a Hermitian matrix. Moreover, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
+	The matrix representation $H$ of the Hermitian form on a complex vector space $V$ with respect to a basis $v$ is a Hermitian matrix.
+	Moreover, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
 	\[
 		H = U D U^\dagger
 	\]
@@ -366,7 +389,9 @@ There are two corollories of the spectral theorem as follows.
 		\mu_1 & & \\
 		& \ddots & \\
 		& & \mu_s
-	\end{bmatrix}$ with $\lambda_i, \mu_j > 0$ for all $i, j$. The pair $(r, s)$ is called the \emph{signature} of the Hermitian form. We can further decompose the Hermitian form as:
+	\end{bmatrix}$ with $\lambda_i, \mu_j > 0$ for all $i, j$.
+	The pair $(r, s)$ is called the \emph{signature} of the Hermitian form.
+	We can further decompose the Hermitian form as:
 	\[
 		D = \begin{bmatrix}
 			\sqrt{\lambda} \\
@@ -401,26 +426,32 @@ There are two corollories of the spectral theorem as follows.
 In summary,
 \begin{itemize}
 	\item Any Hermitian form on a complex vector space can be represented by a Hermitian matrix.
-	\item The canonical representation of Hermitian form is $I_{r, s}$ up to a unitary change of basis. If the Hermitian form is positive-definite, then the canonical representation is $I_n$.
+	\item The canonical representation of Hermitian form is $I_{r, s}$ up to a unitary change of basis.
+	If the Hermitian form is positive-definite, then the canonical representation is $I_n$.
 	\item Any symmetric 2-form $\omega$ on a real vector space can be represented by a real symmetric matrix.
 	\item The canonical representation of symmetric 2-form is $\begin{bmatrix}
 		I_{r} & \\
 		& -I_{s} \\
 		& & 0
-	\end{bmatrix}$ up to an orthogonal change of basis. If the symmetric 2-form is positive-definite, then the canonical representation is $I_n$.
+	\end{bmatrix}$ up to an orthogonal change of basis.
+	If the symmetric 2-form is positive-definite, then the canonical representation is $I_n$.
 	\item The canonical representation of pseudo inner product is $\begin{bmatrix}
 		I_{p} & \\
 		& -I_{q}
-	\end{bmatrix}$ up to an orthogonal change of basis, with $n = p + q$. Then we call $(p, q)$ the signature of the pseudo inner product.
-	\item $V$ is a real vector space of dimension $n$. Then up to isomorphism, there are $n + 1$ different pseudo inner products on $V$, corresponding to the signatures $(n, 0), (n - 1, 1), \cdots, (1, n - 1), (0, n)$.
-	\item Any pseudo inner product $V$ is isomorphic to $(\R^n , I_{p,q}) = \R^{p,q}$. As we send $(x, y) \to x_1 y_1 + \cdots + x_p y_p - x_{p+1} y_{p+1} - \cdots - x_n y_n$.
+	\end{bmatrix}$ up to an orthogonal change of basis, with $n = p + q$.
+	Then we call $(p, q)$ the signature of the pseudo inner product.
+	\item $V$ is a real vector space of dimension $n$.
+	Then up to isomorphism, there are $n + 1$ different pseudo inner products on $V$, corresponding to the signatures $(n, 0), (n - 1, 1), \cdots, (1, n - 1), (0, n)$.
+	\item Any pseudo inner product $V$ is isomorphic to $(\R^n , I_{p,q}) = \R^{p,q}$.
+	As we send $(x, y) \to x_1 y_1 + \cdots + x_p y_p - x_{p+1} y_{p+1} - \cdots - x_n y_n$.
 \end{itemize}
 
 The set of inner products on a real vector space $V$ of dimension $n$ is isomorphic to the orbit space of the right action of group $\Orth(n)$ on $\GL_n(\R)$ $\GL_n(\R) / \Orth(n)$, where $\Orth(n)$ is the orthogonal group of order $n$.
 \[
 	\GL_n(\R) \times \Orth(n) \to \GL_n(\R), \quad (X, g) \mapsto X \cdot g
 \]
-As $\GL_n(\R)$ and $\Orth(n)$ have the same homotopy type, the orbit space $\GL_n(\R) / \Orth(n)$ is trivially contractible. We may consider the following example:
+As $\GL_n(\R)$ and $\Orth(n)$ have the same homotopy type, the orbit space $\GL_n(\R) / \Orth(n)$ is trivially contractible.
+We may consider the following example:
 \[
 	\GL_1(\R) = \R^\times \quad \Orth(1) = \{ -1, 1 \}
 \]
@@ -429,9 +460,11 @@ Then we have:
 	\GL_1(\R) / \Orth(1) \cong \R_{> 0}
 \]
 
-Similarly, the set of Hermitian forms on a complex vector space $V$ of dimension $n$ is isomorphic to the orbit space $\GL_n(\mathbb{C}) / \Uni(n)$, where $\Uni(n)$ is the unitary group of order $n$. Again, it is contractible.
+Similarly, the set of Hermitian forms on a complex vector space $V$ of dimension $n$ is isomorphic to the orbit space $\GL_n(\mathbb{C}) / \Uni(n)$, where $\Uni(n)$ is the unitary group of order $n$.
+Again, it is contractible.
 
-We have a simple introduction to the Lorentz inner product on $\R^4$. It sends $(x, y) \in \R^4 \times \R^4$ to $x \cdot y = x_0 y_0 - \vec{x} \cdot \vec{y}$, where $x = \begin{bmatrix}
+We have a simple introduction to the Lorentz inner product on $\R^4$.
+It sends $(x, y) \in \R^4 \times \R^4$ to $x \cdot y = x_0 y_0 - \vec{x} \cdot \vec{y}$, where $x = \begin{bmatrix}
 	x_0 \\
 	\vec{x}
 \end{bmatrix}$ and $y = \begin{bmatrix}
