@@ -1,0 +1,440 @@
+%----------------------------------------------------------------------------------------
+%	CHAPTER 7
+%----------------------------------------------------------------------------------------
+
+\chapter{Hermitian Spaces}
+
+\epigraph{``In Mathematics, one of the great ideas is anytime you are interested in vector space over real numbers, but real number is not as nice as complex numbers. So you should turn the problem into complex case, then use the result there to do it in real case.''}{Guowu Meng}
+
+\section{Hermitian Forms and Unitary Groups}
+
+\subsection{Hermitian Forms}
+
+Similar to the definitions in Euclidean spaces, we can define Hermitian forms and Hermitian spaces as follows.
+\begin{definition}[Hermitian Form]
+	Let $V$ be a complex vector space.
+	A \emph{Hermitian form}\index{Hermitian form} or \emph{Hermitian product}\index{Hermitian product} on $V$ is a map $\langle -, - \rangle : V \times V \to \mathbb{C}$ such that the following properties hold:
+	\begin{enumerate}
+		\item \emph{Sesquilinearity:} For all $u, v \in V$ and $\alpha \in \mathbb{C}$, we have:
+		\begin{enumerate}
+			\item Biadditivity
+			\item $\langle u, \alpha v \rangle = \alpha \langle u, v \rangle$
+			\item $\langle \alpha u, v \rangle = \overline{\alpha} \langle u, v \rangle$
+		\end{enumerate}
+		\item \emph{Conjugate Symmetry:} For all $u, v \in V$, we have:
+		\[
+			\langle u, v \rangle = \overline{\langle v, u \rangle} = \langle u, v \rangle^\dagger
+		\]
+		The dagger symbol $\dagger$ is defined as $\langle u, v \rangle^\dagger = \overline{\langle v, u \rangle}$.
+		\item \emph{Positive-Definiteness:} For all $v \in V$, we have:
+		\[
+			\langle v, v \rangle \geq 0
+		\]
+	\end{enumerate}
+	When the positive-definiteness property becomes non-degeneracy, i.e., $\langle v, v \rangle = 0$ implies $v = 0$, then the Hermitian form is called a \emph{pseudo Hermitian form}\index{pseudo Hermitian form}.
+\end{definition}
+We can also define the norm of a vector $v \in V$ as:
+\[
+	\| v \| = \sqrt{\langle v, v \rangle}
+\]
+The other four properties of norm is the same as in Euclidean spaces.
+Moreover the Cauchy-Schwarz inequality is as follows:
+\[
+	|\langle u, v \rangle| \leq \| u \| \| v \|
+\]
+for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly dependent.
+The proof is left as an exercise.
+% TODO: Add proof of Cauchy-Schwarz inequality in Hermitian spaces.
+
+The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $\overline{V} \times V \to \mathbb{C}$, where $\overline{V}$ is the complex conjugate vector space of $V$, or linear map $\overline{V} \otimes V \to \mathbb{C}$.
+The complex conjuage vector space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
+\[
+	\mathbb{C} \times \overline{V} \to \overline{V}, \quad (\alpha, v) \mapsto \overline{\alpha} v
+\]
+
+Then we have the following examples:
+\begin{example}
+	We define the standard Hermitian form on $\mathbb{C}^n$ as:
+	\[
+		\langle \vec u, \vec v \rangle = \vec u^\dagger \vec v = \overline{\vec u}^T \vec v
+	\]
+	for all $\vec u, \vec v \in \mathbb{C}^n$.
+	It is straightforward to verify that it satisfies all the properties of Hermitian forms.
+	For example, the positive-definiteness property holds since:
+	\[
+		\vec u^\dagger \vec u = \sum_{i = 1}^n \overline{u_i} u_i = \sum_{i = 1}^n |u_i|^2 \geq 0
+	\]
+\end{example}
+
+Then a complex linear space $V$ with an Hermitian form $\langle -, - \rangle$ is called a \emph{Hermitian space}\index{Hermitian space}.
+Also, the model / standard Hermitian space is $(\mathbb{C}^n, \langle -, - \rangle)$ with the standard Hermitian form, that is, the inner product defined above.
+
+Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
+Then we say $u, v \in V$ are orthogonal if $\langle u, v \rangle = 0$.
+Similar to the Euclidean case, we can define orthogonal complement, orthogonal projection, orthonormal basis, and Gram-Schmidt process in Hermitian spaces.
+We also have the decomposition $V = W^\perp \oplus W$ for any subspace $W \subseteq V$.
+
+Similarly, there is only one Hermitian space up to isomorphism with dimension $n$, that is, $(\mathbb{C}^n, \langle -, - \rangle)$ with the standard Hermitian form, i.e., for any Hermitian space $V$ with dimension $n$, there exists a linear isometric isomorphism between $V$ and $(\mathbb{C}^n, \langle -, - \rangle)$.
+
+\subsection{Unitary Groups}
+
+Similar to the orthogonal groups in Euclidean spaces, we can define unitary groups in Hermitian spaces as the automorphism groups that respect the Hermitian structure.
+Then we have
+\[
+	\Uni(n) = \{ A \in \GL_n(\mathbb{C}) \mid A^\dagger A = I \}
+\]
+where $A^\dagger = \overline{A}^T$ is the conjugate transpose of $A$.
+Note that $\det(A^\dagger) = \overline{\det(A)}$.
+Therefore, we have $|\det(A)|^2 = 1$ for all $A \in \Uni(V)$, i.e., $|\det(A)| = 1$.
+This means $\Uni(1) = \{ z \in \mathbb{C} \mid |z| = 1 \}$ is the unit circle in the complex plane.
+Graphically we have:
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick, -latex] (-3, 0) -- (3, 0) node[right] {Re};
+		\draw[thick, -latex] (0, -3) -- (0, 3) node[above] {Im};
+		\draw[thick] (0, 0) circle(2cm);
+		\filldraw[fill=red] (2, 0) circle(2pt) node[below right] {1};
+		\filldraw[fill=red] (-2, 0) circle(2pt) node[below left] {-1};
+	\end{tikzpicture}
+\end{center}
+where the unit circle represents $\Uni(1)$ in the complex plane.
+Also in orthogonal group, the determinant of any orthogonal matrix is either $1$ or $-1$.
+This is the special case of unitary group when the entries are real numbers.
+Also we have the special unitary group $\SU(n)$ as the subgroup of $\Uni(n)$ with determinant $1$.
+
+Then we have the following definition similar to orthogonal matrices:
+\begin{definition}[Unitary Matrix]
+	A matrix $A \in \GL_n(\mathbb{C})$ is called a \emph{unitary matrix}\index{unitary matrix} if $A^\dagger A = I_n$, i.e., $A^{-1} = A^\dagger$.
+\end{definition}
+Using similar Gram-Schmidt process in Euclidean spaces, we get the following $QR$ decomposition in Hermitian spaces:
+\[
+	A = QR
+\]
+where $Q$ is a unitary matrix and $R$ is an upper-triangular matrix with positive real diagonal entries.
+However, normally we denote the unitary matrix by $U$ instead of $Q$.
+One reason why others use $QR$ instead is to distinguish the same notation on unitary and upper-triangular matrices in Hermitian spaces and orthogonal and upper-triangular matrices in Euclidean spaces.
+
+\subsection{Matrix representation of Hermitian forms}
+
+Then we have the matrix representation of Hermitian forms as follows.
+
+Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
+Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$.
+Then we have
+\[
+	\omega = [\langle v_i, v_j \rangle]
+\]
+Note that $\omega$ is a Hermitian matrix, i.e., $\omega^\dagger = \omega$.
+Then we claim that if $A$ and $\tilde A$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\tilde v$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
+\[
+	\tilde A = P^\dagger A P
+\]
+where $P$ is the change-of-basis matrix from $v$ to $\tilde v$.
+Or equivalently,
+\[
+	\mathsf{H}_n(\mathbb{C}) \times \GL_n(\mathbb{C}) \to \mathsf{H}_n(\mathbb{C}), \quad (A, P) \mapsto P^\dagger A P
+\]
+where $\mathsf{H}_n(\mathbb{C})$ is the real linear space of Hermitian matrix of order $n$.
+The reason why it is real, as it is not closed under multiplication by complex numbers.
+Take $n = 1$, then $\mathsf{H}_1(\mathbb{C}) = \mathbb{R}$, which is not closed under multiplication by complex numbers.
+
+\newpage
+
+\section{Self-Adjoint Operators and Unitary Operators}
+
+Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$.
+Then we have the following definitions.
+\begin{definition}[Self-Adjoint Operator]
+	A linear operator $T : V \to V$ is called a \emph{self-adjoint operator}\index{self-adjoint operator} or \emph{Hermitian operator}\index{Hermitian operator} if:
+	\[
+		\langle Tu, v \rangle = \langle u, Tv \rangle
+	\]
+	for all $u, v \in V$.
+	Or equivalently, $T = T^\dagger$, where $T^\dagger$ is the adjoint operator of $T$ defined as the unique operator satisfying:
+	\[
+		\langle Tu, v \rangle = \langle u, T^\dagger v \rangle
+	\]
+\end{definition}
+\begin{definition}[Unitary Operator]
+	A linear operator $U : V \to V$ is called a \emph{unitary operator}\index{unitary operator} if:
+	\[
+		\langle Uu, Uv \rangle = \langle u, v \rangle
+	\]
+	for all $u, v \in V$.
+	Or equivalently, $U^\dagger = U^{-1}$.
+\end{definition}
+\begin{definition}[Normal Operator]
+    A linear operator $N : V \to V$ is called a \emph{normal operator} if:
+    \[
+        N^\dagger N = N N^\dagger
+    \]
+\end{definition}
+
+\begin{proposition}
+	For $T : V \to W$ a linear operator between two Hermitian spaces $V$ and $W$, there also exists a unique adjoint operator $T^\dagger : W \to V$ satisfying:
+	\[
+		\langle Tu, w \rangle_W = \langle u, T^\dagger w \rangle_V
+	\]
+\end{proposition}
+\begin{proof}
+	We can reduce the problem to $\mathbb{C}^n$ and $\mathbb{C}^m$ with standard Hermitian forms by choosing orthonormal bases of $V$ and $W$.
+	Then we have $T$ represented by a matrix $A \in \M{m \times n}{\mathbb{C}}$.
+	Then we propose there is a matrix $B \in \M{n \times m}{\mathbb{C}}$ such that for all $\vec e_i \in \mathbb{C}^n$ and $\vec f_j \in \mathbb{C}^m$, we have:
+	\[
+		\langle A\vec e_i, \vec f_j \rangle = (A\vec e_i)^\dagger \vec f_j = \vec e_i^\dagger A^\dagger \vec f_j = \vec e_i^T A^\dagger \vec f_j
+	\]
+	which is the $(i, j)$-th entry of $A^\dagger$.
+	On the other hand, we have:
+	\[
+		\langle \vec e_i, B\vec f_j \rangle = \vec e_i^\dagger (B\vec f_j) = \vec e_i^T B \vec f_j
+	\]
+	which is the $(i, j)$-th entry of $B$.
+	Therefore, we have $B = A^\dagger$.
+	This proves the existence of the adjoint operator.
+	The uniqueness is straightforward.
+\end{proof}
+
+\begin{proposition}
+	Let $T$ be a self-adjoint operator on a Hermitian space $V$.
+	Then we have the following properties:
+	\begin{enumerate}
+		\item All eigenvalues of $T$ are real numbers.
+		\item Eigenspaces of $T$ are mutually orthogonal, i.e., if $u$ and $v$ are eigenvectors of $T$ corresponding to distinct eigenvalues, then $\langle u, v \rangle = 0$.
+		\item $V$ is the direct sum of the eigenspaces of $T$.
+	\end{enumerate}
+	So $T$ is completely reducible.
+\end{proposition}
+\begin{proof}
+	Given that $T^\dagger = T$, we have:
+	\begin{enumerate}
+		\item Let $\lambda \neq 0$ be an eigenvalue of $T$, so there exists a non-zero eigenvector $v$ such that $Tv = \lambda v$.
+		Then we have:
+		\[
+			\langle Tv, v \rangle = \langle v, T^\dagger v \rangle = \langle v, Tv \rangle
+		\]
+		which implies that:
+		\[
+			\lambda \langle v, v \rangle = \overline{\lambda} \langle v, v \rangle
+		\]
+		Since $v \neq 0$, we have $\langle v, v \rangle > 0$.
+		Therefore, we have $\lambda = \overline{\lambda}$, i.e., $\lambda$ is a real number.
+		\item Let $\lambda_1$ and $\lambda_2$ be two distinct eigenvalues of $T$ with corresponding eigenvectors $v_1$ and $v_2$.
+		Then we have:
+		\[
+			\langle Tv_1, v_2 \rangle = \langle v_1, T^\dagger v_2 \rangle
+		\]
+		which implies that:
+		\[
+			\lambda_1 \langle v_1, v_2 \rangle = \overline{\lambda_2} \langle v_1, v_2 \rangle
+		\]
+		Since $\lambda_1 \neq \lambda_2$, we have $\langle v_1, v_2 \rangle = 0$.
+		\item We know that $V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$.
+		To show the equality, we let $W = V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$.
+		Since $T$ is self-adjoint, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$.
+		As for all $w \in W$ and $w^\perp \in W^\perp$, we have:
+		\[
+			\langle T w^\perp, w \rangle = \langle w^\perp, T^\dagger w \rangle = \langle w^\perp, T w \rangle = 0
+		\]
+		where $T w \in W$ since $W$ is $T$-invariant.
+		Then we propose that $W^\perp = \{ 0 \}$.
+		If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\tilde T : W^\perp \to W^\perp$ defined by $\tilde T(w^\perp) = T(w^\perp)$.
+		Then $\tilde T w^\perp = \lambda w^\perp$ and $\tilde T w^\perp = T w^\perp$ by definition.
+		So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$.
+		Say $\lambda = \lambda_1$.
+		Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$.
+		Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Let $T$ be a unitary operator on a Hermitian space $V$.
+	Then we have the following properties:
+	\begin{enumerate}
+		\item All eigenvalues of $T$ are complex numbers with absolute value $1$.
+		\item Eigenspaces of $T$ are mutually orthogonal, i.e., if $u$ and $v$ are eigenvectors of $T$ corresponding to distinct eigenvalues, then $\langle u, v \rangle = 0$.
+		\item $V$ is the direct sum of the eigenspaces of $T$.
+	\end{enumerate}
+	So $T$ is completely reducible.
+\end{proposition}
+The proof is left as an exercise.
+% TODO: Add proof
+
+\newpage
+
+\section{Spectral Theorem}
+
+The canonical matrix representation of self-adjoint operator is a real diagonal matrix, and the canonical matrix representation of unitary operator is a diagonal matrix with entries on the unit circle in the complex plane. This is stated in the following spectral theorem.
+
+\begin{theorem}[Spectral Theorem]
+    A Hermitian or unitary operator $T$ on a Hermitian space $V$ is ``diagonalisable'' by a unitary matrix in the following sense: Choose an orthonormal basis of $V$ such that $T$ is represented by a Hermitian matrix $A$. Then there is a unitary matrix $U$ and a diagonal matrix $D$ such that:
+    \[
+        A = U D U^{-1} = U D U^\dagger
+    \]
+\end{theorem}
+Note that the diagonal entries of $D$ are all real numbers if $T$ is Hermitian, and the diagonal entries of $D$ are all complex numbers with modulus $1$ if $T$ is unitary. Moreover, $D$ is the cononical form of $T$, i.e., there exists a set of distinct complex eigenvalues $\{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$ and a set of non-trivial complex linear subspaces $\{ V_{\lambda_1}, V_{\lambda_2}, \cdots, V_{\lambda_k} \}$ such that:
+\[
+    V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \cdots \oplus V_{\lambda_k}
+\]
+with respect to which $T$ has the decomposition:
+\[
+    T = \lambda_1 1_{V_{\lambda_1}} + \lambda_2 1_{V_{\lambda_2}} + \cdots + \lambda_k 1_{V_{\lambda_k}}
+\]
+
+If $U$ is a unitary matrix, then the columns of $U$ form an orthonormal basis of $\mathbb{C}^n$. Moreover, the columns of $U$ are eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$. As $\mathbb{C}^n = \bigoplus_i E_{\lambda_i} (A)$, where $\lambda_i$ are the eigenvalues of $A$, we have found an orthonormal basis consisting of eigenvectors of $A$.
+
+If $V$ is a complex linear space, then $V$ is a real linear space with dimension doubled and we write $V_\R$ for the underlying real linear space of $V$. Then we losed some information from $V$ to $V_\R$. Then we add an extra structure $\J : V_\R \to V_\R$ defined by $\J(v) = iv$ for all $v \in V$. Then we have $\J^2 = -1_{V_\R}$. Such a structure is called an \emph{complex structure} on $V_\R$. Moreover, we have the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        \mathbb{C} \times V \arrow[r, "\text{complex scalar mult.}"] & V \\
+        \mathbb{R} \times V_\R \arrow[u, "\iota \times \text{id}", hook] \arrow[ur, "\text{real scalar mult.}"']
+    \end{tikzcd}
+\end{center}
+For example, we can write $(a + bi) v = a v + b \J(v)$ for all $a + bi \in \mathbb{C}$ and $v \in V$. Note that as $(\det \J)^2 = (-1)^{\dim_\R V}$, we have $\dim_\R V$ is even. The dimension doubled as we consider $v = (v_1, v_2, \cdots, v_n) \in V$ as $v_\R = (v_1, v_2, \cdots, v_n, \J v_1, \J v_2, \cdots, \J v_n) \in V_\R$.
+
+Then we can do the reverse process. Let $W$ be a real linear space. The complexification of $W$, denoted by $W_\mathbb{C}$, is defined to be the following complex linear space:
+\[
+    W \otimes_\R \mathbb{C}
+\]
+Then we have the following natural identification:
+\[
+    \begin{split}
+        W &\subseteq W \otimes_\R \mathbb{C} = W_\mathbb{C} \\
+        w &\mapsto w \otimes_\R 1
+    \end{split}
+\]
+Then $W$ is a real linear subspace of $W_\mathbb{C}$. Note that $\dim_\mathbb{C} W_\mathbb{C} = \dim_\R W$.
+
+There are two corollories of the spectral theorem as follows.
+\begin{corollary}
+    If $A$ is a real symmetric matrix, then $A$ can be diagonalised by an orthogonal matrix, i.e., there is an orthogonal matrix $O$ and a diagonal matrix $D$ such that:
+    \[
+        A = O D O^{-1} = O D O^T
+    \]
+\end{corollary}
+\begin{proof}
+    \textbf{The proof is just a draft and needs to be polished.} % TODO: Polish the proof.
+
+    Let $A$ be a real symmetric matrix. Then we can consider $A$ as a Hermitian matrix over $\mathbb{C}$. By the spectral theorem, there exists a unitary matrix $U$ and a diagonal matrix $D$ such that:
+    \[
+        A = U D U^\dagger
+    \]
+    where the entries of $D$ are all real numbers as $A$ is Hermitian. Then $D$ is also a real diagonal matrix. Given that $A$ is a real matrix and $D$ is a real diagonal matrix, then the eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$ can be chosen to be real vectors. Therefore, we can choose $U$ to be a real matrix. Moreover, as $U$ is unitary and real, we have $U$ is orthogonal. This completes the proof.
+\end{proof}
+
+\begin{corollary}
+    The canonical form of a orthogonal matrix $O$ of order $n$ is of the following form:
+    \[
+        \begin{bmatrix}
+            R_{\theta_1} J_q & & & & \\
+            & R_{\theta_2} & & & \\
+            & & \ddots & & \\
+            & & & R_{\theta_k} & \\
+            & & & & I_{p} \\
+        \end{bmatrix}
+    \]
+    where $R_{\theta_i} = \begin{bmatrix}
+        \cos \theta_i & -\sin \theta_i \\
+        \sin \theta_i & \cos \theta_i
+    \end{bmatrix}$ is the rotation matrix of angle $\theta_i$, $p = 1$ if $n$ is odd and $p = 0$ if $n$ is even, with $n = 2k + p$, and $J_q$ is $I_2$ if $\det O = 1$ and $\begin{bmatrix}
+        -1 & 0 \\
+        0 & 1
+    \end{bmatrix}$ if $\det O = -1$.
+\end{corollary}
+
+\begin{corollary}
+    The matrix representation $H$ of the Hermitian form on a complex vector space $V$ with respect to a basis $v$ is a Hermitian matrix. Moreover, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
+    \[
+        H = U D U^\dagger
+    \]
+    Then the Hermitian form can be represented as:
+    \[
+        \langle x, y \rangle = x^\dagger H y = x^\dagger U D U^\dagger y = (U^\dagger x)^\dagger D (U^\dagger y)
+    \]
+    Moreover, $D$ can be expressed as:
+    \[
+        D = \begin{bmatrix}
+            \lambda \\
+            & -\mu
+            & & 0
+        \end{bmatrix}
+    \]
+    where $\lambda = \begin{bmatrix}
+        \lambda_1 & & \\
+        & \ddots & \\
+        & & \lambda_r
+    \end{bmatrix}$ and $\mu = \begin{bmatrix}
+        \mu_1 & & \\
+        & \ddots & \\
+        & & \mu_s
+    \end{bmatrix}$ with $\lambda_i, \mu_j > 0$ for all $i, j$. The pair $(r, s)$ is called the \emph{signature} of the Hermitian form. We can further decompose the Hermitian form as:
+    \[
+        D = \begin{bmatrix}
+            \sqrt{\lambda} \\
+            & -\sqrt{\mu} \\
+            & & 0
+        \end{bmatrix} \begin{bmatrix}
+            I_r \\
+            & -I_s \\
+            & & 0
+        \end{bmatrix} \begin{bmatrix}
+            \sqrt{\lambda} \\
+            & -\sqrt{\mu} \\
+            & & 0
+        \end{bmatrix} = U' I_{r, s} U'^\dagger
+    \]
+    where $\sqrt{\lambda} = \begin{bmatrix}
+        \sqrt{\lambda_1} & & \\
+        & \ddots & \\
+        & & \sqrt{\lambda_r}
+    \end{bmatrix}$ and $\sqrt{\mu} = \begin{bmatrix}
+        \sqrt{\mu_1} & & \\
+        & \ddots & \\
+        & & \sqrt{\mu_s}
+    \end{bmatrix}$.
+
+    So the Hermitian form can be represented as:
+    \[
+        \langle x, y \rangle = (U'^\dagger U^\dagger x)^\dagger I_{r, s} (U'^\dagger U^\dagger y)
+    \]
+\end{corollary}
+
+In summary,
+\begin{itemize}
+    \item Any Hermitian form on a complex vector space can be represented by a Hermitian matrix.
+    \item The canonical representation of Hermitian form is $I_{r, s}$ up to a unitary change of basis. If the Hermitian form is positive-definite, then the canonical representation is $I_n$.
+    \item Any symmetric 2-form $\omega$ on a real vector space can be represented by a real symmetric matrix.
+    \item The canonical representation of symmetric 2-form is $\begin{bmatrix}
+        I_{r} & \\
+        & -I_{s} \\
+        & & 0
+    \end{bmatrix}$ up to an orthogonal change of basis. If the symmetric 2-form is positive-definite, then the canonical representation is $I_n$.
+    \item The canonical representation of pseudo inner product is $\begin{bmatrix}
+        I_{p} & \\
+        & -I_{q}
+    \end{bmatrix}$ up to an orthogonal change of basis, with $n = p + q$. Then we call $(p, q)$ the signature of the pseudo inner product.
+    \item $V$ is a real vector space of dimension $n$. Then up to isomorphism, there are $n + 1$ different pseudo inner products on $V$, corresponding to the signatures $(n, 0), (n - 1, 1), \cdots, (1, n - 1), (0, n)$.
+    \item Any pseudo inner product $V$ is isomorphic to $(\R^n , I_{p,q}) = \R^{p,q}$. As we send $(x, y) \to x_1 y_1 + \cdots + x_p y_p - x_{p+1} y_{p+1} - \cdots - x_n y_n$.
+\end{itemize}
+
+The set of inner products on a real vector space $V$ of dimension $n$ is isomorphic to the orbit space of the right action of group $\Orth(n)$ on $\GL_n(\R)$ $\GL_n(\R) / \Orth(n)$, where $\Orth(n)$ is the orthogonal group of order $n$.
+\[
+    \GL_n(\R) \times \Orth(n) \to \GL_n(\R), \quad (X, g) \mapsto X \cdot g
+\]
+As $\GL_n(\R)$ and $\Orth(n)$ have the same homotopy type, the orbit space $\GL_n(\R) / \Orth(n)$ is trivially contractible. We may consider the following example:
+\[
+    \GL_1(\R) = \R^\times \quad \Orth(1) = \{ -1, 1 \}
+\]
+Then we have:
+\[
+    \GL_1(\R) / \Orth(1) \cong \R_{> 0}
+\]
+
+Similarly, the set of Hermitian forms on a complex vector space $V$ of dimension $n$ is isomorphic to the orbit space $\GL_n(\mathbb{C}) / \Uni(n)$, where $\Uni(n)$ is the unitary group of order $n$. Again, it is contractible.
+
+We have a simple introduction to the Lorentz inner product on $\R^4$. It sends $(x, y) \in \R^4 \times \R^4$ to $x \cdot y = x_0 y_0 - \vec{x} \cdot \vec{y}$, where $x = \begin{bmatrix}
+    x_0 \\
+    \vec{x}
+\end{bmatrix}$ and $y = \begin{bmatrix}
+    y_0 \\
+    \vec{y}
+\end{bmatrix}$.

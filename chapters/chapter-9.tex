@@ -1,0 +1,422 @@
+%----------------------------------------------------------------------------------------
+%	CHAPTER 9
+%----------------------------------------------------------------------------------------
+
+\chapter{Further Topics}
+
+\epigraph{When you studying higher maths, whether algebra, geometry or anything, you realised that the hard part is the language. It takes time. People are impatient. If you are impatient, you cannot learn mathematics. But if you are patient enough, you learn the language, you understand the basic facts. No tricks, tricks are useless. And then towards the end, you enjoy the fruit, that means, everything become so easy. Just do a simple calculation. You can get many result. The center of mathematics is always like that.}{Guowu Meng}
+
+\section{Polar Decomposition and Singular Value Decomposition}
+\subsection{Polar Decomposition}
+If $z \neq 0$, then $z = \rho e^{i \theta}$ for a unique $\rho > 0$ and $e^{i \theta}$ being a complex number of modulus 1. This is called the polar decomposition of $z$. Then we have the following isomorphism:
+\[
+    \GL_1 (\mathbb{C}) = \Uni(1) \cdot \mathsf{H}_1^{> 0} (\mathbb{C}), \quad [z] \mapsto [e^{i \theta}] \cdot [\rho]
+\]
+where $\mathsf{H}_1^{> 0} (\mathbb{C})$ is the set of positive Hermitian $1 \times 1$ matrices, i.e., positive real numbers, and $\Uni(1)$ is the set of complex numbers of modulus 1.
+
+Then we may generalise this to matrices, i.e.,
+\[
+    \GL_n (\mathbb{C}) = \Uni(n) \cdot \mathsf{H}_n^{> 0} (\mathbb{C}), \quad [A] \mapsto [U] \cdot [P]
+\]
+where $\mathsf{H}_n^{> 0} (\mathbb{C})$ is the set of positive Hermitian $n \times n$ matrices and $\Uni(n)$ is the unitary group of order $n$. Then we claim that any invertible matrix $A$ can be uniquely decomposed as $A = P U$ for some $P \in \mathsf{H}_n^{> 0} (\mathbb{C})$ and $U \in \Uni(n)$, and we call this the \emph{polar decomposition} of $A$.
+
+\begin{proof}
+    Assume the existance, if $A = U P$ then $A^\dagger = P U^\dagger$. Then we have:
+    \[
+        A^\dagger A = P U^\dagger U P = P^2
+    \]
+    As $A$ is invertible, so is $A^\dagger A$. Therefore, $P = \sqrt{A^\dagger A}$ is a positive Hermitian matrix. Then we have $U = A P^{-1}$. Also, we have:
+    \[
+        (A^\dagger A)^\dagger = A^\dagger A \implies P^\dagger P^\dagger = P^2 \implies P^\dagger = P
+    \]
+    and
+    \[
+        \vec{z}^\dagger A^\dagger A \vec{z} = (A \vec{z})^\dagger (A \vec{z}) > 0 \implies \| P \vec{z} \| \geq 0
+    \]
+    for all $\vec{z}$ and equal to 0 if and only if $\vec{z} = 0$ as $A \in \GL_n(\mathbb{C})$. Therefore, $P$ and $A^\dagger A$ are positive Hermitian. Then we know that $A^\dagger A = U' D U'^\dagger$ where $U' \in \Uni(n)$ and $D$ is a diagonal matrix with positive real numbers on the diagonal. Then we have $P = U' \sqrt{D} U'^\dagger$. Also, we have:
+    \[
+        P^2 = U' \sqrt{D} U'^\dagger U' \sqrt{D} U'^\dagger = U' D U'^\dagger = A^\dagger A
+    \]
+    Then we have:
+    \[
+        U^\dagger U = P^{-1} A^\dagger A P^{-1} = P^{-1} P^2 P^{-1} = I_n
+    \]
+    Therefore, $U \in \Uni(n)$.
+\end{proof}
+
+If it is real number, then we have the similar polar decomposition:
+\[
+    \GL_n (\mathbb{R}) = \Orth(n) \cdot \mathsf{S}_n^{> 0} (\mathbb{R}), \quad [A] \mapsto [O] \cdot [S]
+\]
+where $\mathsf{S}_n^{> 0} (\mathbb{R})$ is the set of positive symmetric $n \times n$ matrices and $\Orth(n)$ is the orthogonal group of order $n$.
+
+\subsection{Singlular Value Decomposition}
+The corollary of polar decomposition is the singular value decomposition.
+
+We consider the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        \nul{A} \arrow[d, hook] & \col{A} \arrow[d, hook] \\
+        \mathbb{C}^n \arrow[r, "A"] \arrow[d, equal] & \mathbb{C}^m \arrow[d, equal] \\
+        (\nul{A})^\perp \oplus \nul{A} \arrow[d, "\cong"'] \arrow[r, "A"] & \col{A} \oplus (\col{A})^\perp \arrow[d, "\cong"] \\
+        \mathbb{C}^r \oplus \mathbb{C}^{n-r} \arrow[d, "\cong"'] & \mathbb{C}^r \oplus \mathbb{C}^{m-r} \arrow[d, "\cong"] \\
+        \mathbb{C}^n \arrow[r, "A'"] & \mathbb{C}^m \\[-3.6em]
+        \Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \} & \Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}
+    \end{tikzcd}
+\end{center}
+where $A' = \begin{bmatrix}
+    \overline{A} & 0 \\
+    0 & 0
+\end{bmatrix}$ with $\overline{A} \in \GL_r(\mathbb{C})$. Moreover, the direct sum in $(\nul{A})^\perp \oplus \nul{A}$ and $\col{A} \oplus (\col{A})^\perp$ are orthogonal direct sums; the direct sum in $\mathbb{C}^r \oplus \mathbb{C}^{n-r}$ and $\mathbb{C}^r \oplus \mathbb{C}^{m-r}$ are external direct sums; the direct sum in $\Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \}$ and $\Span\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \Span\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}$ are internal direct sums. Note that all the isomorphisms in the diagram are of Hermitian spaces. Then we may simplify the diagram as follows:
+\begin{center}
+    \begin{tikzcd}
+        \mathbb{C}^n \arrow[r, "A"] \arrow[d, "U_1"'] & \mathbb{C}^m \arrow[d, "U_2"] \\
+        \mathbb{C}^n \arrow[r, "A'"] & \mathbb{C}^m
+    \end{tikzcd}
+\end{center}
+As $\overline{A} \in \GL_r(\mathbb{C})$, we have the polar decomposition $\overline{A} = U_3 P$ for some $P \in \mathsf{H}_r^{> 0} (\mathbb{C})$ and $U_3 \in \Uni(r)$. Moreover, we may further decompose $P$ as $P = U_4 D_\lambda U_4^\dagger$ for some $U_4 \in \Uni(r)$ and $D_\lambda$ being a diagonal matrix with positive real numbers on the diagonal. Then we have:
+\[
+    \begin{split}
+        U_2 A &= \begin{bmatrix}
+            \overline{A} & 0 \\
+            0 & 0
+        \end{bmatrix} U_1 \\
+        A &= U_2^\dagger \begin{bmatrix}
+            U_3 U_4 D_\lambda U_4^\dagger & 0 \\
+            0 & 0
+        \end{bmatrix} U_1 \\
+        &= \left(U_2^\dagger \begin{bmatrix}
+            U_3 U_4 & 0 \\
+            0 & I_{m-r}
+        \end{bmatrix}\right) \begin{bmatrix}
+            D_\lambda & 0 \\
+            0 & 0
+        \end{bmatrix} \left(\begin{bmatrix}
+            U_4^\dagger & 0 \\
+            0 & I_{n-r}
+        \end{bmatrix} U_1\right)
+    \end{split}
+\]
+Then we have the singular value decomposition of $A$:
+\[
+    A = U \Sigma V^\dagger
+\]
+where $U = U_2^\dagger \begin{bmatrix}
+    U_3 U_4 & 0 \\
+    0 & I_{m-r}
+\end{bmatrix}$, \quad
+$\Sigma = \begin{bmatrix}
+    D_\lambda & 0 \\
+    0 & 0
+\end{bmatrix}$, \quad
+$V = U_1^\dagger \begin{bmatrix}
+    U_4 & 0 \\
+    0 & I_{n-r}
+\end{bmatrix}$.
+
+\begin{theorem}[Singular Value Decomposition]
+    For any $A \in \M{m \times n}{\mathbb{C}}$, there exist unitary matrices $U \in \Uni(m)$, $V \in \Uni(n)$ and a set of positive numbers $\{ \lambda_1, \cdots, \lambda_r \}$ such that:
+    \[
+        A = U \Sigma V^\dagger, \quad \Sigma = \begin{bmatrix}
+            \lambda_1 & & & & \\
+            & \lambda_2 & & & \\
+            & & \ddots & & \\
+            & & & \lambda_r & \\
+            & & & & 0
+        \end{bmatrix}
+    \]
+\end{theorem}
+
+\newpage
+
+\section{Simultaneous Diagonalisation Theorem}
+
+\begin{theorem}[Simultaneous Diagonalisation Theorem]
+    Suppose that $A_1, \cdots, A_k$ are mutually commuting Hermitian matrices of order $n$, i.e., $A_i \in \mathsf{H}_n(\mathbb{C})$ and $[A_i, A_j] := A_i A_j - A_j A_i = 0$ for all $1 \leq i, j \leq k$, where $[A_i, A_j]$ is called the commutator of $A_i$ and $A_j$. Then there is a set of distinct vectors $\vec{\lambda_\alpha} \in \R^k$ for $\alpha = 1, 2, \cdots, l$ and an orthogonal decomposition of $\mathbb{C}^n$ into non-trivial subspaces:
+    \[
+        \mathbb{C}^n = \bigoplus_{\alpha=1}^l E_{\vec{\lambda_\alpha}}
+    \]
+    such that for all $\vec{z} \in E_{\vec{\lambda_\alpha}}$ and $A_i \vec{z} = \lambda_\alpha(i) \vec{z}$ for all $1 \leq i \leq k$. In particular, there is a unitary matrix $U \in \Uni(n)$ such that:
+    \[
+        A_i = U D_i U^\dagger, \quad D_i = \begin{bmatrix}
+            d_1 (i) \\
+            & \ddots \\
+            & & d_n (i)
+        \end{bmatrix} \in \M{n \times n}{\R}
+    \]
+    for all $1 \leq i \leq k$ and $d_j(i)$ are distinct.
+\end{theorem}
+\begin{proof}
+    We may induct on $k$ or prove the case $k = 2$. For $k = 2$, as $A_1, A_2$ are Hermitian, we have $A_1 A_2 = A_2 A_1$. Then we have $A_1$ acts on $\mathbb{C}^n = E_{\lambda_1} (A_1) \oplus E_{\lambda_2} (A_1) \oplus \cdots \oplus E_{\lambda_k} (A_1)$ where $\lambda_1, \lambda_2, \cdots, \lambda_k$ are the distinct eigenvalues of $A_1$. Then we also consider $A_2$ acts on $\mathbb{C}^n$. We have the following claim: The action of $A_2$ on $\mathbb{C}^n$ leaves each eigenspace of $A_1$ invariant. For any $\vec{z} \in E_{\lambda_i} (A_1)$, we have:
+    \[
+        A_1 (A_2 \vec{z}) = A_2 (A_1 \vec{z}) = A_2 (\lambda_i \vec{z}) = \lambda_i (A_2 \vec{z})
+    \]
+    Hence, $A_2 \vec{z} \in E_{\lambda_i} (A_1)$. Then, we have $A_2 = A_2^1 \oplus A_2^2 \oplus \cdots \oplus A_2^k$. We claim that each $A_2^i$ is Hermitian on $E_{\lambda_i} (A_1)$. For any $\vec{x}, \vec{y} \in E_{\lambda_i} (A_1)$, we have:
+    \[
+        \langle \vec{x}, A_2^i \vec{y} \rangle = \langle \vec{x}, A_2 \vec{y} \rangle = \langle A_2 \vec{x}, \vec{y} \rangle = \langle A_2^i \vec{x}, \vec{y} \rangle
+    \]
+    So, $A_2^i$ is diagonalisable on $E_{\lambda_i} (A_1)$ with an orthonormal eigenbasis and distinct eigenvalues $\mu_j$. Therefore, we have:
+    \[
+        E_{\lambda_i} (A_1) = \bigoplus_j E_{\lambda_i, \mu_j} (A_1, A_2).
+    \]
+    Then we have:
+    \[
+        \mathbb{C}^n = \bigoplus_{i, j} E_{\lambda_i, \mu_j} (A_1, A_2).
+    \]
+    We may also write $\lambda_i, \mu_j$ as a vector in $\R^2$, i.e., $\vec{\lambda_{i, j}} = (\lambda_i, \mu_j)$.
+\end{proof}
+
+We can use the simultaneous diagonalisation theorem to prove the spectral theorem for normal operators.
+\begin{theorem}
+    A complex square matrix can be diagonalised by a unitary matrix if and only if it is normal.
+\end{theorem}
+\begin{proof}
+    $(\Rightarrow)$ Assume that $A$ can be diagonalised by a unitary matrix, i.e., there is a unitary matrix $U$ such that $A = U D U^\dagger$ where $D$ is a diagonal matrix. Then we have:
+    \[
+        A^\dagger = U D^\dagger U^\dagger
+    \]
+    where $D^\dagger$ is also a diagonal matrix. Then we have:
+    \[
+        A A^\dagger = U D U^\dagger U D^\dagger U^\dagger = U D D^\dagger U^\dagger = U D^\dagger D U^\dagger = A^\dagger A
+    \]
+    $D D^\dagger = D^\dagger D$ as we have the following equality:
+    \[
+        \begin{bmatrix}
+            d_1 & & \\
+            & \ddots & \\
+            & & d_n
+        \end{bmatrix} \begin{bmatrix}
+            \overline{d_1} & & \\
+            & \ddots & \\
+            & & \overline{d_n}
+        \end{bmatrix} = \begin{bmatrix}
+            |d_1|^2 & & \\
+            & \ddots & \\
+            & & |d_n|^2
+        \end{bmatrix}.
+    \]
+    Therefore, $A$ is normal.
+
+    $(\Leftarrow)$ Assume that $A$ is normal, i.e., $A A^\dagger = A^\dagger A$. Then we write $A = B + iC$ where $B = \frac{A + A^\dagger}{2}$ and $C = \frac{A - A^\dagger}{2i}$. Then we claim that $[B, C] = 0$ if and only if $A$ is normal. We have:
+    \[
+        \begin{split}
+            A A^\dagger &= (B + iC)(B - iC) = B^2 + C^2 - i [B, C] \\
+            A^\dagger A &= (B - iC)(B + iC) = B^2 + C^2 + i [B, C]
+        \end{split}
+    \]
+    Therefore, $A A^\dagger = A^\dagger A$ if and only if $[B, C] = 0$. Also, we may check that $B$ and $C$ are Hermitian:
+    \[
+        B^\dagger = \left(\frac{A + A^\dagger}{2}\right)^\dagger = \frac{A^\dagger + A}{2} = B, \quad C^\dagger = \left(\frac{A - A^\dagger}{2i}\right)^\dagger = \frac{A^\dagger - A}{-2i} = C.
+    \]
+    Then, by the simultaneous diagonalisation theorem, there is a unitary matrix $U$ such that:
+    \[
+        B = U D_B U^\dagger, \quad C = U D_C U^\dagger
+    \]
+    where $D_B$ and $D_C$ are diagonal matrices. Therefore, we have:
+    \[
+        A = B + iC = U D_B U^\dagger + i U D_C U^\dagger = U (D_B + i D_C) U^\dagger = U D_A U^\dagger
+    \]
+    where $D_A = D_B + i D_C$ is also a diagonal matrix. Hence, $A$ can be diagonalised by a unitary matrix.
+\end{proof}
+
+\newpage
+
+The following chapters are not in the exam syllabus, but for your reference.
+
+\section{Affine Spaces}
+
+A line or a plane can be regarded as an affine space. An affine space differs from a vector space in that it does not have a distinguished origin. We may say that $\mathcal{T}_O \A$ is the tangent space of an affine space $\A$ at a point $O \in \A$. We also have symmetric spaces, which can be a sphere.
+
+Let $\F$ be a field. An affine space of dimension $n$ over $\F$, $\A$, is a principal $(\F^n, +)$-set.  A $G$-set, the set on which $G$ acts, is called principal $G$-set if the action is principal, i.e., transitive and free.
+
+\begin{example}
+    $\F^n$ is an affine space of dimension $n$ over $\F$ with the usual addition action of $(\F^n, +)$ on itself.
+    \[
+        \begin{split}
+            (\F^n, +) \times \F^n &\to \F^n \\
+            (\vec{v}, \vec{x}) &\mapsto \vec{v} + \vec{x}
+        \end{split}
+    \]
+    For any $\vec{x}, \vec{y} \in \F^n$, there is a unique $\vec{v} = \vec{y} - \vec{x} \in \F^n$ such that $\vec{v} + \vec{x} = \vec{y}$. Therefore, the action is transitive and free.
+\end{example}
+
+In fact, any $\F$-linear space is a $\F$-affine space.
+
+\begin{problem}
+    Any set with 2 elements is an affine space over $\mathbb{Z}_2$ in the unique way. However, for 3 elements, there does not have a unique affine space structure over $\mathbb{Z}_3$.
+\end{problem}
+
+The model one of the $\A$ is $\A_\F^n := \{ (x_1, \cdots, x_n) \mid x_i \in \F \}$. Then the group action is:
+\[
+    \begin{split}
+        (\F^n, +) \times \A_\F^n &\to \A_\F^n \\
+        (\vec{v}, \vec{x}) &\mapsto \vec{v} + \vec{x} := (v_1 + x_1, \cdots, v_n + x_n)
+    \end{split}
+\]
+for all $\vec{v} = (v_1, \cdots, v_n) \in \F^n$ and $\vec{x} = (x_1, \cdots, x_n) \in \A_\F^n$. Moreover, up to isomorphism, there is only one affine space of dimension $n$ over $\F$.
+
+Similarly, we have the following conversion table:
+\begin{center}
+    \begin{tabularx}{\textwidth}{C C}
+        \toprule
+        \textbf{Vector Space} & \textbf{Affine Space} \\
+        \midrule
+        Linear Combinations & Affine Combinations \\
+        Basis & Affine Frame \\
+        Span & Affine Span/Hull \\
+        Subspace & Affine Subspace \\
+        Linear Map & Affine Map \\
+        Linear Independence & Affine Independence \\
+        Vectors & Points \\
+        \bottomrule
+    \end{tabularx}
+\end{center}
+
+For the affine combinations, we have:
+\[
+    p_0, p_1, \cdots, p_k \in \A, \quad c^0, c^1, \cdots, c^k \in \F
+\]
+with $\sum_i c_i = 1$, then the affine combination is defined as:
+\[
+    \sum_i c^i p_i := O + \sum_i c^i (p_i - O)
+\]
+for some $O \in \A$ and $c^i (p_i - O)$ is the linear combination in the vector space $\mathcal{T}_O \A$. Note that we may have different $O$, let say $O'$. We may check the independence of the choice of $O$: We know that $O' = O + (O' - O)$, then we have:
+\[
+    \begin{split}
+        c^i p_i &= O' + \sum_i c^i (p_i - O') \\
+        &= O + (O' - O) + \sum_i c^i (p_i - O') \\
+        &= O + \sum_i c^i (O' - O) + \sum_i c^i (p_i - O') \\
+        &= O + \sum_i c^i ((O' - O) + (p_i - O')) \\
+        &= O + \sum_i c^i (p_i - O) \\
+        &= c^i p_i
+    \end{split}
+\]
+
+For affine subspaces and spans, we consider the following diagram:
+\begin{center}
+    \tdplotsetmaincoords{70}{30}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \fill[ocre!30,opacity=0.5] (3,-3,1) -- (-3,-3,1) -- (-3,3,1) -- (3,3,1) -- cycle;
+        \draw[red] (-3,-3,1) -- (3,3,1);
+        \fill (-1,-1,1) circle (1pt) node[anchor=north] {$p_0$};
+        \fill (1,1,1) circle (1pt) node[anchor=north] {$p_1$};
+        \fill (-2,0,1) circle (1pt) node[anchor=north] {$p_2$};
+    \end{tikzpicture}
+\end{center}
+The red line is the smallest affine subspace containing $p_0$ and $p_12$, i.e., the affine span of $p_0$ and $p_1$. We may write $\Span\{ p_0, p_1 \} := \{ c^0 p_0 + c^1 p_1 \mid c^0 + c^1 = 1, c^i \in \R \} = \{ tp_0 + (1 - t) p_1 \mid t \in \R \}$. Note that $\overline{p_0 p_1} = \{ tp_0 + (1 - t) p_1 \mid t \in [0, 1] \}$ is a subset of the affine span.
+
+For the affine frame, we may consider the same picture above. Then $\{ p_0, p_1, p_2 \}$ is an affine frame of the affine space (the plane) as no point is in the affine span of the other two points.
+
+For the representation of the affine map, we have the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        \A_1 \arrow[d] \arrow[r, "\phi"] & \A_2 \arrow[d] \\
+        \A_\F^n \arrow[d] \arrow[r] & \A_\F^m \arrow[d] \\
+        \F^n \arrow[r, "A"] & \F^m \\[-3.6em]
+        \vec{x} = x - 0 \arrow[r, mapsto] & A\vec{x} + \vec{b}
+    \end{tikzcd}
+\end{center}
+where $A \in \M{m \times n}{\F}$ and $\vec{b} \in \F^m$. Note that the representation of $\phi$ depends on the choice of origins in $\A_1$ and $\A_2$.
+
+A Euclidean space is a finite dimensional real affine space with a Euclidean structure on its tangent space. The Euclidean structure means the translation invariant assignment of inner product to each tangent space of $\A$. Let $\A$ be an $n$-dimensional real affine space. Take $p \in \A$. Then the pointed affine space $(\A, p)$ is isomorphic to the vector space $\mathcal{T}_p \A$. Moreover, it is equivalent to $\R^n$ with the standard inner product, and $q \in (\A, p)$ corresponds to the vector $\vec{v} = q - p \in \R^n$. Then we have:
+\[
+    \alpha_1 q_1 + \alpha_2 q_2 = p + \alpha_1 (q_1 - p) + \alpha_2 (q_2 - p)
+\]
+Note that $\alpha_1 + \alpha_2$ need not be 1 here, as it is linear combination. Then the translation invariant means that the length and angle remains unchanged in the inner product after translation, i.e., $\langle \vec{pq}, \vec{pr} \rangle = \langle \vec{p'q'}, \vec{p'r'} \rangle$.
+\begin{center}
+    \tdplotsetmaincoords{70}{30}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \fill[ocre!30,opacity=0.5] (3,-3,1) -- (-3,-3,1) -- (-3,3,1) -- (3,3,1) -- cycle;
+        \fill (-1.5,-1.5,1) coordinate (P) circle (1pt) node[left] {$p$};
+        \draw[->] (P) -- ($(P) + (0,1.5,0)$) coordinate (Q) node[above] {$q$};
+        \draw[->] (P) -- ($(P) + (1.5,0,0)$) coordinate (R) node[below] {$r$};
+        \fill (0.5,0.5,1) coordinate(P') circle (1pt) node[left] {$p'$};
+        \draw[->] (P') -- ($(P') + (0,1.5,0)$) coordinate (Q') node[above] {$q'$};
+        \draw[->] (P') -- ($(P') + (1.5,0,0)$) coordinate (R') node[below] {$r'$};
+        \draw[dashed, ->, red] (Q) -- (Q') node[midway, above] {$\vec{v}$};
+        \draw[dashed, ->, red] (R) -- (R') node[midway, below] {$\vec{v}$};
+    \end{tikzpicture}
+\end{center}
+Then $q = q' + \vec{v}$ and $r = r' + \vec{v}$. Note that $\mathcal{T}_p \A$ is different from $\mathcal{T}_{p'} \A$ as they are tangent spaces at different points, but they are isomorphic via translation by $\vec{v}$. We may consider the tangent line on the circle at different points as an example.
+
+Up to isomorphism, there is only one Euclidean space of dimension $n$, denoted by $\mathbb{E}^n := (\A_\R^n, \langle \cdot, \cdot \rangle)$ where $\langle \cdot, \cdot \rangle$ is:
+\[
+    \langle \vec{pq}, \vec{pr} \rangle = (q - p) \cdot (r - p)
+\]
+where the $\cdot$ is the standard dot product on $\R^n$. This is equivalent to say that an orthogonal frame exists, i.e., the rectangular coordinate system.
+
+For an affine map $\phi : \A_1 \to \A_2$ between two affine spaces, we say that $\phi$ is injective implies that $\dim \A_1 \leq \dim \A_2$. The proof is by picking a point $p_1 \in \A_1$ and take $p_2 = \phi(p_1)$. Then we have the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        (\A_1, p_1) \arrow[r, "\mathcal{T}_{p_1} \phi"] \arrow[d, "\cong"'] & (\A_2, p_2) \arrow[d, "\cong"] \\
+        \A_1 \arrow[r, "\phi"] & \A_2
+    \end{tikzcd}
+\end{center}
+
+We have two space-time affine space in Physics, namely Minkowski and Galilean.
+
+The Minkowski space-time $\mathbb{M}$ is a 4-dimensional real affine space $\A_\R^4$ with a Lorentz structure. Take a point $p \in \A_\R^4$ and $u = (u_0, \vec{u}), v = (v_0, \vec{v}) \in \R^4$. Then the Lorentzian inner product is $\langle u, v \rangle_p = u_0 v_0 - \vec{u} \cdot \vec{v}$.
+
+The Galilean space-time $\mathbb{G}$ is a 4-dimensional real affine space $\A_\R^4$ with a Galilean structure. It is the Minkowski space-time taking the limit of light speed $c \to \infty$. We have the following diagram:
+\begin{center}
+    \begin{tikzpicture}
+        \filldraw[gray!10] (-4,-2) rectangle (4,2);
+        \draw[step=0.5cm,gray!20] (-4,-2) grid (4,2);
+
+        \draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $\pi^{-1} (t_1)$};
+        \draw[thick] (-1,-2)  -- (-1,2) node [above] {\scriptsize $\pi^{-1} (t_2)$};
+        \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $\pi^{-1} (t_3)$};
+        \draw[thick] (2,-2)  -- (2,2) node [above] {\scriptsize $\pi^{-1} (t_4)$};
+
+        \path (3.5, 2) node [above] {\scriptsize $\cdots$};
+
+        \draw[decoration={brace,raise=5pt},decorate]
+            (-4,-2) -- node [left=6pt] {$\displaystyle \A_\R^4$} (-4,2);
+        \draw[-Stealth] (-4 cm - 18 pt,-15 pt) -- (-4 cm - 18 pt, -4 cm + 15 pt) node [midway, left] {$\pi$};
+
+        \draw[thick] (-4,-4) node [left=6pt] {Time: $E^1$} -- (4,-4);
+
+        \draw[dashed] (-2.5,-2) -- (-2.5,-4);
+        \draw[dashed] (-1,-2) -- (-1,-4);
+        \draw[dashed] (0.5,-2) -- (0.5,-4);
+        \draw[dashed] (2,-2) -- (2,-4);
+
+        \draw[red] (-2.75,1) node[left] {Event} -- (-2.25,1);
+        \draw[red, -Stealth] (-2.5, -1) -- (-1, 1);
+        \draw[red, -Stealth] (-1, -1) -- (0.5, 1);
+        \draw[red, -Stealth] (0.5, -1) -- (2, 1);
+
+        \filldraw (-2.5,-4) circle (1.5pt) node [below] {$t_1$};
+        \filldraw (-1,-4) circle (1.5pt) node [below] {$t_2$};
+        \filldraw (0.5,-4) circle (1.5pt) node [below] {$t_3$};
+        \filldraw (2,-4) circle (1.5pt) node [below] {$t_4$};
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+
+\section{Quadratic Form and Clifford Algebra}
+
+Let $V$ be a vector space over a field $\F$. A quadratic form on $V$ is a map $Q : V \to \F$ such that:
+\begin{itemize}
+    \item $Q(\alpha v) = \alpha^2 Q(v)$ for all $\alpha \in \F$ and $v \in V$;
+    \item The map $B : V \times V \to \F$ defined by $B(u, v) = Q(u + v) - Q(u) - Q(v)$ is bilinear.
+\end{itemize}
+In case $\chart \F \neq 2$, the set of all quadratic forms on $V$ is equivalent to the set of all symmetric 2-forms on $V$. A quadratic form $Q$ can define a symmetric 2-form as $B(u, v) = \frac{1}{2} (Q(u + v) - Q(u) - Q(v))$; a symmetric 2-form $B$ can define a quadratic form $Q(u) := B(u, u)$. We have the matrix representation of symmetric 2-form with respects to a basis. So we can also have the matrix representation of quadratic form, which is the symmetric matrices over $\F$ of order $\dim V = n$. Moreover, $(V, Q)$ forms a quadratic space.
+
+A Clifford algebra $\Cl(V, Q) := \T V / I_Q$ is an associative algebra over $\F$ generated by $v \otimes v - Q(v) 1$ for all $v \in V$. The ideal is equivalent to the ideal generated by $u \otimes v + v \otimes u - 2 B(u, v) 1$ for all $u, v \in V$. Note that $\Cl (V, Q)$ is $\quotient{\Z}{2}$ graded algebra.
+
+We have the following isomorphisms:
+\begin{itemize}
+    \item $\Cl (\R^{0, 1}) \cong \mathbb{C}$ as $\R$-algebras, where elements in $\Cl(\R^{0, 1})$ are of the form $a + b e_1$ with $e_1^2 = -1$;
+    \item $\Cl (\R^{1, 0}) \cong \R \oplus \R$, the split-complex number, where elements in $\Cl(\R^{1, 0})$ are of the form $a + b e_1$ with $e_1^2 = 1$;
+    \item $\Cl (\R^{0, 2}) \cong \mathbb{H}$, the quaternion, as $\R$-algebras, where elements in $\Cl(\R^{0, 2})$ are of the form $a + b e_1 + c e_2 + d e_1 e_2$ with $e_1^2 = e_2^2 = -1$ and $e_1 e_2 = - e_2 e_1$;
+    \item $\Cl (\R^{1, 1}) \cong \M{2 \times 2}{\R}$, the split-quaternion, as $\R$-algebras, where elements in $\Cl(\R^{1, 1})$ are of the form $a + b e_1 + c e_2 + d e_1 e_2$ with $e_1^2 = 1$, $e_2^2 = -1$ and $e_1 e_2 = - e_2 e_1$;
+    \item $\Cl (\R^{2, 0}) \cong \M{2 \times 2}{\R}$, the split-quaternion, as $\R$-algebras.
+\end{itemize}
+
+The $\R$, $\mathbb{C}$ and $\mathbb{H}$ are called the associative real division algebras.
+
+\newpage
+
+This is the end of the main content. Thank you for your support! I hope you have enjoyed my notes!! By the way, I would like to remake this notes later after the final. If you are interested, find me through Discord \texttt{@stupidbenz}, or Instagram \texttt{@stupid.benz.0621}.

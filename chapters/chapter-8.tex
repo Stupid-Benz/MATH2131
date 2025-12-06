@@ -1,0 +1,260 @@
+%----------------------------------------------------------------------------------------
+%	CHAPTER 8
+%----------------------------------------------------------------------------------------
+
+\chapter{Symplectic Vector Spaces}
+
+\epigraph{By now, you should feel comfortable switching between the 2 pictures. One is the abstract picture. Another is a concrete presentation.}{Guowu Meng}
+
+\section{Symplectic Forms}
+
+Let $(V, \langle -, - \rangle)$ be a Hermitian space. Then we have:
+\begin{center}
+    \begin{tikzcd}
+        & & \R \\
+        \overline{V} \times V \arrow[r, "{\langle -, - \rangle}"] \arrow[urr, bend left, "{g(-, -)}"] \arrow[drr, bend right, "\omega"'] & \mathbb{C} \arrow[ur, "\Re"] \arrow[dr, "\Im"'] \\
+        & & \R
+    \end{tikzcd}
+\end{center}
+where $g(-, -)$ is the real part of the Hermitian product and $\omega$ is the imaginary part of the Hermitian product. Both of them are 2-forms on $V_\R$. $\omega$ is called a \emph{symplectic form} on $V$.
+
+\begin{definition}[Symplectic form]
+    A \emph{symplectic form} on a real vector space $V$ is a non-degenerate, skew-symmetric 2-form $\omega : V \times V \to \R$.
+\end{definition}
+A symplectic vector space is a pair $(V, \omega)$.
+
+We have $\J \in \End{V_\R}$ defined as the scalar multiplication by $i$ on $V_\R$, such that $\J^2 = -1_{V_\R}$.
+
+Note that we have three structures on $V_\R$:
+\begin{itemize}
+    \item \textbf{Complex structure:} $\J : V_\R \to V_\R$ with $\J^2 = -1_{V_\R}$;
+    \item \textbf{Symplectic structure:} $\omega : V_\R \times V_\R \to \R$ is a non-degenerate, skew-symmetric bilinear form;
+    \item \textbf{Riemannian structure:} $g : V_\R \times V_\R \to \R$ is a positive-definite, symmetric bilinear form.
+\end{itemize}
+
+Then we have the following equation:
+\[
+    \langle x, y \rangle = g(x, y) + i \omega (x, y)
+\]
+for all $x, y \in V_\R$. Moreover, we have:
+\[
+    \langle ix, y \rangle = -i \langle x, y \rangle \implies g(\J x, y) + i \omega (\J x, y) = \omega (x, y) - i g(x, y)
+\]
+for all $x, y \in V_\R$. This implies that:
+\[
+    \omega (x, y) = g(\J x, y), \quad g(x, y) = -\omega (x, \J y)
+\]
+Consider the following equation:
+\[
+    \langle ix, iy \rangle = \langle x, y \rangle \implies g(\J x, \J y) + i \omega (\J x, \J y) = g(x, y) + i \omega (x, y)
+\]
+for all $x, y \in V_\R$. This implies that:
+\[
+    g(\J x, \J y) = g(x, y), \quad \omega (\J x, \J y) = \omega (x, y)
+\]
+for all $x, y \in V_\R$. Or equivalently, we have $\J^* g = g$ and $\J^* \omega = \omega$.
+
+Note that the Hermitian product is positive-definite, so we have
+\[
+    \langle x, x \rangle > 0 \implies g(x, x) > 0, \omega (x, x) = 0
+\]
+for all $x \in V_\R \setminus \{ 0 \}$. If $x = 0$, then we have $\langle 0, 0 \rangle = 0$, $g(0, 0) = 0$ and $\omega (0, 0) = 0$. Also, we have
+\[
+    \overline{\langle y, x \rangle} = \langle x, y \rangle \implies g(y, x) - i \omega (y, x) = g(x, y) + i \omega (x, y)
+\]
+for all $x, y \in V_\R$. This implies that:
+\[
+    g(x, y) = g(y, x), \quad \omega (x, y) = -\omega (y, x)
+\]
+for all $x, y \in V_\R$, i.e., $g$ is symmetric and $\omega$ is skew-symmetric.
+
+As $\omega (x, y) = g(\J x, y)$ for all $x, y \in V_\R$, so $\omega$ is non-degenerate if $g$ is non-degenerate. Then we have the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}[column sep=normal]
+        V_\R \arrow[dr, "\J"'] \arrow[rr, "\omega_{\musNatural}"] & & V_\R^* \\
+        & V_\R \arrow[ur, "g_{\musNatural}"'] &
+    \end{tikzcd}
+\end{center}
+As $\omega_{\musNatural} (x) = g_{\musNatural}(\J x)$ for all $x \in V_\R$.
+
+Then we can recover a Hermitian space from a real vector space with these structures. Let $V$ be a real vector space. If any two of the above three structures are given and compatible, the third will be determined. Moreover, we have a Hermitian product on $V$ on the complex linear space $(V, \J)$ where $i v = \J v$ for all $v \in V$.
+
+The meaning of being compatible pair:
+\begin{itemize}
+    \item $(g, \J)$ are compatible if $\J^* g = g$, i.e., $J \in \Aut(W, g) = \Orth(W, g)$; Then we can define $\omega (x, y) = g(\J x, y)$ and $\langle -, - \rangle = g + i \omega$. We can check that $\omega$ is skew-symmetric and non-degenerate, and $\langle -, - \rangle$ is a Hermitian product:
+    \[
+        \omega (y, x) = g(\J y, x) = g(\J \J y, \J x) = g(-y, \J x) = -g(\J x, y) = -\omega (x, y)
+    \]
+    Also, if $\omega (x, y) = 0$ for all $y \in V$, then we have $g(\J x, y) = 0$ for all $y \in V$, which implies that $\J x = 0$ as $g$ is non-degenerate, i.e., $x = 0$. Therefore, $\omega$ is non-degenerate. As for the Hermitian product, the sesquilinearity is shown as follows:
+    \[
+        \langle ix, y \rangle = g(\J x, y) + i \omega (\J x, y) = \omega (x, y) - i g(x, y) = -i (g(x, y) + i \omega (x, y)) = -i \langle x, y \rangle
+    \]
+    For the conjugate symmetry, we have:
+    \[
+        \langle y, x \rangle = g(y, x) + i \omega (y, x) = g(x, y) - i \omega (x, y) = \overline{\langle x, y \rangle}
+    \]
+    for all $x, y \in V$. Also, we have:
+    \[
+        \langle x, x \rangle = g(x, x) + i \omega (x, x) = g(x, x) > 0
+    \]
+
+    \item $(\omega, \J)$ are compatible if $\J^* \omega = \omega$, i.e., $\J \in \Aut(W, \omega) = \Symp(W, \omega)$ and $-\omega (\J x, x) \geq 0$ and equality holds if and only if $x = 0$. Then we can define $g(x, y) = -\omega (x, \J y)$ and $\langle -, - \rangle = g + i \omega$. We can check that $g$ is symmetric and positive-definite, and $\langle -, - \rangle$ is a Hermitian product:
+    \[
+        g(y, x) = -\omega (y, \J x) = -\omega (\J y, \J \J x) = -\omega (\J y, -x) = -\omega (x, \J y) = g(x, y)
+    \]
+    Also, as $-\omega (\J x, x) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$, we have $g(x, x) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$. Therefore, $g$ is positive-definite. For the Hermitian product, we may use the similar proof as above.
+
+    \item $(g, \omega)$ are compatible if $\omega (x, y) = g(A x, y)$ for some $A \in \End{V}$. If $A^2 = -1$, then $\J = A$. In general, $A$ is skew-symmetric, i.e., $g(A x, y) = g(x, -A y)$, as $\omega$ is skew-symmetric. Since $A A^\dagger$ is symmetric and positive-definite, we can define $\J = \sqrt{A A^\dagger}^{-1} A$, which satisfies that $\J^2 = -1$, as $\J$ commutes with $A$ and $\sqrt{A A^\dagger}$. Then we have $A = \sqrt{A A^\dagger} \J$ and let $P = \sqrt{A A^\dagger}$. Therefore, we have:
+    \[
+        \omega (\J x, \J y) = g(A \J x, \J y) = g(P \J \J x, \J y) = -g(P x, \J y) = g(\J P x, y) = g(A x, y) = \omega (x, y).
+    \]
+    Also, we have:
+    \[
+        -\omega (\J x, x) = -g(A \J x, x) = -g(P \J \J x, x) = g(P x, x) > 0
+    \]
+    for all $x, y \in V$ and $x \neq 0$. Then we can define $\langle -, - \rangle = g + i \omega$. We can check that $\langle -, - \rangle$ is a Hermitian product by the similar proof as above.
+\end{itemize}
+
+Let $V$ be a vector space over $\F$ where $\chart \F \neq 2$. We define the double $D(V) = V \oplus V^*$. Then we have a natural symplectic form on $D(V)$ defined as:
+\[
+    \omega ((u, \alpha), (v, \beta)) = \alpha(v) - \beta(u)
+\]
+Also $D(V)$ is called the \emph{canonical symplectic vector space} associated to $V$. Then when we choose a basis $\{ \vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n \}$ of $V$ and the dual basis $\{ \hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n \}$ of $V^*$, we have the matrix representation of $\omega$ on $D(V)$ as:
+\[
+    \begin{bmatrix}
+        \omega (\vec{e}_i, \vec{e}_j) & \omega (\vec{e}_i, \hat{e}^j) \\
+        \omega (\hat{e}^i, \vec{e}_j) & \omega (\hat{e}^i, \hat{e}^j)
+    \end{bmatrix} = \begin{bmatrix}
+        0 & I_n \\
+        -I_n & 0
+    \end{bmatrix}
+\]
+Also the basis $\{ \vec{e}_1, \cdots, \vec{e}_n, \hat{e}^1, \cdots, \hat{e}^n \}$ is called a \emph{symplectic basis} of $D(V)$.
+
+\newpage
+
+\section{Matrix Representation and Canonical Form}
+
+We may revise all the canonical forms we have learned before as follows.
+
+\subsection{Linear Maps}
+Consider a linear map $T : V_1 \to V_2$ between two vector spaces $V_1$ and $V_2$ of dimensions $n$ and $m$ respectively. Then we have:
+\begin{center}
+    \begin{tikzcd}
+        \F^n \arrow[r, "A'"] \arrow[dd, bend right, "P"'] & \F^m \\
+        V_1 \arrow[u, "\cong"] \arrow[d, "\cong"'] \arrow[r, "T"] & V_2 \arrow[u, "\cong"'] \arrow[d, "\cong"] \\
+        \F^n \arrow[r, "A"'] & \F^m \arrow[uu, bend right, "Q"']
+    \end{tikzcd}
+\end{center}
+where $A$ and $A'$ are the matrix representations of $T$ with respect to different bases of $V_1$ and $V_2$ and $P \in \GL_n(\F)$ and $Q \in \GL_m(\F)$ are the change-of-basis matrices. $P$ represents the column operations on $A$ and $Q$ represents the row operations on $A$. Then we have:
+\[
+    A P = Q A', \quad A = Q A' P^{-1}
+\]
+Then we have the left group action of $\GL_m(\F) \times \GL_n(\F)$ on the set of $m \times n$ matrices $\M{m \times n}{\F}$ defined as:
+\[
+    (Q, P) \cdot A = Q A P^{-1}
+\]
+The canonical form of $A$ under this group action is:
+\[
+    \begin{bmatrix}
+        I_r & 0 \\
+        0 & 0
+    \end{bmatrix}
+\]
+
+\subsection{Linear Endomorphisms}
+Consider a linear endomorphism $T : V \to V$ on a vector space $V$ of dimension $n$. Then we have:
+\begin{center}
+    \begin{tikzcd}
+        \F^n \arrow[r, "A'"] \arrow[dd, bend right, "P"'] & \F^n \arrow[dd, bend left, "P"'] \\
+        V \arrow[u, "\cong"] \arrow[d, "\cong"'] \arrow[r, "T"] & V \arrow[u, "\cong"'] \arrow[d, "\cong"] \\
+        \F^n \arrow[r, "A"'] & \F^n
+    \end{tikzcd}
+\end{center}
+where $A$ and $A'$ are the matrix representations of $T$ with respect to different bases of $V$ and $P \in \GL_n(\F)$ is the change-of-basis matrix. Then we have:
+\[
+    A P = P A', \quad A = P A' P^{-1}
+\]
+Then we have the left group action of $\GL_n(\F)$ on the set of $n \times n$ matrices $\M{n \times n}{\F}$ defined as:
+\[
+    P \cdot A = P A P^{-1}
+\]
+
+The actual canonical form of $A$ is complicated (Rational Canonical Form), but in generic case, they are diagonal matrix.
+
+\subsection{2-Forms}
+Consider a 2-form $\omega : V \times V \to \F$ on a vector space $V$ of dimension $n$. Then we have:
+\begin{center}
+    \begin{tikzcd}
+        V \times V \arrow[r, "\omega"] & \F \\
+        \F^n \times \F^n \arrow[u, "\cong"] \arrow[ur, dashed]
+    \end{tikzcd}
+\end{center}
+Then $[\omega]_{v} = [\omega (v_i, v_j)]$ is the matrix representation of $\omega$ with respect to the basis $v = \{ v_1, v_2, \cdots, v_n \}$ of $V$. If we change the basis of $V$ to $u$, then there is a unique invertible matrix, $P \in \GL_n(\F)$, such that $u_j = \sum_i v_i P^i_j$ for all $j$. Then we have:
+\[
+    \begin{split}
+        [\omega]_u = [\omega (u_i, u_j)] &= [\omega (\sum_k v_k P^k_i, \sum_l v_l P^l_j)] \\
+        &= [\sum_{k, l} P^k_i \omega (v_k, v_l) P^l_j] \\
+        &= [\sum_{k, l} (P^T)^i_k \omega (v_k, v_l) P^l_j] \\
+        &= P^T [\omega (v_k, v_l)] P \\
+    \end{split}
+\]
+So we have the right group action of $\GL_n(\F)$ on the set of $n \times n$ matrices $\M{n \times n}{\F}$ defined as:
+\[
+    A \cdot P = P^T A P
+\]
+We may check that $(A \cdot P_1) \cdot P_2 = A \cdot (P_1 P_2)$ for all $A \in \M{n \times n}{\F}$ and $P_1, P_2 \in \GL_n(\F)$.
+
+Note that the right action leaves the symmetric and skew-symmetric properties invariant, i.e., if $A^T = A$ (or $A^T = -A$), then we have $(P^T A P)^T = P^T A P$ (or $(P^T A P)^T = -P^T A P$) for all $P \in \GL_n(\F)$. For symmetric 2-forms, as $(P^T A P)^T = P^T A^T (P^T)^T = P^T A^T P$, where $A^T = A$, so we have $(P^T A P)^T = P^T A P$. For skew-symmetric 2-forms, as $(P^T A P)^T = P^T A^T (P^T)^T = P^T (-A) P$, where $A^T = -A$, so we have $(P^T A P)^T = -P^T A P$.
+
+When $\F = \R$, then the $\omega$ being symmetric or skew-symmetric corresponds to the matrix representation being real symmetric or real skew-symmetric respectively. If $\omega$ is symmetric, then the representation $A$ is a Hermitian matrix, and we have $A = O D O^T$ for some orthogonal matrix $O$ and diagonal matrix $D$. Then the canonical form of symmetric 2-form is:
+\[
+    \begin{bmatrix}
+        I_r & & \\
+        & -I_s & \\
+        & & 0
+    \end{bmatrix}
+\]
+where $r + s \leq n$ and $r + s + t = n$. If $\omega$ is skew-symmetric, then the $iA$ is a Hermitian matrix, and we have $iA = U D U^\dagger$ for some unitary matrix $U$ and real diagonal matrix $D$. Then the canonical form of skew-symmetric 2-form is:
+\[
+    \begin{bmatrix}
+        J_2 & & \\
+        & \ddots \\
+        & & J_2 \\
+        & & & 0
+    \end{bmatrix}
+\]
+where $J_2 = \begin{bmatrix}
+    0 & -1 \\
+    1 & 0
+\end{bmatrix}$ and the canonical form can be represented by $J_2 \oplus J_2 \oplus \cdots \oplus J_2 \oplus 0$. Note that $J_2^2 = -I_2$.
+
+The canonical form of a pseudo inner product on a real linear space of dimension $n$ is $I_{p, q} = \begin{bmatrix}
+    I_p & 0 \\
+    0 & -I_q
+\end{bmatrix}$ where $p + q = n$. The basis inside the canonical representation is called \emph{pseudo-orthonormal} basis.
+
+A pseudo Euclidean space is isomorphic to $\R^{p, q} := (\R^n, (\vec{x}, \vec{y}) \mapsto \vec{x} \cdot I_{p, q} \vec{y})$. In case the dimension of $V$ is $n$, then up to isomorphism, there are $n + 1$ pseudo Euclidean structures on $V$, namely, $\R^{0, n}, \R^{1, n-1}, \cdots, \R^{n, 0}$. Note that $(v_i, v_j) = \delta_{ij}$ for $1 \leq i, j \leq p$, $(v_i, v_j) = -\delta_{ij}$ for $p + 1 \leq i, j \leq n$ and $(v_i, v_j) = 0$ otherwise.
+
+Up to isomorphism, there is only one real symplectic vector space of dimension $2n$, i.e., $D(\R^n) := \R^n \oplus (\R^n)^*$ with the canonical symplectic form. The representation of the symplectic form is
+\[
+\begin{bmatrix}
+    0 & I \\
+    -I & 0
+\end{bmatrix}
+\]
+with respect to the symplectic basis: $(x_1, \cdots, x_n, x^1, \cdots, x^n)$, where $\{ x_1, \cdots, x_n \}$ is the standard basis of $\R^n$ and $\{ x^1, \cdots, x^n \}$ is the dual basis of $(\R^n)^*$. Also, $\omega(x_i, x_j) = \omega(x^i, x^j) = 0$ and $\omega(x_i, x^j) = \delta_i^j = -\omega(x^j, x_i)$ for all $i, j$.
+
+Note that we have $A^T = -A$ where $A$ is the representation of a symplectic form. As $\det A^T = \det A = (-1)^n \det A$, we know that $n$ has to be even. Moreover, if we consider the a non-degenerate skew-symmetric 2-form on a real vector space of dimension $2n$, then its canonical form is:
+\[
+    \begin{bmatrix}
+        J_2 & & \\
+        & \ddots \\
+        & & J_2
+    \end{bmatrix}
+\]
+where $J_2 = \begin{bmatrix}
+    0 & -1 \\
+    1 & 0
+\end{bmatrix}$. Note that this is similar to the canonical form of symplectic forms mentioned above.
+
