@@ -5919,11 +5919,11 @@ There are two corollories of the spectral theorem as follows.
     \]
 \end{corollary}
 \begin{proof}
-    As real symmetric matrices are Hermitian matrices, by the spectral theorem for Hermitian matrices, we know that any real symmetric matrix can be diagonalised by a unitary matrix, i.e., $A = U^{\dagger} D U$ for some unitary matrix $U$ and real diagonal matrix $D$. Note that the entries of $U$ are complex numbers in general. However, as $A$ is a real matrix, we have
+    As real symmetric matrices are Hermitian matrices, by the spectral theorem for Hermitian matrices, we know that any real symmetric matrix can be diagonalised by a unitary matrix, i.e., $A = U^{\dagger} D U$ for some unitary matrix $U$ and real diagonal matrix $D$. Note that the entries of $U$ are complex numbers in general. Then we should try to find an orthogonal matrix $O$ such that $A = O^T D O$. Note that for any real eigenvalue $\lambda$ of $A$, the system $(A - \lambda I) \vec{v} = 0$ has real coefficients. Then if $\vec{v} = \vec{x} + i \vec{y}$ is a complex solution, then we have:
     \[
-        \overline{A} = \overline{U^{\dagger}} D \overline{U} = U^{\dagger} D U = A.
+        (A - \lambda I) \vec{v} = (A - \lambda I) \vec{x} + i (A - \lambda I) \vec{y} = 0
     \]
-    Thus, we have $\overline{U^{\dagger}} D \overline{U} = U^{\dagger} D U$. Note that the diagonal entries of $D$ are real numbers. Therefore, we have $\overline{U^{\dagger}} = U^{\dagger}$ and hence $\overline{U} = U$. Thus, we conclude that $U$ is a real unitary matrix, i.e., an orthogonal matrix. Therefore, we conclude that any real symmetric matrix $A$ can be diagonalised by an orthogonal matrix.
+    which implies that both $\vec{x}$ and $\vec{y}$ are real solutions. Therefore, we can always find a real eigenvector corresponding to each real eigenvalue of $A$. Then we can choose an orthonormal basis of $\mathbb{R}^n$ consisting of real eigenvectors of $A$ by Gram-Schmidt process. Let $O$ be the matrix whose columns are the orthonormal basis of real eigenvectors. Then we have $O$ is an orthogonal matrix and $A = O^T D O$. Therefore, we conclude that any real symmetric matrix $A$ can be diagonalised by an orthogonal matrix.
 \end{proof}
 
 \begin{corollary}
