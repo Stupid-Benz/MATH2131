@@ -226,13 +226,12 @@
 
 \vspace{8pt}
 
-\noindent This lecture notes was written by a student in the course MATH 2131 -- Honors in Linear and Abstract Algebra by Professor Meng Guowu in HKUST in 2025-26 Fall. 
+\noindent These lecture notes were written by a student in the course MATH 2131 -- Honors in Linear and Abstract Algebra by Professor Meng Guowu at HKUST in Autumn 2025-26. 
 
-\noindent All diagrams in this lecture notes are written in LaTeX TikZ code.
+\noindent All diagrams in these lecture notes are written in LaTeX TikZ code.
 
-\noindent The notes is with reference to textbooks \textit{`Linear Algebra'} by Friedberg, Insel and Spence, \textit{`Abstract Algebra'} by Artin and \textit{`A First Course in Abstract Algebra'} by Fraleigh. 
-
-\noindent Also, this notes is with reference to the other the notes of two other professors teaching the same course before, Professor Ivan Ip and Professor Min Yan.
+\noindent The notes reference the textbooks \textit{Linear Algebra} by Friedberg, Insel and Spence, \textit{Abstract Algebra} by Artin and \textit{A First Course in Abstract Algebra} by Fraleigh.
+\noindent Additionally, the notes reference lecture notes from two other professors who taught this course previously: Professor Ivan Ip and Professor Min Yan.
 
 
 %----------------------------------------------------------------------------------------
@@ -356,7 +355,7 @@ We start with the definition of a binary operation.
         \end{split}\]
 \end{definition}
 
-For easier understanding, binary operation is combining two objects into one. Hence, there is something called unary and ternary operations, corresponding to the action of combining one and three objects into one respectively.
+For ease of understanding, a binary operation is combining two objects into one. Hence, there is something called unary and ternary operations, corresponding to the action of combining one and three objects into one respectively.
 
 \begin{example}
     A common example of a binary operation is addition on the set of natural numbers $\mathbb{N}$.
@@ -439,7 +438,7 @@ Note that the two-sided identity must be unique, but one-sided identities need n
     Thus, the inverse element is unique.
 \end{proof}
 
-Same for the inverse, one-sided need not be unique. The example is left as an exercise.
+The same applies to the inverse; one-sided inverses need not be unique. The example is left as an exercise.
 
 \begin{definition}[Commutative]
     A binary operation $\cdot: S \times S \to S$ is said to be \emph{commutative} if, for all $x,y \in S$, the following holds:
@@ -458,7 +457,7 @@ Same for the inverse, one-sided need not be unique. The example is left as an ex
     \end{split} \]
 \end{definition}
 
-The professor preferred to use the word ``harmonic'' instead of ``distributive''. Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''. (The two binary operation in this sentence is not commutative.)
+The professor prefers to use the word ``harmonic'' instead of ``distributive''. Note that it is important to show that ``\emph{which binary operation} is distributive to \emph{which binary operation}''. (The two binary operations in this sentence are not commutative.)
 
 \begin{example}
     A common example of a distributive operation is multiplication over addition on the set of integers $\Z$. For all $x,y,z \in \Z$, we have:
@@ -472,7 +471,7 @@ The professor preferred to use the word ``harmonic'' instead of ``distributive''
 
 \section{Groups, Rings, Fields}\index{Groups, Rings, Fields}
 
-With those five properties, we can construct monoid and groups.
+With those five properties, we can construct monoids and groups.
 
 \begin{definition}[Monoid]
     A \emph{monoid} is a set $M$ equipped with a binary operation $f: M \times M \to M$ having the following properties:
@@ -548,7 +547,7 @@ We may draw a diagram for the relationship between the algebraic structures.
 
 \section{Morphisms}\index{Morphisms}
 
-Normally, when we have two sets we can have a set map. Then if the two are in the same algebraic structures? They are called the homomorphisms.
+Normally, when we have two sets we can have a set map. What if the two are in the same algebraic structures? They are called the homomorphisms.
 
 \begin{definition}[Monoid Homomorphism]
     A \emph{monoid homomorphism} is a morphism between two monoids that preserves the monoid structure. Formally, let $(M_1, \cdot_1)$ and $(M_2, \cdot_2)$ be two monoids with identity elements $e_1$ and $e_2$, respectively. A function $f: M_1 \to M_2$ is a monoid homomorphism if:
@@ -741,7 +740,7 @@ A linear space / vector space is a set with a linear structure over a field on t
     Let $t$ be a formal variable. Then $\F[[t]] \overset{\mathrm{def}}{=\joinrel=} \F[[\{ 1, t, t^2, \cdots \}]] = \sum_{n = 0}^{\infty} a_n t^n$ is the set of all formal power series in $t$ with coefficients in $\F$ and $\F[t] \overset{\mathrm{def}}{=\joinrel=} \F[\{ 1, t, t^2, \cdots \}] = \sum_{n = 0}^{N} a_n t^n$ is the set of all polynomials in $t$ with coefficients in $\F$. Both $\F[[t]]$ and $\F[t]$ are linear spaces over $\F$.
 \end{example}
 
-There are another names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Power Series ring, respectively.
+There are other names for $\F[X]$ and $\F[[X]]$: Polynomial ring and Formal Power Series ring, respectively.
 
 \begin{example}
     Let $n$ be a positive integer and $\F$ be a field. Then 
@@ -806,7 +805,7 @@ Linear map, sometimes linear transformation, is a homomorphism preserving linear
     where $\alpha^1, \alpha^2, \cdots, \alpha^n \in \F$ are scalars.
 \end{definition}
 
-The reason of using the superscript for scalars is to avoid confusion with the subscript of vectors. Also, it is due to the concept of dual space, which will be introduced later.
+The reason for using the superscript for scalars is to avoid confusion with the subscript of vectors. Also, it is due to the concept of dual space, which will be introduced later.
 
 We can combine the two properties of linear maps into one property.
 
@@ -843,7 +842,7 @@ We can combine the two properties of linear maps into one property.
             | & | & & |
         \end{bmatrix}
     \]
-    The vector $\vec{e}_i$ is the column vectors where only has the value 1 at the $i$-th place and 0 at other places.
+    The vector $\vec{e}_i$ is the column vector which has only the value 1 at the $i$-th position and 0 elsewhere.
 \end{proposition}
 
 \begin{proof}
@@ -919,7 +918,7 @@ where $i$ is summed from $1$ to $n$.
 \end{proposition}
 
 \begin{proof}
-    The $\Map(X, W)$ is defined pointwisely by $\F$, hence it is trivial to be a linear map.
+    The $\Map(X, W)$ is defined pointwisely by $\F$, hence it is trivially a linear map.
 \end{proof}
 
 \begin{proposition}
@@ -964,7 +963,7 @@ Then we can say that
 
 Similar to normal maps, there are injective, surjective and bijective linear maps.
 
-\begin{definition}[Injective Lienar Maps]
+\begin{definition}[Injective Linear Maps]
     A linear map $f: V \to W$ between two linear spaces over a field $\F$ is said to be \emph{injective} (or one-to-one) if for all $u, v \in V$, the following holds:
     \[
         f(u) = f(v) \implies u = v
@@ -975,7 +974,7 @@ Similar to normal maps, there are injective, surjective and bijective linear map
     \]
 \end{definition}
 
-\begin{definition}[Surjective Lienar Maps]
+\begin{definition}[Surjective Linear Maps]
     A linear map $f: V \to W$ is said to be \emph{surjective} (or onto) if for every $w \in W$, there exists at least one $v \in V$ such that:
     \[
         w = f(v)
@@ -1016,7 +1015,10 @@ Similar to normal maps, there are injective, surjective and bijective linear map
     \]
     To show that $S$ is well-defined, we need to ensure that if $T(v_1) = T(v_2)$, then $v_1 = v_2$. This follows from the injectivity of $T$.
 
-    Now we verify that $TS = 1_W$: $(TS)(w) = T(S(w)) = w$ for all $w \in W$. Thus, $TS = 1_W$. Next, we verify that $ST = 1_V$: $(ST)(v) = S(T(v)) = v$ for all $v \in V$. Thus, $ST = 1_V$.
+    Now we verify that $TS = 1_W$: $(TS)(w) = T(S(w)) = w$ for all $w \in W$. Thus, $TS = 1_W$. Next, we verify that $ST = 1_V$: $(ST)(v) = S(T(v)) = v$ for all $v \in V$. Thus, $ST = 1_V$. Then we can check that $S$ is a linear map as follows:
+    \[
+        T(S(\alpha w_1 + \beta w_2)) = \alpha w_1 + \beta w_2 = \alpha T(S(w_1)) + \beta T(S(w_2)) = T(\alpha S(w_1) + \beta S(w_2))
+    \]
 
     Therefore, $T$ has a two-sided inverse $S$, and hence $T$ is invertible.
 \end{proof}
@@ -1106,7 +1108,7 @@ where $\vec{b}_i = B\vec{a}_i$ is the $i$-th column of the matrix $B$. Note that
     Each elementary row operation can be represented by \emph{left multiplication} of $A$ by an appropriate $m \times m$ matrix over $\F$. Note that all of them are invertible linear maps from $\F^{m \times n}$ to $\F^{m \times n}$.
 \end{definition}
 
-For easier notations, we introduce the idea of matrix units, which is similar to the standard basis vectors $\vec{e_i}$.
+For ease of notation, we introduce the concept of matrix units, which is similar to the standard basis vectors $\vec{e_i}$.
 
 \begin{definition}[Matrix Units]
     Let $m$ and $n$ be two positive integers and $\F$ be a field. The \emph{matrix unit} $E_i^j$ is the $m \times n$ matrix over $\F$ with $1$ in the $(i,j)$-th position and $0$ elsewhere, i.e.,
@@ -1128,7 +1130,7 @@ For easier notations, we introduce the idea of matrix units, which is similar to
             \hat{e}^iA &= \text{the } i\text{-th row of } A \in (\F^m)^* \\
         \end{split}
     \]
-    where $(\F^m)^*$ is the set of all row matrices with $n$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$. Then we have: (Beaware of the difference between superscript and subscript)
+    where $(\F^m)^*$ is the set of all row matrices with $m$ entries in $\F$. $\hat{e}^i$ is an element in $(\F^m)^*$ for any $1 \leq i \leq m$. Note the distinction between superscript and subscript.
     \[
         a_j^i = \hat{e}^i A \vec{e}_j = \text{the } (i,j)\text{-th entry of } A
     \]
@@ -1236,19 +1238,21 @@ Then we consider the row operations by using the matrix units.
     where $I$ is the $n \times n$ identity matrix.
 \end{proof}
 
+All invertible matrices can be written as a product of a finite sequence of elementary row operation matrices.
+
 \newpage
 
 \section{Dimensions of Vector Spaces}\index{Dimension of Vector Spaces}
 
-\begin{definition}[Finite Dimensional Vector Spaces] \label{def:finite_dimensional_vector_space}
-    A linear space $V$ over a field $\F$ is said to be \emph{finite dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$. In this case, we say that the dimension of $V$ is $n$, denoted $\dim_{\F} V = n$ or simply $\dim V = n$.
+\begin{definition}[Finite-Dimensional Vector Spaces] \label{def:finite_dimensional_vector_space}
+    A linear space $V$ over a field $\F$ is said to be \emph{finite-dimensional} if there exists a linear equivalence $T: V \to \F^n$ for some positive integer $n$. In this case, we say that the dimension of $V$ is $n$, denoted $\dim_{\F} V = n$ or simply $\dim V = n$.
 \end{definition}
 
-\begin{definition}[Infinite Dimensional Vector Spaces]
-    A linear space $V$ over a field $\F$ is said to be \emph{infinite dimensional} if $V$ is not finite dimensional.
+\begin{definition}[Infinite-Dimensional Vector Spaces]
+    A linear space $V$ over a field $\F$ is said to be \emph{infinite-dimensional} if $V$ is not finite-dimensional.
 \end{definition}
 
-We have to proof if the dimension of a finite dimensional vector space is well-defined.
+We have to prove that the dimension of a finite-dimensional vector space is well-defined.
 
 \begin{proposition}
     If there exists two linear equivalences $T: V \to \F^m$ and $S: V \to \F^n$, then $n = m$.
@@ -1259,9 +1263,9 @@ We have to proof if the dimension of a finite dimensional vector space is well-d
     \[
         TS^{-1}: \F^n \to \F^m
     \]
-    Since $TS^{-1}$ is compositions of linear equivalences, it is also a linear equivalence. Mutantis mutandis, for the opposite direction.
+    Since $TS^{-1}$ is a composition of linear equivalences, it is also a linear equivalence. Mutatis mutandis, for the opposite direction.
 
-    Now, we know that a linear equivalence between two finite-dimensional vector spaces. Then we have $\dim \F^n = \dim \F^m$ or $n = m$. Thus, the dimension of a finite dimensional vector space is well-defined.
+    Now, we know that a linear equivalence between two finite-dimensional vector spaces. Then we have $\dim \F^n = \dim \F^m$ or $n = m$. Thus, the dimension of a finite-dimensional vector space is well-defined.
 \end{proof}
 
 Graphically, we have the following commutative diagram:
@@ -1394,7 +1398,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
             0
         \end{bmatrix}
     \]
-    where $\vec{y_1}$ and $\vec{y_2}$ are column vecotrs with size $r$ and $n - r$ respectively. Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything. As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$. Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$. Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0. Hence the rank of $A$ is $n$.
+    where $\vec{y_1}$ and $\vec{y_2}$ are column vectors with size $r$ and $n - r$ respectively. Then $I_r \vec{y_1} = 0$, which implies $\vec{y_1} = 0$, while $\vec{y_2}$ can be anything. As $A$ is invertible, then $A\vec{x} = \vec{0}$ only has one trivial solution $\vec{x} = \vec{0}$. Also, $Q$ is invertible, hence $\vec{y}$ has only one trivial solution $\vec{0}$, i.e., $\vec{y}_2 = \vec{0}$. Hence we have $n - r = 0$ due to the size of $\vec{y}_2$ being 0. Hence the rank of $A$ is $n$.
 
     If $\rank{A} = n$, then the canonical form of $A$ is 
     \[
@@ -1441,7 +1445,7 @@ Note that $P$ is the product of a finite sequence of elementary row operation ma
     \end{bmatrix} \vec{x} = \vec{b}$ has a unique solution.
 \end{proposition}
 
-Linear Algebra is the study of linear map between two finite dimensional vector spaces.
+Linear Algebra is the study of linear map between two finite-dimensional vector spaces.
 
 \begin{center}
     \begin{tikzcd}
@@ -1461,7 +1465,7 @@ The coordinate maps $[-]_{\B}$ and $[-]_{\B'}$ are linear equivalences and they 
 
 \section{Properties of Linear Maps}\index{Properties of Linear Maps}
 
-Let $f : V \to W$ be a linear map between two finite dimensional vector spaces over $\F$. We have the following properties:
+Let $f : V \to W$ be a linear map between two finite-dimensional vector spaces over $\F$. We have the following properties:
 \begin{enumerate}
     \item $f$ is injective if and only if $\ker f = \{0_V\}$, i.e., the kernel is trivial.
     \item $f$ is surjective if and only if $\coker f = \{0_W\}$, i.e., the cokernel is trivial.
@@ -1499,7 +1503,7 @@ Here, we discuss linear spaces with more in depth terms.
 \begin{definition}[Kernels]
     Let $f : V \to W$ be a linear map. The \emph{kernel} of $f$, denoted as $\ker f$, is defined as 
     \[
-        \ker f \overset{\text{def}}{=\joinrel=} f^{-1}(0_W) = \{ v \in V \mid f(v) = 0_W \}
+        \ker f \overset{\text{def}}{=\joinrel=} \{ v \in V \mid f(v) = 0_W \} = f^{-1}(\{0_W\})
     \]
 \end{definition}
 
@@ -1687,7 +1691,7 @@ Next, we discuss quotient space. However, before introducing quotient space, we 
 
 Same for the right group action of $G$ on $X$, just think it dually.
 
-Consider rotation on a plane. It is a group action of the group $SO(2)$ on the set $\R^2$.
+Consider a rotation on a plane. It is a group action of the group $SO(2)$ on the set $\R^2$.
 \[
     g = \begin{pmatrix}
         \cos{\theta} & -\sin{\theta} \\
@@ -1826,9 +1830,9 @@ Note that we now do not know whether $\quotient{W}{V}$ is a linear space or not.
     which means $[\alpha_1 w_1 + \alpha_2 w_2] = [\alpha_1 w'_1 + \alpha_2 w'_2]$. This means that the linear combination is independent of the choice of representatives. Thus, the linear combination is well-defined.
 \end{proof}
 
-In normal procedure, we first define the operations and then check whether the set is closed under the operations and zero exists. Then we check whether the map preserves the structure and show the uniqueness of the structure. However, in this case, we first assume that such a structure exists and then derive the operations from the assumption. Then we check whether the operations are well-defined.
+In the normal procedure, we first define the operations and then check whether the set is closed under the operations and zero exists. Then we check whether the map preserves the structure and show the uniqueness of the structure. However, in this case, we first assume that such a structure exists and then derive the operations from this assumption. Subsequently, we check whether the operations are well-defined.
 
-In the first part, we show that there is only one possible way to define the operations if the quotient map is linear. Also, during the definition, it ensures the preservation of the linear structure. In the second part, we show that the operations on the set $\quotient{W}{V}$ are well-defined.
+In the first part, we show that there is only one possible way to define the operations if the quotient map is linear. Moreover, the definition ensures the preservation of the linear structure. In the second part, we show that the operations on the set $\quotient{W}{V}$ are well-defined.
 
 If we consider the graphical representation of the quotient space $\quotient{W}{V}$ and the quotient map $\pi$, we may use the following diagram:
 
@@ -1870,25 +1874,27 @@ If we consider the graphical representation of the quotient space $\quotient{W}{
 \section{Universal Properties}\index{Universal Properties}
 
 \begin{proposition}
-    Let $V$ be a linear space over a field $\F$ and $S$ be a minimal spanning set of $V$. Then for any set map $\phi : S \to Z$, where $Z$ is any linear space over $\F$, there is a unique linear map $\tilde{\phi} : V \to Z$ such that $\tilde{\phi}|_S = \phi$.
+    Let $V$ be a linear space over a field $\F$ and $S$ be a minimal spanning set of $V$. Then for any set map $\phi : S \to Z$, where $Z$ is any linear space over $\F$, there is a unique linear map $\widetilde{\phi} : V \to Z$ such that $\widetilde{\phi}|_S = \phi$.
 
     In other words, the following diagram commutes:
     \begin{center}
         \begin{tikzcd}
             s \arrow[d, mapsto, xshift=-1.8ex] \in S \arrow[r, "\phi"] \arrow[swap, d, "\iota", hook, xshift=1.5ex] & Z \\
-            s \in V \arrow[ru, "\tilde{\phi}"', dashed] &
+            s \in V \arrow[ru, "\widetilde{\phi}"', dashed] &
         \end{tikzcd}
     \end{center}
 \end{proposition}
 
 \begin{proof}
-    Assume the existence of such a linear map $\tilde{\phi}$. Then for all $s \in S$, we have $\tilde{\phi} \circ \iota (s) = \tilde{\phi}(s) = \phi(s)$.
+    Assume the existence of such a linear map $\widetilde{\phi}$. Then for all $s \in S$, we have $\widetilde{\phi} \circ \iota (s) = \widetilde{\phi}(s) = \phi(s)$.
 
     Since $S$ is a minimal spanning set of $V$, for any $v \in V$, we have a unique way to write $v$ as a linear combination of finitely many elements in $S$, i.e., $v = \sum_{i=1}^{n} \alpha_i s_i$ where $\alpha_i \in \F$ and $s_i \in S$ are distinct. Then we have 
     \[
-        \tilde{\phi}(v) = \tilde{\phi}\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \sum_{i=1}^{n} \alpha^i \tilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha^i \phi(s_i) = \phi\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \phi(v)
+        \widetilde{\phi}(v) = \widetilde{\phi}\left(\sum_{i=1}^{n} \alpha^i s_i\right) = \sum_{i=1}^{n} \alpha^i \widetilde{\phi}(s_i) = \sum_{i=1}^{n} \alpha^i \phi(s_i)
     \]
-    This shows that $\tilde{\phi}$ agrees with $\phi$ on all of $V$, and thus $\tilde{\phi}$ is uniquely determined by $\phi$.
+    This shows the uniqueness of $\widetilde{\phi}$.
+
+    Then we claim that the map $\widetilde{\phi}$ defined above is well-defined. Since $S$ is a minimal spanning set of $V$, there is only one way to write each element in $V$ as a linear combination of elements in $S$. Thus, the definition of $\widetilde{\phi}$ does not depend on the choice of representation of $v$. This shows that $\widetilde{\phi}$ is well-defined.
 \end{proof}
 
 Note that we first define the map on the spanning set and then extend it to the whole space. The uniqueness is due to the fact that there is only one way to write each element in $V$ as a linear combination of elements in $S$ and the existence is due to the fact that we can always define the map on $V$ by using the linear combination.
@@ -1897,9 +1903,9 @@ This proposition shows thats a linear space with a minimal spanning set has the 
 
 \begin{center}
     \begin{tikzcd}[row sep=tiny, column sep=tiny]
-        \phi \arrow[r, mapsto] & \tilde{\phi} \\
+        \phi \arrow[r, mapsto] & \widetilde{\phi} \\
         \Map(S, Z) \arrow[r, leftrightarrow, "\cong" description] & \Hom(V, Z) \\
-        \tilde{\phi} \circ \iota \arrow[r, mapsto] & \tilde{\phi} \\
+        \widetilde{\phi} \circ \iota \arrow[r, mapsto] & \widetilde{\phi} \\
     \end{tikzcd}
 \end{center}
 
@@ -1909,28 +1915,28 @@ This proposition shows thats a linear space with a minimal spanning set has the 
         \begin{tikzcd}
             & V \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
             & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
-            Z & & \quotient{W}{V} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
+            Z & & \quotient{W}{V} \arrow[ll, "\exists ! \widetilde{\phi}" swap, dashed] 
         \end{tikzcd}
     \end{center}
-    where $Z$ is any linear space over $\F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$. Then there is a unique linear map $\tilde{\phi} : \quotient{W}{V} \to Z$ such that $\tilde{\phi} \circ \pi = \phi$.
+    where $Z$ is any linear space over $\F$ and $\phi : W \to Z$ is any linear map such that $\phi(v) = 0_Z$ for all $v \in V$. Then there is a unique linear map $\widetilde{\phi} : \quotient{W}{V} \to Z$ such that $\widetilde{\phi} \circ \pi = \phi$.
 \end{proposition}
 
 \begin{proof}
-    Assume the existence of such a linear map $\tilde{\phi}$. Then for all $w \in W$, we have $\tilde{\phi}([w]) = \phi(w)$. However, this may not be well-defined. Then, we check whether it is well-defined. Assume that $[w] = [w']$, then we have $\tilde{\phi}([w']) = \phi(w')$. Note that $w - w' \in V$. Thus, we have $\phi(w' - w) = 0_Z$. This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$. This shows that $\tilde{\phi}([w']) = \tilde{\phi}([w])$. Thus, $\tilde{\phi}$ is well-defined.
+    Assume the existence of such a linear map $\widetilde{\phi}$. Then for all $w \in W$, we have $\widetilde{\phi}([w]) = \phi(w)$. However, this may not be well-defined. Then, we check whether it is well-defined. Assume that $[w] = [w']$, then we have $\widetilde{\phi}([w']) = \phi(w')$. Note that $w - w' \in V$. Thus, we have $\phi(w' - w) = 0_Z$. This means that $\phi(w') - \phi(w) = 0_Z$, i.e., $\phi(w') = \phi(w)$. This shows that $\widetilde{\phi}([w']) = \widetilde{\phi}([w])$. Thus, $\widetilde{\phi}$ is well-defined.
 
-    Then we consider the linearity of $\tilde{\phi}$. For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha^1, \alpha^2 \in \F$, we have
+    Then we consider the linearity of $\widetilde{\phi}$. For all $[w_1], [w_2] \in \quotient{W}{V}$ and $\alpha^1, \alpha^2 \in \F$, we have
     \[
         \begin{split}
-            \tilde{\phi}(\alpha^1 [w_1] + \alpha^2 [w_2]) &= \tilde{\phi}([\alpha^1 w_1 + \alpha^2 w_2]) \\
+            \widetilde{\phi}(\alpha^1 [w_1] + \alpha^2 [w_2]) &= \widetilde{\phi}([\alpha^1 w_1 + \alpha^2 w_2]) \\
             &= \phi(\alpha^1 w_1 + \alpha^2 w_2) \\
             &= \alpha^1 \phi(w_1) + \alpha^2 \phi(w_2) \\
-            &= \alpha^1 \tilde{\phi}([w_1]) + \alpha^2 \tilde{\phi}([w_2])
+            &= \alpha^1 \widetilde{\phi}([w_1]) + \alpha^2 \widetilde{\phi}([w_2])
         \end{split}
     \]
-    This shows that $\tilde{\phi}$ is linear.
+    This shows that $\widetilde{\phi}$ is linear.
 \end{proof}
 \begin{remark}
-    Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\tilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
+    Note that $[0] = V$. If $v \in V$, then $[v] = v + V = \{v + v' \mid v' \in V\} = \{v'' \mid v'' \in V\} = V = [0]$. Thus, $\pi(v) = [v] = [0]$ for all $v \in V$. So the map from $V \to \quotient{W}{V}$ is the zero map. Thus, the triangle commutes. Also, the map from $v$ to $Z$ is defined as the zero map, making the construction of $\widetilde{\phi}$ is possible, as the key step is that $\phi(w' - w) = 0_Z$ for all $w' - w \in V$.
 \end{remark}
 
 Generally, we may consider the following commutative diagrams, where left is the general case and right is the dual case:
@@ -1939,12 +1945,12 @@ Generally, we may consider the following commutative diagrams, where left is the
     \begin{tikzcd}
         & \im{f} \arrow[d, "\iota", hook] \arrow[ddl, bend right, "0" swap] \arrow[ddr, bend left, "0"] \\
         & W \arrow[dl, "\forall \phi" swap] \arrow[dr, "\pi"] \\
-        Z & & \coker{f} \arrow[ll, "\exists ! \tilde{\phi}" swap, dashed] 
+        Z & & \coker{f} \arrow[ll, "\exists ! \widetilde{\phi}" swap, dashed] 
     \end{tikzcd}
     \begin{tikzcd}[swap]
         & \coim{f} \arrow[from=d, "\iota", hook] \arrow[from=ddl, bend left, "0" swap] \arrow[from=ddr, bend right, "0"] \\
         & W \arrow[from=dl, "\forall \phi" swap] \arrow[from=dr, "\pi"] \\
-        Z & & \ker{f} \arrow[from=ll, "\exists ! \tilde{\phi}" swap, dashed] 
+        Z & & \ker{f} \arrow[from=ll, "\exists ! \widetilde{\phi}" swap, dashed] 
     \end{tikzcd}
 \end{center}
 
@@ -1999,18 +2005,18 @@ Then the definition of direct sum is as follows.
     when $V_1$ and $V_2$ are weakly linearly independent.    
 \end{definition}
 
-Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a finite dimensional if $W \cong \F^n$ for some positive integer $n$. It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite spanning set.
+Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a finite-dimensional if $W \cong \F^n$ for some positive integer $n$. It is equivalent to saying that $W$ is finitely spanned, i.e., having a finite spanning set.
 
 \begin{proof}
     If we have a map $\phi : \F^n \to W$, then $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$. However, the set $\{\phi(e_1), \phi(e_2), \cdots, \phi(e_n)\}$ may not be linearly independent. Thus, we can always find a minimal spanning set of $W$ from it. WLOG, we can say $W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$ for some $k \leq n$. Then using (Proposition \ref{prop:minimal_spanning_set}), we have a bijective map $\phi_{\{e_1, e_2, \cdots, e_k\}} : \F^k \to W = \Span\{\phi(e_1), \phi(e_2), \cdots, \phi(e_k)\}$.
 \end{proof}
 
 \begin{proposition} \label{prop:finite_dimensional_subspace_quotient_space}
-    $W$ is finite dimensional if and only if all its subspaces and quotient spaces are finite dimensional.
+    $W$ is finite-dimensional if and only if all its subspaces and quotient spaces are finite-dimensional.
 \end{proposition}
 
 \begin{proof}
-    For subspace $U \subseteq W$ and $W$ is finite dimensional, we have:
+    For subspace $U \subseteq W$ and $W$ is finite-dimensional, we have:
     \begin{center}
         \begin{tikzcd}
             W \arrow[r, two heads] & U \\
@@ -2019,7 +2025,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
     \end{center}
     Then the map $\phi : \F^n \to U$ is defined by $x = \alpha^1 \vec{e}_1 + \cdots + \alpha^n \vec{e}_n \mapsto \phi(x) = \alpha^1 \phi(\vec{e}_1) + \cdots + \alpha^n \phi(\vec{e}_n)$. Thus, $U$ is finitely spanned, $U = \Span\{\phi(\vec{e}_1), \phi(\vec{e}_2), \cdots, \phi(\vec{e}_n)\}$. 
 
-    For quotient space $\quotient{W}{V}$ and $W$ is finite dimensional, we have:
+    For quotient space $\quotient{W}{V}$ and $W$ is finite-dimensional, we have:
     \begin{center}
         \begin{tikzcd}
             V \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \quotient{W}{V}
@@ -2075,7 +2081,7 @@ Recall (Definition \ref{def:finite_dimensional_vector_space}) that $W$ is a fini
         \item the exactness at $V_2$ implies that $\im{j_2} = \ker{0} = V_2$, thus $j_2$ is surjective.
     \end{itemize}
     
-    Somehow, we can draw a Euler diagram to illustrate the situation:
+    We can draw an Euler diagram to illustrate the situation:
     \begin{center}
         \begin{tikzpicture}
             \filldraw[cyan!10] (0,0) ellipse (0.75cm and 1.5cm);
@@ -2190,17 +2196,17 @@ Moreover, we have the isomorphism between $\quotient{(V_1 + V_2)}{V_2}$ and $\qu
 Students from Fudan University asked two hard problems but were completely cooked by Professor Guowu Meng
 
 \subsection{The story behind the two problems}
-``Well, linear algebra basically, no problem is difficult. All problems are trivial. 
+``Well, [in] linear algebra basically, no problem is difficult. All problems are trivial. 
 
 ``People don't believe me, because many years ago, more than 20 years ago, there were two exchange students from Fudan University, and when they came here, they carry solution manual with some sets of hard linear algebra problems. I told them `nothing is difficult'. 
 
-``They don't believe me, so they dig out one hard problem from that solution book. Well, I told them I haven't seen this problem before, because when I was educated as a physicist engineer, I don't work on hard problems. I just deal with textbook. I don't read anything extract. I don't know but doesn't matter. Let me just write everything on board, and then pretty soon I figured out the answer. 
+``They don't believe me, so they dig out one hard problem from that solution book. Well, I told them I haven't seen this problem before, because when I was educated as a physicist engineer, I don't work on hard problems. I just deal with textbook. I don't read anything extra. I don't know but doesn't matter. Let me just write everything on board, and then pretty soon I figured out the answer. 
 
-``Ok may be they say that I am lucky. Then the next day they came back with another problem. So again, I said I don't know how to do it but anyway doesn't matter. I put everything on board, then I draw some obvious facts in my mind about linear algebra. 
+``Ok may be they say that I am lucky. Then the next day they came back with another problem. So again, I said I don't know how to do it but anyway [it] doesn't matter. I put everything on board, then I draw some obvious facts in my mind about linear algebra. 
 
 ``I say no problems are difficult in linear algebra under the assumption that you know linear algebra inside-out, you know every facts about it. Usually you will say I have seen this type of problems before, and then step 1, step 2 step 3, but this is a very wrong way to do it. This is the way that AI does it, but we are human, we are smarter than machine. 
 
-``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this. Then I see a path from here to there.'' 
+``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this. Then I see a path from here to there.''
 
 \begin{flushright}
     --- Guowu Meng on the lecture of September 19, 2025.
@@ -2208,7 +2214,7 @@ Students from Fudan University asked two hard problems but were completely cooke
 
 \subsection{Introduction to the two problems}
 
-Later, we will get into the two problems that were asked by the students from Fudan University, but were completely cooked by Professor Guowu Meng. Before looking into the two problems, we need to introduce some basic terminologies in normal linear algebra.
+Later, we will examine the two problems that were posed by students from Fudan University and solved by Professor Guowu Meng. Before examining the two problems, we need to introduce some basic terminology in standard linear algebra.
 
 Let $A$ be a $m \times n$ matrix. Then we consider the following diagram:
 \begin{center}
@@ -2334,7 +2340,7 @@ The alternative, or normal, definition of rank is as follows.
 
 Actually, using short exact sequence, we can easily prove the rank-nullity theorem.
 \begin{theorem}[Rank-Nullity Theorem]
-    For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
+    For a linear map $f : V \to W$ between finite-dimensional linear spaces over $\F$, we have
     \[
         \rank{f} + \nullity{f} = \dim{V}
     \]
@@ -2351,7 +2357,7 @@ Actually, using short exact sequence, we can easily prove the rank-nullity theor
 
 Moreover, we have the following corollary.
 \begin{corollary}
-    For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
+    For a linear map $f : V \to W$ between finite-dimensional linear spaces over $\F$, we have
     \[
         \dim{W} = \rank{f} + \dim{\coker{f}}
     \]
@@ -2367,7 +2373,7 @@ Moreover, we have the following corollary.
 \end{proof}
 
 \begin{corollary}
-    For a linear map $f : V \to W$ between finite dimensional linear spaces over $\F$, we have
+    For a linear map $f : V \to W$ between finite-dimensional linear spaces over $\F$, we have
     \[
         \dim{V} = \nullity{f} + \dim{\coim{f}}
     \]
@@ -2393,7 +2399,7 @@ Moreover, we have the following properties for rank:
 
 \section{Canonical Form of Linear Map}
 
-First, let $f : V_1 \to V_2$ be a linear map between finite dimensional linear spaces over $\F$. Recall that $\ker{f} = f^{-1} (0)$, $\im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim{f} = \quotient{V_1}{\ker{f}}$ and $\coker{f} = \quotient{V_2}{\im{f}}$. We have the following commutative diagram:
+First, let $f : V_1 \to V_2$ be a linear map between finite-dimensional linear spaces over $\F$. Recall that $\ker{f} = f^{-1} (0)$, $\im{f} = \{f(v_1) \mid v_1 \in V_1\}$, $\coim{f} = \quotient{V_1}{\ker{f}}$ and $\coker{f} = \quotient{V_2}{\im{f}}$. We have the following commutative diagram:
 
 \begin{center}
     \begin{tikzcd}
@@ -2417,12 +2423,12 @@ With respect to the decomposition of $V_1$ and $V_2$ into subspaces, i.e., $V_1 
         \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
         {\im{s_1} \oplus \ker{f} & \im{f} \oplus \im{s_2} \\};
         \path[->] (m-1-1) edge node[above] {$f = \begin{bmatrix}
-            \tilde{f} & 0 \\
+            \widetilde{f} & 0 \\
             0 & 0
         \end{bmatrix}$} (m-1-2);
     \end{tikzpicture}
 \end{center}
-where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim{f} \to \im{f}$ and $s_1 : \coim{f} \to \im{s_1}$. Then the graph below commutes:
+where $\widetilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are linear equivalences $f' : \coim{f} \to \im{f}$ and $s_1 : \coim{f} \to \im{s_1}$. Then the graph below commutes:
 
 \begin{center}
     \begin{tikzcd}
@@ -2435,9 +2441,9 @@ where $\tilde{f} : \im{s_1} \to \im{f}$ is a linear equivalence, as there are li
 \end{remark}
 
 The matrix $\begin{bmatrix}
-    \tilde{f} & 0 \\
+    \widetilde{f} & 0 \\
     0 & 0
-\end{bmatrix}$ is the canonical form of the linear map. Just as the canonical form of a matrix, it reveals the essential structure of the linear map. However, the rank of $\tilde{f}$ is unique, which is equal to $\rank{f} = \dim{\im{f}}$.
+\end{bmatrix}$ is the canonical form of the linear map. Just as the canonical form of a matrix, it reveals the essential structure of the linear map. However, the rank of $\widetilde{f}$ is unique, which is equal to $\rank{f} = \dim{\im{f}}$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -2466,7 +2472,7 @@ Let $X$ be a set and $\delta_X = \{ \delta_x \mid x \in X \}$. Here $\delta_x : 
     $\span{\delta_X} = \F[X]$
 \end{proposition}
 
-Then $\delta_X$ is a minimal spanning set for $\F[X]$.
+Thus, $\delta_X$ is a minimal spanning set for $\F[X]$.
 
 \begin{proposition}
     There is a natural set isomorphism $X \to \delta_X$ which maps $x$ to $\delta_x$.
@@ -2478,13 +2484,13 @@ Among all set maps from $X$ to a linear space over $\F$, the set map $\iota : X 
 \begin{center}
     \begin{tikzcd}
         X \arrow[r, "\forall \phi"] \arrow[d, "\iota"] & Z \\
-        \F[X] \arrow[ur, "\exists ! \tilde{\phi}" swap]
+        \F[X] \arrow[ur, "\exists ! \widetilde{\phi}" swap]
     \end{tikzcd}
 \end{center}
-For any set map $\phi : X \to Z$, there exists a unique linear map $\tilde{\phi} : \F[X] \to Z$ such that $\tilde{\phi} \circ \iota = \phi$.
+For any set map $\phi : X \to Z$, there exists a unique linear map $\widetilde{\phi} : \F[X] \to Z$ such that $\widetilde{\phi} \circ \iota = \phi$.
 
 \begin{proof}
-    Assume the existence of such $\tilde{\phi}$, then $\tilde{\phi} \circ \iota (x) = \phi(x)$ for all $x \in X$, i.e., $\tilde{\phi} (\delta_x) = \phi(x)$ for all $x \in X$. As $\{ \delta_x \mid x \in X \}$ is a minimal spanning set for $\F[X]$, $\tilde{\phi}$ must be the linear map such that $\tilde{\phi} (\delta_x) = \phi(x)$, thus unique. Existence of $\tilde{\phi}$ is also proved.
+    Assume the existence of such $\widetilde{\phi}$, then $\widetilde{\phi} \circ \iota (x) = \phi(x)$ for all $x \in X$, i.e., $\widetilde{\phi} (\delta_x) = \phi(x)$ for all $x \in X$. As $\{ \delta_x \mid x \in X \}$ is a minimal spanning set for $\F[X]$, $\widetilde{\phi}$ must be the linear map such that $\widetilde{\phi} (\delta_x) = \phi(x)$, thus unique. Existence of $\widetilde{\phi}$ is also proved.
 \end{proof}
 
 Via the natural identification of $\delta_X \equiv X$ ($\delta_x \equiv x$), an element $\sum \alpha_x \delta_x \in F[X]$, where the sum is finite and $\alpha_x \in \F$, is naturally identified with $\sum \alpha_x x$, which is called a \emph{formal linear combination} of elements in $X$. Hereafter, we always use this natural identification, so $\F[X]$ is now defined as \emph{the set of formal linear combinations of elements in the set $X$}. Then $\iota : X \to \F[X]$ is just the inclusion map : $x \mapsto x$.
@@ -2523,7 +2529,7 @@ Moreover, $\F[1_X] = 1_{\F[X]}$ or simply $\F[1] = 1$ for all $X$, and $\F[fg] =
 
 \section{Categories and Functors}
 
-The collection of set maps is denoted as $\Set$ and the collection of linear maps over $\F$ is denoted as $\Vect_{\F}$. There is a diagram below:
+The collection of set maps is denoted by $\Set$ and the collection of linear maps over $\F$ is denoted by $\Vect_{\F}$. There is a diagram below:
 \begin{center}
     \begin{tikzcd}
         \Set \arrow[d, "{\F[-]}"] \\
@@ -2553,9 +2559,9 @@ Recall that a monoid $M$ is a set, which is called a small collection of objects
 
 By relaxing the condition on binary operation, allowing the composition being partially defined, we end up with the notion of \emph{small category}.
 
-Being partially defined means that the composition may not be always defined. For example, take $f : X \to Y$ and $g : W \to Z$, then $gf$ is not defined. But for normal, $f : X \to Y$ and $g : Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
+Being partially defined means that the composition may not always be defined. For example, take $f : X \to Y$ and $g : W \to Z$, then $gf$ is not defined. But for normal, $f : X \to Y$ and $g : Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
 
-An example of small category: The collection of all matrices over $\F$. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A : n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA : n \to k$. Note that $I_n : n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have 
+An example of a small category: the collection of all matrices over $\F$. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A : n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA : n \to k$. Note that $I_n : n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have 
 \begin{center}
     \begin{tikzcd}
         n \arrow[loop left, "1_n"] \arrow[r, "A"] & m \arrow[loop right, "1_m"] \arrow[d, "B"] \\
@@ -2652,7 +2658,7 @@ We may draw the associativity law this way:
             \C_0 &= \{ I_n \mid n \in \mathbb{N} \} \equiv \mathbb{N}
         \end{split}
     \]
-    If $A \in \C$ is an $m \times n$ matrix, then $s(A) = I_n \equiv n$ and $t(A) = I_m \equiv m$. We can draw $A$ as follows:
+    If $A \in \C$ is an $m \times n$ matrix, then $s(A) = I_n \equiv n$ and $t(A) = I_m \equiv m$. We can represent $A$ as follows:
     \begin{center}
         \begin{tikzcd}[row sep=subtext, swap]
             * & * \arrow[l, "A"] \\
@@ -2951,7 +2957,7 @@ Then the product and coproduct have the following universal properties respectiv
     \end{tikzcd}
 \end{center}
 
-The elements in the product of a family of objects in $\Vect_{\F}$ can be written as ordered tuples: $(v_\alpha)_{\alpha \in I}$. Then the product can be defined as follows:
+The elements in the product of a family of objects in $\Vect_{\F}$ can be written as ordered tuples: $(v_\alpha)_{\alpha \in I}$. The product can be defined as follows:
 \[
     \prod_{\alpha \in I} V_\alpha = \{ (v_\alpha)_{\alpha \in I} \mid v_\alpha \in V_\alpha \}
 \]
@@ -2960,7 +2966,7 @@ Then the coproduct can be defined as follows:
     \bigoplus_{\alpha \in I} V_\alpha = \{ (v_\alpha) \in \prod_{\alpha \in I} V_\alpha \mid v_\alpha \text{ is finitely supported} \} \subseteq \prod_{\alpha \in I} V_\alpha
 \]
 \begin{remark}
-    In general, the product is not equal to the coproduct. They are equal if and only if the indexing set $I$ is a finite set.
+    In general, the product is not equal to the coproduct. They are equal if and only if the indexing set $I$ is finite.
 \end{remark}
 
 Consider the following diagram:
@@ -3088,7 +3094,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
     \end{center}
     where $\F[-]$ sends set $X$ to the free vector space $\F[X]$ generated by $X$, and a set map $f : X \to Y$ to the linear map $\F[f] : \F[X] \to \F[Y]$ induced by $f$. The functor $|-|$ sends a vector space $V$ to its underlying set $|V|$, and a linear map $\phi : V \to W$ to the set map $|\phi| : |V| \to |W|$ induced by $\phi$.
 
-    The $\F[-]$ is called the \emph{free functor}, specifically it is the \emph{free vector space functor}. The $|-|$ is called the \emph{underlying functor} or \emph{forgetful functor}.
+    The functor $\F[-]$ is called the \emph{free functor}, specifically the \emph{free vector space functor}. The functor $|-|$ is called the \emph{underlying functor} or \emph{forgetful functor}.
 \end{example}
 
 For some set $X$ and any vector space $V$, we can consider the following diagram:
@@ -3195,10 +3201,10 @@ Note that $\Vect_{\F}(X, Z)$ is a vector space over $\F$, as $\Vect_{\F} \equiv 
 
 \section{Dual Spaces and Dual Bases}
 
-Let $V$ be a finite dimensional linear space over $\F$. The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}. 
+Let $V$ be a finite-dimensional linear space over $\F$. The \emph{dual space} of $V$ is the vector space $V^* = \Hom_{\F}(V, \F)$, the set of all linear functionals from $V$ to $\F$, or \emph{covectors}. 
 
 \begin{proposition}
-    Let $V$ be a finite dimensional linear space over $\F$. Then $\dim(V^*) = \dim(V)$. So, $V^*$ is isomorphic to $V$ but not naturally isomorphic to $V$.
+    Let $V$ be a finite-dimensional linear space over $\F$. Then $\dim(V^*) = \dim(V)$. So, $V^*$ is isomorphic to $V$ but not naturally isomorphic to $V$.
 \end{proposition}
 \begin{proof}
     Without the loss of generality, we may assume $\dim{V} = n$ and $V = \F^n$. Then $V^* = \Hom_{\F}(\F^n, \F) \equiv \M{1 \times n}{\F}$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n$. So $\dim(V^*) = n = \dim(V)$. We can say $V^* \cong V$.
@@ -3580,7 +3586,7 @@ We also have the distribution of tensor product over direct sum: $V_1 \otimes (V
 
 \section{Tensor Algebras}
 
-Let $V$ be a finite dimensional linear space over $\F$. We define a new notation:
+Let $V$ be a finite-dimensional linear space over $\F$. We define a new notation:
 \[
     V^{\otimes k} = \underbrace{V \otimes V \otimes \cdots \otimes V}_{k \text{ times}}
 \]
@@ -3748,7 +3754,7 @@ The $\ideal_{\Env}$ is called the \emph{lie ideal} of $\T \mathfrak{g}$. It is a
 \newpage
 
 \section{Hilbert-Poincaré Series}
-Let $V_{\smallbullet} = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded finite dimensional linear space over a field $\F$. The \emph{Hilbert-Poincaré series} of $V_{\smallbullet}$ is defined as the following formal power series:
+Let $V_{\smallbullet} = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded finite-dimensional linear space over a field $\F$. The \emph{Hilbert-Poincaré series} of $V_{\smallbullet}$ is defined as the following formal power series:
 \[
     P_{V_{\smallbullet}}(t) = \sum_{i = 0}^{\infty} \dim(V_i)\ t^i
 \]
@@ -3763,14 +3769,14 @@ Let $V_{\smallbullet} = \bigoplus_{i \geq 0} V_i$ be a $\Z_{\geq 0}$-graded fini
 \begin{example}
     The Hilbert-Poincaré series of the symmetric algebra $\Sym V$ is:
     \[
-        P_{\Sym V}(t) = \sum_{i = 0}^{\infty} \dim(\mathcal{S}^i V)\ t^i = \frac{1}{(1 - t)^{\dim{V}}}
+        P_{\Sym V}(t) = \sum_{i = 0}^{\infty} \dim(\mathcal{S}^i V)\ t^i = \sum_{i = 0}^{\infty} \binom{\dim{V} + i - 1}{i} t^i = \frac{1}{(1 - t)^{\dim{V}}}
     \]
 \end{example}
 
 \begin{example}
     The Hilbert-Poincaré series of the exterior algebra $\Ext V$ is:
     \[
-        P_{\Ext V}(t) = \sum_{i = 0}^{\infty} \dim({\bigwedge}^i V)\ t^i = (1 + t)^{\dim{V}}
+        P_{\Ext V}(t) = \sum_{i = 0}^{\infty} \dim({\bigwedge}^i V)\ t^i = \sum_{i = 0}^{\infty} \binom{\dim{V}}{i} t^i = (1 + t)^{\dim{V}}
     \]
 \end{example}
 
@@ -4233,7 +4239,7 @@ Consider the following determinant:
     \node[left=20pt of irow](textofhere2){the $i$-th row};
     \draw[myarrow] (textofhere2) -- (irow);
 \end{tikzpicture}
-Here $\widehat{a_{i,j}}$ means that the element $a_{i,j}$ is omitted, and $A^i_j$ is the submatrix obtained by deleting the $i$-th row and $j$-th column of $A$.
+Here, $\widehat{a_{i,j}}$ means that the element $a_{i,j}$ is omitted, and $A^i_j$ is the submatrix obtained by deleting the $i$-th row and $j$-th column of $A$.
 
 Then we can consider general matrix $A$, for any $j$, we have:
 \[
@@ -4247,10 +4253,10 @@ This is called the \emph{cofactor expansion} or \emph{Laplace expansion} along t
 
 Then we have the definition of \emph{adjoint} of a matrix.
 \begin{definition}[Adjoint Matrices]
-    An \emph{adjoint matrix} of $A$, denoted by $\adj A$, is defined as the matrix whose $(i,j)$-th entry is $(-1)^{i + j} \det A_i^j$.
+    The \emph{adjoint matrix} of $A$, denoted by $\adj A$, is defined as the matrix whose $(i,j)$-th entry is $(-1)^{i + j} \det A_i^j$.
 \end{definition}
 \begin{remark}
-    Beaware of the notation difference between $A_i^j$ and $A^i_j$. The former means deleting the $j$-th row and $i$-th column, while the latter means deleting the $i$-th row and $j$-th column. Also note that the notation of $\vec{e}_i$ means that the $i$-th row is 1 and other rows are 0 (standard basis vector), which is different from the notation in $A_i^j$ and $A^i_j$. To conclude, the subscript is for columns and the superscript is for rows, except they are in the notation of standard basis vectors.
+    Be aware of the notation difference between $A_i^j$ and $A^i_j$. The former means deleting the $j$-th row and $i$-th column, while the latter means deleting the $i$-th row and $j$-th column. Also note that the notation of $\vec{e}_i$ means that the $i$-th row is 1 and other rows are 0 (standard basis vector), which is different from the notation in $A_i^j$ and $A^i_j$. To conclude, the subscript is for columns and the superscript is for rows, except they are in the notation of standard basis vectors.
 \end{remark}
 
 \begin{proposition}
@@ -4326,7 +4332,7 @@ If we multiply the first row of $\adj A$ with the second column of $A$, we have:
 
 \section{Vandermonde Determinant}
 
-Consider the following determinant, here the superscript means the power:
+Consider the following determinant; here, the superscript means the power:
 \[
     \det V_n = \begin{vmatrix}
         1 & 1 & \cdots & 1 \\
@@ -4366,7 +4372,7 @@ Here $C$ is a constant that does not depend on $x_n$. To find $C$, we can consid
 
 \section{Feynman Diagram Formula}
 
-Consider the $\chart(\F) = 0$. Let $A$ be an $n \times n$ matrix and $I$ be the identity matrix of order $n$. Then we have the following formula:
+Consider the case where $\chart(\F) = 0$. Let $A$ be a $n \times n$ matrix and $I$ be the identity matrix of order $n$. Then we have the following formula:
 \[
     \det (I + tA) = 1 - \tr A \ t + \left(\frac{(\tr A)^2}{2!} - \frac{\tr A^2}{2}\right) t^2 - \cdots + (-1)^n \det A \ t^n
 \]
@@ -4751,7 +4757,7 @@ We can consider the $\End{V} \equiv \M{n \times n}{\F} \equiv \F^{n^2}$ as a vec
 Once we know that completely reducible endomorphisms are dense in $\End{V}$, then if we want to prove some identity, it suffices to prove it for completely reducible endormophisms. One of the example is the Cayley-Hamilton theorem.
 
 \begin{theorem}[Cayley-Hamilton Theorem]
-    Let $T : V \to V$ be an endomorphism of a finite dimensional vector space $V$ over $\F$. Then $T$ satisfies its own characteristic polynomial, i.e. $\left.p_T (\lambda)\right|_{\lambda = T} = 0$.
+    Let $T : V \to V$ be an endomorphism of a finite-dimensional vector space $V$ over $\F$. Then $T$ satisfies its own characteristic polynomial, i.e. $\left.p_T (\lambda)\right|_{\lambda = T} = 0$.
 \end{theorem}
 \begin{remark}
     $p_T (\lambda) = \det (\lambda 1_V - T) = \lambda^n + \cdots + (-1)^n \det(T) \lambda^0$, where $\lambda^0 = 1$ and $T^0 = 1_V$.
@@ -4899,7 +4905,7 @@ Before studying the canonical forms of not completely reducible endormorphisms, 
     A module $M$ over a ring $R$ is called \emph{finitely generated} if $M$ is the span of a finite set of elements in $M$, i.e., $M = \langle m_1, m_2, \cdots, m_k \rangle$ for some $m_1, m_2, \cdots, m_k \in M$. It may not be unique.
 \end{definition}
 
-Note that we do not use the definition of the finite dimensional vector space here, as a module over a ring may not have a basis. There exists something called the torsion module that prevents the existence of basis. We will discuss it later.
+Note that we do not use the definition of the finite-dimensional vector space here, as a module over a ring may not have a basis. There exists something called the torsion module that prevents the existence of basis. We will discuss it later.
 
 Then we introduce the following theorem which can derive Jordan canonical form. 
 
@@ -4913,7 +4919,7 @@ Then we introduce the following theorem which can derive Jordan canonical form.
 \begin{remark}
     Note that $a | b$ means that there exists some $c \in R$ such that $b = ac$.
 \end{remark}
-Here $R^r$ is the free part of $M$ and $\bigoplus_{i = 1}^m \quotient{R}{(a_i)}$ is the torsion part of $M$. The torsion part prevents the existence of basis of $M$. If the torsion part is trivial, i.e. $m = 0$, then $M$ is a free module and has a basis. Moreover, $r$ is the rank of $M$ and is unique. $a_i$ are called the invariant factors of $M$ and are unique up to multiplication by units in $R$. This is called the invariant factor decomposition of $M$. There is another decomposition called primary decomposition, or elementary divisor decomposition, or Chinese Remainder decomposition. 
+Here $R^r$ is the free part of $M$ and $\bigoplus_{i = 1}^m \quotient{R}{(a_i)}$ is the torsion part of $M$. The torsion part prevents the existence of basis of $M$. If the torsion part is trivial, i.e., $m = 0$, then $M$ is a free module and has a basis. Moreover, $r$ is the rank of $M$ and is unique. $a_i$ are called the invariant factors of $M$ and are unique up to multiplication by units in $R$. This is called the invariant factor decomposition of $M$. There is another decomposition called primary decomposition, or elementary divisor decomposition, or Chinese Remainder decomposition. 
 \begin{theorem}[Classification Theorem of Finitely Generated Modules over a PID (Primary Decomposition)]
     Let $R$ be a principal ideal domain and $M$ be a finitely generated module over $R$. Then $M$ is isomorphic to a finite direct sum of cyclic modules of the form:
     \[
@@ -4931,13 +4937,13 @@ For any ring $R$, we can decomposite as follows:
 \]
 where $R^{\times}$ is the set of units in $R$ and $S$ is the set of non-units and non-zero elements in $R$. Then any $u \in R$ is called a unit if there exists some $v \in R$ such that $uv = vu = 1_R$. For example, in $\Z$, the units are $\pm 1$. In $\F[x]$, the units are all non-zero constant polynomials.
 
-Then the set of all prime elements and the set of all irreducible elements in $R$ are subsests of $S$. In general, they are not the same. The set of all prime elements is a subset of the set of all irreducible elements. However, in a principal ideal domain, they are the same. Irreducible elements are elements that cannot be factored into the product of two non-unit elements, i.e., if $x \neq 0$ and $x \notin R^{\times}$, then whenever $x = yz$, then $y$ or $z$ must be a unit.
+Then the set of all prime elements and the set of all irreducible elements in $R$ are subsests of $S$. In general, they are not the same. The set of all prime elements is a subset of the set of all irreducible elements. However, in a principal ideal domain they are the same. Irreducible elements are those elements that cannot be factored into the product of two non-unit elements, i.e., if $x \neq 0$ and $x \notin R^{\times}$, then whenever $x = yz$, then $y$ or $z$ must be a unit.
 
 \newpage
 
 \section{Jordan Canonical Form}
 
-Let $V$ be a finite dimensional linear space over an algebraically closed field $\F$, e.g. $\mathbb{C}$. Then $\F[x]$ is a principal ideal domain and $x - \lambda_i$ are the prime or irreducible elements in $\F[x]$ for each $\lambda_i \in \F$.
+Let $V$ be a finite-dimensional linear space over an algebraically closed field $\F$, e.g. $\mathbb{C}$. Then $\F[x]$ is a principal ideal domain and $x - \lambda_i$ are the prime or irreducible elements in $\F[x]$ for each $\lambda_i \in \F$.
 \begin{remark}
     If we take non-zero $\alpha \in \F$, then $\alpha (x - \lambda_i)$ is also an irreducible element in $\F[x]$, as $\alpha$ is a unit in $\F[x]$ and we have $(x - \lambda_i) = (\alpha(x - \lambda_i))$. Therefore, the irreducible elements are only unique up to multiplication by units. We can just choose monic polynomials as the irreducible elements.
 \end{remark}
@@ -4951,7 +4957,7 @@ Then for any endomorphism $T : V \to V$. It is equivalent to consider $V$ as a m
     Let $p(x) = 2x^2 + 3x - 1 \in \F[x]$ and $T \in \End{V}$. Then for any $v \in V$, we have $p(T) v = 2 T^2 v + 3 T v - v$.
 \end{example}
 
-$V$ is the finite dimensional linear space over $\F$, so it is a finitely generated module over $\F[x]$ with rank $0$. It is the torsion part only. Therefore, by the classification theorem of finitely generated modules over a PID, we have:
+$V$ is the finite-dimensional linear space over $\F$, so it is a finitely generated module over $\F[x]$ with rank $0$. It is the torsion part only. Therefore, by the classification theorem of finitely generated modules over a PID, we have:
 \[
     V \cong \bigoplus_{i = 1}^m \frac{\F[x]}{(x - \lambda_i)^{e_i}} = \frac{\F[x]}{(x - \lambda_1)^{e_1}} \oplus \cdots \oplus \frac{\F[x]}{(x - \lambda_m)^{e_m}}
 \]
@@ -5018,7 +5024,7 @@ Before studying Euclidean spaces, we first review tensors and then introduce inn
 
 \section{Tensor}
 
-Let $V$ be a finite dimensional vector space over a field $\F$. Then we have the following definitions.
+Let $V$ be a finite-dimensional vector space over a field $\F$. Then we have the following definitions.
 
 \begin{definition}[$k$-form]
     A $k$-\emph{form} on $V$ is a multilinear map:
@@ -5054,7 +5060,7 @@ Moreover, we have the following two special types of 2-forms which are the eleme
 Then we define the tensor spaces.
 
 \begin{definition}[Tensor Spaces]
-    Let $V$ be a finite dimensional vector space over a field $\F$. The \emph{tensor space of type} $(r, s)$ on $V$ is defined as:
+    Let $V$ be a finite-dimensional vector space over a field $\F$. The \emph{tensor space of type} $(r, s)$ on $V$ is defined as:
     \[
         \mathcal{T}^{r, s} V = \underbrace{V \otimes V \otimes \cdots \otimes V}_{r \text{ times}} \otimes \underbrace{V^* \otimes V^* \otimes \cdots \otimes V^*}_{s \text{ times}}
     \]
@@ -5105,42 +5111,42 @@ In general, an element $t \in \mathcal{T}^{r, s} V$ can be represented as:
 \]
 Note that the representation depends on the choice of basis $\B_V$ of $V$, i.e., the following two represents the same tensor with respect to different bases:
 \[
-    \left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]_{\B_V} \sim \left[\tilde{t}^{\tilde{i}_1 \tilde{i}_2 \cdots \tilde{i}_r}_{\tilde{j}_1 \tilde{j}_2 \cdots \tilde{j}_s}\right]_{\widetilde{\B_V}}
+    \left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]_{\B_V} \sim \left[\widetilde{t}^{\widetilde{i}_1 \widetilde{i}_2 \cdots \widetilde{i}_r}_{\widetilde{j}_1 \widetilde{j}_2 \cdots \widetilde{j}_s}\right]_{\widetilde{\B_V}}
 \]
 The two representations are related by the base change matrices::
 \[
-    (\tilde{v}_1, \tilde{v}_2, \cdots, \tilde{v}_n) = (v_1, v_2, \cdots, v_n) A, \quad A = [a^i_{\tilde{j}}]_{\B_V}^{\widetilde{\B_V}} \in \GL(V)
+    (\widetilde{v}_1, \widetilde{v}_2, \cdots, \widetilde{v}_n) = (v_1, v_2, \cdots, v_n) A, \quad A = [a^i_{\widetilde{j}}]_{\B_V}^{\widetilde{\B_V}} \in \GL(V)
 \]
 \begin{remark}
     It is actually the right action of $\GL(V)$ on the set of all bases of $V$, $\B_V$:
     \[
-        \B_V \times \GL(V) \to \B_V, \quad (v, A) \mapsto v A = \tilde{v}
+        \B_V \times \GL(V) \to \B_V, \quad (v, A) \mapsto v A = \widetilde{v}
     \]
 \end{remark}
 Then we have the following equation:
 \[
-    \tilde{v}_{\tilde{j}} = v_i a^i_{\tilde{j}}
+    \widetilde{v}_{\widetilde{j}} = v_i a^i_{\widetilde{j}}
 \]
-For $A^{-1} = [b_j^{\tilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\tilde{j}} b_j^{\tilde{k}} = \delta^{\tilde{k}}_{\tilde{j}}$ and $b_j^{\tilde{i}} a^j_{\tilde{k}} = \delta^{\tilde{i}}_{\tilde{k}}$. Therefore, we have:
+For $A^{-1} = [b_j^{\widetilde{i}}]_{\widetilde{\B_V}}^{\B_V}$, we have $a^i_{\widetilde{j}} b_j^{\widetilde{k}} = \delta^{\widetilde{k}}_{\widetilde{j}}$ and $b_j^{\widetilde{i}} a^j_{\widetilde{k}} = \delta^{\widetilde{i}}_{\widetilde{k}}$. Therefore, we have:
 \[
-    v_k = \tilde{v}_{\tilde{j}} b_k^{\tilde{j}}
+    v_k = \widetilde{v}_{\widetilde{j}} b_k^{\widetilde{j}}
 \]
 \begin{remark}
-    For easier memorising, we use the calculus operators:
+    For easier memorisation, we use the calculus operators:
     \[
-        \frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} = a^i_{\tilde{j}}, \quad \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = b_k^{\tilde{j}}
+        \frac{\partial \widetilde{v}_{\widetilde{j}}}{\partial v_i} = a^i_{\widetilde{j}}, \quad \frac{\partial v_k}{\partial \widetilde{v}_{\widetilde{j}}} = b_k^{\widetilde{j}}
     \]
     To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators. (As lower twice, so flip to upper)
 
     Then we can use the chain rule to verify the two equations of $A$ and $A^{-1}$:
     \[
-        \frac{\partial \tilde{v}_{\tilde{j}}}{\partial v_i} \frac{\partial v_k}{\partial \tilde{v}_{\tilde{j}}} = \delta^i_k
+        \frac{\partial \widetilde{v}_{\widetilde{j}}}{\partial v_i} \frac{\partial v_k}{\partial \widetilde{v}_{\widetilde{j}}} = \delta^i_k
     \]
 \end{remark}
 
 Then we have the transformation rule for the representation of $t \in \mathcal{T}^{r, s} V$ under the base change from $\B_V$ to $\widetilde{\B_V}$:
 \[
-    \tilde{t}^{{\color{ocre} \tilde{i}_1 \tilde{i}_2 \cdots \tilde{i}_r}}_{{\color{red} \tilde{j}_1 \tilde{j}_2 \cdots \tilde{j}_s}} = \left({\color{ocre} b_{i_1}^{\tilde{i}_1} b_{i_2}^{\tilde{i}_2} \cdots b_{i_r}^{\tilde{i}_r}}\right) t^{{\color{ocre} i_1 i_2 \cdots i_r}}_{{\color{red} j_1 j_2 \cdots j_s}} \left({\color{red} a^{j_1}_{\tilde{j}_1} a^{j_2}_{\tilde{j}_2} \cdots a^{j_s}_{\tilde{j}_s}}\right)
+    \widetilde{t}^{{\color{ocre} \widetilde{i}_1 \widetilde{i}_2 \cdots \widetilde{i}_r}}_{{\color{red} \widetilde{j}_1 \widetilde{j}_2 \cdots \widetilde{j}_s}} = \left({\color{ocre} b_{i_1}^{\widetilde{i}_1} b_{i_2}^{\widetilde{i}_2} \cdots b_{i_r}^{\widetilde{i}_r}}\right) t^{{\color{ocre} i_1 i_2 \cdots i_r}}_{{\color{red} j_1 j_2 \cdots j_s}} \left({\color{red} a^{j_1}_{\widetilde{j}_1} a^{j_2}_{\widetilde{j}_2} \cdots a^{j_s}_{\widetilde{j}_s}}\right)
 \]
 
 Given that $\B_V = \{ \vec{v}_1, \cdots, \vec{v}_n \}$ is a basis of $V$, then we can define a basis of $\mathcal{T}^{r, s} V$ as follows:
@@ -5194,7 +5200,7 @@ In conclusion, we have to make sure that the representation of any symmetric or 
 
 \section{Inner Product}
 
-Let $V$ be a finite dimensional real linear space. Then we have the following definitions.
+Let $V$ be a finite-dimensional real linear space. Then we have the following definitions.
 
 \begin{definition}[Inner Product]
     An inner product on $V$ is a map $\langle -, - \rangle : V \times V \to \R$ such that 
@@ -5242,7 +5248,7 @@ Then a function $\| - \| : V \to \R$ that sends $v$ to $\| v \|$ is called a nor
 We can use the norm with the properties above to define the distance function by $d(x, y) = \| x - y \|$.
 
 \begin{theorem}[Parallelogram Law]
-    The parallelogram law states that the sum of the squares of the lengths of the four sides of a parallelogram equals the sum of the squares of the lengths of the two diagonals, i.e., with the following figure:
+    The parallelogram law states that the sum of squares of the lengths of the four sides of a parallelogram equals the sum of squares of the lengths of the two diagonals, i.e., with the following figure:
     \begin{center}
         \begin{tikzpicture}[scale=2]
             \draw (0, 0) coordinate (A) -- (2, 0) coordinate (B) -- (2.5, 1) coordinate (C) -- (0.5, 1) coordinate (D) -- cycle;
@@ -5286,11 +5292,63 @@ We can use the norm with the properties above to define the distance function by
         \]
     \end{enumerate}
 
-    ($\Leftarrow$) We define the inner product for all $u, v \in V$ as follows and the proof is left as an exercise:
+    ($\Leftarrow$) We define the inner product for all $u, v \in V$ as follows:
     \[
         \langle u, v \rangle = \frac{1}{2} \left( \| u + v \|^2 - \| u \|^2 - \| v \|^2 \right)
     \]
-    % TODO: Complete the proof
+    Then we check the three properties of inner product:
+    \begin{enumerate}
+        \item \emph{Bilinearity:} For all $u, v, w \in V$, we have to show that $\langle u + w, v \rangle = \langle u, v \rangle + \langle w, v \rangle$, which is equivalent to show that:
+        \[
+            \begin{split}
+                \| u + w + v \|^2 - \| u + w \|^2 - \| v \|^2 &= \| u + v \|^2 - \| u \|^2 - \| v \|^2 + \| w + v \|^2 - \| w \|^2 - \| v \|^2 \\
+                \iff \| u + w + v \|^2 + \| u \|^2 + \| w \|^2 + \| v \|^2 &= \| u + w \|^2 + \| u + v \|^2 + \| w + v \|^2
+            \end{split}
+        \]
+        Then we may consider $x = u + w$ and $y = v + w$, and $x' = u + v + w$ and $y' = w$, and we have
+        \[
+            \begin{split}
+                \| u + v + 2w \|^2 + \| u - v \|^2 &= 2 \| u + w \|^2 + 2 \| v + w \|^2 \\
+                \| u + v + 2w \|^2 + \| u + v \|^2 &= 2 \| u + v + w \|^2 + 2 \| w \|^2
+            \end{split}
+        \]
+        Then we have
+        \[
+            \| u - v \|^2 - \| u + v \|^2 = 2 \| u + w \|^2 + 2 \| v + w \|^2 - 2 \| u + v + w \|^2 - 2 \| w \|^2
+        \]
+        Moreover, by the parallelogram law on $u - v$, we have
+        \[
+            \begin{split}
+                2 \| u \|^2 + 2 \| v \|^2 - 2 \| u + v \|^2 &= 2 \| u + w \|^2 + 2 \| v + w \|^2 - 2 \| u + v + w \|^2 - 2 \| w \|^2 \\
+                \iff \| u + v + w \|^2 + \| u \|^2 + \| v \|^2 + \| w \|^2 &= \| u + w \|^2 + \| v + w \|^2 + \| u + v \|^2
+            \end{split}
+        \]
+        Hence, additivity in the first argument holds. We can show the additivity in the second argument similarly. For homogeneity, we may consider the following steps:
+        \begin{itemize}
+            \item Prove natural number homogeneity
+            \item Prove reciprocal of natural number homogeneity
+            \item Prove Cauchy-Schwarz inequality
+            \item Prove that for any $\lambda \in \R$, every $r \in \mathbb{Q}$, we have:
+            \[
+                | \lambda \langle u, v \rangle - \langle \lambda u, v \rangle | = | (\lambda - r) \langle u, v \rangle - \langle (\lambda - r) u, v \rangle | \leq 2|\lambda - r| \| u \| \| v \|
+            \]
+            \item Hence, prove real number homogeneity by taking limit on both sides as $r \to \lambda$.
+        \end{itemize}
+
+        \item \emph{Symmetry:} For all $u, v \in V$, we have:
+        \[
+            \begin{split}
+                \langle u, v \rangle &= \frac{1}{2} \left( \| u + v \|^2 - \| u \|^2 - \| v \|^2 \right) \\
+                &= \frac{1}{2} \left( \| v + u \|^2 - \| v \|^2 - \| u \|^2 \right) = \langle v, u \rangle
+            \end{split}
+        \]
+
+        \item \emph{Positive-definiteness:} For all $v \in V$, we have:
+        \[
+            \langle v, v \rangle = \frac{1}{2} \left( \| v + v \|^2 - \| v \|^2 - \| v \|^2 \right) = \frac{1}{2} (4 \| v \|^2 - 2 \| v \|^2) = \| v \|^2 \geq 0
+        \]
+    \end{enumerate}
+    Thus, $\langle -, - \rangle$ is an inner product on $V$.
 \end{proof}
 
 \begin{theorem}[Cauchy-Schwarz Inequality]
@@ -5301,7 +5359,7 @@ We can use the norm with the properties above to define the distance function by
     with equality if and only if $u$ and $v$ are linearly dependent.
 \end{theorem}
 \begin{proof}
-    Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2t \langle u, v \rangle + \| v \|^2$ for all $t \in \R$. Then we have $f(t) \geq 0$ for all $t \in \R$. For $u = 0$, the inequality holds trivially. For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
+    Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2t \langle u, v \rangle + \| v \|^2 \geq 0$ for all $t \in \R$. Then we have $f(t) \geq 0$ for all $t \in \R$. For $u = 0$, the inequality holds trivially. For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
     \[
         \Delta = 4 \langle u, v \rangle^2 - 4 \| u \|^2 \| v \|^2 \leq 0 \implies \langle u, v \rangle^2 \leq \| u \|^2 \| v \|^2
     \]
@@ -5598,8 +5656,21 @@ The other four properties of norm is the same as in Euclidean spaces. Moreover t
 \[
     |\langle u, v \rangle| \leq \| u \| \| v \|
 \]
-for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly dependent. The proof is left as an exercise. 
-% TODO: Add proof of Cauchy-Schwarz inequality in Hermitian spaces.
+for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly dependent. 
+\begin{proof}
+    Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2 \Re(\langle u, v \rangle) t + \| v \|^2 \geq 0$ for all $t \in \R$. Then we have $f(t) \geq 0$ for all $t \in \R$. For $u = 0$, the inequality holds trivially. For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
+    \[
+        \Delta = 4 (\Re(\langle u, v \rangle))^2 - 4 \| u \|^2 \| v \|^2 \leq 0 \implies (\Re(\langle u, v \rangle))^2 \leq \| u \|^2 \| v \|^2 \implies | \Re (\langle u, v \rangle) | \leq \| u \| \| v \|
+    \]
+    Note that $\langle u, v \rangle = |\langle u, v \rangle| e^{i \theta}$ for some $\theta \in \R$. Then we have:
+    \[
+        \langle e^{-i \theta} u, v \rangle = e^{-i \theta} \langle u, v \rangle = |\langle u, v \rangle|
+    \]
+    Therefore, we have:
+    \[
+        |\langle u, v \rangle| = | \Re (\langle e^{-i \theta} u, v \rangle) | \leq \| e^{-i \theta} u \| \| v \| = \| u \| \| v \|
+    \]
+\end{proof}
 
 The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $\overline{V} \times V \to \mathbb{C}$, where $\overline{V}$ is the complex conjugate vector space of $V$, or linear map $\overline{V} \otimes V \to \mathbb{C}$. The complex conjuage vector space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
 \[
@@ -5660,11 +5731,11 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
 \[
     \omega = [\langle v_i, v_j \rangle]
 \]
-Note that $\omega$ is a Hermitian matrix, i.e., $\omega^\dagger = \omega$. Then we claim that if $A$ and $\tilde{A}$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\tilde{v}$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
+Note that $\omega$ is a Hermitian matrix, i.e., $\omega^\dagger = \omega$. Then we claim that if $A$ and $\widetilde{A}$ are two matrix representations of the Hermitian form $\langle -, - \rangle$ with respect to two different bases $v$ and $\widetilde{v}$ respectively, then there exists an invertible matrix $P \in \GL_n(\mathbb{C})$ such that:
 \[
-    \tilde{A} = P^\dagger A P
+    \widetilde{A} = P^\dagger A P
 \]
-where $P$ is the change-of-basis matrix from $v$ to $\tilde{v}$. Or equivalently, 
+where $P$ is the change-of-basis matrix from $v$ to $\widetilde{v}$. Or equivalently, 
 \[
     \mathsf{H}_n(\mathbb{C}) \times \GL_n(\mathbb{C}) \to \mathsf{H}_n(\mathbb{C}), \quad (A, P) \mapsto P^\dagger A P
 \]
@@ -5747,11 +5818,11 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
             \lambda_1 \langle v_1, v_2 \rangle = \overline{\lambda_2} \langle v_1, v_2 \rangle
         \]
         Since $\lambda_1 \neq \lambda_2$, we have $\langle v_1, v_2 \rangle = 0$.
-        \item We know that $V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$. To show the equality, we let $W = V_{\lambda_1} (T) \otimes \cdots V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$. Since $T$ is self-adjoint, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$. As for all $w \in W$ and $w^\perp \in W^\perp$, we have:
+        \item We know that $V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$. To show the equality, we let $W = V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$. Since $T$ is self-adjoint, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$. As for all $w \in W$ and $w^\perp \in W^\perp$, we have:
         \[
             \langle T w^\perp, w \rangle = \langle w^\perp, T^\dagger w \rangle = \langle w^\perp, T w \rangle = 0
         \]
-        where $T w \in W$ since $W$ is $T$-invariant. Then we propose that $W^\perp = \{ 0 \}$. If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\tilde{T} : W^\perp \to W^\perp$ defined by $\tilde{T}(w^\perp) = T(w^\perp)$. Then $\tilde{T} w^\perp = \lambda w^\perp$ and $\tilde{T} w^\perp = T w^\perp$ by definition. So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$. Say $\lambda = \lambda_1$. Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$. Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$.
+        where $T w \in W$ since $W$ is $T$-invariant. Then we claim that $W^\perp = \{ 0 \}$. If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\widetilde{T} : W^\perp \to W^\perp$ defined by $\widetilde{T}(w^\perp) = T(w^\perp)$. Then $\widetilde{T} w^\perp = \lambda w^\perp$ and $\widetilde{T} w^\perp = T w^\perp$ by definition. So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$. Say $\lambda = \lambda_1$. Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$. Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$.
     \end{enumerate}
 \end{proof}
 
@@ -5764,8 +5835,36 @@ Let $V$ be a Hermitian space with Hermitian form $\langle -, - \rangle$. Then we
     \end{enumerate}
     So $T$ is completely reducible.
 \end{proposition}
-The proof is left as an exercise.
-% TODO: Add proof
+\begin{proof}
+    Given that $T^\dagger T = T T^\dagger = 1_V$, we have:
+    \begin{enumerate}
+        \item Let $\lambda \neq 0$ be an eigenvalue of $T$, so there exists a non-zero eigenvector $v$ such that $Tv = \lambda v$. Then we have:
+        \[
+            \langle Tv, v \rangle = \langle v, T^\dagger v \rangle
+        \]
+        which implies that:
+        \[
+            \lambda \langle v, v \rangle = \overline{\lambda}^{-1} \langle v, v \rangle \implies (\lambda \cdot \overline{\lambda} - 1) \langle v, v \rangle = 0
+        \]
+        Since $v \neq 0$, we have $\langle v, v \rangle > 0$. Therefore, we have $\lambda \cdot \overline{\lambda} = |\lambda|^2 = 1$, i.e., $|\lambda| = 1$.
+
+        \item Let $\lambda_1$ and $\lambda_2$ be two distinct eigenvalues of $T$ with corresponding eigenvectors $v_1$ and $v_2$. Then we have:
+        \[
+            \langle Tv_1, v_2 \rangle = \langle v_1, T^\dagger v_2 \rangle
+        \]
+        which implies that:
+        \[
+            \lambda_1 \langle v_1, v_2 \rangle = \overline{\lambda_2}^{-1} \langle v_1, v_2 \rangle \implies (\lambda_1 \overline{\lambda_2} - 1) \langle v_1, v_2 \rangle = 0
+        \]
+        Since $\lambda_1 \neq \lambda_2$, we have $\langle v_1, v_2 \rangle = 0$.
+
+        \item We know that $V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$. To show the equality, we let $W = V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$. Since $T$ is unitary, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$. As for all $w \in W$ and $w^\perp \in W^\perp$, we have $w' = T w \in W$ and:
+        \[
+            \langle T w^\perp, w' \rangle = \langle T w^\perp, T w \rangle = \langle w^\perp, w \rangle = 0
+        \]
+        where the second equality holds since $T$ is unitary. Then we claim that $W^\perp = \{ 0 \}$. If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\widetilde{T} : W^\perp \to W^\perp$ defined by $\widetilde{T}(w^\perp) = T(w^\perp)$. Then $\widetilde{T} w^\perp = \lambda w^\perp$ and $\widetilde{T} w^\perp = T w^\perp$ by definition. So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$. Say $\lambda = \lambda_1$. Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$. Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$.
+    \end{enumerate}
+\end{proof}
 
 \newpage
 
@@ -5820,13 +5919,11 @@ There are two corollories of the spectral theorem as follows.
     \]
 \end{corollary}
 \begin{proof}
-    \textbf{The proof is just a draft and needs to be polished.} % TODO: Polish the proof.
-
-    Let $A$ be a real symmetric matrix. Then we can consider $A$ as a Hermitian matrix over $\mathbb{C}$. By the spectral theorem, there exists a unitary matrix $U$ and a diagonal matrix $D$ such that:
+    As real symmetric matrices are Hermitian matrices, by the spectral theorem for Hermitian matrices, we know that any real symmetric matrix can be diagonalised by a unitary matrix, i.e., $A = U^{\dagger} D U$ for some unitary matrix $U$ and real diagonal matrix $D$. Note that the entries of $U$ are complex numbers in general. However, as $A$ is a real matrix, we have
     \[
-        A = U D U^\dagger
+        \overline{A} = \overline{U^{\dagger}} D \overline{U} = U^{\dagger} D U = A.
     \]
-    where the entries of $D$ are all real numbers as $A$ is Hermitian. Then $D$ is also a real diagonal matrix. Given that $A$ is a real matrix and $D$ is a real diagonal matrix, then the eigenvectors of $A$ corresponding to the eigenvalues on the diagonal of $D$ can be chosen to be real vectors. Therefore, we can choose $U$ to be a real matrix. Moreover, as $U$ is unitary and real, we have $U$ is orthogonal. This completes the proof.
+    Thus, we have $\overline{U^{\dagger}} D \overline{U} = U^{\dagger} D U$. Note that the diagonal entries of $D$ are real numbers. Therefore, we have $\overline{U^{\dagger}} = U^{\dagger}$ and hence $\overline{U} = U$. Thus, we conclude that $U$ is a real unitary matrix, i.e., an orthogonal matrix. Therefore, we conclude that any real symmetric matrix $A$ can be diagonalised by an orthogonal matrix.
 \end{proof}
 
 \begin{corollary}
@@ -5862,7 +5959,7 @@ There are two corollories of the spectral theorem as follows.
     \[
         D = \begin{bmatrix}
             \lambda \\
-            & -\mu
+            & -\mu \\
             & & 0
         \end{bmatrix}
     \]
@@ -5874,7 +5971,7 @@ There are two corollories of the spectral theorem as follows.
         \mu_1 & & \\
         & \ddots & \\
         & & \mu_s
-    \end{bmatrix}$ with $\lambda_i, \mu_j > 0$ for all $i, j$. The pair $(r, s)$ is called the \emph{signature} of the Hermitian form. We can further decompose the Hermitian form as:
+    \end{bmatrix}$ with $\lambda_i, \mu_j > 0$ for all $i, j$. The pair $(r, s)$ is called the \emph{signature} of the Hermitian form. We may further decompose the Hermitian form as:
     \[
         D = \begin{bmatrix}
             \sqrt{\lambda} \\
@@ -5921,7 +6018,7 @@ In summary,
         & -I_{q}
     \end{bmatrix}$ up to an orthogonal change of basis, with $n = p + q$. Then we call $(p, q)$ the signature of the pseudo inner product.
     \item $V$ is a real vector space of dimension $n$. Then up to isomorphism, there are $n + 1$ different pseudo inner products on $V$, corresponding to the signatures $(n, 0), (n - 1, 1), \cdots, (1, n - 1), (0, n)$.
-    \item Any pseudo inner product $V$ is isomorphic to $(\R^n , I_{p,q}) = \R^{p,q}$. As we send $(x, y) \to x_1 y_1 + \cdots + x_p y_p - x_{p+1} y_{p+1} - \cdots - x_n y_n$.
+    \item Any pseudo inner product $V$ is isomorphic to $(\R^n , I_{p,q}) = \R^{p,q}$. As it sends $(x, y) \to x_1 y_1 + \cdots + x_p y_p - x_{p+1} y_{p+1} - \cdots - x_n y_n$.
 \end{itemize}
 
 The set of inner products on a real vector space $V$ of dimension $n$ is isomorphic to the orbit space of the right action of group $\Orth(n)$ on $\GL_n(\R)$ $\GL_n(\R) / \Orth(n)$, where $\Orth(n)$ is the orthogonal group of order $n$. 
@@ -6060,7 +6157,7 @@ The meaning of being compatible pair:
     for all $x, y \in V$ and $x \neq 0$. Then we can define $\langle -, - \rangle = g + i \omega$. We can check that $\langle -, - \rangle$ is a Hermitian product by the similar proof as above.
 \end{itemize}
 
-Let $V$ be a vector space over $\F$ where $\chart \F \neq 2$. We define the double $D(V) = V \oplus V^*$. Then we have a natural symplectic form on $D(V)$ defined as:
+Let $V$ be a vector space over $\F$ where $\chart(\F) \neq 2$. We define the double $D(V) = V \oplus V^*$. Then we have a natural symplectic form on $D(V)$ defined as:
 \[
     \omega ((u, \alpha), (v, \beta)) = \alpha(v) - \beta(u)
 \]
@@ -6519,7 +6616,7 @@ For the representation of the affine map, we have the following commutative diag
 \end{center}
 where $A \in \M{m \times n}{\F}$ and $\vec{b} \in \F^m$. Note that the representation of $\phi$ depends on the choice of origins in $\A_1$ and $\A_2$. 
 
-A Euclidean space is a finite dimensional real affine space with a Euclidean structure on its tangent space. The Euclidean structure means the translation invariant assignment of inner product to each tangent space of $\A$. Let $\A$ be an $n$-dimensional real affine space. Take $p \in \A$. Then the pointed affine space $(\A, p)$ is isomorphic to the vector space $\mathcal{T}_p \A$. Moreover, it is equivalent to $\R^n$ with the standard inner product, and $q \in (\A, p)$ corresponds to the vector $\vec{v} = q - p \in \R^n$. Then we have:
+A Euclidean space is a finite-dimensional real affine space with a Euclidean structure on its tangent space. The Euclidean structure means the translation invariant assignment of inner product to each tangent space of $\A$. Let $\A$ be an $n$-dimensional real affine space. Take $p \in \A$. Then the pointed affine space $(\A, p)$ is isomorphic to the vector space $\mathcal{T}_p \A$. Moreover, it is equivalent to $\R^n$ with the standard inner product, and $q \in (\A, p)$ corresponds to the vector $\vec{v} = q - p \in \R^n$. Then we have:
 \[
     \alpha_1 q_1 + \alpha_2 q_2 = p + \alpha_1 (q_1 - p) + \alpha_2 (q_2 - p)
 \]
@@ -6598,14 +6695,18 @@ The Galilean space-time $\mathbb{G}$ is a 4-dimensional real affine space $\A_\R
 
 \section{Quadratic Form and Clifford Algebra}
 
-Let $V$ be a vector space over a field $\F$. A quadratic form on $V$ is a map $Q : V \to \F$ such that:
+Let $V$ be a vector space over a field $\F$. A quadratic form on $V$ is a map $q : V \to \F$ such that:
 \begin{itemize}
-    \item $Q(\alpha v) = \alpha^2 Q(v)$ for all $\alpha \in \F$ and $v \in V$;
-    \item The map $B : V \times V \to \F$ defined by $B(u, v) = Q(u + v) - Q(u) - Q(v)$ is bilinear.
+    \item $q(\alpha v) = \alpha^2 q(v)$ for all $\alpha \in \F$ and $v \in V$;
+    \item The map $B : V \times V \to \F$ defined by $B(u, v) = q(u + v) - q(u) - q(v)$ is bilinear.
 \end{itemize}
-In case $\chart \F \neq 2$, the set of all quadratic forms on $V$ is equivalent to the set of all symmetric 2-forms on $V$. A quadratic form $Q$ can define a symmetric 2-form as $B(u, v) = \frac{1}{2} (Q(u + v) - Q(u) - Q(v))$; a symmetric 2-form $B$ can define a quadratic form $Q(u) := B(u, u)$. We have the matrix representation of symmetric 2-form with respects to a basis. So we can also have the matrix representation of quadratic form, which is the symmetric matrices over $\F$ of order $\dim V = n$. Moreover, $(V, Q)$ forms a quadratic space. 
+In case $\chart(\F) \neq 2$, the set of all quadratic forms on $V$ is equivalent to the set of all symmetric 2-forms on $V$. A quadratic form $q$ can define a symmetric 2-form as $B(u, v) = \frac{1}{2} (q(u + v) - q(u) - q(v))$; a symmetric 2-form $B$ can define a quadratic form $q(u) := B(u, u)$. We have the matrix representation of symmetric 2-form with respects to a basis. So we can also have the matrix representation of quadratic form, which is the symmetric matrices over $\F$ of order $\dim V = n$. Moreover, $(V, q)$ forms a quadratic space. 
 
-A Clifford algebra $\Cl(V, Q) := \T V / I_Q$ is an associative algebra over $\F$ generated by $v \otimes v - Q(v) 1$ for all $v \in V$. The ideal is equivalent to the ideal generated by $u \otimes v + v \otimes u - 2 B(u, v) 1$ for all $u, v \in V$. Note that $\Cl (V, Q)$ is $\quotient{\Z}{2}$ graded algebra.
+\begin{remark}
+    When $\chart(\F) = 2$, we may define a symmetric bilinear form $B(u, v) = q(u + v) - q(u) - q(v)$. However, the quadratic form cannot be recovered from the symmetric bilinear form as $B(u, u) = 0$ for all $u \in V$, and so it is alternating. However, we can use a new bilinear form $B'$, may not be symmetric, or even not unique, such that $q(u) = B'(u, u)$ for all $u \in V$.
+\end{remark}
+
+A Clifford algebra $\Cl(V, q) := \T V / I_q$ is an associative algebra over $\F$ generated by $v \otimes v - q(v) 1$ for all $v \in V$. The ideal is equivalent to the ideal generated by $u \otimes v + v \otimes u - 2 B(u, v) 1$ for all $u, v \in V$. Note that $\Cl (V, q)$ is $\quotient{\Z}{2}$ graded algebra.
 
 We have the following isomorphisms:
 \begin{itemize}
