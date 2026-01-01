@@ -1,0 +1,235 @@
+\ProvidesPackage{preamble}[2025/12/30 v1.0 Custom style for book]
+
+\raggedbottom
+
+%-----------------------------------------------------%
+%%%% Some basic packages
+\usepackage{amsmath, amsthm, ltxcmds, adjustbox, graphicx, stmaryrd}
+
+\usepackage{import} % for \import
+
+%-----------------------------------------------------%
+%%%% Hyperref
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{cite}{HTML}{11871E}
+\definecolor{url}{HTML}{698996}
+\definecolor{link}{HTML}{912F1B}
+
+\usepackage[pdfencoding=unicode, colorlinks=true, linkcolor=link, citecolor=cite, urlcolor=url, linktocpage]{hyperref}
+
+%%%% Footnote mark formatting
+\makeatletter
+\renewcommand{\@makefnmark}{\hbox{\@textsuperscript{\tiny{\@thefnmark}}}}
+\makeatother
+
+%-----------------------------------------------------%
+%%%% Colors
+
+\definecolor{ustblue}{RGB}{0,51,102}
+\definecolor{ustgold}{RGB}{153,102,0}
+\definecolor{ustyellow}{RGB}{204,153,0}
+\definecolor{ustgray}{RGB}{204,204,204}
+
+%-----------------------------------------------------%
+%%%% Tikz
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usetikzlibrary{arrows, arrows.meta, positioning, calc}
+\tikzcdset{arrow style=tikz, diagrams={>={Straight Barb[scale=0.8]}}}
+
+\tikzstyle{arrow} = [-{Straight Barb[scale=0.8]}, line width=0.2mm]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+
+%-----------------------------------------------------%
+%%%% Chinese characters
+\usepackage{CJKutf8}
+\newcommand{\TC}[1]{\begin{CJK*}{UTF8}{bkai}#1\end{CJK*}}
+
+%-----------------------------------------------------%
+%%%% Enumerate
+\usepackage{enumitem}
+\setlist[itemize,1]{label=--}
+\setlist[itemize,2]{label=+}
+\setlist[itemize,3]{label=$\bullet$}
+\setlist[itemize,4]{label=$\circ$}
+
+\setlist[enumerate,1]{label = (\alph*)}
+
+\setlist{leftmargin=*, itemsep=0.5\baselineskip, topsep=0.5\baselineskip}
+
+%-----------------------------------------------------%
+%%%% Subfigures
+\usepackage{subcaption} % for subcaption
+
+%-----------------------------------------------------%
+%%%% Graphics
+\usepackage{graphicx}
+\graphicspath{{images/}} % set images path
+
+%-----------------------------------------------------%
+%%%% Tabularx
+\usepackage{tabularx}
+\usepackage{booktabs}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+%-----------------------------------------------------%
+%%%% Self-defined functions
+\newcommand{\skipline}{\hspace{\linewidth}}
+
+\newcommand{\bo}[1]{\textbf{#1}}
+
+\newcommand{\centerheader}[1]{\multicolumn{1}{c}{\bo{#1}}}
+
+%-----------------------------------------------------%
+%%%% Page setup
+\usepackage[
+  a4paper,
+  twoside=true,
+  textheight=22cm,
+  textwidth=15cm,
+  marginparsep=0.75cm,
+  marginparwidth=2.5cm,
+  heightrounded,
+  centering
+]{geometry}
+
+%-----------------------------------------------------%
+%%%% Fonts
+\usepackage[protrusion=true]{microtype}
+
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[T1]{fontenc}
+\usepackage{biolinum}
+\renewcommand{\mathsf}[1]{\text{\normalfont\sffamily#1}}
+\newcommand{\mathsfbf}[1]{\text{\normalfont\bf\sffamily#1}}
+
+\DeclareMathAlphabet{\eur}{U}{zeus}{m}{n}
+\renewcommand{\mathcal}[1]{\eur{#1}}
+
+%-----------------------------------------------------%
+%%%% Templating commands
+
+\renewcommand\thesection{\thechapter.\arabic{section}}
+
+\usepackage{keytheorems}
+\usepackage[skins]{tcolorbox}
+
+\newkeytheoremstyle{colorbarbox}
+{
+  bodyfont=\sffamily,
+  headfont=\color{ustblue}\bfseries\sffamily,
+  headpunct={.\vspace{\topsep}\newline},
+  notebraces={}{},
+  noteseparator={\ ---\ },
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+      blanker,
+      borderline west={2.5pt}{-10pt}{ustblue},
+      top=6pt,
+      bottom=6pt,
+      overlay={
+          \fill[ustblue!5!white] ([xshift=-7.5pt]frame.north west) -- ([xshift=7.5pt]frame.north east)
+          -- ([xshift=7.5pt]frame.south east) -- ([xshift=-7.5pt]frame.south west) -- cycle;
+        }
+    }
+}
+
+\newkeytheoremstyle{colorbar}
+{
+  bodyfont=\sffamily,
+  headfont=\color{ustblue}\bfseries\sffamily,
+  headpunct={.\vspace{\topsep}\newline},
+  notebraces={}{},
+  noteseparator={\ ---\ },
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+    blanker,
+    borderline west={2.5pt}{-10pt}{ustblue},
+    top=3pt,
+    bottom=3pt
+  }
+}
+
+\newkeytheoremstyle{goldbar}
+{
+  bodyfont=\normalfont,
+  headfont=\color{ustgold}\bfseries\sffamily,
+  notebraces={}{},
+  noteseparator={\ ---\ },
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+    blanker,
+    borderline west={2.5pt}{-10pt}{ustgold},
+    top=3pt,
+    bottom=3pt
+  }
+}
+
+\newkeytheoremstyle{goldonly}
+{
+  bodyfont=\normalfont,
+  headfont=\color{ustgold}\bfseries\sffamily,
+  notebraces={}{},
+  noteseparator={\ ---\ },
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+    blanker,
+    % borderline west={2.5pt}{-10pt}{ustgold},
+    % top=3pt,
+    % bottom=3pt
+  }
+}
+
+\newkeytheoremstyle{yellowbar}
+{
+  bodyfont=\normalfont,
+  headfont=\color{ustyellow}\bfseries\sffamily,
+  notebraces={}{},
+  noteseparator={\ ---\ },
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+    blanker,
+    borderline west={2.5pt}{-10pt}{ustyellow},
+    top=3pt,
+    bottom=3pt
+  }
+}
+
+\newkeytheoremstyle{graybar}
+{
+  bodyfont=\normalfont,
+  headfont=\bfseries\sffamily,
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+    blanker,
+    borderline west={2.5pt}{-10pt}{ustgray},
+    top=3pt,
+    bottom=3pt
+  }
+}
+
+\newkeytheorem{definition}[style=colorbarbox,parent=chapter]
+\newkeytheorem{theorem}[style=colorbarbox,parent=chapter]
+
+\newkeytheorem{lemma}[style=colorbar,parent=chapter]
+\newkeytheorem{corollary}[style=colorbar,parent=chapter]
+
+\newkeytheorem{example}[style=goldbar,parent=chapter]
+\newkeytheorem{proposition}[style=goldonly,parent=chapter]
+\renewkeytheorem{proof}[style=goldonly,parent=chapter,numbered=false,qed]
+
+\newkeytheorem{remark}[style=graybar,parent=chapter,numbered=false]
+
+
+
+\theoremstyle{definition}
+
+\newtheorem{exercise}{\bf Exercise}[section]
+\newtheorem{problem}{\bf Problem}[chapter]

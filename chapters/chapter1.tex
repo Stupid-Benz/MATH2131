@@ -1,0 +1,348 @@
+\chapter{Linear Spaces}
+
+\section{Introduction}
+
+Linear algebra originally arose from the study of systems of linear equations. Over time, it has evolved into a fundamental area of mathematics with applications in various fields such as physics, computer science, and economics. In this chapter, we will explore the concept of linear spaces, also known as vector spaces, which provide a framework for understanding linear combinations, subspaces, and linear transformations.
+
+\section{Operations and Structures}
+
+Before delving into linear spaces, it is essential to understand the basic operations and structures that underpin them.
+
+\subsection{Operations on Sets}
+
+There are several types of operations that can be performed on set $S$, including:
+
+\begin{definition}[Unary Operation]\label{def:unary_operation}
+  A \emph{unary operation} on a set $S$ is a map
+  \begin{align*}
+    f : S & \to S        \\
+    a     & \mapsto f(a)
+  \end{align*}
+\end{definition}
+
+\begin{example}
+  Common examples of unary operations include:
+  \begin{itemize}
+    \item Logical negation operation $\neg$ on the set $\{ \text{True}, \text{False} \}$;
+    \item Numeric negation operation $-$ on the set of real numbers $\R$;
+    \item Complex conjugation operation $\overline{z}$ on the set of complex numbers $\C$.
+  \end{itemize}
+\end{example}
+
+\begin{definition}[Binary Operation]\label{def:binary_operation}
+  A \emph{binary operation} on a set $S$ is a map
+  \begin{align*}
+    \cdot : S \times S & \to S             \\
+    (a, b)             & \mapsto a \cdot b
+  \end{align*}
+\end{definition}
+
+\begin{example}
+  A common example of a binary operation is the addition operation $+$ on the set of natural numbers $\N$ which assigns to each pair of natural numbers $(a, b)$ their sum $a + b$.
+\end{example}
+
+\subsection{Properties of Binary Operations}
+
+There are several properties that binary operations may satisfy:
+
+\begin{definition}[Associative]\label{def:associative}
+  A \hyperref[def:binary_operation]{binary operation} $\cdot$ on a set $S$ is \emph{associative} if for all $a, b, c \in S$, we have
+  \[ (a \cdot b) \cdot c = a \cdot (b \cdot c) \]
+\end{definition}
+
+\begin{example}
+  The addition operation $+$ on the set of natural numbers $\N$ is associative since for all $a, b, c \in \N$, we have
+  \[ (a + b) + c = a + (b + c) \]
+\end{example}
+
+\begin{definition}[Unital]\label{def:unital}
+  A \hyperref[def:binary_operation]{binary operation} $\cdot$ on a set $S$ is \emph{unital} if there exists an element $e \in S$ such that for all $a \in S$, we have
+  \[ e \cdot a = a = a \cdot e \]
+\end{definition}
+
+\begin{example}
+  The multiplication operation $\cdot$ on the set of natural numbers $\N$ is unital with the identity element $1$ since for all $a \in \N$, we have
+  \[ 1 \cdot a = a = a \cdot 1 \]
+\end{example}
+
+\begin{remark}
+  Such an element $e$ must be unique if it exists and is called the two-sided \emph{identity element} of the operation. To see why, suppose there are two identity elements $e$ and $e'$. Then we have
+  \[ e = e \cdot e' = e' \]
+  Note that one-sided identity elements (left or right) may not be unique.
+\end{remark}
+
+\begin{definition}[Invertible]\label{def:invertible}
+  A \hyperref[def:binary_operation]{binary operation} $\cdot$ on a set $S$ with identity element $e$ is \emph{invertible} if for each $a \in S$, there exists an element $b \in S$ such that
+  \[ a \cdot b = e = b \cdot a \]
+\end{definition}
+
+\begin{remark}
+  Note that invertibility requires the existence of an identity element.
+\end{remark}
+
+\begin{example}
+  The addition operation $+$ on the set of integers $\Z$ is invertible since for each integer $a \in \Z$, there exists an integer $-a \in \Z$ such that
+  \[ a + (-a) = 0 = (-a) + a \]
+\end{example}
+
+\begin{remark}
+  Such an element $b$ must be unique if it exists and is called the two-sided \emph{inverse} of the element $a$, denoted by $a^{-1}$. To see why, suppose there are two inverses $b$ and $b'$. Then we have
+  \[ b = e \cdot b = (a \cdot b') \cdot b = a \cdot (b' \cdot b) = a \cdot e = b' \]
+  Note that one-sided inverses (left or right) may not be unique.
+\end{remark}
+
+\begin{definition}[Commutative]\label{def:commutative}
+  A \hyperref[def:binary_operation]{binary operation} $+$ on a set $S$ is \emph{commutative} if for all $a, b \in S$, we have
+  \[ a + b = b + a \]
+\end{definition}
+
+\begin{example}
+  The addition operation $+$ on the set of natural numbers $\N$ is commutative since for all $a, b \in \N$, we have
+  \[ a + b = b + a \]
+\end{example}
+
+\begin{definition}[Distributive]\label{def:distributive}
+  A \hyperref[def:binary_operation]{binary operation} $\cdot$ on a set $S$ is \emph{distributive} over another \hyperref[def:binary_operation]{binary operation} $+$ on $S$ if for all $a, b, c \in S$, we have
+  \[ a \cdot (b + c) = (a \cdot b) + (a \cdot c) \]
+  and
+  \[ (a + b) \cdot c = (a \cdot c) + (b \cdot c) \]
+\end{definition}
+
+The professor prefers to use the term ``harmonic'' instead of ``distributive''. Note that it is important to specify the order of the operations when discussing distributivity, as the two operations may not be commutative with each other.
+
+\begin{example}
+  The multiplication operation $\cdot$ on the set of integers $\Z$ is distributive over the addition operation $+$ since for all $a, b, c \in \Z$, we have
+  \[ a \cdot (b + c) = (a \cdot b) + (a \cdot c) \]
+  and
+  \[ (a + b) \cdot c = (a \cdot c) + (b \cdot c) \]
+\end{example}
+
+\subsection{Algebraic Structures}
+
+Most objects in mathematics can be described with the following template.
+\begin{center}
+  \it A \underline{\hspace{3cm}} is a set with a \underline{\hspace{3cm}} structure on it.
+\end{center}
+
+Some common algebraic structures include:
+
+\begin{definition}[Monoidic Structure]\label{def:monoidic_structure}
+  A \emph{monoidic structure} on a set $M$ is a \hyperref[def:binary_operation]{binary operation} $\cdot$ that is \hyperref[def:associative]{associative} and \hyperref[def:unital]{unital}. The pair $(M, \cdot)$ is called a \emph{monoid}.
+\end{definition}
+
+\begin{definition}[Groupic Structure]\label{def:groupic_structure}
+  A \emph{groupic structure} on a set $G$ is a \hyperref[def:binary_operation]{binary operation} $\cdot$ that is \hyperref[def:associative]{associative}, \hyperref[def:unital]{unital}, and \hyperref[def:invertible]{invertible}. The pair $(G, \cdot)$ is called a \emph{group}.
+\end{definition}
+
+\begin{example}
+  The pair $(\R \setminus \{ 0 \}, \times)$, where $\times$ is the multiplication operation on real numbers, forms a group since multiplication is associative, unital (with identity element $1$), and invertible (with inverse element $a^{-1} = \frac{1}{a}$ for each $a \in \R \setminus \{ 0 \}$). Note that $(\R, \times)$ is not a group since $0$ does not have an inverse.
+\end{example}
+
+\begin{definition}[Abelian Structure]\label{def:abelian_structure}
+  An \emph{abelian structure} on a monoid or group $(A, +)$ is a \hyperref[def:binary_operation]{binary operation} $+$ that is also \hyperref[def:commutative]{commutative}. The pair $(A, +)$ is called an \emph{abelian monoid} or \emph{abelian group} respectively.
+\end{definition}
+
+\begin{example}
+  The pair $(\Z, +)$, where $+$ is the addition operation on integers, forms an abelian group since addition is associative, unital (with identity element $0$), invertible (with inverse element $-a$ for each $a \in \Z$), and commutative.
+\end{example}
+
+\begin{definition}[Ringic Structure]\label{def:ringic_structure}
+  A \emph{ringic structure} on a set $R$ is two \hyperref[def:binary_operation]{binary operations} $+$ and $\cdot$ such that
+  \begin{itemize}
+    \item $(R, +)$ is an \hyperref[def:abelian_structure]{abelian group};
+    \item $(R, \cdot)$ is a \hyperref[def:monoidic_structure]{monoid}; and
+    \item the operation $\cdot$ is \hyperref[def:distributive]{distributive} over the operation $+$.
+  \end{itemize}
+  The triple $(R, +, \cdot)$ is called a \emph{ring}.
+\end{definition}
+
+\begin{remark}
+  In this book, we will only consider unital rings and refer to them simply as ``rings''.
+\end{remark}
+
+\begin{definition}[Commutative Ring]\label{def:commutative_ring}
+  A \emph{commutative ring} is a \hyperref[def:ringic_structure]{ring} $(R, +, \cdot)$ where the operation $\cdot$ is also \hyperref[def:commutative]{commutative}.
+\end{definition}
+
+\begin{definition}[Field]\label{def:field}
+  A \emph{field} is a \hyperref[def:commutative_ring]{commutative ring} $(F, +, \cdot)$ where the operation $\cdot$ is also \hyperref[def:invertible]{invertible} on $F \setminus \{ 0 \}$.
+\end{definition}
+
+\begin{example}
+  The triples $(\Q, +, \times)$, $(\R, +, \times)$, and $(\C, +, \times)$, where $+$ is the addition operation and $\times$ is the multiplication operation on rational numbers, real numbers, and complex numbers respectively, all form fields.
+\end{example}
+
+\begin{example}[Finite Field]
+  The set $\F_2 = \Z / 2\Z = \{ 0, 1 \}$ with XOR as addition and AND as multiplication forms a field. More generally, for any prime number $p$, the set $\F_p = \Z / p\Z = \{ 0, 1, 2, \ldots, p-1 \}$ with addition and multiplication defined modulo $p$ forms a field.
+\end{example}
+
+\section{Homomorphisms}
+
+In mathematics, a \emph{homomorphism} is a structure-preserving map between two algebraic structures of the same type.
+
+\begin{definition}[Monoid Homomorphism]\label{def:monoid_homomorphism}
+  A \emph{monoid homomorphism} is a set map $\phi : M_1 \to M_2$ between two monoids $(M_1, \cdot)$ and $(M_2, \odot)$ which respects the \hyperref[def:monoidic_structure]{monoidic structure}, i.e., for all $a, b \in M_1$, we have
+  \begin{itemize}
+    \item $\phi(a \cdot b) = \phi(a) * \phi(b)$;
+    \item $\phi(e_1) = e_2$, where $e_1$ and $e_2$ are the identity elements of $M_1$ and $M_2$ respectively.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Group Homomorphism]\label{def:group_homomorphism}
+  A \emph{group homomorphism} is a set map $\phi : G_1 \to G_2$ between two groups $(G_1, \cdot)$ and $(G_2, \odot)$ which respects the \hyperref[def:groupic_structure]{groupic structure}, i.e., for all $a, b \in G_1$, we have
+  \begin{itemize}
+    \item $\phi(a \cdot b) = \phi(a) * \phi(b)$;
+    \item $\phi(e_1) = e_2$, where $e_1$ and $e_2$ are the identity elements of $G_1$ and $G_2$ respectively;
+    \item $\phi(a^{-1}) = {(\phi(a))}^{-1}$.
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  The second and third properties in the definition of group homomorphism are consequences of the first property.
+\end{proposition}
+\begin{proof}
+  Let $\phi : G_1 \to G_2$ be a group homomorphism satisfying the first property. For any $a \in G_1$, we have
+  \[ \phi(a) = \phi(a \cdot e_1) = \phi(a) * \phi(e_1). \]
+  So $\phi(e_1)$ is the identity element of $G_2$, i.e., $\phi(e_1) = e_2$. Similarly, we have
+  \[ e_2 = \phi(e_1) = \phi(a \cdot a^{-1}) = \phi(a) * \phi(a^{-1}). \]
+  Thus, $\phi(a^{-1})$ is the inverse of $\phi(a)$, i.e., $\phi(a^{-1}) = {(\phi(a))}^{-1}$.
+\end{proof}
+
+For monoid homomorphisms, the second property cannot be derived from the first property. Consider the identity element $e_1$ in $M_1$. If we apply the first property, we get $\phi(e_1 \cdot e_1) = \phi(e_1) * \phi(e_1)$. This simplifies to $\phi(e_1) = \phi(e_1) * \phi(e_1)$, which does not necessarily imply that $\phi(e_1)$ is the identity element in $M_2$, i.e., $\phi(e_1) \neq e_2$. Therefore, the second property must be explicitly stated for monoid homomorphisms.
+
+However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element. Thus, for group homomorphisms, the second property can be derived from the first property.
+
+\begin{definition}[Ring Homomorphism]\label{def:ring_homomorphism}
+  A \emph{ring homomorphism} is a set map $\phi : R_1 \to R_2$ between two rings $(R_1, +, \cdot)$ and $(R_2, \oplus, \odot)$ which respects the \hyperref[def:ringic_structure]{ringic structure}, i.e., for all $a, b \in R_1$, we have
+  \begin{itemize}
+    \item $\phi(a + b) = \phi(a) \oplus \phi(b)$;
+    \item $\phi(a \cdot b) = \phi(a) \odot \phi(b)$;
+    \item $\phi(\id_{R_1}) = \id_{R_2}$, where $\id_{R_1}$ and $\id_{R_2}$ are the multiplicative identity elements of $R_1$ and $R_2$ respectively.
+  \end{itemize}
+\end{definition}
+
+\begin{remark}
+  Originally, there are 6 properties in the definition of ring homomorphism, including the preservation of additive identity, additive inverses and commutative property. However, it can be shown that these properties are consequences of the first property. Also, we do not include the trivial ring homomorphism, as it does not preserve the multiplicative identity.
+\end{remark}
+
+On top of homomorphisms, we have the following special types of maps, which are important for future discussions.
+
+\begin{definition}[Isomorphism]\label{def:isomorphism}
+  An \emph{isomorphism} is a homomorphism $\phi : A \to B$ between two algebraic structures of the same type that has an inverse map $\phi^{-1} : B \to A$ which is also a homomorphism.
+\end{definition}
+
+\begin{definition}[Endomorphism]\label{def:endomorphism}
+  An \emph{endomorphism} is a homomorphism $\phi : A \to A$ from an algebraic structure to itself.
+\end{definition}
+
+\begin{definition}[Automorphism]\label{def:automorphism}
+  An \emph{automorphism} is an \hyperref[def:isomorphism]{isomorphism} $\phi : A \to A$ from an algebraic structure to itself.
+\end{definition}
+
+Several maps can form a set as below.
+
+\begin{definition}[Homomorphism Set]\label{def:homomorphism_set}
+  Given two algebraic structures $A$ and $B$ of the same type, the \emph{homomorphism set} from $A$ to $B$, denoted by $\Hom(A, B)$, is the set of all homomorphisms from $A$ to $B$.
+\end{definition}
+
+\begin{definition}[Endomorphism Ring]\label{def:endomorphism_ring}
+  Given an \hyperref[def:abelian_structure]{abelian group} $(G, +)$, the \emph{endomorphism ring} of $G$, denoted by $\End(G)$, is the set of all \hyperref[def:endomorphism]{endomorphisms} from $G$ to itself, equipped with the pointwise addition and composition of functions as the two binary operations. The two operations are defined as follows:
+  \begin{align*}
+    + : \End{G} \times \End{G}     & \to \End{G}                                                                     \\
+    (\phi, \psi)                   & \mapsto (\phi + \psi) : G \to G, \quad (\phi + \psi)(a) = \phi(a) + \psi(a)     \\
+    \circ : \End{G} \times \End{G} & \to \End{G}                                                                     \\
+    (\phi, \psi)                   & \mapsto (\phi \circ \psi) : G \to G, \quad (\phi \circ \psi)(a) = \phi(\psi(a))
+  \end{align*}
+  The identity element for the addition operation is the zero map $0 : G \to G$ defined by $0(a) = 0_G$ for all $a \in G$, where $0_G$ is the identity element of the group $(G, +)$. The identity element for the composition operation is the identity map $\id_G : G \to G$ defined by $\id_G(a) = a$ for all $a \in G$.
+\end{definition}
+
+\begin{remark}
+  Endomorphisms in $\End(G)$ are group homomorphisms since $(G, +)$ is an abelian group. So $\End(G) = \Hom(G, G)$.
+\end{remark}
+
+\section{Linear Spaces}
+
+A linear space, or vector space, is a set with a linear structure defined over a field. We then need to define what a linear structure is.
+
+\begin{definition}[Linear Structure]\label{def:linear_structure}
+  A \emph{linear structure} on a set $V$ over a field $F$ is a pair of \hyperref[def:binary_operation]{binary operations} $(+, \cdot)$ where $(V, +)$ is an \hyperref[def:abelian_structure]{abelian group} with a ring action $\cdot$ of $F$ on $(V, +)$. A ring action of $F$ on $(V, +)$ is equivalent to a \hyperref[def:ring_homomorphism]{ring homomorphism}
+  \begin{align*}
+    \cdot : F & \to \End(V)                                                              \\
+    \alpha    & \mapsto \alpha \cdot : V \to V, \quad (\alpha \cdot)(v) = \alpha \cdot v
+  \end{align*}
+\end{definition}
+
+\begin{remark}
+  The actual definition of a ring action of $F$ over $(V, +)$ is a map
+  \begin{align*}
+    \cdot : F \times V & \to V                  \\
+    (\alpha, v)        & \mapsto \alpha \cdot v
+  \end{align*}
+  such that it satisfies the following four properties for all $\alpha, \beta \in F$ and $u, v \in V$:
+  \begin{itemize}
+    \item Distributivity over vector addition: $\alpha \cdot (u + v) = \alpha \cdot u + \alpha \cdot v$;
+    \item Distributivity over field addition: $(\alpha + \beta) \cdot v = \alpha \cdot v + \beta \cdot v$;
+    \item Compatibility of scalar multiplication: $(\alpha \beta) \cdot v = \alpha \cdot (\beta \cdot v)$;
+    \item Identity element of scalar multiplication: $1_F \cdot v = v$, where $1_F$ is the multiplicative identity element of the field $F$.
+  \end{itemize}
+\end{remark}
+
+In usual textbooks, there are 8 axioms in the definition of linear structure. For all $\alpha, \beta \in F$ and $u, v \in V$:
+\begin{enumerate}[label=\arabic*.]
+  \item Addition is associative: $(u + v) + w = u + (v + w)$;
+  \item Addition is unital: there exists an element $0_V \in V$ such that $0_V + v = v = v + 0_V$;
+  \item Addition is invertible: for each $v \in V$, there exists an element $-v \in V$ such that $v + (-v) = 0_V = (-v) + v$;
+  \item Addition is commutative: $u + v = v + u$;
+  \item Distributivity over vector addition: $\alpha \cdot (u + v) = \alpha \cdot u + \alpha \cdot v$;
+  \item Distributivity over field addition: $(\alpha + \beta) \cdot v = \alpha \cdot v + \beta \cdot v$;
+  \item Compatibility of scalar multiplication: $(\alpha \beta) \cdot v = \alpha \cdot (\beta \cdot v)$;
+  \item Identity element of scalar multiplication: $1_F \cdot v = v$, where $1_F$ is the multiplicative identity element of the field $F$.
+\end{enumerate}
+The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom describes the distributivity inside $\End(V)$, while the last three axioms corresponds to the properties of ring homomorphism from $F$ to $\End(V)$. Thus, the 8 axioms can be reduced to the 2 conditions in the definition of linear structure.
+
+\begin{example}
+  The field $F$ itself can be considered as a linear space over $F$ with the usual addition and multiplication operations. Here, the set $V$ is $F$, the addition operation $+$ is the field addition, and the scalar multiplication $\cdot$ is the field multiplication.
+\end{example}
+
+\begin{example}\label{ex:function_space}
+  The set of all $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \}$, denoted by $\Map(X, F)$, forms a linear space over $F$ with the following operations:
+  \begin{align*}
+    + : \Map(X, F) \times \Map(X, F) & \to \Map(X, F)                                                                    \\
+    (f, g)                           & \mapsto (f + g) : X \to F, \quad (f + g)(x) = f(x) + g(x)                         \\
+    \cdot : F \times \Map(X, F)      & \to \Map(X, F)                                                                    \\
+    (\alpha, f)                      & \mapsto (\alpha \cdot f) : X \to F, \quad (\alpha \cdot f)(x) = \alpha \cdot f(x)
+  \end{align*}
+\end{example}
+
+\begin{remark}
+  In fact, as long as the codomain is a linear space, the set of all functions from a non-empty set to that codomain forms a linear space with pointwise addition and scalar multiplication.
+\end{remark}
+
+\begin{example}
+  The set of all finitely supported $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \mid f(x) \neq 0_F \text{ for only finitely many } x \in X \}$, denoted by $\Map_{\fin}(X, F)$, forms a linear space over $F$ with the same operations as in the previous example.
+\end{example}
+
+\begin{example}
+  The formal power series ring $F[[x]]$ over a field $F$ forms a linear space over $F$ with the usual addition and multiplication operations on formal power series. Formal means that we treat the elements as symbols without considering their convergence.
+\end{example}
+
+\begin{example}
+  The polynomial ring $F[x]$ over a field $F$ forms a linear space over $F$ with the usual addition and multiplication operations on polynomials.
+\end{example}
+
+\begin{example}
+  The set of all \emph{column vectors} with $n$ entries from $F$, denoted by $F^n$, forms a linear space over $F$ with the operations defined entrywisely.
+  \begin{align*}
+    + : F^n \times F^n                                                                                                  & \to F^n                                                                & \cdot : F \times F^n                                         & \to F^n                                                                              \\
+    (\vec{u}, \vec{v})                                                                                                  & \mapsto \vec{u} + \vec{v}                                              & (\alpha, \vec{v})                                            & \mapsto \alpha \cdot \vec{v}                                                         \\
+    \left(\begin{bmatrix} u^1 \\ \vdots \\ u^n \end{bmatrix}, \begin{bmatrix} v^1 \\ \vdots \\ v^n \end{bmatrix}\right) & \mapsto \begin{bmatrix} u^1 + v^1 \\ \vdots \\ u^n + v^n \end{bmatrix} & \left(\alpha, \begin{bmatrix} v^1 \\ \vdots \\ v^n \end{bmatrix}\right) & \mapsto \begin{bmatrix} \alpha \cdot v^1 \\ \vdots \\ \alpha \cdot v^n \end{bmatrix}
+  \end{align*}
+\end{example}
+
+\begin{remark}
+  Here, we use superscripts to denote the entries of a column matrix due to the elements in vectors are \emph{contravariant}. That is, when we change the basis, the coordinates of the vectors change in the opposite way compared to the basis transformation. This is in contrast to \emph{covariant} elements, such as the entries of row matrices (or covectors), which change in the same way as the basis transformation. We will discuss covariance and contravariance in Chapter 4.
+\end{remark}
+
+\begin{example}
+  The set of all \emph{matrices} with $m$ rows and $n$ columns from $F$, denoted by $\Mat_{m \times n}(F)$, forms a linear space over $F$ with the operations defined entrywisely.
+\end{example}

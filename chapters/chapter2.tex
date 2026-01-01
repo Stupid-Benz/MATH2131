@@ -1,0 +1,91 @@
+\chapter{Linear Maps and Matrices}
+
+Linear maps are fundamental objects in linear algebra. In this chapter, we will explore their definitions and properties.
+
+\section{Linear Maps and Linear Combinations}
+
+\begin{definition}[Linear Map]\label{def:linear_map}
+  A \emph{linear map}, or \emph{linear transformation}, between two linear spaces $V$ and $W$ over the same field $F$ is a set map $T : V \to W$ that respects the \hyperref[def:linear_structure]{linear structure}; that is, for all $u, v \in V$ and all scalars $\alpha \in F$, the following properties hold:
+  \begin{itemize}
+    \item $T(u + v) = T(u) + T(v)$;
+    \item $T(\alpha \cdot u) = \alpha \cdot T(u)$.
+  \end{itemize}
+\end{definition}
+
+\begin{remark}
+  Originally, linear maps required 8 properties to be satisfied. However, it can be shown easily that these two properties imply the rest.
+\end{remark}
+
+For simplicity, we often write $Tu$ instead of $T(u)$ for the image of a vector $u$ under the linear map $T$.
+
+The set of all linear maps from $V$ to $W$ is denoted by $\Hom_F(V, W)$ or simply $\Hom(V, W)$ when the field is clear from context. Some author use $\mathcal{L}(V, W)$ instead.
+
+The two properties in the definition can be combined into one property which is called \emph{preserving linear combinations}.
+
+\begin{definition}[Linear Combination]\label{def:linear_combination}
+  A \emph{linear combination} of vectors $v_1, v_2, \ldots, v_n$ in a linear space $V$ over $F$ is any vector of the form
+  \[
+    \alpha^1 v_1 + \alpha^2 v_2 + \cdots + \alpha^n v_n,
+  \]
+  where $\alpha^1, \alpha^2, \ldots, \alpha^n$ are scalars in $F$.
+\end{definition}
+
+When $n = 2$, we recover the familiar notion of \emph{addition} and \emph{scalar multiplication}. Generally, we only have consider the case with 2 vectors since linear combinations with more than 2 vectors can be built up from these two operations.
+
+From Example~\ref{ex:function_space}, we know that $\Map(V, W)$ forms a linear space over $F$ with pointwise addition and scalar multiplication. Then $\Hom(V, W)$ is a subset of $\Map(V, W)$. It turns out that $\Hom(V, W)$ is actually a linear subspace of $\Map(V, W)$, or in other words, linear maps also form a linear space with the same operations. We will introduce linear subspace in Chapter 3.
+\begin{proposition}
+  The set $\Hom(V, W)$ of all linear maps from $V$ to $W$ forms a linear space over $F$ with pointwise addition and scalar multiplication.
+\end{proposition}
+\begin{proof}
+  We need to show that $\Hom(V, W)$ is closed under pointwise addition and scalar multiplication.
+
+  Let $T_1$ and $T_2$ be two linear maps from $V$ to $W$. For all $u, v \in V$ and all $\alpha, \beta \in F$, we have
+  \begin{align*}
+    (T_1 + T_2)(\alpha \cdot u + \beta \cdot v) & = T_1(\alpha \cdot u + \beta \cdot v) + T_2(\alpha \cdot u + \beta \cdot v)       \\
+                                                & = \alpha \cdot T_1 u + \beta \cdot T_1 v + \alpha \cdot T_2 u + \beta \cdot T_2 v \\
+                                                & = \alpha \cdot (T_1 u + T_2 u) + \beta \cdot (T_1 v + T_2 v)                      \\
+                                                & = \alpha \cdot (T_1 + T_2)(u) + \beta \cdot (T_1 + T_2)(v),
+  \end{align*}
+\end{proof}
+
+\section{Matrices}
+
+Matrices provide a convenient way to represent linear maps between finite-dimensional linear spaces. Let $A$ be an $m \times n$ matrix with entries from $F$. Then the map
+\begin{align*}
+  F^n     & \to F^m           \\
+  \vec{x} & \mapsto A \vec{x}
+\end{align*}
+is a linear map over $F$.
+
+\begin{proposition}
+  Every linear map $T : F^n \to F^m$ can be represented as multiplication by a unique $m \times n$ matrix $A$ over $F$. The matrix $A$ is called the \emph{standard matrix}, or the \emph{matrix representation}, of the linear map $T$. There is an isomorphism between two linear spaces $\Hom(F^n, F^m)$ and $\Mat_{m \times n}(F)$. Then we have
+  \begin{itemize}
+    \item The standard matrix of the linear map $T$ is given by
+          \[
+            A = \begin{bmatrix}
+              |          & |          &        & |          \\
+              T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
+              |          & |          &        & |
+            \end{bmatrix},
+          \]
+          where $\vec{e}_i$ is the column vector with 1 in the $i$-th entry and 0 elsewhere.
+    \item For any matrix $A$ in $\Mat_{m \times n}(F)$, the corresponding linear map $T_A : F^n \to F^m$ is given by
+          \[
+            T_A \vec{x} = A \vec{x}, \quad \text{for all } \vec{x} \in F^n.
+          \]
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  Let $T : F^n \to F^m$ be a linear map. Define the matrix $A$ as above. For any vector $\vec{x} \in F^n$, we can express $\vec{x}$ as a linear combination of $\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n$:
+  \[
+    \vec{x} = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n.
+  \]
+  Then, using the linearity of $T$, we have
+  \begin{align*}
+    T\vec{x} & = T(x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n) \\
+             & = x^1 T\vec{e}_1 + x^2 T\vec{e}_2 + \cdots + x^n T\vec{e}_n \\
+             & = A \vec{x}.
+  \end{align*}
+  This shows that $T\vec{x}$ can be computed as the matrix-vector product $A\vec{x}$. Conversely, given a matrix $A$ in $\Mat_{m \times n}(F)$, we can define a linear map $T_A : F^n \to F^m$ by $T_A \vec{x} = A \vec{x}$. The linearity of $T_A$ follows from the properties of matrix multiplication.
+\end{proof}
+
