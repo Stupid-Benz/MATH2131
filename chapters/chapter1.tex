@@ -346,3 +346,127 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \begin{example}
   The set of all \emph{matrices} with $m$ rows and $n$ columns from $F$, denoted by $\Mat_{m \times n}(F)$, forms a linear space over $F$ with the operations defined entrywisely.
 \end{example}
+
+\section{Linear Subspaces, Linear Combinations and Linear Span}
+
+\begin{definition}[Linear Subspace]\label{def:linear_subspace}
+  A \emph{linear subspace} of a linear space $(V, +, \cdot)$ over $F$ is a non-empty subset $W \subseteq V$ with the operations $+$ and $\cdot$ inherited from $V$ such that $(W, +, \cdot)$ is also a linear space over $F$.
+\end{definition}
+
+\begin{proposition}
+  $W$ is a linear subspace of $V$ if and only if $W$ is non-empty and closed under the operations $+$ and $\cdot$, i.e., for all $u, v \in W$ and $\alpha \in F$, we have
+  \begin{itemize}
+    \item $u + v \in W$;
+    \item $\alpha \cdot v \in W$.
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  If $W$ is a linear subspace of $V$, then by definition $V$ is non-empty, as it contains the zero vector. Also, since $(W, +, \cdot)$ is a linear space, it must be closed under the operations $+$ and $\cdot$.
+
+  If $W$ is non-empty and closed under the operations $+$ and $\cdot$, then we can easily verify that $(W, +, \cdot)$ satisfies all the axioms of a linear space over $F$. It is left as an exercise to the reader to check the axioms.
+\end{proof}
+
+We can actually combine two propoties into one by considering linear combinations.
+
+\begin{definition}[Linear Combination]\label{def:linear_combination}
+  A \emph{linear combination} of vectors $v_1, v_2, \ldots, v_n$ in a linear space $V$ over $F$ is any vector of the form
+  \[
+    \alpha^1 v_1 + \alpha^2 v_2 + \cdots + \alpha^n v_n,
+  \]
+  where $\alpha^1, \alpha^2, \ldots, \alpha^n$ are scalars in $F$.
+\end{definition}
+
+To use linear combinations showing the condition for linear subspaces, we can consider the following example. We normally use $n = 2$ to proof the condition, and the general case can be proved by induction.
+
+\begin{proposition}
+  The intersection of any collection of linear subspaces of a linear space $V$ over $F$ is also a linear subspace of $V$.
+\end{proposition}
+\begin{proof}
+  Let $\{ W_i \}_{i \in I}$ be a collection of linear subspaces of $V$, where $I$ is an index set. Define
+  \[ W = \bigcap_{i \in I} W_i. \]
+  Then we have to show that $W$ is a linear subspace of $V$. For any $i \in I$, we have $0_V \in W_i$ since $W_i$ is a linear space. Thus, $0_V \in W$, so $W$ is non-empty. Then, for any $u, v \in W$ and $\alpha, \beta \in F$, we have $u, v \in W_i$ for all $i \in I$. Since each $W_i$ is a linear space, we have $\alpha u + \beta v \in W_i$ for all $i \in I$. Thus, $\alpha u + \beta v \in W$. Therefore, $W$ is closed under the operations $+$ and $\cdot$. By the previous proposition, $W$ is a linear subspace of $V$.
+\end{proof}
+
+Then it is natural to ask: the union of any collection of linear subspaces of a linear space $V$ over $F$ is also a linear subspace of $V$? The answer is no in general. However, if we perform ``completion'', or technically taking the \emph{linear span}, we can obtain a linear subspace.
+
+\begin{definition}[Linear Span]\label{def:span}
+  The \emph{linear span} of a subset $S$ of a linear space $V$ over $F$, denoted by $\spn_F S$ or simply $\spn S$, $\overline{S}$ or $\langle S \rangle$, is the completion of $S$ inside $V$ under \hyperref[def:linear_combination]{linear combinations}, which is
+  \[ \spn S = \left\{ \sum_{i = 1}^{|S|} \alpha^i s_i \Biggm| \alpha^i \in F, s_i \in S \right\} \]
+  where $|S|$ is the cardinality of the set $S$ (if $S$ is infinite, we only consider finite linear combinations). Equivalently, the linear span of $S$ is the smallest \hyperref[def:linear_subspace]{linear subspace} of $V$ that contains $S$. It can be written as
+  \[
+    \spn S = \bigcap_{i \in I} W_i \subseteq V,
+  \]
+  where $\{ W_i \}_{i \in I}$ is the collection of all linear subspaces of $W$ that contain $S$.
+\end{definition}
+
+\begin{definition}[Linear Spanning Set]\label{def:spanning_set}
+  A subset $S$ of a linear space $V$ over $F$ is a \emph{linear spanning set}, or \emph{linear generating set}, of $V$ if its \hyperref[def:span]{linear span} is equal to $V$, i.e., $\spn S = V$.
+\end{definition}
+
+For simplicity, we may omit the word ``linear'' when there is no ambiguity.
+
+\begin{example}
+  Consider the linear space $F^3$ with vectors $\vec{e}_1$, $\vec{e}_2$, and $\vec{e}_3$. The set $S = \{ \vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2 \}$ is not a spanning set of $F^3$ since $\spn S$ is the same as $\spn \{\vec{e}_1, \vec{e}_2\}$. However, the set $T = \{ \vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2, \vec{e}_3 \}$ is a spanning set of $F^3$ since $\spn T = F^3$.
+\end{example}
+
+\begin{remark}
+  If you have learnt linear algebra before, consider the matrix whose columns are the vectors in a spanning set, then the matrix must have full row rank.
+\end{remark}
+
+\begin{example}
+  Consider the subset $S = \{ 1, x, x^2, \cdots \} \subset F[[x]]$. The linear span of $S$ is the polynomial ring $F[x]$, i.e., $\spn S = F[x]$. The reason is that any polynomial can be expressed as a finite linear combination of the elements in $S$, while any formal power series that is not a polynomial cannot be expressed as such.
+\end{example}
+
+\begin{definition}[Minimal Spanning Set]\label{def:minimal_spanning_set}
+  A minimal spanning set of a linear space $V$ over $F$ is a \hyperref[def:spanning_set]{spanning set} $S$ of $V$ such that for any proper subset $S' \subset S$, we have $\spn S' \subset \spn S = V$.
+\end{definition}
+
+\begin{remark}
+  An ordered minimal spanning set is called a \emph{basis}.
+\end{remark}
+
+\section{Linear Independence}
+
+\begin{definition}[Linear Independence]\label{def:linear_independence}
+  The non-trivial \hyperref[def:linear_subspace]{subspaces} $W_1, W_2, \ldots, W_n$ of a linear space $V$ over $F$ are \emph{linearly independent} if there is one and only one way to express the zero vector $0_V$ as a \hyperref[def:linear_combination]{linear combination} of vectors from these subspaces, i.e., if
+  \[
+    w_1 + w_2 + \cdots + w_n = 0_V,
+  \]
+  where $w_i \in W_i$ for each $i = 1, 2, \ldots, n$, then we must have $w_1 = w_2 = \cdots = w_n = 0_V$.
+\end{definition}
+
+We also have a slightly weaker version of linear independence for future discussions.
+
+\begin{definition}[Weak Linear Independence]\label{def:weak_linear_independence}
+  The \hyperref[def:linear_subspace]{subspaces} $W_1, W_2, \ldots, W_n$ of a linear space $V$ over $F$ are \emph{weakly linearly independent} if the only way to express the zero vector $0_V$ as a \hyperref[def:linear_combination]{linear combination} of vectors from these subspaces is the trivial way, i.e., if
+  \[
+    w_1 + w_2 + \cdots + w_n = 0_V,
+  \]
+  where $w_i \in W_i$ for each $i = 1, 2, \ldots, n$, then we must have $w_1 = w_2 = \cdots = w_n = 0_V$.
+\end{definition}
+
+\begin{remark}
+  Weak linear independence allows subspaces to be trivial, i.e., equal to $\{ 0_V \}$.
+\end{remark}
+
+\begin{definition}[Linearly Independent Set]\label{def:linear_independent_set}
+  A subset $S$ of a linear space $V$ over $F$ is linearly independent if and only if there is only one way to express the zero vector $0_V$ as a linear combination of vectors from $S$, i.e., if
+  \[
+    \alpha^1 s_1 + \alpha^2 s_2 + \cdots + \alpha^n s_n = 0_V,
+  \]
+  where $s_i \in S$ and $\alpha^i \in F$ for each $i = 1, 2, \ldots, n$, then we must have $\alpha^1 = \alpha^2 = \cdots = \alpha^n = 0_F$.
+\end{definition}
+
+\begin{remark}
+  Equivalently, a subset $S$ of a linear space $V$ over $F$ is linearly independent if no elements in $S$ can be expressed as a linear combination of other elements in $S$.
+\end{remark}
+
+Also, similar to minimal spanning sets, we have the following definition.
+
+\begin{definition}[Maximal Linearly Independent Set]\label{def:maximal_linearly_independent_set}
+  A maximal linearly independent set of a linear space $V$ over $F$ is a \hyperref[def:linear_independent_set]{linearly independent set} $S$ of $V$ such that for any proper superset $S' \supset S$, we have $S'$ is not linearly independent.  
+\end{definition}
+
+\begin{remark}
+  A minimal spanning set and a maximal linearly independent set describe the same concept. We will use minimal spanning sets in this book. 
+\end{remark}
