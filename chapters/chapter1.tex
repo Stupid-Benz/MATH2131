@@ -23,7 +23,7 @@ There are several types of operations that can be performed on set $S$, includin
 \begin{example}
   Common examples of unary operations include:
   \begin{itemize}
-    \item Logical negation operation $\neg$ on the set $\{ \text{True}, \text{False} \}$;
+    \item Logical negation operation $\neg$ on the set $\{ \mathsf{true}, \mathsf{false} \}$;
     \item Numeric negation operation $-$ on the set of real numbers $\R$;
     \item Complex conjugation operation $\overline{z}$ on the set of complex numbers $\C$.
   \end{itemize}
@@ -225,18 +225,10 @@ However in the case of group homomorphisms, the existence of inverses ensures th
   Originally, there are 6 properties in the definition of ring homomorphism, including the preservation of additive identity, additive inverses and commutative property. However, it can be shown that these properties are consequences of the first property. Also, we do not include the trivial ring homomorphism, as it does not preserve the multiplicative identity.
 \end{remark}
 
-On top of homomorphisms, we have the following special types of maps, which are important for future discussions.
-
-\begin{definition}[Isomorphism]\label{def:isomorphism}
-  An \emph{isomorphism} is a homomorphism $\phi : A \to B$ between two algebraic structures of the same type that has an inverse map $\phi^{-1} : B \to A$ which is also a homomorphism.
-\end{definition}
+On top of homomorphisms, we have a special type of homomorphisms called endomorphism.
 
 \begin{definition}[Endomorphism]\label{def:endomorphism}
   An \emph{endomorphism} is a homomorphism $\phi : A \to A$ from an algebraic structure to itself.
-\end{definition}
-
-\begin{definition}[Automorphism]\label{def:automorphism}
-  An \emph{automorphism} is an \hyperref[def:isomorphism]{isomorphism} $\phi : A \to A$ from an algebraic structure to itself.
 \end{definition}
 
 Several maps can form a set as below.
@@ -265,7 +257,7 @@ Several maps can form a set as below.
 A linear space, or vector space, is a set with a linear structure defined over a field. We then need to define what a linear structure is.
 
 \begin{definition}[Linear Structure]\label{def:linear_structure}
-  A \emph{linear structure} on a set $V$ over a field $F$ is a pair of \hyperref[def:binary_operation]{binary operations} $(+, \cdot)$ where $(V, +)$ is an \hyperref[def:abelian_structure]{abelian group} with a ring action $\cdot$ of $F$ on $(V, +)$. A ring action of $F$ on $(V, +)$ is equivalent to a \hyperref[def:ring_homomorphism]{ring homomorphism}
+  A \emph{linear structure} on a set $V$ over a \hyperref[def:field]{field} $F$ is a pair of \hyperref[def:binary_operation]{binary operations} $(+, \cdot)$ where $(V, +)$ is an \hyperref[def:abelian_structure]{abelian group} with a ring action $\cdot$ of $F$ on $(V, +)$. A ring action of $F$ on $(V, +)$ is equivalent to a \hyperref[def:ring_homomorphism]{ring homomorphism}
   \begin{align*}
     \cdot : F & \to \End(V)                                                              \\
     \alpha    & \mapsto \alpha \cdot : V \to V, \quad (\alpha \cdot)(v) = \alpha \cdot v
@@ -282,8 +274,8 @@ A linear space, or vector space, is a set with a linear structure defined over a
   \begin{itemize}
     \item Distributivity over vector addition: $\alpha \cdot (u + v) = \alpha \cdot u + \alpha \cdot v$;
     \item Distributivity over field addition: $(\alpha + \beta) \cdot v = \alpha \cdot v + \beta \cdot v$;
-    \item Compatibility of scalar multiplication: $(\alpha \beta) \cdot v = \alpha \cdot (\beta \cdot v)$;
-    \item Identity element of scalar multiplication: $1_F \cdot v = v$, where $1_F$ is the multiplicative identity element of the field $F$.
+    \item Compatibility: $(\alpha \beta) \cdot v = \alpha \cdot (\beta \cdot v)$;
+    \item Unital: $1_F \cdot v = v$, where $1_F$ is the multiplicative identity element of the field $F$.
   \end{itemize}
 \end{remark}
 
@@ -323,11 +315,11 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \end{example}
 
 \begin{example}
-  The formal power series ring $F[[x]]$ over a field $F$ forms a linear space over $F$ with the usual addition and multiplication operations on formal power series. Formal means that we treat the elements as symbols without considering their convergence.
+  The formal power series ring $F[[x]]$ over $F$ forms a linear space over $F$ with the usual addition and multiplication operations on formal power series. Formal means that we treat the elements as symbols without considering their convergence.
 \end{example}
 
 \begin{example}
-  The polynomial ring $F[x]$ over a field $F$ forms a linear space over $F$ with the usual addition and multiplication operations on polynomials.
+  The polynomial ring $F[x]$ over $F$ forms a linear space over $F$ with the usual addition and multiplication operations on polynomials.
 \end{example}
 
 \begin{example}
@@ -382,21 +374,21 @@ To use linear combinations showing the condition for linear subspaces, we can co
   The intersection of any collection of linear subspaces of a linear space $V$ over $F$ is also a linear subspace of $V$.
 \end{proposition}
 \begin{proof}
-  Let $\{ W_i \}_{i \in I}$ be a collection of linear subspaces of $V$, where $I$ is an index set. Define
+  Let ${\{ W_i \}}_{i \in I}$ be a collection of linear subspaces of $V$, where $I$ is an index set. Define
   \[ W = \bigcap_{i \in I} W_i. \]
   Then we have to show that $W$ is a linear subspace of $V$. For any $i \in I$, we have $0_V \in W_i$ since $W_i$ is a linear space. Thus, $0_V \in W$, so $W$ is non-empty. Then, for any $u, v \in W$ and $\alpha, \beta \in F$, we have $u, v \in W_i$ for all $i \in I$. Since each $W_i$ is a linear space, we have $\alpha u + \beta v \in W_i$ for all $i \in I$. Thus, $\alpha u + \beta v \in W$. Therefore, $W$ is closed under the operations $+$ and $\cdot$. By the previous proposition, $W$ is a linear subspace of $V$.
 \end{proof}
 
-Then it is natural to ask: the union of any collection of linear subspaces of a linear space $V$ over $F$ is also a linear subspace of $V$? The answer is no in general. However, if we perform ``completion'', or technically taking the \emph{linear span}, we can obtain a linear subspace.
+Then it is natural to ask: the union of any collection of linear subspaces of a linear space $V$ over $F$ is also a linear subspace of $V$? The answer is no in general. However, if we perform ``completion'', or technically taking the \emph{linear span}, we can get a linear subspace again and it is called the \emph{sum} of those linear subspaces.
 
 \begin{definition}[Linear Span]\label{def:span}
-  The \emph{linear span} of a subset $S$ of a linear space $V$ over $F$, denoted by $\spn_F S$ or simply $\spn S$, $\overline{S}$ or $\langle S \rangle$, is the completion of $S$ inside $V$ under \hyperref[def:linear_combination]{linear combinations}, which is
-  \[ \spn S = \left\{ \sum_{i = 1}^{|S|} \alpha^i s_i \Biggm| \alpha^i \in F, s_i \in S \right\} \]
+  The \emph{linear span} of a subset $S$ of a linear space $V$ over $F$, denoted by $\spn_F(S)$ or simply $\spn(S)$, $\overline{S}$ or $\langle S \rangle$, is the completion of $S$ inside $V$ under \hyperref[def:linear_combination]{linear combinations}, which is
+  \[ \spn(S) = \left\{ \sum_{i = 1}^{|S|} \alpha^i s_i \Biggm| \alpha^i \in F, s_i \in S \right\} \]
   where $|S|$ is the cardinality of the set $S$ (if $S$ is infinite, we only consider finite linear combinations). Equivalently, the linear span of $S$ is the smallest \hyperref[def:linear_subspace]{linear subspace} of $V$ that contains $S$. It can be written as
   \[
-    \spn S = \bigcap_{i \in I} W_i \subseteq V,
+    \spn(S) = \bigcap_{i \in I} W_i \subseteq V,
   \]
-  where $\{ W_i \}_{i \in I}$ is the collection of all linear subspaces of $W$ that contain $S$.
+  where ${\{ W_i \}}_{i \in I}$ is the collection of all linear subspaces of $W$ that contain $S$.
 \end{definition}
 
 \begin{definition}[Linear Spanning Set]\label{def:spanning_set}
@@ -406,7 +398,7 @@ Then it is natural to ask: the union of any collection of linear subspaces of a 
 For simplicity, we may omit the word ``linear'' when there is no ambiguity.
 
 \begin{example}
-  Consider the linear space $F^3$ with vectors $\vec{e}_1$, $\vec{e}_2$, and $\vec{e}_3$. The set $S = \{ \vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2 \}$ is not a spanning set of $F^3$ since $\spn S$ is the same as $\spn \{\vec{e}_1, \vec{e}_2\}$. However, the set $T = \{ \vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2, \vec{e}_3 \}$ is a spanning set of $F^3$ since $\spn T = F^3$.
+  Consider the linear space $F^3$ with vectors $\vec{e}_1$, $\vec{e}_2$, and $\vec{e}_3$. The set $S = \{ \vec{e}_1, \vec{e}_2, \vec{e}_1 + \vec{e}_2 \}$ is not a spanning set of $F^3$ since $\spn(S)$ is the same as $\spn \{\vec{e}_1, \vec{e}_2\}$. However, the set $T = \{ \vec{e}_1, \vec{e}_1 + \vec{e}_2, \vec{e}_1 + \vec{e}_2, \vec{e}_3 \}$ is a spanning set of $F^3$ since $\spn(T) = F^3$.
 \end{example}
 
 \begin{remark}
@@ -414,15 +406,15 @@ For simplicity, we may omit the word ``linear'' when there is no ambiguity.
 \end{remark}
 
 \begin{example}
-  Consider the subset $S = \{ 1, x, x^2, \cdots \} \subset F[[x]]$. The linear span of $S$ is the polynomial ring $F[x]$, i.e., $\spn S = F[x]$. The reason is that any polynomial can be expressed as a finite linear combination of the elements in $S$, while any formal power series that is not a polynomial cannot be expressed as such.
+  Consider the subset $S = \{ 1, x, x^2, \cdots \} \subset F[[x]]$. The linear span of $S$ is the polynomial ring $F[x]$, i.e., $\spn(S) = F[x]$. The reason is that any polynomial can be expressed as a finite linear combination of the elements in $S$, while any formal power series that is not a polynomial cannot be expressed as such.
 \end{example}
 
 \begin{definition}[Minimal Spanning Set]\label{def:minimal_spanning_set}
-  A minimal spanning set of a linear space $V$ over $F$ is a \hyperref[def:spanning_set]{spanning set} $S$ of $V$ such that for any proper subset $S' \subset S$, we have $\spn S' \subset \spn S = V$.
+  A minimal spanning set of a linear space $V$ over $F$ is a \hyperref[def:spanning_set]{spanning set} $S$ of $V$ such that for any proper subset $S' \subset S$, we have $\spn(S') \subset \spn(S) = V$.
 \end{definition}
 
 \begin{remark}
-  An ordered minimal spanning set is called a \emph{basis}.
+  An ordered minimal spanning set is called a \emph{basis}, which will use a round bracket notation, e.g., $(v_1, v_2, \ldots, v_n)$.
 \end{remark}
 
 \section{Linear Independence}
@@ -470,3 +462,55 @@ Also, similar to minimal spanning sets, we have the following definition.
 \begin{remark}
   A minimal spanning set and a maximal linearly independent set describe the same concept. We will use minimal spanning sets in this book. 
 \end{remark}
+
+\begin{example}
+  Let $X$ be a non-empty set. For each $x \in X$, define the Kronecker delta function $\delta_x : X \to F$ by
+  \[
+    \delta_x(y) = \begin{cases}
+      1, & \text{if } y = x; \\
+      0, & \text{if } y \neq x.
+    \end{cases}
+  \]
+  Clearly, $\delta_x$ is in $\Map_{\fin}(X, F)$ since it is finitely supported. The set $\{ \delta_x \mid x \in X \}$ is a linearly independent set in the linear space $\Map_{\fin}(X, F)$ over $F$. To show this, assume there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_y$. Then we have $\delta_x(x) = 1$ and $\delta_x(x) = \sum \alpha^y \delta_y(x) = 0$, which shows a contradition. Moreover, it is a minimal spanning set of $\Map_{\fin}(X, F)$ since any finitely-supported function can be expressed as a finite linear combination of the functions in this set.
+\end{example}
+
+\section{Exercise}
+
+\begin{problem}
+  On the logic set $X = \{\mathsf{true}, \mathsf{false}\}$, we have two binary operations: one is ``OR'', denoted by $\lor$, and the other is ``AND'',denoted by $\land$. If we use 1 to represent ``true'' and 0 to represent ``false'', then
+  \begin{align*}
+    1 \lor 0 = 0 \lor 1 = 0 \lor 0 = 0, \qquad 1 \lor 1 = 1 \\
+    1 \land 1 = 1 \land 0 = 0 \land 1 = 0, \qquad 0 \land 0 = 0
+  \end{align*}
+  \begin{enumerate}
+    \item Show that both $\lor$ and $\land$ are abelian monoid structures on $X$.
+    \item Show that $\lor$ distributes with respect to $\land$.
+    \item Show that $\land$ distributes with respect to $\lor$.
+    \item Is $(X, \lor, \land)$ a ring? If not, can you modify $\lor$ to arrive at a new binary operation $\lor'$ such that $(X, \lor', \land)$ is a commutative ring with unity? If yes, is this ring a field?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Find a non-empty subset $X$ of $2 \times 2$ matrices over $\R$ such that 
+  \begin{itemize}
+    \item the set $X$ is closed under matrix multiplication, and 
+    \item there are many left-identities, but there is no two-sided identity.
+  \end{itemize}
+\end{problem}
+
+\begin{problem}\label{prob:function_space_homomorphisms}
+  Let $F$ be a field and $X$ be a non-empty set. Recall that $\Map(X, F)$ is the set of $F$-valued functions on $X$ and $\Map_{\fin}(X, F)$ is the set of finitely-supported $F$-valued functions on $X$. Both $\Map(X, F)$ and $\Map_{\fin}(X, F)$ are linear spaces over the field $F$.
+
+  Let $T: X \to Y$ be a set map and $T_*: \Map_{\fin}(X, F) \to \Map_{\fin}(Y, F)$ be the map such that 
+  \[
+      T_*(f)(y) = \sum_{x \in T^{-1}(y)} f(x), \qquad \forall y \in Y.
+  \]
+
+  In case $T^{-1}(y)$ is the empty set $\emptyset$, the sum is assumed to be 0. Please check that the sum above is well-defined and $T_*(f)$ has a finite-support.
+  \begin{enumerate}
+    \item Show that ${(1_X)}_* = 1_{\Map_{\fin}(X, F)}$ for all non-empty set $X$.
+    \item Show that ${(TS)}_* = T_* S_*$ for all set maps $T$ and $S$ such that the composition $TS$ is defined.
+    \item For any set map $T: X \to Y$, we have an induced map $T^*: \Map(Y, F) \to \Map(X, F)$ via the formula $T^*f = fT$. Show that $1_X^* = 1_{\Map(X, F)}$ and ${(TS)}^* = S^*T^*$.
+    \item Can we get a natural map from $\Map(X, F)$ to $\Map(Y, F)$ or from $\Map_{\fin}(Y, F)$ to $\Map_{\fin}(X, F)$ for any set map $T: X \to Y$ between two infinite sets $X$ and $Y$?
+  \end{enumerate}
+\end{problem}

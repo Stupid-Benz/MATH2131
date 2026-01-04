@@ -8,6 +8,10 @@
 
 \usepackage{import} % for \import
 
+% Tools
+\usepackage{etoolbox} % for \BeforeBeginEnvironment
+\usepackage{calc} % for \widthof
+
 %-----------------------------------------------------%
 %%%% Hyperref
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -34,11 +38,19 @@
 %%%% Tikz
 \usepackage{tikz}
 \usetikzlibrary{cd}
-\usetikzlibrary{arrows, arrows.meta, positioning, calc}
+\usetikzlibrary{arrows, arrows.meta, positioning, calc, decorations.pathreplacing, decorations.markings}
 \tikzcdset{arrow style=tikz, diagrams={>={Straight Barb[scale=0.8]}}}
 
 \tikzstyle{arrow} = [-{Straight Barb[scale=0.8]}, line width=0.2mm]
 \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+
+\tikzcdset{
+  /tikz/commutative diagrams/every diagram/.append style={
+      row sep=huge,
+      column sep=huge
+    },
+  row sep/subtext/.initial = 1pt,
+}
 
 %-----------------------------------------------------%
 %%%% Chinese characters
@@ -72,6 +84,9 @@
 \usepackage{booktabs}
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% Automatically add \noindent before every tabularx environment
+\BeforeBeginEnvironment{tabularx}{\noindent}
 
 %-----------------------------------------------------%
 %%%% Self-defined functions
@@ -146,11 +161,11 @@
   spaceabove=\baselineskip,
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
-    blanker,
-    borderline west={2.5pt}{-10pt}{ustblue},
-    top=3pt,
-    bottom=3pt
-  }
+      blanker,
+      borderline west={2.5pt}{-10pt}{ustblue},
+      top=3pt,
+      bottom=3pt
+    }
 }
 
 \newkeytheoremstyle{goldbar}
@@ -162,11 +177,11 @@
   spaceabove=\baselineskip,
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
-    blanker,
-    borderline west={2.5pt}{-10pt}{ustgold},
-    top=3pt,
-    bottom=3pt
-  }
+      blanker,
+      borderline west={2.5pt}{-10pt}{ustgold},
+      top=3pt,
+      bottom=3pt
+    }
 }
 
 \newkeytheoremstyle{goldonly}
@@ -178,11 +193,11 @@
   spaceabove=\baselineskip,
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
-    blanker,
-    % borderline west={2.5pt}{-10pt}{ustgold},
-    % top=3pt,
-    % bottom=3pt
-  }
+      blanker,
+      % borderline west={2.5pt}{-10pt}{ustgold},
+      % top=3pt,
+      % bottom=3pt
+    }
 }
 
 \newkeytheoremstyle{yellowbar}
@@ -194,11 +209,11 @@
   spaceabove=\baselineskip,
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
-    blanker,
-    borderline west={2.5pt}{-10pt}{ustyellow},
-    top=3pt,
-    bottom=3pt
-  }
+      blanker,
+      borderline west={2.5pt}{-10pt}{ustyellow},
+      top=3pt,
+      bottom=3pt
+    }
 }
 
 \newkeytheoremstyle{graybar}
@@ -208,11 +223,11 @@
   spaceabove=\baselineskip,
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
-    blanker,
-    borderline west={2.5pt}{-10pt}{ustgray},
-    top=3pt,
-    bottom=3pt
-  }
+      blanker,
+      borderline west={2.5pt}{-10pt}{ustgray},
+      top=3pt,
+      bottom=3pt
+    }
 }
 
 \newkeytheorem{definition}[style=colorbarbox,parent=chapter]
@@ -221,15 +236,17 @@
 \newkeytheorem{lemma}[style=colorbar,parent=chapter]
 \newkeytheorem{corollary}[style=colorbar,parent=chapter]
 
-\newkeytheorem{example}[style=goldbar,parent=chapter]
-\newkeytheorem{proposition}[style=goldonly,parent=chapter]
-\renewkeytheorem{proof}[style=goldonly,parent=chapter,numbered=false,qed]
+\newkeytheorem{example}[style=goldbar,parent=section]
 
-\newkeytheorem{remark}[style=graybar,parent=chapter,numbered=false]
+\newkeytheorem{proposition}[style=goldonly,parent=section,preheadhook={
+      \setlist[enumerate,1]{label = (\arabic*)}
+    }]
+\renewkeytheorem{proof}[style=goldonly,numbered=false,qed,preheadhook={
+      \setlist[description]{leftmargin=!, font=\color{ustblue}, topsep=\baselineskip}
+    }]
+\newkeytheorem{problem}[style=goldonly,parent=chapter]
+\newkeytheorem{exercise}[style=goldonly,parent=section,preheadhook={
+      \setlist[enumerate,1]{label = (\arabic*)}
+    }]
 
-
-
-\theoremstyle{definition}
-
-\newtheorem{exercise}{\bf Exercise}[section]
-\newtheorem{problem}{\bf Problem}[chapter]
+\newkeytheorem{remark}[style=graybar,numbered=false]
