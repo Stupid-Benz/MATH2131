@@ -429,7 +429,7 @@ For simplicity, we may omit the word ``linear'' when there is no ambiguity.
 
 We also have a slightly weaker version of linear independence for future discussions.
 
-\begin{definition}[Weak Linear Independence]\label{def:weak_linear_independence}
+\begin{definition}[Weakly Linear Independence]\label{def:weakly_linear_independence}
   The \hyperref[def:linear_subspace]{subspaces} $W_1, W_2, \ldots, W_n$ of a linear space $V$ over $F$ are \emph{weakly linearly independent} if the only way to express the zero vector $0_V$ as a \hyperref[def:linear_combination]{linear combination} of vectors from these subspaces is the trivial way, i.e., if
   \[
     w_1 + w_2 + \cdots + w_n = 0_V,
@@ -474,6 +474,37 @@ Also, similar to minimal spanning sets, we have the following definition.
   Clearly, $\delta_x$ is in $\Map_{\fin}(X, F)$ since it is finitely supported. The set $\{ \delta_x \mid x \in X \}$ is a linearly independent set in the linear space $\Map_{\fin}(X, F)$ over $F$. To show this, assume there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_y$. Then we have $\delta_x(x) = 1$ and $\delta_x(x) = \sum \alpha^y \delta_y(x) = 0$, which shows a contradition. Moreover, it is a minimal spanning set of $\Map_{\fin}(X, F)$ since any finitely-supported function can be expressed as a finite linear combination of the functions in this set.
 \end{example}
 
+\section{Sum and Direct Sum of Linear Subspaces}
+
+As we have mentioned before, the linear span of the union of several linear subspaces is again a linear subspace, which is called the sum of those linear subspaces.
+
+\begin{definition}[Sum of Linear Subspaces]\label{def:sum}
+  The \emph{sum} of the \hyperref[def:linear_subspace]{linear subspaces} $W_1, W_2, \ldots, W_n$ of a linear space $V$ over $F$, denoted by $W_1 + W_2 + \cdots + W_n$, is the \hyperref[def:span]{linear span} of their union, i.e.,
+  \[
+    W_1 + W_2 + \cdots + W_n = \spn(W_1 \cup W_2 \cup \cdots \cup W_n).
+  \]
+  Equivalently, the sum can be expressed as
+  \[
+    W_1 + W_2 + \cdots + W_n = \left\{ w_1 + w_2 + \cdots + w_n \mid w_i \in W_i, i = 1, 2, \ldots, n \right\}.
+  \]
+\end{definition}
+
+\begin{definition}[Direct Sum of Linear Subspaces]\label{def:direct_sum}
+  The \emph{direct sum} of the \hyperref[def:linear_subspace]{linear subspaces} $W_1, W_2, \ldots, W_n$ of a linear space $V$ over $F$, denoted by $W_1 \oplus W_2 \oplus \cdots \oplus W_n$, is their \hyperref[def:sum]{sum} $W_1 + W_2 + \cdots + W_n$ provided that the subspaces are \hyperref[def:weakly_linear_independence]{weakly linearly independent}, i.e., 
+  \[
+    W_1 \oplus W_2 \oplus \cdots \oplus W_n = W_1 + W_2 + \cdots + W_n,
+  \]
+  and for any $w \in W_1 \oplus W_2 \oplus \cdots \oplus W_n$, there exist unique vectors $w_i \in W_i$ for each $i = 1, 2, \ldots, n$ such that
+  \[
+    w = w_1 + w_2 + \cdots + w_n.
+  \]
+\end{definition}
+
+The equivalent definition of direct sum is that the intersection of any subspace with the sum of the other subspaces is trivial, i.e., for each $i = 1, 2, \ldots, n$,
+\[
+  W_i \cap \left( \sum_{j \neq i} W_j \right) = \{ 0_V \}.
+\]
+
 \section{Exercise}
 
 \begin{problem}
@@ -513,4 +544,8 @@ Also, similar to minimal spanning sets, we have the following definition.
     \item For any set map $T: X \to Y$, we have an induced map $T^*: \Map(Y, F) \to \Map(X, F)$ via the formula $T^*f = fT$. Show that $1_X^* = 1_{\Map(X, F)}$ and ${(TS)}^* = S^*T^*$.
     \item Can we get a natural map from $\Map(X, F)$ to $\Map(Y, F)$ or from $\Map_{\fin}(Y, F)$ to $\Map_{\fin}(X, F)$ for any set map $T: X \to Y$ between two infinite sets $X$ and $Y$?
   \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Let $V$ be a linear space and $S$ be a spanning set for $V$. Show that $S$ is a minimal spanning set for $V$ $\iff$ $S$ is a linearly independent set. Note: $S$ here is not required to be finite.
 \end{problem}
