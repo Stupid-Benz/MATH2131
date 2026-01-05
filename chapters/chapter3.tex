@@ -1,0 +1,105 @@
+\chapter{Introduction to Category Theory}
+
+Category theory is a branch of mathematics that deals with abstract structures and relationships between them. It provides a unifying framework for understanding various mathematical concepts by focusing on the relationships (morphisms) between objects rather than the objects themselves.
+
+\section{Free Vector Spaces}
+
+Before delving into category theory, it is helpful to understand the concept of free vector spaces. Let $S$ be a set and $\delta_S = \{ \delta_s \mid s \in S \}$. Here $\delta_s : S \to F$ is the Kronecker delta function at $s$, defined in Equation~\eqref{eq:delta_function}. We have already shown that $\delta_S$ is a minimal spanning set for $F[S]$. Moreover, there is a natural bijection between $S$ and $\delta_S$ given by $s \mapsto \delta_s$. The natural identification of $S$ with $\delta_S$ allows us to write this map as $\iota_S : S \to F[S]$ where $\iota_S(s) = \delta_s$ for all $s \in S$. This motivates the following universal property of free vector spaces.
+
+\begin{proposition}[Universal Property of Free Vector Spaces]
+	Let $S$ be a set. For any linear space $Z$ and any set map $\phi : S \to Z$, there exists a unique linear map $\widetilde{\phi} : F[S] \to Z$ such that the following diagram commutes:
+	\begin{center}
+		\begin{tikzcd}
+			S \arrow[r, hook, "\iota_S" description] \arrow[rd, "\phi" description] & F[S] \arrow[d, dashed, "\widetilde{\phi}" description] \\
+			& Z
+		\end{tikzcd}
+	\end{center}
+\end{proposition}
+\begin{proof}
+	If such a linear map $\widetilde{\phi}$ exists, then for any $x \in X$ we must have
+	\[
+		\widetilde{\phi}(\delta_x) = \phi(x).
+	\]
+	Since $\delta_S$ is a spanning set for $F[S]$, this completely determines $\widetilde{\phi}$.
+\end{proof}
+
+Via the natural identification of $S$ with $\delta_S$, denoted by $S \cong \delta_S$, an element in $F[S]$ can be expressed as a finite linear combination of elements in $S$:
+\[
+	\sum \alpha^s \delta_s \Longleftrightarrow \sum \alpha^s s.
+\]
+This is called the \emph{formal linear combination} of elements in $S$ with coefficients in $F$. Hereafter, we always identify $S$ with $\delta_S$ in this way and $F[S]$ is referred to the \emph{set of formal linear combinations} of elements in $S$ with coefficients in $F$ or simply the \emph{free vector space} on $S$.
+
+The uniqueness of the universal property is in the following sense: if there is another inclusion map $\iota_S'$ into a linear space $F'[S]$ satisfying the same universal property, then there exists a unique isomorphism of linear spaces $\psi : F[S] \to F'[S]$ such that the diagram commutes:
+\begin{center}
+	\begin{tikzcd}[column sep=normal]
+		& S \arrow[ld, hook, "\iota_S" description] \arrow[rd, hook, "\iota_S'" description] & \\
+		F[S] \arrow[rr, dashed, "\psi" description] & & F'[S]
+	\end{tikzcd}
+\end{center}
+
+The universal property implies an assignment of a linear map $T_* : F[S] \to F[S']$, or you may write the map as $F[T]$ instead, to each set map $T : S \to S'$ defined by the following commutative diagram:
+\begin{center}
+	\begin{tikzcd}
+		S \arrow[r, "T" description] \arrow[d, hook, "\iota_S" description] & S' \arrow[d, hook, "\iota_{S'}" description] \\
+		F[S] \arrow[r, dashed, "T_*" description] & F[S']
+	\end{tikzcd}
+\end{center}
+Moreover, this assignment preserves identities and composition:
+\begin{itemize}
+	\item For the identity map $\id_S : S \to S$, we have $(\id_S)_* = \id_{F[S]}$.
+	\item For set maps $T : S \to S'$ and $U : S' \to S''$, we have $(UT)_* = U_* T_*$.
+\end{itemize}
+You may refer to Problem~\ref{prob:function_space_homomorphisms} for elementary proofs of these properties.
+
+\section{Categories and Functors}
+
+The structure described in the previous section can be abstracted into the notion of a category. We denote a collection of set maps as $\Set$ and a collection of linear maps over $F$ as $\Vect_F$. Then $F[-]$ can be viewed as a map from the collection of sets to the collection of linear spaces over $F$ that assigns to each set $S$ the free vector space $F[S]$ and to each set map $T : S \to T$ the linear map $T_* : F[S] \to F[T]$:
+\begin{center}
+	\begin{tikzcd}
+		\Set \arrow[r, "{F[-]}" description] & \Vect_F
+	\end{tikzcd}
+\end{center}
+This map preserves identities and composition, as described above. Such a structure is called a \emph{functor} from the category $\Set$ to the category $\Vect_F$.
+
+Any monoids can be viewed as \emph{categories} with a single object $*$ where the elements of the monoid are the \emph{morphisms}, or \emph{arrows}, from $*$ to $*$. The composition of morphisms is given by the multiplication in the monoid and the identity morphism is given by the identity element of the monoid. Consider the following composition of morphisms:
+\begin{center}
+	\begin{tikzcd}
+		* \arrow[r, "a" description] \arrow[rr, "ab" description, bend left=15] & * \arrow[r, "b" description] & *
+	\end{tikzcd}
+\end{center}
+Here $a$ and $b$ are morphisms from $*$ to $*$. The composition $ab$ is also a morphism from $*$ to $*$.
+
+Recall that a monoid is a set $M$, which is also called a \emph{small collection of objects}, together with a binary operation on $M$, which is also called a \emph{compositon of morphisms}, with associative property and unital property being satisfied. By relaxing the condition on binary operation, allowing the composition being only partially defined, we end up with the definition of \emph{small category}.
+
+Being partially defined means that the composition may not always be defined. For example, take $f : X \to Y$ and $g : W \to Z$, then $gf$ is not defined. But $f : X \to Y$ and $g : Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
+
+\begin{example}
+	The collection of all matrices over $F$ is a small category. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A : n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA : n \to k$. Note that $I_n : n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have
+	\begin{center}
+		\begin{tikzcd}
+			n \arrow[loop left, "I_n"] \arrow[r, "A"] & m \arrow[loop right, "I_m"] \arrow[d, "B"] \\
+			& k
+		\end{tikzcd}
+	\end{center}
+	Note that $A I_n = A = I_m A$ and $B I_m = B$.
+	\begin{remark}
+		The identity elements are not unique unlike the case of monoid.
+	\end{remark}
+	The following shows the associativity law:
+	\begin{center}
+		\begin{tikzcd}
+			n \arrow[r, "C"] \arrow[rr, bend right, "BC"] \arrow[rrr, bend right, "A(BC)" swap] \arrow[rrr, bend left, "(AB)C"] & m \arrow[r, "B"] \arrow[rr, bend left, "AB" swap] & k \arrow[r, "A"] & l
+		\end{tikzcd}
+	\end{center}
+\end{example}
+
+Consider the set of all invertible matrices over $\F$, it is also a small category, in fact, it is a \emph{groupoid}. Groupoid is defined as a small category such that every morphism is invertible.
+
+\begin{center}
+	\begin{tikzcd}[column sep=3.5em, row sep=huge, math mode=false]
+		& Categories \\
+		Monoids \arrow[r] & Small Categories \arrow[u] \\
+		Groups \arrow[r] \arrow[u] & Groupoids \arrow[u]
+	\end{tikzcd}
+\end{center}
+The graph above shows the relation, the arrows show the subsets relation. The arrow head is the larger set and arrow tail is the subset.

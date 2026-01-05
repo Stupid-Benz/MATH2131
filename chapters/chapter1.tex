@@ -297,12 +297,12 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \end{example}
 
 \begin{example}\label{ex:function_space}
-  The set of all $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \}$, denoted by $\Map(X, F)$, forms a linear space over $F$ with the following operations:
+  The set of all $F$-valued functions defined on a non-empty set $S$, i.e., $\{ f : S \to F \}$, denoted by $\Map(S, F)$ or $F^S$, forms a linear space over $F$ with the following operations:
   \begin{align*}
-    + : \Map(X, F) \times \Map(X, F) & \to \Map(X, F)                                                                    \\
-    (f, g)                           & \mapsto (f + g) : X \to F, \quad (f + g)(x) = f(x) + g(x)                         \\
-    \cdot : F \times \Map(X, F)      & \to \Map(X, F)                                                                    \\
-    (\alpha, f)                      & \mapsto (\alpha \cdot f) : X \to F, \quad (\alpha \cdot f)(x) = \alpha \cdot f(x)
+    + : \Map(S, F) \times \Map(S, F) & \to \Map(S, F)                                                                    \\
+    (f, g)                           & \mapsto (f + g) : S \to F, \quad (f + g)(s) = f(s) + g(s)                         \\
+    \cdot : F \times \Map(S, F)      & \to \Map(S, F)                                                                    \\
+    (\alpha, f)                      & \mapsto (\alpha \cdot f) : S \to F, \quad (\alpha \cdot f)(s) = \alpha \cdot f(s)
   \end{align*}
 \end{example}
 
@@ -311,7 +311,7 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \end{remark}
 
 \begin{example}
-  The set of all finitely supported $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \mid f(x) \neq 0_F \text{ for only finitely many } x \in X \}$, denoted by $\Map_{\fin}(X, F)$, forms a linear space over $F$ with the same operations as in the previous example.
+  The set of all finitely supported $F$-valued functions defined on a non-empty set $S$, i.e., $\{ f : S \to F \mid f(s) \neq 0_F \text{ for only finitely many } s \in S \}$, denoted by $F[S]$ or $\Map_{\fin}(S, F)$ or $F^{(S)}$, forms a linear space over $F$ with the same operations as in the previous example.
 \end{example}
 
 \begin{example}
@@ -464,14 +464,14 @@ Also, similar to minimal spanning sets, we have the following definition.
 \end{remark}
 
 \begin{example}
-  Let $X$ be a non-empty set. For each $x \in X$, define the Kronecker delta function $\delta_x : X \to F$ by
-  \[
-    \delta_x(y) = \begin{cases}
-      1, & \text{if } y = x; \\
-      0, & \text{if } y \neq x.
+  Let $S$ be a non-empty set. For each $s \in S$, define the Kronecker delta function $\delta_s : S \to F$ by
+  \begin{equation}\label{eq:delta_function}
+    \delta_s(t) = \begin{cases}
+      1, & \text{if } t = s; \\
+      0, & \text{if } t \neq s.
     \end{cases}
-  \]
-  Clearly, $\delta_x$ is in $\Map_{\fin}(X, F)$ since it is finitely supported. The set $\{ \delta_x \mid x \in X \}$ is a linearly independent set in the linear space $\Map_{\fin}(X, F)$ over $F$. To show this, assume there exists a finite linear combination of other delta functions such that $\delta_x = \sum \alpha^y \delta_y$. Then we have $\delta_x(x) = 1$ and $\delta_x(x) = \sum \alpha^y \delta_y(x) = 0$, which shows a contradition. Moreover, it is a minimal spanning set of $\Map_{\fin}(X, F)$ since any finitely-supported function can be expressed as a finite linear combination of the functions in this set.
+  \end{equation}
+  Clearly, $\delta_s$ is in $F[S]$ since it is finitely supported. The set $\delta_S = \{ \delta_s \mid s \in S \}$ is a linearly independent set in the linear space $F[S]$ over $F$. To show this, assume there exists a finite linear combination of other delta functions such that $\delta_s = \sum \alpha^t \delta_t$. Then we have $\delta_s(s) = 1$ and $\delta_s(s) = \sum \alpha^t \delta_t(s) = 0$, which shows a contradition. Moreover, it is a minimal spanning set of $F[S]$ since any finitely-supported function can be expressed as a finite linear combination of the functions in this set.
 \end{example}
 
 \section{Sum and Direct Sum of Linear Subspaces}
@@ -530,19 +530,19 @@ The equivalent definition of direct sum is that the intersection of any subspace
 \end{problem}
 
 \begin{problem}\label{prob:function_space_homomorphisms}
-  Let $F$ be a field and $X$ be a non-empty set. Recall that $\Map(X, F)$ is the set of $F$-valued functions on $X$ and $\Map_{\fin}(X, F)$ is the set of finitely-supported $F$-valued functions on $X$. Both $\Map(X, F)$ and $\Map_{\fin}(X, F)$ are linear spaces over the field $F$.
+  Let $F$ be a field and $X$ be a non-empty set. Recall that $\Map(X, F)$ is the set of $F$-valued functions on $X$ and $F[X]$ is the set of finitely-supported $F$-valued functions on $X$. Both $\Map(X, F)$ and $F[X]$ are linear spaces over the field $F$.
 
-  Let $T: X \to Y$ be a set map and $T_*: \Map_{\fin}(X, F) \to \Map_{\fin}(Y, F)$ be the map such that 
+  Let $T: X \to Y$ be a set map and $T_*: F[X] \to F[Y]$ be the map such that 
   \[
       T_*(f)(y) = \sum_{x \in T^{-1}(y)} f(x), \qquad \forall y \in Y.
   \]
 
   In case $T^{-1}(y)$ is the empty set $\emptyset$, the sum is assumed to be 0. Please check that the sum above is well-defined and $T_*(f)$ has a finite-support.
   \begin{enumerate}
-    \item Show that ${(1_X)}_* = 1_{\Map_{\fin}(X, F)}$ for all non-empty set $X$.
+    \item Show that ${(1_X)}_* = 1_{F[X]}$ for all non-empty set $X$.
     \item Show that ${(TS)}_* = T_* S_*$ for all set maps $T$ and $S$ such that the composition $TS$ is defined.
     \item For any set map $T: X \to Y$, we have an induced map $T^*: \Map(Y, F) \to \Map(X, F)$ via the formula $T^*f = fT$. Show that $1_X^* = 1_{\Map(X, F)}$ and ${(TS)}^* = S^*T^*$.
-    \item Can we get a natural map from $\Map(X, F)$ to $\Map(Y, F)$ or from $\Map_{\fin}(Y, F)$ to $\Map_{\fin}(X, F)$ for any set map $T: X \to Y$ between two infinite sets $X$ and $Y$?
+    \item Can we get a natural map from $\Map(X, F)$ to $\Map(Y, F)$ or from $F[Y]$ to $F[X]$ for any set map $T: X \to Y$ between two infinite sets $X$ and $Y$?
   \end{enumerate}
 \end{problem}
 
