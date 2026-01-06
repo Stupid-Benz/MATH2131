@@ -33,6 +33,7 @@
 \definecolor{ustgold}{RGB}{153,102,0}
 \definecolor{ustyellow}{RGB}{204,153,0}
 \definecolor{ustgray}{RGB}{204,204,204}
+\definecolor{ustred}{RGB}{237,27,47}
 
 %-----------------------------------------------------%
 %%%% Tikz
@@ -49,7 +50,6 @@
       row sep=huge,
       column sep=huge
     },
-  row sep/subtext/.initial = 1pt,
 }
 
 %-----------------------------------------------------%
@@ -128,7 +128,7 @@
 \renewcommand\thesection{\thechapter.\arabic{section}}
 
 \usepackage{keytheorems}
-\usepackage[skins]{tcolorbox}
+\usepackage[breakable,skins]{tcolorbox}
 
 \newkeytheoremstyle{colorbarbox}
 {
@@ -178,6 +178,7 @@
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
       blanker,
+      breakable,
       borderline west={2.5pt}{-10pt}{ustgold},
       top=3pt,
       bottom=3pt
@@ -194,6 +195,7 @@
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
       blanker,
+      breakable,
       % borderline west={2.5pt}{-10pt}{ustgold},
       % top=3pt,
       % bottom=3pt
@@ -210,6 +212,7 @@
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
       blanker,
+      breakable,
       borderline west={2.5pt}{-10pt}{ustyellow},
       top=3pt,
       bottom=3pt
@@ -224,6 +227,7 @@
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
       blanker,
+      breakable,
       borderline west={2.5pt}{-10pt}{ustgray},
       top=3pt,
       bottom=3pt

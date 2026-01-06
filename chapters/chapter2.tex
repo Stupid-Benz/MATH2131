@@ -5,38 +5,38 @@ Linear maps are fundamental objects in linear algebra. In this chapter, we will 
 \section{Linear Maps and Linear Combinations}
 
 \begin{definition}[Linear Map]\label{def:linear_map}
-	A \emph{linear map}, or \emph{linear transformation}, between two linear spaces $V$ and $W$ over the same \hyperref[def:field]{field} $F$ is a set map $T : V \to W$ that respects the \hyperref[def:linear_structure]{linear structure}; that is, for all $u, v \in V$ and all scalars $\alpha \in F$, the following properties hold:
-	\begin{itemize}
-		\item $T(u + v) = T(u) + T(v)$;
-		\item $T(\alpha \cdot u) = \alpha \cdot T(u)$.
-	\end{itemize}
-	Equivalently, for all $u, v \in V$ and all scalars $\alpha, \beta \in F$, we have
-	\[
-		T(\alpha \cdot u + \beta \cdot v) = \alpha \cdot T(u) + \beta \cdot T(v).
-	\]
+  A \emph{linear map}, or \emph{linear transformation}, between two linear spaces $V$ and $W$ over the same \hyperref[def:field]{field} $F$ is a set map $T : V \to W$ that respects the \hyperref[def:linear_structure]{linear structure}; that is, for all $u, v \in V$ and all scalars $\alpha \in F$, the following properties hold:
+  \begin{itemize}
+    \item $T(u + v) = T(u) + T(v)$;
+    \item $T(\alpha \cdot u) = \alpha \cdot T(u)$.
+  \end{itemize}
+  Equivalently, for all $u, v \in V$ and all scalars $\alpha, \beta \in F$, we have
+  \[
+    T(\alpha \cdot u + \beta \cdot v) = \alpha \cdot T(u) + \beta \cdot T(v).
+  \]
 \end{definition}
 
 \begin{remark}
-	Originally, linear maps required 8 properties to be satisfied. However, it can be shown easily that these two properties imply the rest.
+  Originally, linear maps required 8 properties to be satisfied. However, it can be shown easily that these two properties imply the rest.
 \end{remark}
 
 For simplicity, we often write $Tu$ instead of $T(u)$ for the image of a vector $u$ under the linear map $T$. The set of all linear maps from $V$ to $W$ is denoted by $\Hom_F(V, W)$ or simply $\Hom(V, W)$ when the field is clear from context. Some author use $\mathcal{L}(V, W)$ instead.
 
 From Example~\ref{ex:function_space}, we know that $\Map(V, W)$ forms a linear space over $F$ with pointwise addition and scalar multiplication. Then $\Hom(V, W)$ is a subset of $\Map(V, W)$. Moreover $\Hom(V, W)$ is actually a linear subspace of $\Map(V, W)$.
 \begin{proposition}
-	The set $\Hom(V, W)$ of all linear maps from $V$ to $W$ forms a linear space over $F$ with pointwise addition and scalar multiplication.
+  The set $\Hom(V, W)$ of all linear maps from $V$ to $W$ forms a linear space over $F$ with pointwise addition and scalar multiplication.
 \end{proposition}
 \begin{proof}
-	We need to show that $\Hom(V, W)$ is closed under pointwise addition and scalar multiplication.
+  We need to show that $\Hom(V, W)$ is closed under pointwise addition and scalar multiplication.
 
-	Let $T$ and $S$ be two linear maps from $V$ to $W$. For all $u, v \in V$ and all $\alpha, \beta \in F$, we have
-	\begin{align*}
-		(T + S)(\alpha \cdot u + \beta \cdot v) & = T(\alpha \cdot u + \beta \cdot v) + S(\alpha \cdot u + \beta \cdot v)       \\
-		                                        & = \alpha \cdot T(u) + \beta \cdot T(v) + \alpha \cdot S(u) + \beta \cdot S(v) \\
-		                                        & = \alpha \cdot (T(u) + S(u)) + \beta \cdot (T(v) + S(v))                      \\
-		                                        & = \alpha \cdot (T + S)(u) + \beta \cdot (T + S)(v),
-	\end{align*}
-	so $T + S$ is a linear map from $V$ to $W$.
+  Let $T$ and $S$ be two linear maps from $V$ to $W$. For all $u, v \in V$ and all $\alpha, \beta \in F$, we have
+  \begin{align*}
+    (T + S)(\alpha \cdot u + \beta \cdot v) & = T(\alpha \cdot u + \beta \cdot v) + S(\alpha \cdot u + \beta \cdot v)       \\
+                                            & = \alpha \cdot T(u) + \beta \cdot T(v) + \alpha \cdot S(u) + \beta \cdot S(v) \\
+                                            & = \alpha \cdot (T(u) + S(u)) + \beta \cdot (T(v) + S(v))                      \\
+                                            & = \alpha \cdot (T + S)(u) + \beta \cdot (T + S)(v),
+  \end{align*}
+  so $T + S$ is a linear map from $V$ to $W$.
 \end{proof}
 
 \section{Kernel and Image}
@@ -44,223 +44,226 @@ From Example~\ref{ex:function_space}, we know that $\Map(V, W)$ forms a linear s
 In this section, we introduce two important concepts associated with linear maps: the kernel and the image.
 
 \begin{definition}[Kernel]\label{def:kernel}
-	The \emph{kernel} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the set of all vectors in $V$ that are mapped to the zero vector in $W$:
-	\[
-		\ker(T) = \{ v \in V \mid T(v) = 0 \}.
-	\]
+  The \emph{kernel} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the set of all vectors in $V$ that are mapped to the zero vector in $W$:
+  \[
+    \ker(T) = \{ v \in V \mid T(v) = 0 \}.
+  \]
 \end{definition}
 
 \begin{proposition}
-	The kernel of a linear map $T : V \to W$ is a linear subspace of $V$.
+  The kernel of a linear map $T : V \to W$ is a linear subspace of $V$.
 \end{proposition}
 \begin{proof}
-	We need to show that $\ker(T)$ is closed under vector addition and scalar multiplication.
+  We need to show that $\ker(T)$ is closed under vector addition and scalar multiplication.
 
-	Let $u, v \in \ker(T)$. Then we have $T(u) = 0$ and $T(v) = 0$. For any scalar $\alpha \in F$, we have
-	\begin{align*}
-		T(u + v)          & = T(u) + T(v) = 0 + 0 = 0,                \\
-		T(\alpha \cdot u) & = \alpha \cdot T(u) = \alpha \cdot 0 = 0.
-	\end{align*}
-	Therefore, $u + v \in \ker(T)$ and $\alpha \cdot u \in \ker(T)$, and so $\ker(T)$ is a linear subspace of $V$.
+  Let $u, v \in \ker(T)$. Then we have $T(u) = 0$ and $T(v) = 0$. For any scalar $\alpha \in F$, we have
+  \begin{align*}
+    T(u + v)          & = T(u) + T(v) = 0 + 0 = 0,                \\
+    T(\alpha \cdot u) & = \alpha \cdot T(u) = \alpha \cdot 0 = 0.
+  \end{align*}
+  Therefore, $u + v \in \ker(T)$ and $\alpha \cdot u \in \ker(T)$, and so $\ker(T)$ is a linear subspace of $V$.
 \end{proof}
 
 \begin{definition}[Image]\label{def:image}
-	The \emph{image} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the set of all vectors in $W$ that can be expressed as $T(v)$ for some vector $v$ in $V$:
-	\[
-		\im(T) = \{ w \in W \mid w = T(v) \text{ for some } v \in V \}.
-	\]
+  The \emph{image} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the set of all vectors in $W$ that can be expressed as $T(v)$ for some vector $v$ in $V$:
+  \[
+    \im(T) = \{ w \in W \mid w = T(v) \text{ for some } v \in V \}.
+  \]
 \end{definition}
 
 \begin{proposition}
-	The image of a linear map $T : V \to W$ is a linear subspace of $W$.
+  The image of a linear map $T : V \to W$ is a linear subspace of $W$.
 \end{proposition}
 \begin{proof}
-	We need to show that $\im(T)$ is closed under vector addition and scalar multiplication.
+  We need to show that $\im(T)$ is closed under vector addition and scalar multiplication.
 
-	Let $w_1, w_2 \in \im(T)$. Then there exist vectors $v_1, v_2 \in V$ such that $w_1 = T(v_1)$ and $w_2 = T(v_2)$. For any scalar $\alpha \in F$, we have
-	\begin{align*}
-		w_1 + w_2        & = T(v_1) + T(v_2) = T(v_1 + v_2),            \\
-		\alpha \cdot w_1 & = \alpha \cdot T(v_1) = T(\alpha \cdot v_1).
-	\end{align*}
-	Therefore, $w_1 + w_2 \in \im(T)$ and $\alpha \cdot w_1 \in \im(T)$, and so $\im(T)$ is a linear subspace of $W$.
+  Let $w_1, w_2 \in \im(T)$. Then there exist vectors $v_1, v_2 \in V$ such that $w_1 = T(v_1)$ and $w_2 = T(v_2)$. For any scalar $\alpha \in F$, we have
+  \begin{align*}
+    w_1 + w_2        & = T(v_1) + T(v_2) = T(v_1 + v_2),            \\
+    \alpha \cdot w_1 & = \alpha \cdot T(v_1) = T(\alpha \cdot v_1).
+  \end{align*}
+  Therefore, $w_1 + w_2 \in \im(T)$ and $\alpha \cdot w_1 \in \im(T)$, and so $\im(T)$ is a linear subspace of $W$.
 \end{proof}
 
 \section{Injection, Surjection, and Isomorphism}
 
 \begin{definition}[Injective Linear Map]\label{def:injective_linear_map}
-	A \hyperref[def:linear_map]{linear map} $T : V \to W$ is \emph{injective}, or a \emph{monomorphism}, if for any $u, v \in V$, $T(u) = T(v)$ implies that $u = v$.
+  A \hyperref[def:linear_map]{linear map} $T : V \to W$ is \emph{injective}, or a \emph{monomorphism}, if for any $u, v \in V$, $T(u) = T(v)$ implies that $u = v$.
 \end{definition}
 
 \begin{exercise}
-	Show that a linear map $T : V \to W$ is injective if and only if $\ker(T) = \{ 0 \}$.
+  Show that a linear map $T : V \to W$ is injective if and only if $\ker(T) = \{ 0 \}$.
 \end{exercise}
 
 \begin{definition}[Surjective Linear Map]\label{def:surjective_linear_map}
-	A \hyperref[def:linear_map]{linear map} $T : V \to W$ is \emph{surjective}, or an \emph{epimorphism}, if for any $w \in W$, there exists a vector $v \in V$ such that $T(v) = w$.
+  A \hyperref[def:linear_map]{linear map} $T : V \to W$ is \emph{surjective}, or an \emph{epimorphism}, if for any $w \in W$, there exists a vector $v \in V$ such that $T(v) = w$.
 \end{definition}
 
 \begin{exercise}
-	Show that a linear map $T : V \to W$ is surjective if and only if $\im(T) = W$.
+  Show that a linear map $T : V \to W$ is surjective if and only if $\im(T) = W$.
 \end{exercise}
 
 \begin{definition}[Linear Isomorphism]\label{def:isomorphism}
-	A \hyperref[def:linear_map]{linear map} $T : V \to W$ is a \emph{linear isomorphism}, or an \emph{isomorphism}, if $T$ has an inverse map $T^{-1} : W \to V$ that is also a linear map, i.e., there exists a linear map $T^{-1} : W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$. Then the linear spaces $V$ and $W$ are said to be \emph{isomorphic}, denoted by $V \cong W$.
+  A \hyperref[def:linear_map]{linear map} $T : V \to W$ is a \emph{linear isomorphism}, or an \emph{isomorphism}, if $T$ has an inverse map $T^{-1} : W \to V$ that is also a linear map, i.e., there exists a linear map $T^{-1} : W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$. Then the linear spaces $V$ and $W$ are said to be \emph{isomorphic}, denoted by $V \cong W$.
 \end{definition}
+\begin{remark}
+  The professor prefers to use the term ``linear equivalence'' instead of ``linear isomorphism'', probably influenced by terminology in category theory and homotopy theory. However, the term ``isomorphism'' is more widely used in the literature, so we will stick to that in this book.
+\end{remark}
 
 \begin{proposition}
-	A linear map $T : V \to W$ is a linear isomorphism if and only if it is both injective and surjective.
+  A linear map $T : V \to W$ is a linear isomorphism if and only if it is both injective and surjective.
 \end{proposition}
 \begin{proof}[listhack=true]
-	\begin{description}[labelwidth=\widthof{($\Rightarrow$):~}]
-		\item[($\Rightarrow$)] If $T$ is a linear isomorphism, then there exists a linear map $T^{-1} : W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$.
-		      \begin{itemize}
-			      \item \textbf{Injective}: $T(u) = T(v) \implies T^{-1}(T(u)) = T^{-1}(T(v)) \implies u = v$ for any $u, v \in V$.
-			      \item \textbf{Surjective}: For any $w \in W$, let $v = T^{-1}(w)$. Then we have $T(v) = T(T^{-1}(w)) = w$.
-		      \end{itemize}
+  \begin{description}[labelwidth=\widthof{($\Rightarrow$):~}]
+    \item[($\Rightarrow$)] If $T$ is a linear isomorphism, then there exists a linear map $T^{-1} : W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$.
+          \begin{itemize}
+            \item \textbf{Injective}: $T(u) = T(v) \implies T^{-1}(T(u)) = T^{-1}(T(v)) \implies u = v$ for any $u, v \in V$.
+            \item \textbf{Surjective}: For any $w \in W$, let $v = T^{-1}(w)$. Then we have $T(v) = T(T^{-1}(w)) = w$.
+          \end{itemize}
 
-		\item [($\Leftarrow$)] If $T$ is both injective and surjective, we can define the inverse map $T^{-1} : W \to V$ as follows: for any $w \in W$, since $T$ is surjective, there exists a vector $v \in V$ such that $T(v) = w$. We define $T^{-1}(w) = v$. To show that $T^{-1}$ is well-defined, suppose there are two vectors $v_1, v_2 \in V$ such that $T(v_1) = w$ and $T(v_2) = w$. Then we have $T(v_1) = T(v_2)$, which implies that $v_1 = v_2$ since $T$ is injective. Therefore, $T^{-1}$ is well-defined.
-		      \begin{itemize}
-			      \item \textbf{Inverse property}: for all $v \in V$, $w \in W$, we have $T^{-1}(T(v)) = v$ and $T(T^{-1}(w)) = w$.
-			      \item \textbf{Linearity}: For any $w_1, w_2 \in W$ and any scalars $\alpha, \beta \in F$, let $v_1 = T^{-1}(w_1)$ and $v_2 = T^{-1}(w_2)$. Then we have
-			            \begin{align*}
-				            T^{-1}(\alpha \cdot w_1 + \beta \cdot w_2) & = T^{-1}(\alpha \cdot T(v_1) + \beta \cdot T(v_2))                                                  \\
-				                                                       & = T^{-1}(T(\alpha \cdot v_1 + \beta \cdot v_2))                                                     \\
-				                                                       & = \alpha \cdot v_1 + \beta \cdot v_2 = \alpha \cdot T^{-1}(w_1) + \beta \cdot T^{-1}(w_2). \qedhere
-			            \end{align*}
-		      \end{itemize}
-	\end{description}
+    \item [($\Leftarrow$)] If $T$ is both injective and surjective, we can define the inverse map $T^{-1} : W \to V$ as follows: for any $w \in W$, since $T$ is surjective, there exists a vector $v \in V$ such that $T(v) = w$. We define $T^{-1}(w) = v$. To show that $T^{-1}$ is well-defined, suppose there are two vectors $v_1, v_2 \in V$ such that $T(v_1) = w$ and $T(v_2) = w$. Then we have $T(v_1) = T(v_2)$, which implies that $v_1 = v_2$ since $T$ is injective. Therefore, $T^{-1}$ is well-defined.
+          \begin{itemize}
+            \item \textbf{Inverse property}: for all $v \in V$, $w \in W$, we have $T^{-1}(T(v)) = v$ and $T(T^{-1}(w)) = w$.
+            \item \textbf{Linearity}: For any $w_1, w_2 \in W$ and any scalars $\alpha, \beta \in F$, let $v_1 = T^{-1}(w_1)$ and $v_2 = T^{-1}(w_2)$. Then we have
+                  \begin{align*}
+                    T^{-1}(\alpha \cdot w_1 + \beta \cdot w_2) & = T^{-1}(\alpha \cdot T(v_1) + \beta \cdot T(v_2))                                                  \\
+                                                               & = T^{-1}(T(\alpha \cdot v_1 + \beta \cdot v_2))                                                     \\
+                                                               & = \alpha \cdot v_1 + \beta \cdot v_2 = \alpha \cdot T^{-1}(w_1) + \beta \cdot T^{-1}(w_2). \qedhere
+                  \end{align*}
+          \end{itemize}
+  \end{description}
 \end{proof}
 
 \begin{example}
-	The differential operator $D : F[x] \to F[x]$ is not an injective linear map as $D(1) = 0 = D(2)$ but it is a surjective linear map for $F$ is a field of characteristic 0.
+  The differential operator $D : F[x] \to F[x]$ is not an injective linear map as $D(1) = 0 = D(2)$ but it is a surjective linear map for $F$ is a field of characteristic 0.
 \end{example}
 
 \begin{definition}[Characteristic of a Field]\label{def:characteristic_of_a_field}
-	The \emph{characteristic} of a \hyperref[def:field]{field} $F$ is the smallest positive integer $n$ such that
-	\[
-		\underbrace{1 + 1 + \cdots + 1}_{n \text{ times}} = 0,
-	\]
-	where $1$ is the multiplicative identity in $F$. If no such positive integer exists, the characteristic of $F$ is defined to be $0$.
+  The \emph{characteristic} of a \hyperref[def:field]{field} $F$ is the smallest positive integer $n$ such that
+  \[
+    \underbrace{1 + 1 + \cdots + 1}_{n \text{ times}} = 0,
+  \]
+  where $1$ is the multiplicative identity in $F$. If no such positive integer exists, the characteristic of $F$ is defined to be $0$.
 \end{definition}
 
 \section{Dimension of Linear Spaces}
 
 \begin{definition}[Finite-Dimensional Linear Space]\label{def:finite_dimensional_linear_space}
-	A linear space $V$ over $F$ is \emph{finite-dimensional} if there exists an \hyperref[def:isomorphism]{isomorphism} $T : V \to F^n$ for some positive integer $n$. The integer $n$ is the \emph{dimension} of the linear space $V$, denoted by $\dim_F(V)$ or simply $\dim(V)$.
+  A linear space $V$ over $F$ is \emph{finite-dimensional} if there exists an \hyperref[def:isomorphism]{isomorphism} $T : V \to F^n$ for some positive integer $n$. The integer $n$ is the \emph{dimension} of the linear space $V$, denoted by $\dim_F(V)$ or simply $\dim(V)$.
 \end{definition}
 
 If a linear space is not finite-dimensional, it is called \emph{infinite-dimensional}. Then we have to show that the dimension is well-defined.
 
 \begin{proposition}
-	If there exists isomorphisms $T : V \to F^n$ and $S : V \to F^m$, then $n = m$.
+  If there exists isomorphisms $T : V \to F^n$ and $S : V \to F^m$, then $n = m$.
 \end{proposition}
 \begin{proof}
-	Since $S$ is an isomorphism, it has an inverse map $S^{-1} : F^m \to V$ that is also a linear map. Then the composition $TS^{-1} : F^m \to F^n$ is also a linear isomorphism. Mutatis mutandis for the opposite direction. Therefore, it suffices to show that if there exists a linear isomorphism $L : F^m \to F^n$, then $m = n$.
+  Since $S$ is an isomorphism, it has an inverse map $S^{-1} : F^m \to V$ that is also a linear map. Then the composition $TS^{-1} : F^m \to F^n$ is also a linear isomorphism. Mutatis mutandis for the opposite direction. Therefore, it suffices to show that if there exists a linear isomorphism $L : F^m \to F^n$, then $m = n$.
 \end{proof}
 
 \begin{remark}
-	Mutatis mutandis means "the necessary changes having been made" in Latin. Here it means that the argument for one direction is similar to the other direction with necessary changes.
+  Mutatis mutandis means "the necessary changes having been made" in Latin. Here it means that the argument for one direction is similar to the other direction with necessary changes.
 \end{remark}
 
 This proposition also shows a key result in linear algebra: up to isomorphism, there is only one linear space of dimension $n$ over a field $F$, which is $F^n$. We can also interpret the proposition by a commutative diagram:
 \begin{center}
-	\begin{tikzcd}
-		V \arrow[r, <->, "T" description] \arrow[d, <->, "S" description] & F^n \\
-		F^m \arrow[ru, <->, "TS^{-1}" description, sloped]
-	\end{tikzcd}
+  \begin{tikzcd}
+    V \arrow[r, <->, "T" description] \arrow[d, <->, "S" description] & F^n \\
+    F^m \arrow[ru, <->, "TS^{-1}" description, sloped]
+  \end{tikzcd}
 \end{center}
 
 \begin{remark}
-	In commutative diagrams, we use \begin{tikzcd}[cramped, column sep=normal] V \arrow[r, hook] & W \end{tikzcd} to denote an injective map, \begin{tikzcd}[cramped, column sep=normal] V \arrow[r, two heads] & W \end{tikzcd} to denote a surjective map. In this book, we would use \begin{tikzcd}[cramped, column sep=normal] V \arrow[r, <->] & W \end{tikzcd} to denote an isomorphism.
+  In commutative diagrams, we use \begin{tikzcd}[cramped, column sep=normal] V \arrow[r, hook] & W \end{tikzcd} to denote an injective map, \begin{tikzcd}[cramped, column sep=normal] V \arrow[r, two heads] & W \end{tikzcd} to denote a surjective map. In this book, we would use \begin{tikzcd}[cramped, column sep=normal] V \arrow[r, <->] & W \end{tikzcd} to denote an isomorphism.
 \end{remark}
 
 There is a equivalent way to characterise linearly independent sets, spanning sets and minimal spanning sets using linear maps.
 \begin{exercise}\label{ex:characterise_sets_using_linear_maps}
-	Let $V$ be an $n$-dimensional linear space, and $S = (v_1, \ldots, v_k)$ be an ordered set of $k$ vectors in $V$. Let $\phi_S : \F^k \to V$ be the linear map that sends $\vec{x} \in \F^k$ to $x^1 v_1 + \cdots + x^k v_k$. Show that
-	\begin{enumerate}
-		\item $S$ is a linearly independent set $\iff$ $\phi_S$ is injective.
-		\item $S$ is a spanning set for $V$ $\iff$ $\phi_S$ is surjective.
-		\item $S$ is a minimal spanning set for $V$ $\iff$ $\phi_S$ is invertible. Note: a minimal order spanning set is called a basis.
-	\end{enumerate}
-	In case $S$ is a basis, the inverse $\phi_S^{-1}$ is written as ${[-]}_S$.
+  Let $V$ be an $n$-dimensional linear space, and $S = (v_1, \ldots, v_k)$ be an ordered set of $k$ vectors in $V$. Let $\phi_S : \F^k \to V$ be the linear map that sends $\vec{x} \in \F^k$ to $x^1 v_1 + \cdots + x^k v_k$. Show that
+  \begin{enumerate}
+    \item $S$ is a linearly independent set $\iff$ $\phi_S$ is injective.
+    \item $S$ is a spanning set for $V$ $\iff$ $\phi_S$ is surjective.
+    \item $S$ is a minimal spanning set for $V$ $\iff$ $\phi_S$ is invertible. Note: a minimal order spanning set is called a basis.
+  \end{enumerate}
+  In case $S$ is a basis, the inverse $\phi_S^{-1}$ is written as ${[-]}_S$.
 \end{exercise}
 
 Moreover, equivalently, we can characterise finite-dimensional linear spaces using spanning sets.
 \begin{proposition}
-	A linear space $V$ over $F$ is finite-dimensional if and only if $V$ is finitely generated, i.e., there is a finite spanning set for $V$.
+  A linear space $V$ over $F$ is finite-dimensional if and only if $V$ is finitely generated, i.e., there is a finite spanning set for $V$.
 \end{proposition}
 \begin{proof}
-	If $V$ is finite-dimensional, there exists an isomorphism $T : F^n \to V$ for some positive integer $n$. Then the set $\{ T(\vec{e}_1), T(\vec{e}_2), \ldots, T(\vec{e}_n) \}$, where $\vec{e}_i$ is the column vector with 1 in the $i$-th entry and 0 elsewhere, is a finite spanning set for $V$. However, it may not be linearly independent. Fortunately, we can always extract a minimal spanning set of $V$ from it. Then, without the loss of generality, we can say $\{ T(\vec{e}_1), T(\vec{e}_2), \ldots, T(\vec{e}_k) \}$ for some $k \leq n$ is a minimal spanning set for $V$. Then by Exercise~\ref{ex:characterise_sets_using_linear_maps}, the linear map $\phi_S : F^k \to V$ defined by $\phi_S(\vec{x}) = x^1 T(\vec{e}_1) + x^2 T(\vec{e}_2) + \cdots + x^k T(\vec{e}_k)$ is an isomorphism. Therefore, $V$ is finitely generated.
+  If $V$ is finite-dimensional, there exists an isomorphism $T : F^n \to V$ for some positive integer $n$. Then the set $\{ T(\vec{e}_1), T(\vec{e}_2), \ldots, T(\vec{e}_n) \}$, where $\vec{e}_i$ is the column vector with 1 in the $i$-th entry and 0 elsewhere, is a finite spanning set for $V$. However, it may not be linearly independent. Fortunately, we can always extract a minimal spanning set of $V$ from it. Then, without the loss of generality, we can say $\{ T(\vec{e}_1), T(\vec{e}_2), \ldots, T(\vec{e}_k) \}$ for some $k \leq n$ is a minimal spanning set for $V$. Then by Exercise~\ref{ex:characterise_sets_using_linear_maps}, the linear map $\phi_S : F^k \to V$ defined by $\phi_S(\vec{x}) = x^1 T(\vec{e}_1) + x^2 T(\vec{e}_2) + \cdots + x^k T(\vec{e}_k)$ is an isomorphism. Therefore, $V$ is finitely generated.
 \end{proof}
 
 Moreover, we have the following dimension inequality.
 \begin{proposition}\label{prop:dimension_inequality}
-	$\dim(V_1 + V_2) \leq \dim(V_1) + \dim(V_2)$ for any two finite-dimensional linear subspaces $V_1$ and $V_2$ of a linear space $V$. Equality holds if and only if the sum is direct.
+  $\dim(V_1 + V_2) \leq \dim(V_1) + \dim(V_2)$ for any two finite-dimensional linear subspaces $V_1$ and $V_2$ of a linear space $V$. Equality holds if and only if the sum is direct.
 \end{proposition}
 \begin{proof}
-	For $V_1$ and $V_2$, we can find the minimal spanning sets $S_1$ and $S_2$ respectively. Then we claim that $S_1 \cup S_2$ is a spanning set for $V_1 + V_2$. Indeed, for any vector $v \in V_1 + V_2$, there exist vectors $v_1 \in V_1$ and $v_2 \in V_2$ such that $v = v_1 + v_2$. Then we can express $v_1$ and $v_2$ as linear combinations of the vectors in $S_1$ and $S_2$ respectively. Therefore, $v$ can be expressed as a linear combination of the vectors in $S_1 \cup S_2$. This shows that $V_1 + V_2 \subseteq \spn(S_1 \cup S_2)$. The converse inclusion is trivial. Thus, we have $V_1 + V_2 = \spn(S_1 \cup S_2)$.
+  For $V_1$ and $V_2$, we can find the minimal spanning sets $S_1$ and $S_2$ respectively. Then we claim that $S_1 \cup S_2$ is a spanning set for $V_1 + V_2$. Indeed, for any vector $v \in V_1 + V_2$, there exist vectors $v_1 \in V_1$ and $v_2 \in V_2$ such that $v = v_1 + v_2$. Then we can express $v_1$ and $v_2$ as linear combinations of the vectors in $S_1$ and $S_2$ respectively. Therefore, $v$ can be expressed as a linear combination of the vectors in $S_1 \cup S_2$. This shows that $V_1 + V_2 \subseteq \spn(S_1 \cup S_2)$. The converse inclusion is trivial. Thus, we have $V_1 + V_2 = \spn(S_1 \cup S_2)$.
 
-	Then we have $\dim(V_1 + V_2) \leq |S_1| + |S_2| = \dim(V_1) + \dim(V_2)$, as $S_1 \cup S_2$ may not be linearly independent. Equality holds if and only if $S_1 \cup S_2$ is linearly independent, which is equivalent to the sum being direct.
+  Then we have $\dim(V_1 + V_2) \leq |S_1| + |S_2| = \dim(V_1) + \dim(V_2)$, as $S_1 \cup S_2$ may not be linearly independent. Equality holds if and only if $S_1 \cup S_2$ is linearly independent, which is equivalent to the sum being direct.
 \end{proof}
 
 Then we can define the rank and nullity of a linear map.
 \begin{definition}[Rank]\label{def:rank}
-	The \emph{rank} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the dimension of its \hyperref[def:image]{image}:
-	\[
-		\rank(T) = \dim(\im(T)).
-	\]
+  The \emph{rank} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the dimension of its \hyperref[def:image]{image}:
+  \[
+    \rank(T) = \dim(\im(T)).
+  \]
 \end{definition}
 
 \begin{definition}[Nullity]\label{def:nullity}
-	The \emph{nullity} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the dimension of its \hyperref[def:kernel]{kernel}:
-	\[
-		\nullity(T) = \dim(\ker(T)).
-	\]
+  The \emph{nullity} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the dimension of its \hyperref[def:kernel]{kernel}:
+  \[
+    \nullity(T) = \dim(\ker(T)).
+  \]
 \end{definition}
 
 \section{Matrices}
 
 Matrices provide a convenient way to represent linear maps between finite-dimensional linear spaces. Let $A$ be an $m \times n$ matrix with entries from $F$. Then the map
 \begin{align*}
-	F^n     & \to F^m           \\
-	\vec{x} & \mapsto A \vec{x}
+  F^n     & \to F^m           \\
+  \vec{x} & \mapsto A \vec{x}
 \end{align*}
 is a linear map over $F$.
 
 \begin{proposition}
-	Every linear map $T : F^n \to F^m$ can be represented as multiplication by a unique $m \times n$ matrix $A$ over $F$. The matrix $A$ is called the \emph{standard matrix}, or the \emph{matrix representation}, of the linear map $T$. There is an isomorphism between two linear spaces $\Hom(F^n, F^m)$ and $\Mat_{m \times n}(F)$. Then we have
-	\begin{itemize}
-		\item The standard matrix of the linear map $T$ is given by
-		      \[
-			      A = \begin{bmatrix}
-				      |          & |          &        & |          \\
-				      T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
-				      |          & |          &        & |
-			      \end{bmatrix},
-		      \]
-		      where $\vec{e}_i$ is the column vector with 1 in the $i$-th entry and 0 elsewhere.
-		\item For any matrix $A$ in $\Mat_{m \times n}(F)$, the corresponding linear map $T_A : F^n \to F^m$ is given by
-		      \[
-			      T_A \vec{x} = A \vec{x}, \quad \text{for all } \vec{x} \in F^n.
-		      \]
-	\end{itemize}
+  Every linear map $T : F^n \to F^m$ can be represented as multiplication by a unique $m \times n$ matrix $A$ over $F$. The matrix $A$ is called the \emph{standard matrix}, or the \emph{matrix representation}, of the linear map $T$. There is an isomorphism between two linear spaces $\Hom(F^n, F^m)$ and $\Mat_{m \times n}(F)$. Then we have
+  \begin{itemize}
+    \item The standard matrix of the linear map $T$ is given by
+          \[
+            A = \begin{bmatrix}
+              |          & |          &        & |          \\
+              T\vec{e}_1 & T\vec{e}_2 & \cdots & T\vec{e}_n \\
+              |          & |          &        & |
+            \end{bmatrix},
+          \]
+          where $\vec{e}_i$ is the column vector with 1 in the $i$-th entry and 0 elsewhere.
+    \item For any matrix $A$ in $\Mat_{m \times n}(F)$, the corresponding linear map $T_A : F^n \to F^m$ is given by
+          \[
+            T_A \vec{x} = A \vec{x}, \quad \text{for all } \vec{x} \in F^n.
+          \]
+  \end{itemize}
 \end{proposition}
 \begin{proof}
-	Let $T : F^n \to F^m$ be a linear map. Define the matrix $A$ as above. For any vector $\vec{x} \in F^n$, we can express $\vec{x}$ as a linear combination of $\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n$:
-	\[
-		\vec{x} = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n.
-	\]
-	Then, using the linearity of $T$, we have
-	\begin{align*}
-		T\vec{x} & = T(x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n) \\
-		         & = x^1 T\vec{e}_1 + x^2 T\vec{e}_2 + \cdots + x^n T\vec{e}_n \\
-		         & = A \vec{x}.
-	\end{align*}
-	This shows that $T\vec{x}$ can be computed as the matrix-vector product $A\vec{x}$. Conversely, given a matrix $A$ in $\Mat_{m \times n}(F)$, we can define a linear map $T_A : F^n \to F^m$ by $T_A \vec{x} = A \vec{x}$. The linearity of $T_A$ follows from the properties of matrix multiplication.
+  Let $T : F^n \to F^m$ be a linear map. Define the matrix $A$ as above. For any vector $\vec{x} \in F^n$, we can express $\vec{x}$ as a linear combination of $\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n$:
+  \[
+    \vec{x} = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n.
+  \]
+  Then, using the linearity of $T$, we have
+  \begin{align*}
+    T\vec{x} & = T(x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n) \\
+             & = x^1 T\vec{e}_1 + x^2 T\vec{e}_2 + \cdots + x^n T\vec{e}_n \\
+             & = A \vec{x}.
+  \end{align*}
+  This shows that $T\vec{x}$ can be computed as the matrix-vector product $A\vec{x}$. Conversely, given a matrix $A$ in $\Mat_{m \times n}(F)$, we can define a linear map $T_A : F^n \to F^m$ by $T_A \vec{x} = A \vec{x}$. The linearity of $T_A$ follows from the properties of matrix multiplication.
 \end{proof}
 
 \begin{remark}
-	Although it is an isomorphism, the correspondence between linear maps and their standard matrices depends on the choice of bases for the domain and codomain. So it is not a natural isomorphism. Natural means that the isomorphism does not depend on any choices.
+  Although it is an isomorphism, the correspondence between linear maps and their standard matrices depends on the choice of bases for the domain and codomain. So it is not a natural isomorphism. Natural means that the isomorphism does not depend on any choices.
 \end{remark}
 
 As the linear combinations of vectors is clumsy to write, there is a simpler way to write it --- Einstein summation notation. In this notation, we use an index to represent the components of a vector. For example, a vector $\vec{v}$ in $F^n$ can be represented as $v^i$, where $i$ runs from 1 to $n$. Then the linear combination
@@ -269,102 +272,102 @@ can be written simply as $v^i \vec{e}_i$, where the summation over the repeated 
 
 The columns of the standard matrix $A$ are vectors in $F^m$. Dually, we can also consider the rows of $A$ as vectors in $F^n$. Let $A$ be an $m \times n$ matrix with rows $\hat{a}^1, \hat{a}^2, \ldots, \hat{a}^m$ in ${(F^n)}^*$. Each row vector $\hat{a}^j$ is a \emph{linear functional} on $F^n$, which is a linear map from $F^n$ to $F$. Then the matrix-vector product $A \vec{x}$ can be expressed in terms of these linear functionals as
 \[
-	A \vec{x} = \begin{bmatrix}
-		\hat{a}^1(\vec{x}) \\
-		\hat{a}^2(\vec{x}) \\
-		\vdots             \\
-		\hat{a}^m(\vec{x})
-	\end{bmatrix}.
+  A \vec{x} = \begin{bmatrix}
+    \hat{a}^1(\vec{x}) \\
+    \hat{a}^2(\vec{x}) \\
+    \vdots             \\
+    \hat{a}^m(\vec{x})
+  \end{bmatrix}.
 \]
 
 \begin{example}
-	Consider the differential operator $D : F[x] \to F[x]$ defined by
-	\[
-		D\left( a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n \right) = a_1 + 2 a_2 x + 3 a_3 x^2 + \cdots + n a_n x^{n-1}.
-	\]
-	The standard matrix of $D$ with respect to $\{ 1, x, x^2, \ldots, x^n \}$ is given by
-	\[
-		A = \begin{bmatrix}
-			0      & 1      & 0      & 0      & \cdots & 0      \\
-			0      & 0      & 2      & 0      & \cdots & 0      \\
-			0      & 0      & 0      & 3      & \cdots & 0      \\
-			\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-			0      & 0      & 0      & 0      & \cdots & n      \\
-			0      & 0      & 0      & 0      & \cdots & 0
-		\end{bmatrix}.
-	\]
+  Consider the differential operator $D : F[x] \to F[x]$ defined by
+  \[
+    D\left( a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n \right) = a_1 + 2 a_2 x + 3 a_3 x^2 + \cdots + n a_n x^{n-1}.
+  \]
+  The standard matrix of $D$ with respect to $\{ 1, x, x^2, \ldots, x^n \}$ is given by
+  \[
+    A = \begin{bmatrix}
+      0      & 1      & 0      & 0      & \cdots & 0      \\
+      0      & 0      & 2      & 0      & \cdots & 0      \\
+      0      & 0      & 0      & 3      & \cdots & 0      \\
+      \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & 0      & 0      & \cdots & n      \\
+      0      & 0      & 0      & 0      & \cdots & 0
+    \end{bmatrix}.
+  \]
 \end{example}
 
 The following definitions correspond to the definitions of kernel, image, rank and nullity of linear maps and isomorphisms respectively.
 
 \begin{definition}[Null Space]\label{def:null_space}
-	The \emph{null space} of an $m \times n$ matrix $A$ over $F$ is the set of all vectors in $F^n$ that are mapped to the zero vector in $F^m$:
-	\[
-		\nul(A) = \{ \vec{x} \in F^n \mid A \vec{x} = 0 \}.
-	\]
+  The \emph{null space} of an $m \times n$ matrix $A$ over $F$ is the set of all vectors in $F^n$ that are mapped to the zero vector in $F^m$:
+  \[
+    \nul(A) = \{ \vec{x} \in F^n \mid A \vec{x} = 0 \}.
+  \]
 \end{definition}
 
 \begin{definition}[Column Space]\label{def:column_space}
-	The \emph{column space} of an $m \times n$ matrix $A$ over $F$ is the set of all vectors in $F^m$ that can be expressed as $A \vec{x}$ for some vector $\vec{x}$ in $F^n$:
-	\[
-		\col(A) = \{ \vec{y} \in F^m \mid \vec{y} = A \vec{x} \text{ for some } \vec{x} \in F^n \}.
-	\]
+  The \emph{column space} of an $m \times n$ matrix $A$ over $F$ is the set of all vectors in $F^m$ that can be expressed as $A \vec{x}$ for some vector $\vec{x}$ in $F^n$:
+  \[
+    \col(A) = \{ \vec{y} \in F^m \mid \vec{y} = A \vec{x} \text{ for some } \vec{x} \in F^n \}.
+  \]
 \end{definition}
 
 \begin{definition}[Rank]\label{def:matrix_rank}
-	The \emph{rank} of an $m \times n$ matrix $A$ over $F$ is the dimension of its \hyperref[def:column_space]{column space}:
-	\[
-		\rank(A) = \dim(\col(A)).
-	\]
+  The \emph{rank} of an $m \times n$ matrix $A$ over $F$ is the dimension of its \hyperref[def:column_space]{column space}:
+  \[
+    \rank(A) = \dim(\col(A)).
+  \]
 \end{definition}
 
 \begin{definition}[Nullity]\label{def:matrix_nullity}
-	The \emph{nullity} of an $m \times n$ matrix $A$ over $F$ is the dimension of its \hyperref[def:null_space]{null space}:
-	\[
-		\nullity(A) = \dim(\nul(A)).
-	\]
+  The \emph{nullity} of an $m \times n$ matrix $A$ over $F$ is the dimension of its \hyperref[def:null_space]{null space}:
+  \[
+    \nullity(A) = \dim(\nul(A)).
+  \]
 \end{definition}
 
 \begin{definition}[Invertible Matrix]\label{def:invertible_matrix}
-	An $n \times n$ matrix $A$ over $F$ is \emph{invertible}, or \emph{nonsingular}, if $A$ has an inverse matrix $A^{-1}$ such that $A A^{-1} = I_n$ and $A^{-1} A = I_n$, where $I_n$ is the $n \times n$ identity matrix.
+  An $n \times n$ matrix $A$ over $F$ is \emph{invertible}, or \emph{nonsingular}, if $A$ has an inverse matrix $A^{-1}$ such that $A A^{-1} = I_n$ and $A^{-1} A = I_n$, where $I_n$ is the $n \times n$ identity matrix.
 \end{definition}
 
 \section{Composition of Linear Maps and Matrix Multiplication}
 
 Consider two linear maps $T : F^n \to F^m$ and $S : F^m \to F^k$ with standard matrices $A$ and $B$, respectively. Then we want to find the standard matrix of the composition $ST : F^n \to F^k$.
 \begin{center}
-	\begin{tikzcd}
-		F^n \arrow[r, "T", "A"'] \arrow[rr, bend left, "ST" description] \arrow[rr, bend right, "BA"' description] & F^m \arrow[r, "S", "B"'] & F^k
-	\end{tikzcd}
+  \begin{tikzcd}
+    F^n \arrow[r, "T", "A"'] \arrow[rr, bend left, "ST" description] \arrow[rr, bend right, "BA"' description] & F^m \arrow[r, "S", "B"'] & F^k
+  \end{tikzcd}
 \end{center}
 
 \begin{proposition}
-	The standard matrix of the composition $ST : F^n \to F^k$ is given by the matrix product $BA$, i.e., for any vector $\vec{x} \in F^n$, we have
-	\[ (ST)(\vec{x}) = B (A \vec{x}) = (BA) \vec{x}. \]
+  The standard matrix of the composition $ST : F^n \to F^k$ is given by the matrix product $BA$, i.e., for any vector $\vec{x} \in F^n$, we have
+  \[ (ST)(\vec{x}) = B (A \vec{x}) = (BA) \vec{x}. \]
 \end{proposition}
 \begin{proof}
-	For any vector $\vec{x} \in F^n$ with entries $x^1, x^2, \ldots, x^n$, we have
-	\[ \vec{x} = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n. \]
-	The $j$-th column of $BA$ is given by
-	\[ (ST)(\vec{e}_j) = S(T(\vec{e}_j)) = S(\vec{a}_j) = B \vec{a}_j = B (A \vec{e}_j) = (BA)(\vec{e}_j). \]
-	Therefore, the standard matrix of $ST$ is $BA$.
+  For any vector $\vec{x} \in F^n$ with entries $x^1, x^2, \ldots, x^n$, we have
+  \[ \vec{x} = x^1 \vec{e}_1 + x^2 \vec{e}_2 + \cdots + x^n \vec{e}_n. \]
+  The $j$-th column of $BA$ is given by
+  \[ (ST)(\vec{e}_j) = S(T(\vec{e}_j)) = S(\vec{a}_j) = B \vec{a}_j = B (A \vec{e}_j) = (BA)(\vec{e}_j). \]
+  Therefore, the standard matrix of $ST$ is $BA$.
 \end{proof}
 
 \begin{remark}
-	$B$ is a $k \times m$ matrix and $A$ is a $m \times n$ matrix. So the matrix product $BA$ is defined and results in a $k \times n$ matrix.
+  $B$ is a $k \times m$ matrix and $A$ is a $m \times n$ matrix. So the matrix product $BA$ is defined and results in a $k \times n$ matrix.
 \end{remark}
 
 The matrix multiplication $BA$ can be computed as follows.
 \[
-	BA = B \begin{bmatrix}
-		|         & |         &        & |         \\
-		\vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n \\
-		|         & |         &        & |
-	\end{bmatrix} = \begin{bmatrix}
-		|           & |           &        & |           \\
-		B \vec{a}_1 & B \vec{a}_2 & \cdots & B \vec{a}_n \\
-		|           & |           &        & |
-	\end{bmatrix}.
+  BA = B \begin{bmatrix}
+    |         & |         &        & |         \\
+    \vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n \\
+    |         & |         &        & |
+  \end{bmatrix} = \begin{bmatrix}
+    |           & |           &        & |           \\
+    B \vec{a}_1 & B \vec{a}_2 & \cdots & B \vec{a}_n \\
+    |           & |           &        & |
+  \end{bmatrix}.
 \]
 
 \section{Elementary Row Operations and Elementary Column Operations}
@@ -372,9 +375,9 @@ The matrix multiplication $BA$ can be computed as follows.
 Elementary row operations are operations that can be performed on the rows of a matrix to transform it into a different form. There are three types of elementary row operations:
 
 \begin{tabularx}{\textwidth}{lX}
-	-- Row swapping: & $R_i \leftrightarrow R_j$ (swap row $i$ and row $j$)                         \\
-	-- Row scaling:  & $R_i \leftarrow \alpha R_i$ (multiply row $i$ by a non-zero scalar $\alpha$) \\
-	-- Row addition: & $R_i \leftarrow R_i + \alpha R_j$ (add $\alpha$ times row $j$ to row $i$)
+  -- Row swapping: & $R_i \leftrightarrow R_j$ (swap row $i$ and row $j$)                         \\
+  -- Row scaling:  & $R_i \leftarrow \alpha R_i$ (multiply row $i$ by a non-zero scalar $\alpha$) \\
+  -- Row addition: & $R_i \leftarrow R_i + \alpha R_j$ (add $\alpha$ times row $j$ to row $i$)
 \end{tabularx}
 
 Each elementary row operation is a \emph{left multiplication} by an \emph{elementary matrix}. An elementary matrix is obtained by performing a single elementary row operation or elementary column operation on an identity matrix. Moreover, every elementary matrix is invertible, and its inverse is also an elementary matrix.
@@ -382,45 +385,45 @@ Each elementary row operation is a \emph{left multiplication} by an \emph{elemen
 We introduce the concept of \emph{matrix units} for convenience. A matrix unit $E_{ij}$ is a matrix with a 1 in the $(i, j)$-th position and 0s elsewhere. The $(i, j)$-th entry of a matrix is the entry located in the $i$-th row and $j$-th column.
 
 \begin{remark}
-	Be careful the distinction between superscripts and subscripts in matrix units. As $E_i^j = \vec{e}_i \hat{e}^j$ is a matrix, while $a_j^i = \hat{e}^i A \vec{e}_j$ is the $(i, j)$-th entry of a matrix $A$, which is a scalar. In this book, we always use $i$ for row index and $j$ for column index.
+  Be careful the distinction between superscripts and subscripts in matrix units. As $E_i^j = \vec{e}_i \hat{e}^j$ is a matrix, while $a_j^i = \hat{e}^i A \vec{e}_j$ is the $(i, j)$-th entry of a matrix $A$, which is a scalar. In this book, we always use $i$ for row index and $j$ for column index.
 \end{remark}
 
 \begin{proposition}
-	The row operation $R_i \leftrightarrow R_j$ is equivalent to left multiplication by the elementary matrix $E = I - E_i^i - E_j^j + E_i^j + E_j^i$.
+  The row operation $R_i \leftrightarrow R_j$ is equivalent to left multiplication by the elementary matrix $E = I - E_i^i - E_j^j + E_i^j + E_j^i$.
 \end{proposition}
 \begin{proof}
-	The linear map corresponding to the elementary matrix $E$ is given by
-	\[
-		\vec{e}_k \mapsto \begin{cases}
-			\vec{e}_j, & \text{if } k = i; \\
-			\vec{e}_i, & \text{if } k = j; \\
-			\vec{e}_k, & \text{otherwise}.
-		\end{cases}
-	\]
-	Therefore, the matrix $E$ is
-	\[
-		E = \begin{bmatrix}
-			|         &        & |           &        & |           &        & |         \\
-			\vec{e}_1 & \cdots & \vec{e}_{j} & \cdots & \vec{e}_{i} & \cdots & \vec{e}_n \\
-			|         &        & |           &        & |           &        & |
-		\end{bmatrix} = I - E_i^i - E_j^j + E_i^j + E_j^i. \qedhere
-	\]
+  The linear map corresponding to the elementary matrix $E$ is given by
+  \[
+    \vec{e}_k \mapsto \begin{cases}
+      \vec{e}_j, & \text{if } k = i; \\
+      \vec{e}_i, & \text{if } k = j; \\
+      \vec{e}_k, & \text{otherwise}.
+    \end{cases}
+  \]
+  Therefore, the matrix $E$ is
+  \[
+    E = \begin{bmatrix}
+      |         &        & |           &        & |           &        & |         \\
+      \vec{e}_1 & \cdots & \vec{e}_{j} & \cdots & \vec{e}_{i} & \cdots & \vec{e}_n \\
+      |         &        & |           &        & |           &        & |
+    \end{bmatrix} = I - E_i^i - E_j^j + E_i^j + E_j^i. \qedhere
+  \]
 \end{proof}
 
 \begin{exercise}
-	Show that the row operation $R_i \leftarrow \alpha R_i$ is equivalent to left multiplication by the elementary matrix $E = I + (\alpha - 1) E_i^i$.
+  Show that the row operation $R_i \leftarrow \alpha R_i$ is equivalent to left multiplication by the elementary matrix $E = I + (\alpha - 1) E_i^i$.
 \end{exercise}
 
 \begin{exercise}
-	Show that the row operation $R_i \leftarrow R_i + \alpha R_j$ is equivalent to left multiplication by the elementary matrix $E = I + \alpha E_i^j$.
+  Show that the row operation $R_i \leftarrow R_i + \alpha R_j$ is equivalent to left multiplication by the elementary matrix $E = I + \alpha E_i^j$.
 \end{exercise}
 
 Similarly, elementary column operations are operations that can be performed on the columns of a matrix. There are three types of elementary column operations:
 
 \begin{tabularx}{\textwidth}{lX}
-	-- Column swapping: & $C_i \leftrightarrow C_j$ (swap column $i$ and column $j$)                      \\
-	-- Column scaling:  & $C_i \leftarrow \alpha C_i$ (multiply column $i$ by a non-zero scalar $\alpha$) \\
-	-- Column addition: & $C_i \leftarrow C_i + \alpha C_j$ (add $\alpha$ times column $j$ to column $i$)
+  -- Column swapping: & $C_i \leftrightarrow C_j$ (swap column $i$ and column $j$)                      \\
+  -- Column scaling:  & $C_i \leftarrow \alpha C_i$ (multiply column $i$ by a non-zero scalar $\alpha$) \\
+  -- Column addition: & $C_i \leftarrow C_i + \alpha C_j$ (add $\alpha$ times column $j$ to column $i$)
 \end{tabularx}
 
 Each elementary column operation is a \emph{right multiplication} by an \emph{elementary matrix}. Moreover, every elementary matrix is invertible, and its inverse is also an elementary matrix.
@@ -430,83 +433,83 @@ Each elementary column operation is a \emph{right multiplication} by an \emph{el
 Using elementary row and column operations, we can transform any matrix into a simpler form called the \emph{canonical form}. One common canonical form is the \emph{row echelon form} (REF) and the \emph{reduced row echelon form} (RREF) which are useful for solving systems of linear equations. However, for the purpose of understanding the structure of linear maps, we focus on the \emph{Smith normal form} or \emph{normal form} of a matrix.
 
 \begin{proposition}
-	Any matrix $A$ in $\Mat_{m \times n}(F)$ can be transformed into a normal form
-	\[
-		N = \begin{bmatrix}
-			I_r & 0 \\
-			0   & 0
-		\end{bmatrix}
-	\]
-	by a finite sequence of elementary row and column operations, where $r$ is the rank of the matrix $A$.
+  Any matrix $A$ in $\Mat_{m \times n}(F)$ can be transformed into a normal form
+  \[
+    N = \begin{bmatrix}
+      I_r & 0 \\
+      0   & 0
+    \end{bmatrix}
+  \]
+  by a finite sequence of elementary row and column operations, where $r$ is the rank of the matrix $A$.
 \end{proposition}
 \begin{proof}
-	Consider the following commutative diagram:
-	\begin{center}
-		\begin{tikzcd}
-			F^n \arrow[r, "A" description] \arrow[d, <->, "Q" description] & F^m \arrow[d, <->, "P" description] \\
-			F^n \arrow[r, "N" description]                                   & F^m
-		\end{tikzcd}
-	\end{center}
-	Here, $P$ and $Q$ are invertible matrices obtained by performing finite sequence of row operations and column operations on the identity matrices of appropriate sizes respectively. Thus, we have $N = P A Q$.
+  Consider the following commutative diagram:
+  \begin{center}
+    \begin{tikzcd}
+      F^n \arrow[r, "A" description] \arrow[d, <->, "Q" description] & F^m \arrow[d, <->, "P" description] \\
+      F^n \arrow[r, "N" description]                                   & F^m
+    \end{tikzcd}
+  \end{center}
+  Here, $P$ and $Q$ are invertible matrices obtained by performing finite sequence of row operations and column operations on the identity matrices of appropriate sizes respectively. Thus, we have $N = P A Q$.
 \end{proof}
 
 \begin{remark}
-	The rank is uniquely determined by the matrix $A$ and does not depend on the sequence of elementary row and column operations used to transform $A$ into its normal form.
+  The rank is uniquely determined by the matrix $A$ and does not depend on the sequence of elementary row and column operations used to transform $A$ into its normal form.
 \end{remark}
 
 \begin{proposition}
-	Let $A$ be an $m \times n$ matrix over $F$. The following statements are equivalent:
-	\begin{enumerate}
-		\item $A$ is invertible;
-		\item the normal form of $A$ is invertible;
-		\item $\rank(A) = n = m$;
-		\item the normal form of $A$ is $I_n$.
-	\end{enumerate}
+  Let $A$ be an $m \times n$ matrix over $F$. The following statements are equivalent:
+  \begin{enumerate}
+    \item $A$ is invertible;
+    \item the normal form of $A$ is invertible;
+    \item $\rank(A) = n = m$;
+    \item the normal form of $A$ is $I_n$.
+  \end{enumerate}
 \end{proposition}
 \begin{proof}[listhack=true]
-	\begin{description}[labelwidth=\widthof{(1) $\implies$ (2):~}]
-		\item[(1) $\implies$ (2)] If $A$ is invertible, then $PAQ^{-1}$ is also invertible for any elementary matrices $P$ and $Q$. Thus, the normal form of $A$ is invertible.
-		\item[(2) $\implies$ (3)] If the normal form of $A$ is invertible, then it must be a square matrix with full rank since the matrix is surjective and dimension of column space is $n$. Therefore, $\rank(PAQ^{-1}) = n$. Moreover, as rank is invariant under multiplication by invertible matrices, we have $\rank(A) = \rank(PAQ^{-1}) = n$. Since $PAQ^{-1}$ is an $m \times n$ invertible matrix, we must have $m = n$.
-		\item[(3) $\implies$ (4)] If $\rank(A) = r = n = m$, then the normal form of $A$ must be $I_n$.
-		\item[(4) $\implies$ (1)] If the normal form of $A$ is $I_n$, then we have $I_n = PAQ$ for some invertible matrices $P$ and $Q$. Thus, we have $A = P^{-1} I_n Q^{-1} = P^{-1} Q^{-1}$, which shows that $A$ is invertible. \qedhere
-	\end{description}
+  \begin{description}[labelwidth=\widthof{(1) $\implies$ (2):~}]
+    \item[(1) $\implies$ (2)] If $A$ is invertible, then $PAQ^{-1}$ is also invertible for any elementary matrices $P$ and $Q$. Thus, the normal form of $A$ is invertible.
+    \item[(2) $\implies$ (3)] If the normal form of $A$ is invertible, then it must be a square matrix with full rank since the matrix is surjective and dimension of column space is $n$. Therefore, $\rank(PAQ^{-1}) = n$. Moreover, as rank is invariant under multiplication by invertible matrices, we have $\rank(A) = \rank(PAQ^{-1}) = n$. Since $PAQ^{-1}$ is an $m \times n$ invertible matrix, we must have $m = n$.
+    \item[(3) $\implies$ (4)] If $\rank(A) = r = n = m$, then the normal form of $A$ must be $I_n$.
+    \item[(4) $\implies$ (1)] If the normal form of $A$ is $I_n$, then we have $I_n = PAQ$ for some invertible matrices $P$ and $Q$. Thus, we have $A = P^{-1} I_n Q^{-1} = P^{-1} Q^{-1}$, which shows that $A$ is invertible. \qedhere
+  \end{description}
 \end{proof}
 
 \begin{exercise}
-	Show that the following statements are equivalent for an $m \times n$ matrix $A$ over $F$:
-	\begin{enumerate}
-		\item $A$ has a left inverse, i.e., there exists an $n \times m$ matrix $B$ such that $BA = I_n$;
-		\item $A$ is injective;
-		\item $\rank(A) = n$;
-		\item the normal form of $A$ is $\smash{\begin{bmatrix} I_n \\ 0 \end{bmatrix}}$.
-	\end{enumerate}
+  Show that the following statements are equivalent for an $m \times n$ matrix $A$ over $F$:
+  \begin{enumerate}
+    \item $A$ has a left inverse, i.e., there exists an $n \times m$ matrix $B$ such that $BA = I_n$;
+    \item $A$ is injective;
+    \item $\rank(A) = n$;
+    \item the normal form of $A$ is $\smash{\begin{bmatrix} I_n \\ 0 \end{bmatrix}}$.
+  \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-	Show that the following statements are equivalent for an $m \times n$ matrix $A$ over $F$:
-	\begin{enumerate}
-		\item $A$ has a right inverse, i.e., there exists an $n \times m$ matrix $C$ such that $AC = I_m$;
-		\item $A$ is surjective;
-		\item $\rank(A) = m$;
-		\item the normal form of $A$ is $\smash{\begin{bmatrix} I_m & 0 \end{bmatrix}}$.
-	\end{enumerate}
+  Show that the following statements are equivalent for an $m \times n$ matrix $A$ over $F$:
+  \begin{enumerate}
+    \item $A$ has a right inverse, i.e., there exists an $n \times m$ matrix $C$ such that $AC = I_m$;
+    \item $A$ is surjective;
+    \item $\rank(A) = m$;
+    \item the normal form of $A$ is $\smash{\begin{bmatrix} I_m & 0 \end{bmatrix}}$.
+  \end{enumerate}
 \end{exercise}
 
 \begin{remark}
-	From the exercises above, for any algebraic structure, having a left inverse is equivalent to being injective, while having a right inverse is equivalent to being surjective. However, having both a left inverse and a right inverse is equivalent to being invertible only in the case of linear maps between finite-dimensional linear spaces.
+  From the exercises above, for any algebraic structure, having a left inverse is equivalent to being injective, while having a right inverse is equivalent to being surjective. However, having both a left inverse and a right inverse is equivalent to being invertible only in the case of linear maps between finite-dimensional linear spaces.
 
-	The definition of monomorphism is a left-cancellative morphism, or equivalently, there is a \emph{retraction} that is a left inverse. The definition of epimorphism is a right-cancellative morphism, or equivalently, there is a \emph{section} that is a right inverse.
+  The definition of monomorphism is a left-cancellative morphism, or equivalently, there is a \emph{retraction} that is a left inverse. The definition of epimorphism is a right-cancellative morphism, or equivalently, there is a \emph{section} that is a right inverse.
 
-	In the category of finite-dimensional linear spaces over a field $F$, monomorphisms are exactly injective linear maps, and epimorphisms are exactly surjective linear maps. However, in general categories, monomorphisms are not necessarily injective, and epimorphisms are not necessarily surjective.
+  In the category of finite-dimensional linear spaces over a field $F$, monomorphisms are exactly injective linear maps, and epimorphisms are exactly surjective linear maps. However, in general categories, monomorphisms are not necessarily injective, and epimorphisms are not necessarily surjective.
 \end{remark}
 
 Any linear map $T : V \to W$ between finite-dimensional linear spaces can be represented by a matrix once we choose bases for $V$ and $W$. The process of representing a linear map by a matrix is called \emph{trivialisation}. Consider the following commutative diagram:
 \begin{center}
-	\begin{tikzcd}
-		V \arrow[r, "T" description] \arrow[d, <->, "{[-]_{\B_V}}" description] \arrow[dd, bend right=60, <->] & W \arrow[d, <->, "{[-]_{\B_W}}" description] \arrow[dd, bend left=60, <->] \\
-		F^n \arrow[r, "A" description] \arrow[d, <->, "Q" description] & F^m \arrow[d, <->, "P" description] \\
-		F^n \arrow[r, "N" description] & F^m
-	\end{tikzcd}
+  \begin{tikzcd}
+    V \arrow[r, "T" description] \arrow[d, <->, "{[-]_{\B_V}}" description] \arrow[dd, bend right=60, <->] & W \arrow[d, <->, "{[-]_{\B_W}}" description] \arrow[dd, bend left=60, <->] \\
+    F^n \arrow[r, "A" description] \arrow[d, <->, "Q" description] & F^m \arrow[d, <->, "P" description] \\
+    F^n \arrow[r, "N" description] & F^m
+  \end{tikzcd}
 \end{center}
 Here, $\B_V$ and $\B_W$ are bases for $V$ and $W$ respectively, $A$ is the standard matrix of the linear map $T$ with respect to the chosen bases, and $N$ is the normal form of the matrix $A$. The coordinate maps ${[-]}_{\B_V}$ and ${[-]}_{\B_W}$ are the isomorphisms that map vectors in $V$ and $W$ to their coordinate representations in $F^n$ and $F^m$ respectively. The matrices $P$ and $Q$ are invertible matrices corresponding to the elementary row and column operations used to transform $A$ into its normal form $N$.
 
@@ -515,66 +518,65 @@ Here, $\B_V$ and $\B_W$ are bases for $V$ and $W$ respectively, $A$ is the stand
 Before studying quotient spaces, we introduce the concept of (left) group actions.
 
 \begin{definition}[Left Group Action]\label{def:group_action}
-	A \emph{left group action} of a group $G$ on a set $X$ is a map $\cdot : G \times X \to X$ such that for all $g, h \in G$ and all $x \in X$, we have
-	\begin{itemize}
-		\item Compatibility: $g \cdot (h \cdot x) = (gh) \cdot x$;
-		\item Unital: $e \cdot x = x$, where $e$ is the identity element of $G$.
-	\end{itemize}
+  A \emph{left group action} of a group $G$ on a set $X$ is a map $\cdot : G \times X \to X$ such that for all $g, h \in G$ and all $x \in X$, we have
+  \begin{itemize}
+    \item Compatibility: $g \cdot (h \cdot x) = (gh) \cdot x$;
+    \item Unital: $e \cdot x = x$, where $e$ is the identity element of $G$.
+  \end{itemize}
 \end{definition}
 
 \begin{remark}
-	A right group action of a group $G$ on a set $X$ is defined similarly, with the action map $\cdot : X \times G \to X$ satisfying the compatibility condition $ (x \cdot g) \cdot h = x \cdot (gh)$ and the unital condition $x \cdot e = x$ for all $g, h \in G$ and all $x \in X$.
+  A right group action of a group $G$ on a set $X$ is defined similarly, with the action map $\cdot : X \times G \to X$ satisfying the compatibility condition $ (x \cdot g) \cdot h = x \cdot (gh)$ and the unital condition $x \cdot e = x$ for all $g, h \in G$ and all $x \in X$.
 \end{remark}
 
 A rotation on a plane is a group action of the group $\SO(2)$ on the set of points in the plane. Each element of $\SO(2)$ can be represented by a $2 \times 2$ matrix of the form
 \[
-	\begin{bmatrix}
-		\cos \theta & -\sin \theta \\
-		\sin \theta & \cos \theta
-	\end{bmatrix},
+  \begin{bmatrix}
+    \cos \theta & -\sin \theta \\
+    \sin \theta & \cos \theta
+  \end{bmatrix},
 \]
 where $\theta$ is the angle of rotation. The group action is defined by matrix multiplication, where each point in the plane is represented as a vector in $\R^2$. We will explore more about the group $\SO(n)$ in later chapters. We can visualise the group action as shown in Figure~\ref{fig:group_action}.
 \begin{figure}[ht!]
-	\begin{tikzpicture}
-		\draw[draw=none,fill=ustgray!20] (-2.5,-2.5) rectangle (2.5,2.5);
-		\draw[ustgold] (0,0) circle (1.5cm);
-		\draw[ustgold] (0,0) circle (1cm);
-		\draw[ustgold] (0,0) circle (0.5cm);
-		\draw[ustgold] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{\small Orbits};
+  \begin{tikzpicture}
+    \draw[draw=none,fill=ustgray!20] (-2.5,-2.5) rectangle (2.5,2.5);
+    \draw[ustgold] (0,0) circle (1.5cm);
+    \draw[ustgold] (0,0) circle (1cm);
+    \draw[ustgold] (0,0) circle (0.5cm);
+    \draw[ustgold] (1.06066,-1.06066) -- (1.4,-1.4) node[below right]{\small Orbits};
 
-		\filldraw[ustblue] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec{v}$};
-		\draw[arrow] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
-		\draw[arrow] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
-		\filldraw[ustblue] (2,0) circle (1pt) node[below right]{$\vec{v}$};
-		\draw[ustblue,arrow] (2,0) arc[start angle=0,end angle=45,radius=2];
-		\draw[ustgold] (0,2) arc[start angle=90,end angle=135,radius=2];
-		\draw[ustgold] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
-	\end{tikzpicture}
-	\caption{A group action of $\SO(2)$ on the plane.}
-	\label{fig:group_action}
+    \filldraw[ustblue] (1.414,1.414) circle (1pt) node[above right]{$g \cdot \vec{v}$};
+    \draw[arrow] (-2.5,0) -- (2.5cm + 5pt,0) node[right]{$x$};
+    \draw[arrow] (0,-2.5) -- (0,2.5cm + 5pt) node[above]{$y$};
+    \filldraw[ustblue] (2,0) circle (1pt) node[below right]{$\vec{v}$};
+    \draw[ustblue,arrow] (2,0) arc[start angle=0,end angle=45,radius=2];
+    \draw[ustgold] (0,2) arc[start angle=90,end angle=135,radius=2];
+    \draw[ustgold] (-1.414,-1.414) arc[start angle=225,end angle=270,radius=2];
+  \end{tikzpicture}
+  \caption{A group action of $\SO(2)$ on the plane.}\label{fig:group_action}
 \end{figure}
 
 \begin{definition}[Orbits]\label{def:orbits}
-	Let $G$ be a group acting on a set $X$. The \emph{orbit} of an element $x \in X$ under the \hyperref[def:group_action]{action} of $G$ is the set
-	\[
-		G \cdot x = \{ g \cdot x \mid g \in G \}.
-	\]
+  Let $G$ be a group acting on a set $X$. The \emph{orbit} of an element $x \in X$ under the \hyperref[def:group_action]{action} of $G$ is the set
+  \[
+    G \cdot x = \{ g \cdot x \mid g \in G \}.
+  \]
 \end{definition}
 
 \begin{definition}[Stabiliser]\label{def:stabiliser}
-	Let $G$ be a group acting on a set $X$. The \emph{stabiliser} of an element $x \in X$ under the \hyperref[def:group_action]{action} of $G$ is the set
-	\[
-		G_x = \{ g \in G \mid g \cdot x = x \}.
-	\]
+  Let $G$ be a group acting on a set $X$. The \emph{stabiliser} of an element $x \in X$ under the \hyperref[def:group_action]{action} of $G$ is the set
+  \[
+    G_x = \{ g \in G \mid g \cdot x = x \}.
+  \]
 \end{definition}
 
 In the example of rotation on a plane, the orbits are circles centered at the origin, and the stabiliser of any non-zero point is the trivial group containing only the identity element.
 
 \begin{definition}[Partition]\label{def:partition}
-	A \emph{partition} of a set $X$ is a collection of non-empty disjoint subsets ${\{ X_i \}}_{i \in I}$ of $X$ such that their union is $X$:
-	\[
-		X = \bigsqcup_{i \in I} X_i.
-	\]
+  A \emph{partition} of a set $X$ is a collection of non-empty disjoint subsets ${\{ X_i \}}_{i \in I}$ of $X$ such that their union is $X$:
+  \[
+    X = \bigsqcup_{i \in I} X_i.
+  \]
 \end{definition}
 
 The set of orbits of a group action forms a partition of the set being acted upon and we denote the set of orbits by $\quotient{X}{G} = \{ G \cdot x \mid x \in X \}$. Then there is a natural surjective map $\pi : X \to \quotient{X}{G}$ that sends each element $x \in X$ to its corresponding orbit $G \cdot x$ in the set of orbits $\quotient{X}{G}$. This map is called the \emph{quotient map}.
@@ -583,149 +585,144 @@ The set of orbits of a group action forms a partition of the set being acted upo
 
 Consider a linear space $V$ and a subspace $W$ of $V$. Note that $(W, +)$ is an abelian group under vector addition. We can define a group action of $(W, +)$ on $V$ as follows:
 \begin{align*}
-	W \times V & \to V          \\
-	(w, v)     & \mapsto v + w.
+  W \times V & \to V          \\
+  (w, v)     & \mapsto v + w.
 \end{align*}
 It is straightforward to verify that this map satisfies the compatibility and unital conditions of a group action. One way is to check all conditions directly. Another way is to observe that the condtions follow from the properties of vector addition in $V$ with the commutative diagram:
 \begin{center}
-	\begin{tikzcd}
-		W \times V \arrow[r, hook, "\iota \times \id_V" description] & V \times V \arrow[r, "+" description] & V
-	\end{tikzcd}
+  \begin{tikzcd}
+    W \times V \arrow[r, hook, "\iota \times \id_V" description] & V \times V \arrow[r, "+" description] & V
+  \end{tikzcd}
 \end{center}
 The orbits of this group action are the sets of the form $v + W = \{ v + w \mid w \in W \}$ for each $v \in V$. These orbits partition the linear space $V$ into disjoint subsets. Algebraically, such subsets are called \emph{cosets} of $W$ in $V$. The cosets can be written as $[v]$ or $\overline{v}$ for simplicity. In this book, we use the notation $[v]$ for cosets.
 
 \begin{definition}[Linear Quotient Space]\label{def:quotient_space}
-	The \emph{linear quotient space} of a linear space $V$ by a \hyperref[def:linear_subspace]{subspace} $W$ is the set of \hyperref[def:orbits]{orbits} of the \hyperref[def:group_action]{group action} of $(W, +)$ on $V$:
-	\[
-		\quotient{V}{W} = \{ v + W \mid v \in V \}.
-	\]
+  The \emph{linear quotient space} of a linear space $V$ by a \hyperref[def:linear_subspace]{subspace} $W$ is the set of \hyperref[def:orbits]{orbits} of the \hyperref[def:group_action]{group action} of $(W, +)$ on $V$:
+  \[
+    \quotient{V}{W} = \{ v + W \mid v \in V \}.
+  \]
 \end{definition}
 
 Another way to view the quotient space $\quotient{V}{W}$ is to consider the equivalence relation $\sim$ on $V$ defined by $v_1 \sim v_2$ if and only if $v_1 - v_2 \in W$. The equivalence classes under this relation are precisely the cosets of $W$ in $V$. Thus, the quotient space $\quotient{V}{W}$ can be identified with the set of equivalence classes of $V$ under the relation $\sim$. Graphically, we can visualise the quotient space $\quotient{V}{W}$ as shown in Figure~\ref{fig:quotient_space}.
 \begin{figure}[ht!]
-	\centering
-	\begin{tikzpicture}
-		\draw[step=0.5cm,gray!20] (-2,-2) grid (2,2);
-		\filldraw (0,0) circle (1pt) node [below] {$O$};
-		\draw[thick,ustblue] (-2,-2) -- (2,2) node [right] {$W = [0]$};
-		\draw[thick,red] (-2,-1) node [left] {$[v'_1] = [v_1] = v_1 + W$} -- (1,2);
-		\draw[thick,orange] (-2,0) node [left] {$[v_2] = v_2 + W$} -- (0,2);
-		\draw[thick,magenta] (-2,1) node [left] {$[v_3] = v_3 + W$} -- (-1,2);
-		\draw[thick,olive] (-1,-2) -- (2,1) node [right] {$v_4 + W = [v_4]$};
-		\draw[thick,brown] (0,-2) -- (2,0) node [right] {$v_5 + W = [v_5]$};
-		\draw[thick,purple] (1,-2) -- (2,-1) node [right] {$v_6 + W = [v_6]$};
+  \centering
+  \begin{tikzpicture}
+    \draw[step=0.5cm,ustgray!40] (-2,-2) grid (2,2);
+    \filldraw (0,0) circle (1pt) node [below] {$O$};
+    \draw[thick,ustblue] (-2,-2) -- (2,2) node [right] {$W = [0]$};
+    \draw[thick,ustred] (-2,-1) node [left] {$[v'_1] = [v_1] = v_1 + W$} -- (1,2);
+    \draw[thick,orange] (-2,0) node [left] {$[v_2] = v_2 + W$} -- (0,2);
+    \draw[thick,magenta] (-2,1) node [left] {$[v_3] = v_3 + W$} -- (-1,2);
+    \draw[thick,olive] (-1,-2) -- (2,1) node [right] {$v_4 + W = [v_4]$};
+    \draw[thick,brown] (0,-2) -- (2,0) node [right] {$v_5 + W = [v_5]$};
+    \draw[thick,purple] (1,-2) -- (2,-1) node [right] {$v_6 + W = [v_6]$};
 
-		\draw[thick,arrow,violet] (0,0) -- (0,1) node [pos=0.38, xshift=-1ex] {\scriptsize $v_1$};
-		\draw[thick,arrow,violet] (0,0) -- (0.5,0.5) node [midway, below] {\scriptsize $w$};
-		\draw[thick,arrow,violet] (0,0) -- (0.5,1.5) node [below right=-1pt] {\scriptsize $v_1 + w$};
+    \draw[thick,arrow,violet] (0,0) -- (0,1) node [pos=0.38, xshift=-1ex] {\scriptsize $v_1$};
+    \draw[thick,arrow,violet] (0,0) -- (0.5,0.5) node [midway, below] {\scriptsize $w$};
+    \draw[thick,arrow,violet] (0,0) -- (0.5,1.5) node [below right=-1pt] {\scriptsize $v_1 + w$};
 
-		\draw[thick,arrow,teal,dashed] (0,0) -- (-1,0) node [midway, yshift=1ex] {\scriptsize $v'_1$};
-		\draw[thick,arrow,teal,dashed] (0,0) -- (-0.75,-0.75) node [pos=0.625, right] {\scriptsize $w'$};
-		\draw[thick,arrow,teal,dashed] (0,0) -- (-1.75,-0.75) node [midway, sloped, below=-2pt] {\scriptsize $v'_1 + w'$};
-	\end{tikzpicture}
-	\caption{A graphical representation of the quotient space $\quotient{V}{W}$.}
-	\label{fig:quotient_space}
+    \draw[thick,arrow,teal,dashed] (0,0) -- (-1,0) node [midway, yshift=1ex] {\scriptsize $v'_1$};
+    \draw[thick,arrow,teal,dashed] (0,0) -- (-0.75,-0.75) node [pos=0.625, right] {\scriptsize $w'$};
+    \draw[thick,arrow,teal,dashed] (0,0) -- (-1.75,-0.75) node [midway, sloped, below=-2pt] {\scriptsize $v'_1 + w'$};
+  \end{tikzpicture}
+  \caption{A graphical representation of the quotient space $\quotient{V}{W}$.}\label{fig:quotient_space}
 \end{figure}
 Here, the blue line represents the subspace $W$, and each colored line represents a distinct coset in the quotient space $\quotient{V}{W}$. The vectors $w$ and $w'$ belong to the same coset if they differ by an element of $W$.
 
 Similarly, there is a natural surjective map from the linear space $V$ to the quotient space $\quotient{V}{W}$ that sends each vector to its corresponding coset.
 
 \begin{definition}[Linear Quotient Map]\label{def:quotient_map}
-	The \emph{linear quotient map} $\pi : V \to \quotient{V}{W}$ is the map that sends each vector $v \in V$ to its corresponding coset $v + W$ in the \hyperref[def:quotient_space]{quotient space} $\quotient{V}{W}$:
-	\[
-		\pi(v) = v + W = [v].
-	\]
+  The \emph{linear quotient map} $\pi : V \to \quotient{V}{W}$ is the map that sends each vector $v \in V$ to its corresponding coset $v + W$ in the \hyperref[def:quotient_space]{quotient space} $\quotient{V}{W}$:
+  \[
+    \pi(v) = v + W = [v].
+  \]
 \end{definition}
 
 Currently, the quotient space $\quotient{V}{W}$ is only defined as a set. To show that $\quotient{V}{W}$ is indeed a linear space, we consider the following proposition.
 
 \begin{proposition}
-	There is a unique linear structure on the quotient space $\quotient{V}{W}$ such that the quotient map $\pi : V \to \quotient{V}{W}$ is a linear map.
+  There is a unique linear structure on the quotient space $\quotient{V}{W}$ such that the quotient map $\pi : V \to \quotient{V}{W}$ is a linear map.
 \end{proposition}
 \begin{proof}
-	If such a linear structure exists, then for any $v_1, v_2 \in V$ and any scalar $\alpha, \beta \in F$, we must have
-	\[
-		\pi(\alpha v_1 + \beta v_2) = \alpha \pi(v_1) + \beta \pi(v_2).
-	\]
-	This suggests the unique way to define the linear combination in $\quotient{V}{W}$ is
-	\[
-		\alpha [v_1] + \beta [v_2] = [\alpha v_1 + \beta v_2].
-	\]
-	We need to verify that this definition is well-defined. Suppose $[v_1] = [v_1']$ and $[v_2] = [v_2']$, i.e., $v_1' - v_1 \in W$ and $v_2' - v_2 \in W$. Then,
-	\[
-		(\alpha v_1' + \beta v_2') - (\alpha v_1 + \beta v_2) = \alpha (v_1' - v_1) + \beta (v_2' - v_2) \in W,
-	\]
-	which implies that $[\alpha v_1' + \beta v_2'] = [\alpha v_1 + \beta v_2]$. Thus, the linear combination is well-defined.
+  If such a linear structure exists, then for any $v_1, v_2 \in V$ and any scalar $\alpha, \beta \in F$, we must have
+  \[
+    \pi(\alpha v_1 + \beta v_2) = \alpha \pi(v_1) + \beta \pi(v_2).
+  \]
+  This suggests the unique way to define the linear combination in $\quotient{V}{W}$ is
+  \[
+    \alpha [v_1] + \beta [v_2] = [\alpha v_1 + \beta v_2].
+  \]
+  We need to verify that this definition is well-defined. Suppose $[v_1] = [v_1']$ and $[v_2] = [v_2']$, i.e., $v_1' - v_1 \in W$ and $v_2' - v_2 \in W$. Then,
+  \[
+    (\alpha v_1' + \beta v_2') - (\alpha v_1 + \beta v_2) = \alpha (v_1' - v_1) + \beta (v_2' - v_2) \in W,
+  \]
+  which implies that $[\alpha v_1' + \beta v_2'] = [\alpha v_1 + \beta v_2]$. Thus, the linear combination is well-defined.
 \end{proof}
 
 \begin{remark}
-	In normal procedure, we first define the operations on a set and then verify the set is closed under these operations and zero vector exists. Then we check the map preserves these operations. However, in this case, we define the operations on the quotient space $\quotient{V}{W}$ by requiring the quotient map $\pi$ to be a linear map. Then we verify that the operations are well-defined. This approach is often used in abstract algebra.
+  In normal procedure, we first define the operations on a set and then verify the set is closed under these operations and zero vector exists. Then we check the map preserves these operations. However, in this case, we define the operations on the quotient space $\quotient{V}{W}$ by requiring the quotient map $\pi$ to be a linear map. Then we verify that the operations are well-defined. This approach is often used in abstract algebra.
 \end{remark}
 
 If we want to visualise the graphical representation of the quotient space $\quotient{V}{W}$ and the quotient map $\pi : V \to \quotient{V}{W}$, we can refer to Figure~\ref{fig:quotient_map}.
 \begin{figure}[ht!]
-	\centering
-	\begin{tikzpicture}
-		\filldraw[gray!10] (-4,-2) rectangle (4,2);
-		\draw[step=0.5cm,gray!20] (-4,-2) grid (4,2);
-		\filldraw (0,0) circle (1pt) node [below left] {$0$};
-		\draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $W + a$};
+  \centering
+  \begin{tikzpicture}
+    \filldraw[ustgray!20] (-4,-2) rectangle (4,2);
+    \draw[step=0.5cm,ustgray!40] (-4,-2) grid (4,2);
+    \filldraw (0,0) circle (1pt) node [below left] {$0$};
+    \draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $W + a$};
+    \draw[thick] (0,-2)  -- (0,2) node [above] {\scriptsize $W$};
+    \draw[thick] (2,-2) -- (2,2) node [above] {\scriptsize $b + W$};
+    \draw[thick] (3.5,-2)  -- (3.5,2) node [above] {\scriptsize $(3.5, 0) + W$};
 
-		\draw[thick] (0,-2)  -- (0,2) node [above] {\scriptsize $W$};
+    \filldraw (-2.5, 1) circle (1pt) node [right] {$a$};
+    \filldraw (2, -0.5) circle (1pt) node [right] {$b$};
 
-		\draw[thick] (2,-2) -- (2,2) node [above] {\scriptsize $b + W$};
-		\draw[thick] (3.5,-2)  -- (3.5,2) node [above] {\scriptsize $(3.5, 0) + W$};
+    \draw[decoration={brace,raise=5pt},decorate] (-4,-2) -- (-4,2);
 
-		\filldraw (-2.5, 1) circle (1pt) node [right] {$a$};
-		\filldraw (2, -0.5) circle (1pt) node [right] {$b$};
+    \coordinate (top) at (-4cm - 20pt,0);
+    \node (topNode) at (top) {$V$};
+    \coordinate (bottom) at (-4cm - 20pt,-4);
+    \node (bottomNode)at (bottom) {$\quotient{V}{W}$};
+    \draw[arrow] (topNode.south) -- (bottomNode.north) node [midway, left] {\scriptsize $\pi$};
 
-		\draw[decoration={brace,raise=5pt},decorate]
-		(-4,-2) -- (-4,2);
+    \draw[thick] (-4,-4) -- (4,-4);
 
-		\coordinate (top) at (-4cm - 20pt,0);
-		\node (topNode) at (top) {$V$};
-		\coordinate (bottom) at (-4cm - 20pt,-4);
-		\node (bottomNode)at (bottom) {$\quotient{V}{W}$};
-		\draw[arrow] (topNode.south) -- (bottomNode.north) node [midway, left] {\scriptsize $\pi$};
+    \draw[dashed] (-2.5,-2) -- (-2.5,-4);
+    \draw[dashed] (0,-2) -- (0,-4);
+    \draw[dashed] (2,-2) -- (2,-4);
+    \draw[dashed] (3.5,-2) -- (3.5,-4);
 
-		\draw[thick] (-4,-4) -- (4,-4);
-
-		\draw[dashed] (-2.5,-2) -- (-2.5,-4);
-		\draw[dashed] (0,-2) -- (0,-4);
-		\draw[dashed] (2,-2) -- (2,-4);
-		\draw[dashed] (3.5,-2) -- (3.5,-4);
-
-		\filldraw (-2.5,-4) circle (1.5pt) node [below] {$[a]$};
-		\filldraw (0,-4) circle (1.5pt) node [below] {$[0]$};
-		\filldraw (2,-4) circle (1.5pt) node [below] {$[b]$};
-		\filldraw (3.5,-4) circle (1.5pt) node [below] {$[(3.5, 0)]$};
-	\end{tikzpicture}
-	\caption{A graphical representation of the quotient map $\pi : V \to \quotient{V}{W}$.}
-	\label{fig:quotient_map}
+    \filldraw (-2.5,-4) circle (1.5pt) node [below] {$[a]$};
+    \filldraw (0,-4) circle (1.5pt) node [below] {$[0]$};
+    \filldraw (2,-4) circle (1.5pt) node [below] {$[b]$};
+    \filldraw (3.5,-4) circle (1.5pt) node [below] {$[(3.5, 0)]$};
+  \end{tikzpicture}
+  \caption{A graphical representation of the quotient map $\pi : V \to \quotient{V}{W}$.}\label{fig:quotient_map}
 \end{figure}
 
 We also have the following properties about finite-dimensional linear spaces.
 \begin{proposition}
-	$V$ is finite-dimensional if and only if all of its subspaces and quotient spaces are finite-dimensional.
+  $V$ is finite-dimensional if and only if all of its subspaces and quotient spaces are finite-dimensional.
 \end{proposition}
 \begin{proof}
-	If $V$ is finite-dimensional and $W$ is a subspace of $V$, then we have the following commutative diagram:
-	\begin{center}
-		\begin{tikzcd}
-			V \arrow[r, two heads] & W \\
-			F^n \arrow[u, <->, "{[-]_{\B_V}}" description] \arrow[ur, two heads, dashed, "\phi" description]
-		\end{tikzcd}
-	\end{center}
-	Here, the map $\phi : F^n \to W$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $W$. Thus, $W$ is finitely generated.
+  If $V$ is finite-dimensional and $W$ is a subspace of $V$, then we have the following commutative diagram:
+  \begin{center}
+    \begin{tikzcd}
+      V \arrow[r, two heads] & W \\
+      F^n \arrow[u, <->, "{[-]_{\B_V}}" description] \arrow[ur, two heads, dashed, "\phi" description]
+    \end{tikzcd}
+  \end{center}
+  Here, the map $\phi : F^n \to W$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $W$. Thus, $W$ is finitely generated.
 
-	Similarly, consider the following commutative diagram:
-	\begin{center}
-		\begin{tikzcd}
-			W \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "\pi" description] & \quotient{V}{W} \\
-			& F^n \arrow[u, <->, "{[-]_{\B_V}}" description] \arrow[ur, two heads, dashed, "\phi" description]
-		\end{tikzcd}
-	\end{center}
-	Then we know that $\phi : F^n \to \quotient{V}{W}$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $\quotient{V}{W}$. Thus, $\quotient{V}{W}$ is finitely generated.
+  Similarly, consider the following commutative diagram:
+  \begin{center}
+    \begin{tikzcd}
+      W \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "\pi" description] & \quotient{V}{W} \\
+      & F^n \arrow[u, <->, "{[-]_{\B_V}}" description] \arrow[ur, two heads, dashed, "\phi" description]
+    \end{tikzcd}
+  \end{center}
+  Then we know that $\phi : F^n \to \quotient{V}{W}$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $\quotient{V}{W}$. Thus, $\quotient{V}{W}$ is finitely generated.
 \end{proof}
 
 \section{Universal Properties of Linear Spaces}
@@ -735,51 +732,51 @@ Universal properties provide a powerful and abstract way to characterise mathema
 We first start with a simple example: the universal property of minimal spanning set.
 
 \begin{proposition}[Universal Property of Minimal Spanning Set]
-	Let $S$ be a minimal spanning set of a linear space $V$. For any linear space $Z$ and any set map $\phi : S \to Z$, there exists a unique linear map $\widetilde{\phi} : V \to Z$ such that the following diagram commutes:
-	\begin{center}
-		\begin{tikzcd}
-			S \arrow[r, hook, "\iota" description] \arrow[rd, "\phi" description] & V \arrow[d, dashed, "\widetilde{\phi}" description] \\
-			& Z
-		\end{tikzcd}
-	\end{center}
+  Let $S$ be a minimal spanning set of a linear space $V$. For any linear space $Z$ and any set map $\phi : S \to Z$, there exists a unique linear map $\widetilde{\phi} : V \to Z$ such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}
+      S \arrow[r, hook, "\iota" description] \arrow[rd, "\phi" description] & V \arrow[d, dashed, "\widetilde{\phi}" description] \\
+      & Z
+    \end{tikzcd}
+  \end{center}
 \end{proposition}
 \begin{proof}
-	If such a linear map $\widetilde{\phi}$ exists, then for any $s \in S$, we must have $\widetilde{\phi} \circ \iota (s) = \phi(s)$, which suggests that $\widetilde{\phi}$ is defined by extending $\phi$ linearly to the whole space $V$. Specifically, for any $v \in V$, we can express $v$ as a linear combination of elements in $S$, i.e., $v = \sum_{i=1}^k \alpha_i s_i$ for some $s_i \in S$ and $\alpha_i \in F$. Then, we define
-	\[
-		\widetilde{\phi}(v) = \widetilde{\phi}\left( \sum_{i=1}^k \alpha_i s_i \right) = \sum_{i=1}^k \alpha_i \widetilde{\phi}(s_i) = \sum_{i=1}^k \alpha_i \phi(s_i).
-	\]
-	As $S$ is a minimal spanning set, there is only one way to express $v$ as a linear combination of elements in $S$. So, the definition of $\widetilde{\phi}$ is well-defined, i.e., does not depend on the choice of representation of $v$.
+  If such a linear map $\widetilde{\phi}$ exists, then for any $s \in S$, we must have $\widetilde{\phi} \circ \iota (s) = \phi(s)$, which suggests that $\widetilde{\phi}$ is defined by extending $\phi$ linearly to the whole space $V$. Specifically, for any $v \in V$, we can express $v$ as a linear combination of elements in $S$, i.e., $v = \sum_{i=1}^k \alpha_i s_i$ for some $s_i \in S$ and $\alpha_i \in F$. Then, we define
+  \[
+    \widetilde{\phi}(v) = \widetilde{\phi}\left( \sum_{i=1}^k \alpha_i s_i \right) = \sum_{i=1}^k \alpha_i \widetilde{\phi}(s_i) = \sum_{i=1}^k \alpha_i \phi(s_i).
+  \]
+  As $S$ is a minimal spanning set, there is only one way to express $v$ as a linear combination of elements in $S$. So, the definition of $\widetilde{\phi}$ is well-defined, i.e., does not depend on the choice of representation of $v$.
 \end{proof}
 
 This proposition shows that any set map from a minimal spanning set $S$ to another linear space $Z$ can be uniquely extended to a linear map from the entire space $V$, i.e., $\Map(S, Z) \cong \Hom(V, Z)$.
 
 \begin{proposition}[Universal Property of Quotient Space]
-	Let $W$ be a subspace of a linear space $V$. For any linear space $Z$ and any linear map $\phi : V \to Z$ such that $W \subseteq \ker(\phi)$, there exists a unique linear map $\widetilde{\phi} : \quotient{V}{W} \to Z$ such that the following diagram commutes:
-	\begin{center}
-		\begin{tikzcd}
-			V \arrow[r, two heads, "\pi" description] \arrow[rd, "\phi" description] & \quotient{V}{W} \arrow[d, dashed, "\widetilde{\phi}" description] \\
-			& Z
-		\end{tikzcd}
-	\end{center}
+  Let $W$ be a subspace of a linear space $V$. For any linear space $Z$ and any linear map $\phi : V \to Z$ such that $W \subseteq \ker(\phi)$, there exists a unique linear map $\widetilde{\phi} : \quotient{V}{W} \to Z$ such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}
+      V \arrow[r, two heads, "\pi" description] \arrow[rd, "\phi" description] & \quotient{V}{W} \arrow[d, dashed, "\widetilde{\phi}" description] \\
+      & Z
+    \end{tikzcd}
+  \end{center}
 \end{proposition}
 \begin{proof}
-	If such a linear map $\widetilde{\phi}$ exists, then for any $v \in V$, we must have $\widetilde{\phi} \circ \pi (v) = \phi(v)$, which suggests that $\widetilde{\phi}$ is defined by
-	\[
-		\widetilde{\phi}([v]) = \phi(v).
-	\]
-	We need to verify that this definition is well-defined. Suppose $[v] = [v']$, i.e., $v' - v \in W$. Then,
-	\[
-		\widetilde{\phi}([v']) - \widetilde{\phi}([v]) = \phi(v') - \phi(v) = \phi(v' - v) = 0,
-	\]
-	which implies that $\widetilde{\phi}([v']) = \widetilde{\phi}([v])$. Thus, the definition of $\widetilde{\phi}$ is well-defined. Then we consider the linearity of $\widetilde{\phi}$: for any $[v_1], [v_2] \in \quotient{V}{W}$ and any scalars $\alpha, \beta \in F$, we have
-	\begin{align*}
-		\widetilde{\phi}(\alpha [v_1] + \beta [v_2]) & = \widetilde{\phi}([\alpha v_1 + \beta v_2]) = \phi(\alpha v_1 + \beta v_2)                                     \\
-		                                             & = \alpha \phi(v_1) + \beta \phi(v_2) = \alpha \widetilde{\phi}([v_1]) + \beta \widetilde{\phi}([v_2]). \qedhere
-	\end{align*}
+  If such a linear map $\widetilde{\phi}$ exists, then for any $v \in V$, we must have $\widetilde{\phi} \circ \pi (v) = \phi(v)$, which suggests that $\widetilde{\phi}$ is defined by
+  \[
+    \widetilde{\phi}([v]) = \phi(v).
+  \]
+  We need to verify that this definition is well-defined. Suppose $[v] = [v']$, i.e., $v' - v \in W$. Then,
+  \[
+    \widetilde{\phi}([v']) - \widetilde{\phi}([v]) = \phi(v') - \phi(v) = \phi(v' - v) = 0,
+  \]
+  which implies that $\widetilde{\phi}([v']) = \widetilde{\phi}([v])$. Thus, the definition of $\widetilde{\phi}$ is well-defined. Then we consider the linearity of $\widetilde{\phi}$: for any $[v_1], [v_2] \in \quotient{V}{W}$ and any scalars $\alpha, \beta \in F$, we have
+  \begin{align*}
+    \widetilde{\phi}(\alpha [v_1] + \beta [v_2]) & = \widetilde{\phi}([\alpha v_1 + \beta v_2]) = \phi(\alpha v_1 + \beta v_2)                                     \\
+                                                 & = \alpha \phi(v_1) + \beta \phi(v_2) = \alpha \widetilde{\phi}([v_1]) + \beta \widetilde{\phi}([v_2]). \qedhere
+  \end{align*}
 \end{proof}
 
 \begin{remark}
-	Note that $[0] = W$ in the quotient space $\quotient{V}{W}$. Thus, the map from $W$ to $\quotient{V}{W}$ is the zero map. This is consistent with the condition that $W \subseteq \ker(\phi)$, which implies that the restriction of $\phi$ to $W$ is also the zero map.
+  Note that $[0] = W$ in the quotient space $\quotient{V}{W}$. Thus, the map from $W$ to $\quotient{V}{W}$ is the zero map. This is consistent with the condition that $W \subseteq \ker(\phi)$, which implies that the restriction of $\phi$ to $W$ is also the zero map.
 \end{remark}
 
 This proposition shows that any linear map from $V$ to another linear space $Z$ that vanishes on the subspace $W$ can be uniquely \emph{factored} through the quotient space $\quotient{V}{W}$, i.e., ${\Hom(V, Z)}_W \cong \Hom(\quotient{V}{W}, Z)$, where ${\Hom(V, Z)}_W$ denotes the set of linear maps from $V$ to $Z$ that vanish on $W$.
@@ -787,29 +784,29 @@ This proposition shows that any linear map from $V$ to another linear space $Z$ 
 There are two terms that is ``dual'' to the kernel and image of a linear map: the \emph{cokernel} and \emph{coimage}.
 
 \begin{definition}[Cokernel]\label{def:cokernel}
-	The \emph{cokernel} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the \hyperref[def:quotient_space]{quotient space} of $W$ by the \hyperref[def:image]{image} of $T$:
-	\[
-		\coker(T) = \quotient{W}{\im(T)}.
-	\]
+  The \emph{cokernel} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the \hyperref[def:quotient_space]{quotient space} of $W$ by the \hyperref[def:image]{image} of $T$:
+  \[
+    \coker(T) = \quotient{W}{\im(T)}.
+  \]
 \end{definition}
 
 \begin{definition}[Coimage]\label{def:coimage}
-	The \emph{coimage} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the \hyperref[def:quotient_space]{quotient space} of $V$ by the \hyperref[def:kernel]{kernel} of $T$:
-	\[
-		\coim(T) = \quotient{V}{\ker(T)}.
-	\]
+  The \emph{coimage} of a \hyperref[def:linear_map]{linear map} $T : V \to W$ is the \hyperref[def:quotient_space]{quotient space} of $V$ by the \hyperref[def:kernel]{kernel} of $T$:
+  \[
+    \coim(T) = \quotient{V}{\ker(T)}.
+  \]
 \end{definition}
 
 We also have universal properties for kernel and cokernel with the following commutative diagrams:
 \begin{center}
-	\begin{tikzcd}
-		V \arrow[rr, bend left, "T" description] & \ker(T) \arrow[l, hook', "\iota" description] \arrow[r, "0" description] & W \\
-		& Z \arrow[ul, hook', "\phi" description] \arrow[u, dashed, "\widetilde{\phi}" description] \arrow[ur, "0" description]
-	\end{tikzcd}
-	\begin{tikzcd}
-		V \arrow[rr, bend left, "T" description] \arrow[r, "0" description] \arrow[dr, "0" description] & \coker(T) \arrow[d, dashed, "\widetilde{\phi}" description] & W \arrow[l, two heads, "\pi" description] \arrow[dl, "\phi" description] \\
-		& Z &
-	\end{tikzcd}
+  \begin{tikzcd}
+    \color{ustblue} V \arrow[rr, bend left, "T" description] & \color{ustblue} \ker(T) \arrow[l, ustblue, hook', "\iota" description] \arrow[r, "0" description] & W \\
+    & \color{ustblue} Z \arrow[ul, ustblue, hook', "\phi" description] \arrow[u, ustblue, dashed, "\widetilde{\phi}" description] \arrow[ur, "0" description]
+  \end{tikzcd}
+  \begin{tikzcd}
+    V \arrow[rr, bend left, "T" description] \arrow[r, "0" description] \arrow[dr, "0" description] & \color{ustblue} \coker(T) \arrow[d, ustblue, dashed, "\widetilde{\phi}" description] & W \arrow[l, ustblue, two heads, "\pi" description] \arrow[dl, ustblue, "\phi" description] \\
+    & \color{ustblue} Z &
+  \end{tikzcd}
 \end{center}
 
 We will explore more universal properties when we introduce category theory in later chapters.
@@ -819,123 +816,121 @@ We will explore more universal properties when we introduce category theory in l
 Exact sequences are useful tools in linear algebra and homological algebra to study the relationships between linear spaces and linear maps.
 
 \begin{definition}[Exact Sequence]\label{def:exact_sequence}
-	A sequence of \hyperref[def:linear_map]{linear maps} between linear spaces over $F$
-	\begin{center}
-		\begin{tikzcd}[background color=ustblue!5]
-			\cdots \arrow[r] & V_{i-1} \arrow[r, "f_{i-1}" description] & V_i \arrow[r, "f_i" description] & V_{i+1} \arrow[r] & \cdots
-		\end{tikzcd}
-	\end{center}
-	is \emph{exact} at $V_i$ if the image of $f_{i-1}$ is equal to the kernel of $f_i$:
-	\[
-		\im(f_{i-1}) = \ker(f_i).
-	\]
-	The sequence is called an \emph{exact sequence} if it is exact at every $V_i$.
+  A sequence of \hyperref[def:linear_map]{linear maps} between linear spaces over $F$
+  \begin{center}
+    \begin{tikzcd}[background color=ustblue!5]
+      \cdots \arrow[r] & V_{i-1} \arrow[r, "f_{i-1}" description] & V_i \arrow[r, "f_i" description] & V_{i+1} \arrow[r] & \cdots
+    \end{tikzcd}
+  \end{center}
+  is \emph{exact} at $V_i$ if the image of $f_{i-1}$ is equal to the kernel of $f_i$:
+  \[
+    \im(f_{i-1}) = \ker(f_i).
+  \]
+  The sequence is called an \emph{exact sequence} if it is exact at every $V_i$.
 \end{definition}
 
 \begin{example}
-	Consider the following \emph{short exact sequence} of linear spaces:
-	\begin{center}
-		\begin{tikzcd}
-			0 \arrow[r] & V_1 \arrow[r, "\iota_1" description] & V \arrow [r, "\pi_2" description] & V_2 \arrow[r] & 0
-		\end{tikzcd}
-	\end{center}
-	for which $V_2$ is assumed to have a minimal spanning set. Then
-	\begin{itemize}
-		\item the exactness at $V_1$ implies that $\{0_{V_1}\} = \im(0) = \ker(\iota_1)$, thus $\iota_1$ is injective.
-		\item the exactness at $V$ implies that $\im(\iota_1) = \ker(\pi_2)$, thus $V_1 \cong \im(\iota_1) \subseteq V$.
-		\item the exactness at $V_2$ implies that $\im(\pi_2) = \ker(0) = V_2$, thus $\pi_2$ is surjective.
-	\end{itemize}
+  Consider the following \emph{short exact sequence} of linear spaces:
+  \begin{center}
+    \begin{tikzcd}
+      0 \arrow[r] & V_1 \arrow[r, "\iota_1" description] & V \arrow [r, "\pi_2" description] & V_2 \arrow[r] & 0
+    \end{tikzcd}
+  \end{center}
+  for which $V_2$ is assumed to have a minimal spanning set. Then
+  \begin{itemize}
+    \item the exactness at $V_1$ implies that $\{0_{V_1}\} = \im(0) = \ker(\iota_1)$, thus $\iota_1$ is injective.
+    \item the exactness at $V$ implies that $\im(\iota_1) = \ker(\pi_2)$, thus $V_1 \cong \im(\iota_1) \subseteq V$.
+    \item the exactness at $V_2$ implies that $\im(\pi_2) = \ker(0) = V_2$, thus $\pi_2$ is surjective.
+  \end{itemize}
 
-	There are some facts about the short exact sequence:
-	\begin{itemize}
-		\item $\pi_2$ has a right inverse, or a section, i.e., there exists a linear map $\iota_2 : V_2 \to V$ such that $\pi_2 \circ \iota_2 = \id_{V_2}$. This is because $V_2$ has a minimal spanning set. Thus, for each element in the minimal spanning set of $V_2$, we can choose one representative in $V$ and define the map on the minimal spanning set. Then we can extend it to the whole space.
+  There are some facts about the short exact sequence:
+  \begin{itemize}
+    \item $\pi_2$ has a right inverse, or a section, i.e., there exists a linear map $\iota_2 : V_2 \to V$ such that $\pi_2 \circ \iota_2 = \id_{V_2}$. This is because $V_2$ has a minimal spanning set. Thus, for each element in the minimal spanning set of $V_2$, we can choose one representative in $V$ and define the map on the minimal spanning set. Then we can extend it to the whole space.
 
-		\item $\iota_1$ has a left inverse, or a retraction, i.e., there exists a linear map $\pi_1 : V \to V_1$ such that $\pi_1 \circ \iota_1 = \id_{V_1}$. This is because $\iota_1$ is injective. Thus, for each element in $V_1$, we can choose one representative in $V$ and define the map on the whole space by sending all other elements to zero.
-	\end{itemize}
+    \item $\iota_1$ has a left inverse, or a retraction, i.e., there exists a linear map $\pi_1 : V \to V_1$ such that $\pi_1 \circ \iota_1 = \id_{V_1}$. This is because $\iota_1$ is injective. Thus, for each element in $V_1$, we can choose one representative in $V$ and define the map on the whole space by sending all other elements to zero.
+  \end{itemize}
 
-	The exact sequence becomes:
-	\begin{center}
-		\begin{tikzcd}
-			0 \arrow[r] & V_1 \arrow[r, ustgold, hook, "\iota_1" description] & V \arrow[r, ustblue, two heads, "\pi_2" description] \arrow[l, ustblue, two heads, "\pi_1" description, bend right] & V_2 \arrow[r] \arrow[l, ustgold, hook', "\iota_2" description, bend left] & 0
-		\end{tikzcd}
-	\end{center}
+  The exact sequence becomes:
+  \begin{center}
+    \begin{tikzcd}
+      0 \arrow[r] & V_1 \arrow[r, ustgold, hook, "\iota_1" description] & V \arrow[r, ustblue, two heads, "\pi_2" description] \arrow[l, ustblue, two heads, "\pi_1" description, bend right] & V_2 \arrow[r] \arrow[l, ustgold, hook', "\iota_2" description, bend left] & 0
+    \end{tikzcd}
+  \end{center}
 \end{example}
 
 We can draw an Euler diagram to illustrate the situation as shown in Figure~\ref{fig:short_exact_sequence_diagram}.
 \begin{figure}[ht!]
-	\centering
-	\begin{tikzpicture}
-		\filldraw[cyan!10] (0,0) ellipse (0.75cm and 1.5cm);
-		\filldraw[cyan!10] (2.5,0) ellipse (0.5cm and 1cm);
+  \centering
+  \begin{tikzpicture}
+    \filldraw[cyan!10] (0,0) ellipse (0.75cm and 1.5cm);
+    \filldraw[cyan!10] (2.5,0) ellipse (0.5cm and 1cm);
 
-		\filldraw[green!15] (-2.5,0) ellipse (0.375cm and 0.75cm);
-		\draw[red, dashed, fill=green!15] (0,0) ellipse (0.5cm and 1cm);
+    \filldraw[green!15] (-2.5,0) ellipse (0.375cm and 0.75cm);
+    \draw[ustred, dashed, fill=green!15] (0,0) ellipse (0.5cm and 1cm);
 
-		\draw (-2.5,0) ellipse (0.375cm and 0.75cm) node [below=1.75cm] {$V_1$};
-		\draw (0,0) ellipse (0.75cm and 1.5cm) node [below=1.75cm] {$V$};
-		\draw (2.5,0) ellipse (0.5cm and 1cm) node [below=1.75cm] {$V_2$};
+    \draw (-2.5,0) ellipse (0.375cm and 0.75cm) node [below=1.75cm] {$V_1$};
+    \draw (0,0) ellipse (0.75cm and 1.5cm) node [below=1.75cm] {$V$};
+    \draw (2.5,0) ellipse (0.5cm and 1cm) node [below=1.75cm] {$V_2$};
 
 
-		\draw[red, -Stealth] (-5,0) -- (-2.5,0) node [midway, above] {\scriptsize $\im(0)$};
-		\draw[blue, -Stealth] (0,0) -- (-2.5,0) node [midway, above] {\scriptsize $\ker(\iota_1)$};
-		\draw[red, -Stealth] (-2.5,0.75) -- (0,1) node [midway, above] {\scriptsize $\im(\iota_1)$};
-		\draw[red, -Stealth] (-2.5,-0.75) -- (0,-1) node [midway, below] {\scriptsize $\im(\iota_1)$};
-		\draw[blue, -Stealth] (2.5,0) -- (0,1) node [midway, above] {\scriptsize $\ker(\pi_2)$};
-		\draw[blue, -Stealth] (2.5,0) -- (0,-1) node [midway, below] {\scriptsize $\ker(\pi_2)$};
-		\draw[red, -Stealth] (0,1.5) -- (2.5,1) node [midway, above] {\scriptsize $\im(\pi_2)$};
-		\draw[red, -Stealth] (0,-1.5) -- (2.5,-1) node [midway, below] {\scriptsize $\im(\pi_2)$};
-		\draw[blue, -Stealth] (5,0) -- (2.5,1) node [midway, above] {\scriptsize $\ker(0)$};
-		\draw[blue, -Stealth] (5,0) -- (2.5,-1) node [midway, below] {\scriptsize $\ker(0)$};
+    \draw[ustred, arrow] (-5,0) -- (-2.5,0) node [midway, above] {\scriptsize $\im(0)$};
+    \draw[ustblue, arrow] (0,0) -- (-2.5,0) node [midway, above] {\scriptsize $\ker(\iota_1)$};
+    \draw[ustred, arrow] (-2.5,0.75) -- (0,1) node [midway, above] {\scriptsize $\im(\iota_1)$};
+    \draw[ustred, arrow] (-2.5,-0.75) -- (0,-1) node [midway, below] {\scriptsize $\im(\iota_1)$};
+    \draw[ustblue, arrow] (2.5,0) -- (0,1) node [midway, above] {\scriptsize $\ker(\pi_2)$};
+    \draw[ustblue, arrow] (2.5,0) -- (0,-1) node [midway, below] {\scriptsize $\ker(\pi_2)$};
+    \draw[ustred, arrow] (0,1.5) -- (2.5,1) node [midway, above] {\scriptsize $\im(\pi_2)$};
+    \draw[ustred, arrow] (0,-1.5) -- (2.5,-1) node [midway, below] {\scriptsize $\im(\pi_2)$};
+    \draw[ustblue, arrow] (5,0) -- (2.5,1) node [midway, above] {\scriptsize $\ker(0)$};
+    \draw[ustblue, arrow] (5,0) -- (2.5,-1) node [midway, below] {\scriptsize $\ker(0)$};
 
-		\filldraw (-5,0) circle (1pt) node [below=1.75cm] {$0$};
+    \filldraw (-5,0) circle (1pt) node [below=1.75cm] {$0$};
 
-		\filldraw (5,0) circle (1pt) node [below=1.75cm] {$0$};
+    \filldraw (5,0) circle (1pt) node [below=1.75cm] {$0$};
 
-		\filldraw (-2.5,0) circle (1pt) node [below] {\scriptsize $0_{V_1}$};
-		\filldraw (0,0) circle (1pt) node [below] {\scriptsize $0_V$};
-		\filldraw (2.5,0) circle (1pt) node [below] {\scriptsize $0_{V_2}$};
-	\end{tikzpicture}
-	\caption{An Euler diagram illustrating a short exact sequence of linear spaces.}
-	\label{fig:short_exact_sequence_diagram}
+    \filldraw (-2.5,0) circle (1pt) node [below] {\scriptsize $0_{V_1}$};
+    \filldraw (0,0) circle (1pt) node [below] {\scriptsize $0_V$};
+    \filldraw (2.5,0) circle (1pt) node [below] {\scriptsize $0_{V_2}$};
+  \end{tikzpicture}
+  \caption{An Euler diagram illustrating a short exact sequence of linear spaces.}\label{fig:short_exact_sequence_diagram}
 \end{figure}
 
 Consider the same short exact sequence as above, we have the following equalities:
 \begin{itemize}
-	\item $\pi_1 \circ \iota_1 = \id_{V_1}$ because $\pi_1$ is a left inverse of $\iota_1$.
-	\item $\pi_2 \circ \iota_2 = \id_{V_2}$ because $\pi_2$ is a right inverse of $\iota_2$.
-	\item $\pi_2 \circ \iota_1 = 0$ because $\im(\iota_1) = \ker(\pi_2)$.
-	\item $\pi_1 \circ \iota_2 = 0$ because $\im(\iota_2) = \ker(\pi_1)$.
-	\item $\iota_1 \circ \pi_1 + \iota_2 \circ \pi_2 = \id_V$ because for all $v \in V$, we have $v = (v - \iota_2(\pi_2(v))) + \iota_2(\pi_2(v))$ where $v - \iota_2(\pi_2(v)) \in \im(\iota_1)$ and $\iota_2(\pi_2(v)) \in \im(\iota_2)$. Also, $\im(\iota_1) \cap \im(\iota_2) = \{0_V\}$.
+  \item $\pi_1 \circ \iota_1 = \id_{V_1}$ because $\pi_1$ is a left inverse of $\iota_1$.
+  \item $\pi_2 \circ \iota_2 = \id_{V_2}$ because $\pi_2$ is a right inverse of $\iota_2$.
+  \item $\pi_2 \circ \iota_1 = 0$ because $\im(\iota_1) = \ker(\pi_2)$.
+  \item $\pi_1 \circ \iota_2 = 0$ because $\im(\iota_2) = \ker(\pi_1)$.
+  \item $\iota_1 \circ \pi_1 + \iota_2 \circ \pi_2 = \id_V$ because for all $v \in V$, we have $v = (v - \iota_2(\pi_2(v))) + \iota_2(\pi_2(v))$ where $v - \iota_2(\pi_2(v)) \in \im(\iota_1)$ and $\iota_2(\pi_2(v)) \in \im(\iota_2)$. Also, $\im(\iota_1) \cap \im(\iota_2) = \{0_V\}$.
 \end{itemize}
 
 There is actually one more fact about the short exact sequence.
 \begin{proposition}
-	The linear space $V$ is isomorphic to the direct sum of the images of $\iota_1$ and $\iota_2$:
-	\[
-		V = \im(\iota_1) \oplus \im(\iota_2).
-	\]
-	Note that it is an internal direct sum.
+  The linear space $V$ is isomorphic to the internal direct sum of the images of $\iota_1$ and $\iota_2$:
+  \[
+    V = \im(\iota_1) \oplus \im(\iota_2).
+  \]
 \end{proposition}
 \begin{proof}
-	The meaning of $V \cong \im(\iota_1) \oplus \im(\iota_2)$ is that for any $x \in V$, it can be uniquely written as $x = x_1 + x_2$ where $x_i \in \im(\iota_i)$. Why? Suppose $x = x_1 + x_2 = x'_1 + x'_2$ where $x_i, x'_i \in \im(\iota_i)$. Then we have $(x_1 - x'_1) + (x_2 - x'_2) = 0$. Note that $x_1 - x'_1 \in \im(\iota_1)$ and $x_2 - x'_2 \in \im(\iota_2)$. Thus, we have $x_1 - x'_1 = 0$ and $x_2 - x'_2 = 0$. This shows the uniqueness.
+  The meaning of $V \cong \im(\iota_1) \oplus \im(\iota_2)$ is that for any $x \in V$, it can be uniquely written as $x = x_1 + x_2$ where $x_i \in \im(\iota_i)$. Why? Suppose $x = x_1 + x_2 = x'_1 + x'_2$ where $x_i, x'_i \in \im(\iota_i)$. Then we have $(x_1 - x'_1) + (x_2 - x'_2) = 0$. Note that $x_1 - x'_1 \in \im(\iota_1)$ and $x_2 - x'_2 \in \im(\iota_2)$. Thus, we have $x_1 - x'_1 = 0$ and $x_2 - x'_2 = 0$. This shows the uniqueness.
 
-	Note that all $V$, $V_1$ and $V_2$ are finite-dimensional. Then $V_2$ has a minimal spanning set, let say $S$. Then we construct $\iota_2 : s \mapsto \iota_2(s)$ where $\iota_2(s)$ is a choice of element from $\pi_2^{-1}(s) \neq \emptyset$ for each $s \in S$. Then we extend it to the whole space linearly. Thus, $\iota_2$ is injective.
+  Note that all $V$, $V_1$ and $V_2$ are finite-dimensional. Then $V_2$ has a minimal spanning set, let say $S$. Then we construct $\iota_2 : s \mapsto \iota_2(s)$ where $\iota_2(s)$ is a choice of element from $\pi_2^{-1}(s) \neq \emptyset$ for each $s \in S$. Then we extend it to the whole space linearly. Thus, $\iota_2$ is injective.
 
-	Then we want to prove that $\im(\iota_1)$ and $\im(\iota_2)$ are weakly independent. Assume that $x_1 + x_2 = 0$ where $x_i \in \im(\iota_i)$. Then we have $\pi_2(x_1 + x_2) = \pi_2(x_1) + \pi_2(x_2) = 0$. Note that $\pi_2(x_1) = 0$ because $x_1 \in \im(\iota_1) = \ker(\pi_2)$, the exactness of $V$. Thus, we have $\pi_2(x_2) = 0$. However, $\pi_2$ is injective on $\im(\iota_2)$ because $\pi_2 \circ \iota_2 = \id_{V_2}$. Thus, we have $x_2 = 0$ and $x_1 = 0$. This shows that $\im(\iota_1)$ and $\im(\iota_2)$ are weakly independent.
+  Then we want to prove that $\im(\iota_1)$ and $\im(\iota_2)$ are weakly independent. Assume that $x_1 + x_2 = 0$ where $x_i \in \im(\iota_i)$. Then we have $\pi_2(x_1 + x_2) = \pi_2(x_1) + \pi_2(x_2) = 0$. Note that $\pi_2(x_1) = 0$ because $x_1 \in \im(\iota_1) = \ker(\pi_2)$, the exactness of $V$. Thus, we have $\pi_2(x_2) = 0$. However, $\pi_2$ is injective on $\im(\iota_2)$ because $\pi_2 \circ \iota_2 = \id_{V_2}$. Thus, we have $x_2 = 0$ and $x_1 = 0$. This shows that $\im(\iota_1)$ and $\im(\iota_2)$ are weakly independent.
 
-	Finally, we want to prove that $\im(\iota_1) + \im(\iota_2) = V$. For all $x \in V$, we let $x_2 = \iota_2(\pi_2(x)) \in \im(\iota_2)$ and $x_1 = x - x_2$. Then we have to show that $x_1 \in \im(\iota_1) = \ker(\pi_2)$. Note that $\pi_2(x) = \pi_2(x_1) + \pi_2(x_2) = \pi_2(x_1) + \pi_2 \circ \iota_2(\pi_2(x)) = \pi_2(x_1) + \pi_2(x)$. This shows that $\pi_2(x_1) = 0$. Thus, $x_1 \in \ker(\pi_2) = \im(\iota_1)$. This shows that $\im(\iota_1) + \im(\iota_2) = V$.
+  Finally, we want to prove that $\im(\iota_1) + \im(\iota_2) = V$. For all $x \in V$, we let $x_2 = \iota_2(\pi_2(x)) \in \im(\iota_2)$ and $x_1 = x - x_2$. Then we have to show that $x_1 \in \im(\iota_1) = \ker(\pi_2)$. Note that $\pi_2(x) = \pi_2(x_1) + \pi_2(x_2) = \pi_2(x_1) + \pi_2 \circ \iota_2(\pi_2(x)) = \pi_2(x_1) + \pi_2(x)$. This shows that $\pi_2(x_1) = 0$. Thus, $x_1 \in \ker(\pi_2) = \im(\iota_1)$. This shows that $\im(\iota_1) + \im(\iota_2) = V$.
 
-	Actually $\pi_1$ is the projection from $\im(\iota_1) \oplus \im(\iota_2)$ to $\im(\iota_1)$ and it exists due to the uniqueness of the decomposition.
+  Actually $\pi_1$ is the projection from $\im(\iota_1) \oplus \im(\iota_2)$ to $\im(\iota_1)$ and it exists due to the uniqueness of the decomposition.
 \end{proof}
 
 The equalities can be summarized as follows:
 \[
-	\pi_m \circ \iota_n = \delta_{mn} \id_{V_n}, \quad \sum_{k=1}^{2} \iota_k \circ \pi_k = \id_V
+  \pi_m \circ \iota_n = \delta_{mn} \id_{V_n}, \quad \sum_{k=1}^{2} \iota_k \circ \pi_k = \id_V
 \]
 
 For the dimension of the spaces, we have:
 \[
-	\dim(V) = \dim(\im(\iota_1)) + \dim(\im(\iota_2)) = \dim(V_1) + \dim(V_2)
+  \dim(V) = \dim(\im(\iota_1)) + \dim(\im(\iota_2)) = \dim(V_1) + \dim(V_2)
 \]
 As $V_1 \cong \im(\iota_1)$ and $V_2 \cong \im(\iota_2)$. $\iota_1$ and $\iota_2$ are injective and $V_k \to \im{i_k}$ are surjective.
 
@@ -943,141 +938,135 @@ Also, we know that $\dim(V) \geq \dim(V_1)$ and $\dim(V) \geq \dim(V_2)$. Simila
 
 Using the exact sequence, we can prove the dimension formula for linear spaces easily.
 \begin{exercise}[Dimension Formula]
-	Show that the following short sequence of linear spaces is exact:
-	\begin{center}
-		\begin{tikzcd}
-			0 \arrow[r] & V_1 \cap V_2 \arrow[r, hook, "\iota" description] & V_1 \arrow[r, two heads, "\pi" description] & \quotient{(V_1 + V_2)}{V_2} \arrow[r] & 0
-		\end{tikzcd}
-	\end{center}
-	Then we can establish the natural isomorphism:
-	\[
-		\quotient{V_1}{(V_1 \cap V_2)} \cong \quotient{(V_1 + V_2)}{V_2},
-	\]
-	and the dimension formula:
-	\[
-		\dim(V_1 + V_2) = \dim(V_1) + \dim(V_2) - \dim(V_1 \cap V_2).
-	\]
-	[Hints: You may use the universal property of quotient space to construct the isomorphism.]
+  Show that the following short sequence of linear spaces is exact:
+  \begin{center}
+    \begin{tikzcd}
+      0 \arrow[r] & V_1 \cap V_2 \arrow[r, hook, "\iota" description] & V_1 \arrow[r, two heads, "\pi" description] & \quotient{(V_1 + V_2)}{V_2} \arrow[r] & 0
+    \end{tikzcd}
+  \end{center}
+  Then we can establish the natural isomorphism:
+  \[
+    \quotient{V_1}{(V_1 \cap V_2)} \simeq \quotient{(V_1 + V_2)}{V_2},
+  \]
+  and the dimension formula:
+  \[
+    \dim(V_1 + V_2) = \dim(V_1) + \dim(V_2) - \dim(V_1 \cap V_2).
+  \]
+  [Hints: You may use the universal property of quotient space to construct the isomorphism.]
 \end{exercise}
 
 There are two special questions which can be solved using exact sequences easily. Please refer to the Appendix~\ref{appendix:fudan_problems} to check the story about these two questions.
 
 Exact sequences can also be used to prove the Rank-Nullity Theorem.
 \begin{theorem}[Rank-Nullity Theorem]
-	For a \hyperref[def:linear_map]{linear map} $T : V \to W$ between \hyperref[def:finite_dimensional_linear_space]{finite-dimensional linear spaces}, we have:
-	\begin{equation}
-		\dim(V) = \rank(T) + \nullity(T).
-	\end{equation}
+  For a \hyperref[def:linear_map]{linear map} $T : V \to W$ between \hyperref[def:finite_dimensional_linear_space]{finite-dimensional linear spaces}, we have:
+  \begin{equation}
+    \dim(V) = \rank(T) + \nullity(T).
+  \end{equation}
 \end{theorem}
 \begin{proof}
-	Consider the following short exact sequence:
-	\begin{center}
-		\begin{tikzcd}[column sep=huge]
-			0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "T" description] & \im(T) \arrow[r] & 0
-		\end{tikzcd}
-	\end{center}
-	Then we have $V = \ker(T) \oplus \im(T)$. Thus, we have $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$. This shows that $\rank(T) + \nullity(T) = \dim(V)$.
+  Consider the following short exact sequence:
+  \begin{center}
+    \begin{tikzcd}[column sep=huge]
+      0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "T" description] & \im(T) \arrow[r] & 0
+    \end{tikzcd}
+  \end{center}
+  Then we have the internal direct sum decomposition $V = \ker(T) \oplus \im(T)$. Thus, we have $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$. This shows that $\rank(T) + \nullity(T) = \dim(V)$.
 \end{proof}
-
-\begin{remark}
-	Note that the direct sum decomposition $V = \ker(T) \oplus \im(T)$ in the proof is an internal direct sum decomposition.
-\end{remark}
 
 Moreover, we have the following corollary.
 \begin{corollary}
-	For a \hyperref[def:linear_map]{linear map} $T : V \to W$ between \hyperref[def:finite_dimensional_linear_space]{finite-dimensional linear spaces}, we have:
-	\[
-		\dim(W) = \rank(T) + \dim(\coker(T)).
-	\]
+  For a \hyperref[def:linear_map]{linear map} $T : V \to W$ between \hyperref[def:finite_dimensional_linear_space]{finite-dimensional linear spaces}, we have:
+  \[
+    \dim(W) = \rank(T) + \dim(\coker(T)).
+  \]
 \end{corollary}
 \begin{proof}
-	Consider the following short exact sequence:
-	\begin{center}
-		\begin{tikzcd}[column sep=huge]
-			0 \arrow[r] & \im(T) \arrow[r, hook, "\iota" description] & W \arrow[r, two heads, "\pi" description] & \coker(T) \arrow[r] & 0
-		\end{tikzcd}
-	\end{center}
-	Then we have $W \cong \im(T) \oplus \coker(T)$. Thus, we have $\dim(W) = \dim(\im(T)) + \dim(\coker(T))$. This shows that $\rank(T) + \dim(\coker(T)) = \dim(W)$.
+  Consider the following short exact sequence:
+  \begin{center}
+    \begin{tikzcd}[column sep=huge]
+      0 \arrow[r] & \im(T) \arrow[r, hook, "\iota" description] & W \arrow[r, two heads, "\pi" description] & \coker(T) \arrow[r] & 0
+    \end{tikzcd}
+  \end{center}
+  Then we have the external direct sum decomposition $W \cong \im(T) \oplus \coker(T)$. Thus, we have $\dim(W) = \dim(\im(T)) + \dim(\coker(T))$. This shows that $\rank(T) + \dim(\coker(T)) = \dim(W)$.
 \end{proof}
 
-\begin{remark}
-	However, unlike the case of kernel and image, the direct sum decomposition $W \cong \im(T) \oplus \coker(T)$ in the proof is an external direct sum decomposition. The difference is that $\im(T)$ is a subspace of $W$ while $\coker(T)$ is a quotient space of $W$. Thus, we cannot say that $W$ is the internal direct sum of $\im(T)$ and $\coker(T)$. Internal direct sum requires both components to be subspaces of the same space.
-\end{remark}
-
 \begin{corollary}
-	For a \hyperref[def:linear_map]{linear map} $T : V \to W$ between \hyperref[def:finite_dimensional_linear_space]{finite-dimensional linear spaces}, we have:
-	\[
-		\dim(V) = \nullity(T) + \dim(\coim(T)).
-	\]
+  For a \hyperref[def:linear_map]{linear map} $T : V \to W$ between \hyperref[def:finite_dimensional_linear_space]{finite-dimensional linear spaces}, we have:
+  \[
+    \dim(V) = \nullity(T) + \dim(\coim(T)).
+  \]
 \end{corollary}
 \begin{proof}
-	Consider the following short exact sequence:
-	\begin{center}
-		\begin{tikzcd}[column sep=huge]
-			0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "\pi" description] & \coim(T) \arrow[r] & 0
-		\end{tikzcd}
-	\end{center}
-	Then we have $V \cong \ker(T) \oplus \coim(T)$. Thus, we have $\dim(V) = \dim(\ker(T)) + \dim(\coim(T))$. This shows that $\nullity(T) + \dim(\coim(T)) = \dim(V)$.
+  Consider the following short exact sequence:
+  \begin{center}
+    \begin{tikzcd}[column sep=huge]
+      0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "\pi" description] & \coim(T) \arrow[r] & 0
+    \end{tikzcd}
+  \end{center}
+  Then we have $V \cong \ker(T) \oplus \coim(T)$. Thus, we have $\dim(V) = \dim(\ker(T)) + \dim(\coim(T))$. This shows that $\nullity(T) + \dim(\coim(T)) = \dim(V)$.
 \end{proof}
 
 \section{Canonical Form of Linear Maps}
 
 We have already known that any linear map $T : V \to W$ between finite-dimensional linear spaces can be represented by a matrix once we choose bases for $V$ and $W$. Moreover, we can choose appropriate coordinate maps such that the matrix representation of $T$ is in canonical form. How about the abstract form of the linear map without choosing any bases or coordinate maps? We can see it using exact sequences. Consider the following commutative diagram:
 \begin{center}
-	\begin{tikzcd}
-		0 \arrow[d] & 0 \\
-		\ker(T) \arrow[d, hook] & \coker(T) \arrow[u] \arrow[d, bend left, hook, "s_2" description, red] \\
-		V \arrow[d, two heads] \arrow[r, "T" description] \arrow[dr, ustblue, two heads, "\overline{T}" description] & W \arrow[u, two heads] \\
-		\coim(T) \arrow[d] \arrow[r, <->, "T'" description] \arrow[u, bend left, hook, "s_1" description, red] & \im(T) \arrow[u, hook] \\
-		0 & 0 \arrow[u]
-	\end{tikzcd}
+  \begin{tikzcd}
+    0 \arrow[d] & 0 \\
+    \ker(T) \arrow[d, hook] & \coker(T) \arrow[u] \arrow[d, bend left, hook, "s_2" description, ustred] \\
+    V \arrow[d, two heads] \arrow[r, "T" description] \arrow[dr, ustblue, two heads, "\overline{T}" description] & W \arrow[u, two heads] \\
+    \coim(T) \arrow[d] \arrow[r, <->, "T'" description] \arrow[u, bend left, hook, "s_1" description, ustred] & \im(T) \arrow[u, hook] \\
+    0 & 0 \arrow[u]
+  \end{tikzcd}
 \end{center}
-Here, each column is a short exact sequence and the square in the middle commutes. Also, $\overline{T}$ and $T'$ are isomorphisms. Moreover, we have the sections $s_1$ and $s_2$ that are the right inverses of the projections from $V$ to $\coim(T)$ and from $W$ to $\coker(T)$ respectively. Thus, we can decompose $V$ and $W$ into $V = \im(s_1) \oplus \ker(T)$ and $W = \im(s_2) \oplus \im(T)$ respectively. Note that they are internal direct sum decompositions. Then, with respect to these decompositions, the linear map $T : V \to W$ can be represented as:
+Here, each column is a short exact sequence and the square in the middle commutes. Also, $\overline{T}$ and $T'$ are isomorphisms. Moreover, we have the sections $s_1$ and $s_2$ that are the right inverses of the projections from $V$ to $\coim(T)$ and from $W$ to $\coker(T)$ respectively. Thus, we can decompose $V$ and $W$ into $V = \im(s_1) \oplus \ker(T)$ and $W = \im(s_2) \oplus \im(T)$ respectively. Then, with respect to these decompositions, the linear map $T : V \to W$ can be represented as:
 \begin{center}
-	\begin{tikzpicture}
-		\matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
-		{\im(s_1) \oplus \ker(T) & \im{T} \oplus \im(s_2) \\};
-		\path[->] (m-1-1) edge node[above] {$T = \begin{bmatrix}
-						\widetilde{T} & 0 \\
-						0             & 0
-					\end{bmatrix}$} (m-1-2);
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
+    {\im(s_1) \oplus \ker(T) & \im{T} \oplus \im(s_2) \\};
+    \path[arrow] (m-1-1) edge node[above] {$T = \begin{bmatrix}
+            \widetilde{T} & 0 \\
+            0             & 0
+          \end{bmatrix}$} (m-1-2);
+  \end{tikzpicture}
 \end{center}
 where $\widetilde{T} : \im(s_1) \to \im(T)$ is an isomorphism, as there are isomorphisms $T' : \coim(T) \to \im(T)$ and $\im(s_1) \cong \coim(T)$. Then the graph below commutes:
 \begin{center}
-	\begin{tikzcd}
-		\im(s_1) \arrow[r, <->, dashed, "\widetilde{T}" description] & \im(T) \\
-		\coim(T) \arrow[u, <->, "s_1" description] \arrow[ur, <->, "T'" description]
-	\end{tikzcd}
+  \begin{tikzcd}
+    \im(s_1) \arrow[r, <->, dashed, "\widetilde{T}" description] & \im(T) \\
+    \coim(T) \arrow[u, <->, "s_1" description] \arrow[ur, <->, "T'" description]
+  \end{tikzcd}
 \end{center}
 This shows the canonical form of a linear map without choosing any bases or coordinate maps.
 
 \begin{remark}
-	Note that the choice of the sections $s_1$ and $s_2$ is not unique. Thus, the internal direct sum decompositions of $V$ and $W$ are not unique. However, up to isomorphisms, the decompositions are unique. This is similar to the situation of choosing complements of subspaces.
+  Note that the choice of the sections $s_1$ and $s_2$ is not unique. Thus, the internal direct sum decompositions of $V$ and $W$ are not unique. However, up to isomorphisms, the decompositions are unique. This is similar to the situation of choosing complements of subspaces.
 \end{remark}
 
 The rank of the isomorphism $\widetilde{T}$ is unique and it is equal to the rank of the original linear map $T$. Moreover, after trivialisation, we have the following matrix representation of $T$:
 \begin{center}
-	\begin{tikzpicture}
-		\matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
-		{\F^r \oplus \F^{n - r} & \F^r \oplus \F^{m - r} \\};
-		\path[->] (m-1-1) edge node[above] {$\begin{bmatrix}
-						I_r & 0 \\
-						0   & 0
-					\end{bmatrix}$} (m-1-2);
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
+    {\F^r \oplus \F^{n - r} & \F^r \oplus \F^{m - r} \\};
+    \path[arrow] (m-1-1) edge node[above] {$\begin{bmatrix}
+            I_r & 0 \\
+            0   & 0
+          \end{bmatrix}$} (m-1-2);
+  \end{tikzpicture}
 \end{center}
+
+\clearpage{}
 
 \section{Exercises}
 
 \begin{problem}
 Show that
 \begin{enumerate}
-	\item for any $m \times n$ matrix $A$, the map ${(F^m)}^* \to {(F^n)}^*$ that sends $\alpha$ to $\alpha A$ is a linear map;
-	\item any linear map $\phi : {(F^m)}^* \to {(F^n)}^*$ is of the form $\phi(\alpha) = \alpha A$ for a unique matrix $A$;
-	\item the $i$-th row of $A$ is the row matrix $\hat{e}^i A$;
-	\item the $(i, j)$-th entry of $A$ is $a^i_j = \hat{e}^i A \vec{e}_j$;
-	\item $A = \sum_{1 \leq i \leq m, 1 \leq j \leq n} a^i_j E_i^j$ where $E_i^j = \vec{e}_i \hat{e}^j$.
+  \item for any $m \times n$ matrix $A$, the map ${(F^m)}^* \to {(F^n)}^*$ that sends $\alpha$ to $\alpha A$ is a linear map;
+  \item any linear map $\phi : {(F^m)}^* \to {(F^n)}^*$ is of the form $\phi(\alpha) = \alpha A$ for a unique matrix $A$;
+  \item the $i$-th row of $A$ is the row matrix $\hat{e}^i A$;
+  \item the $(i, j)$-th entry of $A$ is $a^i_j = \hat{e}^i A \vec{e}_j$;
+  \item $A = \sum_{1 \leq i \leq m, 1 \leq j \leq n} a^i_j E_i^j$ where $E_i^j = \vec{e}_i \hat{e}^j$.
 \end{enumerate}
 \end{problem}
 
@@ -1100,28 +1089,28 @@ With reference to Problem~\ref{prob:function_space_homomorphisms}, show that bot
 \begin{problem}
 Let $f: V \to W$ be a linear map. Show that
 \begin{enumerate}
-	\item $f$ is injective $\iff$ the kernel of $f$ is trivial (i.e., $\{0\}$);
-	\item $f$ is surjective $\iff$ the cokernel of $f$ is trivial;
-	\item $f$ is isomorphism $\iff$ both kernel and cokernel of $f$ are trivial;
-	\item $f$ is surjective $\iff$ for any linear map $g : W \to Z$, $gf = 0 \implies g = 0$;
-	\item $f$ is injective $\iff$ for any linear map $h : U \to V$, $fh = 0 \implies h = 0$.
+  \item $f$ is injective $\iff$ the kernel of $f$ is trivial (i.e., $\{0\}$);
+  \item $f$ is surjective $\iff$ the cokernel of $f$ is trivial;
+  \item $f$ is isomorphism $\iff$ both kernel and cokernel of $f$ are trivial;
+  \item $f$ is surjective $\iff$ for any linear map $g : W \to Z$, $gf = 0 \implies g = 0$;
+  \item $f$ is injective $\iff$ for any linear map $h : U \to V$, $fh = 0 \implies h = 0$.
 \end{enumerate}
 Now we assume that $V$ and $W$ are finite-dimensional, say $V = \F^n$ and $W = \F^m$, then $f$ is the multiplication by an $m \times n$ matrix $A$.
 \begin{enumerate}[resume]
-	\item Please translate the five statements above into the corresponding statements about matrix $A$.
+  \item Please translate the five statements above into the corresponding statements about matrix $A$.
 \end{enumerate}
 \end{problem}
 
 \begin{problem}
 Let $f: V \to W$ be a set map between linear spaces. Show that
 \begin{enumerate}
-	\item its graph $\Gamma_f:= \{(v, f(v)) \mid v \in V\}$ is a linear subspace of the product linear space $V \times W$ $\iff$ $f$ is a linear map.
-	\item in case $f$ is linear, its domain is naturally linear equivalent to its graph: domain $f = \Gamma_f$.
+  \item its graph $\Gamma_f:= \{(v, f(v)) \mid v \in V\}$ is a linear subspace of the product linear space $V \times W$ $\iff$ $f$ is a linear map.
+  \item in case $f$ is linear, its domain is naturally linear isomorphic to its graph: domain $f = \Gamma_f$.
 \end{enumerate}
 \end{problem}
 
 \begin{problem}
-We say a linear map $f: V \to W$ is \emph{imbedding} if the map $\overline{f} : V \to \im(f)$ that sends $v$ to $f(v)$ is a linear equivalence. Show that $f$ is imbedding $\iff$ $f$ is one-to-one.
+We say a linear map $f: V \to W$ is \emph{imbedding} if the map $\overline{f} : V \to \im(f)$ that sends $v$ to $f(v)$ is a linear isomorphism. Show that $f$ is imbedding $\iff$ $f$ is one-to-one.
 
 An optional exercise: We say a topological map, i.e., continuous map, $f: X \to Y$ is imbedding if the map $\overline{f} : X \to \im f$ that sends $x$ to $f(x)$ is a topological equivalence, i.e., homeomorphism. Show that $f$ is imbedding implies that $f$ is one-to-one, but the converse is not true.
 \end{problem}
@@ -1129,50 +1118,50 @@ An optional exercise: We say a topological map, i.e., continuous map, $f: X \to 
 \begin{problem}
 Let $W$ be a linear subspace of $V$ and $\sim$ be the equivalence relation on $V$:
 \[
-	v \sim v' \iff v - v' \in W.
+  v \sim v' \iff v - v' \in W.
 \]
 We let $\quotient{V}{W}$ denote the set of equivalence classes.
 \begin{enumerate}
-	\item Show that there is a unique linear structure on $\quotient{V}{W}$ such that the quotient map $q : V \to \quotient{V}{W}$ is a linear map.
-	\item Show that, for any linear map $\phi : V \to Z$ such that $\phi(v) = 0$ for any $v \in W$, there \emph{is} a \emph{unique} linear map $\overline{\phi} : \quotient{V}{W} \to Z$ such that \[ \overline{\phi} \circ q = \phi. \]
+  \item Show that there is a unique linear structure on $\quotient{V}{W}$ such that the quotient map $q : V \to \quotient{V}{W}$ is a linear map.
+  \item Show that, for any linear map $\phi : V \to Z$ such that $\phi(v) = 0$ for any $v \in W$, there \emph{is} a \emph{unique} linear map $\overline{\phi} : \quotient{V}{W} \to Z$ such that \[ \overline{\phi} \circ q = \phi. \]
 \end{enumerate}
 \textbf{Remark:} $\quotient{V}{W}$ is called the quotient space of $V$ by the subspace $W$ and is also called the algebraic normal space of $V$ in $W$. It is a fact that $\dim(\quotient{V}{W}) = \dim(V) - \dim(W)$.
 \begin{enumerate}[resume]
-	\item Let $W$ be a linear subspace of $V$. Then the inclusion map \begin{tikzcd}[cramped] W \arrow[r, "\iota" description] & V \end{tikzcd} is a linear map with image inside $V$. Please formulate and prove the universal property for the inclusion map $\iota$.
+  \item Let $W$ be a linear subspace of $V$. Then the inclusion map \begin{tikzcd}[cramped] W \arrow[r, "\iota" description] & V \end{tikzcd} is a linear map with image inside $V$. Please formulate and prove the universal property for the inclusion map $\iota$.
 \end{enumerate}
 \end{problem}
 
 \begin{problem}
 Consider an exact sequence
 \begin{center}
-	\begin{tikzcd}
-		0 \arrow[r] & V_1 \arrow[r, "\iota_1"] & V \arrow[r, "\pi_2"] & V_2 \arrow[r] & 0
-	\end{tikzcd}
+  \begin{tikzcd}
+    0 \arrow[r] & V_1 \arrow[r, "\iota_1"] & V \arrow[r, "\pi_2"] & V_2 \arrow[r] & 0
+  \end{tikzcd}
 \end{center}
 for which $V_2$ is assumed to have a minimal spanning set. Show that
 \begin{enumerate}
-	\item $\pi_2 \iota_1 = 0$ and $V_1 \cong \im \iota_1$;
-	\item $\pi_2$ has a right inverse. Let us fix a right inverse $\iota_2$;
-	\item $V = \im(\iota_1) \oplus \im(\iota_2)$, i.e., any $v$ in $V$ can be uniquely split into the sum of two, one is of the form $\iota_1(v_1)$ and the other is of the form $\iota_2(v_2)$;
-	\item the splitting in part (c) defines two maps, one is from $V$ to $V_1$ and is denoted by $\pi_1$ and the other is $\pi_2 : V \to V_2$;
-	\item $\pi_1$ is linear and the sequence
-	      \begin{center}
-		      \begin{tikzcd}
-			      0 & V_1 \arrow[l] & V \arrow[l, "\pi_1" description] & V_2 \arrow[l, "\iota_2" description] & 0 \arrow[l]
-		      \end{tikzcd}
-	      \end{center}
-	      is exact;
-	\item $j_k i_l = \delta_{kl}$, and $\iota_1 \pi_1 + \iota_2 \pi_2 = 1$ (i.e., $1_V$);
-	\item both $V_1$ and $V_2$ are finite-dimensional $\iff$ $V$ is finite-dimensional. In case $V$ is finite-dimensional, we have $\dim(V) = \dim(V_1) + \dim(V_2)$, thus $\dim(V_i) \leq \dim(V)$;
-	\item for any finite-dimensional linear space, none of its subspaces or quotient spaces has a bigger dimension.
+  \item $\pi_2 \iota_1 = 0$ and $V_1 \cong \im \iota_1$;
+  \item $\pi_2$ has a right inverse. Let us fix a right inverse $\iota_2$;
+  \item $V = \im(\iota_1) \oplus \im(\iota_2)$, i.e., any $v$ in $V$ can be uniquely split into the sum of two, one is of the form $\iota_1(v_1)$ and the other is of the form $\iota_2(v_2)$;
+  \item the splitting in part (c) defines two maps, one is from $V$ to $V_1$ and is denoted by $\pi_1$ and the other is $\pi_2 : V \to V_2$;
+  \item $\pi_1$ is linear and the sequence
+        \begin{center}
+          \begin{tikzcd}
+            0 & V_1 \arrow[l] & V \arrow[l, "\pi_1" description] & V_2 \arrow[l, "\iota_2" description] & 0 \arrow[l]
+          \end{tikzcd}
+        \end{center}
+        is exact;
+  \item $j_k i_l = \delta_{kl}$, and $\iota_1 \pi_1 + \iota_2 \pi_2 = 1$ (i.e., $1_V$);
+  \item both $V_1$ and $V_2$ are finite-dimensional $\iff$ $V$ is finite-dimensional. In case $V$ is finite-dimensional, we have $\dim(V) = \dim(V_1) + \dim(V_2)$, thus $\dim(V_i) \leq \dim(V)$;
+  \item for any finite-dimensional linear space, none of its subspaces or quotient spaces has a bigger dimension.
 \end{enumerate}
 \end{problem}
 
 \begin{problem}
-  Let $A$ be an $m \times n$-matrix, then the multiplication by $A$ defines a linear map $f: \F^n \to \F^m$. The rank of $A$, denoted by $\rank{A}$, is defined to be the rank of the linear map $f$. Note: $\im(f) = \col(A)$ --- the span of columns of $A$.
-  \begin{enumerate}
-    \item Show that the rank of a matrix is unchanged under both row operations and column operations;
-    \item Show that $\rank(A + B) \leq \rank(A) + \rank(B)$ provided that the matrix addition is defined here;
-    \item Show that $\rank(AB) \leq \rank(A)$ and $\rank(AB) \leq \rank(B)$ provided that the matrix multiplication is defined here.
-  \end{enumerate}
+Let $A$ be an $m \times n$-matrix, then the multiplication by $A$ defines a linear map $f: \F^n \to \F^m$. The rank of $A$, denoted by $\rank{A}$, is defined to be the rank of the linear map $f$. Note: $\im(f) = \col(A)$ --- the span of columns of $A$.
+\begin{enumerate}
+  \item Show that the rank of a matrix is unchanged under both row operations and column operations;
+  \item Show that $\rank(A + B) \leq \rank(A) + \rank(B)$ provided that the matrix addition is defined here;
+  \item Show that $\rank(AB) \leq \rank(A)$ and $\rank(AB) \leq \rank(B)$ provided that the matrix multiplication is defined here.
+\end{enumerate}
 \end{problem}

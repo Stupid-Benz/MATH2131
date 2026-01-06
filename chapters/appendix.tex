@@ -14,7 +14,7 @@ Students from Fudan University asked two hard problems but were completely cooke
 
 ``I say no problems are difficult in linear algebra under the assumption that you know linear algebra inside-out, you know every facts about it. Usually you will say I have seen this type of problems before, and then step 1, step 2 step 3, but this is a very wrong way to do it. This is the way that AI does it, but we are human, we are smarter than machine.
 
-``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this. Then I see a path from here to there.''
+``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this. Then I see a path from here to there''
 
 \begin{flushright}
 	--- Guowu Meng on the lecture of September 19, 2025.
@@ -29,20 +29,20 @@ Suppose we have three matrices $A$, $B$ and $C$. Then prove that
 \begin{center}
 	\begin{tikzcd}[row sep=huge, column sep=large]
 		0 \arrow[r] &
-		| [alias=D] | \col(BC) \arrow[r, hook, "C" description, red] \arrow[d, two heads, "A" description, blue] \arrow[rdr, start anchor=south, rounded corners, to path={
+		| [alias=D] | \col(BC) \arrow[r, hook, "C" description, ustred] \arrow[d, two heads, "A" description, ustblue] \arrow[rdr, start anchor=south, rounded corners, to path={
 					-- (B.south)
 					-- (\tikztotarget.north west)
 				}, orange, thick, -Stealth] \arrow[drr, start anchor=south, rounded corners, to path={
 					-- (D.south west)
 					|- (\tikztotarget.south west)
 				}, violet, thick, -Stealth] &
-		| [alias=B] | \col(B) \arrow[r, two heads, "\pi_1" description, blue] \arrow[d, two heads, "A" description, blue] \arrow[dr, two heads, teal] &
-		\quotient{\col(B)}{\col(BC)} \arrow[r] \arrow[d, two heads, "\exists ! \phi" description, dashed, ustblue] &
+		| [alias=B] | \col(B) \arrow[r, two heads, "\pi_1" description, ustblue] \arrow[d, two heads, "A" description, ustblue] \arrow[dr, two heads, teal] &
+		\quotient{\col(B)}{\col(BC)} \arrow[r] \arrow[d, two heads, "\phi" description, dashed, ustblue] &
 		0 \\
 
 		0 \arrow[r] &
-		| [alias=C] | \col(ABC) \arrow[r, hook, "C" description, red] &
-		| [alias=A] | \col(AB) \arrow[r, two heads, "\pi_2" description, blue] &
+		| [alias=C] | \col(ABC) \arrow[r, hook, "C" description, ustred] &
+		| [alias=A] | \col(AB) \arrow[r, two heads, "\pi_2" description, ustblue] &
 		\quotient{\col(AB)}{\col(ABC)} \arrow[r] &
 		0
 	\end{tikzcd}
