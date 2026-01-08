@@ -103,7 +103,7 @@ In this section, we introduce two important concepts associated with linear maps
   Show that a linear map $T : V \to W$ is surjective if and only if $\im(T) = W$.
 \end{exercise}
 
-\begin{definition}[Linear Isomorphism]\label{def:isomorphism}
+\begin{definition}[Linear Isomorphism]\label{def:linear_isomorphism}
   A \hyperref[def:linear_map]{linear map} $T : V \to W$ is a \emph{linear isomorphism}, or an \emph{isomorphism}, if $T$ has an inverse map $T^{-1} : W \to V$ that is also a linear map, i.e., there exists a linear map $T^{-1} : W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$. Then the linear spaces $V$ and $W$ are said to be \emph{isomorphic}, denoted by $V \cong W$.
 \end{definition}
 \begin{remark}
@@ -149,7 +149,7 @@ In this section, we introduce two important concepts associated with linear maps
 \section{Dimension of Linear Spaces}
 
 \begin{definition}[Finite-Dimensional Linear Space]\label{def:finite_dimensional_linear_space}
-  A linear space $V$ over $F$ is \emph{finite-dimensional} if there exists an \hyperref[def:isomorphism]{isomorphism} $T : V \to F^n$ for some positive integer $n$. The integer $n$ is the \emph{dimension} of the linear space $V$, denoted by $\dim_F(V)$ or simply $\dim(V)$.
+  A linear space $V$ over $F$ is \emph{finite-dimensional} if there exists an \hyperref[def:linear_isomorphism]{isomorphism} $T : V \to F^n$ for some positive integer $n$. The integer $n$ is the \emph{dimension} of the linear space $V$, denoted by $\dim_F(V)$ or simply $\dim(V)$.
 \end{definition}
 
 If a linear space is not finite-dimensional, it is called \emph{infinite-dimensional}. Then we have to show that the dimension is well-defined.
@@ -168,8 +168,8 @@ If a linear space is not finite-dimensional, it is called \emph{infinite-dimensi
 This proposition also shows a key result in linear algebra: up to isomorphism, there is only one linear space of dimension $n$ over a field $F$, which is $F^n$. We can also interpret the proposition by a commutative diagram:
 \begin{center}
   \begin{tikzcd}
-    V \arrow[r, <->, "T" description] \arrow[d, <->, "S" description] & F^n \\
-    F^m \arrow[ru, <->, "TS^{-1}" description, sloped]
+    V \arrow[r, <->, "T"] \arrow[d, <->, "S"] & F^n \\
+    F^m \arrow[ru, <->, "TS^{-1}", sloped]
   \end{tikzcd}
 \end{center}
 
@@ -280,6 +280,10 @@ The columns of the standard matrix $A$ are vectors in $F^m$. Dually, we can also
   \end{bmatrix}.
 \]
 
+\begin{definition}[Linear Functional]\label{def:linear_functional}
+  A \emph{linear functional}, or \emph{covector}, on a linear space $V$ over $F$ is a \hyperref[def:linear_map]{linear map} from $V$ to $F$.
+\end{definition}
+
 \begin{example}
   Consider the differential operator $D : F[x] \to F[x]$ defined by
   \[
@@ -337,7 +341,7 @@ The following definitions correspond to the definitions of kernel, image, rank a
 Consider two linear maps $T : F^n \to F^m$ and $S : F^m \to F^k$ with standard matrices $A$ and $B$, respectively. Then we want to find the standard matrix of the composition $ST : F^n \to F^k$.
 \begin{center}
   \begin{tikzcd}
-    F^n \arrow[r, "T", "A"'] \arrow[rr, bend left, "ST" description] \arrow[rr, bend right, "BA"' description] & F^m \arrow[r, "S", "B"'] & F^k
+    F^n \arrow[r, "T", "A"'] \arrow[rr, bend left, "ST"] \arrow[rr, bend right, "BA"'] & F^m \arrow[r, "S", "B"'] & F^k
   \end{tikzcd}
 \end{center}
 
@@ -446,8 +450,8 @@ Using elementary row and column operations, we can transform any matrix into a s
   Consider the following commutative diagram:
   \begin{center}
     \begin{tikzcd}
-      F^n \arrow[r, "A" description] \arrow[d, <->, "Q" description] & F^m \arrow[d, <->, "P" description] \\
-      F^n \arrow[r, "N" description]                                   & F^m
+      F^n \arrow[r, "A"] \arrow[d, <->, "Q"] & F^m \arrow[d, <->, "P"] \\
+      F^n \arrow[r, "N"]                                   & F^m
     \end{tikzcd}
   \end{center}
   Here, $P$ and $Q$ are invertible matrices obtained by performing finite sequence of row operations and column operations on the identity matrices of appropriate sizes respectively. Thus, we have $N = P A Q$.
@@ -506,9 +510,9 @@ Using elementary row and column operations, we can transform any matrix into a s
 Any linear map $T : V \to W$ between finite-dimensional linear spaces can be represented by a matrix once we choose bases for $V$ and $W$. The process of representing a linear map by a matrix is called \emph{trivialisation}. Consider the following commutative diagram:
 \begin{center}
   \begin{tikzcd}
-    V \arrow[r, "T" description] \arrow[d, <->, "{[-]_{\B_V}}" description] \arrow[dd, bend right=60, <->] & W \arrow[d, <->, "{[-]_{\B_W}}" description] \arrow[dd, bend left=60, <->] \\
-    F^n \arrow[r, "A" description] \arrow[d, <->, "Q" description] & F^m \arrow[d, <->, "P" description] \\
-    F^n \arrow[r, "N" description] & F^m
+    V \arrow[r, "T"] \arrow[d, <->, "{[-]_{\B_V}}"] \arrow[dd, bend right=60, <->] & W \arrow[d, <->, "{[-]_{\B_W}}"] \arrow[dd, bend left=60, <->] \\
+    F^n \arrow[r, "A"] \arrow[d, <->, "Q"] & F^m \arrow[d, <->, "P"] \\
+    F^n \arrow[r, "N"] & F^m
   \end{tikzcd}
 \end{center}
 Here, $\B_V$ and $\B_W$ are bases for $V$ and $W$ respectively, $A$ is the standard matrix of the linear map $T$ with respect to the chosen bases, and $N$ is the normal form of the matrix $A$. The coordinate maps ${[-]}_{\B_V}$ and ${[-]}_{\B_W}$ are the isomorphisms that map vectors in $V$ and $W$ to their coordinate representations in $F^n$ and $F^m$ respectively. The matrices $P$ and $Q$ are invertible matrices corresponding to the elementary row and column operations used to transform $A$ into its normal form $N$.
@@ -591,7 +595,7 @@ Consider a linear space $V$ and a subspace $W$ of $V$. Note that $(W, +)$ is an 
 It is straightforward to verify that this map satisfies the compatibility and unital conditions of a group action. One way is to check all conditions directly. Another way is to observe that the condtions follow from the properties of vector addition in $V$ with the commutative diagram:
 \begin{center}
   \begin{tikzcd}
-    W \times V \arrow[r, hook, "\iota \times \id_V" description] & V \times V \arrow[r, "+" description] & V
+    W \times V \arrow[r, hook, "\iota \times \id_V"] & V \times V \arrow[r, "+"] & V
   \end{tikzcd}
 \end{center}
 The orbits of this group action are the sets of the form $v + W = \{ v + w \mid w \in W \}$ for each $v \in V$. These orbits partition the linear space $V$ into disjoint subsets. Algebraically, such subsets are called \emph{cosets} of $W$ in $V$. The cosets can be written as $[v]$ or $\overline{v}$ for simplicity. In this book, we use the notation $[v]$ for cosets.
@@ -710,7 +714,7 @@ We also have the following properties about finite-dimensional linear spaces.
   \begin{center}
     \begin{tikzcd}
       V \arrow[r, two heads] & W \\
-      F^n \arrow[u, <->, "{[-]_{\B_V}}" description] \arrow[ur, two heads, dashed, "\phi" description]
+      F^n \arrow[u, <->, "{[-]_{\B_V}}"] \arrow[ur, two heads, dashed, "\phi"]
     \end{tikzcd}
   \end{center}
   Here, the map $\phi : F^n \to W$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $W$. Thus, $W$ is finitely generated.
@@ -718,8 +722,8 @@ We also have the following properties about finite-dimensional linear spaces.
   Similarly, consider the following commutative diagram:
   \begin{center}
     \begin{tikzcd}
-      W \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "\pi" description] & \quotient{V}{W} \\
-      & F^n \arrow[u, <->, "{[-]_{\B_V}}" description] \arrow[ur, two heads, dashed, "\phi" description]
+      W \arrow[r, hook, "\iota"] & V \arrow[r, two heads, "\pi"] & \quotient{V}{W} \\
+      & F^n \arrow[u, <->, "{[-]_{\B_V}}"] \arrow[ur, two heads, dashed, "\phi"]
     \end{tikzcd}
   \end{center}
   Then we know that $\phi : F^n \to \quotient{V}{W}$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $\quotient{V}{W}$. Thus, $\quotient{V}{W}$ is finitely generated.
@@ -731,11 +735,11 @@ Universal properties provide a powerful and abstract way to characterise mathema
 
 We first start with a simple example: the universal property of minimal spanning set.
 
-\begin{proposition}[Universal Property of Minimal Spanning Set]
+\begin{proposition}[Universal Property of Minimal Spanning Set]\label{prop:universal_property_minimal_spanning_set}
   Let $S$ be a minimal spanning set of a linear space $V$. For any linear space $Z$ and any set map $\phi : S \to Z$, there exists a unique linear map $\widetilde{\phi} : V \to Z$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
-      S \arrow[r, hook, "\iota" description] \arrow[rd, "\phi" description] & V \arrow[d, dashed, "\widetilde{\phi}" description] \\
+      S \arrow[r, hook, "\iota"] \arrow[rd, "\phi"] & V \arrow[d, dashed, "\widetilde{\phi}"] \\
       & Z
     \end{tikzcd}
   \end{center}
@@ -748,13 +752,13 @@ We first start with a simple example: the universal property of minimal spanning
   As $S$ is a minimal spanning set, there is only one way to express $v$ as a linear combination of elements in $S$. So, the definition of $\widetilde{\phi}$ is well-defined, i.e., does not depend on the choice of representation of $v$.
 \end{proof}
 
-This proposition shows that any set map from a minimal spanning set $S$ to another linear space $Z$ can be uniquely extended to a linear map from the entire space $V$, i.e., $\Map(S, Z) \cong \Hom(V, Z)$.
+This proposition shows that any set map from a minimal spanning set $S$ to another linear space $Z$ can be uniquely extended to a linear map from the entire space $V$, i.e., $\Map(S, Z) \simeq \Hom(V, Z)$.
 
-\begin{proposition}[Universal Property of Quotient Space]
+\begin{proposition}[Universal Property of Quotient Space]\label{prop:universal_property_quotient_space}
   Let $W$ be a subspace of a linear space $V$. For any linear space $Z$ and any linear map $\phi : V \to Z$ such that $W \subseteq \ker(\phi)$, there exists a unique linear map $\widetilde{\phi} : \quotient{V}{W} \to Z$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
-      V \arrow[r, two heads, "\pi" description] \arrow[rd, "\phi" description] & \quotient{V}{W} \arrow[d, dashed, "\widetilde{\phi}" description] \\
+      V \arrow[r, two heads, "\pi"] \arrow[rd, "\phi"] & \quotient{V}{W} \arrow[d, dashed, "\widetilde{\phi}"] \\
       & Z
     \end{tikzcd}
   \end{center}
@@ -800,11 +804,11 @@ There are two terms that is ``dual'' to the kernel and image of a linear map: th
 We also have universal properties for kernel and cokernel with the following commutative diagrams:
 \begin{center}
   \begin{tikzcd}
-    \color{ustblue} V \arrow[rr, bend left, "T" description] & \color{ustblue} \ker(T) \arrow[l, ustblue, hook', "\iota" description] \arrow[r, "0" description] & W \\
-    & \color{ustblue} Z \arrow[ul, ustblue, hook', "\phi" description] \arrow[u, ustblue, dashed, "\widetilde{\phi}" description] \arrow[ur, "0" description]
+    \color{ustblue} V \arrow[rr, bend left, "T"] & \color{ustblue} \ker(T) \arrow[l, ustblue, hook', "\iota"] \arrow[r, "0"] & W \\
+    & \color{ustblue} Z \arrow[ul, ustblue, hook', "\phi"] \arrow[u, ustblue, dashed, "\widetilde{\phi}"] \arrow[ur, "0"]
   \end{tikzcd}
   \begin{tikzcd}
-    V \arrow[rr, bend left, "T" description] \arrow[r, "0" description] \arrow[dr, "0" description] & \color{ustblue} \coker(T) \arrow[d, ustblue, dashed, "\widetilde{\phi}" description] & W \arrow[l, ustblue, two heads, "\pi" description] \arrow[dl, ustblue, "\phi" description] \\
+    V \arrow[rr, bend left, "T"] \arrow[r, "0"] \arrow[dr, "0"] & \color{ustblue} \coker(T) \arrow[d, ustblue, dashed, "\widetilde{\phi}"] & W \arrow[l, ustblue, two heads, "\pi"] \arrow[dl, ustblue, "\phi"] \\
     & \color{ustblue} Z &
   \end{tikzcd}
 \end{center}
@@ -819,7 +823,7 @@ Exact sequences are useful tools in linear algebra and homological algebra to st
   A sequence of \hyperref[def:linear_map]{linear maps} between linear spaces over $F$
   \begin{center}
     \begin{tikzcd}[background color=ustblue!5]
-      \cdots \arrow[r] & V_{i-1} \arrow[r, "f_{i-1}" description] & V_i \arrow[r, "f_i" description] & V_{i+1} \arrow[r] & \cdots
+      \cdots \arrow[r] & V_{i-1} \arrow[r, "f_{i-1}"] & V_i \arrow[r, "f_i"] & V_{i+1} \arrow[r] & \cdots
     \end{tikzcd}
   \end{center}
   is \emph{exact} at $V_i$ if the image of $f_{i-1}$ is equal to the kernel of $f_i$:
@@ -833,7 +837,7 @@ Exact sequences are useful tools in linear algebra and homological algebra to st
   Consider the following \emph{short exact sequence} of linear spaces:
   \begin{center}
     \begin{tikzcd}
-      0 \arrow[r] & V_1 \arrow[r, "\iota_1" description] & V \arrow [r, "\pi_2" description] & V_2 \arrow[r] & 0
+      0 \arrow[r] & V_1 \arrow[r, "\iota_1"] & V \arrow [r, "\pi_2"] & V_2 \arrow[r] & 0
     \end{tikzcd}
   \end{center}
   for which $V_2$ is assumed to have a minimal spanning set. Then
@@ -853,7 +857,7 @@ Exact sequences are useful tools in linear algebra and homological algebra to st
   The exact sequence becomes:
   \begin{center}
     \begin{tikzcd}
-      0 \arrow[r] & V_1 \arrow[r, ustgold, hook, "\iota_1" description] & V \arrow[r, ustblue, two heads, "\pi_2" description] \arrow[l, ustblue, two heads, "\pi_1" description, bend right] & V_2 \arrow[r] \arrow[l, ustgold, hook', "\iota_2" description, bend left] & 0
+      0 \arrow[r] & V_1 \arrow[r, ustgold, hook, "\iota_1"] & V \arrow[r, ustblue, two heads, "\pi_2"] \arrow[l, ustblue, two heads, "\pi_1", bend right] & V_2 \arrow[r] \arrow[l, ustgold, hook', "\iota_2", bend left] & 0
     \end{tikzcd}
   \end{center}
 \end{example}
@@ -941,7 +945,7 @@ Using the exact sequence, we can prove the dimension formula for linear spaces e
   Show that the following short sequence of linear spaces is exact:
   \begin{center}
     \begin{tikzcd}
-      0 \arrow[r] & V_1 \cap V_2 \arrow[r, hook, "\iota" description] & V_1 \arrow[r, two heads, "\pi" description] & \quotient{(V_1 + V_2)}{V_2} \arrow[r] & 0
+      0 \arrow[r] & V_1 \cap V_2 \arrow[r, hook, "\iota"] & V_1 \arrow[r, two heads, "\pi"] & \quotient{(V_1 + V_2)}{V_2} \arrow[r] & 0
     \end{tikzcd}
   \end{center}
   Then we can establish the natural isomorphism:
@@ -968,7 +972,7 @@ Exact sequences can also be used to prove the Rank-Nullity Theorem.
   Consider the following short exact sequence:
   \begin{center}
     \begin{tikzcd}[column sep=huge]
-      0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "T" description] & \im(T) \arrow[r] & 0
+      0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota"] & V \arrow[r, two heads, "T"] & \im(T) \arrow[r] & 0
     \end{tikzcd}
   \end{center}
   Then we have the internal direct sum decomposition $V = \ker(T) \oplus \im(T)$. Thus, we have $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$. This shows that $\rank(T) + \nullity(T) = \dim(V)$.
@@ -985,7 +989,7 @@ Moreover, we have the following corollary.
   Consider the following short exact sequence:
   \begin{center}
     \begin{tikzcd}[column sep=huge]
-      0 \arrow[r] & \im(T) \arrow[r, hook, "\iota" description] & W \arrow[r, two heads, "\pi" description] & \coker(T) \arrow[r] & 0
+      0 \arrow[r] & \im(T) \arrow[r, hook, "\iota"] & W \arrow[r, two heads, "\pi"] & \coker(T) \arrow[r] & 0
     \end{tikzcd}
   \end{center}
   Then we have the external direct sum decomposition $W \cong \im(T) \oplus \coker(T)$. Thus, we have $\dim(W) = \dim(\im(T)) + \dim(\coker(T))$. This shows that $\rank(T) + \dim(\coker(T)) = \dim(W)$.
@@ -1001,7 +1005,7 @@ Moreover, we have the following corollary.
   Consider the following short exact sequence:
   \begin{center}
     \begin{tikzcd}[column sep=huge]
-      0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota" description] & V \arrow[r, two heads, "\pi" description] & \coim(T) \arrow[r] & 0
+      0 \arrow[r] & \ker(T) \arrow[r, hook, "\iota"] & V \arrow[r, two heads, "\pi"] & \coim(T) \arrow[r] & 0
     \end{tikzcd}
   \end{center}
   Then we have $V \cong \ker(T) \oplus \coim(T)$. Thus, we have $\dim(V) = \dim(\ker(T)) + \dim(\coim(T))$. This shows that $\nullity(T) + \dim(\coim(T)) = \dim(V)$.
@@ -1013,9 +1017,9 @@ We have already known that any linear map $T : V \to W$ between finite-dimension
 \begin{center}
   \begin{tikzcd}
     0 \arrow[d] & 0 \\
-    \ker(T) \arrow[d, hook] & \coker(T) \arrow[u] \arrow[d, bend left, hook, "s_2" description, ustred] \\
-    V \arrow[d, two heads] \arrow[r, "T" description] \arrow[dr, ustblue, two heads, "\overline{T}" description] & W \arrow[u, two heads] \\
-    \coim(T) \arrow[d] \arrow[r, <->, "T'" description] \arrow[u, bend left, hook, "s_1" description, ustred] & \im(T) \arrow[u, hook] \\
+    \ker(T) \arrow[d, hook] & \coker(T) \arrow[u] \arrow[d, bend left, hook, "s_2", ustred] \\
+    V \arrow[d, two heads] \arrow[r, "T"] \arrow[dr, ustblue, two heads, "\overline{T}"] & W \arrow[u, two heads] \\
+    \coim(T) \arrow[d] \arrow[r, <->, "T'"] \arrow[u, bend left, hook, "s_1", ustred] & \im(T) \arrow[u, hook] \\
     0 & 0 \arrow[u]
   \end{tikzcd}
 \end{center}
@@ -1024,7 +1028,7 @@ Here, each column is a short exact sequence and the square in the middle commute
   \begin{tikzpicture}
     \matrix (m) [matrix of math nodes, column sep=4.8em, minimum width=2em]
     {\im(s_1) \oplus \ker(T) & \im{T} \oplus \im(s_2) \\};
-    \path[arrow] (m-1-1) edge node[above] {$T = \begin{bmatrix}
+    \path[arrow] (m-1-1) edge node[above] {$\begin{bmatrix}
             \widetilde{T} & 0 \\
             0             & 0
           \end{bmatrix}$} (m-1-2);
@@ -1033,8 +1037,8 @@ Here, each column is a short exact sequence and the square in the middle commute
 where $\widetilde{T} : \im(s_1) \to \im(T)$ is an isomorphism, as there are isomorphisms $T' : \coim(T) \to \im(T)$ and $\im(s_1) \cong \coim(T)$. Then the graph below commutes:
 \begin{center}
   \begin{tikzcd}
-    \im(s_1) \arrow[r, <->, dashed, "\widetilde{T}" description] & \im(T) \\
-    \coim(T) \arrow[u, <->, "s_1" description] \arrow[ur, <->, "T'" description]
+    \im(s_1) \arrow[r, <->, dashed, "\widetilde{T}"] & \im(T) \\
+    \coim(T) \arrow[u, <->, "s_1"] \arrow[ur, <->, "T'"]
   \end{tikzcd}
 \end{center}
 This shows the canonical form of a linear map without choosing any bases or coordinate maps.
@@ -1127,7 +1131,7 @@ We let $\quotient{V}{W}$ denote the set of equivalence classes.
 \end{enumerate}
 \textbf{Remark:} $\quotient{V}{W}$ is called the quotient space of $V$ by the subspace $W$ and is also called the algebraic normal space of $V$ in $W$. It is a fact that $\dim(\quotient{V}{W}) = \dim(V) - \dim(W)$.
 \begin{enumerate}[resume]
-  \item Let $W$ be a linear subspace of $V$. Then the inclusion map \begin{tikzcd}[cramped] W \arrow[r, "\iota" description] & V \end{tikzcd} is a linear map with image inside $V$. Please formulate and prove the universal property for the inclusion map $\iota$.
+  \item Let $W$ be a linear subspace of $V$. Then the inclusion map \begin{tikzcd}[cramped] W \arrow[r, "\iota"] & V \end{tikzcd} is a linear map with image inside $V$. Please formulate and prove the universal property for the inclusion map $\iota$.
 \end{enumerate}
 \end{problem}
 
@@ -1147,7 +1151,7 @@ for which $V_2$ is assumed to have a minimal spanning set. Show that
   \item $\pi_1$ is linear and the sequence
         \begin{center}
           \begin{tikzcd}
-            0 & V_1 \arrow[l] & V \arrow[l, "\pi_1" description] & V_2 \arrow[l, "\iota_2" description] & 0 \arrow[l]
+            0 & V_1 \arrow[l] & V \arrow[l, "\pi_1"] & V_2 \arrow[l, "\iota_2"] & 0 \arrow[l]
           \end{tikzcd}
         \end{center}
         is exact;
@@ -1164,4 +1168,11 @@ Let $A$ be an $m \times n$-matrix, then the multiplication by $A$ defines a line
   \item Show that $\rank(A + B) \leq \rank(A) + \rank(B)$ provided that the matrix addition is defined here;
   \item Show that $\rank(AB) \leq \rank(A)$ and $\rank(AB) \leq \rank(B)$ provided that the matrix multiplication is defined here.
 \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  \begin{enumerate}
+    \item Show that any matrix $A$ can be expressed as a product $BC$ of two matrices, where the columns of $B$ are linearly independent and the rows of $C$ are linearly independent. Is this decomposition $A = BC$ unique?
+    \item Let $V$ be an $n$-dimensional linear space over $F$, and let $S$ be a set of linearly independent vectors in $V$. Prove that $|S| \leq n$ and that $S$ can be expanded to form a minimal spanning set $\tilde{S}$ of $V$.
+  \end{enumerate}
 \end{problem}

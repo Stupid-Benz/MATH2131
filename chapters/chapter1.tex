@@ -225,10 +225,18 @@ However in the case of group homomorphisms, the existence of inverses ensures th
   Originally, there are 6 properties in the definition of ring homomorphism, including the preservation of additive identity, additive inverses and commutative property. However, it can be shown that these properties are consequences of the first property. Also, we do not include the trivial ring homomorphism, as it does not preserve the multiplicative identity.
 \end{remark}
 
-On top of homomorphisms, we have a special type of homomorphisms called endomorphism.
+On top of homomorphisms, we have special types of homomorphisms.
 
 \begin{definition}[Endomorphism]\label{def:endomorphism}
   An \emph{endomorphism} is a homomorphism $\phi : A \to A$ from an algebraic structure to itself.
+\end{definition}
+
+\begin{definition}[Isomorphisms]\label{def:isomorphism}
+  An \emph{isomorphism} is a homomorphism $\phi : A \to B$ between two algebraic structures that has an inverse homomorphism $\phi^{-1} : B \to A$ such that $\phi \circ \phi^{-1} = \id_{B}$ and $\phi^{-1} \circ \phi = \id_{A}$.
+\end{definition}
+
+\begin{definition}[Automorphism]\label{def:automorphism}
+  An \emph{automorphism} is an \hyperref[def:isomorphism]{isomorphism} $\phi : A \to A$ from an algebraic structure to itself.
 \end{definition}
 
 Several maps can form a set as below.
