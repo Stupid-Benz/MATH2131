@@ -15,7 +15,7 @@ There are several types of operations that can be performed on set $S$, includin
 \begin{definition}[Unary Operation]\label{def:unary_operation}
   A \emph{unary operation} on a set $S$ is a map
   \begin{align*}
-    f : S & \to S        \\
+    f \colon S & \to S        \\
     a     & \mapsto f(a)
   \end{align*}
 \end{definition}
@@ -32,7 +32,7 @@ There are several types of operations that can be performed on set $S$, includin
 \begin{definition}[Binary Operation]\label{def:binary_operation}
   A \emph{binary operation} on a set $S$ is a map
   \begin{align*}
-    \cdot : S \times S & \to S             \\
+    \cdot \colon S \times S & \to S             \\
     (a, b)             & \mapsto a \cdot b
   \end{align*}
 \end{definition}
@@ -181,7 +181,7 @@ Some common algebraic structures include:
 In mathematics, a \emph{homomorphism} is a structure-preserving map between two algebraic structures of the same type.
 
 \begin{definition}[Monoid Homomorphism]\label{def:monoid_homomorphism}
-  A \emph{monoid homomorphism} is a set map $\phi : M_1 \to M_2$ between two monoids $(M_1, \cdot)$ and $(M_2, \odot)$ which respects the \hyperref[def:monoidic_structure]{monoidic structure}, i.e., for all $a, b \in M_1$, we have
+  A \emph{monoid homomorphism} is a set map $\phi \colon M_1 \to M_2$ between two monoids $(M_1, \cdot)$ and $(M_2, \odot)$ which respects the \hyperref[def:monoidic_structure]{monoidic structure}, i.e., for all $a, b \in M_1$, we have
   \begin{itemize}
     \item $\phi(a \cdot b) = \phi(a) * \phi(b)$;
     \item $\phi(e_1) = e_2$, where $e_1$ and $e_2$ are the identity elements of $M_1$ and $M_2$ respectively.
@@ -189,7 +189,7 @@ In mathematics, a \emph{homomorphism} is a structure-preserving map between two 
 \end{definition}
 
 \begin{definition}[Group Homomorphism]\label{def:group_homomorphism}
-  A \emph{group homomorphism} is a set map $\phi : G_1 \to G_2$ between two groups $(G_1, \cdot)$ and $(G_2, \odot)$ which respects the \hyperref[def:groupic_structure]{groupic structure}, i.e., for all $a, b \in G_1$, we have
+  A \emph{group homomorphism} is a set map $\phi \colon G_1 \to G_2$ between two groups $(G_1, \cdot)$ and $(G_2, \odot)$ which respects the \hyperref[def:groupic_structure]{groupic structure}, i.e., for all $a, b \in G_1$, we have
   \begin{itemize}
     \item $\phi(a \cdot b) = \phi(a) * \phi(b)$;
     \item $\phi(e_1) = e_2$, where $e_1$ and $e_2$ are the identity elements of $G_1$ and $G_2$ respectively;
@@ -201,7 +201,7 @@ In mathematics, a \emph{homomorphism} is a structure-preserving map between two 
   The second and third properties in the definition of group homomorphism are consequences of the first property.
 \end{proposition}
 \begin{proof}
-  Let $\phi : G_1 \to G_2$ be a group homomorphism satisfying the first property. For any $a \in G_1$, we have
+  Let $\phi \colon G_1 \to G_2$ be a group homomorphism satisfying the first property. For any $a \in G_1$, we have
   \[ \phi(a) = \phi(a \cdot e_1) = \phi(a) * \phi(e_1). \]
   So $\phi(e_1)$ is the identity element of $G_2$, i.e., $\phi(e_1) = e_2$. Similarly, we have
   \[ e_2 = \phi(e_1) = \phi(a \cdot a^{-1}) = \phi(a) * \phi(a^{-1}). \]
@@ -213,7 +213,7 @@ For monoid homomorphisms, the second property cannot be derived from the first p
 However in the case of group homomorphisms, the existence of inverses ensures that there is only one element that can be idempotent under the group operation, which is the identity element. Thus, for group homomorphisms, the second property can be derived from the first property.
 
 \begin{definition}[Ring Homomorphism]\label{def:ring_homomorphism}
-  A \emph{ring homomorphism} is a set map $\phi : R_1 \to R_2$ between two rings $(R_1, +, \cdot)$ and $(R_2, \oplus, \odot)$ which respects the \hyperref[def:ringic_structure]{ringic structure}, i.e., for all $a, b \in R_1$, we have
+  A \emph{ring homomorphism} is a set map $\phi \colon R_1 \to R_2$ between two rings $(R_1, +, \cdot)$ and $(R_2, \oplus, \odot)$ which respects the \hyperref[def:ringic_structure]{ringic structure}, i.e., for all $a, b \in R_1$, we have
   \begin{itemize}
     \item $\phi(a + b) = \phi(a) \oplus \phi(b)$;
     \item $\phi(a \cdot b) = \phi(a) \odot \phi(b)$;
@@ -228,7 +228,7 @@ However in the case of group homomorphisms, the existence of inverses ensures th
 On top of homomorphisms, we have a special type of homomorphisms called endomorphism.
 
 \begin{definition}[Endomorphism]\label{def:endomorphism}
-  An \emph{endomorphism} is a homomorphism $\phi : A \to A$ from an algebraic structure to itself.
+  An \emph{endomorphism} is a homomorphism $\phi \colon A \to A$ from an algebraic structure to itself.
 \end{definition}
 
 Several maps can form a set as below.
@@ -240,12 +240,12 @@ Several maps can form a set as below.
 \begin{definition}[Endomorphism Ring]\label{def:endomorphism_ring}
   Given an \hyperref[def:abelian_structure]{abelian group} $(G, +)$, the \emph{endomorphism ring} of $G$, denoted by $\End(G)$, is the set of all \hyperref[def:endomorphism]{endomorphisms} from $G$ to itself, equipped with the pointwise addition and composition of functions as the two binary operations. The two operations are defined as follows:
   \begin{align*}
-    + : \End{G} \times \End{G}     & \to \End{G}                                                                     \\
-    (\phi, \psi)                   & \mapsto (\phi + \psi) : G \to G, \quad (\phi + \psi)(a) = \phi(a) + \psi(a)     \\
-    \circ : \End{G} \times \End{G} & \to \End{G}                                                                     \\
-    (\phi, \psi)                   & \mapsto (\phi \circ \psi) : G \to G, \quad (\phi \circ \psi)(a) = \phi(\psi(a))
+    + \colon \End{G} \times \End{G}     & \to \End{G}                                                                     \\
+    (\phi, \psi)                   & \mapsto (\phi + \psi) \colon G \to G, \quad (\phi + \psi)(a) = \phi(a) + \psi(a)     \\
+    \circ \colon \End{G} \times \End{G} & \to \End{G}                                                                     \\
+    (\phi, \psi)                   & \mapsto (\phi \circ \psi) \colon G \to G, \quad (\phi \circ \psi)(a) = \phi(\psi(a))
   \end{align*}
-  The identity element for the addition operation is the zero map $0 : G \to G$ defined by $0(a) = 0_G$ for all $a \in G$, where $0_G$ is the identity element of the group $(G, +)$. The identity element for the composition operation is the identity map $\id_G : G \to G$ defined by $\id_G(a) = a$ for all $a \in G$.
+  The identity element for the addition operation is the zero map $0 \colon G \to G$ defined by $0(a) = 0_G$ for all $a \in G$, where $0_G$ is the identity element of the group $(G, +)$. The identity element for the composition operation is the identity map $\id_G \colon G \to G$ defined by $\id_G(a) = a$ for all $a \in G$.
 \end{definition}
 
 \begin{remark}
@@ -259,15 +259,15 @@ A linear space, or vector space, is a set with a linear structure defined over a
 \begin{definition}[Linear Structure]\label{def:linear_structure}
   A \emph{linear structure} on a set $V$ over a \hyperref[def:field]{field} $F$ is a pair of \hyperref[def:binary_operation]{binary operations} $(+, \cdot)$ where $(V, +)$ is an \hyperref[def:abelian_structure]{abelian group} with a ring action $\cdot$ of $F$ on $(V, +)$. A ring action of $F$ on $(V, +)$ is equivalent to a \hyperref[def:ring_homomorphism]{ring homomorphism}
   \begin{align*}
-    \cdot : F & \to \End(V)                                                              \\
-    \alpha    & \mapsto \alpha \cdot : V \to V, \quad (\alpha \cdot)(v) = \alpha \cdot v
+    \cdot \colon F & \to \End(V)                                                              \\
+    \alpha    & \mapsto \alpha \cdot \colon V \to V, \quad (\alpha \cdot)(v) = \alpha \cdot v
   \end{align*}
 \end{definition}
 
 \begin{remark}
   The actual definition of a ring action of $F$ over $(V, +)$ is a map
   \begin{align*}
-    \cdot : F \times V & \to V                  \\
+    \cdot \colon F \times V & \to V                  \\
     (\alpha, v)        & \mapsto \alpha \cdot v
   \end{align*}
   such that it satisfies the following four properties for all $\alpha, \beta \in F$ and $u, v \in V$:
@@ -299,10 +299,10 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \begin{example}\label{ex:function_space}
   The set of all $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \}$, denoted by $\Map(X, F)$ or $F^X$, forms a linear space over $F$ with the following operations:
   \begin{align*}
-    + : \Map(X, F) \times \Map(X, F) & \to \Map(X, F)                                                                    \\
-    (f, g)                           & \mapsto (f + g) : X \to F, \quad (f + g)(x) = f(x) + g(x)                         \\
-    \cdot : F \times \Map(X, F)      & \to \Map(X, F)                                                                    \\
-    (\alpha, f)                      & \mapsto (\alpha \cdot f) : X \to F, \quad (\alpha \cdot f)(x) = \alpha \cdot f(x)
+    + \colon \Map(X, F) \times \Map(X, F) & \to \Map(X, F)                                                                    \\
+    (f, g)                           & \mapsto (f + g) \colon X \to F, \quad (f + g)(x) = f(x) + g(x)                         \\
+    \cdot \colon F \times \Map(X, F)      & \to \Map(X, F)                                                                    \\
+    (\alpha, f)                      & \mapsto (\alpha \cdot f) \colon X \to F, \quad (\alpha \cdot f)(x) = \alpha \cdot f(x)
   \end{align*}
 \end{example}
 
@@ -311,7 +311,7 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \end{remark}
 
 \begin{example}
-  The set of all finitely supported $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \mid f(x) \neq 0_F \text{ for only finitely many } x \in X \}$, denoted by $F[X]$ or $\Map_{\fin}(X, F)$ or $F^{(X)}$, forms a linear space over $F$ with the same operations as in the previous example.
+  The set of all finitely supported $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f \colon X \to F \mid f(x) \neq 0_F \text{ for only finitely many } x \in X \}$, denoted by $F[X]$ or $\Map_{\fin}(X, F)$ or $F^{(X)}$, forms a linear space over $F$ with the same operations as in the previous example.
 \end{example}
 
 \begin{example}
@@ -325,7 +325,7 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \begin{example}
   The set of all \emph{column vectors} with $n$ entries from $F$, denoted by $F^n$, forms a linear space over $F$ with the operations defined entrywisely.
   \begin{align*}
-    + : F^n \times F^n                                                                                                  & \to F^n                                                                & \cdot : F \times F^n                                         & \to F^n                                                                              \\
+    + \colon F^n \times F^n                                                                                                  & \to F^n                                                                & \cdot \colon F \times F^n                                         & \to F^n                                                                              \\
     (\vec{u}, \vec{v})                                                                                                  & \mapsto \vec{u} + \vec{v}                                              & (\alpha, \vec{v})                                            & \mapsto \alpha \cdot \vec{v}                                                         \\
     \left(\begin{bmatrix} u^1 \\ \vdots \\ u^n \end{bmatrix}, \begin{bmatrix} v^1 \\ \vdots \\ v^n \end{bmatrix}\right) & \mapsto \begin{bmatrix} u^1 + v^1 \\ \vdots \\ u^n + v^n \end{bmatrix} & \left(\alpha, \begin{bmatrix} v^1 \\ \vdots \\ v^n \end{bmatrix}\right) & \mapsto \begin{bmatrix} \alpha \cdot v^1 \\ \vdots \\ \alpha \cdot v^n \end{bmatrix}
   \end{align*}
@@ -464,7 +464,7 @@ Also, similar to minimal spanning sets, we have the following definition.
 \end{remark}
 
 \begin{example}
-  Let $X$ be a non-empty set. For each $x \in X$, define the Kronecker delta function $\delta_x : X \to F$ by
+  Let $X$ be a non-empty set. For each $x \in X$, define the Kronecker delta function $\delta_x \colon X \to F$ by
   \begin{equation}\label{eq:delta_function}
     \delta_x(t) = \begin{cases}
       1, & \text{if } t = x; \\
@@ -538,7 +538,7 @@ For internal direct sum, $W_1 \oplus W_2 = \{ w_1 + w_2 \mid w_i \in W_i, i = 1,
 \begin{problem}\label{prob:function_space_homomorphisms}
   Let $F$ be a field and $X$ be a non-empty set. Recall that $\Map(X, F)$ is the set of $F$-valued functions on $X$ and $F[X]$ is the set of finitely-supported $F$-valued functions on $X$. Both $\Map(X, F)$ and $F[X]$ are linear spaces over the field $F$.
 
-  Let $T: X \to Y$ be a set map and $T_*: F[X] \to F[Y]$ be the map such that 
+  Let $T \colon X \to Y$ be a set map and $T_* \colon F[X] \to F[Y]$ be the map such that 
   \[
       T_*(f)(y) = \sum_{x \in T^{-1}(y)} f(x), \qquad \forall y \in Y.
   \]
@@ -547,8 +547,8 @@ For internal direct sum, $W_1 \oplus W_2 = \{ w_1 + w_2 \mid w_i \in W_i, i = 1,
   \begin{enumerate}
     \item Show that ${(1_X)}_* = 1_{F[X]}$ for all non-empty set $X$.
     \item Show that ${(TS)}_* = T_* S_*$ for all set maps $T$ and $S$ such that the composition $TS$ is defined.
-    \item For any set map $T: X \to Y$, we have an induced map $T^*: \Map(Y, F) \to \Map(X, F)$ via the formula $T^*f = fT$. Show that $1_X^* = 1_{\Map(X, F)}$ and ${(TS)}^* = S^*T^*$.
-    \item Can we get a natural map from $\Map(X, F)$ to $\Map(Y, F)$ or from $F[Y]$ to $F[X]$ for any set map $T: X \to Y$ between two infinite sets $X$ and $Y$?
+    \item For any set map $T \colon X \to Y$, we have an induced map $T^* \colon \Map(Y, F) \to \Map(X, F)$ via the formula $T^*f = fT$. Show that $1_X^* = 1_{\Map(X, F)}$ and ${(TS)}^* = S^*T^*$.
+    \item Can we get a natural map from $\Map(X, F)$ to $\Map(Y, F)$ or from $F[Y]$ to $F[X]$ for any set map $T \colon X \to Y$ between two infinite sets $X$ and $Y$?
   \end{enumerate}
 \end{problem}
 
