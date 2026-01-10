@@ -106,7 +106,7 @@ In this section, we introduce two important concepts associated with linear maps
   Show that a linear map $T \colon V \to W$ is surjective if and only if $\im(T) = W$.
 \end{exercise}
 
-\begin{definition}[Linear Isomorphism]\label{def:isomorphism}
+\begin{definition}[Linear Isomorphism]\label{def:linear_isomorphism}
   A \hyperref[def:linear_map]{linear map} $T \colon V \to W$ is a \emph{linear isomorphism}, or an \emph{isomorphism}, if $T$ has an inverse map $T^{-1} \colon W \to V$ that is also a linear map, i.e., there exists a linear map $T^{-1} \colon W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$. Then the linear spaces $V$ and $W$ are said to be \emph{isomorphic}, denoted by $V \cong W$.
 \end{definition}
 \begin{remark}
@@ -152,7 +152,7 @@ In this section, we introduce two important concepts associated with linear maps
 \section{Dimension of Linear Spaces}
 
 \begin{definition}[Finite-Dimensional Linear Space]\label{def:finite_dimensional_linear_space}
-  A linear space $V$ over $F$ is \emph{finite-dimensional} if there exists an \hyperref[def:isomorphism]{isomorphism} $T \colon V \to F^n$ for some positive integer $n$. The integer $n$ is the \emph{dimension} of the linear space $V$, denoted by $\dim_F(V)$ or simply $\dim(V)$.
+  A linear space $V$ over $F$ is \emph{finite-dimensional} if there exists an \hyperref[def:linear_isomorphism]{isomorphism} $T \colon V \to F^n$ for some positive integer $n$. The integer $n$ is the \emph{dimension} of the linear space $V$, denoted by $\dim_F(V)$ or simply $\dim(V)$.
 \end{definition}
 
 If a linear space is not finite-dimensional, it is called \emph{infinite-dimensional}. Then we have to show that the dimension is well-defined.

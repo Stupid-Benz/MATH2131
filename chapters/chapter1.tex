@@ -232,11 +232,11 @@ On top of homomorphisms, we have special types of homomorphisms.
 \end{definition}
 
 \begin{definition}[Isomorphisms]\label{def:isomorphism}
-  An \emph{isomorphism} is a homomorphism $\phi : A \to B$ between two algebraic structures that has an inverse homomorphism $\phi^{-1} : B \to A$ such that $\phi \circ \phi^{-1} = \id_{B}$ and $\phi^{-1} \circ \phi = \id_{A}$.
+  An \emph{isomorphism} is a homomorphism $\phi \colon A \to B$ between two algebraic structures that has an inverse homomorphism $\phi^{-1} \colon B \to A$ such that $\phi \circ \phi^{-1} = \id_{B}$ and $\phi^{-1} \circ \phi = \id_{A}$.
 \end{definition}
 
 \begin{definition}[Automorphism]\label{def:automorphism}
-  An \emph{automorphism} is an \hyperref[def:isomorphism]{isomorphism} $\phi : A \to A$ from an algebraic structure to itself.
+  An \emph{automorphism} is an \hyperref[def:isomorphism]{isomorphism} $\phi \colon A \to A$ from an algebraic structure to itself.
 \end{definition}
 
 Several maps can form a set as below.
@@ -305,7 +305,7 @@ The first four axioms ensure that $(V, +)$ is an abelian group. The fifth axiom 
 \end{example}
 
 \begin{example}\label{ex:function_space}
-  The set of all $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f : X \to F \}$, denoted by $\Map(X, F)$ or $F^X$, forms a linear space over $F$ with the following operations:
+  The set of all $F$-valued functions defined on a non-empty set $X$, i.e., $\{ f \colon X \to F \}$, denoted by $\Map(X, F)$ or $F^X$, forms a linear space over $F$ with the following operations:
   \begin{align*}
     + \colon \Map(X, F) \times \Map(X, F) & \to \Map(X, F)                                                                    \\
     (f, g)                           & \mapsto (f + g) \colon X \to F, \quad (f + g)(x) = f(x) + g(x)                         \\

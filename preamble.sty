@@ -14,6 +14,7 @@
 
 \usepackage{musicography} % For \musNatural
 
+
 %-----------------------------------------------------%
 %%%% Hyperref
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -42,18 +43,39 @@
 \usepackage{tikz}
 \usetikzlibrary{cd}
 \usetikzlibrary{arrows, arrows.meta, positioning, calc, decorations.pathreplacing, decorations.markings}
-\tikzcdset{arrow style=tikz, diagrams={>={Straight Barb[scale=0.8]}}}
-
 \tikzstyle{arrow} = [-{Straight Barb[scale=0.8]}, line width=0.2mm]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{myarrow} = [-Stealth, shorten >=5pt]
+
+\tikzset{
+  set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+  set arrow inside={end/.initial=>, opt/.initial=},
+  /pgf/decoration/Mark/.style={
+      mark/.expanded=at position #1 with
+        {
+          \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+        }
+    },
+  arrow inside/.style 2 args={
+      set arrow inside={#1},
+      postaction={
+          decorate,decoration={
+              markings,Mark/.list={#2}
+            }
+        }
+    },
+}
 
 \tikzcdset{
+  arrow style=tikz,
+  diagrams={>={Straight Barb[scale=0.8]}},
   /tikz/commutative diagrams/every diagram/.append style={
       row sep=huge,
       column sep=huge
     },
   labels=description,
 }
+
+\newcommand{\point}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
 
 %-----------------------------------------------------%
 %%%% Chinese characters
@@ -124,6 +146,20 @@
 
 \DeclareMathAlphabet{\eur}{U}{zeus}{m}{n}
 \renewcommand{\mathcal}[1]{\eur{#1}}
+
+%-----------------------------------------------------%
+%%%% bibliography
+\usepackage[
+  backend=biber, % Use the biber engine for compiling the bibliography
+  bibstyle=numeric, % Main bibliography style
+  citestyle=numeric, % In-text citation style
+  sorting=nyt, % Sort references in the bibliography by name, then year, then title
+  sortcites=true, % If multiple citekeys are passed to a citation command, sort them in the citation
+  abbreviate=false, % Suppress abbreviations such as "Ed." for Editor
+  backref=true, % List the page where references were cited in the bibliography
+  defernumbers=true,
+]{biblatex}
+\addbibresource{reference.bib}
 
 %-----------------------------------------------------%
 %%%% Templating commands

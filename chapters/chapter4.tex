@@ -6,7 +6,7 @@ We have learnt what is a bilinear map between vector spaces. However, bilinear m
 
 \subsection{Characterisation via Universal Property}
 We start with the following universal property that characterises tensor products.
-\begin{proposition}[Universal Property of Tensor Product]
+\begin{proposition}[Universal Property of Tensor Product]\label{prop:universal_property_tensor_product}
   Let $V$ and $W$ be vector spaces over $F$. For any linear space $Z$ and any bilinear map $\phi \colon V \times W \to Z$, there exists a unique linear map $\widetilde{\phi} \colon V \otimes W \to Z$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
@@ -247,7 +247,7 @@ The tensor algebra $(\T(V), \otimes)$ is a graded unital associative algebra ove
 \end{itemize}
 
 Similarly, we can characterise tensor algebras via a universal property.
-\begin{proposition}[Universal Property of Tensor Algebra]
+\begin{proposition}[Universal Property of Tensor Algebra]\label{prop:universal_property_tensor_algebra}
   Let $V$ be a finite-dimensional $F$-linear space. For any graded unital associative $F$-algebra $(A^{\smallbullet}, \cdot)$ and any graded linear map with graded degree zero $\phi \colon V \to A^{\smallbullet}$, there exists a unique graded algebra homomorphism with graded degree zero $\widetilde{\phi} \colon \T(V) \to A^{\smallbullet}$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
@@ -312,7 +312,7 @@ As the name suggests, symmetric algebras are algebras that are `commutative' in 
 \end{definition}
 The symmetrising ideal is the ideal completion of the relation $v \otimes w = w \otimes v$ for all $v, w \in V$, which enforces the commutativity condition in the symmetric algebra. Thus, the symmetric algebra is a graded unital commutative associative algebra over $F$. We can also characterise symmetric algebras via a universal property.
 
-\begin{proposition}[Universal Property of Symmetric Algebra]
+\begin{proposition}[Universal Property of Symmetric Algebra]\label{prop:universal_property_symmetric_algebra}
   Let $V$ be a finite-dimensional $F$-linear space. For any graded unital commutative associative $F$-algebra $(A^{\smallbullet}, \cdot)$ and any graded linear map with graded degree zero $\phi \colon V \to A^{\smallbullet}$, there exists a unique graded algebra homomorphism with graded degree zero $\widetilde{\phi} \colon \Sym(V) \to A^{\smallbullet}$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}[column sep=normal]
@@ -354,7 +354,7 @@ The dimension of the $k$-th symmetric power is given by the following formula:
 \[ \dim(\Sy^k(V)) = \binom{\dim(V) + k - 1}{k}. \]
 Similarly, we can characterise symmetric powers via a universal property.
 
-\begin{proposition}[Universal Property of Symmetric Power]
+\begin{proposition}[Universal Property of Symmetric Power]\label{prop:universal_property_symmetric_power}
   Let $V$ be a finite-dimensional $F$-linear space. For any finite-dimensional $F$-linear space $W$ and any symmetric bilinear map $\phi \colon V^k \to W$ ($k$ times), there exists a unique linear map $\widetilde{\phi} \colon \Sy^k(V) \to W$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}[column sep=normal]
@@ -378,7 +378,7 @@ Exterior algebras are algebras that are `skew-symmetric' in some sense.
 \end{remark}
 The antisymmetrising ideal is the ideal completion of the relation $v \otimes w = - (w \otimes v)$ for all $v, w \in V$, which enforces the skew-symmetry condition in the exterior algebra. Thus, the exterior algebra is a graded unital associative algebra over $F$. We can also characterise exterior algebras via a universal property.
 
-\begin{proposition}[Universal Property of Exterior Algebra]
+\begin{proposition}[Universal Property of Exterior Algebra]\label{prop:universal_property_exterior_algebra}
   Let $V$ be a finite-dimensional $F$-linear space. For any graded unital associative $F$-algebra $(A^{\smallbullet}, \cdot)$ and any graded linear map with graded degree zero $\phi \colon V \to A^{\smallbullet}$ satisfying $\phi(v) \cdot \phi(v) = 0$ for all $v \in V$, there exists a unique graded algebra homomorphism with graded degree zero $\widetilde{\phi} \colon \Ext(V) \to A^{\smallbullet}$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}[column sep=normal]
@@ -420,7 +420,7 @@ The dimension of the $k$-th exterior power is given by the following formula:
 \[ \dim(\Lambda^k(V)) = \binom{\dim(V)}{k} \]
 Similarly, we can characterise exterior powers via a universal property.
 
-\begin{proposition}[Universal Property of Exterior Power]
+\begin{proposition}[Universal Property of Exterior Power]\label{prop:universal_property_exterior_power}
   Let $V$ be a finite-dimensional $F$-linear space. For any finite-dimensional $F$-linear space $W$ and any skew-symmetric bilinear map $\phi \colon V^k \to W$ ($k$ times), there exists a unique linear map $\widetilde{\phi} \colon \Lambda^k(V) \to W$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}[column sep=normal]
