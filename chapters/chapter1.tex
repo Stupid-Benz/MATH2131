@@ -515,6 +515,18 @@ The equivalent definition of internal direct sum is that the intersection of any
 
 There is also an \emph{external} version of direct sum which constructs a new linear space from several linear spaces. We normally use the symbol $=$ to denote internal direct sum decomposition such as $V = W_1 \oplus W_2 \oplus \cdots \oplus W_n$ and use the symbol $\cong$ to denote the external direct sum isomorphic to a linear space such as $V \cong W_1 \oplus W_2 \oplus \cdots \oplus W_n$.
 
+\begin{definition}[External Direct Sum of Linear Spaces]\label{def:external_direct_sum}
+  The \emph{external direct sum} of the linear spaces $W_1, W_2, \ldots, W_n$ over a field $F$, denoted by $W_1 \oplus W_2 \oplus \cdots \oplus W_n$, is the linear space defined as
+  \[
+    W_1 \oplus W_2 \oplus \cdots \oplus W_n = \{ (w_1, w_2, \ldots, w_n) \mid w_i \in W_i, i = 1, 2, \ldots, n \},
+  \]
+  with the vector addition and scalar multiplication defined componentwisely, i.e., for any $(w_1, w_2, \ldots, w_n), (w_1', w_2', \ldots, w_n') \in W_1 \oplus W_2 \oplus \cdots \oplus W_n$ and $\alpha \in F$,
+  \begin{align*}
+    (w_1, w_2, \ldots, w_n) + (w_1', w_2', \ldots, w_n') & = (w_1 + w_1', w_2 + w_2', \ldots, w_n + w_n'),                     \\
+    \alpha \cdot (w_1, w_2, \ldots, w_n)                 & = (\alpha \cdot w_1, \alpha \cdot w_2, \ldots, \alpha \cdot w_n).
+  \end{align*}
+\end{definition}
+
 For internal direct sum, $W_1 \oplus W_2 = \{ w_1 + w_2 \mid w_i \in W_i, i = 1, 2 \}$ with the vector addition and scalar multiplication inherited from $V$. For external direct sum, $W_1 \oplus W_2 = \{ (w_1, w_2) \mid w_i \in W_i, i = 1, 2 \}$ with the vector addition and scalar multiplication defined componentwisely.
 
 \clearpage{}

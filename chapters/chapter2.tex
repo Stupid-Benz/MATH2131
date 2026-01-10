@@ -2,7 +2,10 @@
 
 Linear maps are fundamental objects in linear algebra. In this chapter, we will explore their definitions and properties.
 
-\section{Linear Maps and Linear Combinations}
+\section{Linear Maps, Kernel, and Image}
+
+\subsection{Linear Maps}
+We begin by defining linear maps between linear spaces.
 
 \begin{definition}[Linear Map]\label{def:linear_map}
   A \emph{linear map}, or \emph{linear transformation}, between two linear spaces $V$ and $W$ over the same \hyperref[def:field]{field} $F$ is a set map $T : V \to W$ that respects the \hyperref[def:linear_structure]{linear structure}; that is, for all $u, v \in V$ and all scalars $\alpha \in F$, the following properties hold:
@@ -39,7 +42,7 @@ From Example~\ref{ex:function_space}, we know that $\Map(V, W)$ forms a linear s
   so $T + S$ is a linear map from $V$ to $W$.
 \end{proof}
 
-\section{Kernel and Image}
+\subsection{Kernel and Image}
 
 In this section, we introduce two important concepts associated with linear maps: the kernel and the image.
 
@@ -223,6 +226,7 @@ Then we can define the rank and nullity of a linear map.
 
 \section{Matrices}
 
+\subsection{Matrix Representation of Linear Maps}
 Matrices provide a convenient way to represent linear maps between finite-dimensional linear spaces. Let $A$ be an $m \times n$ matrix with entries from $F$. Then the map
 \begin{align*}
   F^n     & \to F^m           \\
@@ -336,7 +340,7 @@ The following definitions correspond to the definitions of kernel, image, rank a
   An $n \times n$ matrix $A$ over $F$ is \emph{invertible}, or \emph{nonsingular}, if $A$ has an inverse matrix $A^{-1}$ such that $A A^{-1} = I_n$ and $A^{-1} A = I_n$, where $I_n$ is the $n \times n$ identity matrix.
 \end{definition}
 
-\section{Composition of Linear Maps and Matrix Multiplication}
+\subsection{Composition of Linear Maps and Matrix Multiplication}
 
 Consider two linear maps $T : F^n \to F^m$ and $S : F^m \to F^k$ with standard matrices $A$ and $B$, respectively. Then we want to find the standard matrix of the composition $ST : F^n \to F^k$.
 \begin{center}
@@ -374,7 +378,7 @@ The matrix multiplication $BA$ can be computed as follows.
   \end{bmatrix}.
 \]
 
-\section{Elementary Row Operations and Elementary Column Operations}
+\subsection{Elementary Row Operations and Elementary Column Operations}
 
 Elementary row operations are operations that can be performed on the rows of a matrix to transform it into a different form. There are three types of elementary row operations:
 
@@ -432,7 +436,7 @@ Similarly, elementary column operations are operations that can be performed on 
 
 Each elementary column operation is a \emph{right multiplication} by an \emph{elementary matrix}. Moreover, every elementary matrix is invertible, and its inverse is also an elementary matrix.
 
-\section{Canonical Forms of Matrices and Trivialisation}
+\subsection{Canonical Forms of Matrices and Trivialisation}
 
 Using elementary row and column operations, we can transform any matrix into a simpler form called the \emph{canonical form}. One common canonical form is the \emph{row echelon form} (REF) and the \emph{reduced row echelon form} (RREF) which are useful for solving systems of linear equations. However, for the purpose of understanding the structure of linear maps, we focus on the \emph{Smith normal form} or \emph{normal form} of a matrix.
 
@@ -517,8 +521,9 @@ Any linear map $T : V \to W$ between finite-dimensional linear spaces can be rep
 \end{center}
 Here, $\B_V$ and $\B_W$ are bases for $V$ and $W$ respectively, $A$ is the standard matrix of the linear map $T$ with respect to the chosen bases, and $N$ is the normal form of the matrix $A$. The coordinate maps ${[-]}_{\B_V}$ and ${[-]}_{\B_W}$ are the isomorphisms that map vectors in $V$ and $W$ to their coordinate representations in $F^n$ and $F^m$ respectively. The matrices $P$ and $Q$ are invertible matrices corresponding to the elementary row and column operations used to transform $A$ into its normal form $N$.
 
-\section{Group Actions}
+\section{Quotient Spaces}
 
+\subsection{Group Actions, Orbits, and Stabilisers}
 Before studying quotient spaces, we introduce the concept of (left) group actions.
 
 \begin{definition}[Left Group Action]\label{def:group_action}
@@ -585,7 +590,7 @@ In the example of rotation on a plane, the orbits are circles centered at the or
 
 The set of orbits of a group action forms a partition of the set being acted upon and we denote the set of orbits by $\quotient{X}{G} = \{ G \cdot x \mid x \in X \}$. Then there is a natural surjective map $\pi : X \to \quotient{X}{G}$ that sends each element $x \in X$ to its corresponding orbit $G \cdot x$ in the set of orbits $\quotient{X}{G}$. This map is called the \emph{quotient map}.
 
-\section{Quotient Spaces}
+\subsection{Quotient Spaces}
 
 Consider a linear space $V$ and a subspace $W$ of $V$. Note that $(W, +)$ is an abelian group under vector addition. We can define a group action of $(W, +)$ on $V$ as follows:
 \begin{align*}
@@ -729,7 +734,7 @@ We also have the following properties about finite-dimensional linear spaces.
   Then we know that $\phi : F^n \to \quotient{V}{W}$ is a surjective linear map from a finite-dimensional linear space $F^n$ to $\quotient{V}{W}$. Thus, $\quotient{V}{W}$ is finitely generated.
 \end{proof}
 
-\section{Universal Properties of Linear Spaces}
+\section{Universal Properties in Linear Spaces}
 
 Universal properties provide a powerful and abstract way to characterise mathematical objects based on their relationships with other objects. They are often used to define and study various constructions in category theory, algebra, and topology. Starting here, we should change our perspective to a more categorical viewpoint: instead of focusing on the elements of sets or spaces, we focus on the morphisms (maps) between objects and how these morphisms interact with each other.
 
@@ -1017,9 +1022,9 @@ We have already known that any linear map $T : V \to W$ between finite-dimension
 \begin{center}
   \begin{tikzcd}
     0 \arrow[d] & 0 \\
-    \ker(T) \arrow[d, hook] & \coker(T) \arrow[u] \arrow[d, bend left, hook, "s_2", ustred] \\
+    \ker(T) \arrow[d, hook] & \coker(T) \arrow[u] \arrow[d, bend left=60, hook, "s_2", ustred] \\
     V \arrow[d, two heads] \arrow[r, "T"] \arrow[dr, ustblue, two heads, "\overline{T}"] & W \arrow[u, two heads] \\
-    \coim(T) \arrow[d] \arrow[r, <->, "T'"] \arrow[u, bend left, hook, "s_1", ustred] & \im(T) \arrow[u, hook] \\
+    \coim(T) \arrow[d] \arrow[r, <->, "T'"] \arrow[u, bend left=60, hook, "s_1", ustred] & \im(T) \arrow[u, hook] \\
     0 & 0 \arrow[u]
   \end{tikzcd}
 \end{center}

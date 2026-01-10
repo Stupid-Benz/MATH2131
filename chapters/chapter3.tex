@@ -6,7 +6,7 @@ Category theory is a branch of mathematics that deals with abstract structures a
 
 Before delving into category theory, it is helpful to understand the concept of \emph{free vector spaces}, or \emph{free linear space}. Let $X$ be a set and $\deltaX = \{ \delta_x \mid x \in X \}$. Here $\delta_x : X \to F$ is the Kronecker delta function at $x$, defined in Equation~\eqref{eq:delta_function}. We have already shown that $\deltaX$ is a minimal spanning set for $F[X]$. Moreover, there is a natural bijection between $X$ and $\deltaX$ given by $x \mapsto \delta_x$. The natural isomorphism, or \emph{natural equivalence}, of $X$ with $\deltaX$ allows us to write this map as $\iota_X : X \to F[X]$ where $\iota_X(x) = \delta_x$ for all $x \in X$. This motivates the following universal property of free vector spaces.
 
-\begin{proposition}[Universal Property of Free Vector Spaces]\label{prop:universal_property_free_vector_space}
+\begin{proposition}[Universal Property of Free Vector Space]\label{prop:universal_property_free_vector_space}
   Let $X$ be a set. For any linear space $Z$ and any set map $\phi : X \to Z$, there exists a unique linear map $\widetilde{\phi} : F[X] \to Z$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
@@ -218,7 +218,7 @@ The following is the normal definition of category, which is equivalent to Defin
 \begin{example}
   Fix an object $X$ in a category $\Ca$. The \emph{coslice category} under $X$, or \emph{under category} of $X$, denoted by $\quotient{X}{\Ca}$ or $X \downarrow \Ca$, has objects that are morphisms with source $X$: $\{ f : X \to Y \mid Y \in \Ca_0 \}$, and morphisms that are commutative triangles:
   \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[column sep=normal]
       & X \arrow[ld, "f"] \arrow[rd, "f'"] & \\
       Y \arrow[rr, "g"] & & Y'
     \end{tikzcd}
@@ -229,7 +229,7 @@ The following is the normal definition of category, which is equivalent to Defin
 \begin{example}
   Let $W$ be a subspace of a linear space $V$ over $F$. The coslice category under $\quotient{V}{W}$, denoted by $\quotient{(\quotient{V}{W})}{\Vect_F}$ or $(\quotient{V}{W}) \downarrow \Vect_F$, has objects that are linear maps $\overline{f} : \quotient{V}{W} \to Z$ for some linear space $Z$ over $F$, or linear maps $f : V \to Z$ that factor through the quotient map $V \to \quotient{V}{W}$, i.e., $f|_{W} = 0$, and morphisms that are commutative triangles:
   \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[column sep=normal]
       & V \arrow[ld, "f"] \arrow[rd, "f'"] & \\
       Z \arrow[rr, "g"] & & Z'
     \end{tikzcd}
@@ -493,7 +493,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
 \begin{example}
   There are two functors from the category $\Set$ to the category $\Vect_F$:
   \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[labels=auto]
       \Set \arrow[r, "{F[-]}", yshift=0.5ex] & \Vect_F \arrow[l, "|-|", yshift=-0.5ex]
     \end{tikzcd}
   \end{center}
@@ -503,7 +503,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
 \begin{remark}
   The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any vector space $V$, there is a natural identification:
   \[
-    \Set(X, |V|) \equiv \Vect_F(F[X], V)
+    \Set(X, |V|) \simeq \Vect_F(F[X], V)
   \]
   where $\Set(X, |V|)$ is the set of all set maps from $X$ to the underlying set of $V$, and $\Vect_F(F[X], V)$ is the set of all linear maps from the free vector space $F[X]$ to $V$.
 
@@ -587,35 +587,24 @@ Consider the following two diagrams:
 \end{center}
 Moreover, we have the following natural isomorphisms:
 \[
-  F[X \times Y] \equiv F[X] \otimes F[Y], \quad F[X \sqcup Y] \equiv F[X] \oplus F[Y].
+  F[X \times Y] \simeq F[X] \otimes F[Y], \quad F[X \sqcup Y] \simeq F[X] \oplus F[Y].
 \]
 The left shows that the free functor $F[-]$ sends the product in $\Set$ to the tensor product in $\Vect_F$, and the right shows that it sends the coproduct in $\Set$ to the direct sum in $\Vect_F$, i.e., the coproduct in $\Vect_F$. Note that the tensor product $\otimes$ is \emph{not} the product in $\Vect_F$, as the dimension does not match: $\dim(F[X] \otimes F[Y]) = |X| \cdot |Y|$ while $\dim(F[X] \oplus F[Y]) = |X| + |Y|$. There is a unique but not isomorphic linear map $\phi : V \otimes W \to V \oplus W$ defined by $\phi(v \otimes w) = (v, w)$ for all $v \in V$ and $w \in W$.
 \begin{remark}
   The left adjoint functor preserves coproducts, and the right adjoint functor preserves products. This is the consequences of the \emph{adjoint functor theorem}.
 \end{remark}
 
-Similarly, we have the following natural isomorphism in $\Vect_F$:
-\[
-  \Vect_F(V \otimes W, Z) \simeq \Vect_F(V, \Vect_F(W, Z))
-\]
-Note that $\Vect_F(W, Z)$ is a vector space over $F$, as $\Vect_F$ is just $\Hom_F$. Then, we have the following adjoint pair of endofunctors on $\Vect_F$:
-\begin{center}
-  \begin{tikzcd}[labels=auto]
-    \Vect_F \arrow[r, "- \otimes X", yshift=0.5ex] & \Vect_F \arrow[l, "{\Hom_F(X, -)}", yshift=-0.5ex]
-  \end{tikzcd}
-\end{center}
-
 \section{Dual Spaces and Dual Bases}
 
 \begin{definition}[Dual Space]\label{def:dual_space}
-  Let $V$ be a linear space over $F$. The \emph{dual space} of $V$, denoted by $V^*$, is the linear space $\Hom_F(V, F)$, or $\Hom(V, F)$, consisting of all \hyperref[def:linear_functional]{linear functionals} from $V$ to $F$.
+  Let $V$ be a linear space over $F$. The \emph{dual space} of $V$, denoted by $V^*$, is the linear space $\Hom(V, F)$, or $\Hom(V, F)$, consisting of all \hyperref[def:linear_functional]{linear functionals} from $V$ to $F$.
 \end{definition}
 
 \begin{proposition}
   Let $V$ be a finite-dimensional linear space over $F$. Then $\dim(V^*) = \dim(V)$. So $V^*$ is also finite-dimensional.
 \end{proposition}
 \begin{proof}
-  Without the loss of generality, we may assume $\dim(V) = n$ and $V = F^n$. Then $V^* = \Hom_F(F^n, F) \cong \Mat_{1 \times n}(F)$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \ldots, \hat{e}^n$. So $\dim(V^*) = n = \dim(V)$.
+  Without the loss of generality, we may assume $\dim(V) = n$ and $V = F^n$. Then $V^* = \Hom(F^n, F) \cong \Mat_{1 \times n}(F)$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \ldots, \hat{e}^n$. So $\dim(V^*) = n = \dim(V)$.
 \end{proof}
 
 \begin{proposition}
@@ -683,10 +672,11 @@ The dual functor is not naturally isomorphic to the identity functor on $\Vect_F
 
 Recall the universal property of minimal spanning set in Proposition~\ref{prop:universal_property_minimal_spanning_set} and the relation between product and $\Map(X, F)$. We have the following natural isomorphism:
 \begin{align*}
-  V^* = \Hom_F(V, F) & = \Vect_F(V, F)                                                             \\
-                     & \simeq \Set(S, |F|) \quad \text{where $S$ is a minimal spanning set of $V$} \\
-                     & = \Map(S, F)                                                                \\
-                     & \simeq \prod_{s \in S} F
+  V^* & = \Hom(V, F)                                                                \\
+      & = \Vect_F(V, F)                                                             \\
+      & \simeq \Set(S, |F|) \quad \text{where $S$ is a minimal spanning set of $V$} \\
+      & = \Map(S, F)                                                                \\
+      & \simeq \prod_{s \in S} F
 \end{align*}
 Moreover, $V$ is ismorphic to the coproduct $\bigoplus_{s \in S} F$ since $S$ is a minimal spanning set of $V$. Hence, if $V$ is infinite-dimensional, then $\dim(V) < \dim(V^*)$.
 
@@ -727,12 +717,12 @@ There is a natural transformation from $\id_{\Vect_F}$ to ${(-)}^{**}$ defined b
 We have the following natural isomorphism between $V$ and $V^{**}$ induced by the natural pairing:
 \begin{center}
   \begin{tikzcd}
-    V^* \times V \arrow[d, <->, "\text{flip}"] \arrow[rr, "{\langle-,-\rangle}"] &[-2.4em] \arrow[d, Leftrightarrow] &[-2.4em] F \arrow[r, Leftrightarrow] & V^* \arrow[rr, "1_{V^*}"] &[-2.4em] \arrow[d, Leftrightarrow] &[-2.4em] \Hom_F(V, F) \\
+    V^* \times V \arrow[d, <->, "\text{flip}"] \arrow[rr, "{\langle-,-\rangle}"] &[-2.4em] \arrow[d, Leftrightarrow] &[-2.4em] F \arrow[r, Leftrightarrow] & V^* \arrow[rr, "1_{V^*}"] &[-2.4em] \arrow[d, Leftrightarrow] &[-2.4em] \Hom(V, F) \\
     V \times V^* \arrow[rr] & \phantom{*} & F \arrow[r, Leftrightarrow]
-    & V \arrow[rr, "\iota_V"] & \phantom{*} & \Hom_F(V^*, F)
+    & V \arrow[rr, "\iota_V"] & \phantom{*} & \Hom(V^*, F)
   \end{tikzcd}
 \end{center}
-where $\iota_V : V \to V^{**}$ is defined by $\iota_V(u) = \check{u}$ such that $\check{u}(f) = f(u)$. Then $V^{**} = \Hom_F(V^*, F) \simeq V$.
+where $\iota_V : V \to V^{**}$ is defined by $\iota_V(u) = \check{u}$ such that $\check{u}(f) = f(u)$. Then $V^{**} = \Hom(V^*, F) \simeq V$.
 
 Unfortunately, there is no natural isomorphism between $V$ and $V^*$. Then the professor introduced the concept of \emph{doubles} to tackle this problem.
 \begin{definition}[Double]\label{def:double}
@@ -753,7 +743,7 @@ The matrix representation of the isomorphism between $D(V)$ and $D(V^*)$ is
 \]
 where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The negative sign is used to make the isomorphism a symplectic isomorphism, which will be discussed in the later chapters.
 
-\section{Natural Transformation and Natural Equivalences}
+\section{Natural Transformations and Natural Isomorphisms}
 
 \begin{definition}[Natural Transformation]\label{def:natural_transformation}
   Let $F, G : \Ca \to \D$ be two \hyperref[def:functor]{functors}. A \emph{natural transformation} $\eta : F \to G$ is a collection of \hyperref[def:morphism]{morphisms} $\eta_X : F(X) \to G(X)$ in $\D$ for all objects $X$ in $\Ca$, such that for all morphisms $f : X \to Y$ in $\Ca$, the following diagram commutes:
@@ -786,14 +776,14 @@ where $\iota_V : V \to V^{**}$ is the natural isomorphism defined above. The neg
   Then we have the natural isomorphism: ${(-)}^{**} \simeq \id_{\Vect_F}$.
 \end{example}
 
-\begin{example}
-  We have the following natural isomorphism:
+\begin{example}\label{ex:bilinear_natural_isomorphism}
+  We have the natural isomorphism between the following two endofunctors on $\Vect_F$:
   \[
-    \Bil(U \times V, -) \simeq \Hom_F(U, \Hom_F(V, -))
+    \Bil(V \times W, -) \simeq \Hom(V, \Hom(W, -))
   \]
-  where both are endofunctors on $\Vect_F$. For any linear space $Z$ over $F$, we have the natural isomorphism:
+  where $\Bil(V \times W, -)$ is the functor that sends a vector space $Z$ to the set of bilinear maps with the source $V \times W$. For any linear space $Z$ over $F$, we have the natural isomorphism:
   \[
-    \musNatural : \Bil(U \times V, Z) \to \Hom_F(U, \Hom_F(V, Z))
+    \musNatural : \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))
   \]
 \end{example}
 
@@ -820,7 +810,7 @@ such that the dashed map is $(x, y) \mapsto x^T A_f y$.
 Let $B_f$ be the matrix that represents $f_{\musNatural}$ with respect to the bases $\B_V$ and $\B_{W^*}$ via the commutative diagram
 \begin{center}
   \begin{tikzcd}
-    V \arrow[r, "f_{\musNatural}"] \arrow[d, "{[-]_{\B_V}}"'] & W^* \arrow[d, "{[-]_{\B_{W^*}}}"] \\
+    V \arrow[r, "f_{\musNatural}"] \arrow[d, "{[-]_{\B_V}}"] & W^* \arrow[d, "{[-]_{\B_{W^*}}}"] \\
     F^m \arrow[r, "B_f"] & (F^n)^*
   \end{tikzcd}
 \end{center}
@@ -841,4 +831,8 @@ Let $T : V_1 \to V_2$ be a linear map and $\B_i$ be a basis of linear space $V_i
   \item Show that the sequence $V_1 \to V_2 \to V_3$ is exact if and only if its dual sequence $V_1^* \leftarrow V_2^* \leftarrow V_3^*$ is exact, and then conclude that $T$ is injective if and only if $T^*$ is surjective, and $T$ is surjective if and only if $T^*$ is injective.
   \item Let $A$ be the matrix representation of $T$ with respect to bases $\B_1, \B_2$ and $A^*$ be the matrix representation of $T^*$ with respect to bases $\B_2^*, \B_1^*$. Show that $A^*$ and $A$ are transposes of each other.
 \end{enumerate}
+\end{problem}
+
+\begin{problem}
+The set of real numbers $\mathbb{R}$ under the order $\leq$ is a category $\mathcal{R}$: objects are real numbers, the morphism set $\mathcal{R}(a, b)$ is the empty set $\emptyset$ if $a > b$ and is $\{ a \leq b \}$ other wise. The composition is $a \leq b \circ b \leq c = a \leq c$ and the identity morphisms $1_a$ are $a \leq a$. Let $S$ be a bounded sest of real numbers. Please find the coproduct and product for the family of objects: $\{ s \}_{s \in S}$.
 \end{problem}
