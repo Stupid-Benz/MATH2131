@@ -4,10 +4,10 @@ Category theory is a branch of mathematics that deals with abstract structures a
 
 \section{Free Vector Spaces}
 
-Before delving into category theory, it is helpful to understand the concept of \emph{free vector spaces}, or \emph{free linear space}. Let $X$ be a set and $\deltaX = \{ \delta_x \mid x \in X \}$. Here $\delta_x : X \to F$ is the Kronecker delta function at $x$, defined in Equation~\eqref{eq:delta_function}. We have already shown that $\deltaX$ is a minimal spanning set for $F[X]$. Moreover, there is a natural bijection between $X$ and $\deltaX$ given by $x \mapsto \delta_x$. The natural isomorphism, or \emph{natural equivalence}, of $X$ with $\deltaX$ allows us to write this map as $\iota_X : X \to F[X]$ where $\iota_X(x) = \delta_x$ for all $x \in X$. This motivates the following universal property of free vector spaces.
+Before delving into category theory, it is helpful to understand the concept of \emph{free vector spaces}, or \emph{free linear space}. Let $X$ be a set and $\deltaX = \{ \delta_x \mid x \in X \}$. Here $\delta_x \colon X \to F$ is the Kronecker delta function at $x$, defined in Equation~\eqref{eq:delta_function}. We have already shown that $\deltaX$ is a minimal spanning set for $F[X]$. Moreover, there is a natural bijection between $X$ and $\deltaX$ given by $x \mapsto \delta_x$. The natural isomorphism, or \emph{natural equivalence}, of $X$ with $\deltaX$ allows us to write this map as $\iota_X \colon X \to F[X]$ where $\iota_X(x) = \delta_x$ for all $x \in X$. This motivates the following universal property of free vector spaces.
 
 \begin{proposition}[Universal Property of Free Vector Space]\label{prop:universal_property_free_vector_space}
-  Let $X$ be a set. For any linear space $Z$ and any set map $\phi : X \to Z$, there exists a unique linear map $\widetilde{\phi} : F[X] \to Z$ such that the following diagram commutes:
+  Let $X$ be a set. For any linear space $Z$ and any set map $\phi \colon X \to Z$, there exists a unique linear map $\widetilde{\phi} \colon F[X] \to Z$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
       X \arrow[r, hook, "\iota_X"] \arrow[rd, "\phi"] & F[X] \arrow[d, dashed, "\widetilde{\phi}"] \\
@@ -29,7 +29,7 @@ Via the natural equivalence of $X$ with $\deltaX$, denoted by $X \simeq \deltaX$
 \]
 This is called the \emph{formal linear combination} of elements in $X$ with coefficients in $F$. Hereafter, we always identify $X$ with $\deltaX$ in this way and $F[X]$ is referred to the \emph{set of formal linear combinations} of elements in $X$ with coefficients in $F$ or simply the free vector space on $X$.
 
-The uniqueness of the universal property is in the following sense: if there is another inclusion map $\iota_X'$ into a linear space $F'[X]$ satisfying the same universal property, then there exists a unique isomorphism of linear spaces $\psi : F[X] \to F'[X]$ such that the diagram commutes:
+The uniqueness of the universal property is in the following sense: if there is another inclusion map $\iota_X'$ into a linear space $F'[X]$ satisfying the same universal property, then there exists a unique isomorphism of linear spaces $\psi \colon F[X] \to F'[X]$ such that the diagram commutes:
 \begin{center}
   \begin{tikzcd}[column sep=normal]
     & X \arrow[ld, hook, "\iota_X"] \arrow[rd, hook, "\iota_X'"] & \\
@@ -37,7 +37,7 @@ The uniqueness of the universal property is in the following sense: if there is 
   \end{tikzcd}
 \end{center}
 
-The universal property implies an assignment of a linear map $T_* : F[X] \to F[Y]$, or you may write the map as $F[T]$ instead, to each set map $T : X \to Y$ defined by the following commutative diagram:
+The universal property implies an assignment of a linear map $T_* \colon F[X] \to F[Y]$, or you may write the map as $F[T]$ instead, to each set map $T \colon X \to Y$ defined by the following commutative diagram:
 \begin{center}
   \begin{tikzcd}
     X \arrow[r, "T"] \arrow[d, hook, "\iota_X"] & Y \arrow[d, hook, "\iota_{Y}"] \\
@@ -46,14 +46,14 @@ The universal property implies an assignment of a linear map $T_* : F[X] \to F[Y
 \end{center}
 Moreover, this assignment preserves identities and composition:
 \begin{itemize}
-  \item For the identity map $\id_X : X \to X$, we have ${(\id_X)}_* = \id_{F[X]}$.
-  \item For set maps $T : X \to Y$ and $S : Y \to Z$, we have ${(ST)}_* = S_* T_*$.
+  \item For the identity map $\id_X \colon X \to X$, we have ${(\id_X)}_* = \id_{F[X]}$.
+  \item For set maps $T \colon X \to Y$ and $S \colon Y \to Z$, we have ${(ST)}_* = S_* T_*$.
 \end{itemize}
 You may refer to Problem~\ref{prob:function_space_homomorphisms} for elementary proofs of these properties.
 
 \section{Introduction to Categories and Functors}
 
-The structure described in the previous section can be abstracted into the notion of a category. We denote a collection of set maps as $\Set$ and a collection of linear maps over $F$ as $\Vect_F$. Then $F[-]$ can be viewed as a map from the collection of sets to the collection of linear spaces over $F$ that assigns to each set $S$ the free vector space $F[S]$ and to each set map $T : S \to T$ the linear map $T_* : F[S] \to F[T]$:
+The structure described in the previous section can be abstracted into the notion of a category. We denote a collection of set maps as $\Set$ and a collection of linear maps over $F$ as $\Vect_F$. Then $F[-]$ can be viewed as a map from the collection of sets to the collection of linear spaces over $F$ that assigns to each set $S$ the free vector space $F[S]$ and to each set map $T \colon S \to T$ the linear map $T_* \colon F[S] \to F[T]$:
 \begin{center}
   \begin{tikzcd}
     \Set \arrow[r, "{F[-]}"] & \Vect_F
@@ -71,10 +71,10 @@ Here $a$ and $b$ are morphisms from $*$ to $*$. The composition $ab$ is also a m
 
 Recall that a monoid is a set $M$, which is also called a \emph{small collection of objects}, together with a binary operation on $M$, which is also called a \emph{compositon of morphisms}, with associative property and unital property being satisfied. By relaxing the condition on binary operation, allowing the composition being only partially defined, we end up with the definition of \emph{small category}.
 
-Being partially defined means that the composition may not always be defined. For example, take $f : X \to Y$ and $g : W \to Z$, then $gf$ is not defined. But $f : X \to Y$ and $g : Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
+Being partially defined means that the composition may not always be defined. For example, take $f \colon X \to Y$ and $g \colon W \to Z$, then $gf$ is not defined. But $f \colon X \to Y$ and $g \colon Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
 
 \begin{example}
-  The collection of all matrices over $F$ is a small category. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A : n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA : n \to k$. Note that $I_n : n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have
+  The collection of all matrices over $F$ is a small category. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A \colon n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA \colon n \to k$. Note that $I_n \colon n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have
   \begin{center}
     \begin{tikzcd}
       n \arrow[loop left, "I_n" auto] \arrow[r, "A"] & m \arrow[loop right, "I_m" auto] \arrow[d, "B"] \\
@@ -106,7 +106,7 @@ The graph above shows the relation, the arrows show the subsets relation. The ar
 \section{Small Categories}
 
 \begin{definition}[Small Category]\label{def:small_category}
-  A \emph{small category} is a set $\Ca$ together with a subset $\Ca_0$ of $\Ca$, two surjective maps $s, t : \Ca \to \Ca_0$ called the \emph{source} and \emph{target} maps respectively, and a composition map, or a \hyperref[def:binary_operation]{binary operation}, $\circ : \Ca \times_{(s, t)} \Ca \to \Ca$ that assigns to each pair $(f, g)$ with $s(f) = t(g)$ an element $f \circ g$ in $\Ca$ satisfying the \hyperref[def:associative]{associative} and \hyperref[def:unital]{unital} properties.
+  A \emph{small category} is a set $\Ca$ together with a subset $\Ca_0$ of $\Ca$, two surjective maps $s, t \colon \Ca \to \Ca_0$ called the \emph{source} and \emph{target} maps respectively, and a composition map, or a \hyperref[def:binary_operation]{binary operation}, $\circ \colon \Ca \times_{(s, t)} \Ca \to \Ca$ that assigns to each pair $(f, g)$ with $s(f) = t(g)$ an element $f \circ g$ in $\Ca$ satisfying the \hyperref[def:associative]{associative} and \hyperref[def:unital]{unital} properties.
 \end{definition}
 Here $\Ca \times_{(s, t)} \Ca = \{ (f, g) \in \Ca \times \Ca \mid s(f) = t(g) \}$ is the \emph{fibre product}, or \emph{pullback}, of $\Ca$ with itself via the maps $s$ and $t$. The following digram illustrates the fibre product:
 \begin{center}
@@ -154,11 +154,11 @@ The left diagram shows the composition of $f$ with the identity morphism at $t(f
     \Ca   & = \{ \Mat_{m \times n}(F) \mid m, n \in \N \}, \\
     \Ca_0 & = \{ I_n \mid n \in \N \} \cong \N.
   \end{align*}
-  If $A \in \Ca$ is an $m \times n$ matrix, then $s(A) = I_n$, which is naturally identified with $n$, and $t(A) = I_m$, which is naturally identified with $m$. Then $A$ can be viewed as a morphism from $n$ to $m$: $A : n \to m$. The composition is given by the matrix multiplication.
+  If $A \in \Ca$ is an $m \times n$ matrix, then $s(A) = I_n$, which is naturally identified with $n$, and $t(A) = I_m$, which is naturally identified with $m$. Then $A$ can be viewed as a morphism from $n$ to $m$: $A \colon n \to m$. The composition is given by the matrix multiplication.
 \end{example}
 
 \begin{remark}
-  Elements in $\Ca$ are morphisms or arrows, and elements in $\Ca_0$ are identity morphisms which can be identified as objects. Thus, $\Ca_0$ is also called the \emph{set of objects}. Then a morphism $f$ in $\Ca$ can be viewed as an arrow from the object $X \simeq \id_X = s(f)$ to the object $Y \simeq \id_Y = t(f)$, denoted by $f : X \to Y$.
+  Elements in $\Ca$ are morphisms or arrows, and elements in $\Ca_0$ are identity morphisms which can be identified as objects. Thus, $\Ca_0$ is also called the \emph{set of objects}. Then a morphism $f$ in $\Ca$ can be viewed as an arrow from the object $X \simeq \id_X = s(f)$ to the object $Y \simeq \id_Y = t(f)$, denoted by $f \colon X \to Y$.
 \end{remark}
 
 We generalise the concept of homomorphisms in algebraic structures to the concept of morphisms in categories.
@@ -184,8 +184,8 @@ The following is the normal definition of category, which is equivalent to Defin
   \begin{itemize}
     \item A set of objects $\Ca_0 = \mathsf{Ob}(\Ca)$;
     \item A set of \hyperref[def:morphism]{morphisms} $\Ca_1 = \Hom(\Ca)$ containing morphisms between each pair of objects in $\Ca_0$;
-    \item A \hyperref[def:binary_operation]{binary operation}, called \emph{composition of morphisms}, $\circ : \Hom(Y, Z) \times \Hom(X, Y) \to \Hom(X, Z)$ that assigns to each pair $(f, g)$ with $f : Y \to Z$ and $g : X \to Y$ a morphism $f \circ g : X \to Z$;
-    \item An identity morphism $\id_X : X \to X$ for each object $X$ in $\Ca_0$;
+    \item A \hyperref[def:binary_operation]{binary operation}, called \emph{composition of morphisms}, $\circ \colon \Hom(Y, Z) \times \Hom(X, Y) \to \Hom(X, Z)$ that assigns to each pair $(f, g)$ with $f \colon Y \to Z$ and $g \colon X \to Y$ a morphism $f \circ g \colon X \to Z$;
+    \item An identity morphism $\id_X \colon X \to X$ for each object $X$ in $\Ca_0$;
   \end{itemize}
   satisfying the \hyperref[def:associative]{associative} and \hyperref[def:unital]{unital} properties.
 \end{definition}
@@ -216,18 +216,18 @@ The following is the normal definition of category, which is equivalent to Defin
 \end{example}
 
 \begin{example}
-  Fix an object $X$ in a category $\Ca$. The \emph{coslice category} under $X$, or \emph{under category} of $X$, denoted by $\quotient{X}{\Ca}$ or $X \downarrow \Ca$, has objects that are morphisms with source $X$: $\{ f : X \to Y \mid Y \in \Ca_0 \}$, and morphisms that are commutative triangles:
+  Fix an object $X$ in a category $\Ca$. The \emph{coslice category} under $X$, or \emph{under category} of $X$, denoted by $\quotient{X}{\Ca}$ or $X \downarrow \Ca$, has objects that are morphisms with source $X$: $\{ f \colon X \to Y \mid Y \in \Ca_0 \}$, and morphisms that are commutative triangles:
   \begin{center}
     \begin{tikzcd}[column sep=normal]
       & X \arrow[ld, "f"] \arrow[rd, "f'"] & \\
       Y \arrow[rr, "g"] & & Y'
     \end{tikzcd}
   \end{center}
-  Moreover, the identity morphism at an object $f : X \to Y$ is given by $\id_Y : Y \to Y$, and the composition of morphisms is given by the composition in $\Ca$.
+  Moreover, the identity morphism at an object $f \colon X \to Y$ is given by $\id_Y \colon Y \to Y$, and the composition of morphisms is given by the composition in $\Ca$.
 \end{example}
 
 \begin{example}
-  Let $W$ be a subspace of a linear space $V$ over $F$. The coslice category under $\quotient{V}{W}$, denoted by $\quotient{(\quotient{V}{W})}{\Vect_F}$ or $(\quotient{V}{W}) \downarrow \Vect_F$, has objects that are linear maps $\overline{f} : \quotient{V}{W} \to Z$ for some linear space $Z$ over $F$, or linear maps $f : V \to Z$ that factor through the quotient map $V \to \quotient{V}{W}$, i.e., $f|_{W} = 0$, and morphisms that are commutative triangles:
+  Let $W$ be a subspace of a linear space $V$ over $F$. The coslice category under $\quotient{V}{W}$, denoted by $\quotient{(\quotient{V}{W})}{\Vect_F}$ or $(\quotient{V}{W}) \downarrow \Vect_F$, has objects that are linear maps $\overline{f} \colon \quotient{V}{W} \to Z$ for some linear space $Z$ over $F$, or linear maps $f \colon V \to Z$ that factor through the quotient map $V \to \quotient{V}{W}$, i.e., $f|_{W} = 0$, and morphisms that are commutative triangles:
   \begin{center}
     \begin{tikzcd}[column sep=normal]
       & V \arrow[ld, "f"] \arrow[rd, "f'"] & \\
@@ -245,7 +245,7 @@ The following is the normal definition of category, which is equivalent to Defin
 \end{definition}
 
 \begin{example}
-  In the category $\quotient{(\quotient{V}{W})}{\Vect_F}$, the quotient map $\pi : V \to \quotient{V}{W}$ is an initial object and the zero map $0 : V \to 0$ is a terminal object.
+  In the category $\quotient{(\quotient{V}{W})}{\Vect_F}$, the quotient map $\pi \colon V \to \quotient{V}{W}$ is an initial object and the zero map $0 \colon V \to 0$ is a terminal object.
 \end{example}
 
 \begin{example}
@@ -259,7 +259,7 @@ The following is the normal definition of category, which is equivalent to Defin
 \section{Products and Coproducts}
 
 \begin{definition}[Product]\label{def:product}
-  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{product} of $X$ and $Y$ is an object $X \prod Y$ in $\Ca$ together with two \hyperref[def:morphism]{morphisms} $\pi_X : X \prod Y \to X$ and $\pi_Y : X \prod Y \to Y$ such that for any object $Z$ in $\Ca$ with two morphisms $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique morphism $f : Z \to X \prod Y$ making the following diagram commute:
+  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{product} of $X$ and $Y$ is an object $X \prod Y$ in $\Ca$ together with two \hyperref[def:morphism]{morphisms} $\pi_X \colon X \prod Y \to X$ and $\pi_Y \colon X \prod Y \to Y$ such that for any object $Z$ in $\Ca$ with two morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$, there exists a unique morphism $f \colon Z \to X \prod Y$ making the following diagram commute:
   \begin{center}
     \begin{tikzcd}[background color=ustblue!5]
       & Z \arrow[ld, "f_X"] \arrow[rd, "f_Y"] \arrow[d, dashed, "f"] & \\
@@ -272,7 +272,7 @@ The following is the normal definition of category, which is equivalent to Defin
   The product is unique up to isomorphism if it exists.
 \end{remark}
 
-There is another way to view the product. Let $X$ and $Y$ be two objects in a category $\Ca$. Consider the \emph{category of span} from $X$ and $Y$, denoted by $\mathsfbf{Span}(X, Y)$, whose objects are triples $(Z, f_X, f_Y)$ such that \begin{tikzcd}[cramped] X & Z \arrow[l, "f_X"] \arrow[r, "f_Y"] & Y \end{tikzcd} for any $Z$, and whose morphisms from $(Z, f_X, f_Y)$ to $(Z', f_X', f_Y')$ are morphisms $f : Z \to Z'$ in $\Ca$ such that the following diagram commutes:
+There is another way to view the product. Let $X$ and $Y$ be two objects in a category $\Ca$. Consider the \emph{category of span} from $X$ and $Y$, denoted by $\mathsfbf{Span}(X, Y)$, whose objects are triples $(Z, f_X, f_Y)$ such that \begin{tikzcd}[cramped] X & Z \arrow[l, "f_X"] \arrow[r, "f_Y"] & Y \end{tikzcd} for any $Z$, and whose morphisms from $(Z, f_X, f_Y)$ to $(Z', f_X', f_Y')$ are morphisms $f \colon Z \to Z'$ in $\Ca$ such that the following diagram commutes:
 \begin{center}
   \begin{tikzcd}[row sep=normal]
     & Z \arrow[dd, "f"] \arrow[dl, "f_X"] \arrow[dr, "f_Y"] \\
@@ -283,15 +283,15 @@ There is another way to view the product. Let $X$ and $Y$ be two objects in a ca
 Then the product of $X$ and $Y$ is the terminal object in the category $\mathsfbf{Span}(X, Y)$.
 
 \begin{example}
-  In the category $\Set$, the product of two sets $X$ and $Y$ is their Cartesian product $X \times Y$ with the projection maps $\pi_X : X \times Y \to X$ and $\pi_Y : X \times Y \to Y$. Then for any set $Z$ with two set maps $f_X : Z \to X$ and $f_Y : Z \to Y$, there exists a unique set map $f : Z \to X \times Y$ defined by $f(z) = (f_X(z), f_Y(z))$ for all $z \in Z$ such that the diagram commutes.
+  In the category $\Set$, the product of two sets $X$ and $Y$ is their Cartesian product $X \times Y$ with the projection maps $\pi_X \colon X \times Y \to X$ and $\pi_Y \colon X \times Y \to Y$. Then for any set $Z$ with two set maps $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$, there exists a unique set map $f \colon Z \to X \times Y$ defined by $f(z) = (f_X(z), f_Y(z))$ for all $z \in Z$ such that the diagram commutes.
 \end{example}
 
 \begin{example}
-  In the category $\Vect_F$, the product of two linear spaces $V$ and $W$ over $F$ is their \emph{direct product} $V \times W$ defined by the Cartesian product with the projection maps $\pi_V : V \oplus W \to V$ and $\pi_W : V \oplus W \to W$. Then for any linear space $Z$ over $F$ with two linear maps $f_V : Z \to V$ and $f_W : Z \to W$, there exists a unique linear map $f : Z \to V \oplus W$ defined by $f(z) = (f_V(z), f_W(z))$ for all $z \in Z$ such that the diagram commutes.
+  In the category $\Vect_F$, the product of two linear spaces $V$ and $W$ over $F$ is their \emph{direct product} $V \times W$ defined by the Cartesian product with the projection maps $\pi_V \colon V \oplus W \to V$ and $\pi_W \colon V \oplus W \to W$. Then for any linear space $Z$ over $F$ with two linear maps $f_V \colon Z \to V$ and $f_W \colon Z \to W$, there exists a unique linear map $f \colon Z \to V \oplus W$ defined by $f(z) = (f_V(z), f_W(z))$ for all $z \in Z$ such that the diagram commutes.
 \end{example}
 
 \begin{definition}[Coproduct]\label{def:coproduct}
-  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ in $\Ca$ together with two \hyperref[def:morphism]{morphisms} $\iota_X : X \to X \coprod Y$ and $\iota_Y : Y \to X \coprod Y$ such that for any object $Z$ in $\Ca$ with two morphisms $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique morphism $f : X \coprod Y \to Z$ such that the following diagram commutes:
+  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ in $\Ca$ together with two \hyperref[def:morphism]{morphisms} $\iota_X \colon X \to X \coprod Y$ and $\iota_Y \colon Y \to X \coprod Y$ such that for any object $Z$ in $\Ca$ with two morphisms $f_X \colon X \to Z$ and $f_Y \colon Y \to Z$, there exists a unique morphism $f \colon X \coprod Y \to Z$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}[background color=ustblue!5]
       X \arrow[r, "\iota_X"] \arrow[rd, "f_X"] & X \coprod Y \arrow[d, dashed, "f"] & Y \arrow[l, "\iota_Y"] \arrow[ld, "f_Y"] \\
@@ -304,7 +304,7 @@ Then the product of $X$ and $Y$ is the terminal object in the category $\mathsfb
   The coproduct is unique up to isomorphism if it exists.
 \end{remark}
 
-Similarly, we can view the coproduct in another way. Let $X$ and $Y$ be two objects in a category $\Ca$. Consider the \emph{category of cospan} from $X$ and $Y$, denoted by $\mathsfbf{Cospan}(X, Y)$, whose objects are triples $(Z, f_X, f_Y)$ such that \begin{tikzcd}[cramped] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y"] \end{tikzcd} for any $Z$, and whose morphisms from $(Z, f_X, f_Y)$ to $(Z', f_X', f_Y')$ are morphisms $f : Z \to Z'$ in $\Ca$ such that the following diagram commutes:
+Similarly, we can view the coproduct in another way. Let $X$ and $Y$ be two objects in a category $\Ca$. Consider the \emph{category of cospan} from $X$ and $Y$, denoted by $\mathsfbf{Cospan}(X, Y)$, whose objects are triples $(Z, f_X, f_Y)$ such that \begin{tikzcd}[cramped] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y"] \end{tikzcd} for any $Z$, and whose morphisms from $(Z, f_X, f_Y)$ to $(Z', f_X', f_Y')$ are morphisms $f \colon Z \to Z'$ in $\Ca$ such that the following diagram commutes:
 \begin{center}
   \begin{tikzcd}[row sep=normal]
     & Z \arrow[dd, "f"] \\
@@ -315,7 +315,7 @@ Similarly, we can view the coproduct in another way. Let $X$ and $Y$ be two obje
 Then the coproduct of $X$ and $Y$ is the initial object in the category $\mathsfbf{Cospan}(X, Y)$.
 
 \begin{example}
-  In the category $\Set$, the coproduct of two sets $X$ and $Y$ is their \emph{disjoint union} $X \sqcup Y$ with the inclusion maps $\iota_X : X \to X \sqcup Y$ and $\iota_Y : Y \to X \sqcup Y$. Then for any set $Z$ with two set maps $f_X : X \to Z$ and $f_Y : Y \to Z$, there exists a unique set map $f : X \sqcup Y \to Z$ defined by
+  In the category $\Set$, the coproduct of two sets $X$ and $Y$ is their \emph{disjoint union} $X \sqcup Y$ with the inclusion maps $\iota_X \colon X \to X \sqcup Y$ and $\iota_Y \colon Y \to X \sqcup Y$. Then for any set $Z$ with two set maps $f_X \colon X \to Z$ and $f_Y \colon Y \to Z$, there exists a unique set map $f \colon X \sqcup Y \to Z$ defined by
   \[
     f(a) = \begin{cases}
       f_X(a), & \text{if } a \in X, \\
@@ -326,7 +326,7 @@ Then the coproduct of $X$ and $Y$ is the initial object in the category $\mathsf
 \end{example}
 
 \begin{example}
-  In the category $\Vect_F$, the coproduct of two linear spaces $V$ and $W$ over $F$ is their external direct sum $V \oplus W$ with the inclusion maps $\iota_V : V \to V \oplus W$ and $\iota_W : W \to V \oplus W$. Then for any linear space $Z$ over $F$ with two linear maps $f_V : V \to Z$ and $f_W : W \to Z$, there exists a unique linear map $f : V \oplus W \to Z$ defined by $f(v, w) = f_V(v) + f_W(w)$ for all $(v, w) \in V \oplus W$ such that the diagram commutes.
+  In the category $\Vect_F$, the coproduct of two linear spaces $V$ and $W$ over $F$ is their external direct sum $V \oplus W$ with the inclusion maps $\iota_V \colon V \to V \oplus W$ and $\iota_W \colon W \to V \oplus W$. Then for any linear space $Z$ over $F$ with two linear maps $f_V \colon V \to Z$ and $f_W \colon W \to Z$, there exists a unique linear map $f \colon V \oplus W \to Z$ defined by $f(v, w) = f_V(v) + f_W(w)$ for all $(v, w) \in V \oplus W$ such that the diagram commutes.
 \end{example}
 
 Note that in the category $\Vect_F$, the product and coproduct of two linear spaces $V$ and $W$ over $F$ are isomorphic: $V \sqcap W \cong V \sqcup W \cong V \oplus W$. In this case, we will say the \emph{biproduct} of $V$ and $W$ is $V \oplus W$.
@@ -415,7 +415,7 @@ where $I$ is a finite index set. Hence, the product and coproduct coincide for f
   The right sections $s_1$ and $s_2$ are two elements in the product $\prod V_i$. Note that $s_2$ is likely to be ``finitely supported'' since it is zero in almost all components shown in the diagram. However, if $I$ is an infinite set, then $s_2$ may not be finitely supported since there may be infinitely many non-zero components not shown in the diagram. So $s_2$ may not be an element in the coproduct $\bigoplus V_i$ if $I$ is an infinite set, but most likely to be.
 \end{remark}
 
-So the product $\prod V_i$ contains all possible sections $s : I \to \bigcup V_i$, so it is called the \emph{space of sections}. The coproduct $\bigoplus V_i$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}. The elements in the coproduct $\bigoplus V_i$ written as ordered tuples ${(v_i)}_{i \in I}$ can also be written as finite sums $\sum_{i \in I} V_i$ since only finitely many $V_i$ are non-zero.
+So the product $\prod V_i$ contains all possible sections $s \colon I \to \bigcup V_i$, so it is called the \emph{space of sections}. The coproduct $\bigoplus V_i$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}. The elements in the coproduct $\bigoplus V_i$ written as ordered tuples ${(v_i)}_{i \in I}$ can also be written as finite sums $\sum_{i \in I} V_i$ since only finitely many $V_i$ are non-zero.
 
 Actually, the product and coproduct can be regarded as the generalisation of $\Map(X, F)$ and $F[X]$ respectively. We can consider the following diagrams:
 \begin{center}

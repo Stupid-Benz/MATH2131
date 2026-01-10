@@ -1,0 +1,172 @@
+\chapter{Determinants}
+
+\section{Determinant Lines}
+
+Recall that for a $n$-dimensional $F$-linear space $V$, the top exterior power $\Lambda^n V$ is a one-dimensional $F$-linear space. Such a one-dimensional linear space is also called a \emph{line}. Then we have the following definition.
+
+\begin{definition}[Determinant Line]\label{def:determinant_line}
+	The \emph{determinant line} of a $n$-dimensional $F$-linear space $V$, denoted $\det(V)$, is defined to be the top exterior power of $V$:
+	\[
+		\det(V) := \Lambda^n V.
+	\]
+\end{definition}
+
+Note that the $\det$ operator is the same as $\lambda^{\dim}$ operator, i.e., $\det$ is a functor the category of $n$-dimensional linear spaces $\Vect_F^n$ to the category of lines $\Vect_F^1$:
+\begin{center}
+	\begin{tikzcd}[row sep=normal]
+		\Vect_F^n \arrow[r, "\det"] & \Vect_F^1 \\[-1.8em]
+		V_1 \arrow[dd, "f"] & \det(V_1) \arrow[dd, "\det(f)"] \\
+		\arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+		V_2 & \det(V_2)
+	\end{tikzcd}
+\end{center}
+Here, for a linear map $f \colon V_1 \to V_2$, the induced map $\det(f) \colon \det(V_1) \to \det(V_2)$ is defined by
+\[
+	\det(f)(v_1 \wedge v_2 \wedge \cdots \wedge v_n) := f(v_1) \wedge f(v_2) \wedge \cdots \wedge f(v_n).
+\]
+Moreover, as $\det$ is a functor, it preserves composition and identities, i.e., for linear maps $f \colon V_1 \to V_2$ and $g \colon V_2 \to V_3$, we have
+\[
+	\det(f \circ g) = \det(f) \circ \det(g), \quad \text{and} \quad \det(\id_{V}) = \id_{\det(V)}.
+\]
+
+If $f$ is an endomorphism on $V$, i.e., $f \colon V \to V$, then $\det(f)$ is an endomorphism on the line $\det(V)$. Since any endomorphism on a one-dimensional space is just a scalar multiplication, there exists a unique scalar $\lambda \in F$ such that
+\[
+	\det(f)(\omega) = \lambda \omega, \quad \text{for all } \omega \in \det(V).
+\]
+Then we can identify $\det(f)$ with this scalar $\lambda$ and called it the \emph{determinant} of $f$. Recall that we can trivialise a linear space by choosing a basis. Then consider the following diagram:
+\begin{center}
+	\begin{tikzcd}
+		F^n \arrow[r, "A'", ustred] \arrow[dd, bend right=60, "P", ustblue] & F^n \arrow[dd, bend left=60, "P", ustred] \\
+		V \arrow[r, "f"] \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_{\B}}"] & V \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_{\B}}"] \\
+		F^n \arrow[r, "A", ustblue] & F^n
+	\end{tikzcd}
+\end{center}
+where $V$ is an $n$-dimensional $F$-linear space, $\B$ and $\B'$ are two bases of $V$, $A$ and $A'$ are the matrix representations of $f$ with respect to the bases $\B$ and $\B'$ respectively, and $P$ is the change-of-basis matrix from $\B$ to $\B'$. Then we have
+\[
+	AP = PA', \quad \text{or equivalently,} \quad A = P A' P^{-1}.
+\]
+Moreover, the $\det(A)$ is defined to be the determinant of the corresponding linear map $f$, i.e., $\det(A) := \det(f)$, which is the same as in the ordinary linear algebra. Also, $A$ and $A'$ are \emph{similar} matrices in ordinary linear algebra, meaning they represent the same endomorphism under different bases. Thus, they have the same determinant. Hence, the determinant of a matrix is independent of the choice of basis.
+
+\section{Permutation Groups}
+
+Before we proceed to derive the explicit formula for the determinant of a linear map, we need to introduce the concept of automorphism groups and permutation groups.
+
+\begin{definition}[Automorphism Group]\label{def:automorphism_group}
+	The \emph{automorphism group} of a set $X$, denoted $\Aut(X)$, is the set of all \hyperref[def:automorphism]{automorphisms} of $X$ that forms a group under the composition of functions.
+\end{definition}
+
+\begin{example}
+	The general linear group of $V$, denoted by $\GL(V)$, is the automorphism group of the $F$-linear space $V$:
+	\[
+		\GL(V) = \Aut(V).
+	\]
+	That is the set of all invertible linear maps from $V$ to itself forms a group under the composition of functions.
+\end{example}
+
+\begin{example}
+	The general linear group over $F$ of degree $n$, denoted by $\GL_n(F)$, is the automorphism group of the $n$-dimensional $F$-linear space $F^n$:
+	\[
+		\GL_n(F) = \Aut(F^n).
+	\]
+	That is the set of all invertible $n \times n$ matrices with entries in $F$ forms a group under the matrix multiplication.
+\end{example}
+
+\begin{definition}[Permutation Group]\label{def:permutation_group}
+	The \emph{permutation group} on a set $X$, denoted by $S_X$ or $\Aut(X)$, is the automorphism group of $X$ when $X$ is a finite set. If $X = \{1, 2, \ldots, n\}$ for some $n \in \N$, then we denote the permutation group on $X$ by $S_n$.
+\end{definition}
+
+The order of the permutation group $S_n$, denoted by $|S_n|$, is $n!$ since there are $n!$ possible bijections from the set $\{1, 2, \ldots, n\}$ to itself.
+
+\begin{example}
+	The permutation group $S_2$ has two elements: the identity permutation $1$ and the transposition $\sigma_1$ defined by $\sigma_1(1) = 2$ and $\sigma_1(2) = 1$.
+\end{example}
+
+Instead of writing $S_2 = \{ 1, \sigma_1 \}$, we can write $S_2 = \langle \sigma_1 \mid \sigma_1^2 = 1 \rangle$, where $\sigma_1$ is called the \emph{generator} of $S_2$ and $\sigma_1^2 = 1$ is called the \emph{relation} of $S_2$. This is called the \emph{presentation} of $S_2$.
+
+In general, the generator $\sigma_i$ of $S_n$ is defined by:
+\[
+	\sigma_i(j) = \begin{cases}
+		j + 1, & j = i            \\
+		j - 1, & j = i + 1        \\
+		j,     & \text{otherwise}
+	\end{cases} = (i, i + 1)
+\]
+
+\begin{example}
+	The generator $\sigma_1$ of $S_3$ can be represented by the following diagram:
+	\begin{center}
+		\begin{tikzcd}
+			1 \arrow[dr] & 2 \arrow[dl, crossing over] & 3 \arrow[d] \\
+			2 & 1 & 3
+		\end{tikzcd}
+	\end{center}
+	It can also be written as $\sigma_1 = (12)$ or $(12)(3)$ or $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix}$. Moreover, we have a cycle with 3 elements denoted as $(123)$ defined by the $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{pmatrix}$. Then the presentation of $S_3$ is:
+	\[
+		S_3 = \langle \sigma_1, \sigma_2 \mid \sigma_1^2 = 1, \sigma_2^2 = 1, \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2 \rangle
+	\]
+\end{example}
+
+In general, the presentation of $S_n$ has generators $\sigma_1, \sigma_2, \ldots, \sigma_{n-1}$ and relations:
+\begin{itemize}
+  \item \emph{Involution relations}: $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$;
+  \item \emph{Braid relations}: $\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1}$ for all $1 \leq i \leq n - 2$;
+  \item \emph{Commutation relations}: $\sigma_i \sigma_j = \sigma_j \sigma_i$ for all $|i - j| \geq 2$.
+\end{itemize}
+
+The permutation group $S_n$ is generated by quotienting the braid group $B_n$ by the involution relations. We call $B_n$ the \emph{braid group} on $n$ strands. A simple way to visualise the braid group is to think about braiding $n$ strands of hair. The braid group $B_n$ has the same presentation as $S_n$ except that there is no relation $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$. Consider the following diagrams:
+\begin{center}
+	\begin{tikzcd}[column sep=normal]
+		1 \arrow[d, dash] & 2 \arrow[d, dash] \\
+		1 & 2
+	\end{tikzcd}
+	\qquad
+	$=\joinrel= \sigma_1 \Longrightarrow$
+	\qquad
+	\begin{tikzcd}[column sep=normal]
+		1 \arrow[dr, dash, start anchor=south, end anchor=north] & 2 \arrow[dl, crossing over, dash, start anchor=south, end anchor=north] \\
+		2 & 1
+	\end{tikzcd}
+	\qquad
+	$=\joinrel= \sigma_1 \Longrightarrow$
+	\qquad
+	\begin{tikzcd}[column sep=normal, row sep=normal]
+		1 \arrow[dr, dash, start anchor=south, end anchor=center] & 2 \arrow[dl, crossing over, dash, start anchor=south, end anchor=center] \\
+		\phantom{2} \arrow[dr, dash, start anchor=center, end anchor=north] & \phantom{1} \arrow[dl, crossing over, dash, start anchor=center, end anchor=north, shorten=1cm] \arrow[dl, dash, start anchor=center, end anchor=north] \\
+		1 & 2
+	\end{tikzcd}
+\end{center}
+
+Consider the following exact sequence:
+\begin{center}
+	\begin{tikzcd}
+		1 \arrow[r] & A_n \arrow[r, hook] & S_n \arrow[r, "\sgn", two heads] & \quotient{\Z}{2\Z} \arrow[r] & 1
+	\end{tikzcd}
+\end{center}
+where $A_n$ is the \emph{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn : S_n \to \quotient{\Z}{2\Z} = \{ \pm 1 \}$, the \emph{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$. Note that $\ker(\sgn) = A_n$ and $\im(\sgn) = \quotient{\Z}{2\Z}$.
+\begin{remark}
+	$A_n$ is simple for all $n \geq 5$, i.e., $A_n$ has no non-trivial normal subgroups for all $n \geq 5$.
+\end{remark}
+
+Then we have two properties of the sign homomorphism:
+\begin{itemize}
+	\item $\sgn(1) = 1$;
+	\item $\sgn(\sigma \tau) = \sgn(\sigma) \cdot \sgn(\tau)$ for all $\sigma, \tau \in S_n$.
+\end{itemize}
+
+\section{Determinant Formula}
+
+The permutation group $S_n$ acts on $V^n$ by permuting the factors:
+\[
+  \sigma : (v_1, v_2, \ldots, v_n) \mapsto (v_{\sigma(1)}, v_{\sigma(2)}, \ldots, v_{\sigma(n)}).
+\]
+Recall the universal property of the exterior power, we have the following commutative diagram:
+\begin{center}
+  \begin{tikzcd}
+    V^n \arrow[r, "\sigma"] \arrow[d, "\phi"] & V^n \arrow[d, "\phi"] \\
+    \Lambda^n V \arrow[r, "\widetilde{\sigma}", dashed] & \Lambda^n V
+  \end{tikzcd}
+\end{center}
+The induced map $\widetilde{\sigma} \colon \Lambda^n V \to \Lambda^n V$ is defined by
+\[
+  \widetilde{\sigma}(v_1 \wedge v_2 \wedge \cdots \wedge v_n) := v_{\sigma(1)} \wedge v_{\sigma(2)} \wedge \cdots \wedge v_{\sigma(n)}.
+\]
