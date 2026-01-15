@@ -253,7 +253,7 @@ The following is the normal definition of category, which is equivalent to Defin
 \end{example}
 
 \begin{example}
-  In the category $\Vect_F$, the zero vector space $\{0\}$ is both an initial object and a terminal object, hence it is a \emph{zero object}.
+  In the category $\Vect_F$, the zero linear space $\{0\}$ is both an initial object and a terminal object, hence it is a \emph{zero object}.
 \end{example}
 
 \section{Products and Coproducts}
@@ -505,7 +505,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
 \end{example}
 
 \begin{remark}
-  The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any vector space $V$, there is a natural identification:
+  The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any linear space $V$ over $F$, there is a natural identification:
   \[
     \Set(X, |V|) \simeq \Vect_F(F[X], V)
   \]
@@ -528,7 +528,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
   \[
     \Vect_F(F[X], V) \simeq \Set(X, |V|)
   \]
-  for any set $X$ and any vector space $V$ over $F$.
+  for any set $X$ and any linear space $V$ over $F$.
 \end{example}
 
 \begin{definition}[Endofunctor]\label{def:endofunctor}
@@ -653,7 +653,7 @@ The left shows that the free functor $F[-]$ sends the product in $\Set$ to the t
       \draw[arrow, ustblue] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
     \end{tikzpicture}
   \end{center}
-  Consider the cotangent vector $\mathsf{d}f_p$ at point $p$ for some smooth function $f \colon U \to \R$. It is a linear functional $\mathsf{d}f_p \colon \mathsf{T}_p U \to \R$ defined by $\mathsf{d}f_p(\vec{u}) = J_f(p) \vec{u}$ for all $\vec{u} \in \mathsf{T}_p U$. Here $\mathsf{T}_p U$ is the tangent space of $U$ at point $p$, which is a vector space over $\R$. Note that both $\vec{u}$ and $J_f(p)$ are depending on the choice of a coordinate system. However, $\mathsf{d}f_p$ is independent of any choice of coordinate system. In normal calculus, $\mathsf{d}f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $f_x(p)$ and $f_y(p)$.
+  Consider the cotangent vector $\mathsf{d}f_p$ at point $p$ for some smooth function $f \colon U \to \R$. It is a linear functional $\mathsf{d}f_p \colon \mathsf{T}_p U \to \R$ defined by $\mathsf{d}f_p(\vec{u}) = J_f(p) \vec{u}$ for all $\vec{u} \in \mathsf{T}_p U$. Here $\mathsf{T}_p U$ is the tangent space of $U$ at point $p$, which is a linear space over $\R$. Note that both $\vec{u}$ and $J_f(p)$ are depending on the choice of a coordinate system. However, $\mathsf{d}f_p$ is independent of any choice of coordinate system. In normal calculus, $\mathsf{d}f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $f_x(p)$ and $f_y(p)$.
 \end{example}
 
 The dual functor is not naturally isomorphic to the identity functor on $\Vect_F$, as ${(-)}^*$ is a contravariant functor, while the identity is a contravariant functor, so there is no natural transformation from $\id_{\Vect_F}$ to ${(-)}^*$.
@@ -785,7 +785,7 @@ where $\iota_V \colon V \to V^{**}$ is the natural isomorphism defined above. Th
   \[
     \Bil(V \times W, -) \simeq \Hom(V, \Hom(W, -))
   \]
-  where $\Bil(V \times W, -)$ is the functor that sends a vector space $Z$ to the set of bilinear maps with the source $V \times W$. For any linear space $Z$ over $F$, we have the natural isomorphism:
+  where $\Bil(V \times W, -)$ is the functor that sends a linear space $Z$ to the set of bilinear maps with the source $V \times W$. For any linear space $Z$ over $F$, we have the natural isomorphism:
   \[
     \musNatural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))
   \]
@@ -830,7 +830,7 @@ Let $V$ be a $n$-dimensional $F$-linear space and $V^*$ be its dual. Suppose tha
 \end{problem}
 
 \begin{problem}
-Let $T \colon V_1 \to V_2$ be a linear map and $\B_i$ be a basis of linear space $V_i$. Denote by $\B_i^*$ the dual basis of $\B_i$ for vector space $V_i^*$, by $T^* \colon V_2^* \to V_1^*$ the dual map of $T$, i.e., the map that sends $f$ to $f \circ T$.
+Let $T \colon V_1 \to V_2$ be a linear map and $\B_i$ be a basis of linear space $V_i$. Denote by $\B_i^*$ the dual basis of $\B_i$ for linear space $V_i^*$, by $T^* \colon V_2^* \to V_1^*$ the dual map of $T$, i.e., the map that sends $f$ to $f \circ T$.
 \begin{enumerate}
   \item Show that the sequence $V_1 \to V_2 \to V_3$ is exact if and only if its dual sequence $V_1^* \leftarrow V_2^* \leftarrow V_3^*$ is exact, and then conclude that $T$ is injective if and only if $T^*$ is surjective, and $T$ is surjective if and only if $T^*$ is injective.
   \item Let $A$ be the matrix representation of $T$ with respect to bases $\B_1, \B_2$ and $A^*$ be the matrix representation of $T^*$ with respect to bases $\B_2^*, \B_1^*$. Show that $A^*$ and $A$ are transposes of each other.

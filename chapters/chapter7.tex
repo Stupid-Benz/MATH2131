@@ -368,7 +368,7 @@ Then we have the matrix equation:
 which is called the \emph{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries. However, normally we denote the orthogonal matrix by $O$ instead of $Q$ and an upper-triangular matrix by $U$ instead of $R$.
 
 \subsection{Orthogonal Group and Special Orthogonal Group}
-Similar to the automorphism group of a vector space, we can define the automorphism group of a Euclidean space which is called the orthogonal group.
+Similar to the automorphism group of a linear space, we can define the automorphism group of a Euclidean space which is called the orthogonal group.
 
 Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$. Then we view $V$ as a linear space, and we have $\Aut(V) = \GL(V)$. If we view $V$ as a Euclidean space, then we have $\Aut(V) = \Orth(V) \subseteq \GL(V)$, where $\Orth(V)$ is the subgroup of $\GL(V)$ that respects the Euclidean structure, i.e., for all $T \in \Orth(V)$, we have:
 \[
@@ -487,7 +487,7 @@ for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly depe
   \]
 \end{proof}
 
-The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $V \times \overline{V} \to \C$, where $\overline{V}$ is the complex-conjugate vector space of $V$, or linear map $V \otimes \overline{V} \to \C$. The complex-conjugate vector space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
+The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $V \times \overline{V} \to \C$, where $\overline{V}$ is the complex-conjugate linear space of $V$, or linear map $V \otimes \overline{V} \to \C$. The complex-conjugate linear space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
 \[
   \C \times \overline{V} \to \overline{V}, \quad (\alpha, v) \mapsto \overline{\alpha} v
 \]
@@ -734,7 +734,7 @@ Then we have the following corollary.
 The proof is left as an exercise.
 
 \begin{proposition}[Canonical form of Hermitian forms]
-  The matrix representation $H$ of the Hermitian form on a complex vector space $V$ with respect to a basis $\B$ is a Hermitian matrix. So, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
+  The matrix representation $H$ of the Hermitian form on a complex linear space $V$ with respect to a basis $\B$ is a Hermitian matrix. So, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
   \[
     H = U D U^*
   \]
