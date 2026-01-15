@@ -1,148 +1,776 @@
-\chapter{Euclidean Spaces and Hermitian Spaces}
+\chapter{Inner Product Spaces}
+As of now, we have studied linear spaces and linear maps between linear spaces. In this chapter, we will introduce some geometric structures on linear spaces, which will lead to the definition of inner product spaces. Inner product spaces are very important in both pure and applied mathematics, as they provide a way to measure angles and lengths in linear spaces. We will explore the properties of inner product spaces, including orthogonality, projections, and orthonormal bases.
 
-\section{Tensors}
-In this section, we introduce tensors in elementary terms.
+\section{Inner Products and Euclidean Spaces}
+Inner products allow us to define notions of length and angle in more abstract linear spaces. We will start with the field of real numbers, $\R$, and later extend the definition to complex numbers, $\C$.
 
-\begin{definition}[Multilinear Map]\label{def:multilinear_map}
-  A \emph{multilinear map} between finite-dimensional $F$-linear spaces $V_1, V_2, \ldots, V_k$ and $W$ is a map $\phi \colon V_1 \times V_2 \times \cdots \times V_k \to W$ ($k$ times) that is linear in each argument when the other arguments are held fixed; that is, for each $1 \leq i \leq k$, and for all $v_j \in V_j$ ($j \neq i$), the map
+\begin{definition}[Inner Product]\label{def:inner_product}
+  An \emph{inner product} on a real linear space $V$ is a map $\langle -, - \rangle : V \times V \to \R$ such that the following properties hold:
+  \begin{description}[labelwidth=\widthof{\bfseries Positive-definiteness:~}]
+    \item[Bilinearity] $\langle -, v \rangle$ and $\langle u, - \rangle$ are linear maps for all $u, v \in V$;
+    \item[Symmetry] $\langle u, v \rangle = \langle v, u \rangle$ for all $u, v \in V$;
+    \item[Positive-definiteness] $\langle v, v \rangle \geq 0$ for all $v \in V$ with equality if and only if $v = 0$.
+  \end{description}
+  In short, an inner product is a positive-definite symmetric bilinear form on $V$.
+\end{definition}
+\begin{remark}
+  The notation $\langle -, - \rangle$ right here and afterwards is used to denote inner products, which is different from the natural pairing notation used in Definition~\ref{def:pairing}. These two look similar but are different concepts, the inner product is a tensor of type $(0, 2)$ while the natural pairing is a tensor of type $(1, 1)$.
+\end{remark}
+
+We can further more relax a bit the positive-definiteness condition to get the following definition.
+\begin{definition}[Pseudo Inner Product]\label{def:pseudo_inner_product}
+  A \emph{pseudo inner product} on a real linear space $V$ is a \emph{non-degenerate} symmetric bilinear form on $V$, i.e., an element $\langle-, -\rangle \in \mathcal{S}^2 V^*$ such that $\langle-, -\rangle_{\musNatural} : V \to V^*$ is an isomorphism.
+\end{definition}
+
+\begin{definition}[Euclidean Structure]\label{def:euclidean_space}
+  A \emph{Euclidean structure} on a real linear space $V$ is an inner product $\langle -, - \rangle : V \times V \to \R$. The pair $(V, \langle -, - \rangle)$ is called a \emph{Euclidean space}.
+\end{definition}
+
+We have mentioned that inner products can define lengths and angles in linear spaces. There is another way to define lengths in linear spaces, which turns out to be equivalent to inner products.
+
+\begin{definition}[Metric Structure]\label{def:metric_structure}
+  A \emph{metric structure} on a non-empty set $X$ is a map $d : X \times X \to \R$ such that the following properties hold:
+  \begin{description}[labelwidth=\widthof{\bfseries Positive-definiteness:~}]
+    \item[Positive-definiteness] $d(x, y) \geq 0$ for all $x, y \in X$ with equality if and only if $x = y$;
+    \item[Symmetry] $d(x, y) = d(y, x)$ for all $x, y \in X$;
+    \item[Triangle inequality] $d(x, z) \leq d(x, y) + d(y, z)$ for all $x, y, z \in X$.
+  \end{description}
+  The pair $(X, d)$ is called a \emph{metric space}.
+\end{definition}
+
+To make a metric structure on a linear space $V$, it is required that the metric structure is compatible with the linear structure on $V$ in the following sense:
+\begin{description}[leftmargin=!, labelwidth=\widthof{\bfseries Translation invariance:~}, font=\color{ustblue}, topsep=\baselineskip]
+  \item[Translation invariance] $d(u + v, u + w) = d(v, w)$ for all $u, v, w \in V$;
+  \item[Homogeneity] $d(\alpha v, \alpha w) = |\alpha| d(v, w)$ for all $\alpha \in \R$ and $v, w \in V$.
+\end{description}
+
+There is actually the third way to define lengths in linear spaces, which is called norms.
+\begin{definition}[Normed Structure]\label{def:normed_structure}
+  A \emph{normed structure} on a real linear space $V$ is a map $\| - \| : V \to \R$ such that the following properties hold:
+  \begin{description}[labelwidth=\widthof{\bfseries Positive-definiteness:~}]
+    \item[Positive-definiteness] $\| v \| \geq 0$ for all $v \in V$ with equality if and only if $v = 0$;
+    \item[Homogeneity] $\| \alpha v \| = |\alpha| \| v \|$ for all $\alpha \in \R$ and $v \in V$;
+    \item[Triangle inequality] $\| u + v \| \leq \| u \| + \| v \|$ for all $u, v \in V$.
+  \end{description}
+  The pair $(V, \| - \|)$ is called a \emph{normed linear space}.
+\end{definition}
+
+\begin{proposition}[Norm Induced by Metric]
+  Let $(V, d)$ be a metric linear space. Then the map $\| - \| : V \to \R$ defined as $\| v \| = d(v, 0)$ for all $v \in V$ is a norm on $V$.
+\end{proposition}
+It is straightforward to check the three properties in Definition~\ref{def:normed_structure}.
+
+\begin{proposition}[Metric Induced by Norm]
+  Let $(V, \| - \|)$ be a normed linear space. Then the map $d : V \times V \to \R$ defined as $d(u, v) = \| u - v \|$ for all $u, v \in V$ is a metric on $V$.
+\end{proposition}
+It is straightforward to check the three properties in Definition~\ref{def:metric_structure}
+
+To relate inner products with norms, we need the following one important inequality and one important identity.
+
+\begin{proposition}[Cauchy-Schwarz Inequality]
+  Let $(V, \langle -, - \rangle)$ be a Euclidean space. Then for all $u, v \in V$, we have:
   \[
-    V_i \to W, \quad v_i \mapsto \phi(v_1, v_2, \ldots, v_k)
+    |\langle u, v \rangle| \leq \| u \| \| v \|
   \]
-  is a \hyperref[def:linear_map]{linear map}.
+  with equality if and only if $u$ and $v$ are linearly dependent.
+\end{proposition}
+\begin{proof}
+  Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2t \langle u, v \rangle + \| v \|^2 \geq 0$ for all $t \in \R$. Then we have $f(t) \geq 0$ for all $t \in \R$. For $u = 0$, the inequality holds trivially. For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
+  \[
+    \Delta = 4 \langle u, v \rangle^2 - 4 \| u \|^2 \| v \|^2 \leq 0 \implies \langle u, v \rangle^2 \leq \| u \|^2 \| v \|^2 \qedhere
+  \]
+\end{proof}
+
+\begin{theorem}[Parallelogram Law]
+  The parallelogram law states that the sum of squares of the lengths of the four sides of a parallelogram equals the sum of squares of the lengths of the two diagonals, i.e., with the following figure:
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \draw (0, 0) coordinate (A) -- (2, 0) coordinate (B) -- (2.5, 1) coordinate (C) -- (0.5, 1) coordinate (D) -- cycle;
+      \draw[violet, -Stealth, thick] (A) -- (C) node[pos=0.6, above, sloped] {$u + v$};
+      \draw[ustred, -Stealth, thick] (B) -- (D) node[pos=0.3, above, sloped] {$u - v$};
+      \draw[teal, -Stealth, thick] (A) -- (B) node[midway, below] {$u$};
+      \draw[ustblue, -Stealth, thick] (A) -- (D) node[midway, left] {$v$};
+    \end{tikzpicture}
+  \end{center}
+  we have the following identity for all $u, v \in V$:
+  \[
+    \| u + v \|^2 + \| u - v \|^2 = 2 \| u \|^2 + 2 \| v \|^2
+  \]
+\end{theorem}
+
+\begin{proposition}
+  An Euclidean structure on a real linear space $V$ is equivalent to a norm structure on $V$ satisfying the parallelogram law.
+\end{proposition}
+\begin{proof}
+  Let $(V, \langle -, - \rangle)$ be a Euclidean space.
+  \begin{description}[labelwidth=\widthof{\bfseries ($\Rightarrow$):~}]
+    \item[($\Rightarrow$)] We can define the norm on $V$ as $\| v \| = \sqrt{\langle v, v \rangle}$ for all $v \in V$. Then we have:
+          \begin{description}[labelwidth=\widthof{\bfseries Positive-definiteness:~}]
+            \item[Positive-definiteness] $\| v \| = \sqrt{\langle v, v \rangle} \geq 0$ for all $v \in V$ with equality if and only if $v = 0$;
+            \item[Homogeneity] $\| \alpha v \| = \sqrt{\langle \alpha v, \alpha v \rangle} = \sqrt{\alpha^2 \langle v, v \rangle} = |\alpha| \| v \|$ for all $v \in V$ and $\alpha \in \R$;
+            \item[Triangle Inequality] By Cauchy-Schwarz inequality, we have:
+                  \begin{align*}
+                    \| u + v \| & = \sqrt{\langle u + v, u + v \rangle} = \sqrt{\langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle} \\
+                                & = \sqrt{\| u \|^2 + \| v \|^2 + 2 \langle u, v \rangle}                                                                                  \\
+                                & \leq \sqrt{\| u \|^2 + \| v \|^2 + 2 \| u \| \| v \|}                                                                                    \\
+                                & = \sqrt{{(\| u \| + \| v \|)}^2} = \| u \| + \| v \|
+                  \end{align*}
+                  Therefore, the triangle inequality holds.
+            \item[Parallelogram Law] We have:
+                  \begin{align*}
+                    \| u + v \|^2 + \| u - v \|^2 & = \langle u + v, u + v \rangle + \langle u - v, u - v \rangle                                                                                                                           \\
+                                                  & = \langle u, u \rangle + \langle v, v \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle u, u \rangle + \langle v, v \rangle - \langle u, v \rangle - \langle v, u \rangle \\
+                                                  & = 2 \langle u, u \rangle + 2 \langle v, v \rangle = 2 \| u \|^2 + 2 \| v \|^2
+                  \end{align*}
+          \end{description}
+
+    \item[($\Leftarrow$)] We define the inner product for all $u, v \in V$ as follows:
+          \[
+            \langle u, v \rangle = \frac{1}{2} \left( \| u + v \|^2 - \| u \|^2 - \| v \|^2 \right)
+          \]
+          Then we check the three properties of inner product:
+          \begin{description}[labelwidth=\widthof{\bfseries Positive-definiteness:~}]
+            \item[Bilinearity] For all $u, v, w \in V$, we have to show that $\langle u + w, v \rangle = \langle u, v \rangle + \langle w, v \rangle$, which is equivalent to show that:
+                  \begin{align*}
+                    \| u + w + v \|^2 - \| u + w \|^2 - \| v \|^2         & = \| u + v \|^2 - \| u \|^2 - \| v \|^2 + \| w + v \|^2 - \| w \|^2 - \| v \|^2 \\
+                    \| u + w + v \|^2 + \| u \|^2 + \| w \|^2 + \| v \|^2 & = \| u + w \|^2 + \| u + v \|^2 + \| w + v \|^2
+                  \end{align*}
+                  Then we may consider $x = u + w$ and $y = v + w$, and $x' = u + v + w$ and $y' = w$, and we have
+                  \begin{align*}
+                    \| u + v + 2w \|^2 + \| u - v \|^2 & = 2 \| u + w \|^2 + 2 \| v + w \|^2 \\
+                    \| u + v + 2w \|^2 + \| u + v \|^2 & = 2 \| u + v + w \|^2 + 2 \| w \|^2
+                  \end{align*}
+                  Then we have
+                  \[
+                    \| u - v \|^2 - \| u + v \|^2 = 2 \| u + w \|^2 + 2 \| v + w \|^2 - 2 \| u + v + w \|^2 - 2 \| w \|^2
+                  \]
+                  Moreover, by the parallelogram law on $u - v$, we have
+                  \begin{align*}
+                    2 \| u \|^2 + 2 \| v \|^2 - 2 \| u + v \|^2           & = 2 \| u + w \|^2 + 2 \| v + w \|^2 - 2 \| u + v + w \|^2 - 2 \| w \|^2 \\
+                    \| u + v + w \|^2 + \| u \|^2 + \| v \|^2 + \| w \|^2 & = \| u + w \|^2 + \| v + w \|^2 + \| u + v \|^2
+                  \end{align*}
+                  Hence, additivity in the first argument holds. We can show the additivity in the second argument similarly. For homogeneity, we may consider the following steps:
+                  \begin{itemize}
+                    \item Prove natural number homogeneity
+                    \item Prove reciprocal of natural number homogeneity
+                    \item Prove Cauchy-Schwarz inequality
+                    \item Prove that for any $\lambda \in \R$, every $r \in \mathbb{Q}$, we have:
+                          \[
+                            | \lambda \langle u, v \rangle - \langle \lambda u, v \rangle | = | (\lambda - r) \langle u, v \rangle - \langle (\lambda - r) u, v \rangle | \leq 2|\lambda - r| \| u \| \| v \|
+                          \]
+                    \item Hence, prove real number homogeneity by taking limit on both sides as $r \to \lambda$.
+                  \end{itemize}
+
+            \item[Symmetry] For all $u, v \in V$, we have:
+                  \begin{align*}
+                    \langle u, v \rangle & = \frac{1}{2} \left( \| u + v \|^2 - \| u \|^2 - \| v \|^2 \right)                        \\
+                                         & = \frac{1}{2} \left( \| v + u \|^2 - \| v \|^2 - \| u \|^2 \right) = \langle v, u \rangle
+                  \end{align*}
+
+            \item[Positive-definiteness] For all $v \in V$, we have:
+                  \[
+                    \langle v, v \rangle = \frac{1}{2} \left( \| v + v \|^2 - \| v \|^2 - \| v \|^2 \right) = \frac{1}{2} (4 \| v \|^2 - 2 \| v \|^2) = \| v \|^2 \geq 0
+                  \]
+          \end{description}
+          Thus, $\langle -, - \rangle$ is an inner product on $V$. \qedhere
+  \end{description}
+\end{proof}
+
+\begin{definition}[Length]\label{def:length}
+  If $v \in V$ is a vector in a Euclidean space $(V, \langle -, - \rangle)$, then the \emph{length}, or \emph{norm} of $v$ is defined as:
+  \[
+    \| v \| = \sqrt{\langle v, v \rangle}
+  \]
 \end{definition}
 
-\begin{definition}[Multilinear Form]\label{def:multilinear_form}
-  A \emph{multilinear form} on a finite-dimensional $F$-linear space $V$ is a \hyperref[def:multilinear_map]{multilinear map} $\phi \colon V^k \to F$ ($k$ times). It is an element of the $k$-th \hyperref[def:tensor_power]{tensor power} of the dual space $V^*$, i.e., $\phi \in {(V^*)}^{\otimes k}$.
+\begin{definition}[Angle]\label{def:angle}
+  If both $u, v \in V$ are non-zero vectors in a Euclidean space $(V, \langle -, - \rangle)$, then the \emph{angle} $\theta$ between $u$ and $v$ is defined as:
+  \[
+    \theta = \arccos{\left( \frac{\langle u, v \rangle}{\| u \| \| v \|} \right)}
+  \]
+  Moreover, if $\langle u, v \rangle = 0$, then we say that $u$ and $v$ are orthogonal.
 \end{definition}
 
-Specifically, a linear form is simply a linear functional on $V$, i.e., an element of the dual space $V^*$. A bilinear form is an element of $V^* \otimes V^*$. To show that the set of all bilinear forms on $V$ is isomorphic to $V^* \otimes V^*$, we consider the following diagram:
+\section{Orthogonality}
+
+\subsection{Orthogonal Subspaces and Orthogonal Complements}
+We have already defined the notion of orthogonality between two vectors in Definition~\ref{def:angle}. We can further more extend the notion of orthogonality to subspaces in a Euclidean space.
+
+Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$ and $W \subseteq V$ is a subspace of $V$. Then $W$ inherits an Euclidean structure from $\langle -, - \rangle$ in $V$. We restrict the inner product $\langle -, - \rangle$ on $V$ to $W$:
 \begin{center}
   \begin{tikzcd}
-    \Bil(V \times V, F) \arrow[r, <->] & \Hom(V, V^*) \arrow[r, <->] & V^* \otimes V^*
+    W \times W \arrow[r, hook] \arrow[rr, bend left, "{\langle -, - \rangle}"'] & V \times V \arrow[r, "{\langle -, - \rangle}"] & \R
   \end{tikzcd}
 \end{center}
-Here, the first isomorphism is given by the currying process, and the second isomorphism is given by the natural isomorphism $\Hom(V, W) \simeq V^* \otimes W$ for finite-dimensional $F$-linear spaces $V$ and $W$.
-
-Moreover, we have the following two important special cases of 2-linear forms.
-\begin{definition}[Symmetric Bilinear Form]\label{def:symmetric_bilinear_form}
-  A \emph{symmetric bilinear form} on a finite-dimensional $F$-linear space $V$ is a \hyperref[def:multilinear_form]{multilinear form} $\phi \colon V \times V \to F$ such that $\phi(v, w) = \phi(w, v)$ for all $v, w \in V$. It is an element of the \hyperref[def:symmetric_power]{second symmetric power} of the dual space $V^*$, i.e., $\phi \in \Sy^2(V^*)$.
-\end{definition}
-\begin{definition}[Skew-symmetric Bilinear Form]\label{def:skew_symmetric_bilinear_form}
-  A \emph{skew-symmetric bilinear form} on a finite-dimensional $F$-linear space $V$ is a \hyperref[def:multilinear_form]{multilinear form} $\phi \colon V \times V \to F$ such that $\phi(v, w) = -\phi(w, v)$ for all $v, w \in V$. It is an element of the \hyperref[def:exterior_power]{second exterior power} of the dual space $V^*$, i.e., $\phi \in \Lambda^2(V^*)$.
-\end{definition}
-\begin{remark}
-  Here, we assume that the characteristic of the field $F$ is not 2, so that the relation $\phi(v, w) = -\phi(w, v)$ is equivalent to $\phi(v, v) = 0$ for all $v, w \in V$. If the characteristic of $F$ is 2, then the skew-symmetric 2-tensor would be defined by the relation $\phi(v, v) = 0$ for all $v \in V$.
-\end{remark}
-
-Then we can define tensor spaces.
-\begin{definition}[Tensor Space]\label{def:tensor_space}
-  The \emph{tensor space} of type $(k, l)$ on a finite-dimensional $F$-linear space $V$, denoted by $T^{k, l}(V)$, is defined as the tensor product of the $k$-th \hyperref[def:tensor_power]{tensor power} of $V$ and the $l$-th \hyperref[def:tensor_power]{tensor power} of the dual space $V^*$:
-  \[
-    T^{k, l}(V) = V^{\otimes k} \otimes {(V^*)}^{\otimes l}.
-  \]
-  Elements of $T^{k, l}(V)$ are called \emph{tensors of type $(k, l)$} on $V$, where $k$ is the number of \emph{contravariant} indices and $l$ is the number of \emph{covariant} indices.
-\end{definition}
-
-If a tensor is of type $(k, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{$k$-tensor}, and it is an element of the $k$-th \hyperref[def:tensor_power]{tensor power} of $V$, i.e., $\Ten^{k, 0}(V) = V^{\otimes k}$. If a tensor is of type $(0, l)$, then it is called a \emph{covariant tensor} or simply an \emph{$l$-form}, and it is an element of the $l$-th \hyperref[def:tensor_power]{tensor power} of the dual space $V^*$, i.e., $\Ten^{0, l}(V) = {(V^*)}^{\otimes l}$.
-
-Given that $\End(V) \simeq V \otimes V^* = \Ten^{1, 1}(V)$, we can see that tensors of type $(1, 1)$ can be interpreted as linear operators on $V$ and represented by $a^i_j$ in a basis. Here, the contravariant index $i$ represents the row index, and the covariant index $j$ represents the column index. To get the matrix representation of the linear operator with respect to a basis, we have
-\[
-  a^i_j = \langle \hat{e}^i, A(\vec{e}_j) \rangle,
-\]
-where $\{\vec{e}_j\}$ is a basis of $F^n$ and $\{\hat{e}^i\}$ is the dual basis of $F^n$. Then we can identify the linear operator $T$ with tensor of type $(1, 1)$ as follows:
-\[
-  T \simeq T^i_j v_i \otimes v^j.
-\]
-Here, the $\{ v_i \}$ form a basis of $V$, and the $\{ v^j \}$ form the dual basis of $V^*$.
-
-An object is considered as \emph{covariant} if it transforms like the basis vectors under a change of basis, and it is considered as \emph{contravariant} if it transforms oppositely to the basis vectors under a change of basis. We have the following transformation tables for covariant and contravariant objects under a change of basis.
+Note that the restriction $\langle -, - \rangle$ is still an inner product on $W$. Also, the positive-definiteness of $\langle -, - \rangle$ implies that $\langle -, - \rangle$ is non-degenerate, i.e., the map $\langle -, - \rangle_{\musNatural} : W \to W^*$ is isomorphism. Note that $W$ and $W^*$ have the same dimension and it has a trivial kernel: $\langle u, - \rangle_W = 0$ implies $\langle u, u \rangle_W = 0$ implies $u = 0$. Now, suppose $w = (w_1, \cdots, w_k)$ is a basis of $W$ and $w^* = (w_1^*, \cdots, w_k^*)$ is the dual basis of $W^*$, then we have the following diagram:
 \begin{center}
-  \begin{tabularx}{\textwidth}{X X}
-    \toprule
-    \textbf{Object}                     & \textbf{Transformation Type} \\
-    \midrule
-    Standard Basis Vector ($\vec{e}_i$) & Covariant                    \\
-    \midrule
-    Dual Basis Vector ($\hat{e}^i$)     & Contravariant                \\
-    \midrule
-    Component of a Vector ($v^i$)       & Contravariant                \\
-    \midrule
-    Component of a Covector ($v_i$)     & Covariant                    \\
-    \bottomrule
-  \end{tabularx}
+  \begin{tikzcd}
+    0 \arrow[r] & \ker(\lambda_w) \arrow[r] & V \arrow[r, "\lambda_w"', two heads] & \R^k \arrow[r] \arrow[l, bend right, "s"'] & 0 \\
+    & & W \arrow[u, hook] \arrow[r, <->, "{\langle -, - \rangle_{\musNatural}}"] & W^* \arrow[u, <->, "{[-]_{w^*}}"'] \\[-3.6em]
+    & & {\scriptstyle w_i} \arrow[r, mapsto] & {\scriptstyle \langle w_i, - \rangle}
+  \end{tikzcd}
 \end{center}
-
-In general, an element $t \in \Ten^{r, s}(V)$ can be represented in a basis as follows:
+where $\lambda_w = \smash{\begin{bmatrix}
+      \langle w_1, - \rangle \\
+      \vdots                 \\
+      \langle w_k, - \rangle
+    \end{bmatrix}}$, and $s$ is a section of $\lambda_w$ with image $W$. Then we have the decomposition:
 \[
-  t = t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s} v_{i_1} \otimes v_{i_2} \otimes \cdots \otimes v_{i_r} \otimes v^{j_1} \otimes v^{j_2} \otimes \cdots \otimes v^{j_s},
+  V = \im(s) \oplus \ker(\lambda_w) = W \oplus \ker(\lambda_w)
 \]
-where the $\{ v_i \}$ form a basis of $V$, and the $\{ v^j \}$ form the dual basis of $V^*$. The representation depends on the choice of basis, i.e., the following two representations are equivalent under a change of basis:
-\[
-  {\left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]}_{\B_V} \simeq {\left[\widetilde{t}^{\widetilde{i}_1 \widetilde{i}_2 \cdots \widetilde{i}_r}_{\widetilde{j}_1 \widetilde{j}_2 \cdots \widetilde{j}_s}\right]}_{\widetilde{\B_V}}
-\]
-The two representations are related by the change of basis matrices as follows:
-\[
-  (\widetilde{v}_1, \widetilde{v}_2, \cdots, \widetilde{v}_n) = (v_1, v_2, \cdots, v_n) A,
-\]
-where $A$ is the change of basis matrix, $A = {[a^i_{\widetilde{j}}]}_{\B_V}^{\widetilde{\B_V}}$, which is in the general linear group of $V$, $\GL(V)$.
-\begin{remark}
-  It is the right action of $\GL(V)$ on the set of bases of $V$:
+Note that it is an internal direct sum. Then we define the orthogonal complement of $W$ in $V$ as follows.
+\begin{definition}[Orthogonal Complement]\label{def:orthogonal_complement}
+  The orthogonal complement of $W$ in $V$, denoted by $W^\perp$, is defined as:
   \[
-    \B_V \times \GL(V) \to \B_V, \quad (\B_V, A) \mapsto \B_V A.
+    W^\perp = \{ v \in V \mid \langle v, w \rangle = 0 \text{ for all } w \in W \} = \{ v \in V \mid \langle v, w_i \rangle = 0 \text{ for all basis } w_i \in W \}
+  \]
+  Then we have the decomposition:
+  \[
+    V = W \oplus W^\perp
+  \]
+\end{definition}
+
+Then any vector $v \in V$ can be uniquely decomposed as $v = w + w^\perp$ with $w = \proj_W(v) \in W$ and $w^\perp = \proj_{W^\perp}(v) \in W^\perp$. The map $\proj_W : V \to W$ is called the orthogonal projection onto $W$ along $W^\perp$. For visualization, see Figure~\ref{fig:orthogonal_projection}.
+\begin{figure}[!ht]
+  \begin{tikzpicture}
+    \draw (-0.1, 0.2) -- (-0.3, 0.1) -- (-0.2, -0.1);
+    \draw[ustblue] (-4, -2) -- (4, 2) node[right] {$W$};
+    \draw[red] (-1.5, 3) node[above] {$W^\perp$} -- (1.5, -3);
+    \draw[thick, -latex] (0, 0) -- (4, 0) node[right] {$\vec{v}$};
+    \draw[thick, ustblue, -latex] (0, 0) -- (3.2, 1.6) node[midway, above, sloped] {$\scriptstyle w = \proj_W v$};
+    \draw[thick, red, -latex] (0, 0) -- (0.8, -1.6) node[midway, below, sloped] {$\scriptstyle w^\perp = \proj_{W^\perp} v$};
+    \draw[ustblue, dashed] (4, 0) -- (3.2, 1.6);
+    \draw[red, dashed] (4, 0) -- (0.8, -1.6);
+  \end{tikzpicture}
+  \caption{Orthogonal Projection onto Subspace $W$ along $W^\perp$}\label{fig:orthogonal_projection}
+\end{figure}
+
+Then we have the following properties of the orthogonal projection:
+\begin{itemize}
+  \item ${(\proj_W)}^2 = \proj_W$;
+  \item $\im{\proj_W} = W$;
+  \item $\ker{\proj_W} = W^\perp$;
+  \item $\proj_W + \proj_{W^\perp} = \id_V$.
+\end{itemize}
+
+\begin{definition}[Orthogonal Basis and Orthonormal Basis]\label{def:orthogonal_orthonormal_basis}
+  An \emph{orthogonal basis} of a Euclidean space $(V, \langle -, - \rangle)$ is a basis $w = (w_1, w_2, \cdots, w_n)$ of $V$ such that $\langle w_i, w_j \rangle = 0$ for all $i \neq j$. An \emph{orthonormal basis} is an orthogonal basis $w = (w_1, w_2, \cdots, w_n)$ such that $\langle w_i, w_i \rangle = 1$ for all $1 \leq i \leq n$.
+\end{definition}
+
+\begin{proposition}
+  For any Euclidean space $V$ with inner product, there exists an orthonormal basis of $V$. Moreover, there exists a linear isometric isomorphism between $V$ and $\R^n$ with the standard inner product, the dot product. Up to isomorphism, there is a unique Euclidean space with dimension $n$, i.e., $(\R^n, \cdot)$.
+\end{proposition}
+
+If $w = (w_1, w_2, \cdots, w_k)$ is an orthonormal basis of $W$, then for all $u \in V$, we have the following formula for the orthogonal projection of $u$ onto $W$:
+\[
+  \proj_W u = \sum_{i = 1}^k \langle w_i, u \rangle w_i
+\]
+In case $w$ is orthogonal but not orthonormal, then we have the following formula:
+\[
+  \proj_W u = \sum_{i = 1}^k \frac{\langle w_i, u \rangle}{\langle w_i, w_i \rangle} w_i
+\]
+
+\subsection{Gram-Schmidt Process}
+We will now show how to construct an orthonormal basis of a Euclidean space $V$ given any basis of $V$. The key idea is to use the orthogonal projection to iteratively construct orthonormal vectors.
+
+Let $w = (w_1, w_2, \cdots, w_k)$ be an orthonormal basis of $W \subseteq V$. Then we have:
+\[
+  x = \underbrace{\sum_{i = 1}^k \langle w_i, x \rangle w_i}_{\in W} + \underbrace{x - \sum_{i = 1}^k \langle w_i, x \rangle w_i}_{\in W^\perp} = \proj_W x + \proj_{W^\perp} x.
+\]
+To show that $\proj_{W^\perp} x \in W^\perp$, it suffices to show that $\langle w_j, \proj_{W^\perp} x \rangle = 0$ for all $1 \leq j \leq k$:
+\[
+  \begin{split}
+    \langle w_j, \proj_{W^\perp} x \rangle & = \langle w_j, x - \sum_{i = 1}^k \langle w_i, x \rangle w_i \rangle                      \\
+                                           & = \langle w_j, x \rangle - \sum_{i = 1}^k \langle w_i, x \rangle \langle w_j, w_i \rangle \\
+                                           & = \langle w_j, x \rangle - \langle w_j, x \rangle = 0
+  \end{split}
+\]
+Note that the key step is to use the bilinearity of the inner product and the orthonormality of $w$.
+
+Now, given any basis $x = (x_1, x_2, \cdots, x_n)$ of $V$, we can use the Gram-Schmidt process to construct an orthonormal basis $w = (w_1, w_2, \cdots, w_n)$ of $V$ by inductive argument. The idea is: We have $V_n \supset V_{n - 1} \supset \cdots \supset V_2 \supset V_1 \supset V_0 = \{ 0 \}$ with the dimension $n, n - 1, \cdots, 2, 1, 0$ respectively. Then we have $w_1$ as the orthonormal basis of $V_1$, then we can extend it to $w_1, w_2$ as the orthonormal basis of $V_2$, and so on and so forth until we reach $V_n = V$.
+
+Then we consider the first two cases to illustrate the idea. Let $v_1 = u_1$. Then we have $w_1 = \frac{v_1}{\| v_1 \|}$ as the orthonormal basis of $V_1 = \spn\{u_1\}$. Then we want to find the $w_2$ such that $w_1, w_2$ is the orthonormal basis of $V_2 = \spn\{u_1, u_2\}$. For visualization, see the Figure~\ref{fig:gram_schmidt_process}.
+
+\begin{figure}[!ht]
+  \begin{tikzpicture}
+    \draw (-0.1, 0.2) -- (-0.3, 0.1) -- (-0.2, -0.1);
+    \draw[ustblue] (-4, -2) -- (4, 2) node[right] {$V_1$};
+    \draw[red] (-1.5, 3) node[above] {$V_1^\perp$} -- (1.5, -3);
+    \draw[thick, -latex] (0, 0) -- (1, 3) node[above] {$x_2$};
+    \draw[thick, -latex] (0, 0) -- (3, 1.5) node[above, magenta] {$v_1$} node[below right] {$x_1$};
+    \draw[magenta, -latex, thick] (0, 0) -- (-1, 2) node[left] {$v_2$};
+
+    \draw[violet, -latex, very thick] (0, 0) -- (0.894, 0.447) node[below right] {$w_1$};
+    \draw[violet, -latex, very thick] (0, 0) -- (-0.447, 0.894) node[left] {$w_2$};
+
+    \draw[ustblue, dashed] (1, 3) -- (2, 1) node[midway, above, sloped] {$\scriptstyle \proj_{V_1} x_2$};
+    \draw[red, dashed] (1, 3) -- (-1, 2) node[midway, above, sloped] {$\scriptstyle x_2 - \proj_{V_1} x_2$};
+  \end{tikzpicture}
+  \caption{Gram-Schmidt Process for Constructing Orthonormal Basis}\label{fig:gram_schmidt_process}
+\end{figure}
+
+Then $v_2 = x_2 - \proj_{V_1} x_2 = x_2 - \langle w_1, x_2 \rangle w_1$ is orthogonal to $w_1$. Note that $w_1$ is normalised. Then we can normalise $v_2$ to get $w_2 = \frac{v_2}{\| v_2 \|}$. Therefore, $w_1, w_2$ is the orthonormal basis of $V_2$. Then for general $k$-th step, we have:
+\[
+  v_k = x_k - \sum_{i = 1}^{k - 1} \langle w_i, x_k \rangle w_i = x_k - \sum_{i = 1}^{k - 1} \frac{\langle v_i, x_k \rangle}{\langle v_i, v_i \rangle} v_i, \quad w_k = \frac{v_k}{\| v_k \|}
+\]
+given that $w_1, w_2, \cdots, w_{k - 1}$ is the orthonormal basis of $V_{k - 1} = \spn\{x_1, x_2, \cdots, x_{k - 1}\}$ and the orthogonal basis of $V_{k - 1}$, $v_1, v_2, \cdots, v_{k - 1}$.
+
+Then there is a useful corollary of the Gram-Schmidt process, the $QR$ Decomposition.
+
+Let $V$ be a Euclidean space. We can interpret it as $(\R^n, \cdot)$ up to isomorphism. Then we have a basis $(\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n)$ of $V$ and we can form an invertible matrix $A$ whose columns are the vectors $\vec{x}_1, \vec{x}_2, \cdots, \vec{x}_n$, i.e.,
+\[
+  A = \begin{bmatrix}
+    |         & |         &        & |         \\
+    \vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \\
+    |         & |         &        & |
+  \end{bmatrix}
+\]
+Then we have an orthogonal basis $(\vec{v}_1, \cdots, \vec{v}_n)$ of $V$ and an orthonormal basis $(\vec{w}_1, \cdots, \vec{w}_n)$ obtained by the Gram-Schmidt process. Then we should have an invertible matrix to convert between bases. Then what is the matrix to convert from the original basis to the orthonormal basis?
+
+Note that each $\vec{x}_k$ can be expressed as a linear combination of $\vec{w}_1, \cdots, \vec{w}_k$:
+\[
+  \vec{x}_k = \vec{v}_k + \sum_{i = 1}^{k - 1} \frac{\langle \vec{v}_i, \vec{x}_k \rangle}{\langle \vec{v}_i, \vec{v}_i \rangle} \vec{v}_i = \| \vec{v}_k \| \vec{w}_k + \sum_{i = 1}^{k - 1} \langle \vec{w}_i, \vec{x}_k \rangle \vec{w}_i
+\]
+Also, we can express $\vec{x}_k$ as follows:
+\[
+  \vec{x}_k = \begin{bmatrix}
+    |         & |         &        & |         \\
+    \vec{w}_1 & \vec{w}_2 & \cdots & \vec{w}_n \\
+    |         & |         &        & |
+  \end{bmatrix} \begin{bmatrix}
+    \langle \vec{w}_1, \vec{x}_k \rangle       \\
+    \langle \vec{w}_2, \vec{x}_k \rangle       \\
+    \vdots                                     \\
+    \langle \vec{w}_{k - 1}, \vec{x}_k \rangle \\
+    \| \vec{v}_k \|                            \\
+    0                                          \\
+    \vdots                                     \\
+    0
+  \end{bmatrix}
+\]
+Then we have the matrix equation:
+\[
+  \underbrace{\begin{bmatrix}
+      |         & |         &        & |         \\
+      \vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \\
+      |         & |         &        & |
+    \end{bmatrix}}_{A} = \underbrace{\begin{bmatrix}
+      |         & |         &        & |         \\
+      \vec{w}_1 & \vec{w}_2 & \cdots & \vec{w}_n \\
+      |         & |         &        & |
+    \end{bmatrix}}_{Q} \underbrace{\begin{bmatrix}
+      \langle \vec{w}_1, \vec{x}_1 \rangle & \langle \vec{w}_1, \vec{x}_2 \rangle & \cdots & \langle \vec{w}_1, \vec{x}_n \rangle \\
+      0                                    & \langle \vec{w}_2, \vec{x}_2 \rangle & \cdots & \langle \vec{w}_2, \vec{x}_n \rangle \\
+      0                                    & 0                                    & \ddots & \vdots                               \\
+      0                                    & 0                                    & 0      & \langle \vec{w}_n, \vec{x}_n \rangle
+    \end{bmatrix}}_{R}
+\]
+which is called the \emph{QR Decomposition} of $A$, where $Q$ is an orthogonal matrix and $R$ is an upper-triangular matrix with positive diagonal entries. However, normally we denote the orthogonal matrix by $O$ instead of $Q$ and an upper-triangular matrix by $U$ instead of $R$.
+
+\subsection{Orthogonal Group and Special Orthogonal Group}
+Similar to the automorphism group of a vector space, we can define the automorphism group of a Euclidean space which is called the orthogonal group.
+
+Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$. Then we view $V$ as a linear space, and we have $\Aut(V) = \GL(V)$. If we view $V$ as a Euclidean space, then we have $\Aut(V) = \Orth(V) \subseteq \GL(V)$, where $\Orth(V)$ is the subgroup of $\GL(V)$ that respects the Euclidean structure, i.e., for all $T \in \Orth(V)$, we have:
+\[
+  \langle T(u), T(v) \rangle = \langle u, v \rangle
+\]
+for all $u, v \in V$, so length and angles are preserved under $T$. Or equivalently, the following diagram commutes:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    & V \times V \arrow[dr, "{\langle -, - \rangle}"] \\
+    V \times V \arrow[ur, "T \times T"] \arrow[rr, "{\langle -, - \rangle}"'] & & \R
+  \end{tikzcd}
+\end{center}
+We can also define the orthogonal group $\Orth(n)$ using this property. Let $V = \R^n$ with the dot product. Then for any $A \in \GL_n(\R)$, $A \in \Orth(n)$ if and only if $A$ satisfies:
+\[
+  \langle \vec{a}_i, \vec{a}_j \rangle = \langle A\vec{e}_i, A\vec{e}_j \rangle = \langle \vec{e}_i, \vec{e}_j \rangle = \delta_{ij}
+\]
+It is equivalent to say that $O^T O = I_n$, i.e., $O^T = O^{-1}$. Therefore, we have:
+\[
+  \Orth(n) = \{ O \in \GL_n(\R) \mid O^T O = I_n \}
+\]
+Note that $\det(O^T) = {\det(O)}^T = \det(O)$. Therefore, we have ${\det(O)}^2 = 1$ for all $O \in \Orth(n)$, i.e., $\det(O) = \pm 1$.
+
+Then consider the following exact sequence:
+\begin{center}
+  \begin{tikzcd}
+    1 \arrow[r] & \SL(V) \arrow[r, hook] & \GL(V) \arrow[r, "\det", two heads] & \R^\times \arrow[r] & 1
+  \end{tikzcd}
+\end{center}
+where $\R^\times = \GL_1(\R) = \R \setminus \{ 0 \}$ is the multiplicative group of non-zero real numbers. As for any automorphism $A \in \GL(V)$, we have a determinant $\det{A} \in \R^\times$, which is surjective. $\SL(V)$ is defined as the kernel of the determinant map, i.e., $\SL(V) = \{ A \in \GL(V) \mid \det{A} = 1 \}$. Similarly, we have the special orthogonal group $\SO(V)$ as the subgroup of $\Orth(V)$ with determinant $1$:
+\[
+  \SO(V) = \{ A \in \Orth(V) \mid \det{A} = 1 \}
+\]
+
+\subsection{Matrix Representation of Inner Products}
+
+Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$. Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$. Then we have
+\[
+  x = x^i v_i = \begin{bmatrix}
+    x^1    \\
+    x^2    \\
+    \vdots \\
+    x^n
+  \end{bmatrix}, \quad y = y^i v_i = \begin{bmatrix}
+    y^1    \\
+    y^2    \\
+    \vdots \\
+    y^n
+  \end{bmatrix}
+\]
+Then the inner product $\langle x, y \rangle$ can be represented as:
+\[
+  \langle x, y \rangle = x^i y^j \langle v_i, v_j \rangle = x^T \omega y = x \cdot (\omega y)
+\]
+where we let $\omega = [\langle v_i, v_j \rangle]$ be the matrix representation of the inner product with respect to the basis $v$. Then $\langle -, - \rangle = \cdot \omega -$. To find the canonical form of the inner product, we will discuss in Section~\ref{sec:spectral-theorem}. But the inner product matrix is a real symmetric matrix.
+
+\begin{definition}[Real Symmetric Matrix]\label{def:real_symmetric_matrix}
+  A real matrix $A$ of order $n$ is called a \emph{real symmetric matrix} if $A^T = A$.
+\end{definition}
+
+There is a key property of real symmetric matrices that is the spectral theorem, which will be discussed in Section~\ref{sec:spectral-theorem}.
+
+\section{Hermitian Inner Products and Unitary Groups}
+
+\subsection{Hermitian Inner Products}
+We can generalise the notion of inner products to complex linear spaces. The generalisation is called Hermitian inner products.
+\begin{definition}[Hermitian Inner Products]\label{def:hermitian_inner_product}
+  A \emph{Hermitian inner product} is a \emph{Hermitian form} that is also \emph{positive-definite}, i.e., for any $v \in V$, $\langle v, v \rangle \geq 0$ with equality if and only if $v = 0$. A Hermitian form on a complex linear space $V$ is a map $\langle -, - \rangle : V \times V \to \C$ such that the following properties hold:
+  \begin{description}[labelwidth=\widthof{\bfseries Conjugate Symmetry:~}]
+    \item[Sesquilinearity] For any $u, v \in V$ and $\alpha \in \C$, we have:
+          \begin{itemize}[label={}, leftmargin=0pt]
+            \item \textbf{Biadditivity:} $\langle u + v, w \rangle = \langle u, w \rangle + \langle v, w \rangle$ and $\langle u, v + w \rangle = \langle u, v \rangle + \langle u, w \rangle$;
+            \item \textbf{Linear in the first arguement:} $\langle \alpha u, v \rangle = \alpha \langle u, v \rangle$;
+            \item \textbf{Conjugate-linear in the second arguement:} $\langle u, \alpha v \rangle = \overline{\alpha} \langle u, v \rangle$.
+          \end{itemize}
+    \item[Conjugate Symmetry] For any $u, v \in V$, we have:
+          \[
+            \langle u, v \rangle = \overline{\langle v, u \rangle} = \langle u, v \rangle^*
+          \]
+          The asterisk symbol $^*$ is defined as $\langle u, v \rangle^* = \overline{\langle v, u \rangle}$.
+  \end{description}
+  A \emph{pseudo-Hermitian inner product} is a Hermitian form that is \emph{non-degenerate}, i.e., for all $u \in V$, if $\langle u, v \rangle = 0$ for all $v \in V$, then $u = 0$.
+\end{definition}
+
+\begin{remark}
+  In physics, the Hermitian inner product is written with Dirac's bra-ket notation:
+  \[
+    \langle x | y \rangle := \langle y, x \rangle
+  \]
+  With this notation, the inner product is linear in the second argument and conjugate-linear in the first argument. Moreover, for the conjugate of the inner product, the dagger symbol $^*$ is used:
+  \[
+    \langle x | y \rangle^* := \overline{\langle y | x \rangle} = \langle x | y \rangle
   \]
 \end{remark}
-Then we have the following transformation rule for the components of the tensor under the change of basis:
+
+We can also define the norm of a vector $v \in V$ as:
 \[
-  \widetilde{v}_{\widetilde{j}} = v_i a^i_{\widetilde{j}}, \quad v_k = \widetilde{v}_{\widetilde{j}} b^{\widetilde{j}}_k,
+  \| v \| = \sqrt{\langle v, v \rangle}
 \]
-where $B$ is the inverse of $A$, i.e., $B = A^{-1}$, and $B = {[b^{\widetilde{i}}_j]}_{\widetilde{\B_V}}^{\B_V}$. We have $a^i_{\widetilde{j}} b_j^{\widetilde{k}} = \delta^{\widetilde{k}}_{\widetilde{j}}$ and $b_j^{\widetilde{i}} a^j_{\widetilde{k}} = \delta^{\widetilde{i}}_{\widetilde{k}}$.
-\begin{remark}
-  For easier memorisation, our professor suggests using the following partial derivative notation to represent the change of basis matrices:
+The other four properties of norm is the same as in Euclidean spaces. Moreover the Cauchy-Schwarz inequality is as follows:
+\[
+  |\langle u, v \rangle| \leq \| u \| \| v \|
+\]
+for all $u, v \in V$, with equality if and only if $u$ and $v$ are linearly dependent.
+\begin{proof}
+  Let $f(t) = \| tu + v \|^2 = \langle tu + v, tu + v \rangle = t^2 \| u \|^2 + 2 \Re(\langle u, v \rangle) t + \| v \|^2 \geq 0$ for all $t \in \R$. Then we have $f(t) \geq 0$ for all $t \in \R$. For $u = 0$, the inequality holds trivially. For $u \neq 0$, the quadratic function $f(t)$ has at most one real root, so its discriminant is less than or equal to zero:
   \[
-    \frac{\partial \widetilde{v}_{\widetilde{j}}}{\partial v_i} = a^i_{\widetilde{j}}, \quad \frac{\partial v_k}{\partial \widetilde{v}_{\widetilde{j}}} = b_k^{\widetilde{j}}
+    \Delta = 4 {(\Re(\langle u, v \rangle))}^2 - 4 \| u \|^2 \| v \|^2 \leq 0 \implies {(\Re(\langle u, v \rangle))}^2 \leq \| u \|^2 \| v \|^2 \implies | \Re (\langle u, v \rangle) | \leq \| u \| \| v \|
   \]
-  To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators. (As lower twice, so flip to upper)
-
-  Then we can use the chain rule to verify the two equations of $A$ and $A^{-1}$:
+  Note that $\langle u, v \rangle = |\langle u, v \rangle| e^{i \theta}$ for some $\theta \in \R$. Then we have:
   \[
-    \frac{\partial \widetilde{v}_{\widetilde{j}}}{\partial v_i} \frac{\partial v_k}{\partial \widetilde{v}_{\widetilde{j}}} = \delta^i_k
+    \langle e^{-i \theta} u, v \rangle = e^{-i \theta} \langle u, v \rangle = |\langle u, v \rangle|
   \]
-\end{remark}
+  Therefore, we have:
+  \[
+    |\langle u, v \rangle| = | \Re (\langle e^{-i \theta} u, v \rangle) | \leq \| e^{-i \theta} u \| \| v \| = \| u \| \| v \| \qedhere
+  \]
+\end{proof}
 
-Then we have the transformation rule for the representation of $t \in \mathcal{T}^{r, s} V$ under the base change from $\B_V$ to $\widetilde{\B_V}$:
+The sesquilinear map $\langle -, - \rangle$ can be defined as a bilinear map $V \times \overline{V} \to \C$, where $\overline{V}$ is the complex-conjugate vector space of $V$, or linear map $V \otimes \overline{V} \to \C$. The complex-conjugate vector space $\overline{V}$ is defined as the same set as $V$ with the same addition operation, but the scalar multiplication is defined as:
 \[
-  \widetilde{t}^{{\color{ustblue} \widetilde{i}_1 \widetilde{i}_2 \cdots \widetilde{i}_r}}_{{\color{red} \widetilde{j}_1 \widetilde{j}_2 \cdots \widetilde{j}_s}} = \left({\color{ustblue} b_{i_1}^{\widetilde{i}_1} b_{i_2}^{\widetilde{i}_2} \cdots b_{i_r}^{\widetilde{i}_r}}\right) t^{{\color{ustblue} i_1 i_2 \cdots i_r}}_{{\color{ustred} j_1 j_2 \cdots j_s}} \left({\color{ustred} a^{j_1}_{\widetilde{j}_1} a^{j_2}_{\widetilde{j}_2} \cdots a^{j_s}_{\widetilde{j}_s}}\right)
-\]
-Given that $\B_V = \{ \vec{v}_1, \cdots, \vec{v}_n \}$ is a basis of $V$, then we can define a basis of $\mathcal{T}^{r, s} V$ as follows:
-\[
-  \B_{\mathcal{T}^{r, s} V} = \{ \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s} : 1 \leq i_1, i_2, \cdots, i_r, j_1, j_2, \cdots, j_s \leq n \}
-\]
-For symmetric and skew-symmetric tensors, we have:
-\begin{align*}
-  \B_{\Sy^k V}     & = \{ v_{i_1} v_{i_2} \cdots v_{i_k} \mid 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \},             \\
-  \B_{\Lambda^k V} & = \{ v_{i_1} \wedge v_{i_2} \wedge \cdots \wedge v_{i_k} \mid 1 \leq i_1 < i_2 < \cdots < i_k \leq n \}.
-\end{align*}
-However, there is a more elegant way to define the basis of symmetric and skew-symmetric tensors. We just need to ensure that the representation of any symmetric tensor is unique for a given basis. For example, for symmetric 2-tensors, we can define the basis as follows:
-\[
-  t = t^{ij} v_i v_j = t^{ji} v_j v_i \implies t^{ij} = t^{ji}.
-\]
-Thus, we can define the basis of symmetric 2-tensors as follows:
-\[
-  \B_{\Sy^2 V} = \{ v_i v_j \mid 1 \leq i, j \leq n \}.
-\]
-Similarly, for skew-symmetric tensors, we can define the basis of skew-symmetric $k$-tensors as follows:
-\[
-  t = t^{i_1 i_2 \cdots i_k} v_{i_1} \wedge v_{i_2} \wedge \cdots \wedge v_{i_k} = \sgn(\sigma) t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}} v_{i_{\sigma(1)}} \wedge v_{i_{\sigma(2)}} \wedge \cdots \wedge v_{i_{\sigma(k)}}
-\]
-Thus, we can define the basis of skew-symmetric $k$-tensors as follows:
-\[
-  \B_{\Lambda^k V} = \{ v_{i_1} \wedge v_{i_2} \wedge \cdots \wedge v_{i_k} \mid 1 \leq i_1, i_2, \cdots, i_k \leq n \}.
+  \C \times \overline{V} \to \overline{V}, \quad (\alpha, v) \mapsto \overline{\alpha} v
 \]
 
-In conclusion, we have to make sure that the representation of any symmetric or skew-symmetric $k$-form is unique for a given basis by the following conditions respectively:
+\begin{example}
+  For any $\vec{z}$ and $\vec{w}$ in $\C^n$, we can define the \emph{standard Hermitian inner product} as:
+  \[
+    \langle \vec{z}, \vec{w} \rangle = \vec{w}^* \vec{z} = \overline{\vec{w}}^T \vec{z}.
+  \]
+  It is straightforward to verify that it satisfies all the properties of Hermitian inner products. For example, the positive-definiteness property holds since:
+  \[
+    \vec{z}^* \vec{z} = \sum_{i = 1}^n \overline{z^i} z^i = \sum_{i = 1}^n |z^i|^2 \geq 0
+  \]
+\end{example}
+
+Then a complex linear space $V$ with an Hermitian inner product $\langle -, - \rangle$ is called a \emph{Hermitian space}. Also, the model / standard Hermitian space is $(\C^n, \langle -, - \rangle)$ with the standard Hermitian inner product, that is, the inner product defined above.
+
+Let $V$ be a Hermitian space with Hermitian inner product $\langle -, - \rangle$. Then we say $u, v \in V$ are orthogonal if $\langle u, v \rangle = 0$. Similar to the Euclidean case, we can define orthogonal complement, orthogonal projection, orthonormal basis, and Gram-Schmidt process in Hermitian spaces. We also have the decomposition $V = W^\perp \oplus W$ for any subspace $W \subseteq V$.
+
+Similarly, there is only one Hermitian space, up to isomorphism, with dimension $n$, that is, $(\C^n, \langle -, - \rangle)$ with the standard Hermitian inner product, i.e., for any Hermitian space $V$ with dimension $n$, there exists a linear isomorphism between $V$ and $(\C^n, \langle -, - \rangle)$.
+
+\subsection{Unitary Group}
+Similar to the orthogonal groups in Euclidean spaces, we can define unitary groups in Hermitian spaces as the automorphism groups that respect the Hermitian structure. Then we have
 \[
-    \begin{split}
-        &\text{Symmetric:} \quad t^{i_1 i_2 \cdots i_k} = t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}} \\
-        &\text{Skew-symmetric:} \quad t^{i_1 i_2 \cdots i_k} = \sgn(\sigma) t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}}
-    \end{split}
+  \Uni(n) = \{ U \in \GL_n(\C) \mid U^* U = I \}
 \]
+where $U^* = \overline{U}^T$ is the conjugate transpose of $U$. Note that $\det(U^*) = \overline{\det(U)}$. Therefore, we have $|\det(U)|^2 = 1$ for all $U \in \Uni(V)$, i.e., $|\det(U)| = 1$. This means $\Uni(1) = \{ z \in \C \mid |z| = 1 \}$ is the unit circle in the complex plane. Graphically we have:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[thick, -latex] (-3, 0) -- (3, 0) node[right] {Re};
+    \draw[thick, -latex] (0, -3) -- (0, 3) node[above] {Im};
+    \draw[thick] (0, 0) circle(2cm);
+    \filldraw[fill=red] (2, 0) circle(2pt) node[below right] {1};
+    \filldraw[fill=red] (-2, 0) circle(2pt) node[below left] {-1};
+  \end{tikzpicture}
+\end{center}
+where the unit circle represents $\Uni(1)$ in the complex plane. Also in orthogonal group, the determinant of any orthogonal matrix is either $1$ or $-1$. This is the special case of unitary group when the entries are real numbers. Also we have the special unitary group $\SU(n)$ as the subgroup of $\Uni(n)$ with determinant $1$.
+
+Then we have the following definition similar to orthogonal matrices:
+\begin{definition}[Unitary Matrix]\label{def:unitary_matrix}
+  An invertible complex matrix $U$ of order $n$ is a \emph{unitary matrix} if $U^* U = I_n$, i.e., $U^{-1} = U^*$.
+\end{definition}
+
+Similarly, we have the following definition similar to symmetric matrices:
+\begin{definition}[Hermitian Matrix]\label{def:hermitian_matrix}
+  A complex matrix $A$ of order $n$ is called a \emph{Hermitian matrix} if $A^* = A$.
+\end{definition}
+
+Using similar Gram-Schmidt process in Euclidean spaces, we get the following $QR$ decomposition in Hermitian spaces:
+\[
+  A = QR
+\]
+where $Q$ is a unitary matrix and $R$ is an upper-triangular matrix with positive real diagonal entries. However, normally we denote the unitary matrix by $U$ instead of $Q$. One reason why others use $QR$ instead is to distinguish the same notation on unitary and upper-triangular matrices in Hermitian spaces and orthogonal and upper-triangular matrices in Euclidean spaces.
+
+\subsection{Matrix representation of Hermitian inner products}
+
+Then we have the matrix representation of Hermitian inner products as follows.
+
+Let $V$ be a Hermitian space with Hermitian inner product $\langle -, - \rangle$. Then we can choose a basis $v = (v_1, v_2, \cdots, v_n)$ of $V$. Then we have
+\[
+  \omega = [\langle v_i, v_j \rangle]
+\]
+Note that $\omega$ is a Hermitian matrix, i.e., $\omega^* = \omega$. Then we claim that if $A$ and $\widetilde{A}$ are two matrix representations of the Hermitian inner product $\langle -, - \rangle$ with respect to two different bases $v$ and $\widetilde{v}$ respectively, then there exists an invertible matrix $P \in \GL_n(\C)$ such that:
+\[
+  \widetilde{A} = P^* A P
+\]
+where $P$ is the change-of-basis matrix from $v$ to $\widetilde{v}$. Or equivalently,
+\[
+  \mathsf{H}_n(\C) \times \GL_n(\C) \to \mathsf{H}_n(\C), \quad (A, P) \mapsto P^* A P
+\]
+where $\mathsf{H}_n(\C)$ is the real linear space of Hermitian matrix of order $n$. The reason why it is real, as it is not closed under multiplication by complex numbers. Take $n = 1$, then $\mathsf{H}_1(\C) = \R$, which is not closed under multiplication by complex numbers.
+
+\section{Self-Adjoint Operators and Unitary Operators}
+
+Let $V$ be a Hermitian space with Hermitian inner product $\langle -, - \rangle$. We have the following equality for any linear operator $T : V \to V$:
+\[
+  \langle Tu, v \rangle = \langle u, T^* v \rangle.
+\]
+The linear operator $T^* : V \to V$ is called the \emph{adjoint operator} of $T$. It can be shown that the adjoint operator $T^*$ exists and is unique. The following definitions are the abstract generalisations of Hermitian matrices and unitary matrices.
+
+\begin{definition}[Hermitian Operator]\label{def:hermitian_operator}
+  A \hyperref[def:linear_operator]{linear operator} $T : V \to V$ is a \emph{Hermitian operator} or \emph{self-adjoint operator} if for any $u, v \in V$, we have:
+  \[
+    \langle Tu, v \rangle = \langle u, Tv \rangle.
+  \]
+\end{definition}
+\begin{definition}[Unitary Operator]\label{def:unitary_operator}
+  A \hyperref[def:linear_operator]{linear operator} $U : V \to V$ is a \emph{unitary operator} if for any $u, v \in V$, we have:
+  \[
+    \langle Uu, Uv \rangle = \langle u, v \rangle.
+  \]
+\end{definition}
+
+There is a generalisation of the above two operators.
+
+\begin{definition}[Normal Operator]\label{def:normal_operator}
+  A linear operator $N : V \to V$ is a \emph{normal operator} if it commutes with its adjoint operator, i.e., $N N^* = N^* N$.
+\end{definition}
+
+\begin{proposition}
+  For any linear map $T : V \to W$ between two Hermitian spaces $V$ and $W$, there also exists a unique adjoint map $T^* : W \to V$ satisfying:
+  \[
+    \langle Tu, w \rangle_W = \langle u, T^* w \rangle_V
+  \]
+\end{proposition}
+\begin{proof}
+  We can reduce the problem to $\C^n$ and $\C^m$ with standard Hermitian inner products by choosing orthonormal bases of $V$ and $W$. Then we have $T$ represented by a matrix $A \in \Mat_{m \times n}(\C)$. Then we propose there is a matrix $B \in \Mat_{n \times m}(\C)$ such that for all $\vec{e}_i \in \C^n$ and $\vec{f}_j \in \C^m$, we have:
+  \[
+    \langle A\vec{e}_i, \vec{f}_j \rangle = {(A\vec{e}_i)}^* \vec{f}_j = \vec{e}_i^* A^* \vec{f}_j = \vec{e}_i^T A^* \vec{f}_j
+  \]
+  which is the $(i, j)$-th entry of $A^*$. On the other hand, we have:
+  \[
+    \langle \vec{e}_i, B\vec{f}_j \rangle = \vec{e}_i^* (B\vec{f}_j) = \vec{e}_i^T B \vec{f}_j
+  \]
+  which is the $(i, j)$-th entry of $B$. Therefore, we have $B = A^*$. This proves the existence of the adjoint operator. The uniqueness is straightforward.
+\end{proof}
+
+\begin{proposition}
+  Let $T$ be a self-adjoint operator on a Hermitian space $V$. Then we have the following properties:
+  \begin{enumerate}
+    \item All eigenvalues of $T$ are real numbers.
+    \item Eigenspaces of $T$ are mutually orthogonal, i.e., if $u$ and $v$ are eigenvectors of $T$ corresponding to distinct eigenvalues, then $\langle u, v \rangle = 0$.
+    \item $V$ is the direct sum of the eigenspaces of $T$.
+  \end{enumerate}
+  So $T$ is diagonalisable.
+\end{proposition}
+\begin{proof}
+  Given that $T^* = T$, we have:
+  \begin{enumerate}[label = (\arabic*)]
+    \item Let $\lambda \neq 0$ be an eigenvalue of $T$, so there exists a non-zero eigenvector $v$ such that $Tv = \lambda v$. Then we have:
+          \[
+            \langle Tv, v \rangle = \langle v, T^* v \rangle = \langle v, Tv \rangle
+          \]
+          which implies that:
+          \[
+            \lambda \langle v, v \rangle = \overline{\lambda} \langle v, v \rangle
+          \]
+          Since $v \neq 0$, we have $\langle v, v \rangle > 0$. Therefore, we have $\lambda = \overline{\lambda}$, i.e., $\lambda$ is a real number.
+    \item Let $\lambda_1$ and $\lambda_2$ be two distinct eigenvalues of $T$ with corresponding eigenvectors $v_1$ and $v_2$. Then we have:
+          \[
+            \langle Tv_1, v_2 \rangle = \langle v_1, T^* v_2 \rangle
+          \]
+          which implies that:
+          \[
+            \lambda_1 \langle v_1, v_2 \rangle = \overline{\lambda_2} \langle v_1, v_2 \rangle
+          \]
+          Since $\lambda_1 \neq \lambda_2$, we have $\langle v_1, v_2 \rangle = 0$.
+    \item We know that $V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$. To show the equality, we let $W = V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$. Since $T$ is self-adjoint, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$. As for all $w \in W$ and $w^\perp \in W^\perp$, we have:
+          \[
+            \langle T w^\perp, w \rangle = \langle w^\perp, T^* w \rangle = \langle w^\perp, T w \rangle = 0
+          \]
+          where $T w \in W$ since $W$ is $T$-invariant. Then we claim that $W^\perp = \{ 0 \}$. If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\widetilde{T} : W^\perp \to W^\perp$ defined by $\widetilde{T}(w^\perp) = T(w^\perp)$. Then $\widetilde{T} w^\perp = \lambda w^\perp$ and $\widetilde{T} w^\perp = T w^\perp$ by definition. So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$. Say $\lambda = \lambda_1$. Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$. Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+  Let $T$ be a unitary operator on a Hermitian space $V$. Then we have the following properties:
+  \begin{enumerate}
+    \item All eigenvalues of $T$ are complex numbers with absolute value $1$.
+    \item Eigenspaces of $T$ are mutually orthogonal, i.e., if $u$ and $v$ are eigenvectors of $T$ corresponding to distinct eigenvalues, then $\langle u, v \rangle = 0$.
+    \item $V$ is the direct sum of the eigenspaces of $T$.
+  \end{enumerate}
+  So $T$ is diagonalisable.
+\end{proposition}
+\begin{proof}
+  Given that $T^* T = T T^* = 1_V$, we have:
+  \begin{enumerate}[label = (\arabic*)]
+    \item Let $\lambda \neq 0$ be an eigenvalue of $T$, so there exists a non-zero eigenvector $v$ such that $Tv = \lambda v$. Then we have:
+          \[
+            \langle Tv, v \rangle = \langle v, T^* v \rangle
+          \]
+          which implies that:
+          \[
+            \lambda \langle v, v \rangle = \overline{\lambda}^{-1} \langle v, v \rangle \implies (\lambda \cdot \overline{\lambda} - 1) \langle v, v \rangle = 0
+          \]
+          Since $v \neq 0$, we have $\langle v, v \rangle > 0$. Therefore, we have $\lambda \cdot \overline{\lambda} = |\lambda|^2 = 1$, i.e., $|\lambda| = 1$.
+
+    \item Let $\lambda_1$ and $\lambda_2$ be two distinct eigenvalues of $T$ with corresponding eigenvectors $v_1$ and $v_2$. Then we have:
+          \[
+            \langle Tv_1, v_2 \rangle = \langle v_1, T^* v_2 \rangle
+          \]
+          which implies that:
+          \[
+            \lambda_1 \langle v_1, v_2 \rangle = \overline{\lambda_2}^{-1} \langle v_1, v_2 \rangle \implies (\lambda_1 \overline{\lambda_2} - 1) \langle v_1, v_2 \rangle = 0
+          \]
+          Since $\lambda_1 \neq \lambda_2$, we have $\langle v_1, v_2 \rangle = 0$.
+
+    \item We know that $V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T) \subseteq V$, where the spectrum of $T$, $\sigma(T) = \{ \lambda_1, \lambda_2, \cdots, \lambda_k \}$. To show the equality, we let $W = V_{\lambda_1} (T) \oplus \cdots \oplus V_{\lambda_k} (T)$ and consider the orthogonal complement $W^\perp$. Since $T$ is unitary, we have $W^\perp$ is $T$-invariant, i.e., for all $w^\perp \in W^\perp$, we have $T w^\perp \in W^\perp$. As for all $w \in W$ and $w^\perp \in W^\perp$, we have $w' = T w \in W$ and:
+          \[
+            \langle T w^\perp, w' \rangle = \langle T w^\perp, T w \rangle = \langle w^\perp, w \rangle = 0
+          \]
+          where the second equality holds since $T$ is unitary. Then we claim that $W^\perp = \{ 0 \}$. If not, then we have an eigenvector $w^\perp \in W^\perp$ with eigenvalue $\lambda$, such that there exists a map $\widetilde{T} : W^\perp \to W^\perp$ defined by $\widetilde{T}(w^\perp) = T(w^\perp)$. Then $\widetilde{T} w^\perp = \lambda w^\perp$ and $\widetilde{T} w^\perp = T w^\perp$ by definition. So we know that $\lambda$ is an eigenvalue of $T$, i.e., $\lambda \in \sigma(T)$. Say $\lambda = \lambda_1$. Then we have $w^\perp \in V_{\lambda_1} (T) \subseteq W$, which contradicts the assumption that $w^\perp \in W^\perp$. Therefore, we have $W^\perp = \{ 0 \}$, which implies that $V = W$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\section{Spectral Theorem}\label{sec:spectral-theorem}
+
+The canonical matrix representation of self-adjoint operator is a real diagonal matrix, and the canonical matrix representation of unitary operator is a diagonal matrix with entries on the unit circle in the complex plane. This is stated in the following spectral theorem.
+
+\begin{theorem}[Spectral Theorem for Hermitian Matrices]\label{thm:spectral-theorem-hermitian-matrices}
+  A \hyperref[def:hermitian_matrix]{Hermitian operator} $A$ on a finite-dimensional Hermitian space $V$ can be diagonalised by a unitary matrix, i.e., for some \hyperref[def:orthogonal_orthonormal_basis]{orthonormal basis} of $V$, there exists a \hyperref[def:unitary_matrix]{unitary matrix} $U$ and a diagonal matrix $D$ such that:
+  \[
+    A = U D U^{-1} = U D U^*.
+  \]
+\end{theorem}
+The diagonal entries of $D$ are the eigenvalues of $A$, which are all real numbers.
+
+\begin{theorem}[Spectral Theorem for Unitary Matrices]\label{thm:spectral-theorem-unitary-matrices}
+  A \hyperref[def:unitary_matrix]{unitary operator} $A$ on a finite-dimensional Hermitian space $V$ can be diagonalised by a unitary matrix, i.e., for some \hyperref[def:orthogonal_orthonormal_basis]{orthonormal basis} of $V$, there exists a \hyperref[def:unitary_matrix]{unitary matrix} $U$ and a diagonal matrix $D$ such that:
+  \[
+    A = U D U^{-1} = U D U^*.
+  \]
+\end{theorem}
+The diagonal entries of $D$ are the eigenvalues of $A$, which are all complex numbers with absolute value $1$. Moreover, the columns of $U$ form an orthonormal basis of $V$ consisting of eigenvectors of $A$.
+
+Then we have the following corollary.
+\begin{corollary}[Spectral Theorem for Real Symmetric Matrices]
+  A real symmetric matrix $A$ can be diagonalised by an orthogonal matrix, i.e., there exists an orthogonal matrix $O$ and a real diagonal matrix $D$ such that:
+  \[
+    A = O D O^T.
+  \]
+\end{corollary}
+\begin{proof}
+  As real symmetric matrices are Hermitian matrices, by the spectral theorem for Hermitian matrices, we know that any real symmetric matrix can be diagonalised by a unitary matrix, i.e., $A = U^{*} D U$ for some unitary matrix $U$ and real diagonal matrix $D$. Note that the entries of $U$ are complex numbers in general. Then we should try to find an orthogonal matrix $O$ such that $A = O^T D O$. Note that for any real eigenvalue $\lambda$ of $A$, the system $(A - \lambda I) \vec{v} = 0$ has real coefficients. Then if $\vec{v} = \vec{x} + i \vec{y}$ is a complex solution, then we have:
+  \[
+    (A - \lambda I) \vec{v} = (A - \lambda I) \vec{x} + i (A - \lambda I) \vec{y} = 0
+  \]
+  which implies that both $\vec{x}$ and $\vec{y}$ are real solutions. Therefore, we can always find a real eigenvector corresponding to each real eigenvalue of $A$. Then we can choose an orthonormal basis of $\R^n$ consisting of real eigenvectors of $A$ by Gram-Schmidt process. Let $O$ be the matrix whose columns are the orthonormal basis of real eigenvectors. Then we have $O$ is an orthogonal matrix and $A = O^T D O$. Therefore, we conclude that any real symmetric matrix $A$ can be diagonalised by an orthogonal matrix.
+\end{proof}
+
+\begin{proposition}[Canonical form of orthogonal matrices]
+  The canonical form of a orthogonal matrix $O$ of order $n$ is of the following form:
+  \[
+    \begin{bmatrix}
+      R_{\theta_1} J_q &              &        &              &       \\
+                       & R_{\theta_2} &        &              &       \\
+                       &              & \ddots &              &       \\
+                       &              &        & R_{\theta_k} &       \\
+                       &              &        &              & I_{p} \\
+    \end{bmatrix}
+  \]
+  where $R_{\theta_i} = \begin{bmatrix} \cos \theta_i & -\sin \theta_i \\ \sin \theta_i & \cos \theta_i \end{bmatrix}$ is the rotation matrix of angle $\theta_i$, $p = 1$ if $n$ is odd and $p = 0$ if $n$ is even, with $n = 2k + p$, and $J_q$ is $I_2$ if $\det(O) = 1$ and $\begin{bmatrix} -1 & 0 \\ 0  & 1 \end{bmatrix}$ if $\det(O) = -1$.
+\end{proposition}
+The proof is left as an exercise.
+
+\begin{proposition}[Canonical form of Hermitian forms]
+  The matrix representation $H$ of the Hermitian form on a complex vector space $V$ with respect to a basis $\B$ is a Hermitian matrix. So, there exists a unitary matrix $U$ and a real diagonal matrix $D$ such that:
+  \[
+    H = U D U^*
+  \]
+  Then the Hermitian form can be represented as:
+  \[
+    \langle x, y \rangle = x^* H y = x^* U D U^* y = {(U^* x)}^* D (U^* y)
+  \]
+  Moreover, $D$ can be expressed as:
+  \[
+    D = \begin{bmatrix} \lambda \\ & -\mu \\ & & 0 \end{bmatrix}, \text{ where } \lambda = \begin{bmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_k \end{bmatrix} \text{ and } \mu = \begin{bmatrix} \mu_1 & & \\ & \ddots & \\ & & \mu_l \end{bmatrix}
+  \]
+  with $\lambda_i, \mu_j > 0$ for all $i, j$. The pair $(k, l)$ is called the \emph{signature} of the Hermitian form. We may further decompose the Hermitian form as:
+  \[
+    D = \begin{bmatrix} \sqrt{\lambda} \\ & -\sqrt{\mu} \\ & & 0 \end{bmatrix} \begin{bmatrix} I_k \\ & -I_l \\ & & 0 \end{bmatrix} \begin{bmatrix} \sqrt{\lambda} \\ & -\sqrt{\mu} \\ & & 0 \end{bmatrix} = U' I_{k, l} U'^*
+  \]
+  where $\sqrt{\lambda} = \begin{bmatrix} \sqrt{\lambda_1} & & \\ & \ddots & \\ & & \sqrt{\lambda_k} \end{bmatrix}$ and $\sqrt{\mu} = \begin{bmatrix} \sqrt{\mu_1} & & \\ & \ddots & \\ & & \sqrt{\mu_l} \end{bmatrix}$.
+
+  So the Hermitian form can be represented as:
+  \[
+    \langle x, y \rangle = {(U'^* U^* x)}^* I_{k, l} (U'^* U^* y)
+  \]
+\end{proposition}
+
+Then for Hermitian inner products, as they are positive-definite, the canonical representation is simply $I_n$. For pseudo Hermitian inner products, the canonical representation is $I_{p, q}$ where $p + q = n$, i.e., there is no zero block. Up to isomorphism, there are $n + 1$ different pseudo inner products on a complex vector space of dimension $n$, corresponding to the signatures $(n, 0), (n - 1, 1), \cdots, (1, n - 1), (0, n)$. Any pseudo Hermitian inner product space $V$ is isomorphic to $(\C^n , I_{p,q}) = \C^{p,q}$. As it sends $(x, y) \to x_1 \overline{y_1} + \cdots + x_p \overline{y_p} - x_{p+1} \overline{y_{p+1}} - \cdots - x_n \overline{y_n}$. In real vector spaces, the results are almost the same.
+
+The set of inner products on a real vector space $V$ of dimension $n$ is isomorphic to the orbit space of the right action of group $\Orth(n)$ on $\GL_n(\R)$ $\GL_n(\R) / \Orth(n)$, where $\Orth(n)$ is the orthogonal group of order $n$.
+\[
+  \GL_n(\R) \times \Orth(n) \to \GL_n(\R), \quad (X, g) \mapsto X \cdot g
+\]
+As $\GL_n(\R)$ and $\Orth(n)$ have the same homotopy type, the orbit space $\GL_n(\R) / \Orth(n)$ is trivially contractible. We may consider the following example:
+\[
+  \GL_1(\R) = \R^\times \quad \Orth(1) = \{ -1, 1 \}
+\]
+Then we have:
+\[
+  \GL_1(\R) / \Orth(1) \cong \R_{> 0}
+\]
+
+Similarly, the set of Hermitian forms on a complex vector space $V$ of dimension $n$ is isomorphic to the orbit space $\quotient{\GL_n(\C)}{\Uni(n)}$, where $\Uni(n)$ is the unitary group of order $n$. Again, it is contractible.

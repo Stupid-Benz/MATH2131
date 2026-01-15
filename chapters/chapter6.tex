@@ -1,0 +1,596 @@
+\chapter{Structure Theory of Linear Operators}
+
+Before, we have studied the canonical matrix representation of linear maps between two different dimension vector spaces. It is natural to ask what is the canonical form of linear maps from a linear space to itself, i.e., endomorphisms. There is another name for endomorphisms: linear operators.
+
+\begin{definition}[Linear Operator]\label{def:linear_operator}
+  A \hyperref[def:linear_map]{linear map} $T : V \to V$ is called a \emph{linear operator} on a $F$-linear space $V$, or an \emph{endomorphism} of $V$.
+\end{definition}
+
+Consider the following diagram:
+\begin{center}
+  \begin{tikzcd}
+    V \arrow[r, "T"] \arrow[d, <->, "{[-]_{\B}}"] & V \arrow[d, <->, "{[-]_{\B}}"] \\
+    F^n \arrow[d, <->] \arrow[r, "A"] & F^n \arrow[d, <->] \\
+    F^n \arrow[r, "N"] & F^n
+  \end{tikzcd}
+\end{center}
+As both the domain and codomain are the same linear space, both basis $\B$ are the same. So the matrix representation of $T$ is much more restricted. The $N$ is simplest looking matrix repsentation of $T$, but what does it look like? There are various canonical forms, depending on the field $F$ and the linear operator $T$.
+
+\section{Diagonalisation}
+Generically, the simplest form of a linear operator is a \emph{diagonal matrix}. That is, there exists a basis of $V$ such that the matrix representation of $T$ with respect to this basis is of the form:
+\[
+  \begin{bmatrix}
+    \lambda_1 &           &        &           \\
+              & \lambda_2 &        &           \\
+              &           & \ddots &           \\
+              &           &        & \lambda_n
+  \end{bmatrix}
+\]
+where empty places are filled with zeros. Here $\lambda_i$ are the \emph{eigenvalues} of $T$. Then the set of all eigenvalues of $T$ is the \emph{spectrum} of $T$ denoted by $\sigma(T)$. If such form exists, we say that $T$ is \emph{diagonalisable}, or \emph{completely reducible}. If $T$ is not diagonalisable, then we have to consider more complicated forms, which will be discussed later. Then we have the diagram:
+\begin{center}
+  \begin{tikzcd}[ampersand replacement=\&]
+    F^n \arrow[r, "A"] \arrow[d, <->, "P^{-1}"] \& F^n \arrow[d, <->, "P^{-1}"] \\
+    F^n \arrow[r, "D"] \& F^n
+  \end{tikzcd}
+\end{center}
+Here, $D$ is the diagonal matrix and $P$ is the change of basis matrix from the basis that gives $A$ to the basis that gives $D$. Then we have:
+\[
+  A = P D P^{-1}
+\]
+We have $A \sim D$, i.e. $A$ is similar to $D$.
+
+Then we raise two questions:
+\begin{itemize}
+  \item How do we know whether $T$ is diagonalisable?
+  \item If $T$ is diagonalisable, how can we find $P$ and $D$?
+\end{itemize}
+
+If such $D$ exists and in the form below:
+\[
+  D = \begin{bmatrix}
+    \lambda_1 I_{n_1} &        &                   \\
+                      & \ddots &                   \\
+                      &        & \lambda_k I_{n_k}
+  \end{bmatrix},
+\]
+where $\lambda_i \in F$ are distinct eigenvalues and $I_{n_i}$ are identity matrices of order $n_i$, $n_i > 0$ and $\sum_{i = 1}^k n_i = n$. Then we have the internal direct sum decomposition of $V$:
+\[
+  V = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \cdots \oplus V_{\lambda_k},
+\]
+where $V_i = \ker(T - \lambda_i \id_V)$ are the \emph{eigenspaces} of $T$ corresponding to eigenvalues $\lambda_i$ and $\dim(V_{\lambda_i}) = n_i$. Moreover, we have the external direct sum decomposition of $F^n$:
+\[
+  F^n = \spn \{ \vec{e}_1, \ldots, \vec{e}_{n_1} \} \oplus \spn \{ \vec{e}_{n_1 + 1}, \ldots, \vec{e}_{n_1 + n_2} \} \oplus \cdots \oplus \spn \{ \vec{e}_{n_1 + \ldots + n_{k-1} + 1}, \ldots, \vec{e}_{n_1 + \ldots + n_k} \},
+\]
+and the decomposition of $T$:
+\[
+  T = \lambda_1 \id_{V_{\lambda_1}} \oplus \lambda_2 \id_{V_{\lambda_2}} \oplus \cdots \oplus \lambda_k \id_{V_{\lambda_k}}
+\]
+\begin{example}
+  For the following diagonal matrix:
+  \[
+    D = \begin{bmatrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 2
+    \end{bmatrix},
+  \]
+  we have $\lambda_1 = 1$, $\lambda_2 = 2$, $n_1 = 2$ and $n_2 = 1$. Then we have the decomposition of $V$:
+  \[
+    V = V_{\lambda_1} \oplus V_{\lambda_2}
+  \]
+  where $V_{\lambda_1} = \ker(T - 1 \cdot \id_V)$ and $V_{\lambda_2} = \ker(T - 2 \cdot \id_V)$.
+\end{example}
+
+If $T$ is diagonalisable, there are distinct numbers $\lambda_1, \cdots, \lambda_k \in F$, a non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$ such that $T\big|_{V_{\lambda_i}} = \lambda_i \id_{V_{\lambda_i}}$ for each $1 \leq i \leq k$, and $T = \lambda_1 \id_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k \id_{V_{\lambda_k}}$. Each non-zero vector $v_i$ in $V_{\lambda_i}$ is an \emph{eigenvector} of $T$ corresponding to eigenvalue $\lambda_i$. This answered the first question.
+
+Then how to find the eigenvalues and eigenspaces? Consider the following linear map:
+\[
+  \lambda_i \id_{V_{\lambda_i}} : V_{\lambda_i} \to V_{\lambda_i}, \quad x \mapsto \lambda_i x
+\]
+Then we have the following equation:
+\[
+  T(x) = \lambda_i(x) \iff (\lambda_i \id_V - T)(x) = 0 \iff x \in \ker(\lambda_i \id_V - T)
+\]
+As $x$ is non-zero, then $(\lambda_i \id_V - T)$ is not injective, i.e., not invertible. Therefore, we have:
+\[
+  \det (\lambda_i \id_V - T) = 0
+\]
+So the eigenvalues $\lambda_i$ are exactly the roots of the polynomial $\det (\lambda \id_V - T)$, which is called the \emph{characteristic polynomial} of $T$. Note that $p_T (\lambda) = \det (\lambda \id_V - T)$ is a polynomial of degree $n = \dim V$. Similarly, we can define the characteristic polynomial of a matrix $A$ as $p_A (\lambda) = \det (\lambda I_n - A)$.
+
+\begin{example}
+  Consider the following matrix:
+  \[
+    A = \begin{bmatrix}
+      1 & 3 \\
+      0 & 2
+    \end{bmatrix}, \quad \lambda I - A = \begin{bmatrix}
+      \lambda - 1 & -3          \\
+      0           & \lambda - 2
+    \end{bmatrix}, \quad p_A (\lambda) = (\lambda - 1)(\lambda - 2)
+  \]
+  The roots of $p_A (\lambda)$ are $1$ and $2$, so the eigenvalues of $A$ are $1$ and $2$. Then we can find the eigenspaces:
+  \begin{align*}
+    V_{\lambda = 1} & = \nul(1 \cdot I - A) = \nul \begin{bmatrix}
+                                                     0 & -3 \\
+                                                     0 & -1
+                                                   \end{bmatrix} = \nul \begin{bmatrix}
+                                                                          0 & 1 \\
+                                                                          0 & 0
+                                                                        \end{bmatrix} = \spn \begin{bmatrix}
+                                                                                               1 \\
+                                                                                               0
+                                                                                             \end{bmatrix} \\
+    V_{\lambda = 2} & = \nul(2 \cdot I - A) = \nul \begin{bmatrix}
+                                                     1 & -3 \\
+                                                     0 & 0
+                                                   \end{bmatrix} = \spn \begin{bmatrix}
+                                                                          3 \\
+                                                                          1
+                                                                        \end{bmatrix}
+  \end{align*}
+  Then we have:
+  \[
+    A = \begin{bmatrix}
+      1 & 3 \\
+      0 & 2
+    \end{bmatrix} = \begin{bmatrix}
+      1 & 3 \\
+      0 & 1
+    \end{bmatrix} \begin{bmatrix}
+      1 & 0 \\
+      0 & 2
+    \end{bmatrix} \begin{bmatrix}
+      1 & 3 \\
+      0 & 1
+    \end{bmatrix}^{-1} = P D P^{-1}
+  \]
+\end{example}
+\begin{remark}
+  To find the null space, we first use row operations to reduce the matrix to its row echelon form. Then we consider the number of free variables to find the number of basis vectors in the null space. Then we can let one free variable as $1$ and other free variables as $0$ to find the value of each pivot variable. Repeating this process for each free variable, we can find all basis vectors of the null space.
+
+  For the first matrix in the example, we have: $0 \cdot 1 + 1 \cdot x_2 = 0 \implies x_2 = 0$. So the null space is $\spn \begin{bmatrix} 1 \\ 0 \end{bmatrix}$. For the second one, we have: $1 \cdot x_1 - 3 \cdot 1 = 0 \implies x_1 = 3$. So the null space is $\spn \begin{bmatrix} 3 \\ 1 \end{bmatrix}$.
+\end{remark}
+
+In matrix, we have:
+\[
+  \begin{bmatrix}
+    A\vec{p_1} & \cdots & A\vec{p}_n
+  \end{bmatrix} = AP = PD = \begin{bmatrix}
+    \lambda_1 \vec{p}_1 & \cdots & \lambda_n \vec{p}_n
+  \end{bmatrix} \iff A\vec{p}_i = \lambda_i \vec{p}_i
+\]
+
+\begin{proposition}
+  The following are equivalent:
+  \begin{enumerate}
+    \item $T$ is diagonalisable.
+    \item $T = \lambda_1 \id_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k \id_{V_{\lambda_k}}$ for some distinct eigenvalues $\lambda_1, \cdots, \lambda_k$ and non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$.
+    \item $V$ has an eigenvector basis of $T$, i.e., there exists a basis of $V$ consisting of eigenvectors of $T$.
+    \item $\dim V = \sum_{i = 1}^k \dim E_{\lambda_i} (T) = \sum_{i = 1}^k \dim V_{\lambda_i}$, where $\lambda_1, \cdots, \lambda_k$ are the distinct eigenvalues of $T$ and $V_{\lambda_i} = E_{\lambda_i} (T)$ are the eigenspaces of $T$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{example}
+  Consider the matrix:
+  \[
+    A = \begin{bmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{bmatrix}
+  \]
+  The $p_A (\lambda) = \lambda^2$, so the only eigenvalue is $0$. Then we have:
+  \[
+    V_{\lambda = 0} = \nul{0 \cdot I - A} = \nul \begin{bmatrix}
+      0 & -1 \\
+      0 & 0
+    \end{bmatrix} = \spn \begin{bmatrix}
+      1 \\
+      0
+    \end{bmatrix}
+  \]
+  So there does not exist a eigenvector basis of $A$, as choosing any two vectors in $V_{\lambda = 0}$ will be linearly dependent. Therefore, $A$ is not diagonalisable.
+\end{example}
+
+\begin{proposition}
+  $E_{\lambda_1} + \cdots + E_{\lambda_k}$ is a direct sum.
+\end{proposition}
+\begin{proof}
+  We just need to check if $x_1 + \cdots + x_k = 0$ with $x_i \in E_{\lambda_i}$, then each $x_i = 0$. We can use induction on $k$. For $k = 1$, we have $x_1 = 0 \implies x_1 = 0$. Assume that the statement holds for $k - 1$. Then we have:
+  \[
+    \begin{cases}
+      x_1 + \cdots + x_k = 0 \\
+      Tx_1 + \cdots + Tx_k = \lambda_1 x_1 + \cdots + \lambda_k x_k = 0
+    \end{cases}
+  \]
+  Then we subtract $\lambda_k$ times the first equation from the second equation, we have:
+  \[
+    (\lambda_1 - \lambda_k) x_1 + \cdots + (\lambda_{k - 1} - \lambda_k) x_{k - 1} = 0
+  \]
+  Given that $\lambda_i$ are distinct, by the induction hypothesis, we have $(\lambda_i - \lambda_k) x_i = 0 \implies E_{\lambda_i} \ni x_i = 0$ for each $1 \leq i \leq k - 1$. Then by the first equation, we have $x_k = 0$. This completed the induction.
+\end{proof}
+
+Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}$. Then we have:
+\[
+  \dim(V) = \sum \dim(E_{\lambda_i} (T))
+\]
+
+\begin{example}
+  Consider the matrix:
+  \[
+    A = \begin{bmatrix}
+      1 & 0 & 4 \\
+      0 & 1 & 3 \\
+      0 & 0 & 2
+    \end{bmatrix}
+  \]
+  Then we have $p_A (\lambda) = {(\lambda - 1)}^2 (\lambda - 2)$. The eigenvalues are $1$ and $2$, where $\lambda = 1$ has algebraic multiplicity $2$ and $\lambda = 2$ has algebraic multiplicity $1$. Then we can find the eigenspaces:
+  \begin{align*}
+    E_{\lambda = 1} (A) & = \nul{1 \cdot I - A} = \nul \begin{bmatrix}
+                                                                 0 & 0 & -4 \\
+                                                                 0 & 0 & -3 \\
+                                                                 0 & 0 & -1
+                                                               \end{bmatrix} = \nul \begin{bmatrix}
+                                                                                              0 & 0 & 1 \\
+                                                                                              0 & 0 & 0 \\
+                                                                                              0 & 0 & 0
+                                                                                            \end{bmatrix} = \spn \{ \vec{e}_1, \vec{e}_2 \} \\
+    E_{\lambda = 2} (A) & = \nul{2 \cdot I - A} = \nul \begin{bmatrix}
+                                                                 1 & 0 & -4 \\
+                                                                 0 & 1 & -3 \\
+                                                                 0 & 0 & 0
+                                                               \end{bmatrix} = \spn \begin{bmatrix}
+                                                                                      4 \\
+                                                                                      3 \\
+                                                                                      1
+                                                                                    \end{bmatrix}
+  \end{align*}
+  Then we have $\dim(E_{\lambda = 1}) + \dim(E_{\lambda = 2}) = 2 + 1 = 3 = \dim(V)$. Therefore, $A$ is diagonalisable. Then we can find the diagonalisation:
+  \[
+    \begin{bmatrix}
+      1 & 0 & 4 \\
+      0 & 1 & 3 \\
+      0 & 0 & 2
+    \end{bmatrix} = \begin{bmatrix}
+      1 & 0 & 4 \\
+      0 & 1 & 3 \\
+      0 & 0 & 1
+    \end{bmatrix} \begin{bmatrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 2
+    \end{bmatrix} \begin{bmatrix}
+      1 & 0 & 4 \\
+      0 & 1 & 3 \\
+      0 & 0 & 1
+    \end{bmatrix}^{-1} = \begin{bmatrix}
+      4 & 1 & 0 \\
+      3 & 0 & 1 \\
+      0 & 0 & 1
+    \end{bmatrix} \begin{bmatrix}
+      2 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1
+    \end{bmatrix} \begin{bmatrix}
+      4 & 1 & 0 \\
+      3 & 0 & 1 \\
+      0 & 0 & 1
+    \end{bmatrix}^{-1}
+  \]
+\end{example}
+
+Diagonalisable matrix representations are ``the'' simplest forms of endomorphisms. Note that it is not unique, it is unique up to isomorphism, unless the field is ordered. However, not all endomorphisms are diagonalisable. Then we have another term called \emph{semisimple}. This term and the term ``completely reducible'' are borrowed from representation theory of lie algebras.
+
+\begin{definition}[Diagonalisable]\label{def:diagonalisable}
+  A \hyperref[def:linear_operator]{linear operator} $T$ is \emph{diagonalisable}, or \emph{completely reducible}, if there exists a matrix representation of $T$ of the following form:
+  \[
+    \begin{bmatrix}
+      \lambda_1 I_{n_1} &        &                   \\
+                        & \ddots &                   \\
+                        &        & \lambda_k I_{n_k}
+    \end{bmatrix}
+  \]
+  Equivalently, $T$ is diagonalisable if $V$ has a non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$ with respect to which $T = \lambda_1 \id_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k \id_{V_{\lambda_k}}$ for some distinct eigenvalues $\lambda_1, \cdots, \lambda_k$.
+\end{definition}
+
+\begin{definition}[Semisimple]\label{def:semisimple}
+  A \hyperref[def:linear_operator]{linear operator} $T$ is \emph{semisimple} if $T \otimes_{F} \overline{F} : V \otimes_{F} \overline{F} \to V \otimes_{F} \overline{F}$ is \hyperref[def:diagonalisable]{diagonalisable}, where $\overline{F}$ is the algebraic closure of $F$ and $V \otimes_{F} \overline{F}$ is linear space over $\overline{F}$.
+\end{definition}
+\begin{remark}
+  We can take $F = \R$, then $\overline{F} = \mathbb{C}$. Algebraic closure means that every polynomial in $\overline{F}[x]$ has a root in $\overline{F}$. For example, $x^2 + 1$ has no root in $\R$, but it has roots $\pm i$ in $\mathbb{C}$.
+
+  Note that $- \otimes F \simeq \id_{F}$, so if we change it to $- \otimes_{F} \overline{F}$, then we are just changing the field from $F$ to $\overline{F}$ without changing the values inside. For example, $1$ can be viewed as an element in $\R$ or $\mathbb{C}$.
+\end{remark}
+
+In general, $T$ is not semisimple, but it can be decomposed into a semisimple part and a \emph{nilpotent} part. Moreover, this decomposition is unique. Such decomposition is called the \emph{Jordan-Chevalley decomposition}. However, it is too complicated that will not be discussed.
+
+We can consider the $\End(V) \simeq \Mat_n(F) \simeq F^{n^2}$ as a linear space. Then $T \in F^{n^2}$ is a vector and such the set of containing such $T$ forms a dense open subset of $\End(V) = F^{n^2}$. The dense open subset is in the Zariski topology. More precisely, the set of all diagonalisable endomorphisms with distinct eigenvalues forms a dense open subset of $\End(V)$. The study of Zariski topology is in the appendix~\ref{appendix:zariski_topology}. A subset of a space is \emph{dense} and \emph{open} in Zariski Topology if the only polynomial that vanishes on the subset is the zero polynomial.
+
+Once we know that diagonalisable endomorphisms are dense in $\End(V)$, then if we want to prove some identity, it suffices to prove it for diagonalisable endormophisms. One of the example is the Cayley-Hamilton theorem.
+
+\begin{theorem}[Cayley-Hamilton Theorem]
+  Let $T$ be a \hyperref[def:linear_operator]{linear operator} on a finite-dimensional linear space $V$ over a field $F$. Let $p_T (\lambda) = \det (\lambda \id_V - T)$ be the characteristic polynomial of $T$. Then we have:
+  \[
+    p_T (\lambda)\big|_{\lambda = T} = 0
+  \]
+\end{theorem}
+\begin{remark}
+  $p_T (\lambda) = \det (\lambda \id_V - T) = \lambda^n + \cdots + {(-1)}^n \det(T) \lambda^0$, where $\lambda^0 = 1$ and $T^0 = \id_V$.
+\end{remark}
+\begin{proof}
+  As $p_T (\lambda)\big|_{\lambda = T}$ is a polynomial in $T$, it suffices to verify the theorem on a dense set. Let $T = \lambda_1 \id_{V_{\lambda_1}} \oplus \cdots \oplus \lambda_k \id_{V_{\lambda_k}}$ be a diagonalisable operator with distinct eigenvalues $\lambda_1, \cdots, \lambda_k$ and non-trivial decomposition $V = V_{\lambda_1} \oplus \cdots \oplus V_{\lambda_k}$. Then we have $\id_V = \id_{V_{\lambda_1}} \oplus \cdots \oplus \id_{V_{\lambda_k}}$. Hence, we have:
+  \[
+    \lambda \id_V - T = (\lambda - \lambda_1) \id_{V_{\lambda_1}} \oplus \cdots \oplus (\lambda - \lambda_k) \id_{V_{\lambda_k}}
+  \]
+  Then the characteristic polynomial is:
+  \[
+    p_T (\lambda) = \det (\lambda \id_V - T) = {(\lambda - \lambda_1)}^{\dim(V_{\lambda_1})} \cdots {(\lambda - \lambda_k)}^{\dim(V_{\lambda_k})} = \prod_{i = 1}^k {(\lambda - \lambda_i)}^{n_i}
+  \]
+  where $n_i = \dim(V_{\lambda_i})$. Note that $\lambda_i \id_{V_{\lambda_i}} - T = 0$ on $V_{\lambda_i}$ as $T\big|_{V_{\lambda_i}} = \lambda_i \id_{V_{\lambda_i}}$. As for any $v \in V$, we can write $v = v_1 + \cdots + v_k$ with $v_i \in V_{\lambda_i}$, then for all $1 \leq i \leq k$, we have:
+  \[
+    {(\lambda_i \id_{V_{\lambda_i}} - T)}^{n_i} (v_i) = 0.
+  \]
+  Therefore, we have:
+  \[
+    p_T (\lambda)\big|_{\lambda = T} (v) = \prod_{i = 1}^k {(\lambda_i \id_V - T)}^{n_i} (v) = \prod_{i = 1}^k {(\lambda_i \id_V - T)}^{n_i} (v_i) = 0
+  \]
+  This completed the proof.
+\end{proof}
+
+If $T$ is diagonalisable, then
+\[
+  n_i = \dim V_{\lambda_i}
+\]
+where $n_i$ is the algebraic multiplicity of eigenvalue $\lambda_i$ and $\dim V_{\lambda_i}$ is the geometric multiplicity of eigenvalue $\lambda_i$. In general, we have $n_i \geq \dim V_{\lambda_i}$. Then $\{ \lambda_1, \cdots, \lambda_k \}$ is the set of roots of $p_T (\lambda)$ and $V_{\lambda_i} = \ker{\lambda_i \id_V - T}$.
+
+Then for any $T$, if the set of roots of $p_T (\lambda)$ in $F$ is $\{ \lambda_1, \cdots, \lambda_k \}$, then we can define the \emph{generalised eigenspaces}:
+\[
+  V_{\lambda_i} = \ker{\lambda_i \id_V - T} \quad \forall 1 \leq i \leq k
+\]
+Then we check whether $\dim V = \sum_{i = 1}^k \dim V_{\lambda_i}$. If it holds, then $T$ is diagonalisable. If not, then $T$ is not. So this characterise diagonalisable endomorphisms.
+
+\section{Ring Theory}
+
+Before studying the canonical forms of not diagonalisable operators, we need to introduce some concepts in ring theory.
+
+\begin{definition}[Domain]\label{def:domain}
+  A \emph{domain} is a non-trivial commutative ring $R$ with unity $\id_R \neq 0_R$ if non-zero elements $a, b \in R$ satisfy $ab \neq 0_R$.
+\end{definition}
+
+\begin{example}
+  $\Z$ is a domain. Given any two non-zero integers $a, b \in \Z$, we have $ab \neq 0$.
+\end{example}
+
+\begin{example}
+  $\quotient{\Z}{6}$ is not a domain. For example, $2, 3 \in \quotient{\Z}{6}$ are non-zero elements, but $2 \cdot 3 = 0$ in $\quotient{\Z}{6}$.
+\end{example}
+
+\begin{definition}[Module]\label{def:module}
+  A \emph{module} over a ring $R$ is an abelian group $(M, +)$ together with a ring action of $R$ on $(M, +)$.
+\end{definition}
+
+\begin{example}
+  $R$ itself is a module over $R$ with the ring action being the multiplication in $R$.
+\end{example}
+
+\begin{definition}[Submodule]\label{def:submodule}
+  A \emph{submodule} $N$ of a \hyperref[def:module]{module} $M$ over a ring $R$ is a subgroup of $(M, +)$ that is closed under the ring action of $R$ on $M$, i.e., for any $r \in R$ and $n \in N$, we have $r \cdot n \in N$.
+\end{definition}
+
+\begin{definition}[Ideal]\label{def:ideal}
+  An \emph{ideal} $I$ of a ring $R$ is a \hyperref[def:submodule]{submodule} of the module $R$ over itself.
+\end{definition}
+
+\begin{example}
+  The only ideals of $F$ over itself are $\{ 0 \}$ and $F$ itself. So the ideal of a field is trivial.
+\end{example}
+
+\begin{example}
+  The ideals of $\Z$ over itself are all of the form $(n) = n\Z = \{ nk : k \in \Z \}$ for some $n \in \Z$. So the ideals of $\Z$ are non-trivial. For example, $(2) = \{ 0, \pm 2, \pm 4, \cdots \}$.
+\end{example}
+
+\begin{definition}[Principal Ideal Domain]\label{def:principal_ideal_domain}
+  A \emph{principal ideal domain} (PID) is a \hyperref[def:domain]{domain} $R$ such that every \hyperref[def:ideal]{ideal} of $R$ is of the form $(a) = aR$ for some $a \in R$.
+\end{definition}
+
+\begin{example}
+  $\Z$ is a principal ideal domain, as every ideal of $\Z$ is of the form $(n) = n\Z$ for some $n \in \Z$.
+\end{example}
+
+\begin{example}
+  $F[x]$ is a principal ideal domain, as every ideal of $F[x]$ is of the form $(f(x)) = f(x) F[x]$ for some $f(x) \in F[x]$. It can be proved using the division algorithm of polynomials.
+\end{example}
+
+\begin{definition}[Cyclic Module]\label{def:cyclic_module}
+  A \hyperref[def:module]{module} $M$ over $R$ is \emph{cyclic} if there exists some $m \in M$ such that $M = \langle m \rangle = R \cdot m = \{ r \cdot m : r \in R \}$.
+\end{definition}
+
+\begin{example}
+  $R$ itself is a cyclic module over $R$, as $R = \langle \id_R \rangle$.
+\end{example}
+
+\begin{definition}[Finitely Generated Module]\label{def:finitely_generated_module}
+  A \hyperref[def:module]{module} $M$ over $R$ is \emph{finitely generated} if $M$ is the span of a finite set of elements in $M$, i.e., $M = \langle m_1, m_2, \cdots, m_k \rangle$ for some $m_1, m_2, \cdots, m_k \in M$. It may not be unique.
+\end{definition}
+
+Note that the definition here is different from finite-dimensional linear space, as a module over a ring may not have a basis. There exists something called the torsion module that prevents the existence of basis. We will discuss it later.
+
+Then we introduce the following theorem which can derive Jordan canonical form.
+
+\begin{theorem}[Classification Theorem of Finitely Generated Modules over a Principal Ideal Domain (Invariant Factor Decomposition)]
+  A \hyperref[def:finitely_generated_module]{finitely generated module} $M$ over a \hyperref[def:principal_ideal_domain]{principal ideal domain} $R$ is isomorphic to a finite direct sum of \hyperref[def:cyclic_module]{cyclic modules} of the form:
+  \[
+    M \cong R^r \oplus \bigoplus_{i = 1}^m \quotient{R}{(a_i)} = R^r \oplus \quotient{R}{(a_1)} \oplus \cdots \oplus \quotient{R}{(a_m)}
+  \]
+  with $a_i \in R \setminus \{ 0 \}$ and $a_i | a_{i + 1}$ for each $1 \leq i \leq m - 1$.
+\end{theorem}
+\begin{remark}
+  Note that $a | b$ means that there exists some $c \in R$ such that $b = ac$.
+\end{remark}
+Here $R^r$ is the free part of $M$ and $\bigoplus_{i = 1}^m \quotient{R}{(a_i)}$ is the torsion part of $M$. The torsion part prevents the existence of basis of $M$. If the torsion part is trivial, i.e., $m = 0$, then $M$ is a free module and has a basis. Moreover, $r$ is the rank of $M$ and is unique. $a_i$ are called the invariant factors of $M$ and are unique up to multiplication by units in $R$. This is called the invariant factor decomposition of $M$. There is another decomposition called primary decomposition, or elementary divisor decomposition, or Chinese Remainder decomposition.
+\begin{theorem}[Classification Theorem of Finitely Generated Modules over a Principal Ideal Domain (Primary Decomposition)]
+  A \hyperref[def:finitely_generated_module]{finitely generated module} $M$ over a \hyperref[def:principal_ideal_domain]{principal ideal domain} $R$ is isomorphic to a finite direct sum of \hyperref[def:cyclic_module]{cyclic modules} of the form:
+  \[
+    M \cong R^r \oplus \bigoplus_{i = 1}^m \quotient{R}{(p_i^{e_i})} = R^r \oplus \quotient{R}{(p_1^{e_1})} \oplus \cdots \oplus \quotient{R}{(p_m^{e_m})}
+  \]
+  with $p_i$ being prime or irreducible elements in $R$ and $e_i \in \Z^+$ for each $1 \leq i \leq m$.
+\end{theorem}
+\begin{remark}
+  As $R$ is a principal ideal domain, so every ideal is principal. Therefore, every ideal generated by a prime or irreducible element is a prime ideal. This is why we call it primary decomposition.
+\end{remark}
+
+For any ring $R$, we can decomposite as follows:
+\[
+  R = \{ 0 \} \cup R^{\times} \cup S
+\]
+where $R^{\times}$ is the set of units in $R$ and $S$ is the set of non-units and non-zero elements in $R$. Then any $u \in R$ is called a unit if there exists some $v \in R$ such that $uv = vu = \id_R$. For example, in $\Z$, the units are $\pm 1$. In $F[x]$, the units are all non-zero constant polynomials.
+
+Then the set of all prime elements and the set of all irreducible elements in $R$ are subsests of $S$. In general, they are not the same. The set of all prime elements is a subset of the set of all irreducible elements. However, in a principal ideal domain they are the same. Irreducible elements are those elements that cannot be factored into the product of two non-unit elements, i.e., if $x \neq 0$ and $x \notin R^{\times}$, then whenever $x = yz$, then $y$ or $z$ must be a unit.
+
+\section{Jordan Canonical Form}
+
+Let $V$ be a finite-dimensional linear space over an algebraically closed field $F$, e.g. $\mathbb{C}$. Then $F[x]$ is a principal ideal domain and $x - \lambda_i$ are the prime or irreducible elements in $F[x]$ for some $\lambda_i \in F$.
+\begin{remark}
+  If we take non-zero $\alpha \in F$, then $\alpha (x - \lambda_i)$ is also an irreducible element in $F[x]$, as $\alpha$ is a unit in $F[x]$ and we have $(x - \lambda_i) = \alpha(x - \lambda_i)$. Therefore, the irreducible elements are only unique up to multiplication by units. We can just choose monic polynomials as the irreducible elements.
+\end{remark}
+
+Suppose $T$ is a linear operator on $V$, i.e., $T \in \End(V)$. Then it is equivalent to consider $V$ as a module over $F[x]$. Moreover, $V$ is a finitely generated module over $F[x]$ with rank 0. The ring action of $F[x]$ on $V$ is defined as follows:
+\[
+  p(x) \cdot v = p(T)(v) = (a_n T^n + a_{n - 1} T^{n - 1} + \cdots + a_1 T + a_0 \id_V)(v).
+\]
+
+\begin{example}
+  Let $p(x) = 2x^2 + 3x - 1 \in F[x]$ and $T \in \End(V)$. Then for any $v \in V$, we have $p(T) v = 2 T^2(v) + 3 T(v) - v$.
+\end{example}
+
+Therefore, by the classification theorem of finitely generated modules over a principal ideal domain, we have:
+\[
+  V \cong \bigoplus_{i = 1}^m \frac{F[x]}{{(x - \lambda_i)}^{e_i}} = \frac{F[x]}{{(x - \lambda_1)}^{e_1}} \oplus \cdots \oplus \frac{F[x]}{{(x - \lambda_m)}^{e_m}}
+\]
+Note that $T$ is the same as the multiplication by $x$ in the module, i.e., $x\cdot : V \to V$ defined as $v \mapsto x v$. Then for each cyclic module $\dfrac{F[x]}{{(x - \lambda_i)}^{e_i}}$, we have the dimension being $e_i$. Therefore, we have the basis on $\dfrac{F[x]}{{(x - \lambda_i)}^{e_i}}$ as:
+\[
+  \B_i = \{ 1, (x - \lambda_i), {(x - \lambda_i)}^2, \cdots, {(x - \lambda_i)}^{e_i - 1} \}
+\]
+
+Then we consider the following diagram:
+\begin{center}
+  \begin{tikzcd}
+    \frac{F[x]}{(x - \lambda_i)^{e_i}} \arrow[r, "x \cdot", "T_i"'] \arrow[d, "{[-]_{\B_i}}" swap] & \frac{F[x]}{(x - \lambda_i)^{e_i}} \arrow[d, "{[-]_{\B_i}}"] \\
+    F^{e_i} \arrow[r, "J_{e_i} (\lambda_i)" swap] & F^{e_i}
+  \end{tikzcd}
+\end{center}
+Then what is $J_{e_i} (\lambda_i)$? We have:
+\[
+  x \cdot 1 = x = 1 \cdot (x - \lambda_i) + \lambda_i \cdot 1
+\]
+So the first column of $J_{e_i} (\lambda_i)$ is $\begin{bmatrix} \lambda_i & 1 & 0 & \cdots & 0 \end{bmatrix}^T$. Similarly, we have:
+\begin{align*}
+  x \cdot (x - \lambda_i)           & = 1 \cdot {(x - \lambda_i)}^2 + \lambda_i \cdot (x - \lambda_i)                                                           \\
+  x \cdot {(x - \lambda_i)}^{e_i - 1} & = 1 \cdot {(x - \lambda_i)}^{e_i} + \lambda_i \cdot {(x - \lambda_i)}^{e_i - 1} = \lambda_i \cdot {(x - \lambda_i)}^{e_i - 1}
+\end{align*}
+So the matrix representation of $x \cdot$ on $\dfrac{F[x]}{{(x - \lambda_i)}^{e_i}}$ with respect to the basis $\B_i$ is:
+\[
+  J_{e_i} (\lambda_i) = \begin{bmatrix}
+    \lambda_i &           &           &        &           \\
+    1         & \lambda_i &           &        &           \\
+              & 1         & \lambda_i &        &           \\
+              &           & \ddots    & \ddots &           \\
+              &           &           & 1      & \lambda_i
+  \end{bmatrix}
+\]
+We can switch the order of basis elements in $\B_i$ to get the following equivalent representation:
+\[
+  J_{e_i} (\lambda_i) = \begin{bmatrix}
+    \lambda_i & 1         &           &        &           \\
+              & \lambda_i & 1         &        &           \\
+              &           & \lambda_i & \ddots &           \\
+              &           &           & \ddots & 1         \\
+              &           &           &        & \lambda_i
+  \end{bmatrix}
+\]
+This is called a \emph{Jordan block} of size $e_i$ with eigenvalue $\lambda_i$.
+
+Then the matrix representation of $T$ on $V$ with respect to the basis $\B = \B_1 \cup \B_2 \cup \cdots \cup \B_m$ is:
+\[
+  J = \begin{bmatrix}
+    J_{e_1} (\lambda_1) &                     &        &                     \\
+                        & J_{e_2} (\lambda_2) &        &                     \\
+                        &                     & \ddots &                     \\
+                        &                     &        & J_{e_m} (\lambda_m)
+  \end{bmatrix}
+\]
+This is called the \emph{Jordan canonical form} of $T$. However, this is for algebraically closed fields. For non-algebraically closed fields, it is more complicated in general that will not be discussed here. Interested readers may find more information on Jordan-Chevalley decomposition and rational canonical form, or try the field, $\mathsf{Gal}(\quotient{\C}{\R})$ which is of order $2$. The irreducible polynomials in $\R[x]$ are all of degree $1$ or $2$, i.e., $x - \lambda$ for some $\lambda \in \R$ or $x^2 + ax + b$ with $a, b \in \R$ and $a^2 - 4b < 0$.
+
+\clearpage{}
+
+\section{Exercises}
+
+\begin{problem}
+  We say that $A$ is diagonalisable if there is an invertible matrix $P$, written as $[v_1, \ldots, v_n]$, and a diagonal matrix $D$, with diagonal entries $d_{ii}$ denoted by $\lambda_i$, such that $AP = PD$, i.e., $A v_i = \lambda_i v_i$ for each $i = 1, \ldots, n$.
+  \begin{enumerate}
+    \item Show that $A$ is diagonalisable $\iff$ $F^n$ has a basis consisting of eigenvectors of $A$.
+    \item Show that eigenspaces are linearly independent, i.e., they are all non-trivial and there is only one way to write $0$ as a finite sum of vectors, one from each of them.
+    \item Let $\sigma(A) = \{ \lambda_1, \ldots, \lambda_k \}$. Show that $A$ is diagonalisable $\iff$ $F^n = \bigoplus_i E_{\lambda_i} (A)$ $\iff$ $n = \sum_i \dim E_{\lambda_i} (A)$.
+    \item Show that $A$ is diagonalisable if $|\sigma(A)| = n$, i.e., $A$ has $n$ distinct eigenvalues.
+    \item Find a non-diagonalisable square matrix $A$ of order 2.
+  \end{enumerate}
+\end{problem}
+
+\begin{remark}
+  The goal of this exercise is to give a road map for a sketchy proof of Cayley-Hamilton Theorem.
+\end{remark}
+
+\begin{problem}
+  Let $f \in F[x]$ be a monic polynomial of degree $n \geq 1$. Over the algebraic closure $\overline{F}$ of $F$, we can factorise $f$ as $(x - x_1) \cdots (x - x_n)$ with $x_i \in \overline{F}$. The discriminant of $f$, denoted by $\mathsf{Disc}(f)$, is defined to be $\prod_{i < j} {(x_i - x_j)}^2$. Being symmetric in $x_1, \ldots, x_n$, $\mathsf{Disc}(f)$ must be a polynomial in the coefficients of $f$.
+  \begin{enumerate}
+    \item Show that the discriminant of the quadratic polynomial $x^2 + bx + c$ is $b^2 - 4c$. How about the discriminant of the cubic polynomial $x^3 + px + q$?
+    \item Show that $f$ has $n$-distinct roots in $\overline{F}$ $\iff$ $\mathsf{Disc}(f) \neq 0$.
+    \item Show that $P_A (\lambda)\big|_{\lambda = A} = 0$ $\iff$ $P_A(\lambda)\big|_{\lambda = A} = 0$ when $A$ is viewed as a square matrix over $\overline{F}$. 
+  \end{enumerate}
+  Thus, to prove $P_A (\lambda) \big|_{\lambda = A} = 0$, without loss of generality, we shall assume in the following that the field $F$ is algebraically closed.
+  \begin{enumerate}\addtocounter{enumi}{3}
+    \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $A$ is a diagonal matrix.
+    \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $A$ is a diagonalisable matrix.
+    \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $\mathsf{Disc}(P_A) \neq 0$.
+    \item Show that the map $A \mapsto \mathsf{Disc}(P_A)$ is a polynomial map $f$ from the affine space $\End F^n$ to $F$. Note that the $\End F^n$ is isomorphic to the affine space $\mathbb{A}^{n^2}_{F}$ of dimension $n^2$.
+  \end{enumerate}
+
+  We need the following two facts from Topology:
+  \begin{enumerate}[label=\arabic*.]
+    \item In Zariski Topology, any finite-dimensional affine space over an algebraically closed field is an irreducible topological space.
+    \item Any non-empty open set $U$ in an irreducible topological space $X$ must be dense, i.e., $X$ is equal to the topological closure $\overline{U}$ of $U$.
+  \end{enumerate}
+
+  \begin{enumerate}\addtocounter{enumi}{7}
+    \item Assume these facts and let $f$ be the polynomial $f$ in part (g) and $f_{ij}$ be the polynomial map from affine space $\End F^n$ to $F$ that sends $A$ to the $(i, j)$-entry of the matrix $P_A (\lambda) \big|_{\lambda = A}$. Show that $[f_{ij} (A)] = P_A (\lambda) \big|_{\lambda = A} = 0$ for all $A$ on the non-empty Zariski open set $\{ f \neq 0 \}$ of $\End F^n$.
+    \item Show that all $P_A (\lambda) \big|_{\lambda = A} = 0$ for all $A$ in the affine space $\End F^n$.
+  \end{enumerate}
+\end{problem}
+
+\begin{remark}
+  The goal of this exercise is to outline an elementary proof of Jordan Canonical Form.
+\end{remark}
+
+\begin{problem}
+  Assume the field $F$ is algebraically closed and $\sigma(A) = \{ \lambda_1, \ldots, \lambda_k \}$. Then $P_A (\lambda) = \prod_{i = 1}^k {(\lambda - \lambda_i)}^{n_i}$ where each integer $n_i$ is positive. Cayley-Hamilton Theorem says that
+  \begin{equation}
+    \prod_{i = 1}^k {(A - \lambda_i I)}^{n_i} = 0.
+  \end{equation}
+  \begin{enumerate}
+    \item Show that, for each $i$, we have a sequence
+    \[
+        \nul(A - \lambda_i I) \subseteq \nul{(A - \lambda_i I)}^2 \subseteq \cdots
+    \]
+    that will eventually stabilise.
+  \end{enumerate}
+
+  The generalised eigenspace of $A$ with eigenvalue $\lambda_i$, denoted by $\widetilde{E}_{\lambda_i} (A)$, is defined to be the increasing union $\bigcup_{k \geq 1} \nul{(A - \lambda_i I)}^k$. By definition, any non-zero vector $v$ in $\widetilde{E}_{\lambda_i} (A)$ is called a generalised eigenvector of $A$ with eigenvalue $\lambda_i$. Let $v$ be a generalised eigenvector of $A$ with eigenvalue $\lambda$.
+
+  \begin{enumerate}\addtocounter{enumi}{1}
+    \item Show that there is an integer $m \geq 0$ such that $v_m := {(A - \lambda I)}^m v$ is an eigenvector of $A$ with eigenvalue $\lambda$.
+    \item Show that $v$ is never a generalised eigenvector of $A$ with eigenvalue $\mu \neq \lambda$.
+    \item Show that, for any $k \geq 0$ and scalar $\mu \neq \lambda$, ${(A - \mu I)}^k v$ is always a generalised eigenvector of $A$ with eigenvalue $\lambda$. Consequently, ${(A - \mu I)}^k$ maps $\widetilde{E}_{\lambda} (A)$ isomorphically onto $\widetilde{E}_{\lambda} (A)$.
+    \item Show that the algebraic multiplicity of the eigenvalue $\lambda_i$ is bigger than or equal to the geometric multiplicity, i.e., $\dim E_{\lambda_i} (A)$, of the eigenvalue $\lambda_i$.
+    \item Show that the generalised eigenspaces of $A$ are linearly independent and their direct sum is the entire linear space $F^n$.
+    \item Show that, with respect to the decomposition $F^n = \widetilde{E}_{\lambda_1} (A) \oplus \cdots \oplus \widetilde{E}_{\lambda_k} (A)$, we have the decomposition $A = (\lambda_1 I_{n_1} + N_1) \oplus \cdots \oplus (\lambda_k I_{n_k} + N_k)$ where each $N_i$ is a nilpotent matrix of order $n_i$.
+  \end{enumerate}
+\end{problem}
