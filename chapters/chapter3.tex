@@ -361,8 +361,9 @@ The elements in the product can be expressed as an ordered tuples: ${(v_i)}_{i \
   \prod_{i \in I} V_i     & = \left\{ {(v_i)}_{i \in I} \mid v_i \in V_i \text{ for all } i \in I \right\},                                                    \\
   \bigoplus_{i \in I} V_i & = \left\{ {(v_i)}_{i \in I} \in \prod_{i \in I} V_i \Biggm| v_i \text{ has finite support} \right\} \subseteq \prod_{i \in I} V_i,
 \end{align*}
-where $I$ is a finite index set. Hence, the product and coproduct coincide for finite collections of objects in $\Vect_F$, but not in infinite cases. Consider the following diagram:
-\begin{center}
+where $I$ is a finite index set. Hence, the product and coproduct coincide for finite collections of objects in $\Vect_F$, but not in infinite cases. Consider the following Figure~\ref{fig:product_coproduct} that illustrates the product and coproduct of an infinite collection of linear spaces ${\{ V_i \}}_{i \in I}$ over a field $F$.
+
+\begin{figure}[!ht]
   \begin{tikzpicture}
     \filldraw[ustgray!20] (-4,-2) rectangle (4,2);
     \draw[step=0.5cm,ustgray!40] (-4,-2) grid (4,2);
@@ -409,7 +410,8 @@ where $I$ is a finite index set. Hence, the product and coproduct coincide for f
     \filldraw (0.5,-4) circle (1.5pt) node [below] {$3$};
     \filldraw (2,-4) circle (1.5pt) node [below] {$4$};
   \end{tikzpicture}
-\end{center}
+  \caption{The product and coproduct of an infinite collection of linear spaces ${\{ V_i \}}_{i \in I}$ over a field $F$. The left section $s_1$ represents an element in the product $\prod V_i$, and the right section $s_2$ represents an element in the coproduct $\bigoplus V_i$.}\label{fig:product_coproduct}
+\end{figure}
 
 \begin{remark}
   The right sections $s_1$ and $s_2$ are two elements in the product $\prod V_i$. Note that $s_2$ is likely to be ``finitely supported'' since it is zero in almost all components shown in the diagram. However, if $I$ is an infinite set, then $s_2$ may not be finitely supported since there may be infinitely many non-zero components not shown in the diagram. So $s_2$ may not be an element in the coproduct $\bigoplus V_i$ if $I$ is an infinite set, but most likely to be.
@@ -417,8 +419,9 @@ where $I$ is a finite index set. Hence, the product and coproduct coincide for f
 
 So the product $\prod V_i$ contains all possible sections $s \colon I \to \bigcup V_i$, so it is called the \emph{space of sections}. The coproduct $\bigoplus V_i$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}. The elements in the coproduct $\bigoplus V_i$ written as ordered tuples ${(v_i)}_{i \in I}$ can also be written as finite sums $\sum_{i \in I} V_i$ since only finitely many $V_i$ are non-zero.
 
-Actually, the product and coproduct can be regarded as the generalisation of $\Map(X, F)$ and $F[X]$ respectively. We can consider the following diagrams:
-\begin{center}
+Actually, the product and coproduct can be regarded as the generalisation of $\Map(X, F)$ and $F[X]$ respectively. We can consider the following Figure~\ref{fig:map_set_map} that illustrates the set map $s \colon X \to F$.
+
+\begin{figure}[!ht]
   \begin{tikzpicture}
     \filldraw[gray!10] (-4,-2) rectangle (4,2);
     \draw[step=0.5cm,gray!20] (-4,-2) grid (4,2);
@@ -465,7 +468,8 @@ Actually, the product and coproduct can be regarded as the generalisation of $\M
     \filldraw (6, 1.5) circle (1pt) node [right] {\scriptsize $s(3)$};
     \filldraw (6, -1.5) circle (1pt) node [right] {\scriptsize $s(4)$};
   \end{tikzpicture}
-\end{center}
+  \caption{The set map $s \colon X \to F$ illustrated as sections over fibres.}\label{fig:map_set_map}
+\end{figure}
 
 The left shows the diagram in generalised version, but it can be squeezed to the right since all fibres are the same. So we can consider the set map as $s \colon X \to F$ as shown on the right.
 

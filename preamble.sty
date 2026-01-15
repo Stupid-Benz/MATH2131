@@ -66,13 +66,13 @@
 }
 
 \tikzcdset{
-  arrow style=tikz,
-  diagrams={>={Straight Barb[scale=0.8]}},
-  /tikz/commutative diagrams/every diagram/.append style={
-      row sep=huge,
-      column sep=huge
-    },
-  labels=description,
+arrow style=tikz,
+diagrams={>={Straight Barb[scale=0.8]}},
+/tikz/commutative diagrams/every diagram/.append style={
+    row sep=huge,
+    column sep=huge
+  },
+labels=description,
 }
 
 \newcommand{\point}[2]{\tikz[remember picture]{\node[inner sep=0, anchor=base](#1){$#2$};}}
@@ -180,6 +180,7 @@
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
       blanker,
+      breakable,
       borderline west={2.5pt}{-10pt}{ustblue},
       top=6pt,
       bottom=6pt,
@@ -189,8 +190,7 @@
         }
     }
 }
-
-\newkeytheoremstyle{colorbar}
+\newkeytheoremstyle{colorfullbarbox}
 {
   bodyfont=\sffamily,
   headfont=\color{ustblue}\bfseries\sffamily,
@@ -201,9 +201,30 @@
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
       blanker,
-      borderline west={2.5pt}{-10pt}{ustblue},
-      top=3pt,
-      bottom=3pt
+      top=6pt,
+      bottom=6pt,
+      overlay={
+          \filldraw[draw=ustblue, fill=ustblue!5!white, line width=0.625pt] ([xshift=-7.5pt]frame.north west) -- ([xshift=7.5pt]frame.north east) -- ([xshift=7.5pt]frame.south east) -- ([xshift=-7.5pt]frame.south west) -- cycle;
+        }
+    }
+}
+
+\newkeytheoremstyle{colorbox}
+{
+  bodyfont=\sffamily,
+  headfont=\color{ustblue}\bfseries\sffamily,
+  headpunct={.\vspace{\topsep}\newline},
+  notebraces={}{},
+  noteseparator={\ ---\ },
+  spaceabove=\baselineskip,
+  spacebelow=\baselineskip,
+  tcolorbox-no-titlebar={
+      blanker,
+      top=6pt,
+      bottom=6pt,
+      overlay={
+          \draw[draw=ustblue, line width=0.625pt] ([xshift=-7.5pt]frame.north west) -- ([xshift=7.5pt]frame.north east) -- ([xshift=7.5pt]frame.south east) -- ([xshift=-7.5pt]frame.south west) -- cycle;
+        }
     }
 }
 
@@ -261,7 +282,7 @@
 \newkeytheoremstyle{graybar}
 {
   bodyfont=\normalfont,
-  headfont=\bfseries\sffamily,
+  headfont=\color{ustgray}\bfseries\sffamily,
   spaceabove=\baselineskip,
   spacebelow=\baselineskip,
   tcolorbox-no-titlebar={
@@ -273,11 +294,15 @@
     }
 }
 
-\newkeytheorem{definition}[style=colorbarbox,parent=chapter]
-\newkeytheorem{theorem}[style=colorbarbox,parent=chapter]
+\newkeytheorem{definition}[style=colorbarbox,parent=chapter,preheadhook={
+      \setlist[description]{leftmargin=!, font=\color{ustblue}, topsep=\baselineskip}
+    }]
+\newkeytheorem{definition*}[style=colorbarbox,numbered=false,name=Definition]
 
-\newkeytheorem{lemma}[style=colorbar,parent=chapter]
-\newkeytheorem{corollary}[style=colorbar,parent=chapter]
+\newkeytheorem{theorem}[style=colorfullbarbox,parent=chapter]
+
+\newkeytheorem{lemma}[style=colorbox,parent=chapter]
+\newkeytheorem{corollary}[style=colorbox,parent=chapter]
 
 \newkeytheorem{example}[style=goldbar,parent=section]
 
@@ -293,3 +318,12 @@
     }]
 
 \newkeytheorem{remark}[style=graybar,numbered=false]
+
+\usepackage{caption}
+
+\counterwithout{figure}{chapter}
+
+\captionsetup[figure]{
+  labelfont={color=ustyellow, bf, sf},
+  labelsep=period % Optional: adjust space after the label
+}

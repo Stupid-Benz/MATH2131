@@ -133,6 +133,150 @@ We also have the distribution of tensor products and Hom-set over direct sums:
 \end{align*}
 In categorical terms, consider the category $\Vect_F$ as the category of finite-dimensional vector spaces over $F$ and $\Vect_F^{\op}$ as its opposite category. Then the first isomorphism shows that there is a natural isomorphism between functors from $\Vect_F \times \Vect_F \times \Vect_F$ to $\Vect_F$. The second isomorphism shows that there is a natural isomorphism between functors from $\Vect_F^{\op} \times \Vect_F \times \Vect_F$ to $\Vect_F$. The third isomorphism shows that there is a natural isomorphism between functors from $\Vect_F^{\op} \times \Vect_F^{\op} \times \Vect_F$ to $\Vect_F$.
 
+\section{Tensors}
+In this section, we introduce tensors as multilinear maps and multilinear forms, and explore the change of basis for tensors. We also define tensor spaces and discuss some special types of tensors, such as symmetric and skew-symmetric tensors.
+
+\begin{definition}[Multilinear Map]\label{def:multilinear_map}
+  A \emph{multilinear map} between finite-dimensional $F$-linear spaces $V_1, V_2, \ldots, V_k$ and $W$ is a map $\phi \colon V_1 \times V_2 \times \cdots \times V_k \to W$ ($k$ times) that is linear in each argument when the other arguments are held fixed; that is, for each $1 \leq i \leq k$, and for all $v_j \in V_j$ ($j \neq i$), the map
+  \[
+    V_i \to W, \quad v_i \mapsto \phi(v_1, v_2, \ldots, v_k)
+  \]
+  is a \hyperref[def:linear_map]{linear map}.
+\end{definition}
+
+\begin{definition}[Multilinear Form]\label{def:multilinear_form}
+  A \emph{multilinear form}, or \emph{covariant tensor} or \emph{$k$-tensor} or \emph{$k$-linear form}, on a finite-dimensional $F$-linear space $V$ is a \hyperref[def:multilinear_map]{multilinear map} $\phi \colon V^k \to F$ ($k$ times). It is an element of the $k$-th \hyperref[def:tensor_power]{tensor power} of the dual space $V^*$, i.e., $\phi \in {(V^*)}^{\otimes k}$.
+\end{definition}
+
+Specifically, a linear form is simply a linear functional on $V$, i.e., an element of the dual space $V^*$. A bilinear form is an element of $V^* \otimes V^*$. To show that the set of all bilinear forms on $V$ is isomorphic to $V^* \otimes V^*$, we consider the following diagram:
+\begin{center}
+  \begin{tikzcd}
+    \Bil(V \times V, F) \arrow[r, <->] & \Hom(V, V^*) \arrow[r, <->] & V^* \otimes V^*
+  \end{tikzcd}
+\end{center}
+Here, the first isomorphism is given by the currying process, and the second isomorphism is given by the natural isomorphism $\Hom(V, W) \simeq V^* \otimes W$ for finite-dimensional $F$-linear spaces $V$ and $W$.
+
+Moreover, we have the following two important special cases of 2-linear forms.
+\begin{definition}[Symmetric Bilinear Form]\label{def:symmetric_bilinear_form}
+  A \emph{symmetric bilinear form} on a finite-dimensional $F$-linear space $V$ is a \hyperref[def:multilinear_form]{multilinear form} $\phi \colon V \times V \to F$ such that $\phi(v, w) = \phi(w, v)$ for all $v, w \in V$. It is an element of the \hyperref[def:symmetric_power]{second symmetric power} of the dual space $V^*$, i.e., $\phi \in \Sy^2(V^*)$.
+\end{definition}
+\begin{definition}[Skew-symmetric Bilinear Form]\label{def:skew_symmetric_bilinear_form}
+  A \emph{skew-symmetric bilinear form} on a finite-dimensional $F$-linear space $V$ is a \hyperref[def:multilinear_form]{multilinear form} $\phi \colon V \times V \to F$ such that $\phi(v, w) = -\phi(w, v)$ for all $v, w \in V$. It is an element of the \hyperref[def:exterior_power]{second exterior power} of the dual space $V^*$, i.e., $\phi \in \Lambda^2(V^*)$.
+\end{definition}
+\begin{remark}
+  Here, we assume that the characteristic of the field $F$ is not 2, so that the relation $\phi(v, w) = -\phi(w, v)$ is equivalent to $\phi(v, v) = 0$ for all $v, w \in V$. If the characteristic of $F$ is 2, then the skew-symmetric bilinear form would be defined by the relation $\phi(v, v) = 0$ for all $v \in V$.
+\end{remark}
+
+Then we can define tensor spaces.
+\begin{definition}[Tensor Space]\label{def:tensor_space}
+  The \emph{tensor space} of type $(k, l)$ on a finite-dimensional $F$-linear space $V$, denoted by $T^{k, l}(V)$, is defined as the tensor product of the $k$-th \hyperref[def:tensor_power]{tensor power} of $V$ and the $l$-th \hyperref[def:tensor_power]{tensor power} of the dual space $V^*$:
+  \[
+    T^{k, l}(V) = V^{\otimes k} \otimes {(V^*)}^{\otimes l}.
+  \]
+  Elements of $T^{k, l}(V)$ are called \emph{tensors of type $(k, l)$} on $V$, where $k$ is the number of \emph{contravariant} indices and $l$ is the number of \emph{covariant} indices.
+\end{definition}
+
+If a tensor is of type $(k, 0)$, then it is called a \emph{contravariant tensor} or simply a \emph{$k$-tensor}, and it is an element of the $k$-th \hyperref[def:tensor_power]{tensor power} of $V$, i.e., $\Ten^{k, 0}(V) = V^{\otimes k}$. If a tensor is of type $(0, l)$, then it is called a \emph{covariant tensor} or simply an \emph{$l$-form}, and it is an element of the $l$-th \hyperref[def:tensor_power]{tensor power} of the dual space $V^*$, i.e., $\Ten^{0, l}(V) = {(V^*)}^{\otimes l}$.
+
+Given that $\End(V) \simeq V \otimes V^* = \Ten^{1, 1}(V)$, we can see that tensors of type $(1, 1)$ can be interpreted as linear operators on $V$ and represented by $a^i_j$ in a basis. Here, the contravariant index $i$ represents the row index, and the covariant index $j$ represents the column index. To get the matrix representation of the linear operator with respect to a basis, we have
+\[
+  a^i_j = \langle \hat{e}^i, A(\vec{e}_j) \rangle,
+\]
+where $\{\vec{e}_j\}$ is a basis of $F^n$ and $\{\hat{e}^i\}$ is the dual basis of $F^n$. Then we can identify the linear operator $T$ with tensor of type $(1, 1)$ as follows:
+\[
+  T \simeq T^i_j v_i \otimes v^j.
+\]
+Here, the $\{ v_i \}$ form a basis of $V$, and the $\{ v^j \}$ form the dual basis of $V^*$.
+
+An object is considered as \emph{covariant} if it transforms like the basis vectors under a change of basis, and it is considered as \emph{contravariant} if it transforms oppositely to the basis vectors under a change of basis. We have the following transformation tables for covariant and contravariant objects under a change of basis.
+\begin{tabularx}{\textwidth}{X X}
+  \toprule
+  \bfseries Object                    & \bfseries Transformation Type \\
+  \midrule
+  Standard Basis Vector ($\vec{e}_i$) & Covariant                     \\
+  \midrule
+  Dual Basis Vector ($\hat{e}^i$)     & Contravariant                 \\
+  \midrule
+  Component of a Vector ($v^i$)       & Contravariant                 \\
+  \midrule
+  Component of a Covector ($v_i$)     & Covariant                     \\
+  \bottomrule
+\end{tabularx}
+
+In general, an element $t \in \Ten^{r, s}(V)$ can be represented in a basis as follows:
+\[
+  t = t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s} v_{i_1} \otimes v_{i_2} \otimes \cdots \otimes v_{i_r} \otimes v^{j_1} \otimes v^{j_2} \otimes \cdots \otimes v^{j_s},
+\]
+where the $\{ v_i \}$ form a basis of $V$, and the $\{ v^j \}$ form the dual basis of $V^*$. The representation depends on the choice of basis, i.e., the following two representations are equivalent under a change of basis:
+\[
+  {\left[t^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s}\right]}_{\B_V} \simeq {\left[\widetilde{t}^{\widetilde{i}_1 \widetilde{i}_2 \cdots \widetilde{i}_r}_{\widetilde{j}_1 \widetilde{j}_2 \cdots \widetilde{j}_s}\right]}_{\widetilde{\B_V}}
+\]
+The two representations are related by the change of basis matrices as follows:
+\[
+  (\widetilde{v}_1, \widetilde{v}_2, \cdots, \widetilde{v}_n) = (v_1, v_2, \cdots, v_n) A,
+\]
+where $A$ is the change of basis matrix, $A = {[a^i_{\widetilde{j}}]}_{\B_V}^{\widetilde{\B_V}}$, which is in the general linear group of $V$, $\GL(V)$. It is an automorphism group of $V$ that consists of all invertible linear maps from $V$ to itself. We will learn more later.
+\begin{remark}
+  It is the right action of $\GL(V)$ on the set of bases of $V$:
+  \[
+    \B_V \times \GL(V) \to \B_V, \quad (\B_V, A) \mapsto \B_V A.
+  \]
+\end{remark}
+Then we have the following transformation rule for the components of the tensor under the change of basis:
+\[
+  \widetilde{v}_{\widetilde{j}} = v_i a^i_{\widetilde{j}}, \quad v_k = \widetilde{v}_{\widetilde{j}} b^{\widetilde{j}}_k,
+\]
+where $B$ is the inverse of $A$, i.e., $B = A^{-1}$, and $B = {[b^{\widetilde{i}}_j]}_{\widetilde{\B_V}}^{\B_V}$. We have $a^i_{\widetilde{j}} b_j^{\widetilde{k}} = \delta^{\widetilde{k}}_{\widetilde{j}}$ and $b_j^{\widetilde{i}} a^j_{\widetilde{k}} = \delta^{\widetilde{i}}_{\widetilde{k}}$.
+\begin{remark}
+  For easier memorisation, our professor suggests using the following partial derivative notation to represent the change of basis matrices:
+  \[
+    \frac{\partial \widetilde{v}_{\widetilde{j}}}{\partial v_i} = a^i_{\widetilde{j}}, \quad \frac{\partial v_k}{\partial \widetilde{v}_{\widetilde{j}}} = b_k^{\widetilde{j}}
+  \]
+  To memorise it, we consider the lower indices in denominators (lower) will flip to the upper indices in numerators. (As lower twice, so flip to upper)
+
+  Then we can use the chain rule to verify the two equations of $A$ and $A^{-1}$:
+  \[
+    \frac{\partial \widetilde{v}_{\widetilde{j}}}{\partial v_i} \frac{\partial v_k}{\partial \widetilde{v}_{\widetilde{j}}} = \delta^i_k
+  \]
+\end{remark}
+
+Then we have the transformation rule for the representation of $t \in \mathcal{T}^{r, s} V$ under the base change from $\B_V$ to $\widetilde{\B_V}$:
+\[
+  \widetilde{t}^{{\color{ustblue} \widetilde{i}_1 \widetilde{i}_2 \cdots \widetilde{i}_r}}_{{\color{red} \widetilde{j}_1 \widetilde{j}_2 \cdots \widetilde{j}_s}} = \left({\color{ustblue} b_{i_1}^{\widetilde{i}_1} b_{i_2}^{\widetilde{i}_2} \cdots b_{i_r}^{\widetilde{i}_r}}\right) t^{{\color{ustblue} i_1 i_2 \cdots i_r}}_{{\color{ustred} j_1 j_2 \cdots j_s}} \left({\color{ustred} a^{j_1}_{\widetilde{j}_1} a^{j_2}_{\widetilde{j}_2} \cdots a^{j_s}_{\widetilde{j}_s}}\right)
+\]
+Given that $\B_V = \{ \vec{v}_1, \cdots, \vec{v}_n \}$ is a basis of $V$, then we can define a basis of $\mathcal{T}^{r, s} V$ as follows:
+\[
+  \B_{\mathcal{T}^{r, s} V} = \{ \vec{v}_{i_1} \otimes \vec{v}_{i_2} \otimes \cdots \otimes \vec{v}_{i_r} \otimes \hat{v}^{j_1} \otimes \hat{v}^{j_2} \otimes \cdots \otimes \hat{v}^{j_s} : 1 \leq i_1, i_2, \cdots, i_r, j_1, j_2, \cdots, j_s \leq n \}
+\]
+For symmetric and skew-symmetric tensors, we have:
+\begin{align*}
+  \B_{\Sy^k V}     & = \{ v_{i_1} v_{i_2} \cdots v_{i_k} \mid 1 \leq i_1 \leq i_2 \leq \cdots \leq i_k \leq n \},             \\
+  \B_{\Lambda^k V} & = \{ v_{i_1} \wedge v_{i_2} \wedge \cdots \wedge v_{i_k} \mid 1 \leq i_1 < i_2 < \cdots < i_k \leq n \}.
+\end{align*}
+However, there is a more elegant way to define the basis of symmetric and skew-symmetric tensors. We just need to ensure that the representation of any symmetric tensor is unique for a given basis. For example, for symmetric bilinear forms, we can add the condition that the components remain the same under the swap of any two indices:
+\[
+  t = t^{ij} v_i v_j = t^{ji} v_j v_i \implies t^{ij} = t^{ji}.
+\]
+Thus, we can define the basis of symmetric bilinear forms as follows:
+\[
+  \B_{\Sy^2 V} = \{ v_i v_j \mid 1 \leq i, j \leq n \}.
+\]
+Similarly, for skew-symmetric tensors, we can add the condition that the components change sign under the swap of any two indices:
+\[
+  t = t^{ij} v_i \wedge v_j = -t^{ji} v_j \wedge v_i \implies t^{ij} = -t^{ji}.
+\]
+Thus, we can define the basis of skew-symmetric bilinear forms as follows:
+\[
+  \B_{\Lambda^2 V} = \{ v_i \wedge v_j \mid 1 \leq i < j \leq n \}.
+\]
+
+In conclusion, we have to make sure that the representation of any symmetric or skew-symmetric multilinear form is unique for a given basis by the following conditions respectively:
+\begin{align*}
+   & \text{Symmetric:} \quad t^{i_1 i_2 \cdots i_k} = t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}}                   \\
+   & \text{Skew-symmetric:} \quad t^{i_1 i_2 \cdots i_k} = \sgn(\sigma) t^{i_{\sigma(1)} i_{\sigma(2)} \cdots i_{\sigma(k)}}
+\end{align*}
+The $\sigma$ is any permutation in the symmetric group $S_k$. We will learn more about symmetric groups later.
+
 \section{Multilinear Algebras}
 
 \subsection{Algebras}

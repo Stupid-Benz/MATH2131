@@ -117,23 +117,24 @@ In this section, we introduce two important concepts associated with linear maps
   A linear map $T \colon V \to W$ is a linear isomorphism if and only if it is both injective and surjective.
 \end{proposition}
 \begin{proof}[listhack=true]
-  \begin{description}[labelwidth=\widthof{($\Rightarrow$):~}]
+  \begin{description}[labelwidth=\widthof{\bfseries ($\Rightarrow$):~}]
     \item[($\Rightarrow$)] If $T$ is a linear isomorphism, then there exists a linear map $T^{-1} \colon W \to V$ such that $T^{-1} \circ T = \id_V$ and $T \circ T^{-1} = \id_W$.
-          \begin{itemize}
-            \item \textbf{Injective}: $T(u) = T(v) \implies T^{-1}(T(u)) = T^{-1}(T(v)) \implies u = v$ for any $u, v \in V$.
-            \item \textbf{Surjective}: For any $w \in W$, let $v = T^{-1}(w)$. Then we have $T(v) = T(T^{-1}(w)) = w$.
-          \end{itemize}
+          \begin{description}[labelwidth=\widthof{\bfseries Surjective:~}]
+            \item[Injective] $T(u) = T(v) \implies T^{-1}(T(u)) = T^{-1}(T(v)) \implies u = v$ for any $u, v \in V$.
+            \item[Surjective] For any $w \in W$, let $v = T^{-1}(w)$. Then we have $T(v) = T(T^{-1}(w)) = w$.
+          \end{description}
 
     \item [($\Leftarrow$)] If $T$ is both injective and surjective, we can define the inverse map $T^{-1} \colon W \to V$ as follows: for any $w \in W$, since $T$ is surjective, there exists a vector $v \in V$ such that $T(v) = w$. We define $T^{-1}(w) = v$. To show that $T^{-1}$ is well-defined, suppose there are two vectors $v_1, v_2 \in V$ such that $T(v_1) = w$ and $T(v_2) = w$. Then we have $T(v_1) = T(v_2)$, which implies that $v_1 = v_2$ since $T$ is injective. Therefore, $T^{-1}$ is well-defined.
-          \begin{itemize}
-            \item \textbf{Inverse property}: for all $v \in V$, $w \in W$, we have $T^{-1}(T(v)) = v$ and $T(T^{-1}(w)) = w$.
-            \item \textbf{Linearity}: For any $w_1, w_2 \in W$ and any scalars $\alpha, \beta \in F$, let $v_1 = T^{-1}(w_1)$ and $v_2 = T^{-1}(w_2)$. Then we have
+          \begin{description}[labelwidth=\widthof{\bfseries Invertible:~}]
+            \item[Invertible] for all $v \in V$, $w \in W$, we have $T^{-1}(T(v)) = v$ and $T(T^{-1}(w)) = w$.
+            \item[Linearity] For any $w_1, w_2 \in W$ and any scalars $\alpha, \beta \in F$, let $v_1 = T^{-1}(w_1)$ and $v_2 = T^{-1}(w_2)$. Then we have
                   \begin{align*}
-                    T^{-1}(\alpha \cdot w_1 + \beta \cdot w_2) & = T^{-1}(\alpha \cdot T(v_1) + \beta \cdot T(v_2))                                                  \\
-                                                               & = T^{-1}(T(\alpha \cdot v_1 + \beta \cdot v_2))                                                     \\
-                                                               & = \alpha \cdot v_1 + \beta \cdot v_2 = \alpha \cdot T^{-1}(w_1) + \beta \cdot T^{-1}(w_2). \qedhere
+                    T^{-1}(\alpha \cdot w_1 + \beta \cdot w_2) & = T^{-1}(\alpha \cdot T(v_1) + \beta \cdot T(v_2))             \\
+                                                               & = T^{-1}(T(\alpha \cdot v_1 + \beta \cdot v_2))                \\
+                                                               & = \alpha \cdot v_1 + \beta \cdot v_2                           \\
+                                                               & = \alpha \cdot T^{-1}(w_1) + \beta \cdot T^{-1}(w_2). \qedhere
                   \end{align*}
-          \end{itemize}
+          \end{description}
   \end{description}
 \end{proof}
 
@@ -475,7 +476,7 @@ Using elementary row and column operations, we can transform any matrix into a s
   \end{enumerate}
 \end{proposition}
 \begin{proof}[listhack=true]
-  \begin{description}[labelwidth=\widthof{(1) $\implies$ (2):~}]
+  \begin{description}[labelwidth=\widthof{\bfseries (1) $\implies$ (2):~}]
     \item[(1) $\implies$ (2)] If $A$ is invertible, then $PAQ^{-1}$ is also invertible for any elementary matrices $P$ and $Q$. Thus, the normal form of $A$ is invertible.
     \item[(2) $\implies$ (3)] If the normal form of $A$ is invertible, then it must be a square matrix with full rank since the matrix is surjective and dimension of column space is $n$. Therefore, $\rank(PAQ^{-1}) = n$. Moreover, as rank is invariant under multiplication by invertible matrices, we have $\rank(A) = \rank(PAQ^{-1}) = n$. Since $PAQ^{-1}$ is an $m \times n$ invertible matrix, we must have $m = n$.
     \item[(3) $\implies$ (4)] If $\rank(A) = r = n = m$, then the normal form of $A$ must be $I_n$.
@@ -862,7 +863,7 @@ Exact sequences are useful tools in linear algebra and homological algebra to st
   The exact sequence becomes:
   \begin{center}
     \begin{tikzcd}
-      0 \arrow[r] & V_1 \arrow[r, ustgold, hook, "\iota_1"] & V \arrow[r, ustblue, two heads, "\pi_2"] \arrow[l, ustblue, two heads, "\pi_1", bend right] & V_2 \arrow[r] \arrow[l, ustgold, hook', "\iota_2", bend left] & 0
+      0 \arrow[r] & V_1 \arrow[r, ustgold, hook, "\iota_1"] & V \arrow[r, ustblue, two heads, "\pi_2"] \arrow[l, ustblue, two heads, "\pi_1", bend left] & V_2 \arrow[r] \arrow[l, ustgold, hook', "\iota_2", bend right] & 0
     \end{tikzcd}
   \end{center}
 \end{example}
@@ -882,17 +883,16 @@ We can draw an Euler diagram to illustrate the situation as shown in Figure~\ref
     \draw (2.5,0) ellipse (0.5cm and 1cm) node [below=1.75cm] {$V_2$};
 
 
-    \draw[ustred, arrow] (-5,0) -- (-2.5,0) node [midway, above] {\scriptsize $\im(0)$};
-    \draw[ustblue, arrow] (0,0) -- (-2.5,0) node [midway, above] {\scriptsize $\ker(\iota_1)$};
-    \draw[ustred, arrow] (-2.5,0.75) -- (0,1) node [midway, above] {\scriptsize $\im(\iota_1)$};
-    \draw[ustred, arrow] (-2.5,-0.75) -- (0,-1) node [midway, below] {\scriptsize $\im(\iota_1)$};
-    \draw[ustblue, arrow] (2.5,0) -- (0,1) node [midway, above] {\scriptsize $\ker(\pi_2)$};
-    \draw[ustblue, arrow] (2.5,0) -- (0,-1) node [midway, below] {\scriptsize $\ker(\pi_2)$};
-    \draw[ustred, arrow] (0,1.5) -- (2.5,1) node [midway, above] {\scriptsize $\im(\pi_2)$};
-    \draw[ustred, arrow] (0,-1.5) -- (2.5,-1) node [midway, below] {\scriptsize $\im(\pi_2)$};
-    \draw[ustblue, arrow] (5,0) -- (2.5,1) node [midway, above] {\scriptsize $\ker(0)$};
-    \draw[ustblue, arrow] (5,0) -- (2.5,-1) node [midway, below] {\scriptsize $\ker(0)$};
-
+    \draw[ustred, -Stealth] (-5,0) -- (-2.5,0) node [midway, above] {\scriptsize $\im(0)$};
+    \draw[ustblue, -Stealth] (0,0) -- (-2.5,0) node [midway, above] {\scriptsize $\ker(\iota_1)$};
+    \draw[ustred, -Stealth] (-2.5,0.75) -- (0,1) node [midway, above] {\scriptsize $\im(\iota_1)$};
+    \draw[ustred, -Stealth] (-2.5,-0.75) -- (0,-1) node [midway, below] {\scriptsize $\im(\iota_1)$};
+    \draw[ustblue, -Stealth] (2.5,0) -- (0,1) node [midway, above] {\scriptsize $\ker(\pi_2)$};
+    \draw[ustblue, -Stealth] (2.5,0) -- (0,-1) node [midway, below] {\scriptsize $\ker(\pi_2)$};
+    \draw[ustred, -Stealth] (0,1.5) -- (2.5,1) node [midway, above] {\scriptsize $\im(\pi_2)$};
+    \draw[ustred, -Stealth] (0,-1.5) -- (2.5,-1) node [midway, below] {\scriptsize $\im(\pi_2)$};
+    \draw[ustblue, -Stealth] (5,0) -- (2.5,1) node [midway, above] {\scriptsize $\ker(0)$};
+    \draw[ustblue, -Stealth] (5,0) -- (2.5,-1) node [midway, below] {\scriptsize $\ker(0)$};
     \filldraw (-5,0) circle (1pt) node [below=1.75cm] {$0$};
 
     \filldraw (5,0) circle (1pt) node [below=1.75cm] {$0$};
@@ -1134,7 +1134,7 @@ We let $\quotient{V}{W}$ denote the set of equivalence classes.
   \item Show that there is a unique linear structure on $\quotient{V}{W}$ such that the quotient map $q \colon V \to \quotient{V}{W}$ is a linear map.
   \item Show that, for any linear map $\phi \colon V \to Z$ such that $\phi(v) = 0$ for any $v \in W$, there \emph{is} a \emph{unique} linear map $\overline{\phi} \colon \quotient{V}{W} \to Z$ such that \[ \overline{\phi} \circ q = \phi. \]
 \end{enumerate}
-\textbf{Remark:} $\quotient{V}{W}$ is called the quotient space of $V$ by the subspace $W$ and is also called the algebraic normal space of $V$ in $W$. It is a fact that $\dim(\quotient{V}{W}) = \dim(V) - \dim(W)$.
+Remark: $\quotient{V}{W}$ is called the quotient space of $V$ by the subspace $W$ and is also called the algebraic normal space of $V$ in $W$. It is a fact that $\dim(\quotient{V}{W}) = \dim(V) - \dim(W)$.
 \begin{enumerate}[resume]
   \item Let $W$ be a linear subspace of $V$. Then the inclusion map \begin{tikzcd}[cramped] W \arrow[r, "\iota"] & V \end{tikzcd} is a linear map with image inside $V$. Please formulate and prove the universal property for the inclusion map $\iota$.
 \end{enumerate}
@@ -1176,8 +1176,8 @@ Let $A$ be an $m \times n$-matrix, then the multiplication by $A$ defines a line
 \end{problem}
 
 \begin{problem}
-  \begin{enumerate}
-    \item Show that any matrix $A$ can be expressed as a product $BC$ of two matrices, where the columns of $B$ are linearly independent and the rows of $C$ are linearly independent. Is this decomposition $A = BC$ unique?
-    \item Let $V$ be an $n$-dimensional linear space over $F$, and let $S$ be a set of linearly independent vectors in $V$. Prove that $|S| \leq n$ and that $S$ can be expanded to form a minimal spanning set $\tilde{S}$ of $V$.
-  \end{enumerate}
+\begin{enumerate}
+  \item Show that any matrix $A$ can be expressed as a product $BC$ of two matrices, where the columns of $B$ are linearly independent and the rows of $C$ are linearly independent. Is this decomposition $A = BC$ unique?
+  \item Let $V$ be an $n$-dimensional linear space over $F$, and let $S$ be a set of linearly independent vectors in $V$. Prove that $|S| \leq n$ and that $S$ can be expanded to form a minimal spanning set $\tilde{S}$ of $V$.
+\end{enumerate}
 \end{problem}

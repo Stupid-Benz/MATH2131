@@ -2,7 +2,7 @@
 
 Students from Fudan University asked two hard problems but were completely cooked by Professor Guowu Meng.
 
-\textbf{The story behind the two problems.}
+\section*{The story behind the two problems.}
 
 ``Well, [in] linear algebra basically, no problem is difficult. All problems are trivial.
 
@@ -17,35 +17,35 @@ Students from Fudan University asked two hard problems but were completely cooke
 ``When I do it, there are some keywords and each keywords remind me of some facts related to it, and keep doing this. Then I see a path from here to there''
 
 \begin{flushright}
-	--- Guowu Meng on the lecture of September 19, 2025.
+  --- Guowu Meng on the lecture of September 19, 2025.
 \end{flushright}
 
-\noindent\textbf{Problem 1.}
+\section*{Problem 1.}
 Suppose we have three matrices $A$, $B$ and $C$. Then prove that
 \[
-	\rank(B) + \rank(ABC) \geq \rank(AB) + \rank(BC)
+  \rank(B) + \rank(ABC) \geq \rank(AB) + \rank(BC)
 \]
 \textbf{Solution.} We consider the following diagram:
 \begin{center}
-	\begin{tikzcd}[row sep=huge, column sep=large]
-		0 \arrow[r] &
-		| [alias=D] | \col(BC) \arrow[r, hook, "C" description, ustred] \arrow[d, two heads, "A" description, ustblue] \arrow[rdr, start anchor=south, rounded corners, to path={
-					-- (B.south)
-					-- (\tikztotarget.north west)
-				}, orange, thick, -Stealth] \arrow[drr, start anchor=south, rounded corners, to path={
-					-- (D.south west)
-					|- (\tikztotarget.south west)
-				}, violet, thick, -Stealth] &
-		| [alias=B] | \col(B) \arrow[r, two heads, "\pi_1" description, ustblue] \arrow[d, two heads, "A" description, ustblue] \arrow[dr, two heads, teal] &
-		\quotient{\col(B)}{\col(BC)} \arrow[r] \arrow[d, two heads, "\phi" description, dashed, ustblue] &
-		0 \\
+  \begin{tikzcd}[row sep=huge, column sep=large]
+    0 \arrow[r] &
+    | [alias=D] | \col(BC) \arrow[r, hook, "C" description, ustred] \arrow[d, two heads, "A" description, ustblue] \arrow[rdr, start anchor=south, rounded corners, to path={
+          -- (B.south)
+          -- (\tikztotarget.north west)
+        }, orange, thick, -Stealth] \arrow[drr, start anchor=south, rounded corners, to path={
+          -- (D.south west)
+          |- (\tikztotarget.south west)
+        }, violet, thick, -Stealth] &
+    | [alias=B] | \col(B) \arrow[r, two heads, "\pi_1" description, ustblue] \arrow[d, two heads, "A" description, ustblue] \arrow[dr, two heads, teal] &
+    \quotient{\col(B)}{\col(BC)} \arrow[r] \arrow[d, two heads, "\phi" description, dashed, ustblue] &
+    0 \\
 
-		0 \arrow[r] &
-		| [alias=C] | \col(ABC) \arrow[r, hook, "C" description, ustred] &
-		| [alias=A] | \col(AB) \arrow[r, two heads, "\pi_2" description, ustblue] &
-		\quotient{\col(AB)}{\col(ABC)} \arrow[r] &
-		0
-	\end{tikzcd}
+    0 \arrow[r] &
+    | [alias=C] | \col(ABC) \arrow[r, hook, "C" description, ustred] &
+    | [alias=A] | \col(AB) \arrow[r, two heads, "\pi_2" description, ustblue] &
+    \quotient{\col(AB)}{\col(ABC)} \arrow[r] &
+    0
+  \end{tikzcd}
 \end{center}
 
 We denote the injective map with red color and the surjective map with blue color. Notice that there is a surjective map from $\col(B)$ to $\quotient{\col(AB)}{\col(ABC)}$ due to the surjectivity of $A$ and $\pi_2$. Then we denote this surjective map with teal color.
@@ -58,26 +58,26 @@ Then we can construct a unique surjective map $\phi$ from $\quotient{\col(B)}{\c
 
 Finally, we consider the dimensions of the spaces. Note that $\phi$ is surjective, thus we have
 \begin{align*}
-	\dim(\quotient{\col(B)}{\col(BC)}) & \geq \dim(\quotient{\col(AB)}{\col(ABC)}) \\
-	\dim(\col(B)) - \dim(\col(BC))     & \geq \dim(\col(AB)) - \dim(\col(ABC))     \\
-	\dim(\col(B)) + \dim(\col(ABC))    & \geq \dim(\col(AB)) + \dim(\col(BC))      \\
-	\rank(B) + \rank(ABC)              & \geq \rank(AB) + \rank(BC) \qedhere
+  \dim(\quotient{\col(B)}{\col(BC)}) & \geq \dim(\quotient{\col(AB)}{\col(ABC)}) \\
+  \dim(\col(B)) - \dim(\col(BC))     & \geq \dim(\col(AB)) - \dim(\col(ABC))     \\
+  \dim(\col(B)) + \dim(\col(ABC))    & \geq \dim(\col(AB)) + \dim(\col(BC))      \\
+  \rank(B) + \rank(ABC)              & \geq \rank(AB) + \rank(BC) \qedhere
 \end{align*}
 
-\noindent\textbf{Problem 2.}
+\section*{Problem 2.}
 If $A$ is a $n \times n$ matrix then prove that
 \[
-	\rank(A^n) = \rank(A^{n+1})
+  \rank(A^n) = \rank(A^{n+1})
 \]
 \textbf{Solution.} We consider the following diagram:
 \begin{center}
-	\begin{tikzcd}[column sep=normal]
-		I_n \arrow[r, "A"] & \im(A) \arrow[r, "A"] & \im(A^2) \arrow[r, "A"] & \cdots \arrow[r, "A"] & \im(A^n) \arrow[r, "A"] & \cdots
-	\end{tikzcd}
+  \begin{tikzcd}[column sep=normal]
+    I_n \arrow[r, "A"] & \im(A) \arrow[r, "A"] & \im(A^2) \arrow[r, "A"] & \cdots \arrow[r, "A"] & \im(A^n) \arrow[r, "A"] & \cdots
+  \end{tikzcd}
 \end{center}
 As $I_n \supseteq \im(A) \supseteq \im(A^2) \supseteq \cdots$, we know that
 \[
-	n = \dim(I_n) \geq \rank(A) \geq \rank(A^2) \geq \cdots
+  n = \dim(I_n) \geq \rank(A) \geq \rank(A^2) \geq \cdots
 \]
 
 As the space is finite-dimensional, the sequence will eventually become constant. That means there exists a $k$ such that for all $j \geq k$, we have $\rank(A^j) = \rank(A^{j + 1})$.
@@ -85,3 +85,52 @@ As the space is finite-dimensional, the sequence will eventually become constant
 There are two possibilities: either $k \leq n$ or $k > n$. If $k \leq n$, the equality works properly, as for every $j \geq k$, including $j = n$, such that $\rank(A^j) = \rank(A^{j + 1})$ implies $\rank(A^n) = \rank(A^{n + 1})$.
 
 For $k > n$, consider the strict inequality, we know that each time the dimension must drop at least 1. Without the loss of generality, we may consider the sequence of dimension as $n, n - 1, n - 2, \cdots, 1, 0$. This involves $n$ times. So it is impossible to have $k > n$.
+
+\chapter*{Appendix: Zariski Topology}\label{appendix:zariski_topology}
+
+Before studying Zariski topology, we first introduce \emph{affine spaces}.
+
+\begin{definition*}[Affine Space]
+  A set $\A$ is called an \emph{affine space} over a field $F$ if it is a principal $(F^n, +)$-set, i.e., there is a free and transitive action of the additive group $(F^n, +)$ on $\A$:
+  \[
+    + : \A \times F^n \to \A, \quad (P, \vec{v}) \mapsto P + \vec{v}
+  \]
+  Each element $P \in \A$ is called a \emph{point} in $\A$.
+\end{definition*}
+
+Principal means that the group action is free and transitive. Free means that if $g$ is not the identity element, then $g \cdot x \neq x$ for any $x$ in the set. Transitivity means that any two elements $x, y$ in the set are related by some action of the group, $g$, such that $g \cdot x = y$.
+
+For example, consider the $\SO(2)$ action on the plane $\R^2$. The action is not free and not transitive. It is not free because rotating a point on the plane by $0$ degree (the identity element) keeps the point unchanged, but rotating it by any other angle will change the point. It is not transitive because there is no rotation that can map a point to another point with a different distance from the origin. However, if we consider the orbits of the action, i.e., circles centered at the origin, then the action is transitive on each orbit and free except for the origin.
+
+Then we introduce what topology is.
+
+\begin{definition*}[Topology]
+  Let $X$ be a set. A \emph{topology} on $X$ is a collection $\tau$ of subsets of $X$ such that:
+  \begin{enumerate}
+    \item the empty set $\emptyset$ and the whole set $X$ are in $\tau$;
+    \item the union of any collection of sets in $\tau$ is also in $\tau$;
+    \item the intersection of any finite number of sets in $\tau$ is also in $\tau$.
+  \end{enumerate}
+  The pair $(X, \tau)$ is called a \emph{topological space}. Each set in $\tau$ is called an \emph{open set} in $X$.
+\end{definition*}
+We can define \emph{closed sets} in $X$ as the complements of open sets in $X$. Then we have the following equivalent definition of topology.
+\begin{definition*}[Topology (Closed Set Version)]
+  Let $X$ be a set. A \emph{topology} on $X$ is a collection $\tau$ of subsets of $X$ such that:
+  \begin{enumerate}
+    \item the empty set $\emptyset$ and the whole set $X$ are in $\tau$;
+    \item the intersection of any collection of sets in $\tau$ is also in $\tau$;
+    \item the union of any finite number of sets in $\tau$ is also in $\tau$.
+  \end{enumerate}
+  The pair $(X, \tau)$ is called a \emph{topological space}. Each set in $\tau$ is called an \emph{closed set} in $X$.
+\end{definition*}
+
+Then Zariski topology is defined as follows.
+\begin{definition*}[Zariski Topology]
+  Let $\A$ be an affine space over a field $F$. The \emph{Zariski topology} on $\A$ is defined by taking the closed sets to be the zero loci of sets of polynomials in $F[x_1, \cdots, x_n]$. More precisely, for any set of polynomials $S \subseteq F[x_1, \cdots, x_n]$, the corresponding closed set is:
+  \[
+    V(S) = \{ P \in \A : f(P) = 0 \quad \forall f \in S \} = \bigcap_{\alpha} \{ f_\alpha = 0 \}
+  \]
+  The pair $(\A, \tau_{Zar})$ is called a \emph{Zariski topological space}, where $\tau_{Zar}$ is the Zariski topology on $\A$.
+\end{definition*}
+
+Then the $A \in F^{n^2} \simeq \A_{F}^{n^2}$ can be viewed as a point in the affine space $\A_{F}^{n^2}$ over $F$. Then the set of all diagonalisable endomorphisms with distinct eigenvalues forms a dense open subset of $\End(V) = F^{n^2}$ in the Zariski topology. Dense means that its closure is the whole space. Open means that its complement is a closed set, i.e., the zero locus of some set of polynomials in $F[x_1, \cdots, x_{n^2}]$.
