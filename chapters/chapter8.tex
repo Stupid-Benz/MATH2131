@@ -4,262 +4,276 @@
 
 Before we study symplectic linear spaces, we need to introduce some basic concepts about complex linear spaces. The following discussion is to show how a complex linear space can be viewed as a real linear space with some extra structure.
 
-If $V$ is a complex linear space, then $V$ is a real linear space with dimension doubled and we write $V_{\R}$ for the underlying real linear space of $V$. We losed some information from $V$ to $V_{\R}$. If we want to recover back to the complex linear space, we need to add an extra structure $\J : V_{\R} \to V_{\R}$ defined by $\J^2 = -\id_{V_{\R}}$. It acts as the imaginary number $i$ on $V_{\R}$ and simulate the action of multiplying the imaginary number $i$. Such a structure is called an \emph{complex structure} on $V_{\R}$. The scalar multiplication on $V$ and $V_{\R}$ are related by the following commutative diagram:
+If $V$ is a complex linear space, then $V$ is a real linear space with dimension doubled and we write $V_{\R}$ for the underlying real linear space of $V$. We losed some information from $V$ to $V_{\R}$. If we want to recover back to the complex linear space, we need to add an extra structure $J : V_{\R} \to V_{\R}$ defined by $J^2 = -\id_{V_{\R}}$. It acts as the imaginary number $i$ on $V_{\R}$ and simulate the action of multiplying the imaginary number $i$. Such a structure is called an \emph{complex structure} on $V_{\R}$. The scalar multiplication on $V$ and $V_{\R}$ are related by the following commutative diagram:
 \begin{center}
-  \begin{tikzcd}
-    \C \times V \arrow[r, "\text{complex}"] & V \\
-    \mathbb{R} \times V_{\R} \arrow[u, "\iota \times \id", hook] \arrow[ur, "\text{real}" sloped]
-  \end{tikzcd}
+	\begin{tikzcd}
+		\C \times V \arrow[r, "\text{complex}"] & V \\
+		\mathbb{R} \times V_{\R} \arrow[u, "\iota \times \id", hook] \arrow[ur, "\text{real}" sloped]
+	\end{tikzcd}
 \end{center}
-For example, we can write $(a + bi) v = a v + b \J(v)$ for any complex number $a + bi$ and $v$ in $V$. Note that as ${(\det \J)}^2 = {(-1)}^{\dim_{\R}(V)}$, we have $\dim_{\R}(V)$ is even. The dimension doubled as we consider the basis of $V$ as $\B_V = (v_1, v_2, \cdots, v_n)$ and basis of $V_{\R}$ as $\B_{V_{\R}} = (v_1, v_2, \cdots, v_n, \J(v_1), \J(v_2), \cdots, \J(v_n)) \in V_{\R}$.
+For example, we can write $(a + bi) v = a v + b J(v)$ for any complex number $a + bi$ and $v$ in $V$. Note that as ${(\det J)}^2 = {(-1)}^{\dim_{\R}(V)}$, we have $\dim_{\R}(V)$ is even. The dimension doubled as we consider the basis of $V$ as $\B_V = (v_1, v_2, \cdots, v_n)$ and basis of $V_{\R}$ as $\B_{V_{\R}} = (v_1, v_2, \cdots, v_n, J(v_1), J(v_2), \cdots, J(v_n)) \in V_{\R}$.
 
-\section{Symplectic Forms}
-Consider the Hermitian space $V$ with Hermitian inner product $\langle -, - \rangle$.Then we have:
+\begin{definition}[Complex Structure]
+	A \emph{complex structure} on a real linear space $W$ is a linear map $J : W \to W$ such that $J^2 = -\id_W$. A \emph{complex linear space} is a pair $(W, J)$ where $W$ is a real linear space and $J$ is a complex structure on $W$.
+\end{definition}
+
+Actually, a real linear space is a complex linear space with a complex conjugation structure. The proof is left as an exercise in the end of this chapter.
+
+\section{Symplectic Structures}
+A symplectic structure is closely related to a Hermitian structure. We have learnt that complex structures are to recover complex linear spaces from real linear spaces. Similarly, symplectic structures with another structure, Riemannian structures, are to recover Hermitian linear spaces from real linear spaces.
+
+Consider the Hermitian space $V$ with Hermitian inner product $\langle -, - \rangle$. Then we have:
 \begin{center}
-  \begin{tikzcd}
-    & & \R \\
-    \overline{V} \times V \arrow[r, "{\langle -, - \rangle}"] \arrow[urr, bend left, "{g(-, -)}"] \arrow[drr, bend right, "\omega"'] & \C \arrow[ur, "\Re"] \arrow[dr, "\Im"'] \\
-    & & \R
-  \end{tikzcd}
+	\begin{tikzcd}
+		& & \R \\
+		\overline{V} \times V \arrow[r, "{\langle -, - \rangle}"] \arrow[urr, bend left, "{g(-, -)}"] \arrow[drr, bend right, "\omega"'] & \C \arrow[ur, "\Re"] \arrow[dr, "\Im"'] \\
+		& & \R
+	\end{tikzcd}
 \end{center}
 where $g(-, -)$ is the real part of the Hermitian product and $\omega$ is the imaginary part of the Hermitian product. Both of them are 2-forms on $V_{\R}$. $\omega$ is called a \emph{symplectic form} on $V$.
 
-\begin{definition}[Symplectic form]
-  A \emph{symplectic form} on a real vector space $V$ is a non-degenerate, skew-symmetric 2-form $\omega : V \times V \to \R$.
+\begin{definition}[Symplectic Structure]\label{def:symplectic_structure}
+	A \emph{symplectic structure} on a real linear space $V$ is a non-degenerate, skew-symmetric bilinear form $\omega : V \times V \to \R$. A \emph{symplectic linear space} is a pair $(V, \omega)$ where $V$ is a real linear space and $\omega$ is a symplectic structure on $V$.
 \end{definition}
-A symplectic vector space is a pair $(V, \omega)$.
-
-We have $\J \in \End{V_{\R}}$ defined as the scalar multiplication by $i$ on $V_{\R}$, such that $\J^2 = -1_{V_{\R}}$.
 
 Note that we have three structures on $V_{\R}$:
-\begin{itemize}
-  \item \textbf{Complex structure:} $\J : V_{\R} \to V_{\R}$ with $\J^2 = -1_{V_{\R}}$;
-  \item \textbf{Symplectic structure:} $\omega : V_{\R} \times V_{\R} \to \R$ is a non-degenerate, skew-symmetric bilinear form;
-  \item \textbf{Riemannian structure:} $g : V_{\R} \times V_{\R} \to \R$ is a positive-definite, symmetric bilinear form.
-\end{itemize}
+\begin{description}[leftmargin=!, labelwidth=\widthof{\bfseries Riemannian Structure:~}, font=\color{ustblue}, topsep=\baselineskip]
+	\item[Complex Structure] $J : V_{\R} \to V_{\R}$ with $J^2 = -1_{V_{\R}}$;
+	\item[Symplectic Structure] $\omega : V_{\R} \times V_{\R} \to \R$ is a non-degenerate, skew-symmetric bilinear form;
+	\item[Riemannian Structure] $g : V_{\R} \times V_{\R} \to \R$ is a positive-definite, symmetric bilinear form.
+\end{description}
 
-Then we have the following equation:
+Then for any $x, y \in V_{\R}$, we have:
+\begin{equation}
+	\langle x, y \rangle = g(x, y) + i \omega (x, y)
+\end{equation}
+Moreover, for any $x, y \in V_{\R}$, from $\langle x, iy \rangle = -i \langle x, y \rangle$, we have:
 \[
-  \langle x, y \rangle = g(x, y) + i \omega (x, y)
+	g(x, J(y)) + i \omega (x, J(y)) = \omega (x, y) - i g(x, y)
 \]
-for all $x, y \in V_{\R}$. Moreover, we have:
+which implies that:
+\begin{align}
+	\omega (x, y) & = g(x, J(y)) \label{eq:symplectic_riemannian_relation_1}        \\
+	g(x, y)       & = -\omega (x, J(y)) \label{eq:symplectic_riemannian_relation_2}
+\end{align}
+For the compatibility between these three structures, for any $x, y \in V_{\R}$, from $\langle ix, iy \rangle = \langle x, y \rangle$, we have:
 \[
-  \langle ix, y \rangle = -i \langle x, y \rangle \implies g(\J x, y) + i \omega (\J x, y) = \omega (x, y) - i g(x, y)
+	g(J(x), J(y)) + i \omega (J(x), J(y)) = g(x, y) + i \omega (x, y)
 \]
-for all $x, y \in V_{\R}$. This implies that:
-\[
-  \omega (x, y) = g(\J x, y), \quad g(x, y) = -\omega (x, \J y)
-\]
-Consider the following equation:
-\[
-  \langle ix, iy \rangle = \langle x, y \rangle \implies g(\J x, \J y) + i \omega (\J x, \J y) = g(x, y) + i \omega (x, y)
-\]
-for all $x, y \in V_{\R}$. This implies that:
-\[
-  g(\J x, \J y) = g(x, y), \quad \omega (\J x, \J y) = \omega (x, y)
-\]
-for all $x, y \in V_{\R}$. Or equivalently, we have $\J^* g = g$ and $\J^* \omega = \omega$.
+which implies that:
+\begin{align}
+	g(J(x), J(y))       & = g(x, y), \label{eq:riemannian_compatibility}      \\
+	\omega (J(x), J(y)) & = \omega (x, y) \label{eq:symplectic_compatibility}
+\end{align}
+Shortly, we can write $J^* g = g$ and $J^* \omega = \omega$ where $J^*$ is the pullback of $J$.
 
-Note that the Hermitian product is positive-definite, so we have
+Note that the Hermitian product is positive-definite, i.e., $\langle x, x \rangle > 0$ for all $x \in V \setminus \{ 0 \}$. Therefore, for any $x \in V_{\R} \setminus \{ 0 \}$, we have:
+\begin{align*}
+	g(x, x)       & > 0 \\
+	\omega (x, x) & = 0
+\end{align*}
+If $x = 0$, then we have $\langle 0, 0 \rangle = 0$, $g(0, 0) = 0$ and $\omega (0, 0) = 0$. Also, for any $x, y \in V_{\R}$, from the conjugate symmetry of Hermitian product, i.e., $\langle y, x \rangle = \overline{\langle x, y \rangle}$, we have:
 \[
-  \langle x, x \rangle > 0 \implies g(x, x) > 0, \omega (x, x) = 0
+	g(y, x) + i \omega (y, x) = g(x, y) - i \omega (x, y)
 \]
-for all $x \in V_{\R} \setminus \{ 0 \}$. If $x = 0$, then we have $\langle 0, 0 \rangle = 0$, $g(0, 0) = 0$ and $\omega (0, 0) = 0$. Also, we have
-\[
-  \overline{\langle y, x \rangle} = \langle x, y \rangle \implies g(y, x) - i \omega (y, x) = g(x, y) + i \omega (x, y)
-\]
-for all $x, y \in V_{\R}$. This implies that:
-\[
-  g(x, y) = g(y, x), \quad \omega (x, y) = -\omega (y, x)
-\]
-for all $x, y \in V_{\R}$, i.e., $g$ is symmetric and $\omega$ is skew-symmetric.
+which implies that:
+\begin{align*}
+	g(y, x)       & = g(x, y)        \\
+	\omega (y, x) & = -\omega (x, y)
+\end{align*}
+This shows that $g$ is symmetric and $\omega$ is skew-symmetric.
 
-As $\omega (x, y) = g(\J x, y)$ for all $x, y \in V_{\R}$, so $\omega$ is non-degenerate if $g$ is non-degenerate. Then we have the following commutative diagram:
+As $\omega (x, y) = g(x, J(y))$ for all $x, y \in V_{\R}$, i.e., $\omega_{\musNatural} = g_{\musNatural} \circ J$, so $\omega$ is non-degenerate if $g$ is non-degenerate. Then we have the following commutative diagram:
 \begin{center}
-  \begin{tikzcd}[column sep=normal]
-    V_{\R} \arrow[dr, "\J"'] \arrow[rr, "\omega_{\musNatural}"] & & V_{\R}^* \\
-    & V_{\R} \arrow[ur, "g_{\musNatural}"'] &
-  \end{tikzcd}
+	\begin{tikzcd}[column sep=normal]
+		V_{\R} \arrow[dr, "J"'] \arrow[rr, "\omega_{\musNatural}"] & & V_{\R}^* \\
+		& V_{\R} \arrow[ur, "g_{\musNatural}"'] &
+	\end{tikzcd}
 \end{center}
-As $\omega_{\musNatural} (x) = g_{\musNatural}(\J x)$ for all $x \in V_{\R}$.
 
-Then we can recover a Hermitian space from a real vector space with these structures. Let $V$ be a real vector space. If any two of the above three structures are given and compatible, the third will be determined. Moreover, we have a Hermitian product on $V$ on the complex linear space $(V, \J)$ where $i v = \J v$ for all $v \in V$.
+Then we can recover a Hermitian space from a real vector space with these structures. Let $V$ be a real vector space. If any two of the above three structures are given and compatible, the third will be determined. Moreover, we have a Hermitian product on $V$ on the complex linear space $(V, J)$ where $i v = J v$ for all $v \in V$.
 
-The meaning of being compatible pair:
-\begin{itemize}
-  \item $(g, \J)$ are compatible if $\J^* g = g$, i.e., $J \in \Aut(W, g) = \Orth(W, g)$; Then we can define $\omega (x, y) = g(\J x, y)$ and $\langle -, - \rangle = g + i \omega$. We can check that $\omega$ is skew-symmetric and non-degenerate, and $\langle -, - \rangle$ is a Hermitian product:
-        \[
-          \omega (y, x) = g(\J y, x) = g(\J \J y, \J x) = g(-y, \J x) = -g(\J x, y) = -\omega (x, y)
-        \]
-        Also, if $\omega (x, y) = 0$ for all $y \in V$, then we have $g(\J x, y) = 0$ for all $y \in V$, which implies that $\J x = 0$ as $g$ is non-degenerate, i.e., $x = 0$. Therefore, $\omega$ is non-degenerate. As for the Hermitian product, the sesquilinearity is shown as follows:
-        \[
-          \langle ix, y \rangle = g(\J x, y) + i \omega (\J x, y) = \omega (x, y) - i g(x, y) = -i (g(x, y) + i \omega (x, y)) = -i \langle x, y \rangle
-        \]
-        For the conjugate symmetry, we have:
-        \[
-          \langle y, x \rangle = g(y, x) + i \omega (y, x) = g(x, y) - i \omega (x, y) = \overline{\langle x, y \rangle}
-        \]
-        for all $x, y \in V$. Also, we have:
-        \[
-          \langle x, x \rangle = g(x, x) + i \omega (x, x) = g(x, x) > 0
-        \]
+The following three propositions show the meaning of compatibility between these three structures and how to recover the Hermitian product from any two compatible structures.
 
-  \item $(\omega, \J)$ are compatible if $\J^* \omega = \omega$, i.e., $\J \in \Aut(W, \omega) = \Symp(W, \omega)$ and $-\omega (\J x, x) \geq 0$ and equality holds if and only if $x = 0$. Then we can define $g(x, y) = -\omega (x, \J y)$ and $\langle -, - \rangle = g + i \omega$. We can check that $g$ is symmetric and positive-definite, and $\langle -, - \rangle$ is a Hermitian product:
-        \[
-          g(y, x) = -\omega (y, \J x) = -\omega (\J y, \J \J x) = -\omega (\J y, -x) = -\omega (x, \J y) = g(x, y)
-        \]
-        Also, as $-\omega (\J x, x) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$, we have $g(x, x) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$. Therefore, $g$ is positive-definite. For the Hermitian product, we may use the similar proof as above.
+\begin{proposition}[Compatibility of Complex and Riemannian Structures]
+	If $(g, J)$ are compatible, then there is a unique symplectic structure $\omega$ such that $(g, \omega, J)$ are compatible.
+\end{proposition}
+\begin{proof}
+	The pair $(g, J)$ is compatible if $J^* g = g$, i.e., $J \in \Aut(W, g) = \Orth(W, g)$; Then we can define $\omega (x, y) = g(x, J(y))$ and $\langle -, - \rangle = g + i \omega$. We can check that $\omega$ is skew-symmetric and non-degenerate, and $\langle -, - \rangle$ is a Hermitian product:
+	\[
+		\omega (y, x) = g(y, J(y)) = g(J(y), J^2(x))) = g(J(y), -x) = -g(J(y), x) = -g(x, J(y)) = -\omega (x, y)
+	\]
+	Also, if $\omega (x, y) = 0$ for all $y \in V$, then we have $g(x, J(y)) = 0$ for all $y \in V$, which implies that $J x = 0$ as $g$ is non-degenerate, i.e., $x = 0$. Therefore, $\omega$ is non-degenerate. As for the Hermitian product, the sesquilinearity is shown as follows:
+	\begin{align*}
+		\langle ix, y \rangle & = g(J(x), y) + i \omega (J(x), y) = g(x, - J(y)) + i g(J(x), J(y)) \\
+		                      & = - \omega (x, y) + i g(x, y) = i (g(x, y) + i \omega (x, y))      \\
+		                      & = i \langle x, y \rangle                                           \\
+		\langle x, iy \rangle & = g(x, J(y)) + i \omega (x, J(y)) = \omega (x, y) + i g(x, J^2(y)) \\
+		                      & = \omega (x, y) - i g(x, y) = -i (g(x, y) + i \omega (x, y))       \\
+		                      & = -i \langle x, y \rangle
+	\end{align*}
+	The conjugate symmetry is shown as follows for any $x, y \in V$:
+	\[
+		\langle y, x \rangle = g(y, x) + i \omega (y, x) = g(x, y) - i \omega (x, y) = \overline{\langle x, y \rangle}
+	\]
+	The positive-definiteness is shown as follows for any $x \in V \setminus \{ 0 \}$:
+	\[
+		\langle x, x \rangle = g(x, x) + i \omega (x, x) = g(x, x) > 0 \qedhere
+	\]
+\end{proof}
 
-  \item $(g, \omega)$ are compatible if $\omega (x, y) = g(A x, y)$ for some $A \in \End{V}$. If $A^2 = -1$, then $\J = A$. In general, $A$ is skew-symmetric, i.e., $g(A x, y) = g(x, -A y)$, as $\omega$ is skew-symmetric. Since $A A^\dagger$ is symmetric and positive-definite, we can define $\J = \sqrt{A A^\dagger}^{-1} A$, which satisfies that $\J^2 = -1$, as $\J$ commutes with $A$ and $\sqrt{A A^\dagger}$. Then we have $A = \sqrt{A A^\dagger} \J$ and let $P = \sqrt{A A^\dagger}$. Therefore, we have:
-        \[
-          \omega (\J x, \J y) = g(A \J x, \J y) = g(P \J \J x, \J y) = -g(P x, \J y) = g(\J P x, y) = g(A x, y) = \omega (x, y).
-        \]
-        Also, we have:
-        \[
-          -\omega (\J x, x) = -g(A \J x, x) = -g(P \J \J x, x) = g(P x, x) > 0
-        \]
-        for all $x, y \in V$ and $x \neq 0$. Then we can define $\langle -, - \rangle = g + i \omega$. We can check that $\langle -, - \rangle$ is a Hermitian product by the similar proof as above.
-\end{itemize}
+\begin{proposition}[Compatibility of Complex and Symplectic Structures]
+	If $(\omega, J)$ are compatible, then there is a unique Riemannian structure $g$ such that $(g, \omega, J)$ are compatible.
+\end{proposition}
+\begin{proof}
+	The pair $(\omega, J)$ is compatible if $J^* \omega = \omega$, i.e., $J \in \Aut(W, \omega) = \Symp(W, \omega)$ and $\omega (x, J(x)) \geq 0$ and equality holds if and only if $x = 0$. Then we can define $g(x, y) = \omega (x, J(y))$ and $\langle -, - \rangle = g + i \omega$. We can check that $g$ is symmetric and positive-definite, and $\langle -, - \rangle$ is a Hermitian product:
+	\[
+		g(y, x) = \omega (y, J(x)) = \omega (J(y), J^2(x))) = \omega (J(y), -x) = -\omega (J(y), x) = \omega (x, J(y)) = g(x, y)
+	\]
+	Also, as $\omega (x, J(x)) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$, we have $g(x, x) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$. Therefore, $g$ is positive-definite. For the Hermitian product, we may use the similar proof as above.
+\end{proof}
 
-Let $V$ be a vector space over $F$ where the characteristic of $F$ is not 2. We define the double $D(V) = V \oplus V^*$. Then we have a natural symplectic form on $D(V)$ defined as:
+\begin{proposition}[Compatibility of Riemannian and Symplectic Structures]
+	If $(g, \omega)$ are compatible, then there is a unique complex structure $J$ such that $(g, \omega, J)$ are compatible.
+\end{proposition}
+\begin{proof}
+	The pair $(g, \omega)$ is compatible if $\omega (x, y) = g(A(x), y)$ for some $A \in \End{V}$. If $A^2 = -1$, then $J = A$. In general, $A$ is skew-symmetric relative to $g$, i.e., $g(A(x), y) = g(x, -A(y)) = -g(x, A(y))$, as $\omega$ is skew-symmetric. Since $A A^* = -A^2$ is symmetric and positive-definite, we define $P = \sqrt{A A^*}$ and the complex structure $J = -P^{-1} A$, which satisfies that $J^2 = -1$, as $J$ commutes with $A$ and $P$. Then we have $A = -P J$. Therefore, we have:
+	\[
+		\omega (J(x), J(y)) = g(AJ(x), J(y)) = g(-PJ^2(x), J(y)) = g(P(x), J(y)) = g(-PJ(x), y) = \omega (x, y).
+	\]
+	Also, we have:
+	\[
+		\omega (x, J(x)) = g(A(x), J(x)) = g(-PJ(x), J(x)) = g(P(x), x) > 0
+	\]
+	for all $x, y \in V$ and $x \neq 0$. Then we can define $\langle -, - \rangle = g + i \omega$. We can check that $\langle -, - \rangle$ is a Hermitian product by the similar proof as above.
+\end{proof}
+
+Consider a $F$-linear space $V$ where the characteristic of $F$ is not 2. Recall the definition of double $D(V)$ in Definition~\ref{def:double}. Then we have a natural symplectic structure on $D(V)$ defined as:
 \[
-  \omega ((u, \alpha), (v, \beta)) = \alpha(v) - \beta(u)
+	\omega ((u, \alpha), (v, \beta)) = \alpha(v) - \beta(u)
 \]
-Also $D(V)$ is called the \emph{canonical symplectic vector space} associated to $V$. Then when we choose a basis $\{ \vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n \}$ of $V$ and the dual basis $\{ \hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n \}$ of $V^*$, we have the matrix representation of $\omega$ on $D(V)$ as:
+Then $D(V)$ is also called the \emph{canonical symplectic vector space} associated to $V$. Then when we choose a basis $\{ \vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n \}$ of $V$ and the dual basis $\{ \hat{e}^1, \hat{e}^2, \cdots, \hat{e}^n \}$ of $V^*$, we have the matrix representation of $\omega$ on $D(V)$ as:
 \[
-  \begin{bmatrix}
-    \omega (\vec{e}_i, \vec{e}_j) & \omega (\vec{e}_i, \hat{e}^j) \\
-    \omega (\hat{e}^i, \vec{e}_j) & \omega (\hat{e}^i, \hat{e}^j)
-  \end{bmatrix} = \begin{bmatrix}
-    0    & I_n \\
-    -I_n & 0
-  \end{bmatrix}
+	\begin{bmatrix}
+		\omega (\vec{e}_i, \vec{e}_j) & \omega (\vec{e}_i, \hat{e}^j) \\
+		\omega (\hat{e}^i, \vec{e}_j) & \omega (\hat{e}^i, \hat{e}^j)
+	\end{bmatrix} = \begin{bmatrix}
+		0    & I_n \\
+		-I_n & 0
+	\end{bmatrix}
 \]
 Also the basis $\{ \vec{e}_1, \cdots, \vec{e}_n, \hat{e}^1, \cdots, \hat{e}^n \}$ is called a \emph{symplectic basis} of $D(V)$.
 
-\newpage
+\section{Matrix Representation and Canonical Form of Symplectic Structures}
 
-\section{Matrix Representation and Canonical Form}
-
-We may revise all the canonical forms we have learned before as follows.
-
-\subsection{Linear Maps}
-Consider a linear map $T : V_1 \to V_2$ between two vector spaces $V_1$ and $V_2$ of dimensions $n$ and $m$ respectively. Then we have:
+Consider a bilinear form $\omega : V \times V \to F$ on a vector space $V$ of dimension $n$. Then we have:
 \begin{center}
-  \begin{tikzcd}
-    F^n \arrow[r, "A'"] \arrow[dd, bend right, "P"'] & F^m \\
-    V_1 \arrow[u, "\cong"] \arrow[d, "\cong"'] \arrow[r, "T"] & V_2 \arrow[u, "\cong"'] \arrow[d, "\cong"] \\
-    F^n \arrow[r, "A"'] & F^m \arrow[uu, bend right, "Q"']
-  \end{tikzcd}
+	\begin{tikzcd}
+		V \times V \arrow[r, "\omega"] & F \\
+		F^n \times F^n \arrow[u, <->, "{[-]_{\B}}"] \arrow[ur, dashed]
+	\end{tikzcd}
 \end{center}
-where $A$ and $A'$ are the matrix representations of $T$ with respect to different bases of $V_1$ and $V_2$ and $P \in \GL_n(F)$ and $Q \in \GL_m(F)$ are the change-of-basis matrices. $P$ represents the column operations on $A$ and $Q$ represents the row operations on $A$. Then we have:
-\[
-  A P = Q A', \quad A = Q A' P^{-1}
-\]
-Then we have the left group action of $\GL_m(F) \times \GL_n(F)$ on the set of $m \times n$ matrices $\Mat_{m \times n}(F)$ defined as:
-\[
-  (Q, P) \cdot A = Q A P^{-1}
-\]
-The canonical form of $A$ under this group action is:
-\[
-  \begin{bmatrix}
-    I_r & 0 \\
-    0   & 0
-  \end{bmatrix}
-\]
-
-\subsection{Linear Endomorphisms}
-Consider a linear endomorphism $T : V \to V$ on a vector space $V$ of dimension $n$. Then we have:
-\begin{center}
-  \begin{tikzcd}
-    F^n \arrow[r, "A'"] \arrow[dd, bend right, "P"'] & F^n \arrow[dd, bend left, "P"'] \\
-    V \arrow[u, "\cong"] \arrow[d, "\cong"'] \arrow[r, "T"] & V \arrow[u, "\cong"'] \arrow[d, "\cong"] \\
-    F^n \arrow[r, "A"'] & F^n
-  \end{tikzcd}
-\end{center}
-where $A$ and $A'$ are the matrix representations of $T$ with respect to different bases of $V$ and $P \in \GL_n(F)$ is the change-of-basis matrix. Then we have:
-\[
-  A P = P A', \quad A = P A' P^{-1}
-\]
-Then we have the left group action of $\GL_n(F)$ on the set of $n \times n$ matrices $\Mat_{n \times n}(F)$ defined as:
-\[
-  P \cdot A = P A P^{-1}
-\]
-
-The actual canonical form of $A$ is complicated (Rational Canonical Form), but in generic case, they are diagonal matrix.
-
-\subsection{2-Forms}
-Consider a 2-form $\omega : V \times V \to F$ on a vector space $V$ of dimension $n$. Then we have:
-\begin{center}
-  \begin{tikzcd}
-    V \times V \arrow[r, "\omega"] & F \\
-    F^n \times F^n \arrow[u, "\cong"] \arrow[ur, dashed]
-  \end{tikzcd}
-\end{center}
-Then $[\omega]_{v} = [\omega (v_i, v_j)]$ is the matrix representation of $\omega$ with respect to the basis $v = \{ v_1, v_2, \cdots, v_n \}$ of $V$. If we change the basis of $V$ to $u$, then there is a unique invertible matrix, $P \in \GL_n(F)$, such that $u_j = \sum_i v_i P^i_j$ for all $j$. Then we have:
-\[
-  \begin{split}
-    [\omega]_u = [\omega (u_i, u_j)] & = [\omega (\sum_k v_k P^k_i, \sum_l v_l P^l_j)]   \\
-                                     & = [\sum_{k, l} P^k_i \omega (v_k, v_l) P^l_j]     \\
-                                     & = [\sum_{k, l} (P^T)^i_k \omega (v_k, v_l) P^l_j] \\
-                                     & = P^T [\omega (v_k, v_l)] P                       \\
-  \end{split}
-\]
+Then $[\omega]_{\B} = [\omega (v_i, v_j)]$ is the matrix representation of $\omega$ with respect to the basis $\B = \{ v_1, v_2, \cdots, v_n \}$ of $V$. If we change the basis of $V$ to $\B' = \{ u_1, u_2, \cdots, u_n \}$, then there is a unique invertible matrix, $P$ in $\GL_n(F)$, such that $u_j = \sum_i v_i P^i_j$ for all $j$. Then we have:
+\begin{align*}
+	[\omega]_{\B'} = [\omega (u_i, u_j)] & = \left[ \omega \left(\sum_k v_k P^k_i, \sum_l v_l P^l_j\right) \right] = \left[ \sum_{k, l} P^k_i \omega (v_k, v_l) P^l_j \right] \\
+	                                     & = \left[ \sum_{k, l} (P^T)^i_k \omega (v_k, v_l) P^l_j \right] = P^T [\omega (v_k, v_l)] P
+\end{align*}
 So we have the right group action of $\GL_n(F)$ on the set of $n \times n$ matrices $\Mat_{n \times n}(F)$ defined as:
 \[
-  A \cdot P = P^T A P
+	A \cdot P = P^T A P
 \]
 We may check that $(A \cdot P_1) \cdot P_2 = A \cdot (P_1 P_2)$ for all $A \in \Mat_{n \times n}(F)$ and $P_1, P_2 \in \GL_n(F)$.
 
 Note that the right action leaves the symmetric and skew-symmetric properties invariant, i.e., if $A^T = A$ (or $A^T = -A$), then we have $(P^T A P)^T = P^T A P$ (or $(P^T A P)^T = -P^T A P$) for all $P \in \GL_n(F)$. For symmetric 2-forms, as $(P^T A P)^T = P^T A^T (P^T)^T = P^T A^T P$, where $A^T = A$, so we have $(P^T A P)^T = P^T A P$. For skew-symmetric 2-forms, as $(P^T A P)^T = P^T A^T (P^T)^T = P^T (-A) P$, where $A^T = -A$, so we have $(P^T A P)^T = -P^T A P$.
 
-When $F = \R$, then the $\omega$ being symmetric or skew-symmetric corresponds to the matrix representation being real symmetric or real skew-symmetric respectively. If $\omega$ is symmetric, then the representation $A$ is a Hermitian matrix, and we have $A = O D O^T$ for some orthogonal matrix $O$ and diagonal matrix $D$. Then the canonical form of symmetric 2-form is:
+When $F = \R$, then the skew-symmetric $\omega$ corresponds to a real skew-symmetric matrix. The matrix $iA$ is a Hermitian matrix, and we have $iA = U D U^*$ for some unitary matrix $U$ and real diagonal matrix $D$. Then the canonical form of skew-symmetric 2-form is:
 \[
-  \begin{bmatrix}
-    I_r &      &   \\
-        & -I_s &   \\
-        &      & 0
-  \end{bmatrix}
+	\begin{bmatrix}
+		J_2 &        &         \\
+		    & \ddots           \\
+		    &        & J_2     \\
+		    &        &     & 0
+	\end{bmatrix}
 \]
-where $r + s \leq n$ and $r + s + t = n$. If $\omega$ is skew-symmetric, then the $iA$ is a Hermitian matrix, and we have $iA = U D U^\dagger$ for some unitary matrix $U$ and real diagonal matrix $D$. Then the canonical form of skew-symmetric 2-form is:
-\[
-  \begin{bmatrix}
-    J_2 &        &         \\
-        & \ddots           \\
-        &        & J_2     \\
-        &        &     & 0
-  \end{bmatrix}
-\]
-where $J_2 = \begin{bmatrix}
-    0 & -1 \\
-    1 & 0
-  \end{bmatrix}$ and the canonical form can be represented by $J_2 \oplus J_2 \oplus \cdots \oplus J_2 \oplus 0$. Note that $J_2^2 = -I_2$.
-
-The canonical form of a pseudo inner product on a real linear space of dimension $n$ is $I_{p, q} = \begin{bmatrix}
-    I_p & 0    \\
-    0   & -I_q
-  \end{bmatrix}$ where $p + q = n$. The basis inside the canonical representation is called \emph{pseudo-orthonormal} basis.
-
-A pseudo Euclidean space is isomorphic to $\R^{p, q} := (\R^n, (\vec{x}, \vec{y}) \mapsto \vec{x} \cdot I_{p, q} \vec{y})$. In case the dimension of $V$ is $n$, then up to isomorphism, there are $n + 1$ pseudo Euclidean structures on $V$, namely, $\R^{0, n}, \R^{1, n-1}, \cdots, \R^{n, 0}$. Note that $(v_i, v_j) = \delta_{ij}$ for $1 \leq i, j \leq p$, $(v_i, v_j) = -\delta_{ij}$ for $p + 1 \leq i, j \leq n$ and $(v_i, v_j) = 0$ otherwise.
+where $J_2 = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$ and the canonical form can be represented by $J_2 \oplus J_2 \oplus \cdots \oplus J_2 \oplus 0$. Note that $J_2^2 = -I_2$.
 
 Up to isomorphism, there is only one real symplectic vector space of dimension $2n$, i.e., $D(\R^n) := \R^n \oplus (\R^n)^*$ with the canonical symplectic form. The representation of the symplectic form is
 \[
-  \begin{bmatrix}
-    0  & I \\
-    -I & 0
-  \end{bmatrix}
+	\begin{bmatrix}
+		0  & I \\
+		-I & 0
+	\end{bmatrix}
 \]
 with respect to the symplectic basis: $(x_1, \cdots, x_n, x^1, \cdots, x^n)$, where $\{ x_1, \cdots, x_n \}$ is the standard basis of $\R^n$ and $\{ x^1, \cdots, x^n \}$ is the dual basis of $(\R^n)^*$. Also, $\omega(x_i, x_j) = \omega(x^i, x^j) = 0$ and $\omega(x_i, x^j) = \delta_i^j = -\omega(x^j, x_i)$ for all $i, j$.
 
 Note that we have $A^T = -A$ where $A$ is the representation of a symplectic form. As $\det A^T = \det A = (-1)^n \det A$, we know that $n$ has to be even. Moreover, if we consider the a non-degenerate skew-symmetric 2-form on a real vector space of dimension $2n$, then its canonical form is:
 \[
-  \begin{bmatrix}
-    J_2 &        &     \\
-        & \ddots       \\
-        &        & J_2
-  \end{bmatrix}
+	\begin{bmatrix}
+		J_2 &        &     \\
+		    & \ddots       \\
+		    &        & J_2
+	\end{bmatrix}
 \]
-where $J_2 = \begin{bmatrix}
-    0 & -1 \\
-    1 & 0
-  \end{bmatrix}$. Note that this is similar to the canonical form of symplectic forms mentioned above.
+where $J_2 = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$. Note that this is similar to the canonical form of symplectic forms mentioned above.
+
+\clearpage{}
+
+\section{Exercises}
+
+\begin{problem}
+The goal of this exercise is to help you understand the relation between complex linear spaces and real linear spaces with complex structures.
+\begin{enumerate}
+	\item Let $V$ be a complex linear space and $J$ be the endomorphism $i \cdot \id_V$ on $V_{\R}$. Show that $J^2 = - \id_{V_{\R}}$.
+	\item Show that if $v = (v_1, \ldots, v_n)$ is a basis of the complex linear space $V$, then $v_{\R} := (v_1, Jv_1, \ldots, v_n, Jv_n)$ is a basis of the real linear space $V_{\R}$. Thus $\dim_{\R} V_{\R} = 2 \dim_{\C} V$.
+	\item Show that if $w = (w_1, \ldots, w_m)$ is a basis of the real linear space $W$, then $w \equiv w \otimes 1$ is a basis of the complex linear space $W_{\C}$. Thus $\dim_{\R} W = \dim_{\C} W_{\C}$.
+	\item Show that a complex linear space with underlying real linear space $W$ is isomorphic to the real linear space $W$ with a complex structure $J$ on $W$. Also, if $V := (W, J)$ is a complex linear space, then its complex conjugate $\overline{V}$ is the complex linear space $(W, -J)$.
+	\item Let $V$ be a complex linear space and $J \in \End V_{\R}$ be the scalar multiplication by $i$ on $V$. We prefer to write $V_{\R} \otimes_{\R} \C$ as $V \otimes_{\R} \C$ or simply $V_{\C}$. Note that $J$ extends to $J_{\C} := J \otimes_{\R} \id_{\C}$. Show that $J_{\C}$ is an endomorphism of the complex linear space $V_{\C}$ such that $J_{\C}^2 = - \id_{V_{\C}}$. Note: the complex structure on $V_{\C}$ comes from the complex structure on $\C$, not from that of $V$.
+	\item Show that the real linear map $V \to V_{\C}$ that sends $v$ to $v \otimes_{\R} 1 - J v \otimes_{\R} i$ is an \emph{embedding} of complex linear spaces, i.e., an injective complex linear map. Let us denote the image of this embedding as $V'$. Then $V \equiv V'$.
+	\item Show that the real linear map $\overline{V} \to V_{\C}$ that sends $v$ to $v \otimes_{\R} 1 + J v \otimes_{\R} i$ is an embedding of complex linear spaces. Let us denote the image of this embedding as $V''$. Then $\overline{V} \equiv V''$.
+	\item Show that $V_{\C} = V' \oplus V'' \equiv V \oplus \overline{V}$. People usually write $V_{\C} = V \oplus \overline{V}$.
+\end{enumerate}
+\end{problem}
+
+Let $V$ be a finite-dimensional complex linear space. An endomorphism $\sigma$ on $V_{\R}$ is called a \emph{complex conjugation} on the complex linear space $V$ if $\sigma$ satisfies the following two conditions:
+\begin{itemize}
+	\item $\sigma(cu) = \overline{c} \sigma(u)$ for any $c \in \C$ and $u \in V$;
+	\item $\sigma^2 = \id_{V_{\R}}$.
+\end{itemize}
+If $V$ is a finite-dimensional complex linear space with complex conjugation $\sigma$, we let $V^{\sigma}$ be the set of $\sigma$-invariant vectors, i.e.,
+\[
+	V^{\sigma} = \{ v \in V : \sigma(v) = v \}.
+\]
+
+\begin{problem}
+We have seen that a complex linear space is nothing but a real lineaer space together with a complex structure $J$. The goal of this exercise is to enable you to see that a real linear space is nothing but a complex linear space together with a complex conjugation.
+\begin{enumerate}
+	\item Let $W$ be a finite-dimensional real linear space. Let $\sigma_{\std}$ be the complex conjugation on $W_{\C}$ that sends $w \otimes c$ to $w \otimes \overline{c}$. Show that $W \equiv W_{\C}^{\sigma_{\std}}$ under which $w$ in $W$ becomes $w \otimes 1$ in $W_{\C}^{\sigma_{\std}}$.
+	\item Let $V$ be a finite-dimensional complex linear space with complex conjugation $\sigma$. Show that $V^\sigma$ is a real linear space and $V^\sigma \otimes \C \equiv V$ under which $\sigma_{\std}$ on $V^\sigma \otimes \C$ becomes $\sigma$ on $V$.
+	\item Let $T$ be an endomorphism on the real linear space $W$. Then $T_{\C} := T \otimes \id_{\C}$ is an endomorphism on the complex linear space $W_{\C}$. Show that $T_{\C} \sigma_{\std} = \sigma_{\std} T_{\C}$.
+	\item Show that an eigenvalue of $T_{\C}$ is either a real number or a complex number with its complex conjugation being also an eigenvalue.
+	\item Assume that $T_{\C}$ is ``diagonalisable'', then its eigenspace decomposition of $W_{\C}$ must be of the form
+	      \[
+		      W_{\C} = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_t} \oplus E_{\mu_1} \oplus \overline{E_{\mu_1}} \oplus \cdots \oplus E_{\mu_s} \oplus \overline{E_{\mu_s}}
+	      \]
+	      where $\lambda_i$ are real numbers, $\mu_i$ are complex numbers, $E_{\lambda_i}$ are the eigenspaces associated to $\lambda_i$, $E_{\mu_i}$ are the eigenspaces associated to $\mu_i$ and $\overline{E_{\mu_i}}$ are the complex conjugate of $E_{\mu_i}$, thus must be the eigenspace with eigenvalue $\overline{\mu_i}$. By convention, $t = 0$ means no real eigenvalues and $s = 0$ means no complex numbers.
+	\item Continuing the previous part, show that $W$ has a decomposition of the form
+	      \[
+		      W = E_{\lambda_1} (T) \oplus \cdots \oplus E_{\lambda_t} (T) \oplus E_{\mu_1} (T) \oplus \cdots \oplus E_{\mu_s} (T)
+	      \]
+	      with respect to which we have $T = T_{\lambda_1} \oplus \cdots \oplus T_{\lambda_t} \oplus T_{\mu_1} \oplus \cdots \oplus T_{\mu_s}$; Moreover, $E_{\lambda_i} (T)$ is the eigenspace of $T$ associated to the real eigenvalue $\lambda_i$ and $E_{\mu_i} (T)$ is a real linear space with a complex structure $J_i$ such that the characteristic polynomial of $T_{\mu_i}$ is a power of the real irreducible quadratic polynomial $x^2 - (\mu_i + \overline{\mu_i}) x + |\mu_i|^2$.
+\end{enumerate}
+\end{problem}
+
+The conclusions here are useful and are corollaries of spectral theorem for Hermitian matrices and unitary matrices. By now I hope you feel comfortable with switching between linear maps or forms and their matrix representations. You need some help from Problem 1. In principle, you don't need Problem 2 for help because we only deal with matrices here. This shows again that the ``cheaty method'', i.e., the method of matrix representation, is powerful.
+\begin{problem}
+Let $V$ be an Euclidean vector space. Then its complexification $V_{\C}$ becomes a Hermitian vector space. One way to see it is this: the Hermitian inner product is the one such that $\langle u \otimes \alpha, v \otimes \beta \rangle = \overline{\alpha} \beta \langle u, v \rangle$ for any $u, v \in V$ and complex numbers $\alpha, \beta$.
+\begin{enumerate}
+	\item Show that the canonical form of a Hermitian 2-form on a complex linear space is a matrix of the form $I_p \oplus -I_q \oplus [0] \oplus \cdots \oplus [0]$. Then conclude that the canonical form of a pseudo-Hermitian inner product is a matrix of the form $I_{p, q} := I_p \oplus -I_q$.
+	\item Let $T$ be a self-adjoint operator on $V$. Show that $T_{\C} := T \otimes \id_{\C}$ is a self-adjoint operator on $V_{\C}$. In terms of matrix representation with respect to orthonormal bases, it says that a real symmetric matrix is a Hermitian matrix.
+	\item Show that any real symmetric matrix $A$ can be diagonalised by an orthogonal matrix, i.e., $A = O^T D O$ for some orthogonal matrix and $D$ is a real diagonal matrix.
+	\item Show that the canonical form of a symmetric 2-form on a real linear space is a matrix of the form $I_p \oplus -I_q \oplus [0] \oplus \cdots \oplus [0]$. Then conclude that the canonical form of a pseudo-Euclidean inner product is a matrix of the form $I_{p, q} := I_p \oplus -I_q$.
+	\item Let $T$ be an orthogonal transformation on $V$. Show that $T_{\C}$ is a unitary transformation on $V_{\C}$. In terms of matrix representation with respect to orthonormal bases, it says that an orthogonal matrix is a unitary matrix.
+	\item Denote by $R(\theta)$ the $2 \times 2$ rotation matrix with rotation angle $\theta$. By definition, a special orthogonal matrix is an orthogonal matrix whose determinant is 1. Show that any special orthogonal matrix $A$ can be factorised this way: $A = O^T \overline{A} O$ where $O$ is an orthogonal matrix and $\overline{A}$ is a canonical special orthogonal matrix, i.e., a matrix of the form $R(\theta_1) \oplus \cdots \oplus R(\theta_k)$ for some angles $\theta_i$ if $n = 2k$ or a matrix of the form $R(\theta_1) \oplus \cdots \oplus R(\theta_k) \oplus [1]$ for some angles $\theta_i$ if $n = 2k + 1$. In fact $O$ can be chosen to be a special orthogonal matrix.
+	\item Denote by $J_2$ the real skew-symmetric matrix with its $(2, 1)$-entry being 1. Let $A$ be a real skew-symmetric matrix. Show that $A = P^T \overline{A} P$ where $P$ is an invertible matrix and $\overline{A}$ is a real skew-symmetric matrix of the form $J_2 \oplus J_2 \oplus \cdots \oplus J_2 \oplus [0] \oplus \cdots \oplus [0]$. Then conclude that the canonical form of a symplectic form $\omega$ on a real linear space $V$ is a matrix of the form $J_2 \oplus J_2 \oplus \cdots \oplus J_2$. In this case, the basis made of the columns of $P^T$ is called a symplectic basis of the symplectic space $(V, \omega)$.
+\end{enumerate}
+\end{problem}
