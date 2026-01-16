@@ -1,0 +1,842 @@
+\chapter{Introduction to Category Theory}
+
+Category theory is a branch of mathematics that deals with abstract structures and relationships between them. It provides a unifying framework for understanding various mathematical concepts by focusing on the relationships (morphisms) between objects rather than the objects themselves.
+
+\section{Free Vector Spaces}
+
+Before delving into category theory, it is helpful to understand the concept of \emph{free vector spaces}, or \emph{free linear space}. Let $X$ be a set and $\deltaX = \{ \delta_x \mid x \in X \}$. Here $\delta_x \colon X \to F$ is the Kronecker delta function at $x$, defined in Equation~\eqref{eq:delta_function}. We have already shown that $\deltaX$ is a minimal spanning set for $F[X]$. Moreover, there is a natural bijection between $X$ and $\deltaX$ given by $x \mapsto \delta_x$. The natural isomorphism, or \emph{natural equivalence}, of $X$ with $\deltaX$ allows us to write this map as $\iota_X \colon X \to F[X]$ where $\iota_X(x) = \delta_x$ for all $x \in X$. This motivates the following universal property of free vector spaces.
+
+\begin{proposition}[Universal Property of Free Vector Space]\label{prop:universal_property_free_vector_space}
+  Let $X$ be a set. For any linear space $Z$ and any set map $\phi \colon X \to Z$, there exists a unique linear map $\widetilde{\phi} \colon F[X] \to Z$ such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}
+      X \arrow[r, hook, "\iota_X"] \arrow[rd, "\phi"] & F[X] \arrow[d, dashed, "\widetilde{\phi}"] \\
+      & Z
+    \end{tikzcd}
+  \end{center}
+\end{proposition}
+\begin{proof}
+  If such a linear map $\widetilde{\phi}$ exists, then for any $x \in X$ we must have
+  \[
+    \widetilde{\phi}(\delta_x) = \phi(x).
+  \]
+  Since $\deltaX$ is a spanning set for $F[X]$, this completely determines $\widetilde{\phi}$.
+\end{proof}
+
+Via the natural equivalence of $X$ with $\deltaX$, denoted by $X \simeq \deltaX$, an element in $F[X]$ can be expressed as a finite linear combination of elements in $X$:
+\[
+  \sum \alpha^x \delta_x \Longleftrightarrow \sum \alpha^x x.
+\]
+This is called the \emph{formal linear combination} of elements in $X$ with coefficients in $F$. Hereafter, we always identify $X$ with $\deltaX$ in this way and $F[X]$ is referred to the \emph{set of formal linear combinations} of elements in $X$ with coefficients in $F$ or simply the free vector space on $X$.
+
+The uniqueness of the universal property is in the following sense: if there is another inclusion map $\iota_X'$ into a linear space $F'[X]$ satisfying the same universal property, then there exists a unique isomorphism of linear spaces $\psi \colon F[X] \to F'[X]$ such that the diagram commutes:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    & X \arrow[ld, hook, "\iota_X"] \arrow[rd, hook, "\iota_X'"] & \\
+    F[X] \arrow[rr, dashed, "\psi"] & & F'[X]
+  \end{tikzcd}
+\end{center}
+
+The universal property implies an assignment of a linear map $T_* \colon F[X] \to F[Y]$, or you may write the map as $F[T]$ instead, to each set map $T \colon X \to Y$ defined by the following commutative diagram:
+\begin{center}
+  \begin{tikzcd}
+    X \arrow[r, "T"] \arrow[d, hook, "\iota_X"] & Y \arrow[d, hook, "\iota_{Y}"] \\
+    F[X] \arrow[r, dashed, "T_*"] & F[Y]
+  \end{tikzcd}
+\end{center}
+Moreover, this assignment preserves identities and composition:
+\begin{itemize}
+  \item For the identity map $\id_X \colon X \to X$, we have ${(\id_X)}_* = \id_{F[X]}$.
+  \item For set maps $T \colon X \to Y$ and $S \colon Y \to Z$, we have ${(ST)}_* = S_* T_*$.
+\end{itemize}
+You may refer to Problem~\ref{prob:function_space_homomorphisms} for elementary proofs of these properties.
+
+\section{Introduction to Categories and Functors}
+
+The structure described in the previous section can be abstracted into the notion of a category. We denote a collection of set maps as $\Set$ and a collection of linear maps over $F$ as $\Vect_F$. Then $F[-]$ can be viewed as a map from the collection of sets to the collection of linear spaces over $F$ that assigns to each set $S$ the free vector space $F[S]$ and to each set map $T \colon S \to T$ the linear map $T_* \colon F[S] \to F[T]$:
+\begin{center}
+  \begin{tikzcd}
+    \Set \arrow[r, "{F[-]}"] & \Vect_F
+  \end{tikzcd}
+\end{center}
+This map preserves identities and composition, as described above. Such a structure is called a \emph{functor} from the category $\Set$ to the category $\Vect_F$.
+
+Any monoids can be viewed as \emph{categories} with a single object $*$ where the elements of the monoid are the \emph{morphisms}, or \emph{arrows}, from $*$ to $*$. The composition of morphisms is given by the multiplication in the monoid and the identity morphism is given by the identity element of the monoid. Consider the following composition of morphisms:
+\begin{center}
+  \begin{tikzcd}
+    * \arrow[r, "a"] \arrow[rr, "ab", bend left=15] & * \arrow[r, "b"] & *
+  \end{tikzcd}
+\end{center}
+Here $a$ and $b$ are morphisms from $*$ to $*$. The composition $ab$ is also a morphism from $*$ to $*$.
+
+Recall that a monoid is a set $M$, which is also called a \emph{small collection of objects}, together with a binary operation on $M$, which is also called a \emph{compositon of morphisms}, with associative property and unital property being satisfied. By relaxing the condition on binary operation, allowing the composition being only partially defined, we end up with the definition of \emph{small category}.
+
+Being partially defined means that the composition may not always be defined. For example, take $f \colon X \to Y$ and $g \colon W \to Z$, then $gf$ is not defined. But $f \colon X \to Y$ and $g \colon Y \to Z$, then $gf$ is defined. In monoid, as we may suggest there is only one element $*$, then the composition is always defined.
+
+\begin{example}
+  The collection of all matrices over $F$ is a small category. We may consider any $m \times n$ matrix as an arrow that sends $n$ to $m$: $A \colon n \to m$. If we have a $k \times m$ matrix $B$ that sends $m$ to $k$, then we have the composition $BA \colon n \to k$. Note that $I_n \colon n \to n$ is the identity, which is not unique, there can be $I_m$ and $I_k$. We have
+  \begin{center}
+    \begin{tikzcd}
+      n \arrow[loop left, "I_n" auto] \arrow[r, "A"] & m \arrow[loop right, "I_m" auto] \arrow[d, "B"] \\
+      & k
+    \end{tikzcd}
+  \end{center}
+  Note that $A I_n = A = I_m A$ and $B I_m = B = I_k B$. The following shows the associativity law:
+  \begin{center}
+    \begin{tikzcd}
+      n \arrow[r, "C"] \arrow[rr, bend right, "BC"] \arrow[rrr, bend right, "A(BC)"] & m \arrow[r, "B"] \arrow[rr, bend left, "AB"] & k \arrow[r, "A"] & l \arrow[from=1-1, bend left, "(AB)C"]
+    \end{tikzcd}
+  \end{center}
+\end{example}
+\begin{remark}
+  The identity elements are not unique unlike the case of monoid.
+\end{remark}
+
+Consider the set of all invertible matrices over $F$, it is also a small category, in fact, it is a \emph{groupoid}. Groupoid is defined as a small category such that every morphism is invertible.
+
+\begin{center}
+  \begin{tikzcd}[column sep=3.5em, row sep=huge, math mode=false]
+    & Categories \\
+    Monoids \arrow[r] & Small Categories \arrow[u] \\
+    Groups \arrow[r] \arrow[u] & Groupoids \arrow[u]
+  \end{tikzcd}
+\end{center}
+The graph above shows the relation, the arrows show the subsets relation. The arrow head is the larger set and arrow tail is the subset.
+
+\section{Small Categories}
+
+\begin{definition}[Small Category]\label{def:small_category}
+  A \emph{small category} is a set $\Ca$ together with a subset $\Ca_0$ of $\Ca$, two surjective maps $s, t \colon \Ca \to \Ca_0$ called the \emph{source} and \emph{target} maps respectively, and a composition map, or a \hyperref[def:binary_operation]{binary operation}, $\circ \colon \Ca \times_{(s, t)} \Ca \to \Ca$ that assigns to each pair $(f, g)$ with $s(f) = t(g)$ an element $f \circ g$ in $\Ca$ satisfying the \hyperref[def:associative]{associative} and \hyperref[def:unital]{unital} properties.
+\end{definition}
+Here $\Ca \times_{(s, t)} \Ca = \{ (f, g) \in \Ca \times \Ca \mid s(f) = t(g) \}$ is the \emph{fibre product}, or \emph{pullback}, of $\Ca$ with itself via the maps $s$ and $t$. The following digram illustrates the fibre product:
+\begin{center}
+  \begin{tikzcd}
+    \Ca \times_{s, t} \Ca \arrow[r, "\pi_1"] \arrow[d, "\pi_2"] \arrow[dr, phantom, "\ulcorner", very near start] & \Ca \arrow[d, two heads, "t"] \\
+    \Ca \arrow[r, two heads, "s"] & \Ca_0
+  \end{tikzcd}
+\end{center}
+Intuitively, the fibre product $\Ca \times_{(s, t)} \Ca$ is to filter out the pairs $(f, g)$ in $\Ca \times \Ca$ such that the source of $f$ is the target of $g$, so that the composition $f \circ g$ is defined.
+
+We can picture the composition $f \circ g$ as the following diagram:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    t(f) & s(f) \arrow[l, "f"] & t(g) & s(g) \arrow[l, "g"]
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}[column sep=normal]
+    t(f) & s(g) \arrow[l, "f \circ g"]
+  \end{tikzcd}
+\end{center}
+The left diagram is the composition of $f$ and $g$, and the right diagram is the resulting morphism $f \circ g$. We can also show the unital property as follows:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    t(f) \arrow[loop left, "\id_{t(f)}"] & s(f) \arrow[l, "f"]
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}[column sep=normal]
+    t(f) & s(f) \arrow[l, "f"]
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}[column sep=normal]
+    t(f) & s(f) \arrow[l, "f"] \arrow[loop right, "\id_{s(f)}"]
+  \end{tikzcd}
+\end{center}
+The left diagram shows the composition of $f$ with the identity morphism at $t(f)$, the middle diagram is the resulting morphism $f$, and the right diagram shows the composition of $f$ with the identity morphism at $s(f)$. We can also illustrate the associative property as follows:
+\begin{center}
+  \begin{tikzcd}
+    t(f) & s(f) = t(g) \arrow[l, "f"] & s(g) = t(h) \arrow[l, "g"] \arrow[ll, bend left, "fg", ustblue] & s(h) \arrow[l, "h"] \arrow[lll, bend left, "(fg)h", ustblue] \arrow[ll, bend right, "gh", ustred] \arrow[lll, bend right, "f(gh)", ustred]
+  \end{tikzcd}
+\end{center}
+
+\begin{example}
+  In the small category of matrices over $F$, we have the following:
+  \begin{align*}
+    \Ca   & = \{ \Mat_{m \times n}(F) \mid m, n \in \N \}, \\
+    \Ca_0 & = \{ I_n \mid n \in \N \} \cong \N.
+  \end{align*}
+  If $A \in \Ca$ is an $m \times n$ matrix, then $s(A) = I_n$, which is naturally identified with $n$, and $t(A) = I_m$, which is naturally identified with $m$. Then $A$ can be viewed as a morphism from $n$ to $m$: $A \colon n \to m$. The composition is given by the matrix multiplication.
+\end{example}
+
+\begin{remark}
+  Elements in $\Ca$ are morphisms or arrows, and elements in $\Ca_0$ are identity morphisms which can be identified as objects. Thus, $\Ca_0$ is also called the \emph{set of objects}. Then a morphism $f$ in $\Ca$ can be viewed as an arrow from the object $X \simeq \id_X = s(f)$ to the object $Y \simeq \id_Y = t(f)$, denoted by $f \colon X \to Y$.
+\end{remark}
+
+We generalise the concept of homomorphisms in algebraic structures to the concept of morphisms in categories.
+\begin{definition}[Morphism]\label{def:morphism}
+  Let $\Ca$ be a \hyperref[def:small_category]{small category}. A \emph{morphism} $f$ in $\Ca$ is a structure-preserving map from an object $X$ to an object $Y$, denoted by $f \colon X \to Y$, where $X, Y \in \Ca_0$. The object $X$ is called the \emph{source} of $f$ and the object $Y$ is called the \emph{target} of $f$.
+\end{definition}
+
+The set of morphisms from an object $X$ to an object $Y$ in a small category $\Ca$ is denoted by $\Hom_{\Ca}(X, Y)$ or $\Ca(X, Y)$ or $\Hom(X, Y)$ if the category is clear from the context. Then $\Ca$ can be viewed as the disjoint union of all $\Hom(X, Y)$ for all pairs of objects $(X, Y)$:
+\[
+  \Ca = \bigsqcup_{X, Y \in \Ca_0} \Hom(X, Y).
+\]
+The composition map can be written as follows:
+\begin{center}
+  \begin{tikzcd}[row sep=1pt]
+    \Hom(Y, Z) \times \Hom(X, Y) \arrow[r] & \Hom(X, Z) \\
+    (Z \overset{f}{\longleftarrow} Y, Y \overset{g}{\longleftarrow} X) \arrow[r, mapsto] & (Z \overset{fg}{\longleftarrow} X)
+  \end{tikzcd}
+\end{center}
+
+The following is the normal definition of category, which is equivalent to Definition~\ref{def:small_category}.
+\begin{definition}[Small Category -- Alternative Definition]\label{def:small_category_alternative}
+  A \emph{small category} $\Ca$ consists of the following data:
+  \begin{itemize}
+    \item A set of objects $\Ca_0 = \mathsf{Ob}(\Ca)$;
+    \item A set of \hyperref[def:morphism]{morphisms} $\Ca_1 = \Hom(\Ca)$ containing morphisms between each pair of objects in $\Ca_0$;
+    \item A \hyperref[def:binary_operation]{binary operation}, called \emph{composition of morphisms}, $\circ \colon \Hom(Y, Z) \times \Hom(X, Y) \to \Hom(X, Z)$ that assigns to each pair $(f, g)$ with $f \colon Y \to Z$ and $g \colon X \to Y$ a morphism $f \circ g \colon X \to Z$;
+    \item An identity morphism $\id_X \colon X \to X$ for each object $X$ in $\Ca_0$;
+  \end{itemize}
+  satisfying the \hyperref[def:associative]{associative} and \hyperref[def:unital]{unital} properties.
+\end{definition}
+
+\begin{definition}[Category]\label{def:category}
+  A \emph{category} is a collection of objects and \hyperref[def:morphism]{morphisms} between these objects satisfying the same conditions as in Definition~\ref{def:small_category_alternative}, except that the collection of objects and morphisms may be proper classes instead of sets.
+\end{definition}
+
+\begin{example}[Common Categories]
+  Some common categories in mathematics are:
+  \begin{itemize}
+    \item $\Set$: the category of sets and set maps;
+    \item $\Vect_F$: the category of linear spaces over a field $F$ and linear maps;
+    \item $\mathsfbf{Grp}$: the category of groups and group homomorphisms;
+    \item $\mathsfbf{Rng}$: the category of rings and ring homomorphisms;
+    \item $\mathsfbf{Top}$: the category of topological spaces and continuous maps;
+    \item $\mathsfbf{Mat}_F$: the category of matrices over a field $F$ as described above.
+  \end{itemize}
+  We also have the categories of categories, denoted by $\mathsfbf{Cat}$, and small categories, denoted by $\mathsfbf{SmallCat}$.
+\end{example}
+
+\begin{example}
+  If $\Ca$ and $\D$ are two categories, then their \emph{product category} $\Ca \times \D$ with objects $(X, Y)$ for $X \in \Ca_0$ and $Y \in \D_0$, and morphisms $(f, g)$ for $f \in \Hom_{\Ca}(X, X')$ and $g \in \Hom_{\D}(Y, Y')$, is also a category.
+\end{example}
+
+\begin{example}
+  The category of finite sets and set maps, denoted by $\mathsfbf{FinSet}$, is a subcategory of $\Set$.
+\end{example}
+
+\begin{example}
+  Fix an object $X$ in a category $\Ca$. The \emph{coslice category} under $X$, or \emph{under category} of $X$, denoted by $\quotient{X}{\Ca}$ or $X \downarrow \Ca$, has objects that are morphisms with source $X$: $\{ f \colon X \to Y \mid Y \in \Ca_0 \}$, and morphisms that are commutative triangles:
+  \begin{center}
+    \begin{tikzcd}[column sep=normal]
+      & X \arrow[ld, "f"] \arrow[rd, "f'"] & \\
+      Y \arrow[rr, "g"] & & Y'
+    \end{tikzcd}
+  \end{center}
+  Moreover, the identity morphism at an object $f \colon X \to Y$ is given by $\id_Y \colon Y \to Y$, and the composition of morphisms is given by the composition in $\Ca$.
+\end{example}
+
+\begin{example}
+  Let $W$ be a subspace of a linear space $V$ over $F$. The coslice category under $\quotient{V}{W}$, denoted by $\quotient{(\quotient{V}{W})}{\Vect_F}$ or $(\quotient{V}{W}) \downarrow \Vect_F$, has objects that are linear maps $\overline{f} \colon \quotient{V}{W} \to Z$ for some linear space $Z$ over $F$, or linear maps $f \colon V \to Z$ that factor through the quotient map $V \to \quotient{V}{W}$, i.e., $f|_{W} = 0$, and morphisms that are commutative triangles:
+  \begin{center}
+    \begin{tikzcd}[column sep=normal]
+      & V \arrow[ld, "f"] \arrow[rd, "f'"] & \\
+      Z \arrow[rr, "g"] & & Z'
+    \end{tikzcd}
+  \end{center}
+\end{example}
+
+\begin{definition}[Initial Object]\label{def:initial_object}
+  An object $I$ in a \hyperref[def:category]{category} $\Ca$ is called an \emph{initial object} if for every object $X$ in $\Ca$, up to \hyperref[def:isomorphism]{isomorphism}, there exists a unique \hyperref[def:morphism]{morphism} from $I$ to $X$, i.e., $\Hom_{\Ca}(I, X)$ is a singleton set or equivalently $|\quotient{I}{X}| = 1$.
+\end{definition}
+
+\begin{definition}[Terminal Object]\label{def:terminal_object}
+  An object $T$ in a \hyperref[def:category]{category} $\Ca$ is called a \emph{terminal object} if for every object $X$ in $\Ca$, up to \hyperref[def:isomorphism]{isomorphism}, there exists a unique \hyperref[def:morphism]{morphism} from $X$ to $T$, i.e., $\Hom_{\Ca}(X, T)$ is a singleton set or equivalently $|\quotient{X}{T}| = 1$.
+\end{definition}
+
+\begin{example}
+  In the category $\quotient{(\quotient{V}{W})}{\Vect_F}$, the quotient map $\pi \colon V \to \quotient{V}{W}$ is an initial object and the zero map $0 \colon V \to 0$ is a terminal object.
+\end{example}
+
+\begin{example}
+  In the category $\Set$, the empty set $\varnothing$ is an initial object and any singleton set $\{*\}$ is a terminal object.
+\end{example}
+
+\begin{example}
+  In the category $\Vect_F$, the zero linear space $\{0\}$ is both an initial object and a terminal object, hence it is a \emph{zero object}.
+\end{example}
+
+\section{Products and Coproducts}
+
+\begin{definition}[Product]\label{def:product}
+  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{product} of $X$ and $Y$ is an object $X \prod Y$ in $\Ca$ together with two \hyperref[def:morphism]{morphisms} $\pi_X \colon X \prod Y \to X$ and $\pi_Y \colon X \prod Y \to Y$ such that for any object $Z$ in $\Ca$ with two morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$, there exists a unique morphism $f \colon Z \to X \prod Y$ making the following diagram commute:
+  \begin{center}
+    \begin{tikzcd}[background color=ustblue!5]
+      & Z \arrow[ld, "f_X"] \arrow[rd, "f_Y"] \arrow[d, dashed, "f"] & \\
+      X & X \prod Y \arrow[l, "\pi_X"] \arrow[r, "\pi_Y"] & Y
+    \end{tikzcd}
+  \end{center}
+\end{definition}
+
+\begin{remark}
+  The product is unique up to isomorphism if it exists.
+\end{remark}
+
+There is another way to view the product. Let $X$ and $Y$ be two objects in a category $\Ca$. Consider the \emph{category of span} from $X$ and $Y$, denoted by $\mathsfbf{Span}(X, Y)$, whose objects are triples $(Z, f_X, f_Y)$ such that \begin{tikzcd}[cramped] X & Z \arrow[l, "f_X"] \arrow[r, "f_Y"] & Y \end{tikzcd} for any $Z$, and whose morphisms from $(Z, f_X, f_Y)$ to $(Z', f_X', f_Y')$ are morphisms $f \colon Z \to Z'$ in $\Ca$ such that the following diagram commutes:
+\begin{center}
+  \begin{tikzcd}[row sep=normal]
+    & Z \arrow[dd, "f"] \arrow[dl, "f_X"] \arrow[dr, "f_Y"] \\
+    X & & Y \\
+    & Z' \arrow[ul, "f_X'"] \arrow[ur, "f_Y'"]
+  \end{tikzcd}
+\end{center}
+Then the product of $X$ and $Y$ is the terminal object in the category $\mathsfbf{Span}(X, Y)$.
+
+\begin{example}
+  In the category $\Set$, the product of two sets $X$ and $Y$ is their Cartesian product $X \times Y$ with the projection maps $\pi_X \colon X \times Y \to X$ and $\pi_Y \colon X \times Y \to Y$. Then for any set $Z$ with two set maps $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$, there exists a unique set map $f \colon Z \to X \times Y$ defined by $f(z) = (f_X(z), f_Y(z))$ for all $z \in Z$ such that the diagram commutes.
+\end{example}
+
+\begin{example}
+  In the category $\Vect_F$, the product of two linear spaces $V$ and $W$ over $F$ is their \emph{direct product} $V \times W$ defined by the Cartesian product with the projection maps $\pi_V \colon V \oplus W \to V$ and $\pi_W \colon V \oplus W \to W$. Then for any linear space $Z$ over $F$ with two linear maps $f_V \colon Z \to V$ and $f_W \colon Z \to W$, there exists a unique linear map $f \colon Z \to V \oplus W$ defined by $f(z) = (f_V(z), f_W(z))$ for all $z \in Z$ such that the diagram commutes.
+\end{example}
+
+\begin{definition}[Coproduct]\label{def:coproduct}
+  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{coproduct} of $X$ and $Y$ is an object $X \coprod Y$ in $\Ca$ together with two \hyperref[def:morphism]{morphisms} $\iota_X \colon X \to X \coprod Y$ and $\iota_Y \colon Y \to X \coprod Y$ such that for any object $Z$ in $\Ca$ with two morphisms $f_X \colon X \to Z$ and $f_Y \colon Y \to Z$, there exists a unique morphism $f \colon X \coprod Y \to Z$ such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}[background color=ustblue!5]
+      X \arrow[r, "\iota_X"] \arrow[rd, "f_X"] & X \coprod Y \arrow[d, dashed, "f"] & Y \arrow[l, "\iota_Y"] \arrow[ld, "f_Y"] \\
+      & Z &
+    \end{tikzcd}
+  \end{center}
+\end{definition}
+
+\begin{remark}
+  The coproduct is unique up to isomorphism if it exists.
+\end{remark}
+
+Similarly, we can view the coproduct in another way. Let $X$ and $Y$ be two objects in a category $\Ca$. Consider the \emph{category of cospan} from $X$ and $Y$, denoted by $\mathsfbf{Cospan}(X, Y)$, whose objects are triples $(Z, f_X, f_Y)$ such that \begin{tikzcd}[cramped] X \arrow[r, "f_X"] & Z & Y \arrow[l, "f_Y"] \end{tikzcd} for any $Z$, and whose morphisms from $(Z, f_X, f_Y)$ to $(Z', f_X', f_Y')$ are morphisms $f \colon Z \to Z'$ in $\Ca$ such that the following diagram commutes:
+\begin{center}
+  \begin{tikzcd}[row sep=normal]
+    & Z \arrow[dd, "f"] \\
+    X \arrow[ur, "f_X"] \arrow[dr, "f_X'"] & & Y \arrow[ul, "f_Y"] \arrow[dl, "f_Y'"] \\
+    & Z'
+  \end{tikzcd}
+\end{center}
+Then the coproduct of $X$ and $Y$ is the initial object in the category $\mathsfbf{Cospan}(X, Y)$.
+
+\begin{example}
+  In the category $\Set$, the coproduct of two sets $X$ and $Y$ is their \emph{disjoint union} $X \sqcup Y$ with the inclusion maps $\iota_X \colon X \to X \sqcup Y$ and $\iota_Y \colon Y \to X \sqcup Y$. Then for any set $Z$ with two set maps $f_X \colon X \to Z$ and $f_Y \colon Y \to Z$, there exists a unique set map $f \colon X \sqcup Y \to Z$ defined by
+  \[
+    f(a) = \begin{cases}
+      f_X(a), & \text{if } a \in X, \\
+      f_Y(a), & \text{if } a \in Y,
+    \end{cases}
+  \]
+  for all $a \in X \sqcup Y$ such that the diagram commutes.
+\end{example}
+
+\begin{example}
+  In the category $\Vect_F$, the coproduct of two linear spaces $V$ and $W$ over $F$ is their external direct sum $V \oplus W$ with the inclusion maps $\iota_V \colon V \to V \oplus W$ and $\iota_W \colon W \to V \oplus W$. Then for any linear space $Z$ over $F$ with two linear maps $f_V \colon V \to Z$ and $f_W \colon W \to Z$, there exists a unique linear map $f \colon V \oplus W \to Z$ defined by $f(v, w) = f_V(v) + f_W(w)$ for all $(v, w) \in V \oplus W$ such that the diagram commutes.
+\end{example}
+
+Note that in the category $\Vect_F$, the product and coproduct of two linear spaces $V$ and $W$ over $F$ are isomorphic: $V \sqcap W \cong V \sqcup W \cong V \oplus W$. In this case, we will say the \emph{biproduct} of $V$ and $W$ is $V \oplus W$.
+
+\begin{definition}[Biproduct]\label{def:biproduct}
+  Let $X$ and $Y$ be two objects in a \hyperref[def:category]{category} $\Ca$. A \emph{biproduct} of $X$ and $Y$ is an object $X \oplus Y$ in $\Ca$ that is both a \hyperref[def:product]{product} and a \hyperref[def:coproduct]{coproduct} of $X$ and $Y$.
+\end{definition}
+
+\begin{remark}
+  The biproduct exists if and only if both the product and coproduct exist, and it is unique up to isomorphism if it exists.
+\end{remark}
+
+\begin{example}
+  In the category $\Set$, the product and coproduct of two sets $X$ and $Y$ are not isomorphic unless one of them is the empty set: $X \times Y \not\cong X \sqcup Y$ if $X \neq \varnothing$ and $Y \neq \varnothing$. So the biproduct does not exist in $\Set$ in general.
+\end{example}
+
+In general, we can define the product, coproduct, and biproduct of a finite collection of objects in a category similarly by using the universal properties or the category of \emph{multi-span} and \emph{multi-cospan}. The following are the commutative diagrams for the universal properties of product and coproduct of multiple objects:
+\begin{center}
+  \begin{tikzcd}
+    X_i & \prod X_i \arrow[l, "f_i"] \\
+    & Z \arrow[u, dashed, "f"] \arrow[ul, "\pi_i"]
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}
+    X_i \arrow[r, "\iota_i"] \arrow[dr, "f_i"] & \coprod X_i \arrow[d, dashed, "f"] \\
+    & Z
+  \end{tikzcd}
+\end{center}
+
+The elements in the product can be expressed as an ordered tuples: ${(v_i)}_{i \in I}$. The product and coproduct is defined as follows:
+\begin{align*}
+  \prod_{i \in I} V_i     & = \left\{ {(v_i)}_{i \in I} \mid v_i \in V_i \text{ for all } i \in I \right\},                                                    \\
+  \bigoplus_{i \in I} V_i & = \left\{ {(v_i)}_{i \in I} \in \prod_{i \in I} V_i \Biggm| v_i \text{ has finite support} \right\} \subseteq \prod_{i \in I} V_i,
+\end{align*}
+where $I$ is a finite index set. Hence, the product and coproduct coincide for finite collections of objects in $\Vect_F$, but not in infinite cases. Consider the following Figure~\ref{fig:product_coproduct} that illustrates the product and coproduct of an infinite collection of linear spaces ${\{ V_i \}}_{i \in I}$ over a field $F$.
+
+\begin{figure}[!ht]
+  \begin{tikzpicture}
+    \filldraw[ustgray!20] (-4,-2) rectangle (4,2);
+    \draw[step=0.5cm,ustgray!40] (-4,-2) grid (4,2);
+
+    \draw[ustred, thick] plot [smooth] coordinates { (-4, 1.5) (-2.5, 1) (-1, -1) (0.5, -1) (2, -1.5) (4, -2) };
+    \draw[ustblue, thick] plot [smooth] coordinates { (-4, -0.5) (-2.5, 0) (-1, 0) (0.5, 1.5) (2, 0) (4, 0) };
+
+    \draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $V_1$};
+    \draw[thick] (-1,-2)  -- (-1,2) node [above] {\scriptsize $V_2$};
+    \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $V_3$};
+    \draw[thick] (2,-2)  -- (2,2) node [above] {\scriptsize $V_4$};
+
+    \path (3.5, 2) node [above] {\scriptsize $\cdots$};
+
+    \filldraw (-2.5, 1) circle (1pt) node [right] {\scriptsize $s_1(1)$};
+    \filldraw (-1, -1) circle (1pt) node [right, yshift=2pt] {\scriptsize $s_1(2)$};
+    \filldraw (0.5, -1) circle (1pt) node [right, yshift=3pt] {\scriptsize $s_1(3)$};
+    \filldraw (2, -1.5) circle (1pt) node [right, yshift=3pt] {\scriptsize $s_1(4)$};
+
+    \filldraw (0.5, 1.5) circle (1pt) node [right=1pt, yshift=3pt] {\scriptsize $s_2(3)$};
+
+    \filldraw (-2.5, 0) circle (1pt) node [below right] {\scriptsize $0_1$};
+    \filldraw (-1, 0) circle (1pt) node [below right] {\scriptsize $0_2$};
+    \filldraw (0.5, 0) circle (1pt) node [below right] {\scriptsize $0_3$};
+    \filldraw (2, 0) circle (1pt) node [below right] {\scriptsize $0_4$};
+
+    \draw[decoration={brace,raise=5pt},decorate] (-4,-2) -- (-4,2);
+
+    \coordinate (top) at (-4cm - 20pt,0);
+    \node (topNode) at (top) {$\displaystyle \bigcup_{i \in I} V_i$};
+    \coordinate (bottom) at (-4cm - 20pt,-4);
+    \node (bottomNode)at (bottom) {$I$};
+    \draw[arrow] (bottomNode.north) -- (topNode.south) node [midway, left] {{\color{ustred} $s_1$}, {\color{ustblue} $s_2$}};
+
+    \draw[thick] (-4,-4) -- (4,-4);
+
+    \draw[dashed] (-2.5,-2) -- (-2.5,-4);
+    \draw[dashed] (-1,-2) -- (-1,-4);
+    \draw[dashed] (0.5,-2) -- (0.5,-4);
+    \draw[dashed] (2,-2) -- (2,-4);
+
+    \filldraw (-2.5,-4) circle (1.5pt) node [below] {$1$};
+    \filldraw (-1,-4) circle (1.5pt) node [below] {$2$};
+    \filldraw (0.5,-4) circle (1.5pt) node [below] {$3$};
+    \filldraw (2,-4) circle (1.5pt) node [below] {$4$};
+  \end{tikzpicture}
+  \caption{The product and coproduct of an infinite collection of linear spaces ${\{ V_i \}}_{i \in I}$ over a field $F$. The left section $s_1$ represents an element in the product $\prod V_i$, and the right section $s_2$ represents an element in the coproduct $\bigoplus V_i$.}\label{fig:product_coproduct}
+\end{figure}
+
+\begin{remark}
+  The right sections $s_1$ and $s_2$ are two elements in the product $\prod V_i$. Note that $s_2$ is likely to be ``finitely supported'' since it is zero in almost all components shown in the diagram. However, if $I$ is an infinite set, then $s_2$ may not be finitely supported since there may be infinitely many non-zero components not shown in the diagram. So $s_2$ may not be an element in the coproduct $\bigoplus V_i$ if $I$ is an infinite set, but most likely to be.
+\end{remark}
+
+So the product $\prod V_i$ contains all possible sections $s \colon I \to \bigcup V_i$, so it is called the \emph{space of sections}. The coproduct $\bigoplus V_i$ contains all finitely supported sections, so it is called the \emph{space of sections with finite support}. The elements in the coproduct $\bigoplus V_i$ written as ordered tuples ${(v_i)}_{i \in I}$ can also be written as finite sums $\sum_{i \in I} V_i$ since only finitely many $V_i$ are non-zero.
+
+Actually, the product and coproduct can be regarded as the generalisation of $\Map(X, F)$ and $F[X]$ respectively. We can consider the following Figure~\ref{fig:map_set_map} that illustrates the set map $s \colon X \to F$.
+
+\begin{figure}[!ht]
+  \begin{tikzpicture}
+    \filldraw[gray!10] (-4,-2) rectangle (4,2);
+    \draw[step=0.5cm,gray!20] (-4,-2) grid (4,2);
+
+    \draw[ustred, thick] plot [smooth] coordinates { (-4, 1.5) (-2.5, 1) (-1, -1) (0.5, 1.5) (2, -1.5) (4, -0.5) };
+
+    \filldraw (-2.5, 1) circle (1pt) node [right] {\scriptsize $s(1)$};
+    \filldraw (-1, -1) circle (1pt) node [right] {\scriptsize $s(2)$};
+    \filldraw (0.5, 1.5) circle (1pt) node [right=1pt] {\scriptsize $s(3)$};
+    \filldraw (2, -1.5) circle (1pt) node [below right] {\scriptsize $s(4)$};
+
+    \draw[thick] (-2.5,-2) -- (-2.5,2) node [above] {\scriptsize $F$};
+    \draw[thick] (-1,-2)  -- (-1,2) node [above] {\scriptsize $F$};
+    \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $F$};
+    \draw[thick] (0.5,-2) -- (0.5,2) node [above] {\scriptsize $F$};
+    \draw[thick] (2,-2)  -- (2,2) node [above] {\scriptsize $F$};
+
+    \path (3.5, 2) node [above] {\scriptsize $\cdots$};
+
+    \draw[decoration={brace,raise=5pt},decorate] (-4,-2) -- (-4,2);
+
+    \coordinate (top) at (-4cm - 20pt,0);
+    \node (topNode) at (top) {$F[X]$};
+    \coordinate (bottom) at (-4cm - 20pt,-4);
+    \node (bottomNode)at (bottom) {$X$};
+    \draw[arrow] (bottomNode.north) -- (topNode.south) node [midway, left] {$s$};
+
+    \draw[thick] (-4,-4) -- (4,-4);
+
+    \draw[dashed] (-2.5,-2) -- (-2.5,-4);
+    \draw[dashed] (-1,-2) -- (-1,-4);
+    \draw[dashed] (0.5,-2) -- (0.5,-4);
+    \draw[dashed] (2,-2) -- (2,-4);
+
+    \filldraw (-2.5,-4) circle (1.5pt) node [below] {$1$};
+    \filldraw (-1,-4) circle (1.5pt) node [below] {$2$};
+    \filldraw (0.5,-4) circle (1.5pt) node [below] {$3$};
+    \filldraw (2,-4) circle (1.5pt) node [below] {$4$};
+
+    \draw[thick] (6, -2) -- (6, 2) node [above] {\scriptsize $F$};
+
+    \filldraw (6, 1) circle (1pt) node [right] {\scriptsize $s(1)$};
+    \filldraw (6, -1) circle (1pt) node [right] {\scriptsize $s(2)$};
+    \filldraw (6, 1.5) circle (1pt) node [right] {\scriptsize $s(3)$};
+    \filldraw (6, -1.5) circle (1pt) node [right] {\scriptsize $s(4)$};
+  \end{tikzpicture}
+  \caption{The set map $s \colon X \to F$ illustrated as sections over fibres.}\label{fig:map_set_map}
+\end{figure}
+
+The left shows the diagram in generalised version, but it can be squeezed to the right since all fibres are the same. So we can consider the set map as $s \colon X \to F$ as shown on the right.
+
+\section{Functors}
+
+\begin{definition}[Functor]\label{def:functor}
+  Let $\Ca$ and $\D$ be two \hyperref[def:category]{categories}. A \emph{functor} $F \colon \Ca \to \D$ consists of the following data:
+  \begin{itemize}
+    \item A map $F_0 \colon \Ca_0 \to \D_0$ that assigns to each object $X$ in $\Ca$ an object $F(X)$ in $\D$;
+    \item A map $F_1 \colon \Ca(X, Y) \to \D(F(X), F(Y))$ that assigns to each \hyperref[def:morphism]{morphism} $f \colon X \to Y$ in $\Ca$ a morphism $F(f) \colon F(X) \to F(Y)$ in $\D$;
+  \end{itemize}
+  satisfying the following properties:
+  \begin{itemize}
+    \item For any objects $X, Y, Z$ in $\Ca$ and morphisms $f \colon Y \to Z$, $g \colon X \to Y$, we have
+          \[
+            F(f \circ g) = F(f) \circ F(g);
+          \]
+    \item For any object $X$ in $\Ca$, we have
+          \[
+            F(\id_X) = \id_{F(X)}.
+          \]
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  There are two functors from the category $\Set$ to the category $\Vect_F$:
+  \begin{center}
+    \begin{tikzcd}[labels=auto]
+      \Set \arrow[r, "{F[-]}", yshift=0.5ex] & \Vect_F \arrow[l, "|-|", yshift=-0.5ex]
+    \end{tikzcd}
+  \end{center}
+  The \emph{free vector space functor} $F[-] \colon \Set \to \Vect_F$ assigns to each set $X$ the free vector space $F[X]$ over $F$ generated by $X$, and to each set map $f \colon X \to Y$ the linear map $F[f] \colon F[X] \to F[Y]$ induced by $f$. The \emph{underlying set functor}, or \emph{forgetful functor}, $|-| \colon \Vect_F \to \Set$ assigns to each linear space $V$ over $F$ its underlying set $|V|$, and to each linear map $g \colon V \to W$ the set map $|g| \colon |V| \to |W|$ induced by $g$.
+\end{example}
+
+\begin{remark}
+  The universal property of free vector space over a set can be rephrased as follows: for any set $X$ and any linear space $V$ over $F$, there is a natural identification:
+  \[
+    \Set(X, |V|) \simeq \Vect_F(F[X], V)
+  \]
+  where $\Set(X, |V|)$ is the set of all set maps from $X$ to the underlying set of $V$, and $\Vect_F(F[X], V)$ is the set of all linear maps from the free vector space $F[X]$ to $V$.
+
+  If we consider $\phi \colon X \to |V|$ as an element in $\Set(X, |V|)$, then the corresponding element in $\Vect_F(F[X], V)$ is the unique linear map $\bar{\phi} \colon F[X] \to V$ induced by $\phi$.
+
+  Note that $\iota \equiv \id_{F[X]}$ is the identity element in $\Vect_F(F[X], F[X])$, so it corresponds to an element in $\Set(X, |F[X]|)$, which is exactly the inclusion map $\iota \colon X \to |F[X]|$.
+\end{remark}
+
+\begin{definition}[Adjoint Functor]\label{def:adjoint_functor}
+  Let $\Ca$ and $\D$ be two \hyperref[def:category]{categories}. A \hyperref[def:functor]{functor} $F \colon \Ca \to \D$ is called a \emph{left adjoint} of a functor $G \colon \D \to \Ca$, and $G$ is called a \emph{right adjoint} of $F$, denoted by $F \dashv G$, if for any object $X$ in $\Ca$ and any object $Y$ in $\D$, there exists a natural isomorphism:
+  \[
+    \D(F(X), Y) \simeq \Ca(X, G(Y)).
+  \]
+\end{definition}
+
+\begin{example}
+  The free vector space functor $F[-] \colon \Set \to \Vect_F$ is a left adjoint of the underlying set functor $|-| \colon \Vect_F \to \Set$, i.e., $F[-] \dashv |-|$. This follows from the natural isomorphism:
+  \[
+    \Vect_F(F[X], V) \simeq \Set(X, |V|)
+  \]
+  for any set $X$ and any linear space $V$ over $F$.
+\end{example}
+
+\begin{definition}[Endofunctor]\label{def:endofunctor}
+  An \emph{endofunctor} is a \hyperref[def:functor]{functor} from a \hyperref[def:category]{category} to itself, i.e., $F \colon \Ca \to \Ca$.
+\end{definition}
+
+\begin{example}
+  Let $X$ be a set. Then we have an adjoint pair of functors:
+  \begin{center}
+    \begin{tikzcd}[labels=auto]
+      \Set \arrow[r, "- \times X", yshift=0.5ex] & \Set \arrow[l, "{\Set(X, -)}", yshift=-0.5ex]
+    \end{tikzcd}
+  \end{center}
+
+  On the left is the endofunctor $- \times X$ and on the right is the endofunctor $\Set(X, -)$.
+  \begin{center}
+    \begin{tikzcd}[row sep=normal]
+      \Set \arrow[r, "- \times X"] & \Set \\[-1.8em]
+      Y \arrow[dd, "f"] & Y \times X \arrow[dd, "f \times \id_X"] \\
+      \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+      Z & Z \times X
+    \end{tikzcd}
+    \qquad\qquad
+    \begin{tikzcd}[row sep=normal]
+      \Set & \Set \arrow[l, "{\Set(X, -)}"] \\[-1.8em]
+      \Set(X, Y) \arrow[dd, "{\Set(X, f)}"] & Y \arrow[dd, "f"] \\
+      \phantom{*} & \arrow[l, mapsto, shorten <= 2ex, shorten >= 2ex] \\
+      \Set(X, Z) & Z
+    \end{tikzcd}
+  \end{center}
+
+  Consider an element $g \in \Set(X, Y)$, which is a set map $g \colon X \to Y$. Then the corresponding element in $\Set(X, Z)$ is $\Set(X, f)(g) = fg \colon X \to Z$.
+
+  Then we have the natural isomorphism:
+  \[
+    \Set(Y \times X, Z) \simeq \Set(Y, \Set(X, Z))
+  \]
+  for all sets $Y$ and $Z$. This means that a set map $F \colon Y \times X \to Z$ corresponds to a set map $F_{\musNatural} \colon Y \to \Set(X, Z)$ such that a $y \in Y$ is mapped to a set map $F_{\musNatural}(y) \colon X \to Z$ defined by $F_{\musNatural}(y)(x) = F(y, x)$ for all $x \in X$.s
+\end{example}
+
+\begin{remark}
+  In the definition of \hyperref[def:linear_structure]{linear structure}, we said that a ring action of $F$ on $(V, +)$ is equivalent to a ring homomorphism from $F$ to the endomorphism ring $\End(V)$. The reason behind this is similar to this example. We have the natural isomorphism:
+  \[
+    \mathsfbf{Rng}(F \times V, V) \simeq \mathsfbf{Rng}(F, \End(V)).
+  \]
+  Such a process is called \emph{currying}. This kind of natural isomorphism is very common in category theory.
+\end{remark}
+
+Consider the following two diagrams:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    X & X \times Y \arrow[l] \arrow[r] \arrow[d, "{F[-]}", Rightarrow] & Y \\
+    F[X] & F[X \times Y] \arrow[l] \arrow[r] & F[Y]
+  \end{tikzcd}
+  \qquad
+  \begin{tikzcd}[column sep=normal]
+    X \arrow[r] & X \sqcup Y \arrow[d, "{F[-]}", Rightarrow] & Y \arrow[l] \\
+    F[X] \arrow[r] & F[X \sqcup Y] & F[Y] \arrow[l]
+  \end{tikzcd}
+\end{center}
+Moreover, we have the following natural isomorphisms:
+\[
+  F[X \times Y] \simeq F[X] \otimes F[Y], \quad F[X \sqcup Y] \simeq F[X] \oplus F[Y].
+\]
+The left shows that the free functor $F[-]$ sends the product in $\Set$ to the tensor product in $\Vect_F$, and the right shows that it sends the coproduct in $\Set$ to the direct sum in $\Vect_F$, i.e., the coproduct in $\Vect_F$. Note that the tensor product $\otimes$ is \emph{not} the product in $\Vect_F$, as the dimension does not match: $\dim(F[X] \otimes F[Y]) = |X| \cdot |Y|$ while $\dim(F[X] \oplus F[Y]) = |X| + |Y|$. There is a unique but not isomorphic linear map $\phi \colon V \otimes W \to V \oplus W$ defined by $\phi(v \otimes w) = (v, w)$ for all $v \in V$ and $w \in W$.
+\begin{remark}
+  The left adjoint functor preserves coproducts, and the right adjoint functor preserves products. This is the consequences of the \emph{adjoint functor theorem}.
+\end{remark}
+
+\section{Dual Spaces and Dual Bases}
+
+\begin{definition}[Dual Space]\label{def:dual_space}
+  Let $V$ be a linear space over $F$. The \emph{dual space} of $V$, denoted by $V^*$, is the linear space $\Hom(V, F)$, or $\Hom(V, F)$, consisting of all \hyperref[def:linear_functional]{linear functionals} from $V$ to $F$.
+\end{definition}
+
+\begin{proposition}
+  Let $V$ be a finite-dimensional linear space over $F$. Then $\dim(V^*) = \dim(V)$. So $V^*$ is also finite-dimensional.
+\end{proposition}
+\begin{proof}
+  Without the loss of generality, we may assume $\dim(V) = n$ and $V = F^n$. Then $V^* = \Hom(F^n, F) \cong \Mat_{1 \times n}(F)$, the linear space of row matrices with $n$ entries. The linear space is the span of $n$ standard basis row matrices: $\hat{e}^1, \hat{e}^2, \ldots, \hat{e}^n$. So $\dim(V^*) = n = \dim(V)$.
+\end{proof}
+
+\begin{proposition}\label{prop:dual_basis}
+  Let $V$ be a finite-dimensional linear space over $F$. The basis of $V$ and the basis of $V^*$ are in one-to-one correspondence. More precisely, if $\{ v_1, v_2, \ldots, v_n \}$ is a basis of $V$, then there exists a unique basis $\{ v^1, v^2, \ldots, v^n \}$ of $V^*$, called the \emph{dual basis}, such that $v^i(v_j) = \delta_{ij}$ for all $1 \leq i, j \leq n$, where $\delta^i_j$ is the Kronecker delta.
+\end{proposition}
+\begin{proof}
+  Consider the following commutative diagram:
+  \begin{center}
+    \begin{tikzcd}
+      V \arrow[d, <->, "{[-]_{\B_V}}"] \arrow[r, dashed, "v^i"] & F \\
+      F^n \arrow[ur, "\pi_i", two heads]
+    \end{tikzcd}
+  \end{center}
+  The projection map $\pi_i$ is a linear functional in $F^n$ that sends $\vec{x} = (x^1, x^2, \ldots, x^n)$ to $x^i$. The projection map $\pi_i$ is actually $\hat{e}^i$. Note that ${[-]}_{\B_V} \colon V \to F^n$ is a coordinate map defined by a basis $\B_V = (v_1, v_2, \ldots, v_n)$ such that ${[v_j]}_{\B_V} = \vec{e}_j$ for all $1 \leq j \leq n$. It is a unique linear map which identify $v_j$ with $\vec{e}_j$. It can be done by trivialisation of $V$ with respect to the basis $v$. Then we define $v^i(v_j) = \delta^i_j$ for all $1 \leq i, j \leq n$.
+
+  Then we have to consider whether $(v^1, v^2, \ldots, v^n)$ is a basis of $V^*$. As $\dim(V^*) = n$, we only need to show that $(v^1, v^2, \ldots, v^n)$ is a spanning set of $V^*$ or linearly independent. We choose to check if it is linearly independent. We have to check whether the equation $\sum_{i=1}^n x_i v^i = 0$ for some $x_i \in F$ has only the trivial solution. Applying it to $v_j$ for all $1 \leq j \leq n$, we have $0 = \sum_{i=1}^n x_i v^i(v_j) = \sum_{i=1}^n x_i \delta_j^i = x_j$. So $x_j = 0$ for all $1 \leq j \leq n$. This means that $(v^1, v^2, \ldots, v^n)$ is linearly independent, and hence it is a basis of $V^*$. We call it the \emph{dual basis} of the basis $\B_V = (v_1, v_2, \ldots, v_n)$ and denote it by $\B_{V^*} = (v^1, v^2, \ldots, v^n)$.
+
+  Then we have to show that there is a unique basis in $V^*$ that satisfies $v^i(v_j) = \delta^i_j$. Let $V = F^n$ and $\B_V = (v_1, v_2, \ldots, v_n)$ be a basis of $V$. Then $A = [v_1 \quad v_2 \quad \cdots \quad v_n]$ is an invertible matrix. Let $(v^1, v^2, \ldots, v^n)$ be a basis of $V^*$. Then we have the following equations:
+  \[
+    [ \delta^i_j ] = \begin{bmatrix} v^1 \\ \vdots \\ v^n \end{bmatrix} \begin{bmatrix} \vec{v_1} & \cdots & \vec{v_n} \end{bmatrix} = I_n
+  \]
+  Then $(v^1, v^2, \ldots, v^n) = A^{-1}$. So the dual basis is unique.
+\end{proof}
+
+\begin{remark}
+  There is a bijection between the set of all bases of $V$ and the set of all bases of $V^*$. However, this bijection is not natural, as it depends on the choice of basis of $V$. In other words, there is no natural isomorphism between $V$ and $V^*$ but only isomorphic.
+\end{remark}
+
+\begin{example}
+  Consider the following open subset $U$ of $\R^2$:
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[gray,-Stealth,thin] (-1,0) -- (5,0) node[right] {$x$};
+      \draw[gray,-Stealth,thin] (0,-1) -- (0,4) node[above] {$y$};
+
+      \filldraw (3.5,1) circle (1pt) node[below right] {$p$};
+
+      \draw[dashed] plot[smooth cycle, tension=1] coordinates{(4.5,1.5) (2.5,2.91) (0.5,1.5) (1.25,0.6) (2.5,1) (3.75,0.4)};
+      \path (2.5,1.75) node {$U$};
+
+      \draw[arrow, ustblue] (3.5,1) -- (4,2) node[midway, right] {$\vec{u}$};
+      \draw[arrow, ustblue] (0,0) -- (0.5,1) node[midway, right] {$\vec{u}$};
+    \end{tikzpicture}
+  \end{center}
+  Consider the cotangent vector $\mathsf{d}f_p$ at point $p$ for some smooth function $f \colon U \to \R$. It is a linear functional $\mathsf{d}f_p \colon \mathsf{T}_p U \to \R$ defined by $\mathsf{d}f_p(\vec{u}) = J_f(p) \vec{u}$ for all $\vec{u} \in \mathsf{T}_p U$. Here $\mathsf{T}_p U$ is the tangent space of $U$ at point $p$, which is a linear space over $\R$. Note that both $\vec{u}$ and $J_f(p)$ are depending on the choice of a coordinate system. However, $\mathsf{d}f_p$ is independent of any choice of coordinate system. In normal calculus, $\mathsf{d}f_p$ is called the \emph{first partial derivative} of $f$ at point $p$, and normally we write it as $f_x(p)$ and $f_y(p)$.
+\end{example}
+
+The dual functor is not naturally isomorphic to the identity functor on $\Vect_F$, as ${(-)}^*$ is a contravariant functor, while the identity is a contravariant functor, so there is no natural transformation from $\id_{\Vect_F}$ to ${(-)}^*$.
+
+\begin{center}
+  \begin{tikzcd}[row sep=normal]
+    \Vect_F \arrow[r, "\id_{\Vect_F}"] & \Vect_F \\[-1.8em]
+    Y \arrow[dd, "f"] & Y \arrow[dd, "f"] \\
+    \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+    Z & Z
+  \end{tikzcd}
+  \qquad\qquad
+  \begin{tikzcd}[row sep=normal]
+    \Vect_F \arrow[r, "(-)^*"] & \Vect_F \\[-1.8em]
+    Y \arrow[dd, "f" swap] & Y^* \\
+    \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+    Z & Z^* \arrow[uu, "f^*" swap]
+  \end{tikzcd}
+\end{center}
+
+Recall the universal property of minimal spanning set in Proposition~\ref{prop:universal_property_minimal_spanning_set} and the relation between product and $\Map(X, F)$. We have the following natural isomorphism:
+\begin{align*}
+  V^* & = \Hom(V, F)                                                                \\
+      & = \Vect_F(V, F)                                                             \\
+      & \simeq \Set(S, |F|) \quad \text{where $S$ is a minimal spanning set of $V$} \\
+      & = \Map(S, F)                                                                \\
+      & \simeq \prod_{s \in S} F
+\end{align*}
+Moreover, $V$ is ismorphic to the coproduct $\bigoplus_{s \in S} F$ since $S$ is a minimal spanning set of $V$. Hence, if $V$ is infinite-dimensional, then $\dim(V) < \dim(V^*)$.
+
+\section{Double Dual Spaces and Doubles}
+
+Consider the endofunctors on $\Vect_F$:
+\begin{center}
+  \begin{tikzcd}[labels=auto]
+    \Vect_F \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_F}" swap, yshift=-0.5ex] & \Vect_F
+  \end{tikzcd}
+\end{center}
+There is a natural transformation from $\id_{\Vect_F}$ to ${(-)}^{**}$ defined by the natural isomorphism: $V \simeq V^{**}$. As $\id_{\Vect_F}$ and ${(-)}^{**}$ are covariant functors, there is a natural transformation between them.
+
+\begin{center}
+  \begin{tikzcd}[row sep=normal]
+    \Vect_F \arrow[r, "\id_{\Vect_F}"] & \Vect_F \\[-1.8em]
+    Y \arrow[dd, "f"] & Y \arrow[dd, "f"] \\
+    \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+    Z & Z
+  \end{tikzcd}
+  \qquad\qquad
+  \begin{tikzcd}[row sep=normal]
+    \Vect_F \arrow[r, "(-)^{**}"] & \Vect_F \\[-1.8em]
+    Y \arrow[dd, "f"] & Y^{**} \arrow[dd, "f^{**}"] \\
+    \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+    Z & Z^{**}
+  \end{tikzcd}
+\end{center}
+
+\begin{definition}[Bilinear Map]\label{def:bilinear_map}
+  A map $B \colon U \times V \to W$ is called \emph{bilinear} if for all $u \in U$, the map $B(u, -) \colon V \to W$ is \hyperref[def:linear_map]{linear}, and for all $v \in V$, the map $B(-, v) \colon U \to W$ is linear.
+\end{definition}
+
+\begin{definition}[Natural Pairing]\label{def:pairing}
+  Let $V$ be a linear space over $F$. A \emph{natural pairing}, or \emph{evaluation map} on $V$ is a \hyperref[def:bilinear_map]{bilinear map} $\langle-,-\rangle \colon V^* \times V \to F$ defined by $\langle f, u \rangle = f(u)$ where $f \in V^*$ and $u \in V$, i.e., a pairing between a \hyperref[def:linear_functional]{covector} and a vector.
+\end{definition}
+
+We have the following natural isomorphism between $V$ and $V^{**}$ induced by the natural pairing:
+\begin{center}
+  \begin{tikzcd}
+    V^* \times V \arrow[d, <->, "\text{flip}"] \arrow[rr, "{\langle-,-\rangle}"] &[-2.4em] \arrow[d, Leftrightarrow] &[-2.4em] F \arrow[r, Leftrightarrow] & V^* \arrow[rr, "1_{V^*}"] &[-2.4em] \arrow[d, Leftrightarrow] &[-2.4em] \Hom(V, F) \\
+    V \times V^* \arrow[rr] & \phantom{*} & F \arrow[r, Leftrightarrow]
+    & V \arrow[rr, "\iota_V"] & \phantom{*} & \Hom(V^*, F)
+  \end{tikzcd}
+\end{center}
+where $\iota_V \colon V \to V^{**}$ is defined by $\iota_V(u) = \check{u}$ such that $\check{u}(f) = f(u)$. Then $V^{**} = \Hom(V^*, F) \simeq V$.
+
+Unfortunately, there is no natural isomorphism between $V$ and $V^*$. Then the professor introduced the concept of \emph{doubles} to tackle this problem.
+\begin{definition}[Double]\label{def:double}
+  Let $V$ be a linear space over $F$. The \emph{double} of $V$, denoted by $D(V)$, is defined as follows:
+  \[ D(V) = V \oplus V^* \]
+\end{definition}
+
+As $V$ is naturally isomorphic to $V^{**}$, we have the following natural identification:
+\[
+  D(V) = V \oplus V^* \simeq V^* \oplus V^{**} = D(V^*)
+\]
+The matrix representation of the isomorphism between $D(V)$ and $D(V^*)$ is
+\[
+  \begin{bmatrix}
+    0 & -\iota_V \\
+    1 & 0
+  \end{bmatrix}
+\]
+where $\iota_V \colon V \to V^{**}$ is the natural isomorphism defined above. The negative sign is used to make the isomorphism a symplectic isomorphism, which will be discussed in the later chapters.
+
+\section{Natural Transformations and Natural Isomorphisms}
+
+\begin{definition}[Natural Transformation]\label{def:natural_transformation}
+  Let $F, G \colon \Ca \to \D$ be two \hyperref[def:functor]{functors}. A \emph{natural transformation} $\eta \colon F \to G$ is a collection of \hyperref[def:morphism]{morphisms} $\eta_X \colon F(X) \to G(X)$ in $\D$ for all objects $X$ in $\Ca$, such that for all morphisms $f \colon X \to Y$ in $\Ca$, the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}[background color=ustblue!5]
+      F(X) \arrow[r, "F(f)"] \arrow[d, "\eta_X" swap] & F(Y) \arrow[d, "\eta_Y"] \\
+      G(X) \arrow[r, "G(f)"] & G(Y)
+    \end{tikzcd}
+  \end{center}
+\end{definition}
+
+\begin{definition}[Natural Isomorphism]\label{def:natural_isomorphism}
+  A \emph{natural isomorphism}, or \emph{natural equivalence}, from \hyperref[def:functor]{functor} $F$ to functor $G$ is a \hyperref[def:natural_transformation]{natural transformation} $\eta \colon F \to G$ which has a two-sided inverse natural transformation $\eta^{-1} \colon G \to F$ such that $\eta \eta^{-1} = 1_G$ and $\eta^{-1} \eta = 1_F$. In this case, we say $F$ and $G$ are \emph{naturally isomorphic} or \emph{naturally equivalent}, denoted by $F \simeq G$.
+\end{definition}
+
+\begin{example}
+  Consider the endofunctors on $\Vect_F$:
+  \begin{center}
+    \begin{tikzcd}[labels=auto]
+      \Vect_F \arrow[r, "(-)^{**}", yshift=0.5ex] \arrow[r, "\id_{\Vect_F}" swap, yshift=-0.5ex] & \Vect_F
+    \end{tikzcd}
+  \end{center}
+  We have the following natural transformation:
+  \begin{center}
+    \begin{tikzcd}
+      (-)^{**} \arrow[d, <->, ustblue] & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1^{**} \arrow[r, "f^{**}"] \arrow[d, <->, "\eta_{V_1}", ustblue] & V_2^{**} \arrow[d, <->, "\eta_{V_2}", ustblue] \\
+      \id_{\Vect_F} & V_1 \arrow[r, "f"] & V_2 \arrow[r, mapsto] & V_1 \arrow[r, "f"] & V_2
+    \end{tikzcd}
+  \end{center}
+  Then we have the natural isomorphism: ${(-)}^{**} \simeq \id_{\Vect_F}$.
+\end{example}
+
+\begin{example}\label{ex:bilinear_natural_isomorphism}
+  We have the natural isomorphism between the following two endofunctors on $\Vect_F$:
+  \[
+    \Bil(V \times W, -) \simeq \Hom(V, \Hom(W, -))
+  \]
+  where $\Bil(V \times W, -)$ is the functor that sends a linear space $Z$ to the set of bilinear maps with the source $V \times W$. For any linear space $Z$ over $F$, we have the natural isomorphism:
+  \[
+    \musNatural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))
+  \]
+\end{example}
+
+\clearpage{}
+
+\section{Exercises}
+
+\begin{problem}
+Show that
+\begin{enumerate}
+  \item the endofunctor ${(-)}^{**}$ on $\Vect_F^{\fd}$ that sends $T$ to $T^{**}:= {(T^*)}^*$ is a category isomorphism;
+  \item the set of all bilinear maps from $V \times W$ to $Z$, denoted by $\Bil(V \times W, Z)$, is a linear space;
+  \item a bilinear map $f: V \times W \to Z$ naturally defines a linear map $f_{\musNatural} \colon V \to \Hom(W, Z)$;
+  \item Show that the natural map $\musNatural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))$ that sends $F$ to $F_{\musNatural}$ is a linear isomorphism. So we write \[ \Bil(V \times W, Z) \simeq \Hom(V, \Hom(W, Z)) \]
+\end{enumerate}
+A bilinear map $f: V \times W \to F$ can be represented by a matrix $A_f$ uniquely defined via the commutative diagram
+\begin{center}
+  \begin{tikzcd}
+    V \times W \arrow[r, "f"] \arrow[d, "{[-]_{\B_V} \times [-]_{\B_W}}"] & F \\
+    F^m \times F^n \arrow[ur, dashed, "A_f"]
+  \end{tikzcd}
+\end{center}
+such that the dashed map is $(x, y) \mapsto x^T A_f y$.
+Let $B_f$ be the matrix that represents $f_{\musNatural}$ with respect to the bases $\B_V$ and $\B_{W^*}$ via the commutative diagram
+\begin{center}
+  \begin{tikzcd}
+    V \arrow[r, "f_{\musNatural}"] \arrow[d, "{[-]_{\B_V}}"] & W^* \arrow[d, "{[-]_{\B_{W^*}}}"] \\
+    F^m \arrow[r, "B_f"] & (F^n)^*
+  \end{tikzcd}
+\end{center}
+We say that a bilinear map $f: V \times W \to F$ is \emph{non-degenerate} if $f_{\musNatural}: V \to W^*$ is a linear isomorphism.
+\begin{enumerate}[resume]
+  \item What is the relationship between $A_f$ and $B_f$?
+  \item Show that a bilinear map $f: V \times W \to F$ is non-degenerate if and only if $A_f$ is an invertible matrix.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Let $V$ be a $n$-dimensional $F$-linear space and $V^*$ be its dual. Suppose that there are $n$ elements $v_1, \ldots, v_n$ in $V$ and $n$ elements $v^1, \ldots, v^n$ in $V^*$ such that $\langle v^i, v_j \rangle = \delta^i_j$. Show that $(v_1, \ldots, v_n)$ is a basis of $V$ and $(v^1, \ldots, v^n)$ is a basis of $V^*$.
+\end{problem}
+
+\begin{problem}
+Let $T \colon V_1 \to V_2$ be a linear map and $\B_i$ be a basis of linear space $V_i$. Denote by $\B_i^*$ the dual basis of $\B_i$ for linear space $V_i^*$, by $T^* \colon V_2^* \to V_1^*$ the dual map of $T$, i.e., the map that sends $f$ to $f \circ T$.
+\begin{enumerate}
+  \item Show that the sequence $V_1 \to V_2 \to V_3$ is exact if and only if its dual sequence $V_1^* \leftarrow V_2^* \leftarrow V_3^*$ is exact, and then conclude that $T$ is injective if and only if $T^*$ is surjective, and $T$ is surjective if and only if $T^*$ is injective.
+  \item Let $A$ be the matrix representation of $T$ with respect to bases $\B_1, \B_2$ and $A^*$ be the matrix representation of $T^*$ with respect to bases $\B_2^*, \B_1^*$. Show that $A^*$ and $A$ are transposes of each other.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+The set of real numbers $\mathbb{R}$ under the order $\leq$ is a category $\mathcal{R}$: objects are real numbers, the morphism set $\mathcal{R}(a, b)$ is the empty set $\emptyset$ if $a > b$ and is $\{ a \leq b \}$ other wise. The composition is $a \leq b \circ b \leq c = a \leq c$ and the identity morphisms $1_a$ are $a \leq a$. Let $S$ be a bounded sest of real numbers. Please find the coproduct and product for the family of objects: ${\{ s \}}_{s \in S}$.
+\end{problem}

@@ -1,0 +1,641 @@
+\chapter{Determinants}
+
+\section{Determinant Lines}
+
+Recall that for a $n$-dimensional $F$-linear space $V$, the top exterior power $\Lambda^n V$ is a one-dimensional $F$-linear space. Such a one-dimensional linear space is also called a \emph{line}. Then we have the following definition.
+
+\begin{definition}[Determinant Line]\label{def:determinant_line}
+  The \emph{determinant line} of a $n$-dimensional $F$-linear space $V$, denoted $\det(V)$, is defined to be the top exterior power of $V$:
+  \[
+    \det(V) := \Lambda^n V.
+  \]
+\end{definition}
+
+Note that the $\det$ operator is the same as $\Lambda^{\dim}$ operator, i.e., $\det$ is a functor the category of $n$-dimensional linear spaces $\Vect_F^n$ to the category of lines $\Vect_F^1$:
+\begin{center}
+  \begin{tikzcd}[row sep=normal]
+    \Vect_F^n \arrow[r, "\det"] & \Vect_F^1 \\[-1.8em]
+    V \arrow[dd, "f"] & \det(V) \arrow[dd, "\det(f)"] \\
+    \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+    W & \det(W)
+  \end{tikzcd}
+\end{center}
+Here, for a linear map $f \colon V \to W$, the induced map $\det(f) \colon \det(V) \to \det(W)$ is defined by
+\[
+  \det(f)(v_1 \wedge v_2 \wedge \cdots \wedge v_n) := f(v_1) \wedge f(v_2) \wedge \cdots \wedge f(v_n).
+\]
+Moreover, as $\det$ is a functor, it preserves composition and identities, i.e., for linear maps $f \colon V_1 \to V_2$ and $g \colon V_2 \to V_3$, we have
+\[
+  \det(f \circ g) = \det(f) \circ \det(g), \quad \text{and} \quad \det(\id_{V}) = \id_{\det(V)}.
+\]
+
+If $f$ is an endomorphism on $V$, i.e., $f \colon V \to V$, then $\det(f)$ is an endomorphism on the line $\det(V)$. Since any endomorphism on a one-dimensional space is just a scalar multiplication, there exists a unique scalar $\lambda \in F$ such that
+\[
+  \det(f)(\omega) = \lambda \omega, \quad \text{for all } \omega \in \det(V).
+\]
+Then we can identify $\det(f)$ with this scalar $\lambda$ and called it the \emph{determinant} of $f$. Recall that we can trivialise a linear space by choosing a basis. Then consider the following diagram:
+\begin{center}
+  \begin{tikzcd}
+    F^n \arrow[r, "A'", ustred] \arrow[dd, bend right=60, "P", ustblue] & F^n \arrow[dd, bend left=60, "P", ustred] \\
+    V \arrow[r, "f"] \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_{\B}}"] & V \arrow[u, "{[-]_{\B'}}"] \arrow[d, "{[-]_{\B}}"] \\
+    F^n \arrow[r, "A", ustblue] & F^n
+  \end{tikzcd}
+\end{center}
+where $V$ is an $n$-dimensional $F$-linear space, $\B$ and $\B'$ are two bases of $V$, $A$ and $A'$ are the matrix representations of $f$ with respect to the bases $\B$ and $\B'$ respectively, and $P$ is the change-of-basis matrix from $\B$ to $\B'$. Then we have
+\[
+  AP = PA', \quad \text{or equivalently,} \quad A = P A' P^{-1}.
+\]
+Moreover, the $\det(A)$ is defined to be the determinant of the corresponding linear map $f$, i.e., $\det(A) := \det(f)$, which is the same as in the ordinary linear algebra. Also, $A$ and $A'$ are \emph{similar} matrices in ordinary linear algebra, meaning they represent the same endomorphism under different bases. Thus, they have the same determinant. Hence, the determinant of a matrix is independent of the choice of basis.
+
+\section{Permutation Groups}
+
+Before we proceed to derive the explicit formula for the determinant of a linear map, we need to introduce the concept of automorphism groups and permutation groups.
+
+\begin{definition}[Automorphism Group]\label{def:automorphism_group}
+  The \emph{automorphism group} of a set $X$, denoted $\Aut(X)$, is the set of all \hyperref[def:automorphism]{automorphisms} of $X$ that forms a group under the composition of functions.
+\end{definition}
+
+\begin{example}
+  The general linear group of $V$, denoted by $\GL(V)$, is the automorphism group of the $F$-linear space $V$:
+  \[
+    \GL(V) = \Aut(V).
+  \]
+  That is the set of all invertible linear maps from $V$ to itself forms a group under the composition of functions.
+\end{example}
+
+\begin{example}
+  The general linear group over $F$ of degree $n$, denoted by $\GL_n(F)$, is the automorphism group of the $n$-dimensional $F$-linear space $F^n$:
+  \[
+    \GL_n(F) = \Aut(F^n).
+  \]
+  That is the set of all invertible $n \times n$ matrices with entries in $F$ forms a group under the matrix multiplication.
+\end{example}
+
+\begin{definition}[Permutation Group]\label{def:permutation_group}
+  The \emph{permutation group} on a set $X$, denoted by $S_X$ or $\Aut(X)$, is the automorphism group of $X$ when $X$ is a finite set. If $X = \{1, 2, \ldots, n\}$ for some $n \in \N$, then we denote the permutation group on $X$ by $S_n$.
+\end{definition}
+
+The order of the permutation group $S_n$, denoted by $|S_n|$, is $n!$ since there are $n!$ possible bijections from the set $\{1, 2, \ldots, n\}$ to itself.
+
+\begin{example}
+  The permutation group $S_2$ has two elements: the identity permutation $1$ and the transposition $\sigma_1$ defined by $\sigma_1(1) = 2$ and $\sigma_1(2) = 1$.
+\end{example}
+
+Instead of writing $S_2 = \{ 1, \sigma_1 \}$, we can write $S_2 = \langle \sigma_1 \mid \sigma_1^2 = 1 \rangle$, where $\sigma_1$ is called the \emph{generator} of $S_2$ and $\sigma_1^2 = 1$ is called the \emph{relation} of $S_2$. This is called the \emph{presentation} of $S_2$.
+
+In general, the generator $\sigma_i$ of $S_n$ is defined by:
+\[
+  \sigma_i(j) = \begin{cases}
+    j + 1, & j = i            \\
+    j - 1, & j = i + 1        \\
+    j,     & \text{otherwise}
+  \end{cases} = (i, i + 1)
+\]
+
+\begin{example}
+  The generator $\sigma_1$ of $S_3$ can be represented by the following diagram:
+  \begin{center}
+    \begin{tikzcd}
+      1 \arrow[dr] & 2 \arrow[dl, crossing over] & 3 \arrow[d] \\
+      2 & 1 & 3
+    \end{tikzcd}
+  \end{center}
+  It can also be written as $\sigma_1 = (12)$ or $(12)(3)$ or $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix}$. Moreover, we have a cycle with 3 elements denoted as $(123)$ defined by the $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{pmatrix}$. Then the presentation of $S_3$ is:
+  \[
+    S_3 = \langle \sigma_1, \sigma_2 \mid \sigma_1^2 = 1, \sigma_2^2 = 1, \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2 \rangle
+  \]
+\end{example}
+
+In general, the presentation of $S_n$ has generators $\sigma_1, \sigma_2, \ldots, \sigma_{n-1}$ and relations:
+\begin{itemize}
+  \item \emph{Involution relations}: $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$;
+  \item \emph{Braid relations}: $\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1}$ for all $1 \leq i \leq n - 2$;
+  \item \emph{Commutation relations}: $\sigma_i \sigma_j = \sigma_j \sigma_i$ for all $|i - j| \geq 2$.
+\end{itemize}
+
+The permutation group $S_n$ is generated by quotienting the braid group $B_n$ by the involution relations. We call $B_n$ the \emph{braid group} on $n$ strands. A simple way to visualise the braid group is to think about braiding $n$ strands of hair. The braid group $B_n$ has the same presentation as $S_n$ except that there is no relation $\sigma_i^2 = 1$ for all $1 \leq i \leq n - 1$. Consider the following diagrams:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    1 \arrow[d, dash] & 2 \arrow[d, dash] \\
+    1 & 2
+  \end{tikzcd}
+  \qquad
+  $=\joinrel= \sigma_1 \Longrightarrow$
+  \qquad
+  \begin{tikzcd}[column sep=normal]
+    1 \arrow[dr, dash, start anchor=south, end anchor=north] & 2 \arrow[dl, crossing over, dash, start anchor=south, end anchor=north] \\
+    2 & 1
+  \end{tikzcd}
+  \qquad
+  $=\joinrel= \sigma_1 \Longrightarrow$
+  \qquad
+  \begin{tikzcd}[column sep=normal, row sep=normal]
+    1 \arrow[dr, dash, start anchor=south, end anchor=center] & 2 \arrow[dl, crossing over, dash, start anchor=south, end anchor=center] \\
+    \phantom{2} \arrow[dr, dash, start anchor=center, end anchor=north] & \phantom{1} \arrow[dl, crossing over, dash, start anchor=center, end anchor=north, shorten=1cm] \arrow[dl, dash, start anchor=center, end anchor=north] \\
+    1 & 2
+  \end{tikzcd}
+\end{center}
+
+Consider the following exact sequence:
+\begin{center}
+  \begin{tikzcd}
+    1 \arrow[r] & A_n \arrow[r, hook] & S_n \arrow[r, "\sgn", two heads] & \quotient{\Z}{2\Z} \arrow[r] & 1
+  \end{tikzcd}
+\end{center}
+where $A_n$ is the \emph{alternating group} on $n$ elements, i.e., the subgroup of $S_n$ consisting of all even permutations, and $\sgn \colon S_n \to \quotient{\Z}{2\Z} = \{ \pm 1 \}$, the \emph{sign homomorphism}, is the unique group homomorphism such that $\sgn(\sigma_i) = -1$ for all $1 \leq i \leq n - 1$. Note that $\ker(\sgn) = A_n$ and $\im(\sgn) = \quotient{\Z}{2\Z}$.
+\begin{remark}
+  $A_n$ is simple for all $n \geq 5$, i.e., $A_n$ has no non-trivial normal subgroups for all $n \geq 5$.
+\end{remark}
+
+Then we have two properties of the sign homomorphism:
+\begin{itemize}
+  \item $\sgn(1) = 1$;
+  \item $\sgn(\sigma \tau) = \sgn(\sigma) \cdot \sgn(\tau)$ for all $\sigma, \tau \in S_n$.
+\end{itemize}
+
+\section{Determinant Formula}
+
+The permutation group $S_n$ acts on $V^n$ by permuting the factors:
+\[
+  \sigma \colon (v_1, v_2, \ldots, v_n) \mapsto (v_{\sigma(1)}, v_{\sigma(2)}, \ldots, v_{\sigma(n)}).
+\]
+Recall the universal property of the exterior power in Proposition~\ref{prop:universal_property_exterior_power}, we have the following commutative diagram:
+\begin{center}
+  \begin{tikzcd}
+    V^n \arrow[r, "\sigma"] \arrow[d, "\phi"] & V^n \arrow[d, "\phi"] \\
+    \Lambda^n V \arrow[r, "\Lambda^n \sigma", dashed] & \Lambda^n V
+  \end{tikzcd}
+\end{center}
+The induced map $\Lambda^n \sigma \colon \Lambda^n V \to \Lambda^n V$ is defined by
+\[
+  \Lambda^n \sigma (v_1 \wedge v_2 \wedge \cdots \wedge v_n) := (v_{\sigma(1)} \wedge v_{\sigma(2)} \wedge \cdots \wedge v_{\sigma(n)}) = \sgn(\sigma) (v_1 \wedge v_2 \wedge \cdots \wedge v_n).
+\]
+
+Now, we are ready to derive the explicit formula for the determinant of a linear map. Consider the following diagram:
+\begin{center}
+  \begin{tikzcd}[row sep=normal]
+    \Vect_F^n \arrow[r, "\det"] & \Vect_F^1 \\[-1.8em]
+    F^n \arrow[dd, "A"] & \det(F^n) \arrow[dd, "\det(A)"] \\
+    \arrow[r, mapsto, shorten <= 2ex, shorten >= 2ex] & \phantom{*} \\
+    F^n & \det(F^n)
+  \end{tikzcd}
+\end{center}
+Here, $A \in \Mat_n(F)$ is an invertible matrix representing a linear map $f \colon F^n \to F^n$. Let $\{ \vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n \}$ be the standard basis of $F^n$. Then $\{ \vec{e}_1 \wedge \cdots \wedge \vec{e}_n \}$ is a basis of the line $\det(F^n)$. To find the scalar $\det(A)$, we compute the action of $\det(A)$ on the basis element $\vec{e}_1 \wedge \cdots \wedge \vec{e}_n$ as follows:
+\begin{align*}
+  \det(A)(\vec{e}_1 \wedge \cdots \wedge \vec{e}_n) & = (A \vec{e}_1) \wedge \cdots \wedge (A \vec{e}_n)                                                                                     \\
+                                                    & = \left( \sum_{i_1 = 1}^n a^{i_1}_1 \vec{e}_{i_1} \right) \wedge \cdots \wedge \left( \sum_{i_n = 1}^n a^{i_n}_n \vec{e}_{i_n} \right) \\
+                                                    & = \sum_{i_1, i_2, \ldots, i_n = 1}^n a^{i_1}_1 \cdots a^{i_n}_n (\vec{e}_{i_1} \wedge \cdots \wedge \vec{e}_{i_n})                     \\
+                                                    & = \sum_{\sigma \in S_n} a^{\sigma(1)}_1 \cdots a^{\sigma(n)}_n (\vec{e}_{\sigma(1)} \wedge \cdots \wedge \vec{e}_{\sigma(n)})          \\
+                                                    & = \sum_{\sigma \in S_n} \sgn(\sigma) a^{\sigma(1)}_1 \cdots a^{\sigma(n)}_n (\vec{e}_1 \wedge \cdots \wedge \vec{e}_n).
+\end{align*}
+Hence, we have derived the explicit formula for the determinant of the matrix $A$:
+\[
+  \det(A) = \sum_{\sigma \in S_n} \sgn(\sigma) a^{\sigma(1)}_1 \cdots a^{\sigma(n)}_n.
+\]
+This is also known as the \emph{Leibniz formula} for the determinant.
+
+\section{Properties of Determinants}
+
+\subsection{Determinant and Dual Basis}
+We now consider the relationship between the determinant and the dual basis. Let $V$ be an $n$-dimensional $F$-linear space with basis $\B_V = \{ v_1, v_2, \ldots, v_n \}$. As $\det(V)$ is a one-dimensional $F$-linear space, it has a basis. Moreover, the basis of $\det(V)$, $\B_{\det(V)}$, can be identified with $\det(V) \setminus \{0\}$. Then we have a map from the basis $\B_V$ of $V$ to the basis $\B_{\det(V)}$ of $\det(V)$ defined by
+\[
+  (v_1, v_2, \ldots, v_n) \mapsto v_1 \wedge v_2 \wedge \cdots \wedge v_n.
+\]
+Recall that we have a natural bijection between the basis of $V$ and the basis of the dual space $V^*$ in Proposition~\ref{prop:dual_basis}. Then we have the following commutative diagram:
+\begin{center}
+  \begin{tikzcd}
+    \B_V \arrow[r, <->] \arrow[d] & \B_{V^*} \arrow[d] \\
+    \B_{\det(V)} \arrow[r, <->, dashed] & \B_{\det(V^*)}
+  \end{tikzcd}
+\end{center}
+Then we can define a map from the basis $\B_{\det(V)}$ of $\det(V)$ to the basis $\B_{\det(V^*)}$ of $\det(V^*)$ induced by the above diagram. This map is defined by
+\[
+  (v_1 \wedge v_2 \wedge \cdots \wedge v_n) \mapsto (v_1^* \wedge v_2^* \wedge \cdots \wedge v_n^*),
+\]
+where $\{ v_1^*, v_2^*, \ldots, v_n^* \}$ is the dual basis of $\B_V$. Note that this map is an isomorphism between the lines $\det(V)$ and $\det(V^*)$. Moreover, we have the following isomorphisms for the basis elements:
+\[
+  \det(v^*) \cong \det(v) \cong {\det(v)}^*.
+\]
+The first isomorphism is given by the above map, and the second isomorphism is given by the natural isomorphism between a linear space and its dual space.
+
+\subsection{Determinant and Dual Map}
+Consider $V$ and $W$ be two $n$-dimensional $F$-linear spaces, and let $T \colon V \to W$ be a linear map. Then we have the following commutative diagram:
+\begin{center}
+  \begin{tikzcd}[column sep=normal]
+    V \arrow[rr, "T"] & \arrow[d, Rightarrow, "\det"] & W \arrow[r, Rightarrow, "(-)^*"] & V^* & \arrow[d, Rightarrow, "\det"] & W^* \arrow[ll, "T^*"] \\
+    \det(V) \arrow[rr, "\det(T)"] & \phantom{*} & \det(W) \arrow[r, dashed, Rightarrow] & \det(V^*) & \phantom{*} & \det(W^*) \arrow[ll, "\det(T^*)"]
+  \end{tikzcd}
+\end{center}
+Consider the left part of the diagram. The map $\det(T) \colon \det(V) \to \det(W)$ is in $\Hom(\det(V), \det(W)) \simeq {(\det(V))}^* \otimes \det(W)$. While the right part of the diagram, the map $\det(T^*) \colon \det(W^*) \to \det(V^*)$ is in $\Hom(\det(W^*), \det(V^*)) \simeq {(\det(W^*))}^* \otimes \det(V^*) \simeq \det(W) \otimes {\det(V)}^*$. Hence, we have the following isomorphism:
+\[
+  \det(T) \cong \det(T^*).
+\]
+
+\subsection{Properties of Determinants}
+From the definition of the determinant, we can derive several important properties of determinants as follows:
+\begin{itemize}
+  \item Linear in each column or row;
+  \item Alternating in columns or rows;
+  \item $\det(I) = 1$.
+\end{itemize}
+These properties uniquely characterise the determinant function up to a scalar multiple. For the alternating property, assume the characteristic of the field $F$ is not 2. Then swapping two rows or two columns of a matrix changes the sign of the determinant. To see this, consider swapping the $i$-th and $j$-th vectors $\vec{a}_i$ and $\vec{a}_j$ in the wedge product $\cdots \wedge \vec{a}_i \wedge \cdots \wedge \vec{a}_j \wedge \cdots$. There are $k$ vectors between $\vec{a}_i$ and $\vec{a}_j$. Then we have
+\[
+  \cdots \vec{a}_i \underbrace{\color{ustred} \cdots}_{k \text{ times}} \vec{a}_j \cdots = {(-1)}^k \cdots {\color{ustred} \cdots} \vec{a}_i \vec{a}_j \cdots = {(-1)}^{k + 1} \cdots {\color{ustred} \cdots} \vec{a}_j \vec{a}_i \cdots = - \cdots \vec{a}_j {\color{ustred} \cdots} \vec{a}_i \cdots
+\]
+
+If we dropped the property $\det(I) = 1$, then the function is called the \emph{alternating multilinear form}. Suppose $\phi \colon \Mat_n(F) \to F$ is an alternating multilinear form. Then for any matrix $A \in \Mat_n(F)$, we have
+\[
+  \phi(A) = \det(A) \cdot \phi(I).
+\]
+That is, any alternating multilinear form is a scalar multiple of the determinant function.
+
+Instead of writing $\det$ as a function from matrices to scalars, we can use two pipes to denote the determinant of a matrix.
+\begin{proposition}
+  We have the following property of determinants:
+  \[
+    \begin{vmatrix} A_1 & * \\ 0 & A_2 \end{vmatrix} = \det(A_1) \cdot \det(A_2).
+  \]
+\end{proposition}
+\begin{proof}
+  Consider the part on the left-hand side, we know that it is multilinear in the columns and alternating. Then we have the following evaluation:
+  \begin{align*}
+    \begin{vmatrix} A_1 & * \\ 0 & A_2 \end{vmatrix} & = \det(A_1) \cdot \begin{vmatrix} I_{n_1} & * \\ 0 & A_2 \end{vmatrix}                     \\
+                                                     & = \det(A_1) \cdot \det(A_2) \cdot \begin{vmatrix} I_{n_1} & * \\ 0 & I_{n_2} \end{vmatrix} \\
+                                                     & = \det(A_1) \cdot \det(A_2) \cdot \begin{vmatrix} I_{n_1} & 0 \\ 0 & I_{n_2} \end{vmatrix} \\
+                                                     & = \det(A_1) \cdot \det(A_2) \cdot \det(I_{n_1 + n_2})                                      \\
+                                                     & = \det(A_1) \cdot \det(A_2).
+  \end{align*}
+  Note that in the third equality, we eliminated the $*$ by using the rows below.
+\end{proof}
+
+Concretely, we have the following determinants:
+\[
+  \left|
+  \begin{array}{cc|ccc}
+    1 &   & * & * & * \\
+      & 1 & * & * & * \\
+    \hline
+      &   & 1 &   &   \\
+      &   &   & 1 &   \\
+      &   &   &   & 1
+  \end{array}
+  \right| = \left|
+  \begin{array}{cc|ccc}
+    1 &   & 0 & 0 & 0 \\
+      & 1 & * & * & * \\
+    \hline
+      &   & 1 &   &   \\
+      &   &   & 1 &   \\
+      &   &   &   & 1
+  \end{array}
+  \right| = \left|
+  \begin{array}{cc|ccc}
+    1 &   & 0 & 0 & 0 \\
+      & 1 & 0 & 0 & 0 \\
+    \hline
+      &   & 1 &   &   \\
+      &   &   & 1 &   \\
+      &   &   &   & 1
+  \end{array}
+  \right| = \det(I_5) = 1
+\]
+For the first equality, we eliminated the first row's $*$ by using the first row. For the second equality, we eliminated the second row's $*$ by using the second row.
+
+So for an upper-triangular matrix, the determinant is the product of the diagonal entries. Similarly, for a lower-triangular matrix, the determinant is also the product of the diagonal entries. In particular, we have the following equation:
+\[
+  \begin{vmatrix}
+    a_{11} &        & *      \\
+           & \ddots &        \\
+    0      &        & a_{nn}
+  \end{vmatrix} = a_{11} \cdots a_{nn}
+\]
+This also holds for diagonal matrices as they are both upper-triangular and lower-triangular. Moreover, $\det[a] = a \cdot \det(I) = a$.
+\begin{remark}
+  In determinant, we prefer to use $a_{ij}$ to denote the element in the $i$-th row and $j$-th column instead of using superscript and subscript like $a_j^{i}$. This is because in determinants, we usually consider the rows and columns instead of vectors.
+\end{remark}
+
+% \clearpage{}
+
+\subsection{Cofactor Expansion}
+We have a famous formula called the \emph{cofactor expansion} or \emph{Laplace expansion} for determinants. It is a recursive formula that expresses the determinant of a matrix in terms of the determinants of its smaller submatrices.
+
+Consider the following determinant:
+\vspace{6ex}
+\begin{align*}
+  \begin{vmatrix}
+                          &        &           &                                                \\
+                          & *      &           & \point{jcol}{0} &           & *      &         \\
+    \\
+    \point{irow}{a_{i,1}} & \cdots & a_{i,j-1} & 1               & a_{i,j+1} & \cdots & a_{i,n} \\
+    \\
+                          & *      &           & 0               &           & *      &         \\
+    \\
+  \end{vmatrix} & = {(-1)}^{i - 1} \begin{vmatrix}
+                                     a_{i,1} & \cdots & a_{i,j-1} & 1 & a_{i,j+1} & \cdots & a_{i,n} \\
+                                     \\ \\
+                                             & *      &           & 0 &           & *      &         \\
+                                     \\ \\
+                                   \end{vmatrix}                                                                                                                  \\
+                                                                                                                        & = {(-1)}^{i - 1 + j - 1} \begin{vmatrix}
+                                                                                                                                                     1 & a_{i,1} & \cdots & \widehat{a_{i,j}} & \cdots & a_{i,n} \\
+                                                                                                                                                     \\ \\
+                                                                                                                                                     0 &         &        & A^i_j                                \\
+                                                                                                                                                     \\ \\
+                                                                                                                                                   \end{vmatrix} \\
+                                                                                                                        & = {(-1)}^{i + j} \det A^i_j
+\end{align*}
+\begin{tikzpicture}[remember picture, overlay]
+  \node[above=20pt of jcol](textofhere1){the $j$-th column};
+  \draw[myarrow] (textofhere1) -- (jcol);
+  \node[left=20pt of irow](textofhere2){the $i$-th row};
+  \draw[myarrow] (textofhere2) -- (irow);
+\end{tikzpicture}
+Here, $\widehat{a_{i,j}}$ means that the element $a_{i,j}$ is omitted, and $A^i_j$ is the submatrix obtained by deleting the $i$-th row and $j$-th column of $A$ and is called the \emph{minor} of $a_{i,j}$. Then we have the following cofactor expansion along the $i$-th row:
+\[
+  \det(A) = | \cdots \quad a_j \quad \cdots | = \sum_{j=1}^n a^i_j | \cdots \quad \vec{e}_i \quad \cdots | = \sum_{j=1}^n a^i_j {(-1)}^{i + j} \det(A^i_j).
+\]
+Similarly, we have the cofactor expansion along the $j$-th column:
+\[
+  \det(A) = \sum_{i=1}^n a^i_j {(-1)}^{i + j} \det(A^i_j).
+\]
+
+We have the following definition.
+\begin{definition}[Adjugate Matrix]\label{def:adjugate_matrix}
+  The \emph{adjugate matrix}, or \emph{classical adjoint}, of a matrix $A \in \Mat_n(F)$, denoted by $\adj(A)$, is defined to be the transpose of the cofactor matrix of $A$:
+  \[
+    \adj(A) := {(-1)}^{i + j} \det(A^j_i).
+  \]
+\end{definition}
+Some literature defines this as the \emph{adjoint matrix}, but to avoid confusion with the adjoint of a linear operator in inner product spaces, we use the term \emph{adjugate matrix} here.
+\begin{remark}
+  Be aware of the notation difference between $A_i^j$ and $A^i_j$. The former means deleting the $j$-th row and $i$-th column, while the latter means deleting the $i$-th row and $j$-th column. Also note that the notation of $\vec{e}_i$ means that the $i$-th row is 1 and other rows are 0 (standard basis vector), which is different from the notation in $A_i^j$ and $A^i_j$. To conclude, the subscript is for columns and the superscript is for rows, except they are in the notation of standard basis vectors.
+\end{remark}
+
+\begin{proposition}
+  We have the following property of the adjugate matrix:
+  \[
+    A \cdot \adj(A) = \adj(A) \cdot A = \det(A) I_n.
+  \]
+  In particular, if $\det A \neq 0$, then $A^{-1} = \frac{1}{\det A} \adj(A)$.
+\end{proposition}
+\begin{proof}
+  In particular, we just have to show
+  \[
+    \sum_{k = 1}^n a^k_j {(\adj(A))}^i_k = \det(A) \delta^i_j
+  \]
+
+  From the previous Laplace expansion, we know:
+  \[
+    \det(A) = \sum_{i = 1}^n a_j^i {(-1)}^{i + j} \det(A^i_j) = \sum_{i = 1}^n a_j^i {(\adj(A))}_i^j = {(A \cdot \adj(A))}_j^j
+  \]
+  Then we know that for $i = j$, the equality holds. If $i \neq j$, then we can consider the following determinant:
+  \vspace{4ex}
+  \[
+    \det \begin{vmatrix}
+      \\
+      \cdots & \point{icol}{\vec{a}_j} & \cdots & \point{jcol}{\vec{a}_j} & \cdots \\
+      \\
+    \end{vmatrix} = 0
+  \]
+  \vspace{4ex}
+
+  This means that originally, there are two same columns in the determinant, so its value is zero. Then by the Laplace expansion along the $j$-th column, we have:
+  \[
+    0 = \sum_{k = 1}^n a_j^k {(-1)}^{k + j} \det(A^k_i) = \sum_{k = 1}^n a_j^k {(\adj(A))}_k^i = {(A \cdot \adj(A))}_j^i
+  \]
+\end{proof}
+\begin{tikzpicture}[remember picture, overlay]
+  \node[below=20pt of icol](textofhere1){the $i$-th column};
+  \draw[myarrow] (textofhere1) -- (icol);
+  \node[above=20pt of jcol](textofhere2){the $j$-th column};
+  \draw[myarrow] (textofhere2) -- (jcol);
+\end{tikzpicture}
+
+
+To better understand the reason why the equality holds when $i \neq j$, we can consider the following explanation~\cite{1404250}. Consider the $3 \times 3$ case:
+\[
+  \underbrace{\begin{bmatrix}
+      A_1^1  & -A_1^2 & A_1^3  \\
+      -A_2^1 & A_2^2  & -A_2^3 \\
+      A_3^1  & -A_3^2 & A_3^3
+    \end{bmatrix}}_{\adj(A)} \cdot \underbrace{\begin{bmatrix}
+      {\color{red} a_1^1} & {\color{ustblue} a_2^1} & a_3^1 \\
+      {\color{red} a_1^2} & {\color{ustblue} a_2^2} & a_3^2 \\
+      {\color{red} a_1^3} & {\color{ustblue} a_2^3} & a_3^3
+    \end{bmatrix}}_{A}
+\]
+If we multiply the first row of $\adj(A)$ with the first column of $A$, we have the same result as the Laplace expansion along the first column:
+\[
+  {\color{red} a_1^1} A_1^1 - {\color{red} a_1^2} A_1^2 + {\color{red} a_1^3} A_1^3 = \begin{vmatrix}
+    {\color{red} a_1^1} & a_2^1 & a_3^1 \\
+    {\color{red} a_1^2} & a_2^2 & a_3^2 \\
+    {\color{red} a_1^3} & a_2^3 & a_3^3
+  \end{vmatrix} = \det(A) = \sum_{k = 1}^3 {\color{red} a_1^k} A_1^k = \sum_{k = 1}^3 {\color{red} a_1^k} {(\adj(A))}_k^1
+\]
+If we multiply the first row of $\adj(A)$ with the second column of $A$, we have:
+\[
+  {\color{ustblue} a_2^1} A_1^1 - {\color{ustblue} a_2^2} A_1^2 + {\color{ustblue} a_2^3} A_1^3 = \begin{vmatrix}
+    {\color{ustblue} a_2^1} & a_2^1 & a_3^1 \\
+    {\color{ustblue} a_2^2} & a_2^2 & a_3^2 \\
+    {\color{ustblue} a_2^3} & a_2^3 & a_3^3
+  \end{vmatrix} = 0 = \sum_{k = 1}^3 {\color{ustblue} a_2^k} A_1^k = \sum_{k = 1}^3 {\color{ustblue} a_2^k} {(\adj(A))}_k^1
+\]
+
+\subsection{Vandermonde Determinant}
+Consider the following determinant where superscipts denote powers:
+\[
+  \det(V_n) = \begin{vmatrix}
+    1           & 1           & \cdots & 1           \\
+    x_1         & x_2         & \cdots & x_n         \\
+    \vdots      & \vdots      & \ddots & \vdots      \\
+    x_1^{n - 1} & x_2^{n - 1} & \cdots & x_n^{n - 1}
+  \end{vmatrix}
+\]
+Then we consider $x_1, x_2, \cdots, x_{n - 1}$ are fixed and we consider the determinant as a polynomial of $x_n$. Note that the degree of $x_n$ is $n - 1$, and the polynomial is:
+\[
+  \det(V_n) = {(-1)}^{n + 1} | \cdots | + {(-1)}^{n + 2} x_n | \cdots | + \cdots + {(-1)}^{n + n} x_n^{n - 1} \begin{vmatrix}
+    1           & 1           & \cdots & 1                 \\
+    x_1         & x_2         & \cdots & x_{n - 1}         \\
+    \vdots      & \vdots      & \ddots & \vdots            \\
+    x_1^{n - 1} & x_2^{n - 1} & \cdots & x_{n - 1}^{n - 1}
+  \end{vmatrix}
+\]
+Also note that if $x_n = x_i$ for some $1 \leq i \leq n - 1$, let say $i = n - 1$, then the determinant becomes:
+\[
+  \begin{vmatrix}
+    1           & 1           & \cdots & 1                 & 1                 \\
+    x_1         & x_2         & \cdots & x_{n - 1}         & x_{n - 1}         \\
+    \vdots      & \vdots      & \ddots & \vdots            & \vdots            \\
+    x_1^{n - 1} & x_2^{n - 1} & \cdots & x_{n - 1}^{n - 1} & x_{n - 1}^{n - 1}
+  \end{vmatrix} = 0
+\]
+This means that $x_n - x_i$ is a factor of the polynomial. Therefore, by the fundamental theorem of algebra, we have:
+\[
+  \det(V_n) = C \overbrace{(x_n - x_1)(x_n - x_2) \cdots (x_n - x_{n - 1})}^{n - 1 \text{ factors}}
+\]
+Here $C$ is a constant that does not depend on $x_n$. To find $C$, we can compare the leading coefficients of both sides. The leading coefficient of the right-hand side is $C x_n^{n - 1}$. The leading coefficient of the left-hand side can be found by considering the term with the highest power of $x_n$, which is obtained by taking $x_n^{n - 1}$ from the last column and multiplying it with the determinant of the remaining $(n - 1) \times (n - 1)$ matrix:
+\[
+  \begin{vmatrix}
+    1           & 1           & \cdots & 1                 \\
+    x_1         & x_2         & \cdots & x_{n - 1}         \\
+    \vdots      & \vdots      & \ddots & \vdots            \\
+    x_1^{n - 2} & x_2^{n - 2} & \cdots & x_{n - 1}^{n - 2}
+  \end{vmatrix} = \det(V_{n - 1})
+\]
+By induction, we can assume that $\det(V_{n - 1}) = \prod_{1 \leq i < j \leq n - 1} (x_j - x_i)$. Therefore, we have:
+\[
+  C = \det(V_{n - 1}) = \prod_{1 \leq i < j \leq n - 1} (x_j - x_i).
+\]
+Thus, we have derived the formula for the Vandermonde determinant:
+\[
+  \det(V_n) = \prod_{1 \leq i < j \leq n} (x_j - x_i)
+\]
+
+\section{Feynman Diagram Formula}
+
+This Formula is discovered by Professor Guowu Meng in the Hong Kong University of Science and Technology. It is inspired by Feynman diagrams in quantum field theory.
+
+Consider the case where the characteristic of the field is 0. Let $A$ be a $n \times n$ matrix and $I$ be the identity matrix of order $n$. Then we have the following formula:
+\[
+  \det(I + tA) = 1 - \tr A \ t + \left(\frac{{(\tr A)}^2}{2!} - \frac{\tr A^2}{2}\right) t^2 - \cdots + {(-1)}^n \det A \ t^n
+\]
+This is called the \emph{Feynman diagram formula}. From this formula, the determinant can be expressed by traces.
+
+It is hard to remember the coefficients in the formula. However, we can use the following method to derive them. Consider the following diagram for $t^1$ term:
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (0.5, 0) node[right, ustblue] {$A$};
+  \end{tikzpicture}
+\end{center}
+Here the circle means a trace operation, and the arrow means $A$. So the coefficient is $- \tr A$.
+
+For $t^2$ term, we have diagram:
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (0.5, 0) node[right, ustblue] {$A$};
+    \draw (2, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (2.5, 0) node[right, ustblue] {$A$};
+
+    \draw (5, 0) circle (1cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0,0.5}];
+    \path (6, 0) node[right, ustblue] {$A$}
+    (4, 0) node[left, ustblue] {$A$}
+    (5, 1) node {$|$}
+    (5, -1) node {$|$};
+  \end{tikzpicture}
+\end{center}
+The left two circles mean ${(-\tr(A))}^2$, and we have to divide by $2!$ because of the symmetry of the two identical circles. The right circle means $- \tr(A^2)$, but this is a cyclic group of order 2, so we have to divide by $2$. Therefore, the total term for $t^2$ is:
+\[
+  \frac{{(-\tr(A))}^2}{2!} - \frac{\tr(A^2)}{2} = \frac{{(\tr(A))}^2}{2!} - \frac{\tr(A^2)}{2}
+\]
+
+For $t^3$ term, we have diagram:
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-2, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (-1.5, 0) node[right, ustblue] {$A$};
+    \draw (0, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (0.5, 0) node[right, ustblue] {$A$};
+    \draw (2, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (2.5, 0) node[right, ustblue] {$A$};
+
+    \draw (5, 0) circle (1cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0,0.5}];
+    \path (6, 0) node[right, ustblue] {$A$}
+    (4, 0) node[left, ustblue] {$A$}
+    (5, 1) node {$|$}
+    (5, -1) node {$|$};
+    \draw (7.5, 0) circle (0.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0}];
+    \path (8, 0) node[right, ustblue] {$A$};
+
+    \draw (10.5, 0) circle (1.5cm) node {$-1$}
+      [arrow inside={end=stealth,opt={ustblue,scale=1}}{0.0833, 0.4167, 0.755}];
+    \path (11.8, 0.75) node[right, ustblue] {$A$}
+    (9.2, 0.75) node[left, ustblue] {$A$}
+    (10.5, -1.5) node[below, ustblue] {$A$}
+    (10.5, 1.5) node {$|$}
+    (11.8, -0.75) node[rotate=240] {$|$}
+    (9.2, -0.75) node[rotate=120] {$|$};
+  \end{tikzpicture}
+\end{center}
+The left three circles mean ${(-\tr(A))}^3$, and we have to divide by $3!$ because of the symmetry of the three identical circles. The second diagram means ${(-\tr(A))}{(-\tr(A^2))}$, and we have to divide by $2$ because of the cyclic group of order $2$ on the bigger circle. The last diagram means $- \tr(A^3)$, and this is a cyclic group of order 3, so we have to divide by $3$. Therefore, the total term for $t^3$ is:
+\[
+  \frac{{(-\tr(A))}^3}{3!} + \frac{{(-\tr(A))}{(-\tr(A^2))}}{2} - \frac{\tr(A^3)}{3} = - \frac{{(\tr(A))}^3}{3!} + \frac{(\tr(A))(\tr(A^2))}{2} - \frac{\tr(A^3)}{3}
+\]
+Continuing this process, we can derive the coefficients for higher powers of $t$ in the expansion of $\det(I + tA)$. Each term corresponds to a specific arrangement of traces and powers of $A$, with appropriate combinatorial factors accounting for symmetries in the diagrams.
+
+\clearpage{}
+
+\section{Exercises}
+
+\begin{problem}
+Let $f: \Mat_n(F) \to F$ be a function of matrix variable which is linear in each columns and skew-symmetric in columns. Show that $f(A) = \det(A) f(I)$.
+\end{problem}
+
+\begin{problem}
+Let $V$ be a f.d.\ linear space and $V^*$ be its dual space. The pairing $\langle -, - \rangle: V^* \times V \to F$ that sends $(\alpha, v)$ to $\alpha(v)$ can be extended to the pairing
+\[
+  \langle -, - \rangle : \Lambda^k V^* \times \Lambda^k V \to F
+\]
+By definition, this is the unique bilinear map such that
+\[
+  \langle \alpha_1 \wedge \cdots \wedge \alpha_k, v_1 \wedge \cdots \wedge v_k \rangle = \det [\langle \alpha_i, v_j \rangle]
+\]
+\begin{enumerate}
+  \item For any basis $v = (v_1, \ldots, v_n)$ of $V$ and any ordered set $I_k = (i_1, \ldots, i_k)$ of $k$ numbers with $1 \leq i_1 < i_2 < \cdots < i_k \leq n$, we let $v_{I_k} = v_{i_1} \wedge \cdots \wedge v_{i_k}$. Show that $\{ v_{I_k} \}$ is a minimal spanning set of $\Lambda^k V$.
+  \item For each $k \geq 1$, show that the pairing is non-degenerate, i.e., the resulting map $\Lambda^k V^* \to {(\Lambda^k V)}^*$ is an isomorphism.
+  \item Show that $\Lambda^k V^* \simeq {(\Lambda^k V)}^*$ in the sense that the two functors from ${(\Vect_F^{\fd})}^{\mathsf{op}}$ to $\Vect_F^{\fd}$ are equivalent. In particular, we have $\det V^* \simeq {(\det V)}^*$.
+  \item Denote by $\mathcal{B}_U$ the set of bases of $U$. Show that the diagram
+        \begin{center}
+          \begin{tikzcd}
+            \mathcal{B}_V \arrow[rr, <->] \arrow[d] & & \mathcal{B}_{V^*} \arrow[d] \\
+            \mathcal{B}_{\det V} \arrow[r, <->] & \mathcal{B}_{(\det V)^*} \arrow[r, <->] & \mathcal{B}_{\det V^*}
+          \end{tikzcd}
+        \end{center}
+        commutes. Here a vertical map always sends basis $u = (u_1, \ldots, u_n)$ to its determinant $\det u := u_1 \wedge \cdots \wedge u_n$, the horizontal arrows map either sends a basis to its dual basis or is the isomorphism in part (b).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Let $\phi : A \to B$ be a linear map between finite-dimensional linear spaces of equal dimension. Denoted by $\phi^*$ the dual linear map of $\phi$. Since $\det(\phi) \in \Hom(\det A, \det B) \simeq {(\det A)}^* \otimes \det B$ and 
+  \[
+    \det(\phi^*) \in \Hom(\det(B^*), \det(A^*)) \simeq {(\det(B^*))}^* \otimes \det(A^*) \simeq {(\det(A))}^* \otimes \det(B)
+  \]
+  it makes sense that $\det(\phi^*) \simeq \det(\phi)$. Show that this is indeed the case. 
+\end{problem}
+
+\begin{problem}
+  In class we introduced the adjoint matrix $\adj A$ for any square matrix $A$ of order $n$ and showed that $A \adj(A) = \adj(A) A = \det(A) I$. Assuming $A$ is invertible, which is equivalent to say that equation $A\vec{x} = \vec{b}$ has a unique solution for any vector $\vec{b} \in F^n$. Indeed, the unique solution is $\vec{x} = A^{-1} \vec{b}$.
+  \begin{enumerate}
+    \item Show that the unique solution is $\vec{x} = \frac{1}{\det(A)} \adj(A) \vec{b}$.
+    \item If $x_i$ denotes the $i$-th entry of the solution $\vec{x}$, show that
+    \[
+      x_i = \frac{\Delta_i}{\Delta}
+    \]
+    where $\Delta = \det A$ and $\Delta_i = \det A_i$ with $A_i$ being the matrix obtained from $A$ by replacing its $i$-th column by the vector $\vec{b}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Let $A$ be a $\Mat_n(\R)$-valued function of one real variable $t$ and $A'$ be its (entry-wise) derivative with respect to $t$. Show that
+  \[
+    \frac{d}{dt} \det(A) = \tr(A' \adj(A))
+  \]
+\end{problem}
+
+\begin{problem}
+  Suppose that $A$ and $B$ are square matrices of order 3 over a field of characteristic 0. Please derive a formula for $\det(A + B)$ of the form
+  \[
+    \det(A + B) = \det(A) + \det(B) + \cdots.
+  \]
+  [Hints: You may use the Feynman diagram formula introduced in this chapter.]
+\end{problem}
