@@ -19,7 +19,7 @@ Inner products allow us to define notions of length and angle in more abstract l
 
 We can further more relax a bit the positive-definiteness condition to get the following definition.
 \begin{definition}[Pseudo Inner Product]\label{def:pseudo_inner_product}
-	A \emph{pseudo inner product} on a real linear space $V$ is a \emph{non-degenerate} symmetric bilinear form on $V$, i.e., an element $\langle-, -\rangle \in \mathcal{S}^2 V^*$ such that $\langle-, -\rangle_{\musNatural} : V \to V^*$ is an isomorphism.
+	A \emph{pseudo inner product} on a real linear space $V$ is a \emph{non-degenerate} symmetric bilinear form on $V$, i.e., an element $\langle-, -\rangle \in \mathcal{S}^2 V^*$ such that $\langle-, -\rangle_{\natural} : V \to V^*$ is an isomorphism.
 \end{definition}
 
 \begin{definition}[Euclidean Structure]\label{def:euclidean_space}
@@ -202,11 +202,11 @@ Let $V$ be a Euclidean space with inner product $\langle -, - \rangle$ and $W \s
 		W \times W \arrow[r, hook] \arrow[rr, bend left, "{\langle -, - \rangle}"'] & V \times V \arrow[r, "{\langle -, - \rangle}"] & \R
 	\end{tikzcd}
 \end{center}
-Note that the restriction $\langle -, - \rangle$ is still an inner product on $W$. Also, the positive-definiteness of $\langle -, - \rangle$ implies that $\langle -, - \rangle$ is non-degenerate, i.e., the map $\langle -, - \rangle_{\musNatural} : W \to W^*$ is isomorphism. Note that $W$ and $W^*$ have the same dimension and it has a trivial kernel: $\langle u, - \rangle_W = 0$ implies $\langle u, u \rangle_W = 0$ implies $u = 0$. Now, suppose $w = (w_1, \cdots, w_k)$ is a basis of $W$ and $w^* = (w_1^*, \cdots, w_k^*)$ is the dual basis of $W^*$, then we have the following diagram:
+Note that the restriction $\langle -, - \rangle$ is still an inner product on $W$. Also, the positive-definiteness of $\langle -, - \rangle$ implies that $\langle -, - \rangle$ is non-degenerate, i.e., the map $\langle -, - \rangle_{\natural} : W \to W^*$ is isomorphism. Note that $W$ and $W^*$ have the same dimension and it has a trivial kernel: $\langle u, - \rangle_W = 0$ implies $\langle u, u \rangle_W = 0$ implies $u = 0$. Now, suppose $w = (w_1, \cdots, w_k)$ is a basis of $W$ and $w^* = (w_1^*, \cdots, w_k^*)$ is the dual basis of $W^*$, then we have the following diagram:
 \begin{center}
 	\begin{tikzcd}
 		0 \arrow[r] & \ker(\lambda_w) \arrow[r] & V \arrow[r, "\lambda_w"', two heads] & \R^k \arrow[r] \arrow[l, bend right, "s"'] & 0 \\
-		& & W \arrow[u, hook] \arrow[r, <->, "{\langle -, - \rangle_{\musNatural}}"] & W^* \arrow[u, <->, "{[-]_{w^*}}"'] \\[-3.6em]
+		& & W \arrow[u, hook] \arrow[r, <->, "{\langle -, - \rangle_{\natural}}"] & W^* \arrow[u, <->, "{[-]_{w^*}}"'] \\[-3.6em]
 		& & {\scriptstyle w_i} \arrow[r, mapsto] & {\scriptstyle \langle w_i, - \rangle}
 	\end{tikzcd}
 \end{center}
@@ -810,7 +810,7 @@ or equivalently a linear map $\iota : V^* \otimes V^* \to (V \otimes V)^*$.
 \end{problem}
 
 \begin{problem}
-  Let $\omega$ be a bilinear form on $V$, i.e., a bilinear map $V \times V \to F$. Then $\omega_{\musNatural}: V \to V^*$ is the linear map tha sends $v$ to $\omega(v, -)$. Let $v_i$ be a basis of $V$ and the resulting dual basis of $V^*$ be denoted by $\hat{v}^i$. Let $A$ be the matrix representation of $\omega$ with respect to the basis $v_i$, i.e., $A = [\omega(v_i, v_j)]$. Let $A'$ be the matrix representation of $\omega_{\musNatural}$ with respect to the bases $v_i$ and $\hat{v}^i$. 
+  Let $\omega$ be a bilinear form on $V$, i.e., a bilinear map $V \times V \to F$. Then $\omega_{\natural}: V \to V^*$ is the linear map tha sends $v$ to $\omega(v, -)$. Let $v_i$ be a basis of $V$ and the resulting dual basis of $V^*$ be denoted by $\hat{v}^i$. Let $A$ be the matrix representation of $\omega$ with respect to the basis $v_i$, i.e., $A = [\omega(v_i, v_j)]$. Let $A'$ be the matrix representation of $\omega_{\natural}$ with respect to the bases $v_i$ and $\hat{v}^i$. 
   \begin{enumerate}
     \item Show that $A'$ is the transpose of $A$. Thus $\omega$ is non-degenerate means that its any matrix representation is invertible.
     \item If $\tilde{v}_{\tilde{\imath}}$ is another basis of $V$, then there is a unique invertible matrix $S = [s^i_{\tilde{\imath}}]$ such that $\tilde{v}_{\tilde{\imath}} = v_i s^i_{\tilde{\imath}}$. Let $\tilde{A}$ be the matrix representation of $\omega$ with respect to the basis $\tilde{v}_{\tilde{\imath}}$. Show that $\tilde{A} = S^T A S$.

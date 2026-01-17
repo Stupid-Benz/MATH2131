@@ -566,7 +566,7 @@ The left shows the diagram in generalised version, but it can be squeezed to the
   \[
     \Set(Y \times X, Z) \simeq \Set(Y, \Set(X, Z))
   \]
-  for all sets $Y$ and $Z$. This means that a set map $F \colon Y \times X \to Z$ corresponds to a set map $F_{\musNatural} \colon Y \to \Set(X, Z)$ such that a $y \in Y$ is mapped to a set map $F_{\musNatural}(y) \colon X \to Z$ defined by $F_{\musNatural}(y)(x) = F(y, x)$ for all $x \in X$.s
+  for all sets $Y$ and $Z$. This means that a set map $F \colon Y \times X \to Z$ corresponds to a set map $F_{\natural} \colon Y \to \Set(X, Z)$ such that a $y \in Y$ is mapped to a set map $F_{\natural}(y) \colon X \to Z$ defined by $F_{\natural}(y)(x) = F(y, x)$ for all $x \in X$.s
 \end{example}
 
 \begin{remark}
@@ -787,7 +787,7 @@ where $\iota_V \colon V \to V^{**}$ is the natural isomorphism defined above. Th
   \]
   where $\Bil(V \times W, -)$ is the functor that sends a linear space $Z$ to the set of bilinear maps with the source $V \times W$. For any linear space $Z$ over $F$, we have the natural isomorphism:
   \[
-    \musNatural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))
+    \natural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))
   \]
 \end{example}
 
@@ -800,8 +800,8 @@ Show that
 \begin{enumerate}
   \item the endofunctor ${(-)}^{**}$ on $\Vect_F^{\fd}$ that sends $T$ to $T^{**}:= {(T^*)}^*$ is a category isomorphism;
   \item the set of all bilinear maps from $V \times W$ to $Z$, denoted by $\Bil(V \times W, Z)$, is a linear space;
-  \item a bilinear map $f: V \times W \to Z$ naturally defines a linear map $f_{\musNatural} \colon V \to \Hom(W, Z)$;
-  \item Show that the natural map $\musNatural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))$ that sends $F$ to $F_{\musNatural}$ is a linear isomorphism. So we write \[ \Bil(V \times W, Z) \simeq \Hom(V, \Hom(W, Z)) \]
+  \item a bilinear map $f: V \times W \to Z$ naturally defines a linear map $f_{\natural} \colon V \to \Hom(W, Z)$;
+  \item Show that the natural map $\natural \colon \Bil(V \times W, Z) \to \Hom(V, \Hom(W, Z))$ that sends $F$ to $F_{\natural}$ is a linear isomorphism. So we write \[ \Bil(V \times W, Z) \simeq \Hom(V, \Hom(W, Z)) \]
 \end{enumerate}
 A bilinear map $f: V \times W \to F$ can be represented by a matrix $A_f$ uniquely defined via the commutative diagram
 \begin{center}
@@ -811,14 +811,14 @@ A bilinear map $f: V \times W \to F$ can be represented by a matrix $A_f$ unique
   \end{tikzcd}
 \end{center}
 such that the dashed map is $(x, y) \mapsto x^T A_f y$.
-Let $B_f$ be the matrix that represents $f_{\musNatural}$ with respect to the bases $\B_V$ and $\B_{W^*}$ via the commutative diagram
+Let $B_f$ be the matrix that represents $f_{\natural}$ with respect to the bases $\B_V$ and $\B_{W^*}$ via the commutative diagram
 \begin{center}
   \begin{tikzcd}
-    V \arrow[r, "f_{\musNatural}"] \arrow[d, "{[-]_{\B_V}}"] & W^* \arrow[d, "{[-]_{\B_{W^*}}}"] \\
+    V \arrow[r, "f_{\natural}"] \arrow[d, "{[-]_{\B_V}}"] & W^* \arrow[d, "{[-]_{\B_{W^*}}}"] \\
     F^m \arrow[r, "B_f"] & (F^n)^*
   \end{tikzcd}
 \end{center}
-We say that a bilinear map $f: V \times W \to F$ is \emph{non-degenerate} if $f_{\musNatural}: V \to W^*$ is a linear isomorphism.
+We say that a bilinear map $f: V \times W \to F$ is \emph{non-degenerate} if $f_{\natural}: V \to W^*$ is a linear isomorphism.
 \begin{enumerate}[resume]
   \item What is the relationship between $A_f$ and $B_f$?
   \item Show that a bilinear map $f: V \times W \to F$ is non-degenerate if and only if $A_f$ is an invertible matrix.
