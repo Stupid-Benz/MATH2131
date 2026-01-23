@@ -1,5 +1,7 @@
 \chapter{Symplectic Linear Spaces}
 
+\epigraph{``By now, you should feel comfortable switching between the two pictures. One is the abstract picture. Another is a concrete presentation.''}{Guowu Meng}
+
 \section{Complex Structures}
 
 Before we study symplectic linear spaces, we need to introduce some basic concepts about complex linear spaces. The following discussion is to show how a complex linear space can be viewed as a real linear space with some extra structure.
@@ -101,7 +103,7 @@ The following three propositions show the meaning of compatibility between these
 \begin{proof}
 	The pair $(g, J)$ is compatible if $J^* g = g$, i.e., $J \in \Aut(W, g) = \Orth(W, g)$; Then we can define $\omega (x, y) = g(x, J(y))$ and $\langle -, - \rangle = g + i \omega$. We can check that $\omega$ is skew-symmetric and non-degenerate, and $\langle -, - \rangle$ is a Hermitian product:
 	\[
-		\omega (y, x) = g(y, J(y)) = g(J(y), J^2(x))) = g(J(y), -x) = -g(J(y), x) = -g(x, J(y)) = -\omega (x, y)
+		\omega (y, x) = g(y, J(y)) = g(J(y), J^2(x)) = g(J(y), -x) = -g(J(y), x) = -g(x, J(y)) = -\omega (x, y)
 	\]
 	Also, if $\omega (x, y) = 0$ for all $y \in V$, then we have $g(x, J(y)) = 0$ for all $y \in V$, which implies that $J x = 0$ as $g$ is non-degenerate, i.e., $x = 0$. Therefore, $\omega$ is non-degenerate. As for the Hermitian product, the sesquilinearity is shown as follows:
 	\begin{align*}
@@ -128,7 +130,7 @@ The following three propositions show the meaning of compatibility between these
 \begin{proof}
 	The pair $(\omega, J)$ is compatible if $J^* \omega = \omega$, i.e., $J \in \Aut(W, \omega) = \Symp(W, \omega)$ and $\omega (x, J(x)) \geq 0$ and equality holds if and only if $x = 0$. Then we can define $g(x, y) = \omega (x, J(y))$ and $\langle -, - \rangle = g + i \omega$. We can check that $g$ is symmetric and positive-definite, and $\langle -, - \rangle$ is a Hermitian product:
 	\[
-		g(y, x) = \omega (y, J(x)) = \omega (J(y), J^2(x))) = \omega (J(y), -x) = -\omega (J(y), x) = \omega (x, J(y)) = g(x, y)
+		g(y, x) = \omega (y, J(x)) = \omega (J(y), J^2(x)) = \omega (J(y), -x) = -\omega (J(y), x) = \omega (x, J(y)) = g(x, y)
 	\]
 	Also, as $\omega (x, J(x)) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$, we have $g(x, x) \geq 0$ for all $x \in V$ and equality holds if and only if $x = 0$. Therefore, $g$ is positive-definite. For the Hermitian product, we may use the similar proof as above.
 \end{proof}
@@ -147,6 +149,8 @@ The following three propositions show the meaning of compatibility between these
 	\]
 	for all $x, y \in V$ and $x \neq 0$. Then we can define $\langle -, - \rangle = g + i \omega$. We can check that $\langle -, - \rangle$ is a Hermitian product by the similar proof as above.
 \end{proof}
+
+The above proof is with reference to the proposition of polar decomposition in the chapter 2.1 of the notes Symplectic Geometry by Dexter Chua~\cite{chua2018symplectic}.
 
 Consider a $F$-linear space $V$ where the characteristic of $F$ is not 2. Recall the definition of double $D(V)$ in Definition~\ref{def:double}. Then we have a natural symplectic structure on $D(V)$ defined as:
 \[
@@ -173,10 +177,10 @@ Consider a bilinear form $\omega : V \times V \to F$ on a vector space $V$ of di
 		F^n \times F^n \arrow[u, <->, "{[-]_{\B}}"] \arrow[ur, dashed]
 	\end{tikzcd}
 \end{center}
-Then $[\omega]_{\B} = [\omega (v_i, v_j)]$ is the matrix representation of $\omega$ with respect to the basis $\B = \{ v_1, v_2, \cdots, v_n \}$ of $V$. If we change the basis of $V$ to $\B' = \{ u_1, u_2, \cdots, u_n \}$, then there is a unique invertible matrix, $P$ in $\GL_n(F)$, such that $u_j = \sum_i v_i P^i_j$ for all $j$. Then we have:
+Then ${[\omega]}_{\B} = [\omega (v_i, v_j)]$ is the matrix representation of $\omega$ with respect to the basis $\B = \{ v_1, v_2, \cdots, v_n \}$ of $V$. If we change the basis of $V$ to $\B' = \{ u_1, u_2, \cdots, u_n \}$, then there is a unique invertible matrix, $P$ in $\GL_n(F)$, such that $u_j = \sum_i v_i P^i_j$ for all $j$. Then we have:
 \begin{align*}
-	[\omega]_{\B'} = [\omega (u_i, u_j)] & = \left[ \omega \left(\sum_k v_k P^k_i, \sum_l v_l P^l_j\right) \right] = \left[ \sum_{k, l} P^k_i \omega (v_k, v_l) P^l_j \right] \\
-	                                     & = \left[ \sum_{k, l} (P^T)^i_k \omega (v_k, v_l) P^l_j \right] = P^T [\omega (v_k, v_l)] P
+	{[\omega]}_{\B'} = [\omega (u_i, u_j)] & = \left[ \omega \left(\sum_k v_k P^k_i, \sum_l v_l P^l_j\right) \right] = \left[ \sum_{k, l} P^k_i \omega (v_k, v_l) P^l_j \right] \\
+	                                     & = \left[ \sum_{k, l} {(P^T)}^i_k \omega (v_k, v_l) P^l_j \right] = P^T [\omega (v_k, v_l)] P
 \end{align*}
 So we have the right group action of $\GL_n(F)$ on the set of $n \times n$ matrices $\Mat_{n \times n}(F)$ defined as:
 \[
@@ -184,7 +188,7 @@ So we have the right group action of $\GL_n(F)$ on the set of $n \times n$ matri
 \]
 We may check that $(A \cdot P_1) \cdot P_2 = A \cdot (P_1 P_2)$ for all $A \in \Mat_{n \times n}(F)$ and $P_1, P_2 \in \GL_n(F)$.
 
-Note that the right action leaves the symmetric and skew-symmetric properties invariant, i.e., if $A^T = A$ (or $A^T = -A$), then we have $(P^T A P)^T = P^T A P$ (or $(P^T A P)^T = -P^T A P$) for all $P \in \GL_n(F)$. For symmetric 2-forms, as $(P^T A P)^T = P^T A^T (P^T)^T = P^T A^T P$, where $A^T = A$, so we have $(P^T A P)^T = P^T A P$. For skew-symmetric 2-forms, as $(P^T A P)^T = P^T A^T (P^T)^T = P^T (-A) P$, where $A^T = -A$, so we have $(P^T A P)^T = -P^T A P$.
+Note that the right action leaves the symmetric and skew-symmetric properties invariant, i.e., if $A^T = A$ (or $A^T = -A$), then we have ${(P^T A P)}^T = P^T A P$ (or ${(P^T A P)}^T = -P^T A P$) for all $P \in \GL_n(F)$. For symmetric 2-forms, as ${(P^T A P)}^T = P^T A^T {(P^T)}^T = P^T A^T P$, where $A^T = A$, so we have ${(P^T A P)}^T = P^T A P$. For skew-symmetric 2-forms, as ${(P^T A P)}^T = P^T A^T {(P^T)}^T = P^T (-A) P$, where $A^T = -A$, so we have ${(P^T A P)}^T = -P^T A P$.
 
 When $F = \R$, then the skew-symmetric $\omega$ corresponds to a real skew-symmetric matrix. The matrix $iA$ is a Hermitian matrix, and we have $iA = U D U^*$ for some unitary matrix $U$ and real diagonal matrix $D$. Then the canonical form of skew-symmetric 2-form is:
 \[
@@ -197,16 +201,16 @@ When $F = \R$, then the skew-symmetric $\omega$ corresponds to a real skew-symme
 \]
 where $J_2 = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$ and the canonical form can be represented by $J_2 \oplus J_2 \oplus \cdots \oplus J_2 \oplus 0$. Note that $J_2^2 = -I_2$.
 
-Up to isomorphism, there is only one real symplectic vector space of dimension $2n$, i.e., $D(\R^n) := \R^n \oplus (\R^n)^*$ with the canonical symplectic form. The representation of the symplectic form is
+Up to isomorphism, there is only one real symplectic vector space of dimension $2n$, i.e., $D(\R^n) := \R^n \oplus {(\R^n)}^*$ with the canonical symplectic form. The representation of the symplectic form is
 \[
 	\begin{bmatrix}
 		0  & I \\
 		-I & 0
 	\end{bmatrix}
 \]
-with respect to the symplectic basis: $(x_1, \cdots, x_n, x^1, \cdots, x^n)$, where $\{ x_1, \cdots, x_n \}$ is the standard basis of $\R^n$ and $\{ x^1, \cdots, x^n \}$ is the dual basis of $(\R^n)^*$. Also, $\omega(x_i, x_j) = \omega(x^i, x^j) = 0$ and $\omega(x_i, x^j) = \delta_i^j = -\omega(x^j, x_i)$ for all $i, j$.
+with respect to the symplectic basis: $(x_1, \cdots, x_n, x^1, \cdots, x^n)$, where $\{ x_1, \cdots, x_n \}$ is the standard basis of $\R^n$ and $\{ x^1, \cdots, x^n \}$ is the dual basis of ${(\R^n)}^*$. Also, $\omega(x_i, x_j) = \omega(x^i, x^j) = 0$ and $\omega(x_i, x^j) = \delta_i^j = -\omega(x^j, x_i)$ for all $i, j$.
 
-Note that we have $A^T = -A$ where $A$ is the representation of a symplectic form. As $\det A^T = \det A = (-1)^n \det A$, we know that $n$ has to be even. Moreover, if we consider the a non-degenerate skew-symmetric 2-form on a real vector space of dimension $2n$, then its canonical form is:
+Note that we have $A^T = -A$ where $A$ is the representation of a symplectic form. As $\det A^T = \det A = {(-1)}^n \det A$, we know that $n$ has to be even. Moreover, if we consider the a non-degenerate skew-symmetric 2-form on a real vector space of dimension $2n$, then its canonical form is:
 \[
 	\begin{bmatrix}
 		J_2 &        &     \\
