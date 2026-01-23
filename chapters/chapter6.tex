@@ -1,5 +1,7 @@
 \chapter{Structure Theory of Linear Operators}
 
+\epigraph{``In Mathematics, one of the great ideas is anytime you are interested in vector space over real numbers, but real number is not as nice as complex numbers. So you should turn the problem into complex case, then use the result there to do it in real case.''}{Guowu Meng}
+
 Before, we have studied the canonical matrix representation of linear maps between two different dimension linear spaces. It is natural to ask what is the canonical form of linear maps from a linear space to itself, i.e., endomorphisms. There is another name for endomorphisms: linear operators.
 
 \begin{definition}[Linear Operator]\label{def:linear_operator}
@@ -226,23 +228,23 @@ Then we know that the sum of eigenspaces is a direct sum, i.e. $E_{\lambda_1} \o
   Then we have $p_A (\lambda) = {(\lambda - 1)}^2 (\lambda - 2)$. The eigenvalues are $1$ and $2$, where $\lambda = 1$ has algebraic multiplicity $2$ and $\lambda = 2$ has algebraic multiplicity $1$. Then we can find the eigenspaces:
   \begin{align*}
     E_{\lambda = 1} (A) & = \nul{1 \cdot I - A} = \nul \begin{bmatrix}
-                                                                 0 & 0 & -4 \\
-                                                                 0 & 0 & -3 \\
-                                                                 0 & 0 & -1
-                                                               \end{bmatrix} = \nul \begin{bmatrix}
-                                                                                              0 & 0 & 1 \\
-                                                                                              0 & 0 & 0 \\
-                                                                                              0 & 0 & 0
-                                                                                            \end{bmatrix} = \spn \{ \vec{e}_1, \vec{e}_2 \} \\
+                                                         0 & 0 & -4 \\
+                                                         0 & 0 & -3 \\
+                                                         0 & 0 & -1
+                                                       \end{bmatrix} = \nul \begin{bmatrix}
+                                                                              0 & 0 & 1 \\
+                                                                              0 & 0 & 0 \\
+                                                                              0 & 0 & 0
+                                                                            \end{bmatrix} = \spn \{ \vec{e}_1, \vec{e}_2 \} \\
     E_{\lambda = 2} (A) & = \nul{2 \cdot I - A} = \nul \begin{bmatrix}
-                                                                 1 & 0 & -4 \\
-                                                                 0 & 1 & -3 \\
-                                                                 0 & 0 & 0
-                                                               \end{bmatrix} = \spn \begin{bmatrix}
-                                                                                      4 \\
-                                                                                      3 \\
-                                                                                      1
-                                                                                    \end{bmatrix}
+                                                         1 & 0 & -4 \\
+                                                         0 & 1 & -3 \\
+                                                         0 & 0 & 0
+                                                       \end{bmatrix} = \spn \begin{bmatrix}
+                                                                              4 \\
+                                                                              3 \\
+                                                                              1
+                                                                            \end{bmatrix}
   \end{align*}
   Then we have $\dim(E_{\lambda = 1}) + \dim(E_{\lambda = 2}) = 2 + 1 = 3 = \dim(V)$. Therefore, $A$ is diagonalisable. Then we can find the diagonalisation:
   \[
@@ -484,7 +486,7 @@ Then what is $J_{e_i} (\lambda_i)$? We have:
 \]
 So the first column of $J_{e_i} (\lambda_i)$ is $\begin{bmatrix} \lambda_i & 1 & 0 & \cdots & 0 \end{bmatrix}^T$. Similarly, we have:
 \begin{align*}
-  x \cdot (x - \lambda_i)           & = 1 \cdot {(x - \lambda_i)}^2 + \lambda_i \cdot (x - \lambda_i)                                                           \\
+  x \cdot (x - \lambda_i)             & = 1 \cdot {(x - \lambda_i)}^2 + \lambda_i \cdot (x - \lambda_i)                                                               \\
   x \cdot {(x - \lambda_i)}^{e_i - 1} & = 1 \cdot {(x - \lambda_i)}^{e_i} + \lambda_i \cdot {(x - \lambda_i)}^{e_i - 1} = \lambda_i \cdot {(x - \lambda_i)}^{e_i - 1}
 \end{align*}
 So the matrix representation of $x \cdot$ on $\dfrac{F[x]}{{(x - \lambda_i)}^{e_i}}$ with respect to the basis $\B_i$ is:
@@ -525,14 +527,14 @@ This is called the \emph{Jordan canonical form} of $T$. However, this is for alg
 \section{Exercises}
 
 \begin{problem}
-  We say that $A$ is diagonalisable if there is an invertible matrix $P$, written as $[v_1, \ldots, v_n]$, and a diagonal matrix $D$, with diagonal entries $d_{ii}$ denoted by $\lambda_i$, such that $AP = PD$, i.e., $A v_i = \lambda_i v_i$ for each $i = 1, \ldots, n$.
-  \begin{enumerate}
-    \item Show that $A$ is diagonalisable $\iff$ $F^n$ has a basis consisting of eigenvectors of $A$.
-    \item Show that eigenspaces are linearly independent, i.e., they are all non-trivial and there is only one way to write $0$ as a finite sum of vectors, one from each of them.
-    \item Let $\sigma(A) = \{ \lambda_1, \ldots, \lambda_k \}$. Show that $A$ is diagonalisable $\iff$ $F^n = \bigoplus_i E_{\lambda_i} (A)$ $\iff$ $n = \sum_i \dim E_{\lambda_i} (A)$.
-    \item Show that $A$ is diagonalisable if $|\sigma(A)| = n$, i.e., $A$ has $n$ distinct eigenvalues.
-    \item Find a non-diagonalisable square matrix $A$ of order 2.
-  \end{enumerate}
+We say that $A$ is diagonalisable if there is an invertible matrix $P$, written as $[v_1, \ldots, v_n]$, and a diagonal matrix $D$, with diagonal entries $d_{ii}$ denoted by $\lambda_i$, such that $AP = PD$, i.e., $A v_i = \lambda_i v_i$ for each $i = 1, \ldots, n$.
+\begin{enumerate}
+  \item Show that $A$ is diagonalisable $\iff$ $F^n$ has a basis consisting of eigenvectors of $A$.
+  \item Show that eigenspaces are linearly independent, i.e., they are all non-trivial and there is only one way to write $0$ as a finite sum of vectors, one from each of them.
+  \item Let $\sigma(A) = \{ \lambda_1, \ldots, \lambda_k \}$. Show that $A$ is diagonalisable $\iff$ $F^n = \bigoplus_i E_{\lambda_i} (A)$ $\iff$ $n = \sum_i \dim E_{\lambda_i} (A)$.
+  \item Show that $A$ is diagonalisable if $|\sigma(A)| = n$, i.e., $A$ has $n$ distinct eigenvalues.
+  \item Find a non-diagonalisable square matrix $A$ of order 2.
+\end{enumerate}
 \end{problem}
 
 \begin{remark}
@@ -540,30 +542,30 @@ This is called the \emph{Jordan canonical form} of $T$. However, this is for alg
 \end{remark}
 
 \begin{problem}
-  Let $f \in F[x]$ be a monic polynomial of degree $n \geq 1$. Over the algebraic closure $\overline{F}$ of $F$, we can factorise $f$ as $(x - x_1) \cdots (x - x_n)$ with $x_i \in \overline{F}$. The discriminant of $f$, denoted by $\mathsf{Disc}(f)$, is defined to be $\prod_{i < j} {(x_i - x_j)}^2$. Being symmetric in $x_1, \ldots, x_n$, $\mathsf{Disc}(f)$ must be a polynomial in the coefficients of $f$.
-  \begin{enumerate}
-    \item Show that the discriminant of the quadratic polynomial $x^2 + bx + c$ is $b^2 - 4c$. How about the discriminant of the cubic polynomial $x^3 + px + q$?
-    \item Show that $f$ has $n$-distinct roots in $\overline{F}$ $\iff$ $\mathsf{Disc}(f) \neq 0$.
-    \item Show that $P_A (\lambda)\big|_{\lambda = A} = 0$ $\iff$ $P_A(\lambda)\big|_{\lambda = A} = 0$ when $A$ is viewed as a square matrix over $\overline{F}$. 
-  \end{enumerate}
-  Thus, to prove $P_A (\lambda) \big|_{\lambda = A} = 0$, without loss of generality, we shall assume in the following that the field $F$ is algebraically closed.
-  \begin{enumerate}\addtocounter{enumi}{3}
-    \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $A$ is a diagonal matrix.
-    \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $A$ is a diagonalisable matrix.
-    \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $\mathsf{Disc}(P_A) \neq 0$.
-    \item Show that the map $A \mapsto \mathsf{Disc}(P_A)$ is a polynomial map $f$ from the affine space $\End F^n$ to $F$. Note that the $\End F^n$ is isomorphic to the affine space $\mathbb{A}^{n^2}_{F}$ of dimension $n^2$.
-  \end{enumerate}
+Let $f \in F[x]$ be a monic polynomial of degree $n \geq 1$. Over the algebraic closure $\overline{F}$ of $F$, we can factorise $f$ as $(x - x_1) \cdots (x - x_n)$ with $x_i \in \overline{F}$. The discriminant of $f$, denoted by $\mathsf{Disc}(f)$, is defined to be $\prod_{i < j} {(x_i - x_j)}^2$. Being symmetric in $x_1, \ldots, x_n$, $\mathsf{Disc}(f)$ must be a polynomial in the coefficients of $f$.
+\begin{enumerate}
+  \item Show that the discriminant of the quadratic polynomial $x^2 + bx + c$ is $b^2 - 4c$. How about the discriminant of the cubic polynomial $x^3 + px + q$?
+  \item Show that $f$ has $n$-distinct roots in $\overline{F}$ $\iff$ $\mathsf{Disc}(f) \neq 0$.
+  \item Show that $P_A (\lambda)\big|_{\lambda = A} = 0$ $\iff$ $P_A(\lambda)\big|_{\lambda = A} = 0$ when $A$ is viewed as a square matrix over $\overline{F}$.
+\end{enumerate}
+Thus, to prove $P_A (\lambda) \big|_{\lambda = A} = 0$, without loss of generality, we shall assume in the following that the field $F$ is algebraically closed.
+\begin{enumerate}\addtocounter{enumi}{3}
+  \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $A$ is a diagonal matrix.
+  \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $A$ is a diagonalisable matrix.
+  \item Show that $P_A (\lambda) \big|_{\lambda = A} = 0$ if $\mathsf{Disc}(P_A) \neq 0$.
+  \item Show that the map $A \mapsto \mathsf{Disc}(P_A)$ is a polynomial map $f$ from the affine space $\End F^n$ to $F$. Note that the $\End F^n$ is isomorphic to the affine space $\mathbb{A}^{n^2}_{F}$ of dimension $n^2$.
+\end{enumerate}
 
-  We need the following two facts from Topology:
-  \begin{enumerate}[label=\arabic*.]
-    \item In Zariski Topology, any finite-dimensional affine space over an algebraically closed field is an irreducible topological space.
-    \item Any non-empty open set $U$ in an irreducible topological space $X$ must be dense, i.e., $X$ is equal to the topological closure $\overline{U}$ of $U$.
-  \end{enumerate}
+We need the following two facts from Topology:
+\begin{enumerate}[label=\arabic*.]
+  \item In Zariski Topology, any finite-dimensional affine space over an algebraically closed field is an irreducible topological space.
+  \item Any non-empty open set $U$ in an irreducible topological space $X$ must be dense, i.e., $X$ is equal to the topological closure $\overline{U}$ of $U$.
+\end{enumerate}
 
-  \begin{enumerate}\addtocounter{enumi}{7}
-    \item Assume these facts and let $f$ be the polynomial $f$ in part (g) and $f_{ij}$ be the polynomial map from affine space $\End F^n$ to $F$ that sends $A$ to the $(i, j)$-entry of the matrix $P_A (\lambda) \big|_{\lambda = A}$. Show that $[f_{ij} (A)] = P_A (\lambda) \big|_{\lambda = A} = 0$ for all $A$ on the non-empty Zariski open set $\{ f \neq 0 \}$ of $\End F^n$.
-    \item Show that all $P_A (\lambda) \big|_{\lambda = A} = 0$ for all $A$ in the affine space $\End F^n$.
-  \end{enumerate}
+\begin{enumerate}\addtocounter{enumi}{7}
+  \item Assume these facts and let $f$ be the polynomial $f$ in part (g) and $f_{ij}$ be the polynomial map from affine space $\End F^n$ to $F$ that sends $A$ to the $(i, j)$-entry of the matrix $P_A (\lambda) \big|_{\lambda = A}$. Show that $[f_{ij} (A)] = P_A (\lambda) \big|_{\lambda = A} = 0$ for all $A$ on the non-empty Zariski open set $\{ f \neq 0 \}$ of $\End F^n$.
+  \item Show that all $P_A (\lambda) \big|_{\lambda = A} = 0$ for all $A$ in the affine space $\End F^n$.
+\end{enumerate}
 \end{problem}
 
 \begin{remark}
@@ -571,26 +573,26 @@ This is called the \emph{Jordan canonical form} of $T$. However, this is for alg
 \end{remark}
 
 \begin{problem}
-  Assume the field $F$ is algebraically closed and $\sigma(A) = \{ \lambda_1, \ldots, \lambda_k \}$. Then $P_A (\lambda) = \prod_{i = 1}^k {(\lambda - \lambda_i)}^{n_i}$ where each integer $n_i$ is positive. Cayley-Hamilton Theorem says that
-  \begin{equation}
-    \prod_{i = 1}^k {(A - \lambda_i I)}^{n_i} = 0.
-  \end{equation}
-  \begin{enumerate}
-    \item Show that, for each $i$, we have a sequence
-    \[
-        \nul(A - \lambda_i I) \subseteq \nul{(A - \lambda_i I)}^2 \subseteq \cdots
-    \]
-    that will eventually stabilise.
-  \end{enumerate}
+Assume the field $F$ is algebraically closed and $\sigma(A) = \{ \lambda_1, \ldots, \lambda_k \}$. Then $P_A (\lambda) = \prod_{i = 1}^k {(\lambda - \lambda_i)}^{n_i}$ where each integer $n_i$ is positive. Cayley-Hamilton Theorem says that
+\begin{equation}
+  \prod_{i = 1}^k {(A - \lambda_i I)}^{n_i} = 0.
+\end{equation}
+\begin{enumerate}
+  \item Show that, for each $i$, we have a sequence
+        \[
+          \nul(A - \lambda_i I) \subseteq \nul{(A - \lambda_i I)}^2 \subseteq \cdots
+        \]
+        that will eventually stabilise.
+\end{enumerate}
 
-  The generalised eigenspace of $A$ with eigenvalue $\lambda_i$, denoted by $\widetilde{E}_{\lambda_i} (A)$, is defined to be the increasing union $\bigcup_{k \geq 1} \nul{(A - \lambda_i I)}^k$. By definition, any non-zero vector $v$ in $\widetilde{E}_{\lambda_i} (A)$ is called a generalised eigenvector of $A$ with eigenvalue $\lambda_i$. Let $v$ be a generalised eigenvector of $A$ with eigenvalue $\lambda$.
+The generalised eigenspace of $A$ with eigenvalue $\lambda_i$, denoted by $\widetilde{E}_{\lambda_i} (A)$, is defined to be the increasing union $\bigcup_{k \geq 1} \nul{(A - \lambda_i I)}^k$. By definition, any non-zero vector $v$ in $\widetilde{E}_{\lambda_i} (A)$ is called a generalised eigenvector of $A$ with eigenvalue $\lambda_i$. Let $v$ be a generalised eigenvector of $A$ with eigenvalue $\lambda$.
 
-  \begin{enumerate}\addtocounter{enumi}{1}
-    \item Show that there is an integer $m \geq 0$ such that $v_m := {(A - \lambda I)}^m v$ is an eigenvector of $A$ with eigenvalue $\lambda$.
-    \item Show that $v$ is never a generalised eigenvector of $A$ with eigenvalue $\mu \neq \lambda$.
-    \item Show that, for any $k \geq 0$ and scalar $\mu \neq \lambda$, ${(A - \mu I)}^k v$ is always a generalised eigenvector of $A$ with eigenvalue $\lambda$. Consequently, ${(A - \mu I)}^k$ maps $\widetilde{E}_{\lambda} (A)$ isomorphically onto $\widetilde{E}_{\lambda} (A)$.
-    \item Show that the algebraic multiplicity of the eigenvalue $\lambda_i$ is bigger than or equal to the geometric multiplicity, i.e., $\dim E_{\lambda_i} (A)$, of the eigenvalue $\lambda_i$.
-    \item Show that the generalised eigenspaces of $A$ are linearly independent and their direct sum is the entire linear space $F^n$.
-    \item Show that, with respect to the decomposition $F^n = \widetilde{E}_{\lambda_1} (A) \oplus \cdots \oplus \widetilde{E}_{\lambda_k} (A)$, we have the decomposition $A = (\lambda_1 I_{n_1} + N_1) \oplus \cdots \oplus (\lambda_k I_{n_k} + N_k)$ where each $N_i$ is a nilpotent matrix of order $n_i$.
-  \end{enumerate}
+\begin{enumerate}\addtocounter{enumi}{1}
+  \item Show that there is an integer $m \geq 0$ such that $v_m := {(A - \lambda I)}^m v$ is an eigenvector of $A$ with eigenvalue $\lambda$.
+  \item Show that $v$ is never a generalised eigenvector of $A$ with eigenvalue $\mu \neq \lambda$.
+  \item Show that, for any $k \geq 0$ and scalar $\mu \neq \lambda$, ${(A - \mu I)}^k v$ is always a generalised eigenvector of $A$ with eigenvalue $\lambda$. Consequently, ${(A - \mu I)}^k$ maps $\widetilde{E}_{\lambda} (A)$ isomorphically onto $\widetilde{E}_{\lambda} (A)$.
+  \item Show that the algebraic multiplicity of the eigenvalue $\lambda_i$ is bigger than or equal to the geometric multiplicity, i.e., $\dim E_{\lambda_i} (A)$, of the eigenvalue $\lambda_i$.
+  \item Show that the generalised eigenspaces of $A$ are linearly independent and their direct sum is the entire linear space $F^n$.
+  \item Show that, with respect to the decomposition $F^n = \widetilde{E}_{\lambda_1} (A) \oplus \cdots \oplus \widetilde{E}_{\lambda_k} (A)$, we have the decomposition $A = (\lambda_1 I_{n_1} + N_1) \oplus \cdots \oplus (\lambda_k I_{n_k} + N_k)$ where each $N_i$ is a nilpotent matrix of order $n_i$.
+\end{enumerate}
 \end{problem}

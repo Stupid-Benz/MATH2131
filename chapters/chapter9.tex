@@ -1,5 +1,7 @@
 \chapter{Further Topics}
 
+\epigraph{``When you studying higher maths, whether algebra, geometry or anything, you realised that the hard part is the language. It takes time. People are impatient. If you are impatient, you cannot learn mathematics. But if you are patient enough, you learn the language, you understand the basic facts. No tricks, tricks are useless. And then towards the end, you enjoy the fruit, that means, everything become so easy. Just do a simple calculation. You can get many result. The center of mathematics is always like that.''}{Guowu Meng}
+
 \section{Polar Decomposition and Singular Value Decomposition}
 \subsection{Polar Decomposition}
 If $z \neq 0$, then $z = \rho e^{i \theta}$ for a unique $\rho > 0$ and $e^{i \theta}$ being a complex number of modulus 1. This is called the polar decomposition of $z$. Then we have the following isomorphism:
@@ -26,11 +28,11 @@ Then we may generalise this idea to matrices.
 	\]
 	As $A$ is invertible, so is $A^* A$. Therefore, $P = \sqrt{A^* A}$ is a positive Hermitian matrix. Then we have $U = A P^{-1}$. Also, we have:
 	\[
-		(A^* A)^* = A^* A \implies P^* P^* = P^2 \implies P^* = P
+		{(A^* A)}^* = A^* A \implies P^* P^* = P^2 \implies P^* = P
 	\]
 	and
 	\[
-		\vec{z}^* A^* A \vec{z} = (A \vec{z})^* (A \vec{z}) > 0 \implies \| P \vec{z} \| \geq 0
+		\vec{z}^* A^* A \vec{z} = {(A \vec{z})}^* (A \vec{z}) > 0 \implies \| P \vec{z} \| \geq 0
 	\]
 	for all $\vec{z}$ and equal to 0 if and only if $\vec{z} = 0$ as $A \in \GL_n(\C)$. Therefore, $P$ and $A^* A$ are positive Hermitian. Then we know that $A^* A = U' D U'^*$ where $U' \in \Uni(n)$ and $D$ is a diagonal matrix with positive real numbers on the diagonal. Then we have $P = U' \sqrt{D} U'^*$. Also, we have:
 	\[
@@ -63,10 +65,7 @@ We consider the following commutative diagram:
 		\spn\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \spn\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \} & \spn\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \spn\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}
 	\end{tikzcd}
 \end{center}
-where $A' = \begin{bmatrix}
-		\overline{A} & 0 \\
-		0            & 0
-	\end{bmatrix}$ with $\overline{A} \in \GL_r(\C)$. Moreover, the direct sum in $(\nul{A})^\perp \oplus \nul{A}$ and $\col{A} \oplus (\col{A})^\perp$ are orthogonal direct sums; the direct sum in $\C^r \oplus \C^{n-r}$ and $\C^r \oplus \C^{m-r}$ are external direct sums; the direct sum in $\spn\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \spn\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \}$ and $\spn\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \spn\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}$ are internal direct sums. Note that all the isomorphisms in the diagram are of Hermitian spaces. Then we may simplify the diagram as follows:
+where $A' = \begin{bmatrix} \overline{A} & 0 \\ 0 & 0 \end{bmatrix}$ with $\overline{A} \in \GL_r(\C)$. Moreover, the direct sum in ${(\nul{A})}^\perp \oplus \nul{A}$ and $\col{A} \oplus {(\col{A})}^\perp$ are orthogonal direct sums; the direct sum in $\C^r \oplus \C^{n-r}$ and $\C^r \oplus \C^{m-r}$ are external direct sums; the direct sum in $\spn\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \spn\{ \vec{e}_{r+1}, \cdots, \vec{e}_n \}$ and $\spn\{ \vec{e}_1, \cdots, \vec{e}_r \} \oplus \spn\{ \vec{e}_{r+1}, \cdots, \vec{e}_m \}$ are internal direct sums. Note that all the isomorphisms in the diagram are of Hermitian spaces. Then we may simplify the diagram as follows:
 \begin{center}
 	\begin{tikzcd}
 		\C^n \arrow[r, "A"] \arrow[d, "U_1"'] & \C^m \arrow[d, "U_2"] \\
@@ -202,7 +201,7 @@ We can use the simultaneous diagonalisation theorem to prove the spectral theore
 		      \end{align*}
 		      Therefore, $A A^* = A^* A$ if and only if $[B, C] = 0$. Also, we may check that $B$ and $C$ are Hermitian:
 		      \[
-			      B^* = \left(\frac{A + A^*}{2}\right)^* = \frac{A^* + A}{2} = B, \quad C^* = \left(\frac{A - A^*}{2i}\right)^* = \frac{A^* - A}{-2i} = C.
+			      B^* = {\left(\frac{A + A^*}{2}\right)}^* = \frac{A^* + A}{2} = B, \quad C^* = {\left(\frac{A - A^*}{2i}\right)}^* = \frac{A^* - A}{-2i} = C.
 		      \]
 		      Then, by the simultaneous diagonalisation theorem, there is a unitary matrix $U$ such that:
 		      \[
@@ -288,9 +287,9 @@ For affine subspaces and spans, we consider the following Figure~\ref{fig:affine
 		\fill (1,1,1) circle (1pt) node[anchor=north] {$p_1$};
 		\fill (-2,0,1) circle (1pt) node[anchor=north] {$p_2$};
 	\end{tikzpicture}
-  \caption{Affine Span and Affine Frame}\label{fig:affine-span-frame}
+	\caption{Affine Span and Affine Frame}\label{fig:affine-span-frame}
 \end{figure}
-The red line is the smallest affine subspace containing $p_0$ and $p_12$, i.e., the affine span of $p_0$ and $p_1$. We may write $\spn\{ p_0, p_1 \} := \{ c^0 p_0 + c^1 p_1 \mid c^0 + c^1 = 1, c^i \in \R \} = \{ tp_0 + (1 - t) p_1 \mid t \in \R \}$. Note that $\overline{p_0 p_1} = \{ tp_0 + (1 - t) p_1 \mid t \in [0, 1] \}$ is a subset of the affine span.
+The red line is the smallest affine subspace containing $p_0$ and $p_1$, i.e., the affine span of $p_0$ and $p_1$. We may write $\spn\{ p_0, p_1 \} := \{ c^0 p_0 + c^1 p_1 \mid c^0 + c^1 = 1, c^i \in \R \} = \{ tp_0 + (1 - t) p_1 \mid t \in \R \}$. Note that $\overline{p_0 p_1} = \{ tp_0 + (1 - t) p_1 \mid t \in [0, 1] \}$ is a subset of the affine span.
 
 For the affine frame, we may consider the same picture above. Then $\{ p_0, p_1, p_2 \}$ is an affine frame of the affine space (the plane) as no point is in the affine span of the other two points.
 
@@ -323,7 +322,7 @@ Note that $\alpha_1 + \alpha_2$ need not be 1 here, as it is linear combination.
 		\draw[dashed, ->, ustred] (Q) -- (Q') node[midway, above] {$\vec{v}$};
 		\draw[dashed, ->, ustred] (R) -- (R') node[midway, below] {$\vec{v}$};
 	\end{tikzpicture}
-  \caption{Translation Invariance}\label{fig:translation-invariance}
+	\caption{Translation Invariance}\label{fig:translation-invariance}
 \end{figure}
 Then $q = q' + \vec{v}$ and $r = r' + \vec{v}$. Note that $\mathcal{T}_p \A$ is different from $\mathcal{T}_{p'} \A$ as they are tangent spaces at different points, but they are isomorphic via translation by $\vec{v}$. We may consider the tangent line on the circle at different points as an example.
 

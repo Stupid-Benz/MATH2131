@@ -1,4 +1,7 @@
 \chapter{Inner Product Spaces}
+
+\epigraph{``The idea of representation is one of the few great ideas in Mathematics.''}{Guowu Meng}
+
 As of now, we have studied linear spaces and linear maps between linear spaces. In this chapter, we will introduce some geometric structures on linear spaces, which will lead to the definition of inner product spaces. Inner product spaces are very important in both pure and applied mathematics, as they provide a way to measure angles and lengths in linear spaces. We will explore the properties of inner product spaces, including orthogonality, projections, and orthonormal bases.
 
 \section{Inner Products and Euclidean Spaces}
@@ -794,18 +797,18 @@ Let $V$ be a $n$-dimensional linear space over a field $F$. The pairing $V^* \ti
 \[
 	(V^* \otimes V^*) \otimes (V \otimes V) \to F
 \]
-or equivalently a linear map $\iota : V^* \otimes V^* \to (V \otimes V)^*$.
+or equivalently a linear map $\iota : V^* \otimes V^* \to {(V \otimes V)}^*$.
 \begin{enumerate}
-	\item Show that the linear map $\iota$ is a linear equivalence. In fact a natural one in the language of category. So we shall write $V^* \otimes V^* \equiv (V \otimes V)^*$.
-	\item The quotient linear map $V \otimes V \to S^2 V$ yields the injective map $(S^2 V)^* \to (V \otimes V)^*$. So we have the following composition map
+	\item Show that the linear map $\iota$ is a linear equivalence. In fact a natural one in the language of category. So we shall write $V^* \otimes V^* \equiv {(V \otimes V)}^*$.
+	\item The quotient linear map $V \otimes V \to S^2 V$ yields the injective map ${(S^2 V)}^* \to {(V \otimes V)}^*$. So we have the following composition map
 	      \begin{center}
 		      \begin{tikzcd}
-			      (S^2 V)^* \arrow[r, hook] & (V \otimes V)^* \arrow[r, "\equiv" description, phantom] & V^* \otimes V^* \arrow[r, two heads] & S^2 V^*
+			      {(S^2 V)}^* \arrow[r, hook] & {(V \otimes V)}^* \arrow[r, "\equiv" description, phantom] & V^* \otimes V^* \arrow[r, two heads] & S^2 V^*
 		      \end{tikzcd}
 	      \end{center}
-	      Show that this natural map $(S^2 V)^* \to S^2 V^*$ is a linear equivalence if and only if the characteristic of the field $F$ is not 2.
+	      Show that this natural map ${(S^2 V)}^* \to S^2 V^*$ is a linear equivalence if and only if the characteristic of the field $F$ is not 2.
 	\item Assume that the characteristic of the field $F$ is not 2, please find the inverse of the natural map in part (b).
-	\item Assume that the characteristic of the field $F$ is not 2, show that there is a natural linear equivalence ${\bigwedge}^2 V^* \equiv ({\bigwedge}^2 V)^*$.
+	\item Assume that the characteristic of the field $F$ is not 2, show that there is a natural linear equivalence $\Lambda^2 V^* \equiv {(\Lambda^2 V)}^*$.
 \end{enumerate}
 \end{problem}
 
@@ -814,12 +817,12 @@ or equivalently a linear map $\iota : V^* \otimes V^* \to (V \otimes V)^*$.
   \begin{enumerate}
     \item Show that $A'$ is the transpose of $A$. Thus $\omega$ is non-degenerate means that its any matrix representation is invertible.
     \item If $\tilde{v}_{\tilde{\imath}}$ is another basis of $V$, then there is a unique invertible matrix $S = [s^i_{\tilde{\imath}}]$ such that $\tilde{v}_{\tilde{\imath}} = v_i s^i_{\tilde{\imath}}$. Let $\tilde{A}$ be the matrix representation of $\omega$ with respect to the basis $\tilde{v}_{\tilde{\imath}}$. Show that $\tilde{A} = S^T A S$.
-    \item Show that the map that sends $(A, S)$ to $S^T A S$ is a right action of $\GL_n(F)$ on $(V \otimes V)^*$.
-    \item The quotient map $V \otimes V \to S^2 V$ yields injective linear map $(S^2 V)^* \to (V \otimes V)^*$, that is not a surprise because any symmetric bilinear form is a bilinear form. Similarly, $({\bigwedge}^2 V)^*$ is a linear subsubspace of $(V \otimes V)^*$ as well. Show that $\GL(V)$ acts on $(V \otimes V)^*$ and leaves invariant both subspaces $(S^2 V)^*$ and $({\bigwedge}^2 V)^*$.
-    \item Show that, under the identification $(V \otimes V)^* \equiv V^* \otimes V^*$, we have 
+    \item Show that the map that sends $(A, S)$ to $S^T A S$ is a right action of $\GL_n(F)$ on ${(V \otimes V)}^*$.
+    \item The quotient map $V \otimes V \to S^2 V$ yields injective linear map ${(S^2 V)}^* \to {(V \otimes V)}^*$, that is not a surprise because any symmetric bilinear form is a bilinear form. Similarly, ${(\Lambda^2 V)}^*$ is a linear subsubspace of ${(V \otimes V)}^*$ as well. Show that $\GL(V)$ acts on ${(V \otimes V)}^*$ and leaves invariant both subspaces ${(S^2 V)}^*$ and ${(\Lambda^2 V)}^*$.
+    \item Show that, under the identification ${(V \otimes V)}^* \equiv V^* \otimes V^*$, we have 
     \[
         \omega = \omega(v_i, v_j) \hat{v}^i \otimes \hat{v}^j
     \]
-    \item Assume that the characteristic of the field $F$ is not 2, then we have the natural identification $(S^2 V)^* \equiv S^2 V^*$ found in the last question. Show that, if $\omega$ is a symmetric bilinear form on $V$, then $\omega = \omega(v_i, v_j) \hat{v}^i \hat{v}^j$. Similarly, if $\omega$ is a skew-symmetric bilinear form on $V$, then $\omega = \omega(v_i, v_j) \hat{v}^i \wedge \hat{v}^j$.
+    \item Assume that the characteristic of the field $F$ is not 2, then we have the natural identification ${(S^2 V)}^* \equiv S^2 V^*$ found in the last question. Show that, if $\omega$ is a symmetric bilinear form on $V$, then $\omega = \omega(v_i, v_j) \hat{v}^i \hat{v}^j$. Similarly, if $\omega$ is a skew-symmetric bilinear form on $V$, then $\omega = \omega(v_i, v_j) \hat{v}^i \wedge \hat{v}^j$.
   \end{enumerate}
 \end{problem}
