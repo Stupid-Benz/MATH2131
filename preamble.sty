@@ -112,16 +112,11 @@ labels=description,
 
 %-----------------------------------------------------%
 %%%% Self-defined functions
-\newcommand{\skipline}{\hspace{\linewidth}}
-
-\newcommand{\bo}[1]{\textbf{#1}}
-
-\newcommand{\centerheader}[1]{\multicolumn{1}{c}{\bo{#1}}}
 
 %-----------------------------------------------------%
 %%%% Page setup
 \usepackage[
-  a4paper,
+  % a4paper,
   twoside=true,
   textheight=22cm,
   textwidth=15cm,
@@ -296,7 +291,9 @@ labels=description,
     }]
 \newkeytheorem{definition*}[style=colorbarbox,numbered=false,name=Definition]
 
-\newkeytheorem{theorem}[style=colorfullbarbox,parent=chapter]
+\newkeytheorem{theorem}[style=colorfullbarbox,parent=chapter,preheadhook={
+      \setlist[enumerate,1]{label = (\arabic*)}
+    }]
 
 \newkeytheorem{lemma}[style=colorbox,parent=chapter]
 \newkeytheorem{corollary}[style=colorbox,parent=chapter]
@@ -308,6 +305,7 @@ labels=description,
     }]
 \renewkeytheorem{proof}[style=goldonly,numbered=false,qed,preheadhook={
       \setlist[description]{leftmargin=!, font=\color{ustblue}, topsep=\baselineskip}
+      \setlist[enumerate,1]{label = (\arabic*)}
     }]
 \newkeytheorem{problem}[style=goldonly,parent=chapter]
 \newkeytheorem{exercise}[style=goldonly,parent=section,preheadhook={
